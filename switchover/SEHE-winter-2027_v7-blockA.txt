@@ -1,0 +1,546 @@
+<!-- =====================================================================
+     SIR EDMUND HILLARY EXPLORER — 12-DAY WINTER EDITION 2027
+     COMPLETE TOUR PAGE  ·  VERSION v7  ·  2026-07-08  (paste into a Duda HTML block)
+     -----------------------------------------------------------------------
+     CHANGELOG (latest first):
+       v7 — BOOKING DATA ALIGNED TO THE LIVE-SITE WIDGETS (technical only; design
+            untouched): the departures data script is now the proven widget block —
+            full worker SCHEDULE baked (including the four Oct 2026 departures),
+            SOLDOUT fallback refreshed to current live statuses, and the live merge
+            is the widgets' guarded OVERRIDE (worker list wins; baked list kept if
+            the worker is unreachable — never wiped). Ends the departure-list drift
+            between tour pages, the Journeys page, the site widgets and Checkfront.
+            Booking list, hero count/range and cross-sell chips re-baked from the
+            page's own scripts, so first paint byte-matches the render.
+       v6 — Review fix (Ben, 8 Jul): the Mainlander exclusivity claim is brand-level,
+            not winter-only — 'Exclusive to our winter tours' corrected to
+            'Exclusive to Sir Edmund Hillary Explorer' (it also runs on the
+            Spring/Summer tours).
+       v5 — TEXT-FINAL PASS (Ben, 3 Jul) adopted as-is: FAQ rebuilt to the official
+            site-FAQ wording + a 'View all FAQs' button; NZ-English copy polish;
+            cross-sell fact fixes (Milford optional on 27/28 cards; Pinnacle desc
+            'Premium accommodation'); Pinnacle end offset 14 to 15 nights (ends
+            29 Jan 2027, matches brochure/FACTS — worker + widgets aligned);
+            changelog tokens escaped for Duda publish safety; in-body page title
+            element removed (the SEO title lives in Duda Page Settings — set it
+            per SEHE_SEO_Titles.txt before/at publish). Adoption adds only this
+            version bump + macron micro-fixes; no other text touched.
+       v4 — FIX (publish reset): renamed the live-departures loop variable so
+            the literal "&lt;base" (from "i&lt;base[k]") never appears. Duda's publish
+            sanitizer was reading it as a &lt;base> tag and stripping it, corrupting
+            the block on every publish (the page "reset"). Same fix as 14-Day v12.
+       v3 — Content fixes only: set the page &lt;title> to "12-Day Winter Edition 2027 |
+            Sir Edmund Hillary Explorer"; confirmed the meals read 11 breakfasts,
+            9 lunches and 8 dinners consistently in both the inclusions block and the
+            FAQ; replaced the Day-11 "glacier explorer cruise" optional wording with
+            the optional helicopter flight + glacier landing ("Tasman Taster"). No
+            layout/structure/booking changes.
+       v2 — Swapped in the correct 2027 Winter assets now that they're hosted: the
+            brochure-cover thumbnail and the route-map image (both had been the
+            2026 Winter placeholders). No other changes.
+       v1 — New page. Built from the 12-Day Winter Edition 2026 template against
+            the official Winter Edition 2027 brochure: From NZ$8,495 / single
+            supplement NZ$1,595, 11 nights, 6 departures (Jul–Aug 2027), Millennium
+            Hotel Queenstown, an extra Invercargill night (Distinction), Doubtful
+            Sound, Queenstown Gondola + Stratosfare lunch, Christchurch tram, Te
+            Hikoi Museum. Four winter rail journeys — TranzAlpine, Taieri Gorge and
+            the Mainlander both Invercargill→Dunedin and Dunedin→Oamaru (no Kingston
+            Flyer in winter; no branded rail set). Unique snowy Lake Sarah hero +
+            rewritten hero/Section-2 copy (season-repeat differentiation). Baked
+            booking dates + the revert-proof feed (never-wipe guards + escalate-only
+            merge) from the start, per the 11-Day 27/28 v3 standard.
+     =====================================================================
+     This is the full page. The Hero (Section 1) is now built the same way as
+     the page sections that already render correctly: wrapped in .sehe-tourpage,
+     a full-bleed section with a background image + dark overlay, white text
+     forced so Duda's theme can't override it. Unique "sehe-hx" class names.
+     The header space (gap below the site header) is the 170px top padding on
+     .sehe-hx (desktop); mobile uses 30px. Sections 2-13 are unchanged.
+     ===================================================================== -->
+
+<!-- ===== AUTHORITATIVE DEPARTURE DATES (single source of truth) ===== -->
+<script>
+(function(){
+  var RAW = {
+    'winter-2026'  : ['2026-06-27','2026-07-18','2026-08-01','2026-09-05','2026-09-12'],
+    'pinnacle-2027': ['2027-01-14'],
+    '11day-2627'   : ['2026-10-05','2026-11-02','2026-11-30','2027-02-01','2027-02-22','2027-03-01','2027-03-29'],
+    '14day-2627'   : ['2026-10-12','2026-10-19','2026-10-26','2026-11-09','2026-11-16','2026-11-23','2027-01-04','2027-01-11','2027-01-18','2027-01-25','2027-02-08','2027-02-15','2027-03-08','2027-03-15','2027-03-22','2027-04-05','2027-04-12'],
+    'winter-2027'  : ['2027-07-10','2027-07-24','2027-08-07','2027-08-14','2027-08-21','2027-08-28'],
+    '11day-2728'   : ['2027-09-27','2027-10-25','2027-11-29','2028-01-10','2028-02-28','2028-03-06','2028-04-17'],
+    '14day-2728'   : ['2027-10-04','2027-10-11','2027-10-18','2027-11-01','2027-11-08','2027-11-15','2027-11-22','2027-12-06','2028-01-17','2028-01-24','2028-01-31','2028-02-07','2028-02-14']
+  };
+  var SOLDOUT = {
+    'winter-2026': ['2026-06-27','2026-07-18','2026-08-01'],
+    '11day-2627' : ['2026-10-05','2026-11-02'],
+    '14day-2627' : ['2026-10-19','2026-10-26']
+  };
+  var ADD = { 'winter-2026':11,'winter-2027':11,'pinnacle-2027':15,'11day-2627':10,'11day-2728':10,'14day-2627':13,'14day-2728':13 };
+  function endOf(iso,n){ var d=new Date(iso+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10); }
+  var today=new Date().toISOString().slice(0,10), data={};
+  Object.keys(RAW).forEach(function(k){
+    var sold=SOLDOUT[k]||[];
+    var all=RAW[k].filter(function(x){return x>=today;}).map(function(x){return {start:x,end:endOf(x,ADD[k]),status:sold.indexOf(x)>=0?'soldout':'available'};});
+    var av=all.filter(function(x){return x.status!=='soldout';});
+    data[k]={ all:all, next: av.length?av[0].start:null };
+  });
+  window.__seheDepartureData=data;
+
+  /* ---- LIVE DATES (the worker is the source of truth) --------------------
+     The worker holds the full schedule and reads Checkfront for what's available
+     vs sold out. We OVERRIDE the baked list per tour with the worker's live list,
+     so sell-outs, freed cancellations and twin-share dates all update on their
+     own — no re-pasting. SAFETY: if the worker is unreachable, or returns nothing
+     for a tour, we keep the baked list (we never wipe it to empty). */
+  var WORKER_URL='https://sehe-next-departures.ben-757.workers.dev/';
+  window.__seheDeparturePromise=null;
+  window.__seheLoadDepartures=function(){
+    if(window.__seheDeparturePromise) return window.__seheDeparturePromise;
+    window.__seheDeparturePromise=fetch(WORKER_URL,{cache:'no-store'})
+      .then(function(r){ if(!r.ok) throw new Error('Worker '+r.status); return r.json(); })
+      .then(function(live){
+        if(live && typeof live==='object' && !Array.isArray(live)){
+          Object.keys(window.__seheDepartureData).forEach(function(k){
+            var lt=live[k];
+            if(!lt || !lt.all || !lt.all.length) return;   /* nothing live for this tour -> keep the baked list (never wipe) */
+            var all=lt.all.filter(function(d){ return d && d.start; }).map(function(d){
+              return { start:d.start, end:d.end||endOf(d.start,ADD[k]), status:d.status||'available' };
+            });
+            if(!all.length) return;
+            window.__seheDepartureData[k].all=all;                       /* worker wins */
+            var av=all.filter(function(d){ return d.status!=='soldout'; });
+            window.__seheDepartureData[k].next= lt.next || (av.length?av[0].start:null);
+          });
+        }
+        return window.__seheDepartureData;
+      })
+      .catch(function(err){ if(window.console&&console.warn) console.warn('SEHE departures: live feed unavailable, keeping the in-page list.',err); return window.__seheDepartureData; });
+    return window.__seheDeparturePromise;
+  };
+})();
+</script>
+
+<!-- ===== ANCHOR SCROLL OFFSET =====================================================
+     Makes in-page jumps (Check Dates -> #tour-dates, Brochure -> #tour-brochure,
+     View Route -> #tour-route, and the matching buttons on the Journeys page) stop
+     BELOW the sticky site header instead of hiding the section heading behind it.
+     One number to tune: if a jump lands too low, decrease 110px; too high (heading
+     hidden), increase it. Add any future anchor id to the same selector list.
+================================================================================ -->
+<style>
+  #tour-dates, #tour-brochure, #tour-route { scroll-margin-top: 110px !important; }
+</style>
+
+<!-- ===== 1. HERO ===== -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* HERO — built the SAME way as the page sections that already work on mobile:
+   wrapped in .sehe-tourpage, a full-bleed section with a background image +
+   dark overlay, white text forced with !important so Duda's theme can't take
+   over (which was turning the title black + centring it). Unique "sehe-hx"
+   class names so it can't collide with the old .sehe-hero rules.
+   HEADER SPACE = the 170px top padding on .sehe-hx (desktop). Mobile = 30px. */
+.sehe-tourpage .sehe-hx{
+  position:relative; box-sizing:border-box;
+  width:100vw; max-width:100vw;
+  margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);
+  min-height:clamp(640px,86vh,880px);
+  background-color:#0a1f3d;
+  background-image:
+    linear-gradient(102deg, rgba(8,24,48,.94) 0%, rgba(8,24,48,.82) 26%, rgba(8,24,48,.5) 50%, rgba(8,24,48,.14) 72%, rgba(8,24,48,0) 100%),
+    linear-gradient(0deg, rgba(8,24,48,.85) 0%, rgba(8,24,48,.2) 26%, rgba(8,24,48,0) 52%),
+    url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/183840-lake-sarah-in-snow-b1e7ecbb.webp');
+  background-size:cover; background-position:center 38%; background-repeat:no-repeat;
+  color:#fff !important;
+  overflow:hidden;
+  display:flex; flex-direction:column;
+  padding:170px 30px 52px;
+  font-family:'Open Sans',-apple-system,sans-serif;
+}
+.sehe-tourpage .sehe-hx *{box-sizing:border-box;}
+.sehe-tourpage .sehe-hx-inner{width:100%; max-width:1240px; margin:0 auto; flex:1; display:flex; flex-direction:column; justify-content:space-between; text-align:left !important;}
+/* top row: award left, trustpilot right */
+.sehe-tourpage .sehe-hx-top{display:flex; justify-content:space-between; align-items:flex-start; gap:20px;}
+.sehe-tourpage .sehe-hx-tp{display:flex; align-items:center; gap:10px;}
+.sehe-tourpage .sehe-hx-tp img:first-child{height:21px; width:auto; display:block;}
+.sehe-tourpage .sehe-hx-tp img:last-child{height:24px; width:auto; display:block;}
+.sehe-tourpage .sehe-hx-award{display:flex; align-items:center; gap:12px;}
+.sehe-tourpage .sehe-hx-award img{height:56px; width:auto; filter:drop-shadow(0 4px 10px rgba(0,0,0,.35));}
+.sehe-tourpage .sehe-hx-award-t{display:flex; flex-direction:column; line-height:1.2;}
+.sehe-tourpage .sehe-hx-award-k{font-family:'Montserrat',sans-serif !important; font-weight:700 !important; font-size:11px !important; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.6) !important;}
+.sehe-tourpage .sehe-hx-award-v{font-family:'Montserrat',sans-serif !important; font-weight:600 !important; font-size:14px !important; color:#fff !important;}
+.sehe-tourpage .sehe-hx-award--bottom{display:none;}
+/* head */
+.sehe-tourpage .sehe-hx-head{margin-top:34px; max-width:840px;}
+.sehe-tourpage .sehe-hx-eyebrow{font-family:'Montserrat',sans-serif !important; font-weight:600 !important; text-transform:uppercase; letter-spacing:.34em; font-size:13px !important; color:#d4b37e !important; margin:0 0 18px !important; text-align:left !important;}
+.sehe-tourpage .sehe-hx-title{font-family:'Montserrat',sans-serif !important; font-weight:700 !important; line-height:1.02 !important; letter-spacing:-.01em; margin:0 !important; font-size:clamp(38px,4.6vw,58px) !important; color:#fff !important; text-align:left !important;}
+.sehe-tourpage .sehe-hx-title .yr{color:#c8a56c !important;}
+.sehe-tourpage .sehe-hx-sub{margin:30px 0 0 !important; max-width:600px; font-family:'Open Sans',sans-serif !important; font-size:18px !important; line-height:1.6 !important; color:rgba(255,255,255,.92) !important; text-align:left !important;}
+/* ticket */
+.sehe-tourpage .sehe-hx-ticket{margin-top:40px; width:100%; display:flex; align-items:stretch; border-radius:16px; overflow:hidden; background:rgba(8,22,44,.46); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,.16); box-shadow:0 24px 60px -30px rgba(0,0,0,.6);}
+.sehe-tourpage .sehe-hx-fields{flex:1; display:flex;}
+.sehe-tourpage .sehe-hx-field{flex:1; padding:22px 26px; position:relative; display:flex; flex-direction:column; justify-content:center; min-height:108px;}
+.sehe-tourpage .sehe-hx-field + .sehe-hx-field{border-left:1px dashed rgba(255,255,255,.24);}
+.sehe-tourpage .sehe-hx-k{font-family:'Montserrat',sans-serif !important; font-weight:600 !important; font-size:10.5px !important; letter-spacing:.16em; text-transform:uppercase; color:#c8a56c !important;}
+.sehe-tourpage .sehe-hx-v{font-family:'Montserrat',sans-serif !important; font-weight:700 !important; font-size:22px !important; color:#fff !important; margin-top:9px; line-height:1.12;}
+.sehe-tourpage .sehe-hx-v small{display:block; font-family:'Open Sans',sans-serif !important; font-weight:400 !important; font-size:12px !important; color:rgba(255,255,255,.55) !important; margin-top:5px;}
+.sehe-tourpage .sehe-hx-route-link{display:block; width:max-content; margin-top:8px; font-family:'Open Sans',sans-serif !important; font-weight:400 !important; font-size:12px !important; color:#d4b37e !important; text-decoration:underline !important; text-underline-offset:2px;}
+.sehe-tourpage .sehe-hx-stub{flex:none; width:300px; padding:22px 26px; display:flex; flex-direction:column; justify-content:center; gap:11px; background:rgba(8,22,44,.35); border-left:2px dashed rgba(255,255,255,.3);}
+.sehe-tourpage .sehe-hx-btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; font-family:'Montserrat',sans-serif !important; font-weight:700 !important; font-size:12px !important; text-transform:uppercase; letter-spacing:.1em; text-decoration:none !important; padding:14px 16px; border-radius:10px; border:1.5px solid #c8a56c; white-space:nowrap; cursor:pointer; width:100%;}
+.sehe-tourpage .sehe-hx-btn svg{width:17px; height:17px; flex:none;}
+.sehe-tourpage .sehe-hx-btn--primary{background:linear-gradient(180deg,#1f548f,#153b67); color:#fff !important;}
+.sehe-tourpage .sehe-hx-btn--secondary{background:#fff; color:#153b67 !important;}
+.sehe-tourpage .sehe-hx-btn--secondary svg{color:#c8a56c;}
+/* ===== MOBILE — same breakpoint the working sections use ===== */
+@media (max-width:860px){
+  .sehe-tourpage .sehe-hx{
+    min-height:auto; display:block;
+    padding:140px 20px 44px !important;
+    background-image:
+      linear-gradient(0deg, rgba(8,24,48,.92) 0%, rgba(8,24,48,.62) 52%, rgba(8,24,48,.36) 100%),
+      url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/183840-lake-sarah-in-snow-b1e7ecbb.webp');
+  }
+  .sehe-tourpage .sehe-hx-inner{display:block; max-width:100%;}
+  .sehe-tourpage .sehe-hx-top{flex-direction:column; align-items:flex-start; gap:0; margin-bottom:0;}
+  .sehe-tourpage .sehe-hx-award--top{display:none;}
+  .sehe-tourpage .sehe-hx-award--bottom{display:flex; justify-content:center; margin-top:28px;}
+  .sehe-tourpage .sehe-hx-award img{height:56px;}
+  .sehe-tourpage .sehe-hx-award-k{font-size:10px !important;}
+  .sehe-tourpage .sehe-hx-award-v{font-size:13px !important;}
+  .sehe-tourpage .sehe-hx-head{margin-top:22px; max-width:100%;}
+  .sehe-tourpage .sehe-hx-eyebrow{font-size:11px !important; letter-spacing:.28em; margin-bottom:12px !important;}
+  .sehe-tourpage .sehe-hx-title{font-size:clamp(29px,7.6vw,40px) !important; line-height:1.08 !important;}
+  .sehe-tourpage .sehe-hx-sub{font-size:15.5px !important; line-height:1.55 !important; margin-top:14px !important; max-width:100%;}
+  .sehe-tourpage .sehe-hx-ticket{flex-direction:column; margin-top:22px; border-radius:14px;}
+  .sehe-tourpage .sehe-hx-fields{display:grid; grid-template-columns:1fr 1fr;}
+  .sehe-tourpage .sehe-hx-field{padding:14px 16px; min-height:auto;}
+  .sehe-tourpage .sehe-hx-field + .sehe-hx-field{border-left:0;}
+  .sehe-tourpage .sehe-hx-field:nth-child(odd){border-right:1px dashed rgba(255,255,255,.22);}
+  .sehe-tourpage .sehe-hx-field:nth-child(-n+2){border-bottom:1px dashed rgba(255,255,255,.22);}
+  .sehe-tourpage .sehe-hx-k{font-size:9px !important;}
+  .sehe-tourpage .sehe-hx-v{font-size:15px !important;}
+  .sehe-tourpage .sehe-hx-stub{width:100%; background:transparent; border-left:0; padding:14px 16px 16px;}
+}
+</style>
+<div class="sehe-tourpage">
+  <section class="sehe-hx" aria-label="12-Day Winter Edition 2027">
+    <div class="sehe-hx-inner">
+      <div class="sehe-hx-top">
+        <div class="sehe-hx-award sehe-hx-award--top">
+          <img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/new-zealands-leading-tour-operator-2025-winner-shield-256-816b3264-1920w.png" alt="">
+          <div class="sehe-hx-award-t"><span class="sehe-hx-award-k">World Travel Awards</span><span class="sehe-hx-award-v">NZ's Leading Tour Operator 2025</span></div>
+        </div>
+        <div class="sehe-hx-tp">
+          <img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_brandmark_gr-wht-RGB.png" alt="Trustpilot">
+          <img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="Rated 5 out of 5 stars">
+        </div>
+      </div>
+      <div class="sehe-hx-head">
+        <p class="sehe-hx-eyebrow">Sir Edmund Hillary Explorer</p>
+        <h1 class="sehe-hx-title">12-Day Winter Edition <span class="yr">2027</span></h1>
+        <p class="sehe-hx-sub">Twelve days through the South Island in winter, by rail and luxury coach &mdash; snow-clad alpine country, the TranzAlpine, Doubtful Sound, Queenstown and Aoraki Mt Cook, with the Mainlander winding through the frosted deep south. Fully guided, return from Christchurch.</p>
+      </div>
+      <div class="sehe-hx-ticket">
+        <div class="sehe-hx-fields">
+          <div class="sehe-hx-field"><div class="sehe-hx-k">Route</div><div class="sehe-hx-v">Christchurch return<a class="sehe-hx-route-link" href="#tour-route">View Route</a></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">Duration</div><div class="sehe-hx-v">12 Days<small>11 nights</small></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">From</div><div class="sehe-hx-v">NZ$8,495<small>per person, twin share</small></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">Departures</div><div class="sehe-hx-v"><span data-sehe-dep-count>6</span><small data-sehe-dep-range>Jul 27 &ndash; Aug 27</small></div></div>
+        </div>
+        <div class="sehe-hx-stub">
+          <a class="sehe-hx-btn sehe-hx-btn--primary" href="#tour-dates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg> View Tour Dates </a>
+          <a class="sehe-hx-btn sehe-hx-btn--secondary" href="#tour-brochure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20.5h16"></path></svg> Download Brochure </a>
+        </div>
+      </div>
+      <div class="sehe-hx-award sehe-hx-award--bottom">
+        <img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/new-zealands-leading-tour-operator-2025-winner-shield-256-816b3264-1920w.png" alt="">
+        <div class="sehe-hx-award-t"><span class="sehe-hx-award-k">World Travel Awards</span><span class="sehe-hx-award-v">NZ's Leading Tour Operator 2025</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ===== 2. What sets this tour apart ===== -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  .sehe-tourpage, .sehe-tourpage *, .sehe-tourpage *::before, .sehe-tourpage *::after { box-sizing: border-box; }
+  .sehe-tourpage {
+    --navy: #153b67; --navy-light: #1e4a7a; --navy-dark: #0e2d52; --navy-deep: #0a1f3d;
+    --gold: #c8a56c; --gold-light: #d4b37e; --gold-pale: #f5edd8; --gold-dark: #a68a55;
+    --white: #ffffff; --off-white: #f9f7f3; --cream: #faf8f3;
+    --text: #1a1a1a; --text-light: #5a5a5a; --text-muted: #8a8a8a;
+    --border: #d8d3c8; --border-light: #e8e4db; --green: #2a7a4a; --green-pale: #eaf5ee;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text); line-height: 1.6; background: var(--white);
+  }
+  .sehe-tourpage h1, .sehe-tourpage h2, .sehe-tourpage h3, .sehe-tourpage h4 {
+    font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; margin: 0; letter-spacing: -0.2px;
+  }
+  .sehe-tourpage p { margin: 0; }
+  /* HERO */
+  .sehe-hero { position: relative; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); min-height: 78vh; max-height: 820px; display: flex; align-items: flex-end; overflow: hidden; background: var(--navy-deep); }
+  .sehe-hero-bg { position: absolute; inset: 0; background-image: url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp'); background-size: cover; background-position: center; transform: scale(1.04); transition: transform 14s ease-out; }
+  .sehe-hero.is-loaded .sehe-hero-bg { transform: scale(1); }
+  .sehe-hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 31, 61, 0.35) 0%, rgba(10, 31, 61, 0.15) 35%, rgba(10, 31, 61, 0.85) 100%), linear-gradient(90deg, rgba(10, 31, 61, 0.45) 0%, rgba(10, 31, 61, 0) 60%); }
+  .sehe-hero-content { position: relative; z-index: 2; width: 100%; max-width: 1240px; margin: 0 auto; padding: 60px 30px 56px; color: var(--white); }
+  .sehe-hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif !important; font-size: 11px !important; font-weight: 700 !important; color: var(--gold-light) !important; text-transform: uppercase; letter-spacing: 2.4px; margin-bottom: 20px; }
+  .sehe-hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold-light); flex-shrink: 0; }
+  .sehe-hero h1 { font-size: clamp(34px, 5.4vw, 60px) !important; line-height: 1.05 !important; color: var(--white) !important; max-width: 16ch; margin-bottom: 16px !important; }
+  .sehe-hero-tagline { font-size: clamp(15px, 1.4vw, 18px) !important; line-height: 1.55 !important; color: rgba(255, 255, 255, 0.85) !important; max-width: 56ch; margin-bottom: 32px !important; }
+  .sehe-hero-facts { display: flex; flex-wrap: wrap; gap: 0; margin-bottom: 32px; border-top: 1px solid rgba(255, 255, 255, 0.18); border-bottom: 1px solid rgba(255, 255, 255, 0.18); padding: 18px 0; }
+  .sehe-hero-fact { flex: 1 1 auto; min-width: 140px; padding: 4px 22px 4px 0; border-right: 1px solid rgba(255, 255, 255, 0.18); }
+  .sehe-hero-fact:last-child { border-right: none; }
+  .sehe-hero-fact + .sehe-hero-fact { padding-left: 22px; }
+  .sehe-hero-fact-value { font-family: 'Montserrat', sans-serif !important; font-size: 17px !important; font-weight: 600 !important; color: var(--white) !important; display: block; line-height: 1.2; margin-bottom: 3px; }
+  .sehe-hero-fact-label { font-size: 11px !important; color: rgba(255, 255, 255, 0.65) !important; text-transform: uppercase; letter-spacing: 1.2px; }
+  .sehe-hero-fact-supp { font-family: 'Montserrat', sans-serif !important; font-size: 10px !important; color: rgba(200, 165, 108, 0.85) !important; text-transform: uppercase; letter-spacing: 1.1px; display: block; margin-top: 5px; font-weight: 600; }
+  .sehe-hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+  .sehe-cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 28px; font-family: 'Montserrat', sans-serif !important; font-size: 13px !important; font-weight: 600 !important; text-decoration: none !important; text-transform: uppercase; letter-spacing: 1.4px; border-radius: 4px; transition: all 0.25s ease; border: 1.5px solid transparent; cursor: pointer; line-height: 1; }
+  .sehe-cta-primary { background: var(--gold); color: var(--navy-deep) !important; border-color: var(--gold); }
+  .sehe-cta-primary:hover { background: var(--gold-light); border-color: var(--gold-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(200, 165, 108, 0.35); }
+  .sehe-cta-secondary { background: transparent; color: var(--white) !important; border-color: rgba(255, 255, 255, 0.45); }
+  .sehe-cta-secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--white); }
+  .sehe-cta svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .sehe-hero-award { position: absolute; top: 24px; right: 30px; z-index: 3; display: flex; align-items: center; gap: 12px; padding: 10px 16px 10px 12px; background: rgba(10, 31, 61, 0.55); border: 1px solid rgba(200, 165, 108, 0.45); border-radius: 4px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .sehe-hero-award img { width: 44px; height: 44px; display: block; }
+  .sehe-hero-award-text { color: var(--white); line-height: 1.25; }
+  .sehe-hero-award-eyebrow { font-family: 'Montserrat', sans-serif !important; font-size: 9.5px !important; font-weight: 700 !important; color: var(--gold-light) !important; text-transform: uppercase; letter-spacing: 1.3px; display: block; }
+  .sehe-hero-award-line { font-family: 'Montserrat', sans-serif !important; font-size: 12px !important; font-weight: 600 !important; color: var(--white) !important; display: block; }
+  /* HIGHLIGHTS */
+  .sehe-highlights { background: var(--off-white); padding: 80px 30px; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
+  .sehe-highlights-inner { max-width: 1240px; margin: 0 auto; }
+  .sehe-highlights .sehe-section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif !important; font-size: 11px !important; font-weight: 700 !important; color: var(--gold-dark) !important; text-transform: uppercase; letter-spacing: 2.4px; margin-bottom: 18px; }
+  .sehe-section-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); flex-shrink: 0; }
+  .sehe-highlights .sehe-section-heading { font-size: clamp(28px, 3.4vw, 38px) !important; color: var(--navy) !important; line-height: 1.15 !important; max-width: 22ch; margin-bottom: 24px !important; }
+  .sehe-highlights .sehe-section-intro { font-size: 16px !important; color: var(--text-light) !important; line-height: 1.6 !important; max-width: 60ch; margin-bottom: 56px !important; }
+  .sehe-highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .sehe-highlight { display: flex; flex-direction: column; padding: 28px 24px 26px; background: var(--white); border: 1px solid var(--border-light); border-radius: 4px; transition: border-color 0.2s ease, transform 0.2s ease; }
+  .sehe-highlight:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .sehe-highlight-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--navy); border-radius: 4px; margin-bottom: 18px; flex-shrink: 0; }
+  .sehe-highlight-icon svg { width: 22px; height: 22px; stroke: var(--gold-light); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .sehe-highlight h3 { font-size: 15px !important; font-weight: 700 !important; color: var(--navy) !important; margin-bottom: 8px !important; line-height: 1.3; }
+  .sehe-highlight-text { font-size: 13.5px !important; color: var(--text-light) !important; line-height: 1.55; }
+  /* mobile alignment: left-align header + cards */
+  @media (max-width:860px){
+    .sehe-highlights, .sehe-itinerary { padding: 56px 20px; }
+    .sehe-highlights-inner{text-align:left!important;}
+    .sehe-highlights .sehe-section-heading,.sehe-highlights .sehe-section-intro{margin-left:auto!important;margin-right:auto!important;}
+    .sehe-highlights .sehe-highlight{align-items:flex-start!important;text-align:left!important;}
+    .sehe-highlights .sehe-highlight-icon{margin-left:0!important;margin-right:0!important;}
+  }
+</style>
+<div class="sehe-tourpage">
+  <section class="sehe-highlights">
+   <div class="sehe-highlights-inner">
+    <span class="sehe-section-eyebrow">What sets this tour apart</span>
+    <h2 class="sehe-section-heading">A quieter, crisper South Island &mdash; the winter the locals keep for themselves</h2>
+    <p class="sehe-section-intro">Winter strips the South Island back to its essentials: empty alpine roads, frosted tussock and the great rail journeys with the carriages near to yourself. Twelve days link the TranzAlpine, Doubtful Sound, Queenstown and Aoraki Mt Cook &mdash; fully guided, generously paced, and warmed by long dinners and a Central Otago Pinot in hand.</p>
+    <div class="sehe-highlights-grid">
+     <div class="sehe-highlight">
+      <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.5"></circle><circle cx="16" cy="19" r="1.5"></circle><path d="M5 16l-1.5 3M19 16l1.5 3"></path></svg></div>
+      <h3>Four winter rail journeys</h3>
+      <p class="sehe-highlight-text">The TranzAlpine over a snow-streaked Arthur's Pass, the Mainlander across two deep-south sectors, and the Taieri Gorge through frozen river country — four rail journeys at their most atmospheric in winter.</p>
+     </div>
+     <div class="sehe-highlight">
+      <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"></path></svg></div>
+      <h3>4-Star+ hotels for 11 nights</h3>
+      <p class="sehe-highlight-text">The Distinction in Christchurch, the Millennium above Lake Wakatipu in Queenstown, and The Hermitage beneath Aoraki Mt Cook — eleven nights of hand-picked accommodation, matched to each stop and the winter pace.</p>
+     </div>
+     <div class="sehe-highlight">
+      <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><path d="M3 20l5-8 3 4 4-7 6 11z" fill="none"></path><circle cx="17" cy="6" r="1.5" fill="none"></circle></svg></div>
+      <h3>Doubtful Sound &amp; Aoraki Mt Cook</h3>
+      <p class="sehe-highlight-text">A full day cruising the remote wilderness of Doubtful Sound, and two nights beneath Aoraki Mt Cook — the alpine country that shaped Sir Edmund Hillary's climbing life.</p>
+     </div>
+     <div class="sehe-highlight">
+      <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.5"></circle><circle cx="16" cy="19" r="1.5"></circle><path d="M5 16l-1.5 3M19 16l1.5 3"></path></svg></div>
+      <h3>The Mainlander — exclusive to our tours</h3>
+      <p class="sehe-highlight-text">Exclusive to Sir Edmund Hillary Explorer, the recently re-established Mainlander runs two deep-south sectors by rail — Invercargill to Dunedin, then Dunedin along the coast to Oamaru.</p>
+     </div>
+     <div class="sehe-highlight">
+      <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2" fill="none"></rect><path d="M2.5 10h19M6 15h3"></path></svg></div>
+      <h3>Only 20% deposit to secure</h3>
+      <p class="sehe-highlight-text">Reserve your departure with a 20% deposit. Direct bank payment carries no card fee, with optional extras shown separately.</p>
+     </div>
+    </div>
+   </div>
+  </section>
+</div>
+
+
+<!-- ===== 3. Winter rail journeys ===== -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  .sehe-tourpage, .sehe-tourpage *, .sehe-tourpage *::before, .sehe-tourpage *::after { box-sizing: border-box; }
+  .sehe-tourpage {
+    --navy: #153b67; --navy-light: #1e4a7a; --navy-dark: #0e2d52; --navy-deep: #0a1f3d;
+    --gold: #c8a56c; --gold-light: #d4b37e; --gold-pale: #f5edd8; --gold-dark: #a68a55;
+    --white: #ffffff; --off-white: #f9f7f3; --cream: #faf8f3;
+    --text: #1a1a1a; --text-light: #5a5a5a; --text-muted: #8a8a8a;
+    --border: #d8d3c8; --border-light: #e8e4db; --green: #2a7a4a; --green-pale: #eaf5ee;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text); line-height: 1.6; background: var(--white);
+  }
+  .sehe-tourpage h1, .sehe-tourpage h2, .sehe-tourpage h3, .sehe-tourpage h4 { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; margin: 0; letter-spacing: -0.2px; }
+  .sehe-tourpage p { margin: 0; }
+  /* HERO */
+  .sehe-hero { position: relative; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); min-height: 78vh; max-height: 820px; display: flex; align-items: flex-end; overflow: hidden; background: var(--navy-deep); }
+  .sehe-hero-bg { position: absolute; inset: 0; background-image: url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp'); background-size: cover; background-position: center; transform: scale(1.04); transition: transform 14s ease-out; }
+  .sehe-hero.is-loaded .sehe-hero-bg { transform: scale(1); }
+  .sehe-hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 31, 61, 0.35) 0%, rgba(10, 31, 61, 0.15) 35%, rgba(10, 31, 61, 0.85) 100%), linear-gradient(90deg, rgba(10, 31, 61, 0.45) 0%, rgba(10, 31, 61, 0) 60%); }
+  .sehe-hero-content { position: relative; z-index: 2; width: 100%; max-width: 1240px; margin: 0 auto; padding: 60px 30px 56px; color: var(--white); }
+  /* HIGHLIGHTS shell (shared) */
+  .sehe-highlights { background: var(--off-white); padding: 80px 30px; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
+  .sehe-highlights-inner { max-width: 1240px; margin: 0 auto; }
+  .sehe-super6 .sehe-section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif !important; font-size: 11px !important; font-weight: 700 !important; color: var(--gold-dark) !important; text-transform: uppercase; letter-spacing: 2.4px; margin-bottom: 18px; }
+  .sehe-section-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); flex-shrink: 0; }
+  .sehe-super6 .sehe-section-heading { font-size: clamp(28px, 3.4vw, 38px) !important; color: var(--navy) !important; line-height: 1.15 !important; max-width: 22ch; margin-bottom: 24px !important; }
+  .sehe-super6 .sehe-section-intro { font-size: 16px !important; color: var(--text-light) !important; line-height: 1.6 !important; max-width: 60ch; margin-bottom: 56px !important; }
+  /* SUPER 6 RAIL JOURNEYS */
+  .sehe-super6 { background: var(--white); padding: 80px 30px 80px; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); position: relative; }
+  .sehe-super6::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--border-light); }
+  .sehe-super6-inner { max-width: 1240px; margin: 0 auto; }
+  .sehe-super6-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .sehe-train { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--border-light); border-radius: 6px; overflow: hidden; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; }
+  .sehe-train:hover { transform: translateY(-2px); border-color: var(--gold); box-shadow: 0 8px 24px rgba(21, 59, 103, 0.06); }
+  .sehe-train-image { width: 100%; aspect-ratio: 4 / 3; background-size: cover; background-position: center; background-color: var(--off-white); position: relative; }
+  .sehe-train-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(21,59,103,0) 60%, rgba(21,59,103,0.25) 100%); }
+  .sehe-train-day { position: absolute; top: 12px; left: 12px; z-index: 2; display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; background: rgba(255, 255, 255, 0.92); color: var(--navy) !important; font-family: 'Montserrat', sans-serif !important; font-size: 10px !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: 1.1px; border-radius: 3px; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+  /* Numbered gold circle in front of the train name */
+  .sehe-train-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: var(--gold); border-radius: 50%; color: var(--navy-deep); font-family: 'Montserrat', sans-serif !important; font-size: 11px !important; font-weight: 700 !important; line-height: 1; flex-shrink: 0; }
+  .sehe-train-info { padding: 18px 20px 22px; display: flex; flex-direction: column; flex: 1; }
+  .sehe-train h3 { font-size: 17px !important; font-weight: 600 !important; color: var(--navy) !important; margin: 0 0 8px !important; line-height: 1.25; display: flex; align-items: center; gap: 8px; }
+  .sehe-train-text { font-size: 13.5px !important; color: var(--text-light) !important; line-height: 1.55; margin: 0 !important; }
+  /* RESPONSIVE */
+  @media (max-width: 960px) { .sehe-super6-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .sehe-super6 { padding: 56px 20px; } .sehe-super6-grid { grid-template-columns: 1fr; } }
+  @media (max-width:860px){ .sehe-super6{padding-left:24px!important;padding-right:24px!important;} }
+  @media (max-width:400px){ .sehe-super6{padding-left:20px!important;padding-right:20px!important;} }
+  /* mobile alignment: left-align section header */
+  @media (max-width:860px){
+    .sehe-super6-inner{text-align:left!important;}
+    .sehe-super6 .sehe-section-heading,.sehe-super6 .sehe-section-intro{margin-left:auto!important;margin-right:auto!important;}
+  }
+</style>
+<div class="sehe-tourpage">
+  <section class="sehe-super6">
+   <div class="sehe-super6-inner">
+    <span class="sehe-section-eyebrow">Winter Rail Journeys</span>
+    <h2 class="sehe-section-heading">Four winter rail journeys in one 12-day tour</h2>
+    <p class="sehe-section-intro">Every 12-Day Winter Edition includes four memorable rail journeys, each showing a different side of the South Island in winter — from a snow-dusted Arthur's Pass aboard the TranzAlpine to remote gorge country and the exclusive Mainlander sectors through the deep south.</p>
+    <div class="sehe-super6-grid">
+     <article class="sehe-train">
+      <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp');"><span class="sehe-train-day">Day 2</span></div>
+      <div class="sehe-train-info"><h3><span class="sehe-train-num">1</span>TranzAlpine</h3><p class="sehe-train-text">Christchurch to Greymouth across a snow-dusted Southern Alps via Arthur's Pass — alpine scenery, beech forest, braided rivers and wide Canterbury landscapes at their winter best.</p></div>
+     </article>
+     <article class="sehe-train">
+      <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Glen+Antony+20251116+IMG_0748.webp');"><span class="sehe-train-day">Day 8</span></div>
+      <div class="sehe-train-info"><h3><span class="sehe-train-num">2</span>The Mainlander</h3><p class="sehe-train-text">Exclusive to Sir Edmund Hillary Explorer — the first southern sector, weaving from Invercargill to Dunedin through the rolling rural landscapes of the deep south.</p></div>
+     </article>
+     <article class="sehe-train">
+      <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/About-SEHE-Rail-Tour-3.jpg');"><span class="sehe-train-day">Day 9</span></div>
+      <div class="sehe-train-info"><h3><span class="sehe-train-num">3</span>Taieri Gorge</h3><p class="sehe-train-text">A remote rail journey through river gorges, historic tunnels and the Wingatui Viaduct — one of New Zealand's great railway engineering landmarks.</p></div>
+     </article>
+     <article class="sehe-train">
+      <div class="sehe-train-image" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-13-1920w.webp');"><span class="sehe-train-day">Day 10</span></div>
+      <div class="sehe-train-info"><h3><span class="sehe-train-num">4</span>The Mainlander</h3><p class="sehe-train-text">The second exclusive sector — departing Dunedin to hug the coast towards Oamaru, before the journey turns inland for Aoraki Mt Cook.</p></div>
+     </article>
+    
+    </div>
+   </div>
+  </section>
+</div>
+
+
+<!-- ===== 4. Tour Brochure ===== -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  .sehe-tourpage, .sehe-tourpage *, .sehe-tourpage *::before, .sehe-tourpage *::after { box-sizing: border-box; }
+  .sehe-tourpage {
+    --navy: #153b67; --navy-light: #1e4a7a; --navy-dark: #0e2d52; --navy-deep: #0a1f3d;
+    --gold: #c8a56c; --gold-light: #d4b37e; --gold-pale: #f5edd8; --gold-dark: #a68a55;
+    --white: #ffffff; --off-white: #f9f7f3; --text: #1a1a1a; --text-light: #5a5a5a; --text-muted: #8a8378;
+    --border: #d8d3c8; --border-light: #e8e4db; --green: #2a7a4a;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); line-height: 1.6; background: var(--white);
+  }
+  .sehe-tourpage h1, .sehe-tourpage h2, .sehe-tourpage h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; margin: 0; letter-spacing: -0.2px; }
+  .sehe-tourpage p { margin: 0; }
+  .sehe-brochure { background: var(--off-white); padding: 80px 30px; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
+  .sehe-brochure-card { max-width: 1100px; margin: 0 auto; background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: grid; grid-template-columns: 1fr 1.15fr; box-shadow: 0 10px 32px rgba(21, 59, 103, 0.06); }
+  .sehe-brochure-cover { position: relative; background: var(--off-white); padding: 56px 40px; display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border); }
+  .sehe-brochure-cover-wrap { position: relative; width: 100%; max-width: 320px; }
+  .sehe-brochure-cover-img { width: 100%; height: auto; display: block; border-radius: 4px; transform: rotate(-1deg); transition: transform 0.4s ease; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(14, 45, 82, 0.18), 0 24px 60px rgba(14, 45, 82, 0.12); }
+  .sehe-brochure-cover-img:hover { transform: rotate(0deg) translateY(-2px); }
+  .sehe-brochure-badge { position: absolute; top: -12px; right: -12px; background: var(--gold); color: var(--navy-dark); font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 14px; border-radius: 4px; z-index: 2; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); white-space: nowrap; }
+  .sehe-brochure-formside { padding: 52px 52px 48px; display: flex; flex-direction: column; justify-content: center; }
+  .sehe-brochure-eyebrow { display: inline-flex !important; align-items: center !important; gap: 10px !important; font-family: 'Montserrat', sans-serif !important; font-size: 11px !important; font-weight: 700 !important; color: var(--gold-dark) !important; text-transform: uppercase !important; letter-spacing: 2.4px !important; margin-bottom: 18px !important; }
+  .sehe-brochure-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); flex-shrink: 0; }
+  .sehe-brochure-title { font-family: 'Montserrat', sans-serif !important; font-size: clamp(24px, 2.6vw, 30px) !important; font-weight: 600 !important; color: var(--navy) !important; line-height: 1.2 !important; margin: 0 0 18px 0 !important; letter-spacing: -0.2px !important; }
+  .sehe-brochure-subtitle { font-size: 14.5px !important; color: var(--text-light) !important; line-height: 1.55 !important; margin: 0 0 28px 0 !important; }
+  .sehe-brochure-form { display: block !important; }
+  .sehe-brochure-form .field { display: block !important; margin-bottom: 16px !important; }
+  .sehe-brochure-form .field:last-of-type { margin-bottom: 0 !important; }
+  .sehe-brochure-form label.field-label { display: block !important; font-family: 'Montserrat', sans-serif !important; font-size: 11px !important; font-weight: 700 !important; color: var(--text) !important; text-transform: uppercase !important; letter-spacing: 1.2px !important; margin: 0 0 8px 0 !important; line-height: 1.3 !important; padding: 0 !important; }
+  .sehe-brochure-form input[type="text"], .sehe-brochure-form input[type="email"], .sehe-brochure-form select { display: block !important; width: 100% !important; padding: 13px 16px !important; background: var(--white) !important; background-color: var(--white) !important; border: 1px solid var(--border) !important; border-radius: 6px !important; font-family: 'Open Sans', sans-serif !important; font-size: 15px !important; color: var(--text) !important; line-height: 1.4 !important; transition: border-color 0.2s ease, box-shadow 0.2s ease !important; -webkit-appearance: none !important; -moz-appearance: none !important; appearance: none !important; outline: none !important; margin: 0 !important; box-shadow: none !important; height: auto !important; min-height: 0 !important; box-sizing: border-box !important; }
+  .sehe-brochure-form input[type="text"]::placeholder, .sehe-brochure-form input[type="email"]::placeholder { color: var(--text-muted) !important; opacity: 1 !important; }
+  .sehe-brochure-form input[type="text"]:hover, .sehe-brochure-form input[type="email"]:hover, .sehe-brochure-form select:hover { border-color: var(--gold) !important; }
+  .sehe-brochure-form input[type="text"]:focus, .sehe-brochure-form input[type="email"]:focus, .sehe-brochure-form select:focus { border-color: var(--navy) !important; box-shadow: 0 0 0 3px rgba(21, 59, 103, 0.1) !important; }
+  .sehe-brochure-form select { padding-right: 44px !important; background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23153b67' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important; background-repeat: no-repeat !important; background-position: right 16px center !important; background-size: 12px 8px !important; cursor: pointer !important; color: var(--text-muted) !important; }
+  .sehe-brochure-form select.has-value { color: var(--text) !important; }
+  .sehe-brochure-form button[type="submit"] { display: block !important; width: 100% !important; padding: 17px 24px !important; background: var(--navy) !important; background-color: var(--navy) !important; border: 1.5px solid var(--navy) !important; color: var(--white) !important; font-family: 'Montserrat', sans-serif !important; font-size: 13.5px !important; font-weight: 600 !important; text-transform: uppercase !important; letter-spacing: 1.4px !important; border-radius: 6px !important; cursor: pointer !important; transition: background 0.2s ease, border-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease !important; margin: 22px 0 0 0 !important; line-height: 1 !important; -webkit-appearance: none !important; appearance: none !important; height: auto !important; box-sizing: border-box !important; }
+  .sehe-brochure-form button[type="submit"]:hover { background: var(--navy-light) !important; background-color: var(--navy-light) !important; border-color: var(--navy-light) !important; box-shadow: 0 6px 18px rgba(21, 59, 103, 0.25) !important; }
+  .sehe-brochure-form button[type="submit"]:active { transform: translateY(1px) !important; }
+  @media (max-width: 860px) {
+    .sehe-brochure { padding: 56px 16px; }
+    .sehe-brochure-card { grid-template-columns: 1fr; }
+    .sehe-brochure-cover { padding: 40px 24px 24px; border-right: none; border-bottom: 1px solid var(--border); }
+    .sehe-brochure-cover-wrap { max-width: 240px; }
+    .sehe-brochure-formside { padding: 36px 28px 32px; }
+  }
+  @media (max-width: 480px) {
+    .sehe-brochure-formside { padding: 32px 22px 28px; }
+    .sehe-brochure-badge { top: -10px; right: -10px; font-size: 10px; padding: 7px 12px; }
+  }
+  @media (max-width:860px){ .sehe-brochure{padding-left:24px!important;padding-right:24px!important;} }
+  @media (max-width:400px){ .sehe-brochure{padding-left:20px!important;padding-right:20px!important;} }
+  @media (max-width:860px){
+    .sehe-brochure-formside{text-align:left!important;}
+    .sehe-brochure-title,.sehe-brochure-subtitle{text-align:left!important;margin-left:0!important;margin-right:0!important;}
+    .sehe-brochure-eyebrow{justify-content:flex-start!important;}
+  }
+</style>
+<div class="sehe-tourpage">
+  <section class="sehe-brochure" id="tour-brochure">
+   <div class="sehe-brochure-card">
+    <div class="sehe-brochure-cover">
+     <div class="sehe-brochure-cover-wrap">
+      <span class="sehe-brochure-badge">Free PDF Download</span>
+      <img class="sehe-brochure-cover-img" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/Web_2027+Winter+Tour+Brochure_SEHE-1-1920w.webp" alt="The Sir Edmund Hillary Explorer - 12-Day Winter Edition 2027 Tour Brochure">
+     </div>
+    </div>
+    <div class="sehe-brochure-formside">
+     <span class="sehe-brochure-eyebrow">Tour Brochure</span>
+     <h2 class="sehe-brochure-title">View the full 12-day winter tour brochure</h2>
+     <p class="sehe-brochure-subtitle">View the full itinerary, inclusions, season pricing and winter rail journey details.</p>
+     <div class="sehe-brochure-note" style="margin-top:6px; padding:14px 16px; background:var(--gold-pale); border-left:3px solid var(--gold); border-radius:6px; font-size:14px; color:var(--text);">Complete the short form just below to view the brochure collection &darr;</div>
+    </div>
+   </div>
+  </section>
+</div>
+
+<!-- ═══════════════ END OF BLOCK A ═══════════════
+     AARON: directly below this HTML widget add a new ROW:
+       1. set the row background colour to #f9f7f3 (matches the brochure band)
+       2. drop in the NATIVE DUDA BROCHURE FORM widget (copy the existing form element
+          across from the old live page — copy, don't move; same form = same webhook)
+       3. paste duda-brochure-form-skin.css into that form widget: Design/Custom CSS,
+          "GENERAL CSS FOR ALL DEVICES" panel (replace contents); clear the
+          device-specific CSS panel
+     Then add a fresh HTML widget below the form row and paste BLOCK B into it. -->
+
+<style>
+/* Block-A copy of the global alignment locks (Block B carries the originals). */
+.sehe-tourpage{ text-align:left; }
+.sehe-journeys{ text-align:left; }
+.sehe-tourpage img{ max-width:100%; }
+</style>
