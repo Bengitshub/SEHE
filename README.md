@@ -18,3 +18,7 @@ ephemeral container and was lost when it recycled; the GitHub remote had never
 received a successful push (write access was blocked). Rebuilt from Ben's
 re-uploaded masters, cross-checked against the published preview pages. The
 authoritative deliverables also exist in Ben's chat downloads.
+
+Resolved same day: the Claude GitHub App is now installed on the repo, pushes
+work, and this GitHub repository is the durable record going forward — every
+change is committed and pushed immediately.
