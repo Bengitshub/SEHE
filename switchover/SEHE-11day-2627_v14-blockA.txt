@@ -532,8 +532,8 @@
 <!-- ═══════════════ END OF BLOCK A ═══════════════
      AARON: directly below this HTML widget add a new ROW:
        1. set the row background colour to #f9f7f3 (matches the brochure band)
-       2. drop in the NATIVE DUDA BROCHURE FORM widget (copy the existing form element
-          across from the old live page — copy, don't move; same form = same webhook)
+       2. drop in the NATIVE DUDA BROCHURE FORM widget (the existing form element
+          from the old live page — same form = same webhook/automations)
        3. paste duda-brochure-form-skin.css into that form widget: Design/Custom CSS,
           "GENERAL CSS FOR ALL DEVICES" panel (replace contents); clear the
           device-specific CSS panel

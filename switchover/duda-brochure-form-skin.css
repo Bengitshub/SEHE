@@ -1,0 +1,74 @@
+/* ============================================================================
+   SEHE BROCHURE FORM — skin the native Duda form to match our design.
+
+   WHERE TO PASTE:
+     Duda  ->  the brochure form widget  ->  Custom CSS
+       • "GENERAL CSS FOR ALL DEVICES" panel: paste ALL of this, replacing what's
+         currently there (the old border-radius / submit-width lines).
+       • "DEVICE SPECIFIC CSS" panel: clear it (leave empty) so it can't override.
+
+   The form stays a REAL Duda form, so reCAPTCHA, MailChimp, the Zapier webhook,
+   the confirmation email and the success redirect ALL keep working untouched.
+   This only changes the look.
+   ============================================================================ */
+
+#dm .dmform.native-inputs,
+#dm .dmform.native-inputs * { box-sizing:border-box !important; }
+
+#dm .dmform.native-inputs { font-family:'Open Sans',sans-serif !important; max-width:none !important; padding:0 !important; }
+#dm .dmform.native-inputs .dmform-wrapper { padding:0 !important; }
+#dm .dmform.native-inputs form { margin:0 !important; padding:0 !important; }
+#dm .dmform.native-inputs .spacing-container { margin:0 !important; padding:0 !important; }
+
+/* each field row */
+#dm .dmform.native-inputs .dmforminput { float:none !important; width:100% !important; margin:0 0 16px 0 !important; padding:0 !important; }
+
+/* hide Duda's per-field labels (we use the placeholders + the free-text label) */
+#dm .dmform.native-inputs .dmforminput > label { display:none !important; }
+
+/* text + email inputs and the country select */
+#dm .dmform.native-inputs input[type="text"],
+#dm .dmform.native-inputs input[type="email"],
+#dm .dmform.native-inputs select {
+  width:100% !important; display:block !important; box-sizing:border-box !important;
+  padding:13px 16px !important; margin:0 !important;
+  background:#ffffff !important; color:#1a1a1a !important;
+  border:1px solid #d8d3c8 !important; border-radius:6px !important;
+  font-family:'Open Sans',sans-serif !important; font-size:15px !important; line-height:1.4 !important;
+  height:auto !important; min-height:0 !important; box-shadow:none !important;
+  -webkit-appearance:none !important; -moz-appearance:none !important; appearance:none !important;
+  outline:none !important;
+}
+#dm .dmform.native-inputs input::placeholder { color:#8a8378 !important; opacity:1 !important; }
+#dm .dmform.native-inputs input[type="text"]:focus,
+#dm .dmform.native-inputs input[type="email"]:focus,
+#dm .dmform.native-inputs select:focus {
+  border-color:#153b67 !important; box-shadow:0 0 0 3px rgba(21,59,103,.1) !important;
+}
+
+/* country dropdown: gold-navy chevron + room for it */
+#dm .dmform.native-inputs select {
+  padding-right:44px !important; cursor:pointer !important;
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23153b67' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+  background-repeat:no-repeat !important; background-position:right 16px center !important; background-size:12px 8px !important;
+}
+
+/* the "Country of Residence" free-text -> styled as a small field label */
+#dm .dmform.native-inputs .freetextwrapper { margin:0 0 6px 0 !important; }
+#dm .dmform.native-inputs .freetextwrapper p {
+  margin:0 !important; font-family:'Montserrat',sans-serif !important; font-size:11px !important;
+  font-weight:700 !important; letter-spacing:1.2px !important; text-transform:uppercase !important; color:#1a1a1a !important;
+}
+
+/* submit button -> full-width navy, like the design */
+#dm .dmform.native-inputs .dmformsubmit { float:none !important; width:100% !important; margin:22px 0 0 0 !important; text-align:left !important; }
+#dm .dmform.native-inputs .dmformsubmit input[type="submit"] {
+  width:100% !important; display:block !important; height:auto !important;
+  padding:17px 24px !important; margin:0 !important;
+  background:#153b67 !important; border:1.5px solid #153b67 !important; border-radius:6px !important;
+  color:#ffffff !important; cursor:pointer !important;
+  font-family:'Montserrat',sans-serif !important; font-size:13.5px !important; font-weight:600 !important;
+  text-transform:uppercase !important; letter-spacing:1.4px !important; line-height:1 !important;
+  -webkit-appearance:none !important; appearance:none !important;
+}
+#dm .dmform.native-inputs .dmformsubmit input[type="submit"]:hover { background:#1e4a7a !important; border-color:#1e4a7a !important; }
