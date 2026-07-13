@@ -1,8 +1,19 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 12-DAY WINTER EDITION 2026
-     COMPLETE TOUR PAGE  ·  VERSION v17  ·  2026-07-13  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v18  ·  2026-07-13  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v18 — BUTTON WIDTH ROOT-CAUSE FIX (found by reproducing the live page
+            with Duda's real mobile stylesheets): Duda's mobile runtime CSS
+            rule ".dmMobileBody ... .dmformsubmit { width:91%; max-width:91% }"
+            capped the button container — a stylesheet max-width beats an
+            inline width:100%, and max-width was the one property not pinned
+            (some widget instances also carry fixed widths like 317px). The
+            docking script now pins display + max-width inline AND runs a
+            closed-loop equalizer: it measures the Name field and, if the
+            button differs by more than 1px, assigns it the field's exact
+            pixel width, re-checked on every resize/rotation. Verified equal
+            (342px = 342px) in a full-stylesheet reproduction at iPhone width.
        v17 — FIELDS AND BUTTON PINNED TO THE SAME BOX (Ben: "why can't the
             button just be the same size as the form fields?"): on iPhone the
             fields rendered ~30px wider than the button — Duda's mobile device
@@ -632,7 +643,7 @@
       flat(flds[q], { display: 'block', width: '100%', 'max-width': '100%', 'box-sizing': 'border-box', margin: '0' });
     }
     var sub = w.querySelector('.dmformsubmit');
-    flat(sub, { float: 'none', width: '100%', margin: '22px 0 0 0', padding: '0', background: 'transparent', 'background-color': 'transparent', border: '0', 'border-radius': '0', 'box-shadow': 'none', 'min-height': '0', height: 'auto', 'text-align': 'left' });
+    flat(sub, { float: 'none', display: 'block', width: '100%', 'max-width': '100%', margin: '22px 0 0 0', padding: '0', background: 'transparent', 'background-color': 'transparent', border: '0', 'border-radius': '0', 'box-shadow': 'none', 'min-height': '0', height: 'auto', 'text-align': 'left' });
     var btn = sub ? sub.querySelector('input[type="submit"]') : null;
     flat(btn, { display: 'block', width: '100%', margin: '0', 'box-sizing': 'border-box', 'text-align': 'center' });
     /* the submit is an INPUT and inputs cannot wrap their label, so on narrow
@@ -652,8 +663,31 @@
       btn.style.setProperty('padding', pad, 'important');
       btn.style.setProperty('max-width', '100%', 'important');
     };
-    sizeBtn();
-    if (window.addEventListener) { window.addEventListener('resize', sizeBtn); }
+    /* CLOSED LOOP: Duda's mobile runtime stylesheet caps the submit container
+       at 91% (a stylesheet max-width beats an inline width:100%), and some
+       widget instances carry fixed pixel sizes. Belt: pin display + max-width
+       inline (above). Braces: MEASURE the Name field and, if the button still
+       differs, hand it the field's exact pixel width. Equal by construction,
+       re-checked on every resize/rotation. */
+    var equalize = function() {
+      if (!btn || !sub) return;
+      sub.style.setProperty('width', '100%', 'important');
+      sub.style.setProperty('max-width', '100%', 'important');
+      btn.style.setProperty('width', '100%', 'important');
+      btn.style.setProperty('max-width', '100%', 'important');
+      var ref = w.querySelector('input[name="dmform-1"]') || w.querySelector('input[type="text"]');
+      if (!ref) return;
+      var rw = ref.getBoundingClientRect().width;
+      if (rw && Math.abs(btn.getBoundingClientRect().width - rw) > 1) {
+        sub.style.setProperty('width', rw + 'px', 'important');
+        sub.style.setProperty('max-width', rw + 'px', 'important');
+        btn.style.setProperty('width', rw + 'px', 'important');
+        btn.style.setProperty('max-width', rw + 'px', 'important');
+      }
+    };
+    var applyBtn = function() { sizeBtn(); equalize(); };
+    applyBtn();
+    if (window.addEventListener) { window.addEventListener('resize', applyBtn); }
     var side = slot.parentElement;
     if (side && side.classList) side.classList.add('sehe-form-docked');
     /* if the widget's old container is now completely empty, collapse it */
