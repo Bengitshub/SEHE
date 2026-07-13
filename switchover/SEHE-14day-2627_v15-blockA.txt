@@ -1,8 +1,18 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 14-DAY SPRING/SUMMER 2026/27
-     COMPLETE TOUR PAGE  ·  VERSION v14  ·  2026-07-08  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v15  ·  2026-07-13  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v15 — BROCHURE FORM DOCKING for the switch-over sandwich: added an empty
+            form slot under the design form and a loader script that, on the
+            published site only, moves the real Duda form widget (pasted below
+            Block A) into the brochure card right-hand column — the live form
+            now renders exactly where the design intends instead of in a band
+            below the card. Docked-state CSS handles the fit; the widget skin
+            still styles fields and button. Enhance-only: in the Duda editor /
+            on this master preview / with no Duda widget on the page, nothing
+            moves. The "complete the short form just below" note hides itself
+            once the form docks.
        v14 — BOOKING DATA ALIGNED TO THE LIVE-SITE WIDGETS (technical only; design
             untouched): the departures data script is now the proven widget block —
             full worker SCHEDULE baked (including the four Oct 2026 departures),
@@ -521,6 +531,17 @@
     .sehe-brochure-title,.sehe-brochure-subtitle{text-align:left!important;margin-left:0!important;margin-right:0!important;}
     .sehe-brochure-eyebrow{justify-content:flex-start!important;}
   }
+  /* Docked Duda form (switch-over sandwich pages): the loader script below moves
+     the real Duda form widget into .sehe-form-slot so it renders exactly where
+     the design's form belongs. The widget's own custom CSS (the skin) styles the
+     fields and button; these rules only handle fit and the note hand-off. */
+  .sehe-form-slot { display: block; }
+  .sehe-form-slot .dmform { max-width: none !important; margin: 0 !important; padding: 0 !important; }
+  .sehe-form-slot .dmform-wrapper { padding: 0 !important; }
+  .sehe-form-slot .dmform-title { display: none !important; }
+  .sehe-form-slot .dmformsubmit { float: none !important; width: 100% !important; margin: 22px 0 0 0 !important; }
+  .sehe-form-slot .dmformsubmit input[type="submit"] { display: block !important; width: 100% !important; box-sizing: border-box !important; }
+  .sehe-brochure-formside.sehe-form-docked .sehe-brochure-note { display: none !important; }
 </style>
 <div class="sehe-tourpage">
   <section class="sehe-brochure" id="tour-brochure">
@@ -536,9 +557,49 @@
      <h2 class="sehe-brochure-title">View the full 14-day tour brochure</h2>
      <p class="sehe-brochure-subtitle">View the full itinerary, inclusions, season pricing and &ldquo;Super 6&rdquo; rail journey details.</p>
      <div class="sehe-brochure-note" style="margin-top:6px; padding:14px 16px; background:var(--gold-pale); border-left:3px solid var(--gold); border-radius:6px; font-size:14px; color:var(--text);">Complete the short form just below to view the brochure collection &darr;</div>
+     <div class="sehe-form-slot" data-sehe-form-slot hidden></div>
     </div>
    </div>
   </section>
+<script>
+  (function() {
+  /* Brochure form DOCKING (switch-over sandwich pages). The real Duda form
+     widget is pasted below this HTML block so its webhook keeps working; on
+     the published site this script moves that widget INTO the brochure card
+     form slot as soon as it appears in the DOM, so the form renders exactly
+     where the design intends. Enhance-only: in the Duda editor, on this
+     master preview, or if no Duda form widget exists on the page, nothing is
+     touched and the layout stays as pasted. */
+  if (!/(^|\.)siredmundhillaryexplorer\.com$/.test(window.location.hostname)) return;
+  var slot = document.querySelector('[data-sehe-form-slot]');
+  if (!slot) return;
+  var tries = 0;
+  var timer = window.setInterval(function() {
+    tries += 1;
+    if (tries > 75) { window.clearInterval(timer); return; }
+    var all = document.querySelectorAll('div[data-element-type="dContactUsRespId"]');
+    var w = null;
+    for (var i = 0; i < all.length; i += 1) {
+      if (all[i].querySelector('input[name="dmform-1"]') && all[i].querySelector('input[name="dmform-3"]')) { w = all[i]; break; }
+    }
+    if (!w) return;
+    window.clearInterval(timer);
+    var oldParent = w.parentElement;
+    slot.appendChild(w);
+    slot.removeAttribute('hidden');
+    /* the widget instance carries its own fixed button width from an old Duda
+       design setting; inline importants are the only reliable override */
+    var sub = w.querySelector('.dmformsubmit');
+    if (sub) { sub.style.setProperty('width', '100%', 'important'); sub.style.setProperty('float', 'none', 'important'); sub.style.setProperty('margin', '22px 0 0 0', 'important'); }
+    var btn = sub ? sub.querySelector('input[type="submit"]') : null;
+    if (btn) { btn.style.setProperty('width', '100%', 'important'); btn.style.setProperty('display', 'block', 'important'); btn.style.setProperty('box-sizing', 'border-box', 'important'); }
+    var side = slot.parentElement;
+    if (side && side.classList) side.classList.add('sehe-form-docked');
+    /* if the widget's old container is now completely empty, collapse it */
+    if (oldParent && oldParent !== slot && oldParent.children.length === 0 && !(oldParent.textContent || '').replace(/\s+/g, '')) { oldParent.style.display = 'none'; }
+  }, 200);
+})();
+</script>
 </div>
 
 <!-- ═══════════════ END OF BLOCK A ═══════════════
@@ -549,6 +610,8 @@
        3. paste duda-brochure-form-skin.css into that form widget: Design/Custom CSS,
           "GENERAL CSS FOR ALL DEVICES" panel (replace contents); clear the
           device-specific CSS panel
+     On the PUBLISHED page the form auto-docks into the brochure card (script in
+     Block A); in the editor it stays in its own row so it remains editable.
      Then add a fresh HTML widget below the form row and paste BLOCK B into it. -->
 
 <style>

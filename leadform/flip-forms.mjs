@@ -20,7 +20,7 @@ const OUT = 'leadform/preview/';
 const TODAY = new Date().toISOString().slice(0, 10);
 
 const PAGES = [
-  { file: 'SEHE-14day-tour_v14.txt',             key: '14day-2627',  tour: '14-Day Spring/Summer Tour 2026/27', prev: 'sehe-14day-page-complete.html' },
+  { file: 'SEHE-14day-tour_v15.txt',             key: '14day-2627',  tour: '14-Day Spring/Summer Tour 2026/27', prev: 'sehe-14day-page-complete.html' },
   { file: 'SEHE-11day-2627-tour_v14.txt',        key: '11day-2627',  tour: '11-Day Spring/Summer Tour 2026/27', prev: 'sehe-11day-2627-page-complete.html' },
   { file: 'SEHE-12day-winter-2026-tour_v13.txt', key: 'winter-2026', tour: '12-Day Winter Edition 2026',        prev: 'sehe-12day-winter-2026-page-complete.html' },
   { file: 'SEHE-12day-winter-2027-tour_v7.txt',  key: 'winter-2027', tour: '12-Day Winter Edition 2027',        prev: 'sehe-12day-winter-2027-page-complete.html' },

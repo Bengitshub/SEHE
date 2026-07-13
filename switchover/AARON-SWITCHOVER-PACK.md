@@ -1,6 +1,6 @@
 # SEHE — FINAL SWITCH-OVER PACK (for Aaron)
 
-**Prepared:** 8 July 2026 (rev 3 — booking data aligned to the live-site widgets: full Checkfront date lists incl. Oct 2026, worker-wins live merge) · **Scope:** put the 7 new tour pages live on the real URLs, install the real lead-capture forms, set SEO titles, deploy the availability worker.
+**Prepared:** 8 July 2026 (rev 4, 13 Jul — the real form now auto-docks INTO the brochure card on published pages via a script in Block A; rev 3 aligned booking data to the live-site widgets: full Checkfront date lists incl. Oct 2026, worker-wins live merge) · **Scope:** put the 7 new tour pages live on the real URLs, install the real lead-capture forms, set SEO titles, deploy the availability worker.
 
 Everything in this folder is verified: every page passed the project validators, the live `-new` previews were crawled and fact-checked, and each Block A + Block B pair reconstructs its page byte-for-byte.
 
@@ -10,7 +10,7 @@ Everything in this folder is verified: every page passed the project validators,
 
 | # | Tour | New page (already built & verified) | Goes live at (real URL) | Files in this pack |
 |---|---|---|---|---|
-| 1 | 14-Day Spring/Summer 2026/27 · v14 | `/14/day-spr/sum-26/27-new` | `/2026-2027-spring/summer-tour-14-days` | `SEHE-14day-2627_v14-blockA/B.txt` |
+| 1 | 14-Day Spring/Summer 2026/27 · v15 | `/14/day-spr/sum-26/27-new` | `/2026-2027-spring/summer-tour-14-days` | `SEHE-14day-2627_v15-blockA/B.txt` |
 | 2 | 11-Day Spring/Summer 2026/27 · v14 | `/11/day-spr/sum-26/27-new` | `/2026-2027-spring/summer-tour-11-day-tours` | `SEHE-11day-2627_v14-blockA/B.txt` |
 | 3 | 12-Day Winter Edition 2026 · v13 | `/12/day-winter-26-new` | `/2026-winter-edition-tours` | `SEHE-winter-2026_v13-blockA/B.txt` |
 | 4 | 12-Day Winter Edition 2027 · v7 | `/12/day-winter-27-new` | `/2027-winter-edition-tours` | `SEHE-winter-2027_v7-blockA/B.txt` |
@@ -41,6 +41,7 @@ The fix keeps the **existing Duda forms** (so the webhook → Zapier → ActiveC
 4. Open the form widget's **Design → Custom CSS** → paste ALL of `duda-brochure-form-skin.css` into the "GENERAL CSS FOR ALL DEVICES" panel (replace whatever is there) and **clear** the device-specific panel. The form now matches the page design.
 5. Add a **new HTML widget below the form row** → paste **Block B**.
 6. The end of Block A contains this same instruction as an HTML comment, so you can't lose your place.
+7. **Where the form appears:** in the editor the form sits in its own row (so it stays selectable/editable). On the **published** page a script in Block A automatically moves it INTO the brochure card's right-hand column — the exact spot the design intends. Don't try to drag it into the HTML block yourself.
 
 > Sanity check before publishing: the page reads Hero → … → Brochure card ("Complete the short form just below…") → the real form → Booking/dates → itinerary continues → footer sections.
 
@@ -92,6 +93,7 @@ One item remains here: confirm with Kirsty that the **Checkfront Pinnacle produc
 Tell Ben the page is flipped — the build side will re-crawl the live URL and confirm within minutes. What's being checked (also easy to eyeball):
 
 - The new design is on the **real URL** and the version marker matches §0 (View Source → search `VERSION v`).
+- The brochure form renders **inside the white brochure card** (right column, under the subtitle) — not as a separate band below the card.
 - The bottom of the page is intact (the "About" band and "Still comparing tours?" cards render — proves the full paste survived).
 - Departure dates show instantly and sold-out dates are red — confirm you can see **sold-out badges** (e.g. 19 & 26 Oct on the 14-Day): that proves the live feed is working, not just the baked list.
 - **Submit a test lead** through the brochure form → confirm it arrives wherever leads normally land (Duda form inbox → webhook → automation). One test per page.
