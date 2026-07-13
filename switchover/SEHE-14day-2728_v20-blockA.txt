@@ -1,40 +1,25 @@
 <!-- =====================================================================
-     SIR EDMUND HILLARY EXPLORER — 14-DAY SPRING/SUMMER 2026/27
-     COMPLETE TOUR PAGE  ·  VERSION v17  ·  2026-07-13  (paste into a Duda HTML block)
+     SIR EDMUND HILLARY EXPLORER — 14-DAY SPRING/SUMMER 2027/28
+     COMPLETE TOUR PAGE  ·  VERSION v20  ·  2026-07-13  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
-       v17 — BUTTON TEXT CENTRED on the docked form (Duda base CSS left-aligned
-            the submit input on the live site; the dock-time flattener now sets
-            text-align:center inline, matching the design button). BAKED
-            SNAPSHOT REFRESHED to current live statuses: 12 Oct 2026 sold out
-            since the 8-Jul bake, so first paint now shows 14 available · 3
-            sold out, next departure 9 Nov 2026, hero 14 · Nov 26 - Apr 27 —
-            identical to what the live worker merge resolves, so no number
-            flash on load. (Whether the hero stat should live-update at all is
-            parked for Kirsty post-launch; the live merge currently keeps it
-            consistent with the booking list.)
-       v16 — DOCKED FORM GEOMETRY FLATTENED (fixes Ben's two review points on the
-            v15 pilot): the Duda widget kept geometry from its old home — the
-            theme/instance CSS painted the submit CONTAINER navy (a slab behind
-            the real button) and indented the internal wrappers so the fields
-            did not share the heading's left edge. The docking script now
-            flattens the widget's internal geometry inline at dock time
-            (containers transparent + zero padding, rows full-width, button
-            container collapsed to the button), which outranks every
-            stylesheet. Fields and button now align with the heading exactly
-            like the design's own form. Colours/typography still come from the
-            widget skin.
-       v15 — BROCHURE FORM DOCKING for the switch-over sandwich: added an empty
-            form slot under the design form and a loader script that, on the
-            published site only, moves the real Duda form widget (pasted below
-            Block A) into the brochure card right-hand column — the live form
-            now renders exactly where the design intends instead of in a band
-            below the card. Docked-state CSS handles the fit; the widget skin
-            still styles fields and button. Enhance-only: in the Duda editor /
-            on this master preview / with no Duda widget on the page, nothing
-            moves. The "complete the short form just below" note hides itself
-            once the form docks.
-       v14 — BOOKING DATA ALIGNED TO THE LIVE-SITE WIDGETS (technical only; design
+       v20 — MOBILE FIXES from Ben's phone pass: the docked Duda submit is an
+            INPUT element, which cannot wrap its label, so the long "View /
+            Download Tour Brochure" text overflowed the button on narrow
+            screens — the docking script now steps font size / tracking /
+            padding down at 480px and 360px via matchMedia and re-applies on
+            resize/rotation. Brochure cover ("FREE PDF DOWNLOAD") explicitly
+            centred in the stacked mobile layout (justify-content + auto
+            margins, belt and braces).
+       v19 — BROCHURE FORM DOCKING (rollout of the 14-Day pilot v15-v17): a form
+            slot now sits inside the brochure card and a loader script, on the
+            published site only, moves the real Duda form widget into it and
+            flattens the widget geometry inline (full-width fields and button,
+            centred button text, no leftover instance padding). In the Duda
+            editor, or with no Duda form widget on the page, nothing moves.
+            Shared SOLDOUT fallback map refreshed: 12 Oct 2026 (14-Day 26/27)
+            and 5 Sep 2026 (Winter 2026) have sold out since the 8-Jul bake.
+       v18 — BOOKING DATA ALIGNED TO THE LIVE-SITE WIDGETS (technical only; design
             untouched): the departures data script is now the proven widget block —
             full worker SCHEDULE baked (including the four Oct 2026 departures),
             SOLDOUT fallback refreshed to current live statuses, and the live merge
@@ -43,7 +28,9 @@
             between tour pages, the Journeys page, the site widgets and Checkfront.
             Booking list, hero count/range and cross-sell chips re-baked from the
             page's own scripts, so first paint byte-matches the render.
-       v13 — TEXT-FINAL PASS (Ben, 3 Jul) adopted as-is: FAQ rebuilt to the official
+       v17 — Review fix (Ben, 8 Jul): gallery caption now explicitly says the
+            Milford / Doubtful Sound cruise is optional.
+       v16 — TEXT-FINAL PASS (Ben, 3 Jul) adopted as-is: FAQ rebuilt to the official
             site-FAQ wording + a 'View all FAQs' button; NZ-English copy polish;
             cross-sell fact fixes (Milford optional on 27/28 cards; Pinnacle desc
             'Premium accommodation'); Pinnacle end offset 14 to 15 nights (ends
@@ -52,26 +39,41 @@
             element removed (the SEO title lives in Duda Page Settings — set it
             per SEHE_SEO_Titles.txt before/at publish). Adoption adds only this
             version bump + macron micro-fixes; no other text touched.
-       v12 — FIX (publish reset): the live-departures script had a loop
-            "i&lt;base[k]" whose literal text "&lt;base" was read by Duda's publish
-            sanitizer as a &lt;base> tag and stripped, corrupting the block on every
-            publish (the page "reset" to the old content). Renamed the variable so
-            "&lt;base" never appears. This is why the tour pages would not stay
-            published while the clean Journeys page always did.
-       v11 — Day-10 Aoraki reverted from "Mueller Lake" back to "Hooker Valley"
-            (heading + body) to match the live page; Ops did not approve the
-            Mueller update. (Itinerary wording now follows the live page unless
-            an Ops-approved change applies.)
-       v10 — Cross-sell fix (Page-1 notes): the "11-Day Spring/Summer Tour 2027/28"
-            comparison card relabelled "Big 5" -> "Famous 4" and its 5th pill
-            (The Mainlander Dun-Oam) removed, leaving 4 pills. The separate
-            11-Day 2026/27 card is left as "Big 5" (correct).
-       v9 — Content fixes: page &lt;title> set to the proper tour title; FAQ meals
-            corrected to 12 breakfasts / 9 dinners / 9 lunches (was "10 dinners",
-            now matches the inclusions block); Day-10 Aoraki Mt Cook updated from
-            Hooker Valley to the Mueller Lake walk and lookout (heading + body)
-            per the brochure.
-       v8 — Swept to the revert-proof standard (baked dates, never-wipe guards, escalate-only merge) and quoted the rail-set names (&ldquo;Super 6&rdquo; etc.).
+       v15 — FIX (publish reset): renamed the live-departures loop variable so
+            the literal "&lt;base" (from "i&lt;base[k]") never appears. Duda's publish
+            sanitizer was reading it as a &lt;base> tag and stripping it, corrupting
+            the block on every publish (the page "reset"). Same fix as 14-Day v12.
+       v14 — Hero image swapped with the Pinnacle page (images only): the hero now
+            uses the Coastal Pacific photo. Nothing else changed.
+       v13 — content fixes: page &lt;title> set to the 14-Day 27/28 tour title; FAQ
+            single supplement corrected to NZ$1,595 (was NZ$1,495); Day-1
+            Christchurch hotel corrected to Distinction Hotel, Christchurch (was
+            Sudima Airport Hotel) to match the 27/28 brochure; meals confirmed at
+            12 breakfasts / 9 dinners / 9 lunches in both the inclusions block and
+            the FAQ.
+       v12 — Swept to the revert-proof standard (baked dates, never-wipe guards, escalate-only merge); dropped the stale 21 Feb 2028 date to match Kirsty's schedule (now 13 departures).
+       v11 — added 21 Feb 2028 to the 14-Day 27/28 departures fallback list:
+            Checkfront lists it as a live, bookable departure, so the page list
+            was one short. (The live feed now takes AVAILABLE dates straight
+            from Checkfront and auto-discovers such dates; this list is only the
+            offline fallback + sold-out memory.)
+       v10 — LIVE departures feed reconnected. The hardcoded list is now a
+            fallback only: one shared fetch of the Worker overrides it, and all
+            three consumers (departures panel, hero count/range, cross-sell
+            cards) re-render when it resolves. Sold-out departures are KEPT in
+            the list and rendered RED (with a legend) instead of being removed —
+            no more hand-editing when a date sells out. Degrades to the fallback
+            (all shown available) if the Worker is unreachable. Reference page
+            for rollout to the other tour pages once verified against Checkfront.
+       v9 — signature rail-set names quoted in display copy (&ldquo;Super 6&rdquo;,
+            &ldquo;Big 5&rdquo;, &ldquo;Famous 4&rdquo;) to match the brochure's own
+            styling; FAQ Q2 corrected so it matches the 27/28 itinerary — the
+            Mainlander runs one southern sector (Invercargill–Dunedin); the
+            Dunedin–Oamaru leg is now by coach (Moeraki Boulders, lunch in Oamaru).
+       v8 — differentiated from the 14-Day 26/27 so the season repeat reads as
+            its own product: new hero (Aoraki Mt Cook), rewritten hero + Section
+            2 copy, and "Super 6" dialled back across the page (kept prominent in
+            its own Section 3). New 27/28 season page facts set at v7.
        v7 — extend the text-align lock to the "Still comparing tours?" cards
             (.sehe-journeys lives outside .sehe-tourpage, so it was still
             inheriting the Duda section's centering).
@@ -108,7 +110,7 @@
     '14day-2728'   : ['2027-10-04','2027-10-11','2027-10-18','2027-11-01','2027-11-08','2027-11-15','2027-11-22','2027-12-06','2028-01-17','2028-01-24','2028-01-31','2028-02-07','2028-02-14']
   };
   var SOLDOUT = {
-    'winter-2026': ['2026-06-27','2026-07-18','2026-08-01'],
+    'winter-2026': ['2026-06-27','2026-07-18','2026-08-01','2026-09-05'],
     '11day-2627' : ['2026-10-05','2026-11-02'],
     '14day-2627' : ['2026-10-12','2026-10-19','2026-10-26']
   };
@@ -186,7 +188,7 @@
   background-image:
     linear-gradient(102deg, rgba(8,24,48,.94) 0%, rgba(8,24,48,.82) 26%, rgba(8,24,48,.5) 50%, rgba(8,24,48,.14) 72%, rgba(8,24,48,0) 100%),
     linear-gradient(0deg, rgba(8,24,48,.85) 0%, rgba(8,24,48,.2) 26%, rgba(8,24,48,0) 52%),
-    url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg');
+    url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp');
   background-size:cover; background-position:center 32%; background-repeat:no-repeat;
   color:#fff !important;
   overflow:hidden;
@@ -235,7 +237,7 @@
     padding:140px 20px 44px !important;
     background-image:
       linear-gradient(0deg, rgba(8,24,48,.92) 0%, rgba(8,24,48,.62) 52%, rgba(8,24,48,.36) 100%),
-      url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg');
+      url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp');
   }
   .sehe-tourpage .sehe-hx-inner{display:block; max-width:100%;}
   .sehe-tourpage .sehe-hx-top{flex-direction:column; align-items:flex-start; gap:0; margin-bottom:0;}
@@ -260,7 +262,7 @@
 }
 </style>
 <div class="sehe-tourpage">
-  <section class="sehe-hx" aria-label="14-Day Spring/Summer Tour 2026/27">
+  <section class="sehe-hx" aria-label="14-Day Spring/Summer Tour 2027/28">
     <div class="sehe-hx-inner">
       <div class="sehe-hx-top">
         <div class="sehe-hx-award sehe-hx-award--top">
@@ -274,15 +276,15 @@
       </div>
       <div class="sehe-hx-head">
         <p class="sehe-hx-eyebrow">Sir Edmund Hillary Explorer</p>
-        <h1 class="sehe-hx-title">14-Day Spring/Summer Tour <span class="yr">2026/27</span></h1>
-        <p class="sehe-hx-sub">The South Island by rail and luxury coach &mdash; featuring the complete &ldquo;Super 6&rdquo; rail adventures, Milford Sound, Aoraki Mt Cook, Queenstown and the Coastal Pacific across fourteen carefully paced days. Starts and ends in Christchurch.</p>
+        <h1 class="sehe-hx-title">14-Day Spring/Summer Tour <span class="yr">2027/28</span></h1>
+        <p class="sehe-hx-sub">Two weeks across the whole South Island by rail and luxury coach &mdash; West Coast glaciers, Queenstown, Fiordland, Aoraki Mt Cook, Dunedin and the Kaik&#333;ura coast, with six scenic rail journeys along the way. Our most complete journey, starting and ending in Christchurch.</p>
       </div>
       <div class="sehe-hx-ticket">
         <div class="sehe-hx-fields">
           <div class="sehe-hx-field"><div class="sehe-hx-k">Route</div><div class="sehe-hx-v">Christchurch return<a class="sehe-hx-route-link" href="#tour-route">View Route</a></div></div>
           <div class="sehe-hx-field"><div class="sehe-hx-k">Duration</div><div class="sehe-hx-v">14 Days<small>13 nights</small></div></div>
-          <div class="sehe-hx-field"><div class="sehe-hx-k">From</div><div class="sehe-hx-v">NZ$8,995<small>per person, twin share</small></div></div>
-          <div class="sehe-hx-field"><div class="sehe-hx-k">Departures</div><div class="sehe-hx-v"><span data-sehe-dep-count>14</span><small data-sehe-dep-range>Nov 26 &ndash; Apr 27</small></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">From</div><div class="sehe-hx-v">NZ$9,990<small>per person, twin share</small></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">Departures</div><div class="sehe-hx-v"><span data-sehe-dep-count>13</span><small data-sehe-dep-range>Oct 27 &ndash; Feb 28</small></div></div>
         </div>
         <div class="sehe-hx-stub">
           <a class="sehe-hx-btn sehe-hx-btn--primary" href="#tour-dates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg> View Tour Dates </a>
@@ -371,13 +373,13 @@
   <section class="sehe-highlights">
    <div class="sehe-highlights-inner">
     <span class="sehe-section-eyebrow">What sets this tour apart</span>
-    <h2 class="sehe-section-heading">The &ldquo;Super 6&rdquo; scenic rail adventures at the heart of our signature tour</h2>
-    <p class="sehe-section-intro">The complete &ldquo;Super 6&rdquo; rail adventures, fully guided touring, fourteen days of 4-Star+ accommodation, and major South Island highlights including Milford Sound, Aoraki Mt Cook, Queenstown, Kaik&#333;ura and the West Coast.</p>
+    <h2 class="sehe-section-heading">The complete South Island, coast to coast</h2>
+    <p class="sehe-section-intro">Our most comprehensive journey &mdash; fourteen days, top to bottom and coast to coast, fully guided, with thirteen nights of 4-Star+ accommodation. From West Coast glaciers and Queenstown to Aoraki Mt Cook, Dunedin and the dramatic Kaik&#333;ura coast, with the &ldquo;Super 6&rdquo; rail journeys woven all the way through.</p>
     <div class="sehe-highlights-grid">
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.5"></circle><circle cx="16" cy="19" r="1.5"></circle><path d="M5 16l-1.5 3M19 16l1.5 3"></path></svg></div>
-      <h3>The &ldquo;Super 6&rdquo; rail journeys</h3>
-      <p class="sehe-highlight-text">TranzAlpine, Kingston Flyer steam, The Mainlander, Taieri Gorge, Coastal Pacific and Weka Pass — all in one carefully designed tour.</p>
+      <h3>Six scenic rail journeys</h3>
+      <p class="sehe-highlight-text">TranzAlpine, Kingston Flyer steam, The Mainlander, Taieri Gorge, Coastal Pacific and the Weka Pass — six rail experiences, each a different side of the South Island.</p>
      </div>
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"></path></svg></div>
@@ -386,8 +388,8 @@
      </div>
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><path d="M3 20l5-8 3 4 4-7 6 11z" fill="none"></path><circle cx="17" cy="6" r="1.5" fill="none"></circle></svg></div>
-      <h3>Milford Sound &amp; Aoraki Mt Cook</h3>
-      <p class="sehe-highlight-text">A full-day Milford Sound excursion, including a scenic cruise, and two nights at Aoraki Mt Cook — a landscape closely tied to Sir Edmund Hillary's early mountaineering life.</p>
+      <h3>Fiordland &amp; Aoraki Mt Cook</h3>
+      <p class="sehe-highlight-text">A day into Fiordland from Te Anau — with the option to cruise Milford or Doubtful Sound — and two nights at Aoraki Mt Cook, a landscape closely tied to Sir Edmund Hillary's early mountaineering life.</p>
      </div>
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><path d="M12 2L9.5 8.5 2 9.3l5.7 5L6 22l6-3.5 6 3.5-1.7-7.7 5.7-5-7.5-.8z"></path></svg></div>
@@ -463,8 +465,8 @@
   <section class="sehe-super6">
    <div class="sehe-super6-inner">
     <span class="sehe-section-eyebrow">The &ldquo;Super 6&rdquo;</span>
-    <h2 class="sehe-section-heading">The complete &ldquo;Super 6&rdquo; rail adventures in one tour</h2>
-    <p class="sehe-section-intro">Every 14-Day Spring/Summer Tour includes the complete &ldquo;Super 6&rdquo; rail adventures — six memorable rail journeys showing a different side of the South Island, from alpine passes and wild coastlines to heritage railways, rural towns and remote gorge country.</p>
+    <h2 class="sehe-section-heading">The &ldquo;Super 6&rdquo; rail adventures, coast to coast</h2>
+    <p class="sehe-section-intro">From the alpine TranzAlpine to the Pacific-coast Coastal Pacific and the heritage Weka Pass, the &ldquo;Super 6&rdquo; carry you through every kind of South Island landscape — alpine passes, wild coastlines, remote river gorges and rolling rural country.</p>
     <div class="sehe-super6-grid">
      <article class="sehe-train">
       <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp');"><span class="sehe-train-day">Day 2</span></div>
@@ -475,8 +477,8 @@
       <div class="sehe-train-info"><h3><span class="sehe-train-num">2</span>Kingston Flyer (Steam)</h3><p class="sehe-train-text">A heritage steam rail experience between Kingston and Fairlight at the southern end of Lake Wakatipu.</p></div>
      </article>
      <article class="sehe-train">
-      <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Glen+Antony+20251116+IMG_0748.webp');"><span class="sehe-train-day">Day 7 &amp; 9</span></div>
-      <div class="sehe-train-info"><h3><span class="sehe-train-num">3</span>The Mainlander</h3><p class="sehe-train-text">Exclusive to Sir Edmund Hillary Explorer, The Mainlander brings two new southern rail sectors into the &ldquo;Super 6&rdquo; rail adventures.</p></div>
+      <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Glen+Antony+20251116+IMG_0748.webp');"><span class="sehe-train-day">Day 7</span></div>
+      <div class="sehe-train-info"><h3><span class="sehe-train-num">3</span>The Mainlander</h3><p class="sehe-train-text">Exclusive to Sir Edmund Hillary Explorer — a southern rail sector from Invercargill to Dunedin, through the rolling rural landscapes of the deep south.</p></div>
      </article>
      <article class="sehe-train">
       <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/About-SEHE-Rail-Tour-3.jpg');"><span class="sehe-train-day">Day 8</span></div>
@@ -563,6 +565,12 @@
   .sehe-form-slot .dmformsubmit { float: none !important; width: 100% !important; margin: 22px 0 0 0 !important; }
   .sehe-form-slot .dmformsubmit input[type="submit"] { display: block !important; width: 100% !important; box-sizing: border-box !important; }
   .sehe-brochure-formside.sehe-form-docked .sehe-brochure-note { display: none !important; }
+  @media (max-width: 860px) {
+    /* stacked mobile layout: keep the brochure cover (FREE PDF DOWNLOAD badge)
+       dead-centre regardless of what the host container does to flex */
+    .sehe-brochure-cover { justify-content: center !important; }
+    .sehe-brochure-cover-wrap { margin-left: auto !important; margin-right: auto !important; }
+  }
 </style>
 <div class="sehe-tourpage">
   <section class="sehe-brochure" id="tour-brochure">
@@ -570,7 +578,7 @@
     <div class="sehe-brochure-cover">
      <div class="sehe-brochure-cover-wrap">
       <span class="sehe-brochure-badge">Free PDF Download</span>
-      <img class="sehe-brochure-cover-img" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/26-27+Spring-Summer+Tour_Brochure-Cover-1920w.webp" alt="The Sir Edmund Hillary Explorer - 14-Day Spring/Summer 2026/27 Tour Brochure">
+      <img class="sehe-brochure-cover-img" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/Web_14+Day+27-28_Spring-Summer+Tour_Brochure-Cover-1920w.webp" alt="The Sir Edmund Hillary Explorer - 14-Day Spring/Summer 2027/28 Tour Brochure">
      </div>
     </div>
     <div class="sehe-brochure-formside">
@@ -632,6 +640,20 @@
     flat(sub, { float: 'none', width: '100%', margin: '22px 0 0 0', padding: '0', background: 'transparent', 'background-color': 'transparent', border: '0', 'border-radius': '0', 'box-shadow': 'none', 'min-height': '0', height: 'auto', 'text-align': 'left' });
     var btn = sub ? sub.querySelector('input[type="submit"]') : null;
     flat(btn, { display: 'block', width: '100%', margin: '0', 'box-sizing': 'border-box', 'text-align': 'center' });
+    /* the submit is an INPUT and inputs cannot wrap their label, so on narrow
+       screens the long label overflows — step the type down responsively */
+    var sizeBtn = function() {
+      if (!btn) return;
+      var fs = '13.5px', ls = '1.4px', pad = '17px 24px';
+      if (window.matchMedia && window.matchMedia('(max-width: 480px)').matches) { fs = '12px'; ls = '0.8px'; pad = '16px 10px'; }
+      if (window.matchMedia && window.matchMedia('(max-width: 360px)').matches) { fs = '11px'; ls = '0.5px'; pad = '15px 8px'; }
+      btn.style.setProperty('font-size', fs, 'important');
+      btn.style.setProperty('letter-spacing', ls, 'important');
+      btn.style.setProperty('padding', pad, 'important');
+      btn.style.setProperty('max-width', '100%', 'important');
+    };
+    sizeBtn();
+    if (window.addEventListener) { window.addEventListener('resize', sizeBtn); }
     var side = slot.parentElement;
     if (side && side.classList) side.classList.add('sehe-form-docked');
     /* if the widget's old container is now completely empty, collapse it */

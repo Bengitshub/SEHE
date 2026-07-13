@@ -1,8 +1,16 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 14-DAY SPRING/SUMMER 2026/27
-     COMPLETE TOUR PAGE  ·  VERSION v17  ·  2026-07-13  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v18  ·  2026-07-13  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v18 — MOBILE FIXES from Ben's phone pass: the docked Duda submit is an
+            INPUT element, which cannot wrap its label, so the long "View /
+            Download Tour Brochure" text overflowed the button on narrow
+            screens — the docking script now steps font size / tracking /
+            padding down at 480px and 360px via matchMedia and re-applies on
+            resize/rotation. Brochure cover ("FREE PDF DOWNLOAD") explicitly
+            centred in the stacked mobile layout (justify-content + auto
+            margins, belt and braces).
        v17 — BUTTON TEXT CENTRED on the docked form (Duda base CSS left-aligned
             the submit input on the live site; the dock-time flattener now sets
             text-align:center inline, matching the design button). BAKED
@@ -563,6 +571,12 @@
   .sehe-form-slot .dmformsubmit { float: none !important; width: 100% !important; margin: 22px 0 0 0 !important; }
   .sehe-form-slot .dmformsubmit input[type="submit"] { display: block !important; width: 100% !important; box-sizing: border-box !important; }
   .sehe-brochure-formside.sehe-form-docked .sehe-brochure-note { display: none !important; }
+  @media (max-width: 860px) {
+    /* stacked mobile layout: keep the brochure cover (FREE PDF DOWNLOAD badge)
+       dead-centre regardless of what the host container does to flex */
+    .sehe-brochure-cover { justify-content: center !important; }
+    .sehe-brochure-cover-wrap { margin-left: auto !important; margin-right: auto !important; }
+  }
 </style>
 <div class="sehe-tourpage">
   <section class="sehe-brochure" id="tour-brochure">
@@ -649,6 +663,20 @@
     flat(sub, { float: 'none', width: '100%', margin: '22px 0 0 0', padding: '0', background: 'transparent', 'background-color': 'transparent', border: '0', 'border-radius': '0', 'box-shadow': 'none', 'min-height': '0', height: 'auto', 'text-align': 'left' });
     var btn = sub ? sub.querySelector('input[type="submit"]') : null;
     flat(btn, { display: 'block', width: '100%', margin: '0', 'box-sizing': 'border-box', 'text-align': 'center' });
+    /* the submit is an INPUT and inputs cannot wrap their label, so on narrow
+       screens the long label overflows — step the type down responsively */
+    var sizeBtn = function() {
+      if (!btn) return;
+      var fs = '13.5px', ls = '1.4px', pad = '17px 24px';
+      if (window.matchMedia && window.matchMedia('(max-width: 480px)').matches) { fs = '12px'; ls = '0.8px'; pad = '16px 10px'; }
+      if (window.matchMedia && window.matchMedia('(max-width: 360px)').matches) { fs = '11px'; ls = '0.5px'; pad = '15px 8px'; }
+      btn.style.setProperty('font-size', fs, 'important');
+      btn.style.setProperty('letter-spacing', ls, 'important');
+      btn.style.setProperty('padding', pad, 'important');
+      btn.style.setProperty('max-width', '100%', 'important');
+    };
+    sizeBtn();
+    if (window.addEventListener) { window.addEventListener('resize', sizeBtn); }
     var side = slot.parentElement;
     if (side && side.classList) side.classList.add('sehe-form-docked');
     /* if the widget's old container is now completely empty, collapse it */
