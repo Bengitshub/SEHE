@@ -1,62 +1,39 @@
-Subject: SEHE — new tour pages: final switch-over (everything you need attached)
+Subject: SEHE tour pages — ready to go live (URL swaps only)
 
 Hi Aaron,
 
-The seven new tour landing pages are finished, fact-checked and live on preview
-URLs. Your job is the final switch-over: put them on the real URLs, install the
-lead-capture forms, and set the SEO titles. Everything you need is in the
-attached SEHE-switchover-pack.zip — the runbook inside
-(AARON-SWITCHOVER-PACK.md) has full step-by-step detail; this email is the
-short version.
+The seven new tour pages are finished, tested and running on preview URLs.
+All the heavy lifting is already done on each page: the brochure enquiry
+form is installed and lead-tested (same forms, webhooks and automations as
+the current site — a test lead has been confirmed end-to-end on every
+page), SEO titles are set, and departure availability feeds live from
+Checkfront and updates itself.
 
-WHAT'S ALREADY DONE (no action)
-- All 7 pages built, reviewed and published on their -new preview URLs, with
-  live departure dates driven by our Cloudflare worker (already deployed and
-  verified — do NOT touch Cloudflare).
-- Departure lists on the new pages now match Checkfront and the current site
-  exactly, and update themselves — no manual date edits, ever.
+What's left for you is just the URL swaps — per page:
+  1. Rename the current live page's URL (add "-old") and set it to noindex.
+  2. Give the new page the real URL.
+  3. Add a 301 redirect from the preview URL to the real URL.
+  4. Publish. (Resubmit the sitemap in Search Console once all seven are done.)
 
-YOUR JOB — PER PAGE (do one page at a time, in any order)
-1. Open the page's -new preview in the Duda editor.
-2. Replace the single HTML widget's contents with that page's BLOCK A file
-   (from the zip).
-3. Add a new row directly below it — set the row background to #f9f7f3 — and
-   copy the EXISTING Duda brochure form element across from the old live page
-   (copy, don't move — the old page keeps its form for rollback; it must be
-   the same form so the webhook/automations keep working).
-   Then paste duda-brochure-form-skin.css (in the zip) into that form widget's
-   Design > Custom CSS ("all devices" panel, replace contents; clear the
-   device-specific panel). The form will match the page design.
-4. Add a fresh HTML widget below the form row and paste BLOCK B.
-   (The end of Block A repeats these instructions as a comment.)
-5. Page Settings > SEO > SEO Title — paste the title for that page from
-   section 2 of the runbook.
-6. The URL swap: rename the OLD live page's URL (append -old), give this new
-   page the real URL (table in section 0 of the runbook), add a 301 from the
-   -new slug, check the nav, then Publish. Set the renamed -old page to
-   noindex (SEO panel) — we're keeping it for rollback, and Google mustn't
-   index two copies of the same tour.
-7. Submit one test lead through the brochure form and confirm it lands where
-   leads normally land. After publishing, resubmit the sitemap in Search
-   Console so Google picks up the new URLs quickly.
-8. In the booking list, confirm you can see sold-out badges (e.g. 19 & 26 Oct
-   on the 14-Day) — that proves the live feed is working, not just the baked
-   list. Then ping Ben — each page gets verified on our side within minutes
-   of the flip.
+Exact click-by-click steps are in §3 of the attached pack
+(AARON-SWITCHOVER-PACK.md) — §0 has the URL table. Please do one page at a
+time and message Ben after each; we verify the live URL within minutes.
 
-THREE DON'TS
-- Don't copy a Duda form's markup into an HTML widget — a copy looks right but
-  never submits and never fires the webhook. Only the real form widget counts.
-- Don't edit anything inside the HTML blocks — they're validated as-is. If
-  something looks off, flag it rather than hand-fixing in Duda.
-- Don't delete the old pages until Ben signs off — they're the instant
-  rollback (swap the URLs back).
+Safety notes for everyone cc'd:
+  - Nothing is deleted. The current pages stay (renamed "-old") as instant
+    rollback until sign-off.
+  - Bookings are untouched — Checkfront and all existing booking widgets
+    keep working throughout; the pages read availability live.
+  - Visitors see no downtime: each swap is a rename and a publish.
 
-ONE CHECK WITH KIRSTY
-Confirm the Checkfront Pinnacle product (item 315) resolves bookings to an end
-date of 29 January 2027 (15 nights), so booking confirmations match the pages.
+Preview links (these become the real URLs after the swap):
+  14-Day Spring/Summer 26/27:  https://www.siredmundhillaryexplorer.com/14/day-spr/sum-26/27-new
+  11-Day Spring/Summer 26/27:  https://www.siredmundhillaryexplorer.com/11/day-spr/sum-26/27-new
+  Winter Edition 2026:         https://www.siredmundhillaryexplorer.com/12/day-winter-26-new
+  Winter Edition 2027:         https://www.siredmundhillaryexplorer.com/12/day-winter-27-new
+  Pinnacle Tour 2027:          https://www.siredmundhillaryexplorer.com/15/day-pinnacle-27-new
+  11-Day Spring/Summer 27/28:  https://www.siredmundhillaryexplorer.com/11/day-spr/sum-27/28-new
+  14-Day Spring/Summer 27/28:  https://www.siredmundhillaryexplorer.com/14/day-spr/sum-27/28-new
 
-Any questions, call me.
-
-Thanks,
+Cheers,
 Ben
