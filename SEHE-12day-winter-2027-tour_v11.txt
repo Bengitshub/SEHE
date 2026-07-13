@@ -1,9 +1,17 @@
 <!-- =====================================================================
-     SIR EDMUND HILLARY EXPLORER — 12-DAY WINTER EDITION 2026
-     COMPLETE TOUR PAGE  ·  VERSION v16  ·  2026-07-13  (paste into a Duda HTML block)
+     SIR EDMUND HILLARY EXPLORER — 12-DAY WINTER EDITION 2027
+     COMPLETE TOUR PAGE  ·  VERSION v11  ·  2026-07-13  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
-       v16 — DOCKED BUTTON TYPE RE-TUNED (Ben's phone review of the first
+       v11 — FIELDS AND BUTTON PINNED TO THE SAME BOX (Ben: "why can't the
+            button just be the same size as the form fields?"): on iPhone the
+            fields rendered ~30px wider than the button — Duda's mobile device
+            stylesheet inflates the input widths past their column, and only
+            the button was inline-pinned. The docking script now pins the
+            Name/Email/Country fields inline too (width/max-width 100%,
+            border-box, block, zero margin), so fields and button occupy the
+            identical box on every browser and are permanently edge-flush.
+       v10 — DOCKED BUTTON TYPE RE-TUNED (Ben's phone review of the first
             mobile fix): the previous 360px breakpoint caught most Android
             phones and set the label at 11px — too small — and letter-spacing's
             trailing space biased the centred label left of true centre. Now
@@ -12,7 +20,7 @@
             cancels the centring bias at every size, desktop included.
             Measured with the real widget at 320 / 360 / 390 / 1440px: label
             fits with margin everywhere and sits optically centred.
-       v15 — MOBILE FIXES from Ben's phone pass: the docked Duda submit is an
+       v9 — MOBILE FIXES from Ben's phone pass: the docked Duda submit is an
             INPUT element, which cannot wrap its label, so the long "View /
             Download Tour Brochure" text overflowed the button on narrow
             screens — the docking script now steps font size / tracking /
@@ -20,18 +28,15 @@
             resize/rotation. Brochure cover ("FREE PDF DOWNLOAD") explicitly
             centred in the stacked mobile layout (justify-content + auto
             margins, belt and braces).
-       v14 — BROCHURE FORM DOCKING (rollout of the 14-Day pilot v15-v17): a form
+       v8 — BROCHURE FORM DOCKING (rollout of the 14-Day pilot v15-v17): a form
             slot now sits inside the brochure card and a loader script, on the
             published site only, moves the real Duda form widget into it and
             flattens the widget geometry inline (full-width fields and button,
             centred button text, no leftover instance padding). In the Duda
             editor, or with no Duda form widget on the page, nothing moves.
             Shared SOLDOUT fallback map refreshed: 12 Oct 2026 (14-Day 26/27)
-            and 5 Sep 2026 (Winter 2026) have sold out since the 8-Jul bake. Own
-            baked first paint refreshed to live truth: 1 available / 4 sold
-            out, next departure 12 September 2026 (returns 23 Sep), 5 Sep
-            struck in the month list.
-       v13 — BOOKING DATA ALIGNED TO THE LIVE-SITE WIDGETS (technical only; design
+            and 5 Sep 2026 (Winter 2026) have sold out since the 8-Jul bake.
+       v7 — BOOKING DATA ALIGNED TO THE LIVE-SITE WIDGETS (technical only; design
             untouched): the departures data script is now the proven widget block —
             full worker SCHEDULE baked (including the four Oct 2026 departures),
             SOLDOUT fallback refreshed to current live statuses, and the live merge
@@ -40,7 +45,11 @@
             between tour pages, the Journeys page, the site widgets and Checkfront.
             Booking list, hero count/range and cross-sell chips re-baked from the
             page's own scripts, so first paint byte-matches the render.
-       v12 — TEXT-FINAL PASS (Ben, 3 Jul) adopted as-is: FAQ rebuilt to the official
+       v6 — Review fix (Ben, 8 Jul): the Mainlander exclusivity claim is brand-level,
+            not winter-only — 'Exclusive to our winter tours' corrected to
+            'Exclusive to Sir Edmund Hillary Explorer' (it also runs on the
+            Spring/Summer tours).
+       v5 — TEXT-FINAL PASS (Ben, 3 Jul) adopted as-is: FAQ rebuilt to the official
             site-FAQ wording + a 'View all FAQs' button; NZ-English copy polish;
             cross-sell fact fixes (Milford optional on 27/28 cards; Pinnacle desc
             'Premium accommodation'); Pinnacle end offset 14 to 15 nights (ends
@@ -49,32 +58,30 @@
             element removed (the SEO title lives in Duda Page Settings — set it
             per SEHE_SEO_Titles.txt before/at publish). Adoption adds only this
             version bump + macron micro-fixes; no other text touched.
-       v11 — FIX (publish reset): renamed the live-departures loop variable so
+       v4 — FIX (publish reset): renamed the live-departures loop variable so
             the literal "&lt;base" (from "i&lt;base[k]") never appears. Duda's publish
             sanitizer was reading it as a &lt;base> tag and stripping it, corrupting
             the block on every publish (the page "reset"). Same fix as 14-Day v12.
-       v10 — Content corrections (no dates/prices/layout changed): page &lt;title> set to "12-Day Winter Edition 2026 | Sir Edmund Hillary Explorer"; hero sub-headline "the Catlins" → "the deep south" (route doesn't visit the Catlins); Day-11 heading "Hooker Valley" → "National Park" and body changed from a Hooker Valley walk to a scenic Aoraki Mt Cook National Park drive; Day-11 optional activity reworded to "Optional scenic ski-plane and helicopter flights over the Tasman Glacier are available" (the glacier explorer cruise doesn't run in winter). Meals confirmed 11 breakfasts / 9 lunches / 8 dinners in both the inclusions block and the FAQ.
-       v9 — Swept to the revert-proof departures standard: baked booking dates, never-wipe render guards, escalate-only live merge. No content/price/date changes.
-       v8 — LIVE departures feed connected (sold-out shown red, not removed) +
-            added the 1 Aug 2026 departure (a booking cancellation freed seats;
-            Checkfront has it bookable but the page didn't). The hardcoded list
-            is now a fallback only; the panel, hero and cross-sell cards re-render
-            from the Worker. Rail-set names quoted (&ldquo;Super 6&rdquo;,
-            &ldquo;Big 5&rdquo;, &ldquo;Famous 4&rdquo;).
-       v7 — extend the text-align lock to the "Still comparing tours?" cards
-            (.sehe-journeys lives outside .sehe-tourpage, so it was still
-            inheriting the Duda section's centering).
-       v6 — text-align lock: the page forces its own left alignment so the
-            eyebrows, section intros, card text, FAQ answers and About snippet
-            can't inherit centering from the Duda section the block sits in.
-       v5 — FAQ rebuilt from updated website FAQs + brochure (10 Qs);
-            departures made authoritative in-page (one master list drives the
-            booking list, the comparison cards and the hero count/range).
-       v4 — buttons + anchors wired (View Tour Dates, Download Brochure,
-            Section-12 cards); brochure-form CSS skin supplied separately.
-       v3 — hero rebuilt as a .sehe-tourpage section (mobile + desktop fixed).
-       v2 — full 13-section page assembled into one block.
-       v1 — hero header-space fix.
+       v3 — Content fixes only: set the page &lt;title> to "12-Day Winter Edition 2027 |
+            Sir Edmund Hillary Explorer"; confirmed the meals read 11 breakfasts,
+            9 lunches and 8 dinners consistently in both the inclusions block and the
+            FAQ; replaced the Day-11 "glacier explorer cruise" optional wording with
+            the optional helicopter flight + glacier landing ("Tasman Taster"). No
+            layout/structure/booking changes.
+       v2 — Swapped in the correct 2027 Winter assets now that they're hosted: the
+            brochure-cover thumbnail and the route-map image (both had been the
+            2026 Winter placeholders). No other changes.
+       v1 — New page. Built from the 12-Day Winter Edition 2026 template against
+            the official Winter Edition 2027 brochure: From NZ$8,495 / single
+            supplement NZ$1,595, 11 nights, 6 departures (Jul–Aug 2027), Millennium
+            Hotel Queenstown, an extra Invercargill night (Distinction), Doubtful
+            Sound, Queenstown Gondola + Stratosfare lunch, Christchurch tram, Te
+            Hikoi Museum. Four winter rail journeys — TranzAlpine, Taieri Gorge and
+            the Mainlander both Invercargill→Dunedin and Dunedin→Oamaru (no Kingston
+            Flyer in winter; no branded rail set). Unique snowy Lake Sarah hero +
+            rewritten hero/Section-2 copy (season-repeat differentiation). Baked
+            booking dates + the revert-proof feed (never-wipe guards + escalate-only
+            merge) from the start, per the 11-Day 27/28 v3 standard.
      =====================================================================
      This is the full page. The Hero (Section 1) is now built the same way as
      the page sections that already render correctly: wrapped in .sehe-tourpage,
@@ -175,8 +182,8 @@
   background-image:
     linear-gradient(102deg, rgba(8,24,48,.94) 0%, rgba(8,24,48,.82) 26%, rgba(8,24,48,.5) 50%, rgba(8,24,48,.14) 72%, rgba(8,24,48,0) 100%),
     linear-gradient(0deg, rgba(8,24,48,.85) 0%, rgba(8,24,48,.2) 26%, rgba(8,24,48,0) 52%),
-    url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp');
-  background-size:cover; background-position:center 32%; background-repeat:no-repeat;
+    url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/183840-lake-sarah-in-snow-b1e7ecbb.webp');
+  background-size:cover; background-position:center 38%; background-repeat:no-repeat;
   color:#fff !important;
   overflow:hidden;
   display:flex; flex-direction:column;
@@ -224,7 +231,7 @@
     padding:140px 20px 44px !important;
     background-image:
       linear-gradient(0deg, rgba(8,24,48,.92) 0%, rgba(8,24,48,.62) 52%, rgba(8,24,48,.36) 100%),
-      url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp');
+      url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/183840-lake-sarah-in-snow-b1e7ecbb.webp');
   }
   .sehe-tourpage .sehe-hx-inner{display:block; max-width:100%;}
   .sehe-tourpage .sehe-hx-top{flex-direction:column; align-items:flex-start; gap:0; margin-bottom:0;}
@@ -249,7 +256,7 @@
 }
 </style>
 <div class="sehe-tourpage">
-  <section class="sehe-hx" aria-label="12-Day Winter Edition 2026">
+  <section class="sehe-hx" aria-label="12-Day Winter Edition 2027">
     <div class="sehe-hx-inner">
       <div class="sehe-hx-top">
         <div class="sehe-hx-award sehe-hx-award--top">
@@ -263,15 +270,15 @@
       </div>
       <div class="sehe-hx-head">
         <p class="sehe-hx-eyebrow">Sir Edmund Hillary Explorer</p>
-        <h1 class="sehe-hx-title">12-Day Winter Edition <span class="yr">2026</span></h1>
-        <p class="sehe-hx-sub">The South Island by rail and luxury coach &mdash; four winter rail journeys including the TranzAlpine, with snow-dusted alpine landscapes, Queenstown, Doubtful Sound, the deep south and Aoraki Mt Cook across twelve carefully paced days. Starts and ends in Christchurch.</p>
+        <h1 class="sehe-hx-title">12-Day Winter Edition <span class="yr">2027</span></h1>
+        <p class="sehe-hx-sub">Twelve days through the South Island in winter, by rail and luxury coach &mdash; snow-clad alpine country, the TranzAlpine, Doubtful Sound, Queenstown and Aoraki Mt Cook, with the Mainlander winding through the frosted deep south. Fully guided, return from Christchurch.</p>
       </div>
       <div class="sehe-hx-ticket">
         <div class="sehe-hx-fields">
           <div class="sehe-hx-field"><div class="sehe-hx-k">Route</div><div class="sehe-hx-v">Christchurch return<a class="sehe-hx-route-link" href="#tour-route">View Route</a></div></div>
           <div class="sehe-hx-field"><div class="sehe-hx-k">Duration</div><div class="sehe-hx-v">12 Days<small>11 nights</small></div></div>
-          <div class="sehe-hx-field"><div class="sehe-hx-k">From</div><div class="sehe-hx-v">NZ$7,995<small>per person, twin share</small></div></div>
-          <div class="sehe-hx-field"><div class="sehe-hx-k">Departures</div><div class="sehe-hx-v"><span data-sehe-dep-count>1</span><small data-sehe-dep-range>Sep 2026</small></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">From</div><div class="sehe-hx-v">NZ$8,495<small>per person, twin share</small></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">Departures</div><div class="sehe-hx-v"><span data-sehe-dep-count>6</span><small data-sehe-dep-range>Jul 27 &ndash; Aug 27</small></div></div>
         </div>
         <div class="sehe-hx-stub">
           <a class="sehe-hx-btn sehe-hx-btn--primary" href="#tour-dates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg> View Tour Dates </a>
@@ -360,28 +367,28 @@
   <section class="sehe-highlights">
    <div class="sehe-highlights-inner">
     <span class="sehe-section-eyebrow">What sets this tour apart</span>
-    <h2 class="sehe-section-heading">The South Island at its most dramatic, by winter rail</h2>
-    <p class="sehe-section-intro">Four winter rail journeys, fully guided touring, eleven nights of 4-Star+ accommodation, and major South Island highlights including Queenstown, Doubtful Sound, Aoraki Mt Cook, Franz Josef, Dunedin and the deep south &mdash; under snow-capped peaks and quiet winter skies.</p>
+    <h2 class="sehe-section-heading">A quieter, crisper South Island &mdash; the winter the locals keep for themselves</h2>
+    <p class="sehe-section-intro">Winter strips the South Island back to its essentials: empty alpine roads, frosted tussock and the great rail journeys with the carriages near to yourself. Twelve days link the TranzAlpine, Doubtful Sound, Queenstown and Aoraki Mt Cook &mdash; fully guided, generously paced, and warmed by long dinners and a Central Otago Pinot in hand.</p>
     <div class="sehe-highlights-grid">
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.5"></circle><circle cx="16" cy="19" r="1.5"></circle><path d="M5 16l-1.5 3M19 16l1.5 3"></path></svg></div>
       <h3>Four winter rail journeys</h3>
-      <p class="sehe-highlight-text">The TranzAlpine across a snow-dusted Arthur's Pass, two southern sectors aboard The Mainlander, and the remote Taieri Gorge — four memorable rail journeys in one carefully designed 12-day tour.</p>
+      <p class="sehe-highlight-text">The TranzAlpine over a snow-streaked Arthur's Pass, the Mainlander across two deep-south sectors, and the Taieri Gorge through frozen river country — four rail journeys at their most atmospheric in winter.</p>
      </div>
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"></path></svg></div>
       <h3>4-Star+ hotels for 11 nights</h3>
-      <p class="sehe-highlight-text">From the Distinction Hotel in Christchurch to the Millennium in Queenstown and The Hermitage at Aoraki Mt Cook. Accommodation is hand-picked to suit each location and the pace of the journey.</p>
+      <p class="sehe-highlight-text">The Distinction in Christchurch, the Millennium above Lake Wakatipu in Queenstown, and The Hermitage beneath Aoraki Mt Cook — eleven nights of hand-picked accommodation, matched to each stop and the winter pace.</p>
      </div>
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><path d="M3 20l5-8 3 4 4-7 6 11z" fill="none"></path><circle cx="17" cy="6" r="1.5" fill="none"></circle></svg></div>
       <h3>Doubtful Sound &amp; Aoraki Mt Cook</h3>
-      <p class="sehe-highlight-text">A full-day cruise into the remote wilderness of Doubtful Sound, and two nights at Aoraki Mt Cook — a landscape closely tied to Sir Edmund Hillary's early mountaineering life.</p>
+      <p class="sehe-highlight-text">A full day cruising the remote wilderness of Doubtful Sound, and two nights beneath Aoraki Mt Cook — the alpine country that shaped Sir Edmund Hillary's climbing life.</p>
      </div>
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.5"></circle><circle cx="16" cy="19" r="1.5"></circle><path d="M5 16l-1.5 3M19 16l1.5 3"></path></svg></div>
       <h3>The Mainlander — exclusive to our tours</h3>
-      <p class="sehe-highlight-text">The Mainlander brings exclusive southern rail sectors into the journey, travelling through the deep south between Invercargill, Dunedin and Oamaru.</p>
+      <p class="sehe-highlight-text">Exclusive to Sir Edmund Hillary Explorer, the recently re-established Mainlander runs two deep-south sectors by rail — Invercargill to Dunedin, then Dunedin along the coast to Oamaru.</p>
      </div>
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2" fill="none"></rect><path d="M2.5 10h19M6 15h3"></path></svg></div>
@@ -558,7 +565,7 @@
     <div class="sehe-brochure-cover">
      <div class="sehe-brochure-cover-wrap">
       <span class="sehe-brochure-badge">Free PDF Download</span>
-      <img class="sehe-brochure-cover-img" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/2026+Winter+Tour+Brochure_SEHE-1-1920w.webp" alt="The Sir Edmund Hillary Explorer - 12-Day Winter Edition 2026 Tour Brochure">
+      <img class="sehe-brochure-cover-img" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/Web_2027+Winter+Tour+Brochure_SEHE-1-1920w.webp" alt="The Sir Edmund Hillary Explorer - 12-Day Winter Edition 2027 Tour Brochure">
      </div>
     </div>
     <div class="sehe-brochure-formside">
@@ -632,6 +639,13 @@
     var rows = w.querySelectorAll('.dmforminput');
     for (var j = 0; j < rows.length; j += 1) {
       flat(rows[j], { float: 'none', width: '100%', margin: '0 0 16px 0', padding: '0', 'min-height': '0', height: 'auto', background: 'transparent' });
+    }
+    /* the fields themselves: Duda's device stylesheets can size inputs past
+       their column (seen on iPhone) — inline width pins the fields and the
+       button to the identical box so they are always edge-flush */
+    var flds = w.querySelectorAll('input[type="text"], input[type="email"], select');
+    for (var q = 0; q < flds.length; q += 1) {
+      flat(flds[q], { display: 'block', width: '100%', 'max-width': '100%', 'box-sizing': 'border-box', margin: '0' });
     }
     var sub = w.querySelector('.dmformsubmit');
     flat(sub, { float: 'none', width: '100%', margin: '22px 0 0 0', padding: '0', background: 'transparent', 'background-color': 'transparent', border: '0', 'border-radius': '0', 'box-shadow': 'none', 'min-height': '0', height: 'auto', 'text-align': 'left' });
@@ -781,13 +795,13 @@
     <div class="booking-topbar">
      <div class="booking-topbar-left">
       <div class="booking-topbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#c8a56c" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
-      <span class="booking-topbar-label" id="bookingTourName">12-Day Winter Edition 2026</span>
+      <span class="booking-topbar-label" id="bookingTourName">12-Day Winter Edition 2027</span>
      </div>
      <span class="booking-topbar-secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> Secure booking</span>
     </div>
     <div class="booking-tabs" id="bookingTabs"></div>
     <div class="booking-info">
-     <div class="booking-info-item"><span class="booking-info-value" id="infoPrice">From NZ$7,995</span><span class="booking-info-label">Per person</span><span class="booking-info-supplement">Single Supplement NZ$1,495</span></div>
+     <div class="booking-info-item"><span class="booking-info-value" id="infoPrice">From NZ$8,495</span><span class="booking-info-label">Per person</span><span class="booking-info-supplement">Single Supplement NZ$1,595</span></div>
      <div class="booking-info-item"><span class="booking-info-value" id="infoDuration">12 Days</span><span class="booking-info-label">Duration</span></div>
      <div class="booking-info-item"><span class="booking-info-value" id="infoStartsEnds">Christchurch return</span><span class="booking-info-label" id="infoStartsEndsLabel">Starts &amp; ends</span></div>
     </div>
@@ -814,7 +828,7 @@
      .sehe-departure-day-nearing { color: var(--amber) !important; }
      .sehe-departure-next-sold { border-left-color: var(--red) !important; }
      .sehe-departure-next-sold .sehe-departure-next-label { color: var(--red) !important; }
-     .sehe-departure-legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--border-light); }
+     .sehe-departure-legend { display: flex; gap: 16px; margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--border-light); }
      .sehe-departure-legend-item { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px !important; color: var(--text-light) !important; }
      .sehe-departure-legend-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
      .sehe-departure-legend-avail { background: var(--navy); }
@@ -833,12 +847,12 @@
      }
     </style>
     <div class="booking-two-col">
-     <div class="sehe-departure-list" data-tour="winter-2026">
+     <div class="sehe-departure-list" data-tour="winter-2027">
       <div class="sehe-departure-list-header">
        <p class="sehe-departure-list-label">Available Departures</p>
-       <span class="sehe-departure-list-count" data-departure-count=""><span class="sehe-departure-list-count-pulse"></span>1 available · 4 sold out</span>
+       <span class="sehe-departure-list-count" data-departure-count=""><span class="sehe-departure-list-count-pulse"></span>6 departures available</span>
       </div>
-      <div data-departure-content=""><div class="sehe-departure-next"><span class="sehe-departure-next-label">Next</span><span class="sehe-departure-next-date">12 September 2026</span><span class="sehe-departure-next-end">→ Returns 23 Sep</span></div><div class="sehe-departure-months"><div class="sehe-departure-month"><span class="sehe-departure-month-label">July 2026</span><span class="sehe-departure-month-dates"><span class="sehe-departure-day-sold" title="Sold out">18</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">August 2026</span><span class="sehe-departure-month-dates"><span class="sehe-departure-day-sold" title="Sold out">1</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">September 2026</span><span class="sehe-departure-month-dates"><span class="sehe-departure-day-sold" title="Sold out">5</span><span class="sehe-departure-day-sep">·</span><span>12</span></span></div></div><div class="sehe-departure-legend"><span class="sehe-departure-legend-item"><span class="sehe-departure-legend-dot sehe-departure-legend-avail"></span>Available</span><span class="sehe-departure-legend-item"><span class="sehe-departure-legend-dot sehe-departure-legend-sold"></span>Sold out</span></div></div>
+      <div data-departure-content=""><div class="sehe-departure-next"><span class="sehe-departure-next-label">Next</span><span class="sehe-departure-next-date">10 July 2027</span><span class="sehe-departure-next-end">→ Returns 21 Jul</span></div><div class="sehe-departure-months"><div class="sehe-departure-month"><span class="sehe-departure-month-label">July 2027</span><span class="sehe-departure-month-dates"><span>10</span><span class="sehe-departure-day-sep">·</span><span>24</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">August 2027</span><span class="sehe-departure-month-dates"><span>7</span><span class="sehe-departure-day-sep">·</span><span>14</span><span class="sehe-departure-day-sep">·</span><span>21</span><span class="sehe-departure-day-sep">·</span><span>28</span></span></div></div></div>
       <div class="booking-notes">
        <div class="booking-deposit">
         <svg class="booking-deposit-icon" viewBox="0 0 24 24" fill="none" stroke="#2a7a4a" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
@@ -953,13 +967,13 @@
 <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async=""></script>
 <script type="text/javascript" src="//pounamutourismgroup.checkfront.com/lib/interface--0.js"></script>
 <script>
-  var DEFAULT_TOUR = 'winter26';  /* ← CHANGE THIS PER PAGE */
+  var DEFAULT_TOUR = 'winter27';  /* ← CHANGE THIS PER PAGE */
   var TOUR_DATA = {
    '14day': { name: '14-Day Spring⁠/⁠Summer Tour 2026/27', tabLabel: '14-Day Spring⁠/⁠Summer 2026/27', duration: '14 Days', price: 'From NZ$8,995', item_id: '302', date: '20261109', category_id: null, departureKey: '14day-2627', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
    '11day': { name: '11-Day Spring⁠/⁠Summer Tour 2026/27', tabLabel: '11-Day Spring⁠/⁠Summer 2026/27', duration: '11 Days', price: 'From NZ$7,495', item_id: '305', date: '20261102', category_id: null, departureKey: '11day-2627', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
    'winter26': { name: '12-Day Winter Edition 2026', tabLabel: 'Winter 2026', duration: '12 Days', price: 'From NZ$7,995', item_id: '289', date: '20260905', category_id: '5', departureKey: 'winter-2026', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
    'pinnacle': { name: '15-Day Pinnacle Tour 2027', tabLabel: 'Pinnacle 2027', duration: '15 Days', price: 'From NZ$25,995', item_id: '315', date: '20270114', category_id: '5', departureKey: 'pinnacle-2027', startsEnds: 'Christchurch → Auckland', startsEndsLabel: 'Starts → Ends' },
-   'winter27': { name: '12-Day Winter Edition 2027', tabLabel: 'Winter 2027', duration: '12 Days', price: 'From NZ$8,495', item_id: '373', date: '20270710', category_id: '5', departureKey: 'winter-2027', startsEnds: 'Christchurch', startsEndsLabel: 'Starts & ends' },
+   'winter27': { name: '12-Day Winter Edition 2027', tabLabel: 'Winter 2027', duration: '12 Days', price: 'From NZ$8,495', item_id: '373', date: '20270710', category_id: '5', departureKey: 'winter-2027', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
    '14day2728': { name: '14-Day Spring⁠/⁠Summer Tour 2027/28', tabLabel: '14-Day Spring⁠/⁠Summer 2027/28', duration: '14 Days', price: 'From NZ$9,990', item_id: '388', date: '20271004', category_id: null, departureKey: '14day-2728', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
    '11day2728': { name: '11-Day Spring⁠/⁠Summer Tour 2027/28', tabLabel: '11-Day Spring⁠/⁠Summer 2027/28', duration: '11 Days', price: 'From NZ$8,490', item_id: '387', date: '20270927', category_id: null, departureKey: '11day-2728', startsEnds: 'Christchurch', startsEndsLabel: 'Starts & ends' }
   };
@@ -1382,13 +1396,13 @@
        <button class="sehe-day-summary" type="button" aria-expanded="false">
         <div class="sehe-day-thumb" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L387-Aoraki-Mount-Cook-National-Park--Canterbury-Rob-Suisted-1920w.jpg');"></div>
         <div class="sehe-day-headline">
-         <h3 class="sehe-day-title">Aoraki Mt Cook — Hillary Centre &amp; National Park</h3>
+         <h3 class="sehe-day-title">Aoraki Mt Cook — Hillary Centre &amp; alpine drive</h3>
          <div class="sehe-day-tags"><span class="sehe-day-tag sehe-day-tag-hero">Hillary family speaker</span><span class="sehe-day-tag">Alpine Centre</span><span class="sehe-day-tag">Optional ski plane</span></div>
         </div>
         <span class="sehe-day-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"></path></svg></span>
        </button>
        <div class="sehe-day-detail"><div class="sehe-day-detail-inner">
-        <p>Enjoy a leisurely morning and then a visit to the Sir Edmund Hillary Alpine Centre, which is a tribute to New Zealand's global icon as well as discovering New Zealand's colourful transport, climbing and hotel history. Followed by an afternoon scenic drive through Aoraki Mt Cook National Park surrounded by the silent splendour of the Southern Alps. Optional scenic ski-plane and helicopter flights over the Tasman Glacier are available. Guest speaker is a Hillary family representative in the Sir Edmund Hillary Alpine Centre Theatre before dinner. The optional Planetarium Show takes place in the theatre after the Hillary presentation.</p>
+        <p>Enjoy a leisurely morning and then a visit to the Sir Edmund Hillary Alpine Centre, which is a tribute to New Zealand's global icon as well as discovering New Zealand's colourful transport, climbing and hotel history. Followed by an afternoon scenic drive through the National Park, surrounded by the silent splendour of the Southern Alps. An optional helicopter flight with a glacier landing (the "Tasman Taster") is available. Morning optional activities also include a scenic ski plane flight with expert pilots navigating their way over the glacial lake, passing soaring mountain tops over NZ's longest glacier — the 600 metre thick, Tasman Glacier. Guest speaker is a Hillary family representative in the Sir Edmund Hillary Alpine Centre Theatre before dinner. The optional Planetarium Show takes place in the theatre after the Hillary presentation.</p>
         <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>The Hermitage Hotel</div></div>
        </div></div>
       </div>
@@ -1532,7 +1546,7 @@
     </div>
     <div class="sehe-routemap-media">
      <label for="seheRouteMapToggle" class="sehe-routemap-image-btn" aria-label="Open route map full size">
-      <img class="sehe-routemap-image" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/2026+Winter+Tour+Brochure_SEHE-Map-1-1920w.webp" alt="Sir Edmund Hillary Explorer 12-Day Winter Edition 2026 route map">
+      <img class="sehe-routemap-image" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/Web_2027+Winter+Tour+Brochure_SEHE-map-2027-1920w.webp" alt="Sir Edmund Hillary Explorer 12-Day Winter Edition 2027 route map">
       <span class="sehe-routemap-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M11 8v6M8 11h6M21 21l-4.35-4.35"></path></svg></span>
      </label>
      <p class="sehe-routemap-hint">Tap the map to enlarge</p>
@@ -1543,7 +1557,7 @@
   <div class="sehe-routemap-lightbox" role="dialog" aria-modal="true" aria-label="Tour route map">
    <label for="seheRouteMapToggle" class="sehe-routemap-lightbox-backdrop" aria-label="Close map"></label>
    <label for="seheRouteMapToggle" class="sehe-routemap-lightbox-close" aria-label="Close map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg></label>
-   <img class="sehe-routemap-lightbox-img" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/2026+Winter+Tour+Brochure_SEHE-Map-1-1920w.webp" alt="Sir Edmund Hillary Explorer 12-Day Winter Edition 2026 route map, full size">
+   <img class="sehe-routemap-lightbox-img" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/Web_2027+Winter+Tour+Brochure_SEHE-map-2027-1920w.webp" alt="Sir Edmund Hillary Explorer 12-Day Winter Edition 2027 route map, full size">
   </div>
 </div>
 
@@ -1894,7 +1908,7 @@
       </button>
       <div class="sehe-faq-a"><div class="sehe-faq-a-inner">
         <p>Absolutely. Many guests travel with us solo and our tours are designed to be welcoming and social without being overwhelming. Throughout the journey, there will be plenty of opportunities to meet and connect with other guests, including fellow solo travellers, during rail journeys, sightseeing, included meals and free time. Our Tour Guides are there to support all guests throughout the tour and will help ensure solo travellers feel comfortable and included as part of the group. Please note that a single supplement applies for guests requesting their own private room. Availability of solo rooms may be limited on some departures.</p>
-        <p>A single supplement of <strong>NZ$1,495</strong> applies for guests requesting their own private room on this tour.</p>
+        <p>A single supplement of <strong>NZ$1,595</strong> applies for guests requesting their own private room on this tour.</p>
       </div></div>
      </article>
      <article class="sehe-faq-item">
@@ -2147,19 +2161,19 @@
      <div class="journey-card-actions"><a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/2027-2028-spring/summer-tour-11-days">View Tour</a><a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/2027-2028-spring/summer-tour-11-days#tour-dates">Check Dates</a><a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/2027-2028-spring/summer-tour-11-days#tour-brochure">Brochure</a></div>
     </div>
    </article>
-   <article class="journey-card" data-season="winter" data-tour="winter-2027">
+   <article class="journey-card" data-season="winter" data-tour="winter-2026">
     <div class="journey-card-image-wrap">
-     <img class="journey-card-image" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/184565-tranzalpine-crossing-the-waimakariri-river-1920w.webp" alt="12-Day Winter Edition 2027">
-     <div class="journey-card-badges"><span class="journey-card-badge">Winter Edition · 2027</span><span class="journey-card-status"><span class="journey-card-status-dot"></span>Now Booking</span></div>
+     <img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp" alt="12-Day Winter Edition 2026">
+     <div class="journey-card-badges"><span class="journey-card-badge">Winter Edition · 2026</span><span class="journey-card-status"><span class="journey-card-status-dot"></span>Now Booking</span></div>
     </div>
     <div class="journey-card-body">
-     <h3 class="journey-card-name">12-Day Winter Edition 2027</h3>
+     <h3 class="journey-card-name">12-Day Winter Edition 2026</h3>
      <span class="journey-card-bestfor"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>Best for: Travellers who want the South Island at its most dramatic</span>
-     <p class="journey-card-description">Snow-capped landscapes, quiet alpine towns, and a pace that's all its own. Four rail journeys including the TranzAlpine, paired with extended stays in Queenstown, Doubtful Sound, and Aoraki Mt Cook.</p>
+     <p class="journey-card-description">The same winter journey in the 2026 season — snow-capped landscapes, the TranzAlpine, Doubtful Sound, Queenstown and Aoraki Mt Cook, at winter's quietest and most dramatic.</p>
      <div class="journey-card-next" data-next-placeholder=""><span class="journey-card-next-pulse"></span><div class="journey-card-next-text"><span class="journey-card-next-label">Now Booking</span><span class="journey-card-next-date">Departures available — see tour</span></div></div>
-     <div class="journey-card-facts"><div class="journey-card-fact"><span class="journey-card-fact-value">12 Days</span><span class="journey-card-fact-label">Duration</span></div><div class="journey-card-fact"><span class="journey-card-fact-value">From NZ $8,495</span><span class="journey-card-fact-label">Per person</span></div><div class="journey-card-fact"><span class="journey-card-fact-value" data-departure-value="">6</span><span class="journey-card-fact-label" data-departure-label="">Departures</span></div></div>
-     <div class="journey-card-includes"><span class="journey-card-includes-label">Tour Highlights · June – September 2027</span><div class="journey-card-pills"><span class="journey-card-pill">TranzAlpine</span><span class="journey-card-pill">The Mainlander</span><span class="journey-card-pill">Taieri Gorge</span><span class="journey-card-pill">Queenstown</span><span class="journey-card-pill">Doubtful Sound</span><span class="journey-card-pill">Aoraki Mt Cook</span></div></div>
-     <div class="journey-card-actions"><a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours">View Tour</a><a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours#tour-dates">Check Dates</a><a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours#tour-brochure">Brochure</a></div>
+     <div class="journey-card-facts"><div class="journey-card-fact"><span class="journey-card-fact-value">12 Days</span><span class="journey-card-fact-label">Duration</span></div><div class="journey-card-fact"><span class="journey-card-fact-value">From NZ $7,995</span><span class="journey-card-fact-label">Per person</span></div><div class="journey-card-fact"><span class="journey-card-fact-value" data-departure-value="">2</span><span class="journey-card-fact-label" data-departure-label="">Departures</span></div></div>
+     <div class="journey-card-includes"><span class="journey-card-includes-label">Tour Highlights · Winter 2026</span><div class="journey-card-pills"><span class="journey-card-pill">TranzAlpine</span><span class="journey-card-pill">The Mainlander</span><span class="journey-card-pill">Taieri Gorge</span><span class="journey-card-pill">Queenstown</span><span class="journey-card-pill">Doubtful Sound</span><span class="journey-card-pill">Aoraki Mt Cook</span></div></div>
+     <div class="journey-card-actions"><a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours">View Tour</a><a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours#tour-dates">Check Dates</a><a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours#tour-brochure">Brochure</a></div>
     </div>
    </article>
   </div>
@@ -2358,7 +2372,7 @@
 <script>
 (function(){
   /* Which tour this page is. Change per tour when templating. */
-  var SEHE_PAGE_TOUR = 'winter-2026';
+  var SEHE_PAGE_TOUR = 'winter-2027';
   var M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   function lbl(iso){ var p = iso.split('-'); return M[parseInt(p[1],10)-1] + ' ' + p[0].slice(2); }
   function full(iso){ var p = iso.split('-'); return M[parseInt(p[1],10)-1] + ' ' + p[0]; }

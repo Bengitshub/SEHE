@@ -1,8 +1,16 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 11-DAY SPRING/SUMMER 2027/28
-     COMPLETE TOUR PAGE  ·  VERSION v12  ·  2026-07-13  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v13  ·  2026-07-13  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v13 — FIELDS AND BUTTON PINNED TO THE SAME BOX (Ben: "why can't the
+            button just be the same size as the form fields?"): on iPhone the
+            fields rendered ~30px wider than the button — Duda's mobile device
+            stylesheet inflates the input widths past their column, and only
+            the button was inline-pinned. The docking script now pins the
+            Name/Email/Country fields inline too (width/max-width 100%,
+            border-box, block, zero margin), so fields and button occupy the
+            identical box on every browser and are permanently edge-flush.
        v12 — DOCKED BUTTON TYPE RE-TUNED (Ben's phone review of the first
             mobile fix): the previous 360px breakpoint caught most Android
             phones and set the label at 11px — too small — and letter-spacing's
@@ -651,6 +659,13 @@
     var rows = w.querySelectorAll('.dmforminput');
     for (var j = 0; j < rows.length; j += 1) {
       flat(rows[j], { float: 'none', width: '100%', margin: '0 0 16px 0', padding: '0', 'min-height': '0', height: 'auto', background: 'transparent' });
+    }
+    /* the fields themselves: Duda's device stylesheets can size inputs past
+       their column (seen on iPhone) — inline width pins the fields and the
+       button to the identical box so they are always edge-flush */
+    var flds = w.querySelectorAll('input[type="text"], input[type="email"], select');
+    for (var q = 0; q < flds.length; q += 1) {
+      flat(flds[q], { display: 'block', width: '100%', 'max-width': '100%', 'box-sizing': 'border-box', margin: '0' });
     }
     var sub = w.querySelector('.dmformsubmit');
     flat(sub, { float: 'none', width: '100%', margin: '22px 0 0 0', padding: '0', background: 'transparent', 'background-color': 'transparent', border: '0', 'border-radius': '0', 'box-shadow': 'none', 'min-height': '0', height: 'auto', 'text-align': 'left' });
