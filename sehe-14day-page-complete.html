@@ -1,8 +1,19 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 14-DAY SPRING/SUMMER 2026/27
-     COMPLETE TOUR PAGE  ·  VERSION v15  ·  2026-07-13  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v16  ·  2026-07-13  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v16 — DOCKED FORM GEOMETRY FLATTENED (fixes Ben's two review points on the
+            v15 pilot): the Duda widget kept geometry from its old home — the
+            theme/instance CSS painted the submit CONTAINER navy (a slab behind
+            the real button) and indented the internal wrappers so the fields
+            did not share the heading's left edge. The docking script now
+            flattens the widget's internal geometry inline at dock time
+            (containers transparent + zero padding, rows full-width, button
+            container collapsed to the button), which outranks every
+            stylesheet. Fields and button now align with the heading exactly
+            like the design's own form. Colours/typography still come from the
+            widget skin.
        v15 — BROCHURE FORM DOCKING for the switch-over sandwich: added an empty
             form slot under the design form and a loader script that, on the
             published site only, moves the real Duda form widget (pasted below
@@ -604,12 +615,30 @@
     var oldParent = w.parentElement;
     slot.appendChild(w);
     slot.removeAttribute('hidden');
-    /* the widget instance carries its own fixed button width from an old Duda
-       design setting; inline importants are the only reliable override */
+    /* The widget carries geometry from its old home: Duda instance CSS and the
+       site theme still size/paint its internal wrappers (fixed button width, a
+       painted submit CONTAINER that shows as a slab behind the button, left
+       padding that mis-aligns the fields). Class-level CSS cannot outrank
+       instance rules, so flatten the geometry INLINE at dock time — inline
+       importants beat every stylesheet. Colours/typography stay with the skin. */
+    var flat = function(el, geom) {
+      if (!el || !el.style) return;
+      for (var k in geom) { if (geom.hasOwnProperty(k)) { el.style.setProperty(k, geom[k], 'important'); } }
+    };
+    flat(w, { padding: '0', margin: '0', width: '100%', 'max-width': 'none', background: 'transparent', 'background-color': 'transparent', 'min-height': '0', height: 'auto' });
+    flat(w.querySelector('.dmform-wrapper'), { padding: '0', margin: '0', width: '100%', 'max-width': 'none', background: 'transparent' });
+    flat(w.querySelector('form'), { padding: '0', margin: '0', width: '100%', 'max-width': 'none' });
+    flat(w.querySelector('.spacing-container'), { padding: '0', margin: '0', width: '100%' });
+    var ttl = w.querySelector('.dmform-title');
+    if (ttl) { ttl.style.setProperty('display', 'none', 'important'); }
+    var rows = w.querySelectorAll('.dmforminput');
+    for (var j = 0; j < rows.length; j += 1) {
+      flat(rows[j], { float: 'none', width: '100%', margin: '0 0 16px 0', padding: '0', 'min-height': '0', height: 'auto', background: 'transparent' });
+    }
     var sub = w.querySelector('.dmformsubmit');
-    if (sub) { sub.style.setProperty('width', '100%', 'important'); sub.style.setProperty('float', 'none', 'important'); sub.style.setProperty('margin', '22px 0 0 0', 'important'); }
+    flat(sub, { float: 'none', width: '100%', margin: '22px 0 0 0', padding: '0', background: 'transparent', 'background-color': 'transparent', border: '0', 'border-radius': '0', 'box-shadow': 'none', 'min-height': '0', height: 'auto', 'text-align': 'left' });
     var btn = sub ? sub.querySelector('input[type="submit"]') : null;
-    if (btn) { btn.style.setProperty('width', '100%', 'important'); btn.style.setProperty('display', 'block', 'important'); btn.style.setProperty('box-sizing', 'border-box', 'important'); }
+    flat(btn, { display: 'block', width: '100%', margin: '0', 'box-sizing': 'border-box' });
     var side = slot.parentElement;
     if (side && side.classList) side.classList.add('sehe-form-docked');
     /* if the widget's old container is now completely empty, collapse it */
