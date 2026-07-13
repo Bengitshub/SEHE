@@ -1,8 +1,16 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 14-DAY SPRING/SUMMER 2027/28
-     COMPLETE TOUR PAGE  ·  VERSION v18  ·  2026-07-08  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v19  ·  2026-07-13  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v19 — BROCHURE FORM DOCKING (rollout of the 14-Day pilot v15-v17): a form
+            slot now sits inside the brochure card and a loader script, on the
+            published site only, moves the real Duda form widget into it and
+            flattens the widget geometry inline (full-width fields and button,
+            centred button text, no leftover instance padding). In the Duda
+            editor, or with no Duda form widget on the page, nothing moves.
+            Shared SOLDOUT fallback map refreshed: 12 Oct 2026 (14-Day 26/27)
+            and 5 Sep 2026 (Winter 2026) have sold out since the 8-Jul bake.
        v18 — BOOKING DATA ALIGNED TO THE LIVE-SITE WIDGETS (technical only; design
             untouched): the departures data script is now the proven widget block —
             full worker SCHEDULE baked (including the four Oct 2026 departures),
@@ -94,9 +102,9 @@
     '14day-2728'   : ['2027-10-04','2027-10-11','2027-10-18','2027-11-01','2027-11-08','2027-11-15','2027-11-22','2027-12-06','2028-01-17','2028-01-24','2028-01-31','2028-02-07','2028-02-14']
   };
   var SOLDOUT = {
-    'winter-2026': ['2026-06-27','2026-07-18','2026-08-01'],
+    'winter-2026': ['2026-06-27','2026-07-18','2026-08-01','2026-09-05'],
     '11day-2627' : ['2026-10-05','2026-11-02'],
-    '14day-2627' : ['2026-10-19','2026-10-26']
+    '14day-2627' : ['2026-10-12','2026-10-19','2026-10-26']
   };
   var ADD = { 'winter-2026':11,'winter-2027':11,'pinnacle-2027':15,'11day-2627':10,'11day-2728':10,'14day-2627':13,'14day-2728':13 };
   function endOf(iso,n){ var d=new Date(iso+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10); }
@@ -538,6 +546,17 @@
     .sehe-brochure-title,.sehe-brochure-subtitle{text-align:left!important;margin-left:0!important;margin-right:0!important;}
     .sehe-brochure-eyebrow{justify-content:flex-start!important;}
   }
+  /* Docked Duda form (switch-over sandwich pages): the loader script below moves
+     the real Duda form widget into .sehe-form-slot so it renders exactly where
+     the design's form belongs. The widget's own custom CSS (the skin) styles the
+     fields and button; these rules only handle fit and the note hand-off. */
+  .sehe-form-slot { display: block; }
+  .sehe-form-slot .dmform { max-width: none !important; margin: 0 !important; padding: 0 !important; }
+  .sehe-form-slot .dmform-wrapper { padding: 0 !important; }
+  .sehe-form-slot .dmform-title { display: none !important; }
+  .sehe-form-slot .dmformsubmit { float: none !important; width: 100% !important; margin: 22px 0 0 0 !important; }
+  .sehe-form-slot .dmformsubmit input[type="submit"] { display: block !important; width: 100% !important; box-sizing: border-box !important; }
+  .sehe-brochure-formside.sehe-form-docked .sehe-brochure-note { display: none !important; }
 </style>
 <div class="sehe-tourpage">
   <section class="sehe-brochure" id="tour-brochure">
@@ -570,9 +589,67 @@
       </div>
       <button type="submit">View the brochure collection</button>
      </form>
+     <div class="sehe-form-slot" data-sehe-form-slot hidden></div>
     </div>
    </div>
   </section>
+<script>
+  (function() {
+  /* Brochure form DOCKING (switch-over sandwich pages). The real Duda form
+     widget is pasted below this HTML block so its webhook keeps working; on
+     the published site this script moves that widget INTO the brochure card
+     form slot as soon as it appears in the DOM, so the form renders exactly
+     where the design intends. Enhance-only: in the Duda editor, on this
+     master preview, or if no Duda form widget exists on the page, nothing is
+     touched and the layout stays as pasted. */
+  if (!/(^|\.)siredmundhillaryexplorer\.com$/.test(window.location.hostname)) return;
+  var slot = document.querySelector('[data-sehe-form-slot]');
+  if (!slot) return;
+  var tries = 0;
+  var timer = window.setInterval(function() {
+    tries += 1;
+    if (tries > 75) { window.clearInterval(timer); return; }
+    var all = document.querySelectorAll('div[data-element-type="dContactUsRespId"]');
+    var w = null;
+    for (var i = 0; i < all.length; i += 1) {
+      if (all[i].querySelector('input[name="dmform-1"]') && all[i].querySelector('input[name="dmform-3"]')) { w = all[i]; break; }
+    }
+    if (!w) return;
+    window.clearInterval(timer);
+    var oldParent = w.parentElement;
+    slot.appendChild(w);
+    slot.removeAttribute('hidden');
+    /* The widget carries geometry from its old home: Duda instance CSS and the
+       site theme still size/paint its internal wrappers (fixed button width, a
+       painted submit CONTAINER that shows as a slab behind the button, left
+       padding that mis-aligns the fields). Class-level CSS cannot outrank
+       instance rules, so flatten the geometry INLINE at dock time — inline
+       importants beat every stylesheet. Colours/typography stay with the skin. */
+    var flat = function(el, geom) {
+      if (!el || !el.style) return;
+      for (var k in geom) { if (geom.hasOwnProperty(k)) { el.style.setProperty(k, geom[k], 'important'); } }
+    };
+    flat(w, { padding: '0', margin: '0', width: '100%', 'max-width': 'none', background: 'transparent', 'background-color': 'transparent', 'min-height': '0', height: 'auto' });
+    flat(w.querySelector('.dmform-wrapper'), { padding: '0', margin: '0', width: '100%', 'max-width': 'none', background: 'transparent' });
+    flat(w.querySelector('form'), { padding: '0', margin: '0', width: '100%', 'max-width': 'none' });
+    flat(w.querySelector('.spacing-container'), { padding: '0', margin: '0', width: '100%' });
+    var ttl = w.querySelector('.dmform-title');
+    if (ttl) { ttl.style.setProperty('display', 'none', 'important'); }
+    var rows = w.querySelectorAll('.dmforminput');
+    for (var j = 0; j < rows.length; j += 1) {
+      flat(rows[j], { float: 'none', width: '100%', margin: '0 0 16px 0', padding: '0', 'min-height': '0', height: 'auto', background: 'transparent' });
+    }
+    var sub = w.querySelector('.dmformsubmit');
+    flat(sub, { float: 'none', width: '100%', margin: '22px 0 0 0', padding: '0', background: 'transparent', 'background-color': 'transparent', border: '0', 'border-radius': '0', 'box-shadow': 'none', 'min-height': '0', height: 'auto', 'text-align': 'left' });
+    var btn = sub ? sub.querySelector('input[type="submit"]') : null;
+    flat(btn, { display: 'block', width: '100%', margin: '0', 'box-sizing': 'border-box', 'text-align': 'center' });
+    var side = slot.parentElement;
+    if (side && side.classList) side.classList.add('sehe-form-docked');
+    /* if the widget's old container is now completely empty, collapse it */
+    if (oldParent && oldParent !== slot && oldParent.children.length === 0 && !(oldParent.textContent || '').replace(/\s+/g, '')) { oldParent.style.display = 'none'; }
+  }, 200);
+})();
+</script>
 </div>
 <script>
   (function() {

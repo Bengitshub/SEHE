@@ -1,6 +1,6 @@
 # SEHE — FINAL SWITCH-OVER PACK (for Aaron)
 
-**Prepared:** 8 July 2026 (rev 4, 13 Jul — the real form now auto-docks INTO the brochure card on published pages via a script in Block A; rev 3 aligned booking data to the live-site widgets: full Checkfront date lists incl. Oct 2026, worker-wins live merge) · **Scope:** put the 7 new tour pages live on the real URLs, install the real lead-capture forms, set SEO titles, deploy the availability worker.
+**Prepared:** 8 July 2026 (rev 5, 13 Jul — docking rolled out to ALL 7 pages’ blocks, Winter-2026 5 Sep sell-out baked; rev 4 — the real form now auto-docks INTO the brochure card on published pages via a script in Block A; rev 3 aligned booking data to the live-site widgets: full Checkfront date lists incl. Oct 2026, worker-wins live merge) · **Scope:** put the 7 new tour pages live on the real URLs, install the real lead-capture forms, set SEO titles, deploy the availability worker.
 
 Everything in this folder is verified: every page passed the project validators, the live `-new` previews were crawled and fact-checked, and each Block A + Block B pair reconstructs its page byte-for-byte.
 
@@ -11,12 +11,14 @@ Everything in this folder is verified: every page passed the project validators,
 | # | Tour | New page (already built & verified) | Goes live at (real URL) | Files in this pack |
 |---|---|---|---|---|
 | 1 | 14-Day Spring/Summer 2026/27 · v17 | `/14/day-spr/sum-26/27-new` | `/2026-2027-spring/summer-tour-14-days` | `SEHE-14day-2627_v17-blockA/B.txt` |
-| 2 | 11-Day Spring/Summer 2026/27 · v14 | `/11/day-spr/sum-26/27-new` | `/2026-2027-spring/summer-tour-11-day-tours` | `SEHE-11day-2627_v14-blockA/B.txt` |
-| 3 | 12-Day Winter Edition 2026 · v13 | `/12/day-winter-26-new` | `/2026-winter-edition-tours` | `SEHE-winter-2026_v13-blockA/B.txt` |
-| 4 | 12-Day Winter Edition 2027 · v7 | `/12/day-winter-27-new` | `/2027-winter-edition-tours` | `SEHE-winter-2027_v7-blockA/B.txt` |
-| 5 | 15-Day Pinnacle Tour 2027 · v7 | `/15/day-pinnacle-27-new` | `/pinnacle-tour-2027` | `SEHE-pinnacle-2027_v7-blockA/B.txt` |
-| 6 | 11-Day Spring/Summer 2027/28 · v9 | `/11/day-spr/sum-27/28-new` | `/2026-2027-spring/2027-2028-spring/summer-tour-11-days` | `SEHE-11day-2728_v9-blockA/B.txt` |
-| 7 | 14-Day Spring/Summer 2027/28 · v18 | `/14/day-spr/sum-27/28-new` | `/2026-2027-spring/2027-2028-spring/summer-tour-14-days` | `SEHE-14day-2728_v18-blockA/B.txt` |
+| 2 | 11-Day Spring/Summer 2026/27 · v15 | `/11/day-spr/sum-26/27-new` | `/2026-2027-spring/summer-tour-11-day-tours` | `SEHE-11day-2627_v15-blockA/B.txt` |
+| 3 | 12-Day Winter Edition 2026 · v14 | `/12/day-winter-26-new` | `/2026-winter-edition-tours` | `SEHE-winter-2026_v14-blockA/B.txt` |
+| 4 | 12-Day Winter Edition 2027 · v8 | `/12/day-winter-27-new` | `/2027-winter-edition-tours` | `SEHE-winter-2027_v8-blockA/B.txt` |
+| 5 | 15-Day Pinnacle Tour 2027 · v8 | `/15/day-pinnacle-27-new` | `/pinnacle-tour-2027` | `SEHE-pinnacle-2027_v8-blockA/B.txt` |
+| 6 | 11-Day Spring/Summer 2027/28 · v10 | `/11/day-spr/sum-27/28-new` | `/2026-2027-spring/2027-2028-spring/summer-tour-11-days` | `SEHE-11day-2728_v10-blockA/B.txt` |
+| 7 | 14-Day Spring/Summer 2027/28 · v19 | `/14/day-spr/sum-27/28-new` | `/2026-2027-spring/2027-2028-spring/summer-tour-14-days` | `SEHE-14day-2728_v19-blockA/B.txt` |
+
+> **STATUS:** Page 1 (14-Day 26/27) is **already fully prepped** on its `-new` URL — sandwich installed, form skinned and lead-tested, SEO title set. For page 1 skip §1 and §2 and do **only §3** (the URL swap). Pages 2–7 need the full §1 → §2 → §3 sequence.
 
 Also in the pack: `duda-brochure-form-skin.css` (form styling) and `sehe-worker_LIVE-auto.js` (availability worker).
 
