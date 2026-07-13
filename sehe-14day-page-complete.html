@@ -1,8 +1,14 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 14-DAY SPRING/SUMMER 2026/27
-     COMPLETE TOUR PAGE  ·  VERSION v21  ·  2026-07-13  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v22  ·  2026-07-13  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v22 — CODE UNIFIED WITH THE OTHER SIX PAGES (Ben: "shouldn't they all
+            be the same?"): this page's shorter button label already fitted at
+            every width, but the docking script now carries the identical
+            label-measuring fitter and late width re-checks as the rest of the
+            set — one behaviour everywhere, and the page stays safe if the
+            button wording is ever changed in Duda.
        v21 — BUTTON WIDTH ROOT-CAUSE FIX (found by reproducing the live page
             with Duda's real mobile stylesheets): Duda's mobile runtime CSS
             rule ".dmMobileBody ... .dmformsubmit { width:91%; max-width:91% }"
@@ -737,9 +743,34 @@
         btn.style.setProperty('max-width', rw + 'px', 'important');
       }
     };
-    var applyBtn = function() { sizeBtn(); equalize(); };
+    /* FIT THE LABEL: submit labels differ per tour (the Winter button is 7
+       characters longer than the 14-Day one the size steps were tuned on) —
+       measure the actual label with canvas and shrink the font until it fits
+       the button's inner width. Works for any tour's wording. */
+    var fitLabel = function() {
+      if (!btn) return;
+      var cs = window.getComputedStyle(btn);
+      var cv = document.createElement('canvas').getContext('2d');
+      var ls = parseFloat(cs.letterSpacing) || 0;
+      var label = (btn.value || '').toUpperCase();
+      var inner = btn.getBoundingClientRect().width - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0);
+      if (inner <= 0 || !label) return;
+      var s = parseFloat(cs.fontSize) || 13.5;
+      for (; s >= 9; s -= 0.5) {
+        cv.font = '600 ' + s + 'px Montserrat, sans-serif';
+        if (cv.measureText(label).width + ls * label.length <= inner - 2) { break; }
+      }
+      btn.style.setProperty('font-size', s + 'px', 'important');
+    };
+    var applyBtn = function() { sizeBtn(); equalize(); fitLabel(); };
     applyBtn();
-    if (window.addEventListener) { window.addEventListener('resize', applyBtn); }
+    /* fonts and late stylesheets shift widths after first paint — re-check */
+    window.setTimeout(applyBtn, 700);
+    window.setTimeout(applyBtn, 2600);
+    if (window.addEventListener) {
+      window.addEventListener('resize', applyBtn);
+      window.addEventListener('load', applyBtn);
+    }
     var side = slot.parentElement;
     if (side && side.classList) side.classList.add('sehe-form-docked');
     /* if the widget's old container is now completely empty, collapse it */

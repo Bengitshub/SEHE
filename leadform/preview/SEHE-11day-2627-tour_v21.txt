@@ -1,8 +1,19 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 11-DAY SPRING/SUMMER 2026/27
-     COMPLETE TOUR PAGE  ·  VERSION v20  ·  2026-07-13  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v21  ·  2026-07-13  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v21 — DIRECT LEAD CAPTURE: the brochure form now submits for real — the
+            lead goes to the Worker /lead endpoint, which forwards it to this
+            tour's existing Zapier hook, so ActiveCampaign and the Excel log
+            receive the same data as the old Duda-form flow (same field names).
+            Hidden honeypot field added for spam protection; client-side name +
+            email validation (invalid input alerts and lets the visitor fix it —
+            no silent lead loss); double-submit guarded. Graceful on every
+            failure path: the visitor always continues to /brochure-collection.
+            Requires the ZAPIER_HOOKS_JSON Worker secret (see
+            leadform/ENABLE-DIRECT-LEADS.md); until it is set the endpoint
+            answers 503 and the visitor experience is unchanged.
        v20 — CODE UNIFIED WITH THE OTHER SIX PAGES (Ben: "shouldn't they all
             be the same?"): this page's shorter button label already fitted at
             every width, but the docking script now carries the identical
@@ -606,6 +617,7 @@
         <option value="Other">Other</option>
        </select>
       </div>
+      <div class="field" style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true"><input type="text" name="sehe_hp" tabindex="-1" autocomplete="off" value=""></div>
       <button type="submit">View the brochure collection</button>
      </form>
      <div class="sehe-form-slot" data-sehe-form-slot hidden></div>
@@ -746,22 +758,52 @@
 </div>
 <script>
   (function() {
-  /* Brochure form (design template). For now, submitting just continues to the
-     brochure page. The lead capture will be handled by your existing Duda form
-     (kept on the page, hidden) once that's in place — see chat notes. No data
-     is sent anywhere from here. */
+  /* Brochure form — DIRECT lead capture. Sends the lead to our Worker /lead
+     endpoint, which validates it and forwards to this tour's existing Zapier
+     hook (ActiveCampaign + the Excel log receive identical data to before).
+     GRACEFUL: whatever happens — success, worker down, endpoint not yet
+     enabled — the visitor continues to /brochure-collection within a few
+     seconds, so the button's promise is always kept and no visitor is ever
+     stuck. With JS off, the form's own action does the same redirect. */
+  var ENDPOINT = 'https://sehe-next-departures.ben-757.workers.dev/lead';
+  var PAGE_KEY = "11day-2627";
+  var TOUR_NAME = "11-Day Spring/Summer Tour 2026/27";
   var form = document.querySelector('.sehe-brochure-form');
   if (!form) return;
   var sel = form.querySelector('select[name="dmform-2"]');
   if (sel) {
     sel.addEventListener('change', function() {
       if (this.value) this.classList.add('has-value');
-      else this.classList.remove('has-value');
     });
   }
+  var submitted = false;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
-    window.location.href = '/brochure-collection';
+    if (submitted) return;
+    var get = function(n) { var el = form.querySelector('[name="' + n + '"]'); return el ? (el.value || '').trim() : ''; };
+    if (!get('dmform-1') || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(get('dmform-3'))) {
+      alert('Please enter your name and a valid email address.');
+      return;
+    }
+    submitted = true;
+    var data = {
+      name: get('dmform-1'),
+      email: get('dmform-3'),
+      country: get('dmform-2'),
+      website: get('sehe_hp'),   /* honeypot — humans never fill this; name chosen so browser autofill never matches it */
+      page: PAGE_KEY,
+      tour: TOUR_NAME,
+      source_url: (window.location && window.location.href) ? window.location.href : ''
+    };
+    var btn = form.querySelector('button[type="submit"]');
+    if (btn) { btn.disabled = true; btn.textContent = 'One moment\u2026'; }
+    var done = false;
+    var go = function() { if (!done) { done = true; window.location.href = '/brochure-collection'; } };
+    setTimeout(go, 3500);   /* failsafe: never trap the visitor */
+    try {
+      fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data), keepalive: true })
+        .then(go, go);
+    } catch (err) { go(); }
   });
 })();
 </script>

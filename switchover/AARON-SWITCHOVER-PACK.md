@@ -10,8 +10,8 @@ Everything in this folder is verified: every page passed the project validators,
 
 | # | Tour | New page (already built & verified) | Goes live at (real URL) | Files in this pack |
 |---|---|---|---|---|
-| 1 | 14-Day Spring/Summer 2026/27 · v21 | `/14/day-spr/sum-26/27-new` | `/2026-2027-spring/summer-tour-14-days` | `SEHE-14day-2627_v21-blockA/B.txt` |
-| 2 | 11-Day Spring/Summer 2026/27 · v19 | `/11/day-spr/sum-26/27-new` | `/2026-2027-spring/summer-tour-11-day-tours` | `SEHE-11day-2627_v19-blockA/B.txt` |
+| 1 | 14-Day Spring/Summer 2026/27 · v22 | `/14/day-spr/sum-26/27-new` | `/2026-2027-spring/summer-tour-14-days` | `SEHE-14day-2627_v22-blockA/B.txt` |
+| 2 | 11-Day Spring/Summer 2026/27 · v20 | `/11/day-spr/sum-26/27-new` | `/2026-2027-spring/summer-tour-11-day-tours` | `SEHE-11day-2627_v20-blockA/B.txt` |
 | 3 | 12-Day Winter Edition 2026 · v19 | `/12/day-winter-26-new` | `/2026-winter-edition-tours` | `SEHE-winter-2026_v19-blockA/B.txt` |
 | 4 | 12-Day Winter Edition 2027 · v13 | `/12/day-winter-27-new` | `/2027-winter-edition-tours` | `SEHE-winter-2027_v13-blockA/B.txt` |
 | 5 | 15-Day Pinnacle Tour 2027 · v13 | `/15/day-pinnacle-27-new` | `/pinnacle-tour-2027` | `SEHE-pinnacle-2027_v13-blockA/B.txt` |
