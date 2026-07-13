@@ -88,7 +88,7 @@ The updated worker went live on 8 July and has been verified (Pinnacle now retur
 
 One item remains here: confirm with Kirsty that the **Checkfront Pinnacle product** (item 315) resolves bookings to an **end date of 29 January 2027** (15 nights), so booking confirmations match the pages.
 
-**Open question for Kirsty (post-launch, Ben to raise):** the hero "Departures" stat currently live-updates from the worker feed so it always matches the booking list (e.g. it moved 15 → 14 by itself when 12 Oct sold out). Ben may prefer it frozen — decide together after launch; freezing risks the hero contradicting the list below it.
+**Open question for Kirsty (post-launch, Ben to raise):** the hero "Departures" stat currently live-updates from the worker feed so it always matches the booking list (e.g. it moved 15 → 14 by itself when 12 Oct sold out). Ben may prefer it frozen — decide together after launch; freezing risks the hero contradicting the list below it. Related labelling decision: the number counts BOOKABLE departures only (sold-out dates excluded), and the plain "Departures" label can be read as the season total — options include relabelling ("14 dates available") or showing both ("17 departures · 3 sold out"). The date range will also be reworded from "Nov 26 – Apr 27" to "Nov 2026 – Apr 2027" in the next version round ("26" reads as a day of month).
 
 ---
 
