@@ -10,7 +10,7 @@ Everything in this folder is verified: every page passed the project validators,
 
 | # | Tour | New page (already built & verified) | Goes live at (real URL) | Files in this pack |
 |---|---|---|---|---|
-| 1 | 14-Day Spring/Summer 2026/27 · v16 | `/14/day-spr/sum-26/27-new` | `/2026-2027-spring/summer-tour-14-days` | `SEHE-14day-2627_v16-blockA/B.txt` |
+| 1 | 14-Day Spring/Summer 2026/27 · v17 | `/14/day-spr/sum-26/27-new` | `/2026-2027-spring/summer-tour-14-days` | `SEHE-14day-2627_v17-blockA/B.txt` |
 | 2 | 11-Day Spring/Summer 2026/27 · v14 | `/11/day-spr/sum-26/27-new` | `/2026-2027-spring/summer-tour-11-day-tours` | `SEHE-11day-2627_v14-blockA/B.txt` |
 | 3 | 12-Day Winter Edition 2026 · v13 | `/12/day-winter-26-new` | `/2026-winter-edition-tours` | `SEHE-winter-2026_v13-blockA/B.txt` |
 | 4 | 12-Day Winter Edition 2027 · v7 | `/12/day-winter-27-new` | `/2027-winter-edition-tours` | `SEHE-winter-2027_v7-blockA/B.txt` |
@@ -85,6 +85,8 @@ Alternative (if URL swapping is awkward): paste Block A + form + Block B into th
 The updated worker went live on 8 July and has been verified (Pinnacle now returns 14 Jan → **29 Jan 2027**; all tours checked). **No Cloudflare work needed** — the `sehe-worker_LIVE-auto.js` in this pack is a reference copy only.
 
 One item remains here: confirm with Kirsty that the **Checkfront Pinnacle product** (item 315) resolves bookings to an **end date of 29 January 2027** (15 nights), so booking confirmations match the pages.
+
+**Open question for Kirsty (post-launch, Ben to raise):** the hero "Departures" stat currently live-updates from the worker feed so it always matches the booking list (e.g. it moved 15 → 14 by itself when 12 Oct sold out). Ben may prefer it frozen — decide together after launch; freezing risks the hero contradicting the list below it.
 
 ---
 

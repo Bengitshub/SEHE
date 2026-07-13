@@ -1,8 +1,18 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 14-DAY SPRING/SUMMER 2026/27
-     COMPLETE TOUR PAGE  ·  VERSION v16  ·  2026-07-13  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v17  ·  2026-07-13  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v17 — BUTTON TEXT CENTRED on the docked form (Duda base CSS left-aligned
+            the submit input on the live site; the dock-time flattener now sets
+            text-align:center inline, matching the design button). BAKED
+            SNAPSHOT REFRESHED to current live statuses: 12 Oct 2026 sold out
+            since the 8-Jul bake, so first paint now shows 14 available · 3
+            sold out, next departure 9 Nov 2026, hero 14 · Nov 26 - Apr 27 —
+            identical to what the live worker merge resolves, so no number
+            flash on load. (Whether the hero stat should live-update at all is
+            parked for Kirsty post-launch; the live merge currently keeps it
+            consistent with the booking list.)
        v16 — DOCKED FORM GEOMETRY FLATTENED (fixes Ben's two review points on the
             v15 pilot): the Duda widget kept geometry from its old home — the
             theme/instance CSS painted the submit CONTAINER navy (a slab behind
@@ -100,7 +110,7 @@
   var SOLDOUT = {
     'winter-2026': ['2026-06-27','2026-07-18','2026-08-01'],
     '11day-2627' : ['2026-10-05','2026-11-02'],
-    '14day-2627' : ['2026-10-19','2026-10-26']
+    '14day-2627' : ['2026-10-12','2026-10-19','2026-10-26']
   };
   var ADD = { 'winter-2026':11,'winter-2027':11,'pinnacle-2027':15,'11day-2627':10,'11day-2728':10,'14day-2627':13,'14day-2728':13 };
   function endOf(iso,n){ var d=new Date(iso+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10); }
@@ -272,7 +282,7 @@
           <div class="sehe-hx-field"><div class="sehe-hx-k">Route</div><div class="sehe-hx-v">Christchurch return<a class="sehe-hx-route-link" href="#tour-route">View Route</a></div></div>
           <div class="sehe-hx-field"><div class="sehe-hx-k">Duration</div><div class="sehe-hx-v">14 Days<small>13 nights</small></div></div>
           <div class="sehe-hx-field"><div class="sehe-hx-k">From</div><div class="sehe-hx-v">NZ$8,995<small>per person, twin share</small></div></div>
-          <div class="sehe-hx-field"><div class="sehe-hx-k">Departures</div><div class="sehe-hx-v"><span data-sehe-dep-count>15</span><small data-sehe-dep-range>Oct 26 &ndash; Apr 27</small></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">Departures</div><div class="sehe-hx-v"><span data-sehe-dep-count>14</span><small data-sehe-dep-range>Nov 26 &ndash; Apr 27</small></div></div>
         </div>
         <div class="sehe-hx-stub">
           <a class="sehe-hx-btn sehe-hx-btn--primary" href="#tour-dates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg> View Tour Dates </a>
@@ -621,7 +631,7 @@
     var sub = w.querySelector('.dmformsubmit');
     flat(sub, { float: 'none', width: '100%', margin: '22px 0 0 0', padding: '0', background: 'transparent', 'background-color': 'transparent', border: '0', 'border-radius': '0', 'box-shadow': 'none', 'min-height': '0', height: 'auto', 'text-align': 'left' });
     var btn = sub ? sub.querySelector('input[type="submit"]') : null;
-    flat(btn, { display: 'block', width: '100%', margin: '0', 'box-sizing': 'border-box' });
+    flat(btn, { display: 'block', width: '100%', margin: '0', 'box-sizing': 'border-box', 'text-align': 'center' });
     var side = slot.parentElement;
     if (side && side.classList) side.classList.add('sehe-form-docked');
     /* if the widget's old container is now completely empty, collapse it */
