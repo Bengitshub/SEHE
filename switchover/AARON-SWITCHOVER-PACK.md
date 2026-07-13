@@ -18,7 +18,7 @@ Everything in this folder is verified: every page passed the project validators,
 | 6 | 11-Day Spring/Summer 2027/28 · v15 | `/11/day-spr/sum-27/28-new` | `/2026-2027-spring/2027-2028-spring/summer-tour-11-days` | `SEHE-11day-2728_v15-blockA/B.txt` |
 | 7 | 14-Day Spring/Summer 2027/28 · v24 | `/14/day-spr/sum-27/28-new` | `/2026-2027-spring/2027-2028-spring/summer-tour-14-days` | `SEHE-14day-2728_v24-blockA/B.txt` |
 
-> **STATUS:** Page 1 (14-Day 26/27) is **already fully prepped** on its `-new` URL — sandwich installed, form skinned and lead-tested, SEO title set. For page 1 skip §1 and §2 and do **only §3** (the URL swap). Pages 2–7 need the full §1 → §2 → §3 sequence.
+> **STATUS (13 Jul): ALL SEVEN pages are fully prepped and verified on their `-new` URLs** — sandwich installed, real form skinned with the standard button label, test lead fired and confirmed per page, SEO title set, live-feed data checked. **Aaron: skip §1 and §2 entirely — your job is §3 (the URL swap) per page, plus the §5 verification pings.**
 >
 > A live page's `VERSION vN` marker may sit one or two behind this table where Ben standardised the button label in Duda instead of re-pasting — the build side verifies those pages directly; no action needed from Aaron.
 
