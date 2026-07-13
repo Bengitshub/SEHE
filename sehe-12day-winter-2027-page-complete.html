@@ -1,8 +1,20 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 12-DAY WINTER EDITION 2027
-     COMPLETE TOUR PAGE  ·  VERSION v12  ·  2026-07-13  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v13  ·  2026-07-13  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v13 — WINTER-LABEL LESSON APPLIED (Ben's Winter-2026 phone review):
+            each tour's submit label differs — the Winter one is 7 characters
+            longer than the 14-Day label the size steps were tuned on, so it
+            overflowed below ~420px; and web fonts loading after first paint
+            could leave the width equalizer a few pixels off. The docking
+            script now canvas-measures the actual label and shrinks the font
+            until it fits the button's inner width (works for any tour's
+            wording, so the still-unseen Pinnacle / 27-28 labels are covered
+            in advance), and re-runs the whole width/fit pass after fonts
+            load (0.7s / 2.6s / window load) and on every resize. Verified in
+            a full-stylesheet render: label fits at 390px (auto 12px) and the
+            button equals the field width at 430px.
        v12 — BUTTON WIDTH ROOT-CAUSE FIX (found by reproducing the live page
             with Duda's real mobile stylesheets): Duda's mobile runtime CSS
             rule ".dmMobileBody ... .dmformsubmit { width:91%; max-width:91% }"
@@ -701,9 +713,34 @@
         btn.style.setProperty('max-width', rw + 'px', 'important');
       }
     };
-    var applyBtn = function() { sizeBtn(); equalize(); };
+    /* FIT THE LABEL: submit labels differ per tour (the Winter button is 7
+       characters longer than the 14-Day one the size steps were tuned on) —
+       measure the actual label with canvas and shrink the font until it fits
+       the button's inner width. Works for any tour's wording. */
+    var fitLabel = function() {
+      if (!btn) return;
+      var cs = window.getComputedStyle(btn);
+      var cv = document.createElement('canvas').getContext('2d');
+      var ls = parseFloat(cs.letterSpacing) || 0;
+      var label = (btn.value || '').toUpperCase();
+      var inner = btn.getBoundingClientRect().width - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0);
+      if (inner <= 0 || !label) return;
+      var s = parseFloat(cs.fontSize) || 13.5;
+      for (; s >= 9; s -= 0.5) {
+        cv.font = '600 ' + s + 'px Montserrat, sans-serif';
+        if (cv.measureText(label).width + ls * label.length <= inner - 2) { break; }
+      }
+      btn.style.setProperty('font-size', s + 'px', 'important');
+    };
+    var applyBtn = function() { sizeBtn(); equalize(); fitLabel(); };
     applyBtn();
-    if (window.addEventListener) { window.addEventListener('resize', applyBtn); }
+    /* fonts and late stylesheets shift widths after first paint — re-check */
+    window.setTimeout(applyBtn, 700);
+    window.setTimeout(applyBtn, 2600);
+    if (window.addEventListener) {
+      window.addEventListener('resize', applyBtn);
+      window.addEventListener('load', applyBtn);
+    }
     var side = slot.parentElement;
     if (side && side.classList) side.classList.add('sehe-form-docked');
     /* if the widget's old container is now completely empty, collapse it */
