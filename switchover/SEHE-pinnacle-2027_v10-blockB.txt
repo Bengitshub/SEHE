@@ -1,4 +1,4 @@
-<!-- ═══ SEHE pinnacle-2027 v9 — BLOCK B (paste in an HTML widget BELOW the Duda form row; Block A + form row sit above) ═══ -->
+<!-- ═══ SEHE pinnacle-2027 v10 — BLOCK B (paste in an HTML widget BELOW the Duda form row; Block A + form row sit above) ═══ -->
 
 
 

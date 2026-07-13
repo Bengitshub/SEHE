@@ -1,9 +1,18 @@
 <!-- =====================================================================
-     SIR EDMUND HILLARY EXPLORER — 15-DAY PINNACLE TOUR 2027
-     COMPLETE TOUR PAGE  ·  VERSION v9  ·  2026-07-13  (paste into a Duda HTML block)
+     SIR EDMUND HILLARY EXPLORER — 11-DAY SPRING/SUMMER 2027/28
+     COMPLETE TOUR PAGE  ·  VERSION v12  ·  2026-07-13  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
-       v9 — MOBILE FIXES from Ben's phone pass: the docked Duda submit is an
+       v12 — DOCKED BUTTON TYPE RE-TUNED (Ben's phone review of the first
+            mobile fix): the previous 360px breakpoint caught most Android
+            phones and set the label at 11px — too small — and letter-spacing's
+            trailing space biased the centred label left of true centre. Now
+            12.5px with 0.5px tracking covers every normal phone (11px is
+            reserved for 340px-and-under screens) and a matching text-indent
+            cancels the centring bias at every size, desktop included.
+            Measured with the real widget at 320 / 360 / 390 / 1440px: label
+            fits with margin everywhere and sits optically centred.
+       v11 — MOBILE FIXES from Ben's phone pass: the docked Duda submit is an
             INPUT element, which cannot wrap its label, so the long "View /
             Download Tour Brochure" text overflowed the button on narrow
             screens — the docking script now steps font size / tracking /
@@ -11,7 +20,7 @@
             resize/rotation. Brochure cover ("FREE PDF DOWNLOAD") explicitly
             centred in the stacked mobile layout (justify-content + auto
             margins, belt and braces).
-       v8 — BROCHURE FORM DOCKING (rollout of the 14-Day pilot v15-v17): a form
+       v10 — BROCHURE FORM DOCKING (rollout of the 14-Day pilot v15-v17): a form
             slot now sits inside the brochure card and a loader script, on the
             published site only, moves the real Duda form widget into it and
             flattens the widget geometry inline (full-width fields and button,
@@ -19,7 +28,7 @@
             editor, or with no Duda form widget on the page, nothing moves.
             Shared SOLDOUT fallback map refreshed: 12 Oct 2026 (14-Day 26/27)
             and 5 Sep 2026 (Winter 2026) have sold out since the 8-Jul bake.
-       v7 — BOOKING DATA ALIGNED TO THE LIVE-SITE WIDGETS (technical only; design
+       v9 — BOOKING DATA ALIGNED TO THE LIVE-SITE WIDGETS (technical only; design
             untouched): the departures data script is now the proven widget block —
             full worker SCHEDULE baked (including the four Oct 2026 departures),
             SOLDOUT fallback refreshed to current live statuses, and the live merge
@@ -28,7 +37,10 @@
             between tour pages, the Journeys page, the site widgets and Checkfront.
             Booking list, hero count/range and cross-sell chips re-baked from the
             page's own scripts, so first paint byte-matches the render.
-       v6 — TEXT-FINAL PASS (Ben, 3 Jul) adopted as-is: FAQ rebuilt to the official
+       v8 — Review fix (Ben, 8 Jul): gallery intro no longer names Milford Sound as a
+            core destination (Milford is an optional excursion on 27/28) — now
+            'Fiordland'.
+       v7 — TEXT-FINAL PASS (Ben, 3 Jul) adopted as-is: FAQ rebuilt to the official
             site-FAQ wording + a 'View all FAQs' button; NZ-English copy polish;
             cross-sell fact fixes (Milford optional on 27/28 cards; Pinnacle desc
             'Premium accommodation'); Pinnacle end offset 14 to 15 nights (ends
@@ -37,33 +49,51 @@
             element removed (the SEO title lives in Duda Page Settings — set it
             per SEHE_SEO_Titles.txt before/at publish). Adoption adds only this
             version bump + macron micro-fixes; no other text touched.
-       v5 — FIX (publish reset): renamed the live-departures loop variable so
+       v6 — FIX (publish reset): renamed the live-departures loop variable so
             the literal "&lt;base" (from "i&lt;base[k]") never appears. Duda's publish
             sanitizer was reading it as a &lt;base> tag and stripping it, corrupting
             the block on every publish (the page "reset"). Same fix as 14-Day v12.
-       v4 — Added the "Introducing your host — Peter Hillary" feature section
-            (after section 2): a deep-navy, gold-rich panel with his Lobuche Peak
-            portrait (gold corner brackets), the host quote with a gold quote mark
-            and signature, and a gold top edge — the page's premium centrepiece.
-       v3 — Hero image swapped with the 14-Day 27/28 page (images only): the hero
-            now uses the Aoraki Mt Cook (L387) photo. Nothing else changed.
-       v2 — Content fixes: page &lt;title> set to the SEO title; meals corrected to
-            15 cooked breakfasts (barista coffee), 13 dinners, 11 lunches in both
-            the inclusions card and the FAQ (was 10/7/8), and the Walter Peak BBQ
-            is described as a dinner (not lunch); the "Famous 4" rail showcase
-            cards reordered to TranzAlpine, Kingston Flyer, Taieri Gorge, Coastal
-            Pacific (Taieri/Coastal were swapped); accommodation claim softened
-            from a flat 5-star to "5-star, or 4-star where 5-star is unavailable".
-       v1 — New page. The flagship Pinnacle Tour, built from the 11-Day 27/28
-            template (so it carries the revert-proof feed from the start) against
-            the official Pinnacle Tour brochure (January 2027). 15-day, 5-star,
-            small-group tour hosted in person by Peter Hillary, son of Sir Edmund;
-            departs Christchurch 14 Jan 2027, ends Blenheim, flight to Auckland.
-            From NZ$25,995 / single supplement NZ$4,990, 15 nights, ONE departure.
-            "Famous 4" rail set = TranzAlpine, Kingston Flyer (Steam), Taieri Gorge
-            and the Coastal Pacific. Coastal Pacific hero; white award shield;
-            Peter Hillary host throughout. Baked single-date booking list + the
-            never-wipe guards + escalate-only merge (passes check-revert-guard).
+       v5 — Content corrections against the 27/28 brochure (no design/layout/
+            date changes). (1) Page &lt;title> set to the real tour title. (2) Milford
+            Sound corrected from "included" to OPTIONAL: it is now "Doubtful Sound
+            or Milford Sound Cruise (both optional)". Day 6 reworded to a day at
+            leisure in Te Anau with an optional Milford/Doubtful cruise; removed the
+            "tour includes a cruise around the fiord" / "Milford Sound day trip and
+            cruise" included phrasing; moved it into Optional excursions as
+            "Optional Milford Sound or Doubtful Sound cruise"; hero, Section-2 and
+            the Day-6 gallery caption now read "with the option to cruise Milford or
+            Doubtful Sound". Meals already correct (10 breakfasts / 7 dinners /
+            8 lunches) in both the inclusions block and the FAQ — confirmed matching.
+       v4 — Swapped in the correct 27/28 assets now that they're hosted: the
+            brochure-cover thumbnail and the route-map image (both had been the
+            26/27 placeholders). No other changes.
+       v3 — REVERT FIX (the recurring "dates reset after paste" bug). The booking
+            and cross-sell render functions were WIPING the baked HTML whenever
+            window.__seheDepartureData wasn't populated at the instant they ran
+            (Duda can run a render pass before/without the top data script):
+            booking paint() fell through to "No departures", cross-sell
+            renderCard() flipped to "Season Complete". Added the same never-wipe
+            guards the hero render already had — each one now returns and LEAVES
+            the baked HTML when the data isn't ready, so the JS can only ENHANCE,
+            never blank. Also switched the live fetch from full-replace to an
+            escalate-only merge, so an incomplete or stale Worker response can
+            only raise a date's status, never drop dates or reset the page.
+       v2 — Bake the booking-section departure list into static HTML (the "Next"
+            strip + month-grouped dates), matching the Journeys-page setup, so
+            the dates show instantly and in source rather than behind a JS
+            "Loading" state. The live feed still enhances on top (sold-out red,
+            "Filling fast" amber) and never wipes the baked list.
+       v1 — New page. Built from the 11-Day 26/27 template against the official
+            11-Day Spring/Summer 2027/28 brochure. Differences from 26/27 that
+            are reflected here: "Famous 4" rail set (the Dunedin–Oamaru leg is
+            now by coach, not a 5th rail sector — that is what makes it the
+            Famous 4, not the Big 5), From NZ$8,490 / single supplement
+            NZ$1,595, Christchurch stay is the Distinction Hotel, Bill Richardson
+            Transport World added on Day 7, Pounamu Pathway removed, Day 10
+            Mueller Lake (not Hooker Valley). Unique Waimakariri TranzAlpine hero
+            and rewritten hero + Section-2 copy (season-repeat differentiation).
+            Live escalate-only departures feed (sold-out red, "Filling fast"
+            amber) wired the same way as the 14-Day 27/28 reference page.
      =====================================================================
      This is the full page. The Hero (Section 1) is now built the same way as
      the page sections that already render correctly: wrapped in .sehe-tourpage,
@@ -164,7 +194,7 @@
   background-image:
     linear-gradient(102deg, rgba(8,24,48,.94) 0%, rgba(8,24,48,.82) 26%, rgba(8,24,48,.5) 50%, rgba(8,24,48,.14) 72%, rgba(8,24,48,0) 100%),
     linear-gradient(0deg, rgba(8,24,48,.85) 0%, rgba(8,24,48,.2) 26%, rgba(8,24,48,0) 52%),
-    url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L387-Aoraki-Mount-Cook-National-Park--Canterbury-Rob-Suisted-1920w.jpg');
+    url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/184565-tranzalpine-crossing-the-waimakariri-river-1920w.webp');
   background-size:cover; background-position:center 42%; background-repeat:no-repeat;
   color:#fff !important;
   overflow:hidden;
@@ -213,7 +243,7 @@
     padding:140px 20px 44px !important;
     background-image:
       linear-gradient(0deg, rgba(8,24,48,.92) 0%, rgba(8,24,48,.62) 52%, rgba(8,24,48,.36) 100%),
-      url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L387-Aoraki-Mount-Cook-National-Park--Canterbury-Rob-Suisted-1920w.jpg');
+      url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/184565-tranzalpine-crossing-the-waimakariri-river-1920w.webp');
   }
   .sehe-tourpage .sehe-hx-inner{display:block; max-width:100%;}
   .sehe-tourpage .sehe-hx-top{flex-direction:column; align-items:flex-start; gap:0; margin-bottom:0;}
@@ -238,11 +268,11 @@
 }
 </style>
 <div class="sehe-tourpage">
-  <section class="sehe-hx" aria-label="15-Day Pinnacle Tour 2027, hosted by Peter Hillary">
+  <section class="sehe-hx" aria-label="11-Day Spring/Summer Tour 2027/28">
     <div class="sehe-hx-inner">
       <div class="sehe-hx-top">
         <div class="sehe-hx-award sehe-hx-award--top">
-          <img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/new-zealands-leading-tour-operator-2025-winner-shield-white-256-7779395d-1920w.png" alt="">
+          <img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/new-zealands-leading-tour-operator-2025-winner-shield-256-816b3264-1920w.png" alt="">
           <div class="sehe-hx-award-t"><span class="sehe-hx-award-k">World Travel Awards</span><span class="sehe-hx-award-v">NZ's Leading Tour Operator 2025</span></div>
         </div>
         <div class="sehe-hx-tp">
@@ -251,16 +281,16 @@
         </div>
       </div>
       <div class="sehe-hx-head">
-        <p class="sehe-hx-eyebrow">Small Group · 5-Star Luxury Tour</p>
-        <h1 class="sehe-hx-title">15-Day Pinnacle Tour <span class="yr">2027</span></h1>
-        <p class="sehe-hx-sub">The South Island's flagship rail journey, hosted in person by Peter Hillary &mdash; son of Sir Edmund. Fifteen luxury days from Christchurch to Auckland by train, luxury coach, steam, boat and helicopter, built around the &ldquo;Famous 4&rdquo; rail adventures. One small group, one departure.</p>
+        <p class="sehe-hx-eyebrow">Sir Edmund Hillary Explorer</p>
+        <h1 class="sehe-hx-title">11-Day Spring/Summer Tour <span class="yr">2027/28</span></h1>
+        <p class="sehe-hx-sub">Eleven unhurried days through the South Island by rail and luxury coach &mdash; built around the &ldquo;Famous 4&rdquo; rail journeys, with the West Coast glaciers, Queenstown and Aoraki Mt Cook along the way, with the option to cruise Milford or Doubtful Sound. Fully guided, return from Christchurch.</p>
       </div>
       <div class="sehe-hx-ticket">
         <div class="sehe-hx-fields">
-          <div class="sehe-hx-field"><div class="sehe-hx-k">Route</div><div class="sehe-hx-v">Christchurch &rarr; Auckland<a class="sehe-hx-route-link" href="#tour-route">View Route</a></div></div>
-          <div class="sehe-hx-field"><div class="sehe-hx-k">Duration</div><div class="sehe-hx-v">15 Days<small>15 nights</small></div></div>
-          <div class="sehe-hx-field"><div class="sehe-hx-k">From</div><div class="sehe-hx-v">NZ$25,995<small>per person, twin share</small></div></div>
-          <div class="sehe-hx-field"><div class="sehe-hx-k">Departure</div><div class="sehe-hx-v"><span data-sehe-dep-count>1</span><small data-sehe-dep-range>14 January 2027</small></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">Route</div><div class="sehe-hx-v">Christchurch return<a class="sehe-hx-route-link" href="#tour-route">View Route</a></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">Duration</div><div class="sehe-hx-v">11 Days<small>10 nights</small></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">From</div><div class="sehe-hx-v">NZ$8,490<small>per person, twin share</small></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">Departures</div><div class="sehe-hx-v"><span data-sehe-dep-count>7</span><small data-sehe-dep-range>Sep 27 &ndash; Apr 28</small></div></div>
         </div>
         <div class="sehe-hx-stub">
           <a class="sehe-hx-btn sehe-hx-btn--primary" href="#tour-dates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg> View Tour Dates </a>
@@ -268,7 +298,7 @@
         </div>
       </div>
       <div class="sehe-hx-award sehe-hx-award--bottom">
-        <img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/new-zealands-leading-tour-operator-2025-winner-shield-white-256-7779395d-1920w.png" alt="">
+        <img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/new-zealands-leading-tour-operator-2025-winner-shield-256-816b3264-1920w.png" alt="">
         <div class="sehe-hx-award-t"><span class="sehe-hx-award-k">World Travel Awards</span><span class="sehe-hx-award-v">NZ's Leading Tour Operator 2025</span></div>
       </div>
     </div>
@@ -349,106 +379,36 @@
   <section class="sehe-highlights">
    <div class="sehe-highlights-inner">
     <span class="sehe-section-eyebrow">What sets this tour apart</span>
-    <h2 class="sehe-section-heading">Our most extraordinary journey — once a year, with Peter Hillary</h2>
-    <p class="sehe-section-intro">The Pinnacle is the Sir Edmund Hillary Explorer at its absolute best: one small group, fifteen luxury days, and Peter Hillary travelling with you the whole way. Train, luxury coach, vintage steam, lake steamer, jet boat and helicopter link the very best of the South Island — from the West Coast glaciers and Milford Sound to Aoraki Mt Cook and the Kaik&#333;ura coast.</p>
+    <h2 class="sehe-section-heading">Every South Island icon, at an unhurried pace</h2>
+    <p class="sehe-section-intro">From the Southern Alps and the West Coast glaciers to Queenstown and Aoraki Mt Cook, with the option to cruise Milford or Doubtful Sound, these eleven days thread the South Island's most iconic landscapes together by rail and luxury coach — fully guided, generously paced, and built around four of the country's most celebrated rail journeys.</p>
     <div class="sehe-highlights-grid">
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.5"></circle><circle cx="16" cy="19" r="1.5"></circle><path d="M5 16l-1.5 3M19 16l1.5 3"></path></svg></div>
-      <h3>Hosted by Peter Hillary</h3>
-      <p class="sehe-highlight-text">Son of Sir Edmund and a renowned mountaineer in his own right, Peter Hillary travels with the group the whole way — daily commentary, nightly twilight briefings, and stories from more than 50 expeditions to the ends of the earth.</p>
+      <h3>Four signature rail journeys</h3>
+      <p class="sehe-highlight-text">The TranzAlpine over Arthur's Pass, the Kingston Flyer steam train, The Mainlander through the deep south and the Taieri Gorge — four of New Zealand's most celebrated rail journeys in a single trip.</p>
      </div>
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"></path></svg></div>
-      <h3>5-star, small group</h3>
-      <p class="sehe-highlight-text">An intimate small group across a combination of 5-star hotels — the Hermitage at Aoraki Mt Cook, Queenstown Park Boutique, Chateau Marlborough and more — with a single luxury business-class coach shadowing the tour for seamless transfers.</p>
+      <h3>4-Star+ hotels for 10 nights</h3>
+      <p class="sehe-highlight-text">From the Distinction Hotel in Christchurch to the Mercure on Lake Wakatipu and The Hermitage at Aoraki Mt Cook — ten nights of hand-picked accommodation, matched to each location and the pace of the journey.</p>
      </div>
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><path d="M3 20l5-8 3 4 4-7 6 11z" fill="none"></path><circle cx="17" cy="6" r="1.5" fill="none"></circle></svg></div>
-      <h3>Milford Sound &amp; Aoraki Mt Cook</h3>
-      <p class="sehe-highlight-text">A return helicopter flight over Fiordland to a premium cruise of Milford Sound, plus two nights at Aoraki Mt Cook with ski-plane and glacier adventures — the alpine country that shaped Sir Edmund Hillary.</p>
+      <h3>Fiordland &amp; Aoraki Mt Cook</h3>
+      <p class="sehe-highlight-text">A day in Fiordland with the option to cruise Milford or Doubtful Sound, and two nights beneath Aoraki Mt Cook — the alpine country that shaped Sir Edmund Hillary's climbing life.</p>
      </div>
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.5"></circle><circle cx="16" cy="19" r="1.5"></circle><path d="M5 16l-1.5 3M19 16l1.5 3"></path></svg></div>
-      <h3>Every way to travel</h3>
-      <p class="sehe-highlight-text">TranzAlpine and Coastal Pacific rail in premier Scenic Plus, the vintage Kingston Flyer steam train, the 1912 TSS Earnslaw, a Haast jet boat, helicopters and a fixed-wing flight to Auckland to finish.</p>
+      <h3>The Mainlander — exclusive to our tours</h3>
+      <p class="sehe-highlight-text">The recently re-established Mainlander carries you along the historic Main South Line from Invercargill to Dunedin — a deep-south rail sector you won't find on other tours.</p>
      </div>
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2" fill="none"></rect><path d="M2.5 10h19M6 15h3"></path></svg></div>
-      <h3>One departure a year</h3>
-      <p class="sehe-highlight-text">The Pinnacle runs once — departing Christchurch on 14 January 2027. Reserve your place with a 20% deposit; internet banking carries no card fee.</p>
+      <h3>Only 20% deposit to secure</h3>
+      <p class="sehe-highlight-text">Reserve your departure with a 20% deposit. Direct bank payment carries no card fee, with optional extras shown separately.</p>
      </div>
     </div>
    </div>
-  </section>
-</div>
-
-
-<!-- ===== 2b. Introducing your host — Peter Hillary ===== -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-<style>
-  .sehe-host, .sehe-host *, .sehe-host *::before, .sehe-host *::after { box-sizing: border-box; }
-  .sehe-host {
-    --navy: #153b67; --navy-deep: #0a1f3d;
-    --gold: #c8a56c; --gold-light: #d4b37e; --gold-bright: #e3c386; --gold-dark: #a68a55;
-    --white: #ffffff;
-    position: relative;
-    width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
-    background-color: var(--navy-deep);
-    background-image: radial-gradient(120% 90% at 86% -10%, rgba(200,165,108,0.18) 0%, rgba(200,165,108,0) 55%), linear-gradient(140deg, #0a1f3d 0%, #0e2a4c 52%, #143458 100%);
-    border-top: 3px solid var(--gold);
-    padding: 86px 30px 92px;
-    overflow: hidden;
-    color: var(--white) !important;
-    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    text-align: left !important;
-  }
-  .sehe-host::after { content: ''; position: absolute; left: -150px; bottom: -170px; width: 400px; height: 400px; border-radius: 50%; border: 1px solid rgba(200,165,108,0.18); pointer-events: none; }
-  .sehe-host-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 384px 1fr; gap: 64px; align-items: center; }
-  .sehe-host-photo { position: relative; }
-  .sehe-host-photo img { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 26px 64px rgba(0,0,0,0.55); }
-  .sehe-host-photo::before { content: ''; position: absolute; top: -13px; left: -13px; width: 78px; height: 78px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); pointer-events: none; }
-  .sehe-host-photo::after { content: ''; position: absolute; bottom: -13px; right: -13px; width: 78px; height: 78px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); pointer-events: none; }
-  .sehe-host-cap { margin-top: 20px; text-align: center !important; font-family: 'Montserrat', sans-serif !important; font-size: 11px !important; font-weight: 700 !important; letter-spacing: 1.7px; text-transform: uppercase; color: var(--gold-light) !important; }
-  .sehe-host-content { position: relative; }
-  .sehe-host-eyebrow { display: inline-flex; align-items: center; gap: 11px; font-family: 'Montserrat', sans-serif !important; font-size: 11.5px !important; font-weight: 700 !important; color: var(--gold-bright) !important; text-transform: uppercase; letter-spacing: 2.8px; margin: 0 0 16px; }
-  .sehe-host-eyebrow::before { content: ''; width: 36px; height: 1px; background: var(--gold); flex-shrink: 0; }
-  .sehe-host-name { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: clamp(30px, 4.1vw, 48px) !important; line-height: 1.04 !important; color: var(--white) !important; margin: 0 0 8px !important; letter-spacing: -0.5px; text-align: left !important; }
-  .sehe-host-name .g { color: var(--gold) !important; }
-  .sehe-host-role { font-family: 'Open Sans', sans-serif !important; font-size: 14.5px !important; font-style: italic; color: var(--gold-light) !important; margin: 0 0 28px !important; text-align: left !important; }
-  .sehe-host-quote { position: relative; padding-left: 38px; }
-  .sehe-host-quote::before { content: '\201C'; position: absolute; left: -8px; top: -28px; font-family: Georgia, 'Times New Roman', serif; font-size: 96px; line-height: 1; color: var(--gold) !important; opacity: 0.5; }
-  .sehe-host-quote p { font-size: 16.5px !important; line-height: 1.78 !important; color: rgba(255,255,255,0.9) !important; margin: 0 0 18px !important; text-align: left !important; }
-  .sehe-host-quote p:last-of-type { margin-bottom: 0 !important; }
-  .sehe-host-sign { display: flex; align-items: center; gap: 14px; margin-top: 30px; }
-  .sehe-host-sign span:first-child { display: block; height: 1px; width: 48px; background: var(--gold); }
-  .sehe-host-sign span:last-child { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: 15px !important; letter-spacing: 0.5px; color: var(--gold-bright) !important; }
-  @media (max-width: 860px) {
-    .sehe-host { padding: 56px 22px 64px; }
-    .sehe-host-inner { grid-template-columns: 1fr; gap: 38px; max-width: 520px; }
-    .sehe-host-photo { max-width: 320px; margin: 0 auto; }
-    .sehe-host-quote { padding-left: 28px; }
-    .sehe-host-quote::before { font-size: 76px; top: -20px; }
-  }
-</style>
-<div class="sehe-tourpage">
-  <section class="sehe-host" aria-label="Introducing your host, Peter Hillary">
-    <div class="sehe-host-inner">
-      <div class="sehe-host-photo">
-        <img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/PEH+on+summit+of+Lobuche+Peak+6130m+on+16.4.18-1920w.webp" alt="Peter Hillary on the summit of Lobuche Peak, 6130m">
-        <div class="sehe-host-cap">Peter Hillary &middot; Summit of Lobuche Peak, 6130m</div>
-      </div>
-      <div class="sehe-host-content">
-        <span class="sehe-host-eyebrow">Introducing your host</span>
-        <h2 class="sehe-host-name">Peter <span class="g">Hillary</span></h2>
-        <p class="sehe-host-role">Son of Sir Edmund Hillary &middot; your host for all fifteen days</p>
-        <div class="sehe-host-quote">
-          <p>Hello, my name is Peter Hillary and I will accompany the Sir Edmund Hillary Explorer Pinnacle tours around the South Island of New Zealand.</p>
-          <p>My father Sir Edmund Hillary is famous for making the first ascent of Mt Everest in 1953 with his climbing partner Tenzing Norgay, but it is the Southern Alps of New Zealand where he learned the skills of mountaineering that he loved the most. He took his family into the mountains and around the coasts of the South Island, and we all fell in love with this part of this beautiful country.</p>
-          <p>Now I have done the same with my family, and there are three generations of Hillarys who know and love the amazing landscapes of the south &mdash; and that is what I want to share with you on the Sir Edmund Hillary Explorer Pinnacle Tour.</p>
-        </div>
-        <div class="sehe-host-sign"><span></span><span>Peter Hillary</span></div>
-      </div>
-    </div>
   </section>
 </div>
 
@@ -511,24 +471,24 @@
   <section class="sehe-super6">
    <div class="sehe-super6-inner">
     <span class="sehe-section-eyebrow">The &ldquo;Famous 4&rdquo;</span>
-    <h2 class="sehe-section-heading">The &ldquo;Famous 4&rdquo; rail adventures of the Pinnacle Tour</h2>
-    <p class="sehe-section-intro">The Pinnacle is built around the &ldquo;Famous 4&rdquo; rail adventures — four of New Zealand's greatest rail journeys, from the alpine crossing of Arthur's Pass and heritage steam rail to the remote Taieri Gorge and the Coastal Pacific's run along the Kaik&#333;ura coast. The TranzAlpine and Coastal Pacific are travelled in premier Scenic Plus class.</p>
+    <h2 class="sehe-section-heading">The &ldquo;Famous 4&rdquo; rail adventures in one eleven-day tour</h2>
+    <p class="sehe-section-intro">Every 11-Day Spring/Summer Tour is built around the &ldquo;Famous 4&rdquo; rail adventures — four memorable rail journeys showing a different side of the South Island, from the alpine crossing of Arthur's Pass and heritage steam rail to the deep-south Main South Line and the remote Taieri Gorge.</p>
     <div class="sehe-super6-grid">
      <article class="sehe-train">
       <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp');"><span class="sehe-train-day">Day 2</span></div>
       <div class="sehe-train-info"><h3><span class="sehe-train-num">1</span>TranzAlpine</h3><p class="sehe-train-text">Christchurch to Greymouth across the Southern Alps via Arthur's Pass — alpine scenery, beech forest, braided rivers and wide Canterbury landscapes.</p></div>
      </article>
      <article class="sehe-train">
-      <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Kingston-Flyer-34943537.jpg');"><span class="sehe-train-day">Day 8</span></div>
+      <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Kingston-Flyer-34943537.jpg');"><span class="sehe-train-day">Day 5</span></div>
       <div class="sehe-train-info"><h3><span class="sehe-train-num">2</span>Kingston Flyer (Steam)</h3><p class="sehe-train-text">A heritage steam rail experience between Kingston and Fairlight at the southern end of Lake Wakatipu.</p></div>
      </article>
      <article class="sehe-train">
-      <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/About-SEHE-Rail-Tour-3.jpg');"><span class="sehe-train-day">Day 9</span></div>
-      <div class="sehe-train-info"><h3><span class="sehe-train-num">3</span>Taieri Gorge</h3><p class="sehe-train-text">A remote rail journey through river gorges, historic tunnels and the Wingatui Viaduct — one of New Zealand's great railway engineering landmarks.</p></div>
+      <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Glen+Antony+20251116+IMG_0748.webp');"><span class="sehe-train-day">Day 7</span></div>
+      <div class="sehe-train-info"><h3><span class="sehe-train-num">3</span>The Mainlander</h3><p class="sehe-train-text">Exclusive to Sir Edmund Hillary Explorer, The Mainlander carries you from Invercargill to Dunedin along the historic Main South Line — weaving through rolling rural landscapes and the deep south of New Zealand.</p></div>
      </article>
      <article class="sehe-train">
-      <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp');"><span class="sehe-train-day">Day 14 &amp; 15</span></div>
-      <div class="sehe-train-info"><h3><span class="sehe-train-num">4</span>Coastal Pacific</h3><p class="sehe-train-text">Two days along the Pacific coast in premier Scenic Plus — Christchurch to Kaik&#333;ura, then on to the Marlborough winelands — with the mountains on one side and the sea on the other.</p></div>
+      <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/About-SEHE-Rail-Tour-3.jpg');"><span class="sehe-train-day">Day 8</span></div>
+      <div class="sehe-train-info"><h3><span class="sehe-train-num">4</span>Taieri Gorge</h3><p class="sehe-train-text">A remote rail journey through river gorges, historic tunnels and the Wingatui Viaduct — one of New Zealand's great railway engineering landmarks.</p></div>
      </article>
     
     </div>
@@ -617,13 +577,13 @@
     <div class="sehe-brochure-cover">
      <div class="sehe-brochure-cover-wrap">
       <span class="sehe-brochure-badge">Free PDF Download</span>
-      <img class="sehe-brochure-cover-img" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/Web_Pinnacle+Tour+Brochure_January+2027-1-1920w.webp" alt="The Sir Edmund Hillary Explorer - 15-Day Pinnacle Tour 2027 Brochure">
+      <img class="sehe-brochure-cover-img" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/Web_11+Day+27-28_Spring-Summer+Tour-1920w.webp" alt="The Sir Edmund Hillary Explorer - 11-Day Spring/Summer 2027/28 Tour Brochure">
      </div>
     </div>
     <div class="sehe-brochure-formside">
      <span class="sehe-brochure-eyebrow">Tour Brochure</span>
-     <h2 class="sehe-brochure-title">View the full Pinnacle Tour brochure</h2>
-     <p class="sehe-brochure-subtitle">View the full day-by-day itinerary, hotels, inclusions and pricing for the 15-day Pinnacle Tour, hosted by Peter Hillary.</p>
+     <h2 class="sehe-brochure-title">View the full 11-day tour brochure</h2>
+     <p class="sehe-brochure-subtitle">View the full itinerary, hotels, inclusions and season pricing for the 11-day tour.</p>
      <div class="sehe-brochure-note" style="margin-top:6px; padding:14px 16px; background:var(--gold-pale); border-left:3px solid var(--gold); border-radius:6px; font-size:14px; color:var(--text);">Complete the short form just below to view the brochure collection &darr;</div>
      <div class="sehe-form-slot" data-sehe-form-slot hidden></div>
     </div>
@@ -680,14 +640,19 @@
     var btn = sub ? sub.querySelector('input[type="submit"]') : null;
     flat(btn, { display: 'block', width: '100%', margin: '0', 'box-sizing': 'border-box', 'text-align': 'center' });
     /* the submit is an INPUT and inputs cannot wrap their label, so on narrow
-       screens the long label overflows — step the type down responsively */
+       screens the long label overflows — step the type down responsively.
+       Tuned after Ben's phone review: 12.5px covers all normal phones (the
+       old 360px step caught most Androids at 11px — too small); 11px only on
+       tiny (340px and under) screens; text-indent equal to the letter-spacing
+       cancels the trailing-space bias so the label sits optically centre. */
     var sizeBtn = function() {
       if (!btn) return;
-      var fs = '13.5px', ls = '1.4px', pad = '17px 24px';
-      if (window.matchMedia && window.matchMedia('(max-width: 480px)').matches) { fs = '12px'; ls = '0.8px'; pad = '16px 10px'; }
-      if (window.matchMedia && window.matchMedia('(max-width: 360px)').matches) { fs = '11px'; ls = '0.5px'; pad = '15px 8px'; }
+      var fs = '13.5px', ls = 1.4, pad = '17px 24px';
+      if (window.matchMedia && window.matchMedia('(max-width: 480px)').matches) { fs = '12.5px'; ls = 0.5; pad = '17px 8px'; }
+      if (window.matchMedia && window.matchMedia('(max-width: 340px)').matches) { fs = '11px'; ls = 0.2; pad = '16px 6px'; }
       btn.style.setProperty('font-size', fs, 'important');
-      btn.style.setProperty('letter-spacing', ls, 'important');
+      btn.style.setProperty('letter-spacing', ls + 'px', 'important');
+      btn.style.setProperty('text-indent', ls + 'px', 'important');
       btn.style.setProperty('padding', pad, 'important');
       btn.style.setProperty('max-width', '100%', 'important');
     };

@@ -10,13 +10,13 @@ Everything in this folder is verified: every page passed the project validators,
 
 | # | Tour | New page (already built & verified) | Goes live at (real URL) | Files in this pack |
 |---|---|---|---|---|
-| 1 | 14-Day Spring/Summer 2026/27 · v18 | `/14/day-spr/sum-26/27-new` | `/2026-2027-spring/summer-tour-14-days` | `SEHE-14day-2627_v18-blockA/B.txt` |
-| 2 | 11-Day Spring/Summer 2026/27 · v16 | `/11/day-spr/sum-26/27-new` | `/2026-2027-spring/summer-tour-11-day-tours` | `SEHE-11day-2627_v16-blockA/B.txt` |
-| 3 | 12-Day Winter Edition 2026 · v15 | `/12/day-winter-26-new` | `/2026-winter-edition-tours` | `SEHE-winter-2026_v15-blockA/B.txt` |
-| 4 | 12-Day Winter Edition 2027 · v9 | `/12/day-winter-27-new` | `/2027-winter-edition-tours` | `SEHE-winter-2027_v9-blockA/B.txt` |
-| 5 | 15-Day Pinnacle Tour 2027 · v9 | `/15/day-pinnacle-27-new` | `/pinnacle-tour-2027` | `SEHE-pinnacle-2027_v9-blockA/B.txt` |
-| 6 | 11-Day Spring/Summer 2027/28 · v11 | `/11/day-spr/sum-27/28-new` | `/2026-2027-spring/2027-2028-spring/summer-tour-11-days` | `SEHE-11day-2728_v11-blockA/B.txt` |
-| 7 | 14-Day Spring/Summer 2027/28 · v20 | `/14/day-spr/sum-27/28-new` | `/2026-2027-spring/2027-2028-spring/summer-tour-14-days` | `SEHE-14day-2728_v20-blockA/B.txt` |
+| 1 | 14-Day Spring/Summer 2026/27 · v19 | `/14/day-spr/sum-26/27-new` | `/2026-2027-spring/summer-tour-14-days` | `SEHE-14day-2627_v19-blockA/B.txt` |
+| 2 | 11-Day Spring/Summer 2026/27 · v17 | `/11/day-spr/sum-26/27-new` | `/2026-2027-spring/summer-tour-11-day-tours` | `SEHE-11day-2627_v17-blockA/B.txt` |
+| 3 | 12-Day Winter Edition 2026 · v16 | `/12/day-winter-26-new` | `/2026-winter-edition-tours` | `SEHE-winter-2026_v16-blockA/B.txt` |
+| 4 | 12-Day Winter Edition 2027 · v10 | `/12/day-winter-27-new` | `/2027-winter-edition-tours` | `SEHE-winter-2027_v10-blockA/B.txt` |
+| 5 | 15-Day Pinnacle Tour 2027 · v10 | `/15/day-pinnacle-27-new` | `/pinnacle-tour-2027` | `SEHE-pinnacle-2027_v10-blockA/B.txt` |
+| 6 | 11-Day Spring/Summer 2027/28 · v12 | `/11/day-spr/sum-27/28-new` | `/2026-2027-spring/2027-2028-spring/summer-tour-11-days` | `SEHE-11day-2728_v12-blockA/B.txt` |
+| 7 | 14-Day Spring/Summer 2027/28 · v21 | `/14/day-spr/sum-27/28-new` | `/2026-2027-spring/2027-2028-spring/summer-tour-14-days` | `SEHE-14day-2728_v21-blockA/B.txt` |
 
 > **STATUS:** Page 1 (14-Day 26/27) is **already fully prepped** on its `-new` URL — sandwich installed, form skinned and lead-tested, SEO title set. For page 1 skip §1 and §2 and do **only §3** (the URL swap). Pages 2–7 need the full §1 → §2 → §3 sequence.
 

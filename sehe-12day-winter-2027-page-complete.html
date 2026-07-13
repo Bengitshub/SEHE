@@ -1,8 +1,17 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 12-DAY WINTER EDITION 2027
-     COMPLETE TOUR PAGE  ·  VERSION v9  ·  2026-07-13  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v10  ·  2026-07-13  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v10 — DOCKED BUTTON TYPE RE-TUNED (Ben's phone review of the first
+            mobile fix): the previous 360px breakpoint caught most Android
+            phones and set the label at 11px — too small — and letter-spacing's
+            trailing space biased the centred label left of true centre. Now
+            12.5px with 0.5px tracking covers every normal phone (11px is
+            reserved for 340px-and-under screens) and a matching text-indent
+            cancels the centring bias at every size, desktop included.
+            Measured with the real widget at 320 / 360 / 390 / 1440px: label
+            fits with margin everywhere and sits optically centred.
        v9 — MOBILE FIXES from Ben's phone pass: the docked Duda submit is an
             INPUT element, which cannot wrap its label, so the long "View /
             Download Tour Brochure" text overflowed the button on narrow
@@ -628,14 +637,19 @@
     var btn = sub ? sub.querySelector('input[type="submit"]') : null;
     flat(btn, { display: 'block', width: '100%', margin: '0', 'box-sizing': 'border-box', 'text-align': 'center' });
     /* the submit is an INPUT and inputs cannot wrap their label, so on narrow
-       screens the long label overflows — step the type down responsively */
+       screens the long label overflows — step the type down responsively.
+       Tuned after Ben's phone review: 12.5px covers all normal phones (the
+       old 360px step caught most Androids at 11px — too small); 11px only on
+       tiny (340px and under) screens; text-indent equal to the letter-spacing
+       cancels the trailing-space bias so the label sits optically centre. */
     var sizeBtn = function() {
       if (!btn) return;
-      var fs = '13.5px', ls = '1.4px', pad = '17px 24px';
-      if (window.matchMedia && window.matchMedia('(max-width: 480px)').matches) { fs = '12px'; ls = '0.8px'; pad = '16px 10px'; }
-      if (window.matchMedia && window.matchMedia('(max-width: 360px)').matches) { fs = '11px'; ls = '0.5px'; pad = '15px 8px'; }
+      var fs = '13.5px', ls = 1.4, pad = '17px 24px';
+      if (window.matchMedia && window.matchMedia('(max-width: 480px)').matches) { fs = '12.5px'; ls = 0.5; pad = '17px 8px'; }
+      if (window.matchMedia && window.matchMedia('(max-width: 340px)').matches) { fs = '11px'; ls = 0.2; pad = '16px 6px'; }
       btn.style.setProperty('font-size', fs, 'important');
-      btn.style.setProperty('letter-spacing', ls, 'important');
+      btn.style.setProperty('letter-spacing', ls + 'px', 'important');
+      btn.style.setProperty('text-indent', ls + 'px', 'important');
       btn.style.setProperty('padding', pad, 'important');
       btn.style.setProperty('max-width', '100%', 'important');
     };
