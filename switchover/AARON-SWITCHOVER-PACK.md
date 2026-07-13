@@ -19,6 +19,8 @@ Everything in this folder is verified: every page passed the project validators,
 | 7 | 14-Day Spring/Summer 2027/28 · v24 | `/14/day-spr/sum-27/28-new` | `/2026-2027-spring/2027-2028-spring/summer-tour-14-days` | `SEHE-14day-2728_v24-blockA/B.txt` |
 
 > **STATUS:** Page 1 (14-Day 26/27) is **already fully prepped** on its `-new` URL — sandwich installed, form skinned and lead-tested, SEO title set. For page 1 skip §1 and §2 and do **only §3** (the URL swap). Pages 2–7 need the full §1 → §2 → §3 sequence.
+>
+> A live page's `VERSION vN` marker may sit one or two behind this table where Ben standardised the button label in Duda instead of re-pasting — the build side verifies those pages directly; no action needed from Aaron.
 
 Also in the pack: `duda-brochure-form-skin.css` (form styling) and `sehe-worker_LIVE-auto.js` (availability worker).
 
@@ -40,6 +42,7 @@ The fix keeps the **existing Duda forms** (so the webhook → Zapier → ActiveC
 1. In the Duda editor for the page, replace the current single HTML widget's contents with **Block A**.
 2. Add a **new row directly below** it → set the row background to **#f9f7f3** (continues the brochure band).
 3. Into that row, **copy the brochure form element across from the old live page** (copy, **don't move** — the old page keeps its form for rollback; it must be the same form so the webhook fires). Keep its fields: Name / Email / Country. The step-7 test lead confirms the copy submits and the automation fires.
+   **Button label (Ben's standard):** on the COPY, set the submit button text to exactly `View / Download Tour Brochure` (edit the copy only — leave the old page's form untouched; it's the rollback).
 4. Open the form widget's **Design → Custom CSS** → paste ALL of `duda-brochure-form-skin.css` into the "GENERAL CSS FOR ALL DEVICES" panel (replace whatever is there) and **clear** the device-specific panel. The form now matches the page design.
 5. Add a **new HTML widget below the form row** → paste **Block B**.
 6. The end of Block A contains this same instruction as an HTML comment, so you can't lose your place.
