@@ -1,8 +1,22 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v6  ·  2026-07-14  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v7  ·  2026-07-14  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v7 — BEN'S SECOND REVIEW ROUND: hero headline is now Ben's line "Rail is
+            the heart of our scenic journeys." over a SUMMER RAIL photo (the
+            Taieri Gorge viaduct in spring green — the previous TranzAlpine
+            shot read wintry); "Aotearoa" now always paired as "Aotearoa New
+            Zealand"; the counting-style headlines removed site-wide ("Seven
+            journeys. Three seasons. One South Island." -> "Choose your
+            journey.", "Two seasons. Two South Islands." -> "The seasons
+            change everything.", "Six great rail adventures. One journey." ->
+            "The rail adventures at the heart of it all"). THE SEASONS cards
+            rebuilt for wow: 600px poster cards with inset gold frames,
+            poster-scale uppercase season names, gold month rules, deeper
+            cinematic gradients — and the Winter card now shows the
+            TranzAlpine running through Lake Sarah snow (a train in both
+            seasons: same railway, two worlds).
        v6 — BEN'S REVIEW ROUND (design and layouts unchanged, additions only):
             all display type moved from Yeseva One to MONTSERRAT per the brand
             standard (700 for headings/numerals, 600 for pull-quotes; Open Sans
@@ -79,12 +93,12 @@
 
   /* ============ 1. HERO ============ */
   .shx-hero { position: relative; min-height: clamp(620px, 92vh, 900px); display: flex; align-items: flex-end; background-color: var(--ink-deep);
-    background-image: linear-gradient(180deg, rgba(8,21,37,.62) 0%, rgba(8,21,37,.18) 34%, rgba(8,21,37,.34) 62%, rgba(8,21,37,.9) 100%), url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/184565-tranzalpine-crossing-the-waimakariri-river.webp');
-    background-size: cover; background-position: center 58%; color: #fff; }
+    background-image: linear-gradient(180deg, rgba(8,21,37,.62) 0%, rgba(8,21,37,.18) 34%, rgba(8,21,37,.34) 62%, rgba(8,21,37,.9) 100%), url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/SEHE_OCT2024_DAY2-18.webp');
+    background-size: cover; background-position: center 30%; color: #fff; }
   .shx-hero-inner { position: relative; width: 100%; max-width: 1180px; margin: 0 auto; padding: 150px 32px 0; }
   .shx-hero-kicker { display: inline-flex; align-items: center; gap: 16px; font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: .42em; text-transform: uppercase; color: var(--gold) !important; margin-bottom: 22px !important; }
   .shx-hero-kicker::before, .shx-hero-kicker::after { content: ''; width: 44px; height: 1px; background: var(--gold); }
-  .shx-hero h1 { font-size: clamp(46px, 6.4vw, 84px) !important; line-height: 1.04 !important; color: #ffffff !important; max-width: 13ch; text-shadow: 0 2px 26px rgba(8,21,37,.55); }
+  .shx-hero h1 { font-size: clamp(42px, 5.6vw, 74px) !important; line-height: 1.06 !important; color: #ffffff !important; max-width: 720px; text-shadow: 0 2px 26px rgba(8,21,37,.55); }
   .shx-hero-sub { margin: 26px 0 0 !important; max-width: 620px; font-size: clamp(18px, 1.6vw, 21px) !important; line-height: 1.65 !important; color: rgba(255,255,255,.94) !important; text-shadow: 0 1px 14px rgba(8,21,37,.6); }
   .shx-hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 38px; }
   .shx-hero-proof { display: flex; flex-wrap: wrap; align-items: center; gap: 30px; margin-top: 54px; padding: 22px 0 30px; border-top: 1px solid rgba(255,255,255,.28); }
@@ -220,12 +234,14 @@
   .shx-seasons h2 { font-size: clamp(32px, 3.6vw, 48px) !important; color: #ffffff !important; line-height: 1.14 !important; margin: 0 0 18px !important; }
   .shx-seasons-intro { max-width: 62ch; font-size: 18.5px !important; color: rgba(243,236,221,.85) !important; margin: 0 0 56px !important; }
   .shx-seasons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
-  .shx-season-card { position: relative; min-height: 460px; display: flex; align-items: flex-end; border-radius: 3px; overflow: hidden; background-size: cover; background-position: center; }
-  .shx-season-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,21,37,.05) 30%, rgba(8,21,37,.88) 100%); }
-  .shx-season-card-in { position: relative; padding: 34px 36px; }
-  .shx-season-card h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 27px !important; color: #ffffff !important; margin: 0 0 10px !important; }
-  .shx-season-card p { font-size: 16px !important; line-height: 1.65 !important; color: rgba(255,255,255,.88) !important; max-width: 52ch; }
-  .shx-season-months { display: inline-block; font-size: 12.5px !important; font-weight: 700 !important; letter-spacing: .3em; text-transform: uppercase; color: var(--gold) !important; margin-bottom: 12px; }
+  .shx-season-card { position: relative; min-height: 600px; display: flex; align-items: flex-end; border-radius: 3px; overflow: hidden; background-size: cover; background-position: center; }
+  .shx-season-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,21,37,.12) 26%, rgba(8,21,37,.62) 60%, rgba(8,21,37,.95) 100%); }
+  .shx-season-card::after { content: ''; position: absolute; inset: 16px; border: 1px solid rgba(200,165,108,.65); border-radius: 2px; pointer-events: none; }
+  .shx-season-card-in { position: relative; padding: 0 46px 44px; }
+  .shx-season-card h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 800 !important; font-size: clamp(32px, 3.2vw, 46px) !important; letter-spacing: .04em; text-transform: uppercase; color: #ffffff !important; margin: 0 0 14px !important; text-shadow: 0 2px 18px rgba(8,21,37,.6); }
+  .shx-season-card p { font-size: 16.5px !important; line-height: 1.65 !important; color: rgba(255,255,255,.92) !important; max-width: 52ch; }
+  .shx-season-months { display: inline-flex; align-items: center; gap: 12px; font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: .34em; text-transform: uppercase; color: var(--gold) !important; margin-bottom: 14px; text-shadow: 0 1px 12px rgba(8,21,37,.9); }
+  .shx-season-months::before { content: ''; width: 34px; height: 1px; background: var(--gold); }
   .shx-seasons-note { margin-top: 26px; padding: 20px 26px; border: 1px solid rgba(200,165,108,.5); border-radius: 3px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; }
   .shx-seasons-note p { font-size: 16px !important; color: rgba(243,236,221,.88) !important; }
   .shx-seasons-note a { color: var(--gold) !important; font-weight: 700; }
@@ -271,7 +287,8 @@
   }
   @media (max-width: 860px) {
     .shx-band { padding: 64px 22px; }
-    .shx-season-card { min-height: 380px; }
+    .shx-season-card { min-height: 460px; }
+    .shx-season-card-in { padding: 0 26px 28px; }
     .shx-pinnacle { background-image: linear-gradient(rgba(8,21,37,.92), rgba(8,21,37,.92)), url('https://irp.cdn-website.com/35e9f777/files/uploaded/14_52%20Reasons_Sir%20Edmond%20Hillary%20Alpine%20Centre-3.jpg'); }
     .shx-pinnacle-in { border-left: 0; padding-left: 0; border-top: 5px double var(--gold); padding-top: 28px; }
     .shx-hero-inner { padding: 130px 22px 0; }
@@ -301,8 +318,8 @@
   <section class="shx-hero" aria-label="Sir Edmund Hillary Explorer">
     <div class="shx-hero-inner">
       <span class="shx-hero-kicker">Fully Guided South Island Rail Touring</span>
-      <h1 class="shx-display">The South Island, by&nbsp;rail.</h1>
-      <p class="shx-hero-sub">Fully guided rail-and-coach journeys through Aotearoa&rsquo;s grandest landscapes &mdash; named in honour of Sir Edmund Hillary, and paced for travellers who like their adventure comfortable.</p>
+      <h1 class="shx-display">Rail is the heart of our scenic journeys.</h1>
+      <p class="shx-hero-sub">Fully guided rail-and-coach journeys through Aotearoa New Zealand&rsquo;s grandest landscapes &mdash; named in honour of Sir Edmund Hillary, and paced for travellers who like their adventure comfortable.</p>
       <div class="shx-hero-ctas">
         <a class="shx-btn shx-btn--gold" href="#journeys">Explore the Journeys</a>
         <a class="shx-btn shx-btn--ghost" href="tel:+6439741812">Call +64 3 974 1812</a>
@@ -389,13 +406,13 @@
       <div class="shx-six-head">
         <span class="shx-kicker">The &ldquo;Super 6&rdquo;</span>
         <hr class="shx-rule">
-        <h2 class="shx-display">Six great rail adventures. One journey.</h2>
+        <h2 class="shx-display">The rail adventures at the heart of it all</h2>
         <p>No other New Zealand tour brings together all six of the South Island&rsquo;s celebrated rail experiences &mdash; scheduled services, heritage steam and our own exclusive charters.</p>
       </div>
       <div class="shx-six-row">
         <span class="shx-six-num">01</span>
         <div class="shx-six-body"><h3>TranzAlpine</h3><p>Coast to coast across the Southern Alps via Arthur&rsquo;s Pass &mdash; one of the world&rsquo;s great train journeys.</p></div>
-        <div class="shx-six-thumb" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/184587-tranzalpine-travelling-through-the-snow.webp');" role="img" aria-label="The TranzAlpine travelling through snow"></div>
+        <div class="shx-six-thumb" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp');" role="img" aria-label="The TranzAlpine passing Lake Sarah in winter"></div>
       </div>
       <div class="shx-six-row">
         <span class="shx-six-num">02</span>
@@ -431,7 +448,7 @@
     <div class="shx-wrap">
       <span class="shx-kicker shx-kicker--light">The Seasons</span>
       <hr class="shx-rule">
-      <h2 class="shx-display">Two seasons. Two South Islands.</h2>
+      <h2 class="shx-display">The seasons change everything.</h2>
       <p class="shx-seasons-intro">The same mountains, twice transformed. Choose the season that calls you &mdash; every journey below runs in one of them.</p>
       <div class="shx-seasons-grid">
         <div class="shx-season-card" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/N34A3054-500eeb72.jpg');" role="img" aria-label="Spring and summer touring on the Sir Edmund Hillary Explorer">
@@ -441,7 +458,7 @@
             <p>Long golden evenings, lupins along the lakeshores, waterfalls at full song in Milford Sound &mdash; and the high country green from the carriage window. Our 11 and 14-day tours run right through the warm months.</p>
           </div>
         </div>
-        <div class="shx-season-card" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/183840-lake-sarah-in-snow-b1e7ecbb.webp');" role="img" aria-label="Winter touring — Lake Sarah under snow">
+        <div class="shx-season-card" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/184587-tranzalpine-travelling-through-the-snow.webp');" role="img" aria-label="The TranzAlpine travelling through deep snow">
           <div class="shx-season-card-in">
             <span class="shx-season-months">June &ndash; September</span>
             <h3>Winter Edition</h3>
@@ -462,7 +479,7 @@
         <div>
           <span class="shx-kicker">Choose Your Journey</span>
           <hr class="shx-rule">
-          <h2 class="shx-display">Seven journeys. Three seasons. One South Island.</h2>
+          <h2 class="shx-display">Choose your journey.</h2>
         </div>
         <p>Every journey starts and ends in Christchurch, travels fully guided, and can be held with a 20% deposit.</p>
       </div>
@@ -519,7 +536,7 @@
         </div>
       </article>
       <article class="shx-j">
-        <div class="shx-j-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/184587-tranzalpine-travelling-through-the-snow.webp');" role="img" aria-label="TranzAlpine in winter snow"></div>
+        <div class="shx-j-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/183840-lake-sarah-in-snow-b1e7ecbb.webp');" role="img" aria-label="Lake Sarah under winter snow"></div>
         <div class="shx-j-body">
           <h3>12-Day Winter Edition 2027</h3>
           <ul class="shx-j-meta">
