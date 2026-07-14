@@ -1,8 +1,17 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v9  ·  2026-07-14  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v10  ·  2026-07-14  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v10 — LAYOUT REVERTED to the pre-full-screen frame per Ben (1180px wrap,
+            32px gutters, original ledger/journey media sizes, gallery back in
+            frame, no portrait bleed) — keeping everything approved since:
+            Montserrat, the Taieri hero and headline, the film section, the
+            seasons pair with the Lake Pukaki guests summer image and
+            deep-snow train winter image (as in-frame 600px cards again), all
+            copy. HERO NOW TRULY FULL SCREEN: the old 900px height cap meant
+            it never filled tall displays — now min-height 100vh/100svh with
+            a 640px floor, so the first screen is all hero on any display.
        v9 — REPAIR ROUND from Ben's v8 review: SEASONS rebuilt as a full-bleed
             cinematic diptych — two viewport halves meeting at a hairline seam,
             82vh tall, inset gold frames, and a NEW Spring/Summer image (real
@@ -114,15 +123,15 @@
   .shx-btn--ghost:hover { background: rgba(255,255,255,.12); border-color: #ffffff; }
   .shx-btn--ink { background: var(--ink); color: #ffffff !important; border-color: var(--ink); }
   .shx-btn--ink:hover { background: var(--ink-soft); border-color: var(--ink-soft); }
-  .shx-wrap { max-width: 1760px; margin: 0 auto; }
-  .shx-band { width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding: 96px clamp(26px, 4vw, 76px); }
+  .shx-wrap { max-width: 1180px; margin: 0 auto; }
+  .shx-band { width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding: 96px 32px; }
   @media (prefers-reduced-motion: reduce) { .sehe-home-ledger * { transition: none !important; animation: none !important; } }
 
   /* ============ 1. HERO ============ */
-  .shx-hero { position: relative; min-height: clamp(620px, 92vh, 900px); display: flex; align-items: flex-end; background-color: var(--ink-deep);
+  .shx-hero { position: relative; min-height: max(640px, 100vh); min-height: max(640px, 100svh); display: flex; align-items: flex-end; background-color: var(--ink-deep);
     background-image: linear-gradient(180deg, rgba(8,21,37,.62) 0%, rgba(8,21,37,.18) 34%, rgba(8,21,37,.34) 62%, rgba(8,21,37,.9) 100%), url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/SEHE_OCT2024_DAY2-18.webp');
     background-size: cover; background-position: center 30%; color: #fff; }
-  .shx-hero-inner { position: relative; width: 100%; max-width: 1760px; margin: 0 auto; padding: 150px clamp(26px, 4vw, 76px) 0; }
+  .shx-hero-inner { position: relative; width: 100%; max-width: 1180px; margin: 0 auto; padding: 150px 32px 0; }
   .shx-hero-kicker { display: inline-flex; align-items: center; gap: 16px; font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: .42em; text-transform: uppercase; color: var(--gold) !important; margin-bottom: 22px !important; }
   .shx-hero-kicker::before, .shx-hero-kicker::after { content: ''; width: 44px; height: 1px; background: var(--gold); }
   .shx-hero h1 { font-size: clamp(42px, 5.6vw, 74px) !important; line-height: 1.06 !important; color: #ffffff !important; max-width: 720px; text-shadow: 0 2px 26px rgba(8,21,37,.55); }
@@ -139,8 +148,7 @@
   .shx-hero-phone small { display: block; color: rgba(255,255,255,.66) !important; font-size: 12.5px !important; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 3px; }
 
   /* ============ 2. LEGACY ============ */
-  .shx-legacy { background: var(--paper); overflow: hidden; }
-  .shx-legacy .shx-portrait { margin-right: calc(-1 * clamp(26px, 4vw, 76px) + 18px); }
+  .shx-legacy { background: var(--paper); }
   .shx-legacy-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 72px; align-items: center; }
   .shx-legacy h2 { font-size: clamp(34px, 3.8vw, 52px) !important; line-height: 1.12 !important; color: var(--ink) !important; margin: 0 0 26px !important; }
   .shx-legacy-copy p { margin: 0 0 20px !important; font-size: 18.5px !important; color: var(--body-ink) !important; }
@@ -169,12 +177,12 @@
   .shx-six-head { max-width: 720px; margin-bottom: 64px; }
   .shx-six h2 { font-size: clamp(32px, 3.6vw, 48px) !important; color: var(--ink) !important; line-height: 1.14 !important; margin: 0 0 18px !important; }
   .shx-six-head p { font-size: 18.5px !important; color: var(--body-ink) !important; }
-  .shx-six-row { display: grid; grid-template-columns: 150px 1fr 280px; gap: 40px; align-items: center; padding: 32px 0; border-top: 1px solid var(--paper-line); }
+  .shx-six-row { display: grid; grid-template-columns: 130px 1fr 240px; gap: 34px; align-items: center; padding: 30px 0; border-top: 1px solid var(--paper-line); }
   .shx-six-row:last-child { border-bottom: 1px solid var(--paper-line); }
   .shx-six-num { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 62px !important; line-height: 1 !important; color: var(--gold) !important; }
   .shx-six-body h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 26px !important; color: var(--ink) !important; margin: 0 0 8px !important; }
   .shx-six-body p { font-size: 16.5px !important; color: var(--body-soft) !important; line-height: 1.6 !important; max-width: 58ch; }
-  .shx-six-thumb { width: 280px; height: 150px; background-size: cover; background-position: center; border-radius: 2px; }
+  .shx-six-thumb { width: 240px; height: 130px; background-size: cover; background-position: center; border-radius: 2px; }
   .shx-six-note { margin-top: 34px; font-size: 16px !important; color: var(--body-soft) !important; }
   .shx-six-note strong { color: var(--ink); }
 
@@ -185,8 +193,8 @@
   .shx-journeys-head p { max-width: 40ch; font-size: 17px !important; color: var(--body-soft) !important; }
   .shx-season { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 21px !important; color: var(--gold-deep) !important; margin: 46px 0 6px !important; }
   .shx-season:first-of-type { margin-top: 0 !important; }
-  .shx-j { display: grid; grid-template-columns: 320px 1fr 260px; align-items: center; gap: 36px; background: var(--paper); border: 1px solid var(--paper-line); border-radius: 3px; padding: 26px; margin-top: 20px; }
-  .shx-j-img { width: 320px; height: 200px; background-size: cover; background-position: center; border-radius: 2px; }
+  .shx-j { display: grid; grid-template-columns: 300px 1fr 250px; align-items: center; gap: 36px; background: var(--paper); border: 1px solid var(--paper-line); border-radius: 3px; padding: 26px; margin-top: 20px; }
+  .shx-j-img { width: 300px; height: 190px; background-size: cover; background-position: center; border-radius: 2px; }
   .shx-j-body h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: clamp(24px, 2.2vw, 30px) !important; line-height: 1.2 !important; color: var(--ink) !important; margin: 0 0 10px !important; }
   .shx-j-meta { display: flex; flex-wrap: wrap; gap: 8px 26px; margin: 0 0 12px; padding: 0; list-style: none; }
   .shx-j-meta li { font-size: 15.5px !important; color: var(--body-soft) !important; }
@@ -201,7 +209,7 @@
   /* ============ 6. CARRIAGE WINDOW ============ */
   .shx-window { background: var(--ink-deep); color: var(--cream-ink); }
   .shx-window h2 { font-size: clamp(30px, 3.4vw, 44px) !important; color: #ffffff !important; line-height: 1.16 !important; margin: 0 0 54px !important; max-width: 22ch; }
-  .shx-window-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding: 0 12px; }
+  .shx-window-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
   .shx-window-card { position: relative; }
   .shx-window-card .ph { width: 100%; aspect-ratio: 3 / 4; background-size: cover; background-position: center; border-radius: 2px; }
   .shx-window-card figcaption { margin-top: 14px; font-size: 14.5px !important; line-height: 1.5 !important; color: rgba(243,236,221,.75) !important; }
@@ -209,7 +217,6 @@
 
   /* ============ 7. GUESTS ============ */
   .shx-guests { background: var(--paper); }
-  .shx-guests .shx-wrap { max-width: 1280px; }
   .shx-guests h2 { font-size: clamp(32px, 3.6vw, 48px) !important; color: var(--ink) !important; line-height: 1.14 !important; margin: 0 0 60px !important; }
   .shx-guests-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; }
   .shx-g q { quotes: '\201C' '\201D'; font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 21.5px !important; line-height: 1.5 !important; color: var(--ink) !important; display: block; margin-bottom: 22px; }
@@ -259,20 +266,19 @@
   .shx-final-ctas { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; }
 
   /* ============ 4b. THE SEASONS ============ */
-  .shx-seasons { background: var(--ink); color: var(--cream-ink); padding-bottom: 0 !important; }
+  .shx-seasons { background: var(--ink); color: var(--cream-ink); }
   .shx-seasons h2 { font-size: clamp(32px, 3.6vw, 48px) !important; color: #ffffff !important; line-height: 1.14 !important; margin: 0 0 18px !important; }
   .shx-seasons-intro { max-width: 62ch; font-size: 18.5px !important; color: rgba(243,236,221,.85) !important; margin: 0 !important; }
-  /* full-bleed diptych: two halves of the viewport, meeting at a hairline seam */
-  .shx-seasons-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; width: 100vw; margin: 64px calc(50% - 50vw) 0; background: var(--ink-deep); }
-  .shx-season-card { position: relative; min-height: 82vh; display: flex; align-items: flex-end; overflow: hidden; background-size: cover; background-position: center; }
+  .shx-seasons-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 58px; }
+  .shx-season-card { position: relative; min-height: 600px; display: flex; align-items: flex-end; border-radius: 3px; overflow: hidden; background-size: cover; background-position: center; }
   .shx-season-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,21,37,.10) 30%, rgba(8,21,37,.52) 62%, rgba(8,21,37,.93) 100%); }
-  .shx-season-card::after { content: ''; position: absolute; inset: 18px; border: 1px solid rgba(200,165,108,.6); pointer-events: none; }
-  .shx-season-card-in { position: relative; padding: 0 clamp(30px, 4vw, 72px) 58px; }
+  .shx-season-card::after { content: ''; position: absolute; inset: 16px; border: 1px solid rgba(200,165,108,.6); border-radius: 2px; pointer-events: none; }
+  .shx-season-card-in { position: relative; padding: 0 44px 46px; }
   .shx-season-card h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 800 !important; font-size: clamp(34px, 3.4vw, 54px) !important; letter-spacing: .05em; text-transform: uppercase; color: #ffffff !important; margin: 0 0 14px !important; text-shadow: 0 2px 20px rgba(8,21,37,.65); }
   .shx-season-card p { font-size: 16.5px !important; line-height: 1.65 !important; color: rgba(255,255,255,.94) !important; max-width: 50ch; text-shadow: 0 1px 12px rgba(8,21,37,.6); }
   .shx-season-months { display: inline-flex; align-items: center; gap: 12px; font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: .34em; text-transform: uppercase; color: var(--gold) !important; margin-bottom: 14px; text-shadow: 0 1px 12px rgba(8,21,37,.95); }
   .shx-season-months::before { content: ''; width: 34px; height: 1px; background: var(--gold); }
-  .shx-seasons-note { width: 100vw; margin: 0 calc(50% - 50vw); padding: 24px clamp(26px, 4vw, 76px) 26px; border-top: 1px solid rgba(200,165,108,.35); display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; }
+  .shx-seasons-note { margin-top: 26px; padding: 20px 26px; border: 1px solid rgba(200,165,108,.5); border-radius: 3px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; }
   .shx-seasons-note p { font-size: 16px !important; color: rgba(243,236,221,.88) !important; }
   .shx-seasons-note a { color: var(--gold) !important; font-weight: 700; }
 
@@ -308,7 +314,7 @@
   .shx-film-media iframe { position: absolute; top: 50%; left: 50%; width: max(100vw, 178vh); height: max(100vh, 56.25vw); transform: translate(-50%, -50%); border: 0; pointer-events: none; }
   .shx-film-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,21,37,.42) 0%, rgba(8,21,37,.08) 38%, rgba(8,21,37,.30) 66%, rgba(8,21,37,.9) 100%); }
   .shx-film-in .shx-kicker, .shx-film-in .shx-rule { text-shadow: 0 1px 12px rgba(8,21,37,.9); }
-  .shx-film-in { position: relative; width: 100%; max-width: 1760px; margin: 0 auto; padding: 0 clamp(26px, 4vw, 76px) 72px; }
+  .shx-film-in { position: relative; width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 32px 72px; }
   .shx-film-in h2 { font-size: clamp(34px, 4.2vw, 58px) !important; color: #ffffff !important; line-height: 1.08 !important; margin: 0 0 16px !important; text-shadow: 0 2px 22px rgba(8,21,37,.6); }
   .shx-film-sub { max-width: 560px; font-size: 18px !important; color: rgba(255,255,255,.92) !important; margin: 0 0 30px !important; text-shadow: 0 1px 14px rgba(8,21,37,.6); }
   .shx-film-ctas { display: flex; flex-wrap: wrap; gap: 16px; }
@@ -320,6 +326,7 @@
   /* ============ RESPONSIVE ============ */
   @media (max-width: 1020px) {
     .shx-promise-grid { grid-template-columns: repeat(2, 1fr); }
+    .shx-seasons-duo { grid-template-columns: 1fr; }
     .shx-finder-grid { grid-template-columns: 1fr; gap: 44px; }
     .shx-finder-img { height: 320px; }
     .shx-window-grid { grid-template-columns: repeat(2, 1fr); }
@@ -332,9 +339,8 @@
   }
   @media (max-width: 860px) {
     .shx-band { padding: 64px 22px; }
-    .shx-seasons-duo { grid-template-columns: 1fr; }
-    .shx-season-card { min-height: 56vh; }
-    .shx-season-card-in { padding: 0 24px 32px; }
+    .shx-season-card { min-height: 440px; }
+    .shx-season-card-in { padding: 0 26px 30px; }
     .shx-pinnacle { background-image: linear-gradient(rgba(8,21,37,.92), rgba(8,21,37,.92)), url('https://irp.cdn-website.com/35e9f777/files/uploaded/14_52%20Reasons_Sir%20Edmond%20Hillary%20Alpine%20Centre-3.jpg'); }
     .shx-pinnacle-in { border-left: 0; padding-left: 0; border-top: 5px double var(--gold); padding-top: 28px; }
     .shx-hero-inner { padding: 130px 22px 0; }
@@ -514,8 +520,7 @@
       <hr class="shx-rule">
       <h2 class="shx-display">The seasons change everything.</h2>
       <p class="shx-seasons-intro">The same mountains, twice transformed. Choose the season that calls you &mdash; every journey below runs in one of them.</p>
-    </div>
-    <div class="shx-seasons-duo">
+      <div class="shx-seasons-duo">
       <div class="shx-season-card" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/SEHE_OCT2024_DAY3-14.webp');" role="img" aria-label="Guests photographing Aoraki Mt Cook over Lake Pukaki in spring sunshine">
         <div class="shx-season-card-in">
           <span class="shx-season-months">September &ndash; April</span>
@@ -530,9 +535,10 @@
           <p>The Southern Alps under deep snow, crackling fires in high-country hotels, and some of the clearest night skies on Earth over Tekapo. Quieter, cosier, utterly spectacular &mdash; our 12-day Winter Editions.</p>
         </div>
       </div>
-    </div>
-    <div class="shx-seasons-note">
-      <p><strong style="color:#fff;">And one January like no other:</strong> the Pinnacle Tour travels with Peter Hillary for a single summer departure &mdash; <a href="/pinnacle-tour-2027">see the Pinnacle Tour</a>.</p>
+      </div>
+      <div class="shx-seasons-note">
+        <p><strong style="color:#fff;">And one January like no other:</strong> the Pinnacle Tour travels with Peter Hillary for a single summer departure &mdash; <a href="/pinnacle-tour-2027">see the Pinnacle Tour</a>.</p>
+      </div>
     </div>
   </section>
 
