@@ -1,8 +1,20 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v5  ·  2026-07-13  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v6  ·  2026-07-14  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v6 — BEN'S REVIEW ROUND (design and layouts unchanged, additions only):
+            all display type moved from Yeseva One to MONTSERRAT per the brand
+            standard (700 for headings/numerals, 600 for pull-quotes; Open Sans
+            body unchanged). Three new sections in the same design system:
+            THE SEASONS (ink band, two full-bleed season cards + a Pinnacle
+            January note) between the Super 6 ledger and the journey directory;
+            THE PINNACLE FEATURE (ink band, double-gold rule, Peter Hillary
+            story, meta and CTAs) directly after the directory; FINDING YOUR
+            JOURNEY (paper band, three guiding questions + image) linking to
+            the Journeys page. Plus a gold "View All Journeys & Departures"
+            button at the foot of the directory. Fonts link updated
+            (Montserrat 600/700/800 + Open Sans).
        v5 — COMPLETE REDESIGN ("The Explorer's Ledger"). Ground-up homepage with
             its own design system, sharing nothing visual with the tour landing
             pages: Yeseva One display serif + 18px Open Sans body, flat paper
@@ -30,7 +42,7 @@
 <style>
   #journeys, #legacy, #guests { scroll-margin-top: 110px !important; }
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&amp;family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
 <style>
   /* ============ THE EXPLORER'S LEDGER — design system (homepage only) ============
      Nothing here is shared with the tour pages: different fonts, different
@@ -46,7 +58,7 @@
     background: var(--paper); text-align: left;
   }
   .sehe-home-ledger img { max-width: 100%; }
-  .sehe-home-ledger .shx-display { font-family: 'Yeseva One', 'Georgia', serif !important; font-weight: 400 !important; letter-spacing: 0; margin: 0; }
+  .sehe-home-ledger .shx-display { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; letter-spacing: -0.4px; margin: 0; }
   .sehe-home-ledger p { margin: 0; }
   .sehe-home-ledger a:focus-visible, .sehe-home-ledger button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
   /* kicker: small caps, wide tracking, flanked by a thin double rule below */
@@ -92,7 +104,7 @@
   .shx-legacy-copy p { margin: 0 0 20px !important; font-size: 18.5px !important; color: var(--body-ink) !important; }
   .shx-legacy-copy p:last-of-type { margin-bottom: 0 !important; }
   .shx-quote { margin: 34px 0 0; padding: 26px 0 0; border-top: 5px double var(--gold); }
-  .shx-quote p { font-family: 'Yeseva One', Georgia, serif !important; font-size: clamp(21px, 2.1vw, 26px) !important; line-height: 1.45 !important; color: var(--ink) !important; margin: 0 0 12px !important; }
+  .shx-quote p { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: clamp(21px, 2.1vw, 26px) !important; line-height: 1.45 !important; color: var(--ink) !important; margin: 0 0 12px !important; }
   .shx-quote cite { font-style: normal; font-size: 14px !important; font-weight: 700 !important; letter-spacing: .28em; text-transform: uppercase; color: var(--gold-deep) !important; }
   .shx-portrait { position: relative; }
   .shx-portrait img { width: 100%; height: auto; display: block; filter: sepia(.14) contrast(1.02); }
@@ -107,7 +119,7 @@
   .shx-promise-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 44px; }
   .shx-promise-item { border-top: 1px solid rgba(200,165,108,.55); padding-top: 26px; }
   .shx-promise-item svg { width: 34px; height: 34px; stroke: var(--gold); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 18px; }
-  .shx-promise-item h3 { font-family: 'Yeseva One', Georgia, serif !important; font-weight: 400 !important; font-size: 21px !important; color: #ffffff !important; margin: 0 0 10px !important; line-height: 1.3 !important; }
+  .shx-promise-item h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 21px !important; color: #ffffff !important; margin: 0 0 10px !important; line-height: 1.3 !important; }
   .shx-promise-item p { font-size: 15.5px !important; line-height: 1.65 !important; color: rgba(243,236,221,.78) !important; }
 
   /* ============ 4. SUPER 6 LEDGER ============ */
@@ -117,8 +129,8 @@
   .shx-six-head p { font-size: 18.5px !important; color: var(--body-ink) !important; }
   .shx-six-row { display: grid; grid-template-columns: 130px 1fr 240px; gap: 34px; align-items: center; padding: 30px 0; border-top: 1px solid var(--paper-line); }
   .shx-six-row:last-child { border-bottom: 1px solid var(--paper-line); }
-  .shx-six-num { font-family: 'Yeseva One', Georgia, serif !important; font-size: 62px !important; line-height: 1 !important; color: var(--gold) !important; }
-  .shx-six-body h3 { font-family: 'Yeseva One', Georgia, serif !important; font-weight: 400 !important; font-size: 26px !important; color: var(--ink) !important; margin: 0 0 8px !important; }
+  .shx-six-num { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 62px !important; line-height: 1 !important; color: var(--gold) !important; }
+  .shx-six-body h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 26px !important; color: var(--ink) !important; margin: 0 0 8px !important; }
   .shx-six-body p { font-size: 16.5px !important; color: var(--body-soft) !important; line-height: 1.6 !important; max-width: 58ch; }
   .shx-six-thumb { width: 240px; height: 130px; background-size: cover; background-position: center; border-radius: 2px; }
   .shx-six-note { margin-top: 34px; font-size: 16px !important; color: var(--body-soft) !important; }
@@ -129,11 +141,11 @@
   .shx-journeys-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 54px; }
   .shx-journeys h2 { font-size: clamp(32px, 3.6vw, 48px) !important; color: var(--ink) !important; line-height: 1.14 !important; margin: 0 !important; max-width: 18ch; }
   .shx-journeys-head p { max-width: 40ch; font-size: 17px !important; color: var(--body-soft) !important; }
-  .shx-season { font-family: 'Yeseva One', Georgia, serif !important; font-weight: 400 !important; font-size: 21px !important; color: var(--gold-deep) !important; margin: 46px 0 6px !important; }
+  .shx-season { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 21px !important; color: var(--gold-deep) !important; margin: 46px 0 6px !important; }
   .shx-season:first-of-type { margin-top: 0 !important; }
   .shx-j { display: grid; grid-template-columns: 300px 1fr 250px; align-items: center; gap: 36px; background: var(--paper); border: 1px solid var(--paper-line); border-radius: 3px; padding: 26px; margin-top: 20px; }
   .shx-j-img { width: 300px; height: 190px; background-size: cover; background-position: center; border-radius: 2px; }
-  .shx-j-body h3 { font-family: 'Yeseva One', Georgia, serif !important; font-weight: 400 !important; font-size: clamp(24px, 2.2vw, 30px) !important; line-height: 1.2 !important; color: var(--ink) !important; margin: 0 0 10px !important; }
+  .shx-j-body h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: clamp(24px, 2.2vw, 30px) !important; line-height: 1.2 !important; color: var(--ink) !important; margin: 0 0 10px !important; }
   .shx-j-meta { display: flex; flex-wrap: wrap; gap: 8px 26px; margin: 0 0 12px; padding: 0; list-style: none; }
   .shx-j-meta li { font-size: 15.5px !important; color: var(--body-soft) !important; }
   .shx-j-meta strong { color: var(--ink); font-weight: 700; }
@@ -157,7 +169,7 @@
   .shx-guests { background: var(--paper); }
   .shx-guests h2 { font-size: clamp(32px, 3.6vw, 48px) !important; color: var(--ink) !important; line-height: 1.14 !important; margin: 0 0 60px !important; }
   .shx-guests-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; }
-  .shx-g q { quotes: '\201C' '\201D'; font-family: 'Yeseva One', Georgia, serif !important; font-size: 21.5px !important; line-height: 1.5 !important; color: var(--ink) !important; display: block; margin-bottom: 22px; }
+  .shx-g q { quotes: '\201C' '\201D'; font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 21.5px !important; line-height: 1.5 !important; color: var(--ink) !important; display: block; margin-bottom: 22px; }
   .shx-g q::before { content: open-quote; color: var(--gold); }
   .shx-g q::after { content: close-quote; color: var(--gold); }
   .shx-g figcaption { font-size: 14px !important; font-weight: 700 !important; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-deep) !important; }
@@ -177,7 +189,7 @@
   .shx-awards img.past { height: 84px; opacity: .85; }
   .shx-awards-caption { flex-basis: 100%; font-size: 14px !important; color: var(--body-soft) !important; }
   .shx-practical { background: var(--paper); border: 1px solid var(--paper-line); border-radius: 3px; padding: 40px 42px; }
-  .shx-practical h3 { font-family: 'Yeseva One', Georgia, serif !important; font-weight: 400 !important; font-size: 24px !important; color: var(--ink) !important; margin: 0 0 24px !important; }
+  .shx-practical h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 24px !important; color: var(--ink) !important; margin: 0 0 24px !important; }
   .shx-practical ul { margin: 0; padding: 0; list-style: none; }
   .shx-practical li { position: relative; padding: 13px 0 13px 40px; border-top: 1px solid var(--paper-line); font-size: 16.5px !important; color: var(--body-ink) !important; }
   .shx-practical li:first-child { border-top: 0; padding-top: 0; }
@@ -190,8 +202,8 @@
   .shx-steps h2 { font-size: clamp(30px, 3.2vw, 42px) !important; color: var(--ink) !important; line-height: 1.16 !important; margin: 0 0 58px !important; }
   .shx-steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 54px; }
   .shx-step { border-top: 5px double var(--gold); padding-top: 24px; }
-  .shx-step-num { font-family: 'Yeseva One', Georgia, serif !important; font-size: 44px !important; color: var(--gold) !important; line-height: 1 !important; display: block; margin-bottom: 14px; }
-  .shx-step h3 { font-family: 'Yeseva One', Georgia, serif !important; font-weight: 400 !important; font-size: 22px !important; color: var(--ink) !important; margin: 0 0 10px !important; }
+  .shx-step-num { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 44px !important; color: var(--gold) !important; line-height: 1 !important; display: block; margin-bottom: 14px; }
+  .shx-step h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 22px !important; color: var(--ink) !important; margin: 0 0 10px !important; }
   .shx-step p { font-size: 16.5px !important; color: var(--body-soft) !important; line-height: 1.65 !important; }
   .shx-step a { color: var(--ink) !important; font-weight: 700; }
 
@@ -199,13 +211,56 @@
   .shx-final { background: var(--ink-deep); color: var(--cream-ink); text-align: center; background-image: linear-gradient(rgba(8,21,37,.9), rgba(8,21,37,.9)), url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg'); background-size: cover; background-position: center; }
   .shx-final h2 { font-size: clamp(38px, 4.6vw, 62px) !important; color: #ffffff !important; line-height: 1.1 !important; margin: 0 0 18px !important; }
   .shx-final-sub { max-width: 56ch; margin: 0 auto 34px !important; font-size: 18.5px !important; color: rgba(243,236,221,.85) !important; }
-  .shx-final-phone { display: block; font-family: 'Yeseva One', Georgia, serif !important; font-size: clamp(30px, 4vw, 46px) !important; color: var(--gold) !important; text-decoration: none !important; margin: 0 0 8px; }
+  .shx-final-phone { display: block; font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: clamp(30px, 4vw, 46px) !important; color: var(--gold) !important; text-decoration: none !important; margin: 0 0 8px; }
   .shx-final-hours { font-size: 14.5px !important; letter-spacing: .18em; text-transform: uppercase; color: rgba(243,236,221,.6) !important; margin-bottom: 40px !important; }
   .shx-final-ctas { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; }
+
+  /* ============ 4b. THE SEASONS ============ */
+  .shx-seasons { background: var(--ink); color: var(--cream-ink); }
+  .shx-seasons h2 { font-size: clamp(32px, 3.6vw, 48px) !important; color: #ffffff !important; line-height: 1.14 !important; margin: 0 0 18px !important; }
+  .shx-seasons-intro { max-width: 62ch; font-size: 18.5px !important; color: rgba(243,236,221,.85) !important; margin: 0 0 56px !important; }
+  .shx-seasons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+  .shx-season-card { position: relative; min-height: 460px; display: flex; align-items: flex-end; border-radius: 3px; overflow: hidden; background-size: cover; background-position: center; }
+  .shx-season-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,21,37,.05) 30%, rgba(8,21,37,.88) 100%); }
+  .shx-season-card-in { position: relative; padding: 34px 36px; }
+  .shx-season-card h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 27px !important; color: #ffffff !important; margin: 0 0 10px !important; }
+  .shx-season-card p { font-size: 16px !important; line-height: 1.65 !important; color: rgba(255,255,255,.88) !important; max-width: 52ch; }
+  .shx-season-months { display: inline-block; font-size: 12.5px !important; font-weight: 700 !important; letter-spacing: .3em; text-transform: uppercase; color: var(--gold) !important; margin-bottom: 12px; }
+  .shx-seasons-note { margin-top: 26px; padding: 20px 26px; border: 1px solid rgba(200,165,108,.5); border-radius: 3px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; }
+  .shx-seasons-note p { font-size: 16px !important; color: rgba(243,236,221,.88) !important; }
+  .shx-seasons-note a { color: var(--gold) !important; font-weight: 700; }
+
+  /* ============ 5b. JOURNEYS FOOT BUTTON ============ */
+  .shx-journeys-foot { display: flex; justify-content: center; margin-top: 44px; }
+
+  /* ============ 5c. PINNACLE FEATURE ============ */
+  .shx-pinnacle { background: var(--ink-deep); color: var(--cream-ink); background-image: linear-gradient(90deg, rgba(8,21,37,.96) 0%, rgba(8,21,37,.88) 46%, rgba(8,21,37,.42) 100%), url('https://irp.cdn-website.com/35e9f777/files/uploaded/14_52%20Reasons_Sir%20Edmond%20Hillary%20Alpine%20Centre-3.jpg'); background-size: cover; background-position: center right; }
+  .shx-pinnacle-in { max-width: 640px; border-left: 5px double var(--gold); padding-left: 40px; }
+  .shx-pinnacle h2 { font-size: clamp(32px, 3.8vw, 50px) !important; color: #ffffff !important; line-height: 1.12 !important; margin: 0 0 20px !important; }
+  .shx-pinnacle p { font-size: 18px !important; color: rgba(243,236,221,.88) !important; margin: 0 0 18px !important; }
+  .shx-pinnacle-meta { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 6px 0 30px; padding: 0; list-style: none; }
+  .shx-pinnacle-meta li { font-size: 15px !important; color: rgba(243,236,221,.75) !important; }
+  .shx-pinnacle-meta strong { color: var(--gold); font-weight: 700; }
+  .shx-pinnacle-ctas { display: flex; flex-wrap: wrap; gap: 16px; }
+
+  /* ============ 5d. FINDER ============ */
+  .shx-finder { background: var(--paper); }
+  .shx-finder-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 72px; align-items: center; }
+  .shx-finder h2 { font-size: clamp(30px, 3.4vw, 44px) !important; color: var(--ink) !important; line-height: 1.16 !important; margin: 0 0 18px !important; }
+  .shx-finder-copy > p { font-size: 18px !important; color: var(--body-ink) !important; margin: 0 0 26px !important; max-width: 58ch; }
+  .shx-finder-qs { margin: 0 0 34px; padding: 0; list-style: none; }
+  .shx-finder-qs li { position: relative; padding: 14px 0 14px 34px; border-top: 1px solid var(--paper-line); font-size: 17px !important; color: var(--body-ink) !important; }
+  .shx-finder-qs li:last-child { border-bottom: 1px solid var(--paper-line); }
+  .shx-finder-qs li::before { content: ''; position: absolute; left: 2px; top: 22px; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); }
+  .shx-finder-qs strong { color: var(--ink); }
+  .shx-finder-img { width: 100%; height: 430px; background-size: cover; background-position: center; border-radius: 3px; }
 
   /* ============ RESPONSIVE ============ */
   @media (max-width: 1020px) {
     .shx-promise-grid { grid-template-columns: repeat(2, 1fr); }
+    .shx-seasons-grid { grid-template-columns: 1fr; }
+    .shx-finder-grid { grid-template-columns: 1fr; gap: 44px; }
+    .shx-finder-img { height: 320px; }
     .shx-window-grid { grid-template-columns: repeat(2, 1fr); }
     .shx-guests-grid { grid-template-columns: 1fr; gap: 44px; }
     .shx-conf-grid { grid-template-columns: 1fr; gap: 54px; }
@@ -216,6 +271,9 @@
   }
   @media (max-width: 860px) {
     .shx-band { padding: 64px 22px; }
+    .shx-season-card { min-height: 380px; }
+    .shx-pinnacle { background-image: linear-gradient(rgba(8,21,37,.92), rgba(8,21,37,.92)), url('https://irp.cdn-website.com/35e9f777/files/uploaded/14_52%20Reasons_Sir%20Edmond%20Hillary%20Alpine%20Centre-3.jpg'); }
+    .shx-pinnacle-in { border-left: 0; padding-left: 0; border-top: 5px double var(--gold); padding-top: 28px; }
     .shx-hero-inner { padding: 130px 22px 0; }
     .shx-hero-proof { gap: 20px; }
     .shx-hero-phone { margin-left: 0; text-align: left; }
@@ -368,6 +426,35 @@
     </div>
   </section>
 
+  <!-- ============ 4b. THE SEASONS ============ -->
+  <section class="shx-seasons shx-band">
+    <div class="shx-wrap">
+      <span class="shx-kicker shx-kicker--light">The Seasons</span>
+      <hr class="shx-rule">
+      <h2 class="shx-display">Two seasons. Two South Islands.</h2>
+      <p class="shx-seasons-intro">The same mountains, twice transformed. Choose the season that calls you &mdash; every journey below runs in one of them.</p>
+      <div class="shx-seasons-grid">
+        <div class="shx-season-card" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/N34A3054-500eeb72.jpg');" role="img" aria-label="Spring and summer touring on the Sir Edmund Hillary Explorer">
+          <div class="shx-season-card-in">
+            <span class="shx-season-months">September &ndash; April</span>
+            <h3>Spring &amp; Summer</h3>
+            <p>Long golden evenings, lupins along the lakeshores, waterfalls at full song in Milford Sound &mdash; and the high country green from the carriage window. Our 11 and 14-day tours run right through the warm months.</p>
+          </div>
+        </div>
+        <div class="shx-season-card" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/183840-lake-sarah-in-snow-b1e7ecbb.webp');" role="img" aria-label="Winter touring — Lake Sarah under snow">
+          <div class="shx-season-card-in">
+            <span class="shx-season-months">June &ndash; September</span>
+            <h3>Winter Edition</h3>
+            <p>The Southern Alps under deep snow, crackling fires in high-country hotels, and some of the clearest night skies on Earth over Tekapo. Quieter, cosier, utterly spectacular &mdash; our 12-day Winter Editions.</p>
+          </div>
+        </div>
+      </div>
+      <div class="shx-seasons-note">
+        <p><strong style="color:#fff;">And one January like no other:</strong> the Pinnacle Tour travels with Peter Hillary for a single summer departure &mdash; <a href="/pinnacle-tour-2027">see the Pinnacle Tour</a>.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ 5 + 6. JOURNEY DIRECTORY ============ -->
   <section class="shx-journeys shx-band" id="journeys">
     <div class="shx-wrap">
@@ -500,6 +587,51 @@
           <a class="shx-btn shx-btn--ink" href="/2026-2027-spring/2027-2028-spring/summer-tour-11-days">View This Journey</a>
         </div>
       </article>
+      <div class="shx-journeys-foot">
+        <a class="shx-btn shx-btn--gold" href="/journeys">View All Journeys &amp; Departures</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5c. PINNACLE FEATURE ============ -->
+  <section class="shx-pinnacle shx-band">
+    <div class="shx-wrap">
+      <div class="shx-pinnacle-in">
+        <span class="shx-kicker shx-kicker--light">A Once-in-a-Lifetime Departure</span>
+        <hr class="shx-rule">
+        <h2 class="shx-display">The Pinnacle Tour, with Peter Hillary</h2>
+        <p>For fifteen days in January 2027, Peter Hillary &mdash; son of Sir Edmund, and a celebrated mountaineer in his own right &mdash; hosts a single, ultra-premium journey through his father&rsquo;s South Island: the mountains, the stories, and the family who lived them.</p>
+        <ul class="shx-pinnacle-meta">
+          <li><strong>15 days</strong> &middot; 15 nights</li>
+          <li><strong>One departure</strong> &middot; 14 January 2027</li>
+          <li>From <strong>NZ$25,995</strong> per person, twin share</li>
+        </ul>
+        <div class="shx-pinnacle-ctas">
+          <a class="shx-btn shx-btn--gold" href="/pinnacle-tour-2027">Discover the Pinnacle Tour</a>
+          <a class="shx-btn shx-btn--ghost" href="tel:+6439741812">Call to Enquire</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5d. FINDER ============ -->
+  <section class="shx-finder shx-band">
+    <div class="shx-wrap">
+      <div class="shx-finder-grid">
+        <div class="shx-finder-copy">
+          <span class="shx-kicker">Finding Your Journey</span>
+          <hr class="shx-rule">
+          <h2 class="shx-display">Not sure which journey is yours?</h2>
+          <p>Three honest questions usually settle it &mdash; and our Journeys page lays all seven side by side, with every departure date, price and rail adventure in one place.</p>
+          <ul class="shx-finder-qs">
+            <li><strong>How long do you want to travel?</strong> Eleven days for the essentials; fourteen for the complete &ldquo;Super 6&rdquo;.</li>
+            <li><strong>Green summers or white winters?</strong> Waterfalls and long evenings &mdash; or snow, stars and fireside nights.</li>
+            <li><strong>A date that suits you?</strong> Every journey&rsquo;s full departure calendar is shown live on the Journeys page.</li>
+          </ul>
+          <a class="shx-btn shx-btn--ink" href="/journeys">Compare All Journeys &amp; Dates</a>
+        </div>
+        <div class="shx-finder-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/SEHE_OCT2024_DAY3-19.webp');" role="img" aria-label="Guests enjoying the journey"></div>
+      </div>
     </div>
   </section>
 
