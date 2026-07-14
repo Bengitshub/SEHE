@@ -1,8 +1,20 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v8  ·  2026-07-14  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v9  ·  2026-07-14  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v9 — REPAIR ROUND from Ben's v8 review: SEASONS rebuilt as a full-bleed
+            cinematic diptych — two viewport halves meeting at a hairline seam,
+            82vh tall, inset gold frames, and a NEW Spring/Summer image (real
+            guests photographing Aoraki over turquoise Lake Pukaki in golden
+            tussock — DAY3-14; the steam-loco shot retired from this spot);
+            the Pinnacle note now runs as a flush full-width strip under the
+            diptych. Layout breathes per section instead of one fixed frame:
+            the Legacy portrait bleeds to the viewport edge, Guests narrows to
+            a 1280px intimate measure, gallery and seasons run edge-to-edge,
+            and v8's media inflation was softened (ledger thumbs 280px,
+            journey images 320px) — no font-size changes. Mobile pass begun:
+            diptych stacks to 56vh halves with full-width copy.
        v8 — FULL-SCREEN EXPERIENCE + THE FILM (Ben's third round): the page
             frame widened from a 1180px column to a 1760px canvas with fluid
             4vw side padding — sections now fill the screen (hero inner, all
@@ -127,7 +139,8 @@
   .shx-hero-phone small { display: block; color: rgba(255,255,255,.66) !important; font-size: 12.5px !important; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 3px; }
 
   /* ============ 2. LEGACY ============ */
-  .shx-legacy { background: var(--paper); }
+  .shx-legacy { background: var(--paper); overflow: hidden; }
+  .shx-legacy .shx-portrait { margin-right: calc(-1 * clamp(26px, 4vw, 76px) + 18px); }
   .shx-legacy-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 72px; align-items: center; }
   .shx-legacy h2 { font-size: clamp(34px, 3.8vw, 52px) !important; line-height: 1.12 !important; color: var(--ink) !important; margin: 0 0 26px !important; }
   .shx-legacy-copy p { margin: 0 0 20px !important; font-size: 18.5px !important; color: var(--body-ink) !important; }
@@ -156,12 +169,12 @@
   .shx-six-head { max-width: 720px; margin-bottom: 64px; }
   .shx-six h2 { font-size: clamp(32px, 3.6vw, 48px) !important; color: var(--ink) !important; line-height: 1.14 !important; margin: 0 0 18px !important; }
   .shx-six-head p { font-size: 18.5px !important; color: var(--body-ink) !important; }
-  .shx-six-row { display: grid; grid-template-columns: 150px 1fr 320px; gap: 40px; align-items: center; padding: 34px 0; border-top: 1px solid var(--paper-line); }
+  .shx-six-row { display: grid; grid-template-columns: 150px 1fr 280px; gap: 40px; align-items: center; padding: 32px 0; border-top: 1px solid var(--paper-line); }
   .shx-six-row:last-child { border-bottom: 1px solid var(--paper-line); }
   .shx-six-num { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 62px !important; line-height: 1 !important; color: var(--gold) !important; }
   .shx-six-body h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 26px !important; color: var(--ink) !important; margin: 0 0 8px !important; }
   .shx-six-body p { font-size: 16.5px !important; color: var(--body-soft) !important; line-height: 1.6 !important; max-width: 58ch; }
-  .shx-six-thumb { width: 320px; height: 170px; background-size: cover; background-position: center; border-radius: 2px; }
+  .shx-six-thumb { width: 280px; height: 150px; background-size: cover; background-position: center; border-radius: 2px; }
   .shx-six-note { margin-top: 34px; font-size: 16px !important; color: var(--body-soft) !important; }
   .shx-six-note strong { color: var(--ink); }
 
@@ -172,8 +185,8 @@
   .shx-journeys-head p { max-width: 40ch; font-size: 17px !important; color: var(--body-soft) !important; }
   .shx-season { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 21px !important; color: var(--gold-deep) !important; margin: 46px 0 6px !important; }
   .shx-season:first-of-type { margin-top: 0 !important; }
-  .shx-j { display: grid; grid-template-columns: 340px 1fr 270px; align-items: center; gap: 36px; background: var(--paper); border: 1px solid var(--paper-line); border-radius: 3px; padding: 26px; margin-top: 20px; }
-  .shx-j-img { width: 340px; height: 210px; background-size: cover; background-position: center; border-radius: 2px; }
+  .shx-j { display: grid; grid-template-columns: 320px 1fr 260px; align-items: center; gap: 36px; background: var(--paper); border: 1px solid var(--paper-line); border-radius: 3px; padding: 26px; margin-top: 20px; }
+  .shx-j-img { width: 320px; height: 200px; background-size: cover; background-position: center; border-radius: 2px; }
   .shx-j-body h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: clamp(24px, 2.2vw, 30px) !important; line-height: 1.2 !important; color: var(--ink) !important; margin: 0 0 10px !important; }
   .shx-j-meta { display: flex; flex-wrap: wrap; gap: 8px 26px; margin: 0 0 12px; padding: 0; list-style: none; }
   .shx-j-meta li { font-size: 15.5px !important; color: var(--body-soft) !important; }
@@ -196,6 +209,7 @@
 
   /* ============ 7. GUESTS ============ */
   .shx-guests { background: var(--paper); }
+  .shx-guests .shx-wrap { max-width: 1280px; }
   .shx-guests h2 { font-size: clamp(32px, 3.6vw, 48px) !important; color: var(--ink) !important; line-height: 1.14 !important; margin: 0 0 60px !important; }
   .shx-guests-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; }
   .shx-g q { quotes: '\201C' '\201D'; font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 21.5px !important; line-height: 1.5 !important; color: var(--ink) !important; display: block; margin-bottom: 22px; }
@@ -245,19 +259,20 @@
   .shx-final-ctas { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; }
 
   /* ============ 4b. THE SEASONS ============ */
-  .shx-seasons { background: var(--ink); color: var(--cream-ink); }
+  .shx-seasons { background: var(--ink); color: var(--cream-ink); padding-bottom: 0 !important; }
   .shx-seasons h2 { font-size: clamp(32px, 3.6vw, 48px) !important; color: #ffffff !important; line-height: 1.14 !important; margin: 0 0 18px !important; }
-  .shx-seasons-intro { max-width: 62ch; font-size: 18.5px !important; color: rgba(243,236,221,.85) !important; margin: 0 0 56px !important; }
-  .shx-seasons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
-  .shx-season-card { position: relative; min-height: 70vh; display: flex; align-items: flex-end; border-radius: 3px; overflow: hidden; background-size: cover; background-position: center; }
-  .shx-season-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,21,37,.12) 26%, rgba(8,21,37,.62) 60%, rgba(8,21,37,.95) 100%); }
-  .shx-season-card::after { content: ''; position: absolute; inset: 16px; border: 1px solid rgba(200,165,108,.65); border-radius: 2px; pointer-events: none; }
-  .shx-season-card-in { position: relative; padding: 0 46px 44px; }
-  .shx-season-card h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 800 !important; font-size: clamp(32px, 3.2vw, 46px) !important; letter-spacing: .04em; text-transform: uppercase; color: #ffffff !important; margin: 0 0 14px !important; text-shadow: 0 2px 18px rgba(8,21,37,.6); }
-  .shx-season-card p { font-size: 16.5px !important; line-height: 1.65 !important; color: rgba(255,255,255,.92) !important; max-width: 52ch; }
-  .shx-season-months { display: inline-flex; align-items: center; gap: 12px; font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: .34em; text-transform: uppercase; color: var(--gold) !important; margin-bottom: 14px; text-shadow: 0 1px 12px rgba(8,21,37,.9); }
+  .shx-seasons-intro { max-width: 62ch; font-size: 18.5px !important; color: rgba(243,236,221,.85) !important; margin: 0 !important; }
+  /* full-bleed diptych: two halves of the viewport, meeting at a hairline seam */
+  .shx-seasons-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; width: 100vw; margin: 64px calc(50% - 50vw) 0; background: var(--ink-deep); }
+  .shx-season-card { position: relative; min-height: 82vh; display: flex; align-items: flex-end; overflow: hidden; background-size: cover; background-position: center; }
+  .shx-season-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,21,37,.10) 30%, rgba(8,21,37,.52) 62%, rgba(8,21,37,.93) 100%); }
+  .shx-season-card::after { content: ''; position: absolute; inset: 18px; border: 1px solid rgba(200,165,108,.6); pointer-events: none; }
+  .shx-season-card-in { position: relative; padding: 0 clamp(30px, 4vw, 72px) 58px; }
+  .shx-season-card h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 800 !important; font-size: clamp(34px, 3.4vw, 54px) !important; letter-spacing: .05em; text-transform: uppercase; color: #ffffff !important; margin: 0 0 14px !important; text-shadow: 0 2px 20px rgba(8,21,37,.65); }
+  .shx-season-card p { font-size: 16.5px !important; line-height: 1.65 !important; color: rgba(255,255,255,.94) !important; max-width: 50ch; text-shadow: 0 1px 12px rgba(8,21,37,.6); }
+  .shx-season-months { display: inline-flex; align-items: center; gap: 12px; font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: .34em; text-transform: uppercase; color: var(--gold) !important; margin-bottom: 14px; text-shadow: 0 1px 12px rgba(8,21,37,.95); }
   .shx-season-months::before { content: ''; width: 34px; height: 1px; background: var(--gold); }
-  .shx-seasons-note { margin-top: 26px; padding: 20px 26px; border: 1px solid rgba(200,165,108,.5); border-radius: 3px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; }
+  .shx-seasons-note { width: 100vw; margin: 0 calc(50% - 50vw); padding: 24px clamp(26px, 4vw, 76px) 26px; border-top: 1px solid rgba(200,165,108,.35); display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; }
   .shx-seasons-note p { font-size: 16px !important; color: rgba(243,236,221,.88) !important; }
   .shx-seasons-note a { color: var(--gold) !important; font-weight: 700; }
 
@@ -305,7 +320,6 @@
   /* ============ RESPONSIVE ============ */
   @media (max-width: 1020px) {
     .shx-promise-grid { grid-template-columns: repeat(2, 1fr); }
-    .shx-seasons-grid { grid-template-columns: 1fr; }
     .shx-finder-grid { grid-template-columns: 1fr; gap: 44px; }
     .shx-finder-img { height: 320px; }
     .shx-window-grid { grid-template-columns: repeat(2, 1fr); }
@@ -318,8 +332,9 @@
   }
   @media (max-width: 860px) {
     .shx-band { padding: 64px 22px; }
-    .shx-season-card { min-height: 460px; }
-    .shx-season-card-in { padding: 0 26px 28px; }
+    .shx-seasons-duo { grid-template-columns: 1fr; }
+    .shx-season-card { min-height: 56vh; }
+    .shx-season-card-in { padding: 0 24px 32px; }
     .shx-pinnacle { background-image: linear-gradient(rgba(8,21,37,.92), rgba(8,21,37,.92)), url('https://irp.cdn-website.com/35e9f777/files/uploaded/14_52%20Reasons_Sir%20Edmond%20Hillary%20Alpine%20Centre-3.jpg'); }
     .shx-pinnacle-in { border-left: 0; padding-left: 0; border-top: 5px double var(--gold); padding-top: 28px; }
     .shx-hero-inner { padding: 130px 22px 0; }
@@ -499,25 +514,25 @@
       <hr class="shx-rule">
       <h2 class="shx-display">The seasons change everything.</h2>
       <p class="shx-seasons-intro">The same mountains, twice transformed. Choose the season that calls you &mdash; every journey below runs in one of them.</p>
-      <div class="shx-seasons-grid">
-        <div class="shx-season-card" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/N34A3054-500eeb72.jpg');" role="img" aria-label="Spring and summer touring on the Sir Edmund Hillary Explorer">
-          <div class="shx-season-card-in">
-            <span class="shx-season-months">September &ndash; April</span>
-            <h3>Spring &amp; Summer</h3>
-            <p>Long golden evenings, lupins along the lakeshores, waterfalls at full song in Milford Sound &mdash; and the high country green from the carriage window. Our 11 and 14-day tours run right through the warm months.</p>
-          </div>
-        </div>
-        <div class="shx-season-card" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/184587-tranzalpine-travelling-through-the-snow.webp');" role="img" aria-label="The TranzAlpine travelling through deep snow">
-          <div class="shx-season-card-in">
-            <span class="shx-season-months">June &ndash; September</span>
-            <h3>Winter Edition</h3>
-            <p>The Southern Alps under deep snow, crackling fires in high-country hotels, and some of the clearest night skies on Earth over Tekapo. Quieter, cosier, utterly spectacular &mdash; our 12-day Winter Editions.</p>
-          </div>
+    </div>
+    <div class="shx-seasons-duo">
+      <div class="shx-season-card" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/SEHE_OCT2024_DAY3-14.webp');" role="img" aria-label="Guests photographing Aoraki Mt Cook over Lake Pukaki in spring sunshine">
+        <div class="shx-season-card-in">
+          <span class="shx-season-months">September &ndash; April</span>
+          <h3>Spring &amp; Summer</h3>
+          <p>Long golden evenings, turquoise lakes, waterfalls at full song in Milford Sound &mdash; and the high country green from the carriage window. Our 11 and 14-day tours run right through the warm months.</p>
         </div>
       </div>
-      <div class="shx-seasons-note">
-        <p><strong style="color:#fff;">And one January like no other:</strong> the Pinnacle Tour travels with Peter Hillary for a single summer departure &mdash; <a href="/pinnacle-tour-2027">see the Pinnacle Tour</a>.</p>
+      <div class="shx-season-card" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/184587-tranzalpine-travelling-through-the-snow.webp');" role="img" aria-label="The TranzAlpine travelling through deep snow">
+        <div class="shx-season-card-in">
+          <span class="shx-season-months">June &ndash; September</span>
+          <h3>Winter Edition</h3>
+          <p>The Southern Alps under deep snow, crackling fires in high-country hotels, and some of the clearest night skies on Earth over Tekapo. Quieter, cosier, utterly spectacular &mdash; our 12-day Winter Editions.</p>
+        </div>
       </div>
+    </div>
+    <div class="shx-seasons-note">
+      <p><strong style="color:#fff;">And one January like no other:</strong> the Pinnacle Tour travels with Peter Hillary for a single summer departure &mdash; <a href="/pinnacle-tour-2027">see the Pinnacle Tour</a>.</p>
     </div>
   </section>
 
