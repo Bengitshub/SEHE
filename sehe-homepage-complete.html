@@ -1,8 +1,23 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v7  ·  2026-07-14  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v8  ·  2026-07-14  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v8 — FULL-SCREEN EXPERIENCE + THE FILM (Ben's third round): the page
+            frame widened from a 1180px column to a 1760px canvas with fluid
+            4vw side padding — sections now fill the screen (hero inner, all
+            bands), the carriage-window gallery runs true edge-to-edge, the
+            seasons posters grew to 70vh, and the ledger/journey media scaled
+            up to match; text blocks keep their readable measures. NEW
+            full-screen FILM section after the Legacy story: the Vimeo
+            "Website Banner" loop (video 1046997096) plays as a muted ambient
+            background (background=1, dnt) behind a veil, with a gold "Watch
+            the Full Film" button to the 2½-minute brand film
+            (vimeo.com/1049200733, new tab). Photo-first for the audience: on
+            phones and for reduced-motion users the video layer is hidden
+            entirely and the TranzAlpine/Waimakariri poster photo band shows
+            instead (that image freed up when the hero went to Taieri Gorge).
+            Hero photo unchanged per Ben.
        v7 — BEN'S SECOND REVIEW ROUND: hero headline is now Ben's line "Rail is
             the heart of our scenic journeys." over a SUMMER RAIL photo (the
             Taieri Gorge viaduct in spring green — the previous TranzAlpine
@@ -87,15 +102,15 @@
   .shx-btn--ghost:hover { background: rgba(255,255,255,.12); border-color: #ffffff; }
   .shx-btn--ink { background: var(--ink); color: #ffffff !important; border-color: var(--ink); }
   .shx-btn--ink:hover { background: var(--ink-soft); border-color: var(--ink-soft); }
-  .shx-wrap { max-width: 1180px; margin: 0 auto; }
-  .shx-band { width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding: 96px 32px; }
+  .shx-wrap { max-width: 1760px; margin: 0 auto; }
+  .shx-band { width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding: 96px clamp(26px, 4vw, 76px); }
   @media (prefers-reduced-motion: reduce) { .sehe-home-ledger * { transition: none !important; animation: none !important; } }
 
   /* ============ 1. HERO ============ */
   .shx-hero { position: relative; min-height: clamp(620px, 92vh, 900px); display: flex; align-items: flex-end; background-color: var(--ink-deep);
     background-image: linear-gradient(180deg, rgba(8,21,37,.62) 0%, rgba(8,21,37,.18) 34%, rgba(8,21,37,.34) 62%, rgba(8,21,37,.9) 100%), url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/SEHE_OCT2024_DAY2-18.webp');
     background-size: cover; background-position: center 30%; color: #fff; }
-  .shx-hero-inner { position: relative; width: 100%; max-width: 1180px; margin: 0 auto; padding: 150px 32px 0; }
+  .shx-hero-inner { position: relative; width: 100%; max-width: 1760px; margin: 0 auto; padding: 150px clamp(26px, 4vw, 76px) 0; }
   .shx-hero-kicker { display: inline-flex; align-items: center; gap: 16px; font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: .42em; text-transform: uppercase; color: var(--gold) !important; margin-bottom: 22px !important; }
   .shx-hero-kicker::before, .shx-hero-kicker::after { content: ''; width: 44px; height: 1px; background: var(--gold); }
   .shx-hero h1 { font-size: clamp(42px, 5.6vw, 74px) !important; line-height: 1.06 !important; color: #ffffff !important; max-width: 720px; text-shadow: 0 2px 26px rgba(8,21,37,.55); }
@@ -141,12 +156,12 @@
   .shx-six-head { max-width: 720px; margin-bottom: 64px; }
   .shx-six h2 { font-size: clamp(32px, 3.6vw, 48px) !important; color: var(--ink) !important; line-height: 1.14 !important; margin: 0 0 18px !important; }
   .shx-six-head p { font-size: 18.5px !important; color: var(--body-ink) !important; }
-  .shx-six-row { display: grid; grid-template-columns: 130px 1fr 240px; gap: 34px; align-items: center; padding: 30px 0; border-top: 1px solid var(--paper-line); }
+  .shx-six-row { display: grid; grid-template-columns: 150px 1fr 320px; gap: 40px; align-items: center; padding: 34px 0; border-top: 1px solid var(--paper-line); }
   .shx-six-row:last-child { border-bottom: 1px solid var(--paper-line); }
   .shx-six-num { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 62px !important; line-height: 1 !important; color: var(--gold) !important; }
   .shx-six-body h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 26px !important; color: var(--ink) !important; margin: 0 0 8px !important; }
   .shx-six-body p { font-size: 16.5px !important; color: var(--body-soft) !important; line-height: 1.6 !important; max-width: 58ch; }
-  .shx-six-thumb { width: 240px; height: 130px; background-size: cover; background-position: center; border-radius: 2px; }
+  .shx-six-thumb { width: 320px; height: 170px; background-size: cover; background-position: center; border-radius: 2px; }
   .shx-six-note { margin-top: 34px; font-size: 16px !important; color: var(--body-soft) !important; }
   .shx-six-note strong { color: var(--ink); }
 
@@ -157,8 +172,8 @@
   .shx-journeys-head p { max-width: 40ch; font-size: 17px !important; color: var(--body-soft) !important; }
   .shx-season { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 21px !important; color: var(--gold-deep) !important; margin: 46px 0 6px !important; }
   .shx-season:first-of-type { margin-top: 0 !important; }
-  .shx-j { display: grid; grid-template-columns: 300px 1fr 250px; align-items: center; gap: 36px; background: var(--paper); border: 1px solid var(--paper-line); border-radius: 3px; padding: 26px; margin-top: 20px; }
-  .shx-j-img { width: 300px; height: 190px; background-size: cover; background-position: center; border-radius: 2px; }
+  .shx-j { display: grid; grid-template-columns: 340px 1fr 270px; align-items: center; gap: 36px; background: var(--paper); border: 1px solid var(--paper-line); border-radius: 3px; padding: 26px; margin-top: 20px; }
+  .shx-j-img { width: 340px; height: 210px; background-size: cover; background-position: center; border-radius: 2px; }
   .shx-j-body h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: clamp(24px, 2.2vw, 30px) !important; line-height: 1.2 !important; color: var(--ink) !important; margin: 0 0 10px !important; }
   .shx-j-meta { display: flex; flex-wrap: wrap; gap: 8px 26px; margin: 0 0 12px; padding: 0; list-style: none; }
   .shx-j-meta li { font-size: 15.5px !important; color: var(--body-soft) !important; }
@@ -173,7 +188,7 @@
   /* ============ 6. CARRIAGE WINDOW ============ */
   .shx-window { background: var(--ink-deep); color: var(--cream-ink); }
   .shx-window h2 { font-size: clamp(30px, 3.4vw, 44px) !important; color: #ffffff !important; line-height: 1.16 !important; margin: 0 0 54px !important; max-width: 22ch; }
-  .shx-window-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .shx-window-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding: 0 12px; }
   .shx-window-card { position: relative; }
   .shx-window-card .ph { width: 100%; aspect-ratio: 3 / 4; background-size: cover; background-position: center; border-radius: 2px; }
   .shx-window-card figcaption { margin-top: 14px; font-size: 14.5px !important; line-height: 1.5 !important; color: rgba(243,236,221,.75) !important; }
@@ -234,7 +249,7 @@
   .shx-seasons h2 { font-size: clamp(32px, 3.6vw, 48px) !important; color: #ffffff !important; line-height: 1.14 !important; margin: 0 0 18px !important; }
   .shx-seasons-intro { max-width: 62ch; font-size: 18.5px !important; color: rgba(243,236,221,.85) !important; margin: 0 0 56px !important; }
   .shx-seasons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
-  .shx-season-card { position: relative; min-height: 600px; display: flex; align-items: flex-end; border-radius: 3px; overflow: hidden; background-size: cover; background-position: center; }
+  .shx-season-card { position: relative; min-height: 70vh; display: flex; align-items: flex-end; border-radius: 3px; overflow: hidden; background-size: cover; background-position: center; }
   .shx-season-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,21,37,.12) 26%, rgba(8,21,37,.62) 60%, rgba(8,21,37,.95) 100%); }
   .shx-season-card::after { content: ''; position: absolute; inset: 16px; border: 1px solid rgba(200,165,108,.65); border-radius: 2px; pointer-events: none; }
   .shx-season-card-in { position: relative; padding: 0 46px 44px; }
@@ -270,6 +285,22 @@
   .shx-finder-qs li::before { content: ''; position: absolute; left: 2px; top: 22px; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); }
   .shx-finder-qs strong { color: var(--ink); }
   .shx-finder-img { width: 100%; height: 430px; background-size: cover; background-position: center; border-radius: 3px; }
+
+  /* ============ 2b. THE FILM (full-screen video band) ============ */
+  .shx-film { position: relative; min-height: 92vh; display: flex; align-items: flex-end; overflow: hidden; background-color: var(--ink-deep); background-image: url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/184565-tranzalpine-crossing-the-waimakariri-river.webp'); background-size: cover; background-position: center 58%; color: #fff; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
+  .shx-film-media { position: absolute; inset: 0; overflow: hidden; opacity: 0; transition: opacity 1.4s ease; }
+  .shx-film-media.is-live { opacity: 1; }
+  .shx-film-media iframe { position: absolute; top: 50%; left: 50%; width: max(100vw, 178vh); height: max(100vh, 56.25vw); transform: translate(-50%, -50%); border: 0; pointer-events: none; }
+  .shx-film-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,21,37,.42) 0%, rgba(8,21,37,.08) 38%, rgba(8,21,37,.30) 66%, rgba(8,21,37,.9) 100%); }
+  .shx-film-in .shx-kicker, .shx-film-in .shx-rule { text-shadow: 0 1px 12px rgba(8,21,37,.9); }
+  .shx-film-in { position: relative; width: 100%; max-width: 1760px; margin: 0 auto; padding: 0 clamp(26px, 4vw, 76px) 72px; }
+  .shx-film-in h2 { font-size: clamp(34px, 4.2vw, 58px) !important; color: #ffffff !important; line-height: 1.08 !important; margin: 0 0 16px !important; text-shadow: 0 2px 22px rgba(8,21,37,.6); }
+  .shx-film-sub { max-width: 560px; font-size: 18px !important; color: rgba(255,255,255,.92) !important; margin: 0 0 30px !important; text-shadow: 0 1px 14px rgba(8,21,37,.6); }
+  .shx-film-ctas { display: flex; flex-wrap: wrap; gap: 16px; }
+  @media (max-width: 860px), (prefers-reduced-motion: reduce) {
+    .shx-film-media { display: none; }
+    .shx-film { min-height: 70vh; }
+  }
 
   /* ============ RESPONSIVE ============ */
   @media (max-width: 1020px) {
@@ -364,6 +395,24 @@
           <img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Ed-Hillary-profile-1960.jpg" alt="Sir Edmund Hillary, 1960" loading="lazy">
           <figcaption>Sir Edmund Hillary, 1960. The first man to summit Everest &mdash; and, always, a South Island man at heart.</figcaption>
         </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2b. THE FILM ============ -->
+  <section class="shx-film" aria-label="The Sir Edmund Hillary Explorer, in motion">
+    <div class="shx-film-media" aria-hidden="true">
+      <iframe src="https://player.vimeo.com/video/1046997096?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;dnt=1&amp;api=1" title="Sir Edmund Hillary Explorer scenery film" allow="autoplay; fullscreen" loading="lazy"></iframe>
+    </div>
+    <div class="shx-film-veil"></div>
+    <div class="shx-film-in">
+      <span class="shx-kicker shx-kicker--light">The Explorer, In Motion</span>
+      <hr class="shx-rule">
+      <h2 class="shx-display">See the journey move.</h2>
+      <p class="shx-film-sub">Steam, steel and the South Island rolling past the window &mdash; ninety seconds in the company of the Explorer.</p>
+      <div class="shx-film-ctas">
+        <a class="shx-btn shx-btn--gold" href="https://vimeo.com/1049200733" target="_blank" rel="noopener">Watch the Full Film</a>
+        <a class="shx-btn shx-btn--ghost" href="#journeys">Explore the Journeys</a>
       </div>
     </div>
   </section>
@@ -819,5 +868,15 @@
   } else {
     go();
   }
+  /* FILM section: the video layer stays invisible until the Vimeo player
+     proves it is alive (any postMessage from vimeo). If the player never
+     loads — blocked network, slow connection — the poster photo simply
+     remains. Photo is the base state; video is the enhancement. */
+  window.addEventListener('message', function(ev) {
+    if (ev && typeof ev.origin === 'string' && ev.origin.indexOf('vimeo.com') !== -1) {
+      var media = document.querySelector('.shx-film-media');
+      if (media && media.className.indexOf('is-live') === -1) { media.className += ' is-live'; }
+    }
+  });
 })();
 </script>
