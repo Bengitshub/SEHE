@@ -1,8 +1,17 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 12-DAY WINTER EDITION 2026
-     COMPLETE TOUR PAGE  ·  VERSION v19  ·  2026-07-13  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v20  ·  2026-07-14  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v20 — ROUTE MAP RESTORED (Ben's live report, post switch-over): the route
+            map asset this page referenced (the "SEHE-Map-1" 1920w optimised
+            variant) had been deleted from the Duda media library and returned
+            404, so the map section rendered blank on the live page. Replaced
+            (2 occurrences: section image + lightbox) with the original
+            still-live upload the old page used
+            (dms3rep/multi/2026+Winter+Tour+Brochure_SEHE-Map.webp, verified
+            HTTP 200). Full asset sweep across all seven masters: 42 unique
+            CDN assets, this was the only dead one.
        v19 — WINTER-LABEL LESSON APPLIED (Ben's Winter-2026 phone review):
             each tour's submit label differs — the Winter one is 7 characters
             longer than the 14-Day label the size steps were tuned on, so it

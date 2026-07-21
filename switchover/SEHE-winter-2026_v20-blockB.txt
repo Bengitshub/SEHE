@@ -1,4 +1,4 @@
-<!-- ═══ SEHE winter-2026 v19 — BLOCK B (paste in an HTML widget BELOW the Duda form row; Block A + form row sit above) ═══ -->
+<!-- ═══ SEHE winter-2026 v20 — BLOCK B (paste in an HTML widget BELOW the Duda form row; Block A + form row sit above) ═══ -->
 
 
 
@@ -847,7 +847,7 @@
     </div>
     <div class="sehe-routemap-media">
      <label for="seheRouteMapToggle" class="sehe-routemap-image-btn" aria-label="Open route map full size">
-      <img class="sehe-routemap-image" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/2026+Winter+Tour+Brochure_SEHE-Map-1-1920w.webp" alt="Sir Edmund Hillary Explorer 12-Day Winter Edition 2026 route map">
+      <img class="sehe-routemap-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/2026+Winter+Tour+Brochure_SEHE-Map.webp" alt="Sir Edmund Hillary Explorer 12-Day Winter Edition 2026 route map">
       <span class="sehe-routemap-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M11 8v6M8 11h6M21 21l-4.35-4.35"></path></svg></span>
      </label>
      <p class="sehe-routemap-hint">Tap the map to enlarge</p>
@@ -858,7 +858,7 @@
   <div class="sehe-routemap-lightbox" role="dialog" aria-modal="true" aria-label="Tour route map">
    <label for="seheRouteMapToggle" class="sehe-routemap-lightbox-backdrop" aria-label="Close map"></label>
    <label for="seheRouteMapToggle" class="sehe-routemap-lightbox-close" aria-label="Close map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg></label>
-   <img class="sehe-routemap-lightbox-img" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/2026+Winter+Tour+Brochure_SEHE-Map-1-1920w.webp" alt="Sir Edmund Hillary Explorer 12-Day Winter Edition 2026 route map, full size">
+   <img class="sehe-routemap-lightbox-img" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/2026+Winter+Tour+Brochure_SEHE-Map.webp" alt="Sir Edmund Hillary Explorer 12-Day Winter Edition 2026 route map, full size">
   </div>
 </div>
 
