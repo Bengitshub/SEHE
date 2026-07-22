@@ -1,8 +1,18 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v20  ·  2026-07-22  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v21  ·  2026-07-22  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v21 — mobile hero proof: ONE claim only (Ben: "mobile cannot fit
+            them all, decide"). Kept the WTA award — "NZ's Leading Tour
+            Operator" four years running is the differentiator no
+            competitor can show; Trustpilot stars are generic and appear
+            again in the guests section, and NZ-owned is the least
+            conversion-critical (the NZ team is stated in booking + final
+            sections). With one item there is room for its caption again:
+            shield + "NZ's Leading Tour Operator - 2022-2025" in a single
+            centred row. Desktop strip (all three, full wording)
+            unchanged.
        v20 — Ben's round: (1) sticky-bar "View Journeys" restyled again —
             the gold ring next to the borderless Call button looked off;
             now WHITE background with ink text, no borders on either
@@ -438,17 +448,13 @@
     .shx-hero-ctas { margin-top: 24px; gap: 12px; }
     .shx-hero-ctas .shx-btn { width: 100%; }
     .shx-hero-call { font-size: 15px !important; }
-    /* proof strip on phones: ONE slim centred badge row — WTA shield +
-       Trustpilot stars + "100% NZ owned & operated". The graphics carry
-       the message; their captions hide. Desktop keeps the full wording. */
-    .shx-hero-proof { margin-top: 26px; padding: 14px 0 22px; gap: 14px; flex-wrap: nowrap; }
-    /* badges never squash — on the narrowest phones the NZ text wraps instead */
-    .shx-hero-proof-item { flex-shrink: 0; }
-    .shx-hero-proof-item:nth-child(3) { flex-shrink: 1; min-width: 0; }
-    .shx-hero-proof-item img { height: 42px; flex-shrink: 0; max-width: none; }
-    .shx-hero-proof-item .tp-star { height: 22px; }
+    /* proof on phones: ONE claim only — the WTA award (the differentiator),
+       shield + short caption in a single centred row. Trustpilot and the
+       NZ story still appear later on the page; desktop keeps all three. */
+    .shx-hero-proof { margin-top: 26px; padding: 14px 0 22px; gap: 12px; flex-wrap: nowrap; }
+    .shx-hero-proof-item:nth-child(2), .shx-hero-proof-item:nth-child(3) { display: none; }
+    .shx-hero-proof-item img { height: 46px; flex-shrink: 0; max-width: none; }
     .shx-hero-proof-text { font-size: 13px !important; }
-    .shx-hero-proof-item:nth-child(1) .shx-hero-proof-text, .shx-hero-proof-item:nth-child(2) .shx-hero-proof-text { display: none; }
     .shx-hero-proof-text small { display: none; }
     .shx-proof-full { display: none; }
     .shx-proof-brief { display: inline; }
