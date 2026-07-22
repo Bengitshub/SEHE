@@ -1,8 +1,28 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v15  ·  2026-07-22  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v16  ·  2026-07-22  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v16 — HERO WIDTH + LOGO ON LOAD + STICKY CENTRING (Ben's round).
+            (1) Hero content now uses the full width: the 1180px cap is gone
+            and desktop side padding is 80px — half the ~160px effective
+            inset the cap produced at 1440 ("full width to capture
+            attention, not 100%, but half the padding"). 1021-1180px tapers
+            to 44px; mobile values unchanged. (2) SEHE logo on load: the
+            site header's logo slot loads a TRANSPARENT placeholder
+            (Clear-full.png) and only the scroll mini-header swaps in the
+            real roundel (secondary-image) — so the brand was invisible
+            until scroll. The white roundel (SEH Explorer_logo white,
+            site's own asset) now sits at the hero top: desktop inside the
+            header's left large-2 column footprint (16.6% col, centred,
+            like the mini-header slot it hands over to), mobile centred at
+            56px — small, in the empty sky, no crowding. (3) Sticky bar
+            "View Journeys" text re-centred: the v15 right-padding dodge
+            read as misaligned (Ben). The chat bubble is tawk.to, so the
+            page now pre-sets Tawk_API.customStyle (official API) to lift
+            the mobile launcher 64px — above the bar — with a scoped CSS
+            fallback for the launcher iframe; enhance-only, desktop bubble
+            untouched.
        v15 — MOBILE COMPACTION (Ben's iPhone screenshots of /new-homepage,
             published today on v13: "a mess with spacings, too much side
             padding, too much type"). Full small-screen pass, desktop
@@ -140,7 +160,14 @@
   .shx-hero { position: relative; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding: 0 !important; min-height: max(640px, 100vh); min-height: max(640px, 100svh); display: flex; align-items: flex-end; background-color: var(--ink-deep);
     background-image: linear-gradient(180deg, rgba(8,21,37,.62) 0%, rgba(8,21,37,.18) 34%, rgba(8,21,37,.34) 62%, rgba(8,21,37,.9) 100%), url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/SEHE_OCT2024_DAY2-18.webp');
     background-size: cover; background-position: center 30%; color: #fff; }
-  .shx-hero-inner { position: relative; width: 100%; max-width: 1180px; margin: 0 auto; padding: 150px 32px 0; }
+  .shx-hero-inner { position: relative; width: 100%; padding: 150px 80px 0; }
+  @media (max-width: 1180px) { .shx-hero-inner { padding: 150px 44px 0; } }
+  /* SEHE roundel on load — the header's own logo slot ships a transparent
+     placeholder and only the scroll mini-header shows the real mark, so the
+     brand was invisible until scroll. White version of the site's own asset;
+     desktop sits in the header's left logo-column footprint (large-2, centred)
+     so the mini-header logo appears in the same lane on scroll. */
+  .shx-hero-logo { position: absolute; top: 26px; left: 0; width: 16.66%; height: 92px; object-fit: contain; object-position: center; z-index: 2; filter: drop-shadow(0 2px 10px rgba(8,21,37,.5)); }
   .shx-hero-kicker { display: inline-flex; align-items: center; gap: 16px; font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: .42em; text-transform: uppercase; color: var(--gold) !important; margin-bottom: 22px !important; }
   .shx-hero-kicker::before, .shx-hero-kicker::after { content: ''; width: 44px; height: 1px; background: var(--gold); }
   .shx-hero h1 { font-size: clamp(42px, 5.6vw, 74px) !important; line-height: 1.06 !important; color: #ffffff !important; max-width: 720px; text-shadow: 0 2px 26px rgba(8,21,37,.55); }
@@ -351,6 +378,8 @@
     /* after .shx-band so the sticky-bar clearance survives the shorthand */
     .shx-final { padding-bottom: 150px !important; }
     .shx-hero-inner { padding: 118px 20px 0; }
+    /* mobile scroll-header centres the logo — mirror it, small, in the sky */
+    .shx-hero-logo { left: 50%; width: auto; transform: translateX(-50%); top: 18px; height: 56px; }
     .shx-hero h1 { font-size: 38px !important; }
     /* the kicker's decorative dashes float mid-line once the text wraps —
        drop them on anything narrower than desktop */
@@ -483,9 +512,13 @@
     .shx-final-hours { font-size: 12px !important; letter-spacing: .14em; margin-bottom: 28px !important; }
     .shx-final-ctas { flex-direction: column; align-items: stretch; }
     .shx-final { padding-bottom: 130px !important; }
-    /* keep the label clear of the site's floating chat bubble (bottom-right) */
-    .shx-sticky a { font-size: 15px !important; }
-    .shx-sticky-journeys { padding-right: 76px; }
+  }
+  /* tawk.to launcher: lift it above the sticky action bar on mobile so it never
+     covers the (centred) "View Journeys" label. Primary mechanism is the
+     Tawk_API.customStyle pre-set in the script block; this is the CSS fallback
+     for the launcher iframe. Matches nothing if tawk changes its markup. */
+  @media (max-width: 860px) {
+    body > div.widget-visible > iframe:first-child { bottom: calc(64px + env(safe-area-inset-bottom)) !important; }
   }
 </style>
 
@@ -493,6 +526,7 @@
 
   <!-- ============ 1. HERO ============ -->
   <section class="shx-hero" aria-label="Sir Edmund Hillary Explorer">
+    <img class="shx-hero-logo" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEH+Explorer_logo+white-350w.png" alt="Sir Edmund Hillary Explorer" loading="eager">
     <div class="shx-hero-inner">
       <span class="shx-hero-kicker">Fully Guided South Island Rail Touring</span>
       <h1 class="shx-display">Rail is the heart of our scenic journeys.</h1>
@@ -939,6 +973,18 @@
   </nav>
 
 </div>
+
+<!-- ===== TAWK.TO LAUNCHER OFFSET (enhance-only) ===== -->
+<script>
+  /* The site's chat bubble is tawk.to. On mobile it sat on top of the sticky
+     action bar's "View Journeys" label. Pre-set tawk's official customStyle so
+     the mobile launcher rides 64px up, clear of the bar. Harmless if tawk is
+     absent, already booted, or changes its API; desktop position untouched. */
+  window.Tawk_API = window.Tawk_API || {};
+  if (!window.Tawk_API.customStyle) {
+    window.Tawk_API.customStyle = { visibility: { mobile: { position: 'br', xOffset: 10, yOffset: 64 } } };
+  }
+</script>
 
 <!-- ===== LIVE NEXT-DEPARTURE CHIPS + FILM REVEAL (enhance-only) ===== -->
 <script>
