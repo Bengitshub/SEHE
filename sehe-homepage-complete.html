@@ -1,8 +1,24 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v13  ·  2026-07-15  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v14  ·  2026-07-15  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v14 — HEAVY REVIEW IN TRUE DUDA CONTEXT (Ben's "design lost its way"
+            report): rebuilt the audit rig with the site's real theme
+            stylesheets and the published wrapper chain (dmContent /
+            mainBorder / dmRespRow), then measured every section. Two real
+            defects found and fixed: (1) the HERO never carried its own
+            full-bleed rule — it relied on the container being full-width,
+            true in the test harness but not inside Duda's padded frame,
+            which produced the 40px side gaps Ben saw; it now bleeds
+            explicitly like every other band (this was the actual cause of
+            the side-gap reports, present since v5). (2) "Ready when you
+            are." rendered left-aligned — Duda's theme forces heading
+            alignment; the final section's headings/sub/hours are now
+            explicitly centred with !important. Everything else verified
+            intact in context: heading fonts and alignment across all
+            sections, 18px body, quote glyphs, list resets, 56px buttons,
+            zero horizontal overflow.
        v13 — DUDA CONTAINER HARDENING (Ben's side-gap report): rules added so
             the hosting Duda row/column can never box or clip the full-bleed
             bands, whatever the page's row settings. Note recorded: the gap
@@ -92,7 +108,7 @@
   @media (prefers-reduced-motion: reduce) { .sehe-home-ledger * { transition: none !important; animation: none !important; } }
 
   /* ============ 1. HERO (full screen — Ben's call) ============ */
-  .shx-hero { position: relative; min-height: max(640px, 100vh); min-height: max(640px, 100svh); display: flex; align-items: flex-end; background-color: var(--ink-deep);
+  .shx-hero { position: relative; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); min-height: max(640px, 100vh); min-height: max(640px, 100svh); display: flex; align-items: flex-end; background-color: var(--ink-deep);
     background-image: linear-gradient(180deg, rgba(8,21,37,.62) 0%, rgba(8,21,37,.18) 34%, rgba(8,21,37,.34) 62%, rgba(8,21,37,.9) 100%), url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/SEHE_OCT2024_DAY2-18.webp');
     background-size: cover; background-position: center 30%; color: #fff; }
   .shx-hero-inner { position: relative; width: 100%; max-width: 1180px; margin: 0 auto; padding: 150px 32px 0; }
@@ -273,7 +289,8 @@
 
   /* ============ 10. FINAL CALL ============ */
   .shx-final { background: var(--ink-deep); color: var(--cream-ink); text-align: center; background-image: linear-gradient(rgba(8,21,37,.9), rgba(8,21,37,.9)), url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg'); background-size: cover; background-position: center; }
-  .shx-final h2 { font-size: clamp(38px, 4.6vw, 62px) !important; color: #ffffff !important; line-height: 1.1 !important; margin: 0 0 18px !important; }
+  .shx-final h2 { font-size: clamp(38px, 4.6vw, 62px) !important; color: #ffffff !important; line-height: 1.1 !important; margin: 0 0 18px !important; text-align: center !important; }
+  .shx-final .shx-kicker, .shx-final .shx-final-sub, .shx-final .shx-final-hours { text-align: center !important; }
   .shx-final-sub { max-width: 56ch; margin: 0 auto 34px !important; font-size: 18.5px !important; color: rgba(243,236,221,.85) !important; }
   .shx-final-phone { display: block; font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: clamp(30px, 4vw, 46px) !important; color: var(--gold) !important; text-decoration: none !important; margin: 0 0 8px; }
   .shx-final-hours { font-size: 14.5px !important; letter-spacing: .18em; text-transform: uppercase; color: rgba(243,236,221,.6) !important; margin-bottom: 40px !important; }
