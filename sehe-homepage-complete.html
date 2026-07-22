@@ -1,8 +1,15 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v18  ·  2026-07-22  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v19  ·  2026-07-22  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v19 — Ben's round: (1) sticky-bar "View Journeys" is now blue and
+            white with a gold outline (ink background, white text, inset
+            2px gold ring) — reads as the primary action next to Call Our
+            Team. (2) Mobile hero proof strip is now ONE slim centred badge
+            row: WTA shield + Trustpilot stars + "100% NZ owned &
+            operated" — the award and star graphics carry the message,
+            their captions hide on phones. Desktop strip unchanged.
        v18 — Ben's round: (1) season poster headings ("SPRING & SUMMER" /
             "WINTER EDITION") were inheriting the 1.7 body line-height —
             now 1.1, tight at every width. (2) Mobile proof strip
@@ -370,7 +377,7 @@
     .shx-sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 9990; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(200,165,108,.5); border-top: 1px solid var(--gold); padding-bottom: env(safe-area-inset-bottom); }
     .shx-sticky a { display: flex; align-items: center; justify-content: center; min-height: 50px; font-size: 15.5px !important; font-weight: 700 !important; text-decoration: none !important; }
     .shx-sticky-call { background: var(--ink-deep); color: #ffffff !important; }
-    .shx-sticky-journeys { background: var(--gold); color: var(--ink-deep) !important; }
+    .shx-sticky-journeys { background: var(--ink); color: #ffffff !important; box-shadow: inset 0 0 0 2px var(--gold); }
   }
 
   /* ============ RESPONSIVE ============ */
@@ -422,11 +429,17 @@
     .shx-hero-ctas { margin-top: 24px; gap: 12px; }
     .shx-hero-ctas .shx-btn { width: 100%; }
     .shx-hero-call { font-size: 15px !important; }
-    .shx-hero-proof { margin-top: 28px; padding: 16px 0 24px; gap: 14px 22px; }
-    .shx-hero-proof-item img { height: 42px; }
+    /* proof strip on phones: ONE slim centred badge row — WTA shield +
+       Trustpilot stars + "100% NZ owned & operated". The graphics carry
+       the message; their captions hide. Desktop keeps the full wording. */
+    .shx-hero-proof { margin-top: 26px; padding: 14px 0 22px; gap: 14px; flex-wrap: nowrap; }
+    /* badges never squash — on the narrowest phones the NZ text wraps instead */
+    .shx-hero-proof-item { flex-shrink: 0; }
+    .shx-hero-proof-item:nth-child(3) { flex-shrink: 1; min-width: 0; }
+    .shx-hero-proof-item img { height: 42px; flex-shrink: 0; max-width: none; }
     .shx-hero-proof-item .tp-star { height: 22px; }
     .shx-hero-proof-text { font-size: 13px !important; }
-    /* declutter on phones: labels off, award years collapsed to a range */
+    .shx-hero-proof-item:nth-child(1) .shx-hero-proof-text, .shx-hero-proof-item:nth-child(2) .shx-hero-proof-text { display: none; }
     .shx-hero-proof-text small { display: none; }
     .shx-proof-full { display: none; }
     .shx-proof-brief { display: inline; }
@@ -562,7 +575,7 @@
           <p class="shx-hero-proof-text"><small>Trustpilot</small>Rated &ldquo;Excellent&rdquo; by our guests</p>
         </div>
         <div class="shx-hero-proof-item">
-          <p class="shx-hero-proof-text"><small>Pounamu Tourism Group</small>100% New Zealand owned &amp; operated</p>
+          <p class="shx-hero-proof-text"><small>Pounamu Tourism Group</small><span class="shx-proof-full">100% New Zealand owned &amp; operated</span><span class="shx-proof-brief">100% NZ owned &amp; operated</span></p>
         </div>
       </div>
     </div>
