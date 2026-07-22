@@ -1,8 +1,11 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v16  ·  2026-07-22  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v17  ·  2026-07-22  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v17 — hero proof strip (WTA shield / Trustpilot / 100% NZ owned)
+            centred across the full-width hero, per Ben; hero text block
+            stays left. Applies at every width.
        v16 — HERO WIDTH + LOGO ON LOAD + STICKY CENTRING (Ben's round).
             (1) Hero content now uses the full width: the 1180px cap is gone
             and desktop side padding is 80px — half the ~160px effective
@@ -175,7 +178,7 @@
   .shx-hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 38px; }
   .shx-hero-call { flex-basis: 100%; margin-top: 4px; font-size: 17px !important; color: rgba(255,255,255,.92) !important; }
   .shx-hero-call a { color: #ffffff !important; font-weight: 700 !important; text-decoration: underline !important; text-underline-offset: 3px; }
-  .shx-hero-proof { display: flex; flex-wrap: wrap; align-items: center; gap: 30px; margin-top: 46px; padding: 22px 0 30px; border-top: 1px solid rgba(255,255,255,.28); }
+  .shx-hero-proof { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 30px; margin-top: 46px; padding: 22px 0 30px; border-top: 1px solid rgba(255,255,255,.28); }
   .shx-hero-proof-item { display: flex; align-items: center; gap: 12px; }
   .shx-hero-proof-item img { height: 52px; width: auto; display: block; }
   .shx-hero-proof-item .tp-star { height: 26px; }
