@@ -1,8 +1,13 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v23  ·  2026-07-22  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v24  ·  2026-07-22  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v24 — promise card "Small groups, real care" -> "Friendly, personal
+            touring" (Ben/Paul: groups run up to two coaches in busy
+            times, so "small groups" overclaims). Only instance on the
+            page; the final section's "small, friendly New Zealand team"
+            refers to the office team and stands.
        v23 — seasons cards: the floating inner gold frame (inset 16px over
             the photo) is gone; the gold border now sits on the image box
             itself (1px on the card edge, follows the 3px radius). Text
@@ -795,8 +800,8 @@
         </div>
         <div class="shx-promise-item">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"></path><circle cx="10" cy="7" r="4"></circle><path d="M21 21v-2a4 4 0 0 0-3-3.87"></path></svg>
-          <h3>Small groups, real care</h3>
-          <p>Friendly, personal touring where the crew know your name &mdash; and quietly make sure everyone is looked after.</p>
+          <h3>Friendly, personal touring</h3>
+          <p>The crew know your name &mdash; and quietly make sure everyone is looked after, every day of the journey.</p>
         </div>
       </div>
     </div>
