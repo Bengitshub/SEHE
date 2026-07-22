@@ -1,8 +1,17 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v19  ·  2026-07-22  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v20  ·  2026-07-22  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v20 — Ben's round: (1) sticky-bar "View Journeys" restyled again —
+            the gold ring next to the borderless Call button looked off;
+            now WHITE background with ink text, no borders on either
+            button (two-tone bar, thin gold divider). (2) Hero kicker
+            "Fully Guided South Island Rail Touring" -> "Fully Guided
+            South Island Journeys": Paul's correction — the tours are rail
+            AND coach, so "rail touring" overclaims; the h1 ("Rail is the
+            heart...") and sub ("rail-and-coach") already say it right.
+            Only instance on the page.
        v19 — Ben's round: (1) sticky-bar "View Journeys" is now blue and
             white with a gold outline (ink background, white text, inset
             2px gold ring) — reads as the primary action next to Call Our
@@ -377,7 +386,7 @@
     .shx-sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 9990; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(200,165,108,.5); border-top: 1px solid var(--gold); padding-bottom: env(safe-area-inset-bottom); }
     .shx-sticky a { display: flex; align-items: center; justify-content: center; min-height: 50px; font-size: 15.5px !important; font-weight: 700 !important; text-decoration: none !important; }
     .shx-sticky-call { background: var(--ink-deep); color: #ffffff !important; }
-    .shx-sticky-journeys { background: var(--ink); color: #ffffff !important; box-shadow: inset 0 0 0 2px var(--gold); }
+    .shx-sticky-journeys { background: #ffffff; color: var(--ink-deep) !important; }
   }
 
   /* ============ RESPONSIVE ============ */
@@ -557,7 +566,7 @@
   <section class="shx-hero" aria-label="Sir Edmund Hillary Explorer">
     <img class="shx-hero-logo" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEH+Explorer_logo+white-350w.png" alt="Sir Edmund Hillary Explorer" loading="eager">
     <div class="shx-hero-inner">
-      <span class="shx-hero-kicker">Fully Guided South Island Rail Touring</span>
+      <span class="shx-hero-kicker">Fully Guided South Island Journeys</span>
       <h1 class="shx-display">Rail is the heart of our scenic journeys.</h1>
       <p class="shx-hero-sub">Fully guided rail-and-coach journeys through Aotearoa New Zealand&rsquo;s grandest landscapes &mdash; named in honour of Sir Edmund Hillary, and paced for travellers who like their adventure comfortable.</p>
       <div class="shx-hero-ctas">
