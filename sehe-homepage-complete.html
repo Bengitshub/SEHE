@@ -1,8 +1,14 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v12  ·  2026-07-15  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v13  ·  2026-07-15  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v13 — DUDA CONTAINER HARDENING (Ben's side-gap report): rules added so
+            the hosting Duda row/column can never box or clip the full-bleed
+            bands, whatever the page's row settings. Note recorded: the gap
+            in Ben's screenshot shows the Duda editor-preview frame (thin
+            blue border), which adds its own gutters — the published page is
+            the true test, and /home-new does not yet carry this page.
        v12 — DESIGN & CONVERSION RESTRUCTURE (external design review, endorsed
             by Ben; all v11 factual fixes carried through). NEW PAGE ORDER:
             Hero -> Choose Your Journey -> Why Travel With Us -> Seasons ->
@@ -63,6 +69,11 @@
     background: var(--paper); text-align: left;
   }
   .sehe-home-ledger img { max-width: 100%; }
+  /* Duda container hardening: this page is a single HTML widget — never let
+     the hosting row/column box or clip the full-bleed bands. If the page's
+     row is not set to full width in Duda, these keep the design intact. */
+  #dm .dmContent .dmRespRow, #dm .dmContent .dmRespColsWrapper, #dm .dmContent .dmRespCol { overflow: visible !important; max-width: none !important; }
+  #dm .dmContent .dmCustomHtml { overflow: visible !important; }
   .sehe-home-ledger .shx-display { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; letter-spacing: -0.4px; margin: 0; }
   .sehe-home-ledger p { margin: 0; }
   .sehe-home-ledger a:focus-visible, .sehe-home-ledger button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
