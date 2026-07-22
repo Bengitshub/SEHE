@@ -80,10 +80,10 @@ ok(t.total === SCHEDULE['14day-2627'].dates.length, '2627: full 17-date list kep
 
 /* ---- 6. list-driven: a cal date NOT in the schedule is NOT shown --------- */
 const sched2728 = SCHEDULE['14day-2728'].dates.map(isoToCompact);
-mockCheckfront({ '388': sched2728.concat('20280221') });   // Checkfront has an extra bookable date
+mockCheckfront({ '388': sched2728.concat('20280228') });   // Checkfront has an extra bookable date (28 Feb 2028 is not scheduled)
 t = (await buildPayload({}))['14day-2728'];
-ok(!t.all.some((x) => x.start === '2028-02-21'), '2728: a non-scheduled Checkfront date is NOT shown (no auto-discovery)');
-ok(t.total === 13 && t.soldoutCount === 0, '2728: exactly the 13 scheduled, all available');
+ok(!t.all.some((x) => x.start === '2028-02-28'), '2728: a non-scheduled Checkfront date is NOT shown (no auto-discovery)');
+ok(t.total === 19 && t.soldoutCount === 0, '2728: exactly the 19 scheduled, all available');
 
 /* ---- 7. "Filling fast": a bookable date >= 75% booked -> nearing (amber) -- */
 mockCheckfront(
