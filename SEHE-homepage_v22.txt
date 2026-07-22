@@ -1,8 +1,13 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v21  ·  2026-07-22  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v22  ·  2026-07-22  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v22 — correction to v18 item 3: Ben meant the section HEADING, not
+            the eyebrow. Eyebrow back to "Why Travel With Us"; the h2
+            "Everything handled. Nothing hurried." is now "Award-winning
+            care." (sentence case + full stop, matching the other section
+            headings).
        v21 — mobile hero proof: ONE claim only (Ben: "mobile cannot fit
             them all, decide"). Kept the WTA award — "NZ's Leading Tour
             Operator" four years running is the differentiator no
@@ -765,9 +770,9 @@
   <!-- ============ 3. THE PROMISE ============ -->
   <section class="shx-promise shx-band">
     <div class="shx-wrap">
-      <span class="shx-kicker shx-kicker--light">Award-Winning Care</span>
+      <span class="shx-kicker shx-kicker--light">Why Travel With Us</span>
       <hr class="shx-rule">
-      <h2 class="shx-display">Everything handled. Nothing hurried.</h2>
+      <h2 class="shx-display">Award-winning care.</h2>
       <p class="shx-promise-intro">Our journeys are designed for travellers who want to see everything without rushing anything &mdash; and never want to worry about the details.</p>
       <div class="shx-promise-grid">
         <div class="shx-promise-item">
