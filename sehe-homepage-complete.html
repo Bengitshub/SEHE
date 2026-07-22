@@ -1,8 +1,34 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v14  ·  2026-07-15  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v15  ·  2026-07-22  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v15 — MOBILE COMPACTION (Ben's iPhone screenshots of /new-homepage,
+            published today on v13: "a mess with spacings, too much side
+            padding, too much type"). Full small-screen pass, desktop
+            untouched: side inset cut (band 16px + card 16px, was 22+20 on
+            top of 32px desktop values); hero headline 42px -> 33px and the
+            decorative kicker dashes removed below 861px (when the kicker
+            wrapped they floated mid-line — Ben's first screenshot); section
+            headings stepped 32-38px -> 25-29px; body, meta, list and
+            caption type stepped down 1-2px with tighter line-heights;
+            card / finder / practical-panel paddings and section gaps
+            roughly halved; journey-card and finder buttons full-width;
+            guest photos to a 2-up grid; film band shorter. Sticky action
+            bar: 50px tall, and the "View Journeys" label gets right-side
+            padding below 541px so the site's floating chat bubble never
+            covers it (Ben's screenshots showed it hidden). ROOT CAUSE FOUND
+            while verifying: Duda's theme rule ".dmFullRowRespTmpl section
+            {padding:50px 40px}" out-specifies our classes, so the LIVE page
+            has been re-padding every section — 40px side inset on phones on
+            top of the card padding, vertical rhythm forced to 50px on
+            desktop (not our 96px), and stray padding inside the hero and
+            film sections. All section padding now carries !important
+            (.shx-band per breakpoint; hero and film padding 0). Verified in
+            the Duda-context rig at 390x844 (no horizontal overflow, sticky
+            label clears a simulated chat bubble by 10px, band padding 16px)
+            and at 1440 (band padding 32px/96px restored, all bands
+            edge-to-edge, final heading centred).
        v14 — HEAVY REVIEW IN TRUE DUDA CONTEXT (Ben's "design lost its way"
             report): rebuilt the audit rig with the site's real theme
             stylesheets and the published wrapper chain (dmContent /
@@ -104,11 +130,14 @@
   .shx-btn--ink { background: var(--ink); color: #ffffff !important; border-color: var(--ink); }
   .shx-btn--ink:hover { background: var(--ink-soft); border-color: var(--ink-soft); }
   .shx-wrap { max-width: 1180px; margin: 0 auto; }
-  .shx-band { width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding: 96px 32px; }
+  /* Duda's theme carries ".dmFullRowRespTmpl section{padding:50px 40px}" which
+     out-specifies our classes — it was re-padding every band (and the hero and
+     film, which should have none). Our sections own their padding. */
+  .shx-band { width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding: 96px 32px !important; }
   @media (prefers-reduced-motion: reduce) { .sehe-home-ledger * { transition: none !important; animation: none !important; } }
 
   /* ============ 1. HERO (full screen — Ben's call) ============ */
-  .shx-hero { position: relative; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); min-height: max(640px, 100vh); min-height: max(640px, 100svh); display: flex; align-items: flex-end; background-color: var(--ink-deep);
+  .shx-hero { position: relative; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding: 0 !important; min-height: max(640px, 100vh); min-height: max(640px, 100svh); display: flex; align-items: flex-end; background-color: var(--ink-deep);
     background-image: linear-gradient(180deg, rgba(8,21,37,.62) 0%, rgba(8,21,37,.18) 34%, rgba(8,21,37,.34) 62%, rgba(8,21,37,.9) 100%), url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/SEHE_OCT2024_DAY2-18.webp');
     background-size: cover; background-position: center 30%; color: #fff; }
   .shx-hero-inner { position: relative; width: 100%; max-width: 1180px; margin: 0 auto; padding: 150px 32px 0; }
@@ -231,7 +260,7 @@
   .shx-legacy-fact { margin-top: 30px; padding: 20px 24px; background: var(--paper); border-left: 3px solid var(--gold); font-size: 16.5px !important; color: var(--ink) !important; }
 
   /* ============ 7. THE FILM ============ */
-  .shx-film { position: relative; min-height: 92vh; display: flex; align-items: flex-end; overflow: hidden; background-color: var(--ink-deep); background-image: url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/184565-tranzalpine-crossing-the-waimakariri-river.webp'); background-size: cover; background-position: center 58%; color: #fff; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
+  .shx-film { position: relative; min-height: 92vh; display: flex; align-items: flex-end; overflow: hidden; padding: 0 !important; background-color: var(--ink-deep); background-image: url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/184565-tranzalpine-crossing-the-waimakariri-river.webp'); background-size: cover; background-position: center 58%; color: #fff; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
   .shx-film-media { position: absolute; inset: 0; overflow: hidden; opacity: 0; transition: opacity 1.4s ease; }
   .shx-film-media.is-live { opacity: 1; }
   .shx-film-media iframe { position: absolute; top: 50%; left: 50%; width: max(100vw, 178vh); height: max(100vh, 56.25vw); transform: translate(-50%, -50%); border: 0; pointer-events: none; }
@@ -300,10 +329,9 @@
   .shx-sticky { display: none; }
   @media (max-width: 860px) {
     .shx-sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 9990; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(200,165,108,.5); border-top: 1px solid var(--gold); padding-bottom: env(safe-area-inset-bottom); }
-    .shx-sticky a { display: flex; align-items: center; justify-content: center; min-height: 54px; font-size: 16px !important; font-weight: 700 !important; text-decoration: none !important; }
+    .shx-sticky a { display: flex; align-items: center; justify-content: center; min-height: 50px; font-size: 15.5px !important; font-weight: 700 !important; text-decoration: none !important; }
     .shx-sticky-call { background: var(--ink-deep); color: #ffffff !important; }
     .shx-sticky-journeys { background: var(--gold); color: var(--ink-deep) !important; }
-    .shx-final { padding-bottom: 150px; }
   }
 
   /* ============ RESPONSIVE ============ */
@@ -319,8 +347,15 @@
     .shx-booking-grid { grid-template-columns: 1fr; gap: 50px; }
   }
   @media (max-width: 860px) {
-    .shx-band { padding: 64px 22px; }
-    .shx-hero-inner { padding: 130px 22px 0; }
+    .shx-band { padding: 56px 20px !important; }
+    /* after .shx-band so the sticky-bar clearance survives the shorthand */
+    .shx-final { padding-bottom: 150px !important; }
+    .shx-hero-inner { padding: 118px 20px 0; }
+    .shx-hero h1 { font-size: 38px !important; }
+    /* the kicker's decorative dashes float mid-line once the text wraps —
+       drop them on anything narrower than desktop */
+    .shx-hero-kicker { gap: 0; }
+    .shx-hero-kicker::before, .shx-hero-kicker::after { display: none; }
     .shx-hero-proof { gap: 20px; }
     .shx-legacy-grid { grid-template-columns: 1fr; gap: 54px; }
     .shx-portrait { max-width: 430px; }
@@ -328,13 +363,129 @@
     .shx-season-card-in { padding: 0 26px 30px; }
     .shx-jc-body { padding: 20px 20px 24px; }
     .shx-finder { padding: 26px 22px; }
+    .shx-practical { padding: 28px 22px; }
   }
+  /* ---- MOBILE COMPACTION (v15): phones read the desktop scale as oversized —
+     tighter type, tighter air, less inset. Desktop untouched. ---- */
   @media (max-width: 540px) {
-    .shx-promise-grid { grid-template-columns: 1fr; gap: 30px; }
-    .shx-six-grid { grid-template-columns: 1fr; }
-    .shx-guests-photos { grid-template-columns: 1fr; }
+    .sehe-home-ledger { font-size: 16.5px; line-height: 1.6; }
+    .shx-band { padding: 46px 16px !important; }
+    .shx-btn { min-height: 50px; padding: 13px 22px; font-size: 16px !important; }
+    .shx-kicker { font-size: 11px !important; letter-spacing: .26em; margin-bottom: 10px !important; }
+    .shx-rule { margin-bottom: 18px; }
+    /* hero */
+    .shx-hero-inner { padding: 104px 18px 0; }
+    .shx-hero-kicker { font-size: 11px !important; letter-spacing: .26em; margin-bottom: 16px !important; }
+    .shx-hero h1 { font-size: 33px !important; line-height: 1.14 !important; }
+    .shx-hero-sub { font-size: 16.5px !important; line-height: 1.55 !important; margin-top: 16px !important; }
+    .shx-hero-ctas { margin-top: 24px; gap: 12px; }
     .shx-hero-ctas .shx-btn { width: 100%; }
+    .shx-hero-call { font-size: 15px !important; }
+    .shx-hero-proof { margin-top: 28px; padding: 16px 0 24px; gap: 14px 22px; }
+    .shx-hero-proof-item img { height: 42px; }
+    .shx-hero-proof-item .tp-star { height: 22px; }
+    .shx-hero-proof-text { font-size: 13px !important; }
+    /* section headings */
+    .shx-journeys h2, .shx-promise h2, .shx-seasons h2, .shx-six h2, .shx-guests h2 { font-size: 26px !important; line-height: 1.18 !important; }
+    .shx-booking h2 { font-size: 25px !important; line-height: 1.2 !important; margin-bottom: 30px !important; }
+    .shx-legacy h2 { font-size: 27px !important; margin-bottom: 16px !important; }
+    .shx-film-in h2 { font-size: 28px !important; }
+    .shx-final h2 { font-size: 29px !important; }
+    /* journey cards + finder */
+    .shx-journeys-head { margin-bottom: 24px; gap: 12px; }
+    .shx-journeys-head p { font-size: 15.5px !important; }
+    .shx-season { font-size: 16.5px !important; margin: 26px 0 2px !important; }
+    .shx-jgrid { gap: 16px; margin-top: 12px; }
+    .shx-jc-body { padding: 18px 16px 20px; }
+    .shx-jc-body h3 { font-size: 20px !important; margin-bottom: 8px !important; }
+    .shx-jc-badge { font-size: 11px !important; letter-spacing: .12em; padding: 6px 10px; }
+    .shx-jc-meta { gap: 2px 16px; margin-bottom: 10px; }
+    .shx-jc-meta li { font-size: 15px !important; line-height: 1.5 !important; }
+    .shx-jc-line { font-size: 15px !important; line-height: 1.55 !important; }
+    .shx-jc-rail { font-size: 11.5px !important; letter-spacing: .1em; margin-bottom: 14px !important; }
+    .shx-jc-next { font-size: 12.5px !important; }
+    .shx-jc-next strong { font-size: 15.5px !important; }
+    .shx-jc-foot { gap: 12px 18px; }
+    .shx-jc-foot .shx-btn { width: 100%; }
+    .shx-jc-brochure { font-size: 15px !important; }
+    .shx-finder { margin-top: 30px; padding: 20px 16px; }
+    .shx-finder h3 { font-size: 18.5px !important; margin-bottom: 12px !important; }
+    .shx-finder-rows { margin-bottom: 18px; }
+    .shx-finder-rows li { font-size: 15px !important; line-height: 1.5 !important; padding: 10px 0; gap: 2px 18px; }
+    .shx-finder-foot { gap: 12px; }
+    .shx-finder-foot .shx-btn { width: 100%; }
+    .shx-finder-foot p { font-size: 14.5px !important; }
+    /* promise */
+    .shx-promise-grid { grid-template-columns: 1fr; gap: 22px; }
+    .shx-promise-intro { font-size: 16px !important; margin-bottom: 30px !important; }
+    .shx-promise-item { padding-top: 18px; }
+    .shx-promise-item svg { width: 28px; height: 28px; margin-bottom: 12px; }
+    .shx-promise-item h3 { font-size: 18px !important; margin-bottom: 6px !important; }
+    .shx-promise-item p { font-size: 15px !important; line-height: 1.55 !important; }
+    /* seasons */
+    .shx-seasons-intro { font-size: 16px !important; }
+    .shx-seasons-duo { margin-top: 28px; gap: 18px; }
+    .shx-season-card { min-height: 360px; }
+    .shx-season-card-in { padding: 0 20px 24px; }
+    .shx-season-card h3 { font-size: 26px !important; }
+    .shx-season-card p { font-size: 15px !important; line-height: 1.55 !important; }
+    .shx-season-months { font-size: 11.5px !important; letter-spacing: .22em; margin-bottom: 10px; }
+    .shx-seasons-note { margin-top: 18px; padding: 14px 16px; }
+    .shx-seasons-note p { font-size: 14.5px !important; }
+    /* super 6 */
+    .shx-six-head { margin-bottom: 26px; }
+    .shx-six-head p { font-size: 16px !important; }
+    .shx-six-grid { grid-template-columns: 1fr; gap: 14px; }
+    .shx-six-card-in { padding: 14px 16px 16px; }
+    .shx-six-card h3 { font-size: 17px !important; }
+    .shx-six-card p { font-size: 14.5px !important; }
+    .shx-six-note { margin-top: 20px; font-size: 14.5px !important; }
+    /* legacy */
+    .shx-legacy-grid { gap: 36px; }
+    .shx-legacy-copy p { font-size: 16px !important; margin-bottom: 14px !important; }
+    .shx-quote { margin-top: 22px; padding-top: 18px; }
+    .shx-quote p { font-size: 18.5px !important; }
+    .shx-quote cite { font-size: 12.5px !important; letter-spacing: .2em; }
+    .shx-portrait::after { inset: 12px -12px -12px 12px; }
+    .shx-portrait figcaption { margin-top: 18px; font-size: 13px !important; }
+    .shx-legacy-fact { margin-top: 22px; padding: 14px 16px; font-size: 15px !important; }
+    /* film */
+    .shx-film { min-height: 58vh; }
+    .shx-film-in { padding: 0 18px 40px; }
+    .shx-film-sub { font-size: 16px !important; margin-bottom: 20px !important; }
+    /* guests */
+    .shx-guests-fav { font-size: 16px !important; margin-bottom: 28px !important; }
+    .shx-guests-grid { gap: 26px; }
+    .shx-g q { font-size: 17px !important; margin-bottom: 12px; }
+    .shx-g figcaption { font-size: 12.5px !important; letter-spacing: .16em; }
+    .shx-g figcaption small { font-size: 13.5px !important; }
+    .shx-guests-photos { grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 34px; }
+    .shx-gp figcaption { margin-top: 8px; font-size: 12.5px !important; }
+    .shx-gp figcaption strong { font-size: 13.5px !important; }
+    .shx-guests-more { margin-top: 30px; padding-top: 18px; gap: 12px; }
+    .shx-guests-more p { font-size: 14.5px !important; }
+    /* booking */
+    .shx-booking-grid { gap: 34px; }
+    .shx-step { padding-top: 16px; margin-bottom: 22px; }
+    .shx-step-num { font-size: 28px !important; margin-bottom: 8px; }
+    .shx-step h3 { font-size: 18.5px !important; }
+    .shx-step p { font-size: 15px !important; line-height: 1.55 !important; }
+    .shx-practical { padding: 22px 16px; }
+    .shx-practical h3 { font-size: 18.5px !important; margin-bottom: 14px !important; }
+    .shx-practical li { font-size: 15px !important; padding: 10px 0 10px 34px; }
+    .shx-practical li::before { width: 20px; height: 20px; top: 12px; }
+    .shx-shields { gap: 12px; margin-top: 20px; padding-top: 18px; }
+    .shx-shields img { height: 56px; }
+    .shx-shields-caption { font-size: 13px !important; }
+    /* final call + sticky bar */
+    .shx-final-sub { font-size: 16px !important; margin-bottom: 24px !important; }
+    .shx-final-phone { font-size: 27px !important; }
+    .shx-final-hours { font-size: 12px !important; letter-spacing: .14em; margin-bottom: 28px !important; }
     .shx-final-ctas { flex-direction: column; align-items: stretch; }
+    .shx-final { padding-bottom: 130px !important; }
+    /* keep the label clear of the site's floating chat bubble (bottom-right) */
+    .shx-sticky a { font-size: 15px !important; }
+    .shx-sticky-journeys { padding-right: 76px; }
   }
 </style>
 
