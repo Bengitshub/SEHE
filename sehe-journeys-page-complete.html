@@ -1,6 +1,6 @@
 <!--
   ═══════════════════════════════════════════════════════════════════════════════
-  SEHE JOURNEYS PAGE — TOUR LISTINGS          (VERSION v18 · 2026-07-27)
+  SEHE JOURNEYS PAGE — TOUR LISTINGS          (VERSION v19 · 2026-07-27)
   v15: Text-final pass (Ben, 3 Jul) adopted: Pinnacle end offset 14 to 15 nights
        (ends 29 Jan 2027, matches brochure/FACTS); Pinnacle card copy softened to
        'Premium accommodation'; 11-Day 27/28 card Milford/Doubtful now shown as
@@ -976,15 +976,8 @@
   .sehe-jhero-eyebrow { display: inline-flex; align-items: center; gap: 16px; font-family: 'Montserrat', sans-serif !important; font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: .42em; text-transform: uppercase; color: #c8a56c !important; margin: 0 0 22px !important; text-shadow: 0 1px 12px rgba(8,21,37,.95); }
   .sehe-jhero-eyebrow::before, .sehe-jhero-eyebrow::after { content: ''; width: 44px; height: 1px; background: #c8a56c; flex: none; }
   .sehe-jhero h1 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: clamp(40px, 5.2vw, 68px) !important; line-height: 1.06 !important; letter-spacing: -0.01em; color: #ffffff !important; margin: 0 !important; text-shadow: 0 2px 26px rgba(8,21,37,.55); }
-  .sehe-jhero-sub { font-family: 'Open Sans', sans-serif !important; margin: 26px 0 0 !important; max-width: 640px; font-size: clamp(16.5px, 1.5vw, 19px) !important; line-height: 1.65 !important; color: rgba(255,255,255,.94) !important; text-shadow: 0 1px 14px rgba(8,21,37,.6); }
-  /* Desktop: heading and sub centre; the eyebrow alone stays hard left (Ben).
-     The eyebrow becomes a block-level flex so the parent's centring cannot
-     pull it in, and the sub re-centres its own measure. */
-  @media (min-width: 861px) {
-    .sehe-jhero-inner { text-align: center; }
-    .sehe-jhero-eyebrow { display: flex; justify-content: flex-start; }
-    .sehe-jhero-sub { margin-left: auto !important; margin-right: auto !important; }
-  }
+  .sehe-jhero .sehe-nb { white-space: nowrap; }
+  .sehe-jhero-sub { font-family: 'Open Sans', sans-serif !important; margin: 26px 0 0 !important; max-width: 560px; font-size: clamp(16.5px, 1.5vw, 19px) !important; line-height: 1.65 !important; color: rgba(255,255,255,.94) !important; text-shadow: 0 1px 14px rgba(8,21,37,.6); }
   @media (max-width: 860px) {
     .sehe-jhero { min-height: max(480px, 64svh); background-position: center 50%; }
     .sehe-jhero-inner { padding: 118px 22px 44px; }
@@ -1006,7 +999,7 @@
   <div class="sehe-jhero-inner">
     <span class="sehe-jhero-eyebrow">2026/27 – 2027/28 Seasons</span>
     <h1>All Upcoming Tours</h1>
-    <p class="sehe-jhero-sub">The Sir Edmund Hillary Explorer is New Zealand's leading tour operator, specialising in scenic rail and luxury coach tours of the South Island. Departures run across every season — and each year includes a small-group tour hosted personally by Peter Hillary, son of Sir Edmund Hillary.</p>
+    <p class="sehe-jhero-sub">The Sir Edmund Hillary Explorer is New Zealand's leading tour operator, specialising in scenic rail and luxury coach tours of the South Island. Departures run across every season — and each year includes a <span class="sehe-nb">small-group</span> tour hosted personally by Peter Hillary, son of Sir Edmund Hillary.</p>
   </div>
 </section>
 
