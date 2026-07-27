@@ -1,8 +1,18 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 14-DAY SPRING/SUMMER 2026/27
-     COMPLETE TOUR PAGE  ·  VERSION v22  ·  2026-07-13  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v23  ·  2026-07-27  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v23 — WINTER 2026 SOLD OUT. The 12-Day Winter Edition 2026 is fully
+            booked (worker feed: 5 of 5 departures sold, no next date), so in
+            the "Still comparing tours?" grid its card moves to the LAST
+            position and now ships the sold-out state baked in: red "Sold Out"
+            pill, sold-out next-block reading "Season Complete / 2027 season
+            now booking", an em-dash departure count, and a note pointing to
+            the 2027 Winter Edition. The card, its brochure link and the tour
+            page all stay live. The availability script now honours a per-card
+            data-sold-note, so a sold-out tour can name its successor season
+            instead of the generic "New season opening soon".
        v22 — CODE UNIFIED WITH THE OTHER SIX PAGES (Ben: "shouldn't they all
             be the same?"): this page's shorter button label already fitted at
             every width, but the docking script now carries the identical

@@ -1,15 +1,40 @@
 <!-- =====================================================================
-     SIR EDMUND HILLARY EXPLORER — 11-DAY SPRING/SUMMER 2026/27
-     COMPLETE TOUR PAGE  ·  VERSION v20  ·  2026-07-13  (paste into a Duda HTML block)
+     SIR EDMUND HILLARY EXPLORER — 12-DAY WINTER EDITION 2026
+     COMPLETE TOUR PAGE  ·  VERSION v21  ·  2026-07-27  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
-       v20 — CODE UNIFIED WITH THE OTHER SIX PAGES (Ben: "shouldn't they all
-            be the same?"): this page's shorter button label already fitted at
-            every width, but the docking script now carries the identical
-            label-measuring fitter and late width re-checks as the rest of the
-            set — one behaviour everywhere, and the page stays safe if the
-            button wording is ever changed in Duda.
-       v19 — BUTTON WIDTH ROOT-CAUSE FIX (found by reproducing the live page
+       v21 — 2026 SEASON SOLD OUT. All five departures are filled (worker feed:
+            no next date). The page stays live and indexed, but now says so
+            plainly: a sold-out band under the hero with the explanation and a
+            primary CTA to the 2027 Winter Edition; the hero ticket's
+            Departures cell reads "Sold out / 2027 season now booking"; the
+            dates section is retitled "The 2026 season has sold out" with a
+            link across to 2027. The hero-ticket script is now sold-out aware —
+            previously, with zero available dates it fell back to painting the
+            full count (5) over the cell, which read as availability. Brochure
+            form untouched: a sold-out season still makes a good 2027 lead.
+       v20 — ROUTE MAP RESTORED (Ben's live report, post switch-over): the route
+            map asset this page referenced (the "SEHE-Map-1" 1920w optimised
+            variant) had been deleted from the Duda media library and returned
+            404, so the map section rendered blank on the live page. Replaced
+            (2 occurrences: section image + lightbox) with the original
+            still-live upload the old page used
+            (dms3rep/multi/2026+Winter+Tour+Brochure_SEHE-Map.webp, verified
+            HTTP 200). Full asset sweep across all seven masters: 42 unique
+            CDN assets, this was the only dead one.
+       v19 — WINTER-LABEL LESSON APPLIED (Ben's Winter-2026 phone review):
+            each tour's submit label differs — the Winter one is 7 characters
+            longer than the 14-Day label the size steps were tuned on, so it
+            overflowed below ~420px; and web fonts loading after first paint
+            could leave the width equalizer a few pixels off. The docking
+            script now canvas-measures the actual label and shrinks the font
+            until it fits the button's inner width (works for any tour's
+            wording, so the still-unseen Pinnacle / 27-28 labels are covered
+            in advance), and re-runs the whole width/fit pass after fonts
+            load (0.7s / 2.6s / window load) and on every resize. Verified in
+            a full-stylesheet render: label fits at 390px (auto 12px) and the
+            button equals the field width at 430px.
+       v18 — BUTTON WIDTH ROOT-CAUSE FIX (found by reproducing the live page
             with Duda's real mobile stylesheets): Duda's mobile runtime CSS
             rule ".dmMobileBody ... .dmformsubmit { width:91%; max-width:91% }"
             capped the button container — a stylesheet max-width beats an
@@ -20,7 +45,7 @@
             button differs by more than 1px, assigns it the field's exact
             pixel width, re-checked on every resize/rotation. Verified equal
             (342px = 342px) in a full-stylesheet reproduction at iPhone width.
-       v18 — FIELDS AND BUTTON PINNED TO THE SAME BOX (Ben: "why can't the
+       v17 — FIELDS AND BUTTON PINNED TO THE SAME BOX (Ben: "why can't the
             button just be the same size as the form fields?"): on iPhone the
             fields rendered ~30px wider than the button — Duda's mobile device
             stylesheet inflates the input widths past their column, and only
@@ -28,7 +53,7 @@
             Name/Email/Country fields inline too (width/max-width 100%,
             border-box, block, zero margin), so fields and button occupy the
             identical box on every browser and are permanently edge-flush.
-       v17 — DOCKED BUTTON TYPE RE-TUNED (Ben's phone review of the first
+       v16 — DOCKED BUTTON TYPE RE-TUNED (Ben's phone review of the first
             mobile fix): the previous 360px breakpoint caught most Android
             phones and set the label at 11px — too small — and letter-spacing's
             trailing space biased the centred label left of true centre. Now
@@ -37,7 +62,7 @@
             cancels the centring bias at every size, desktop included.
             Measured with the real widget at 320 / 360 / 390 / 1440px: label
             fits with margin everywhere and sits optically centred.
-       v16 — MOBILE FIXES from Ben's phone pass: the docked Duda submit is an
+       v15 — MOBILE FIXES from Ben's phone pass: the docked Duda submit is an
             INPUT element, which cannot wrap its label, so the long "View /
             Download Tour Brochure" text overflowed the button on narrow
             screens — the docking script now steps font size / tracking /
@@ -45,15 +70,18 @@
             resize/rotation. Brochure cover ("FREE PDF DOWNLOAD") explicitly
             centred in the stacked mobile layout (justify-content + auto
             margins, belt and braces).
-       v15 — BROCHURE FORM DOCKING (rollout of the 14-Day pilot v15-v17): a form
+       v14 — BROCHURE FORM DOCKING (rollout of the 14-Day pilot v15-v17): a form
             slot now sits inside the brochure card and a loader script, on the
             published site only, moves the real Duda form widget into it and
             flattens the widget geometry inline (full-width fields and button,
             centred button text, no leftover instance padding). In the Duda
             editor, or with no Duda form widget on the page, nothing moves.
             Shared SOLDOUT fallback map refreshed: 12 Oct 2026 (14-Day 26/27)
-            and 5 Sep 2026 (Winter 2026) have sold out since the 8-Jul bake.
-       v14 — BOOKING DATA ALIGNED TO THE LIVE-SITE WIDGETS (technical only; design
+            and 5 Sep 2026 (Winter 2026) have sold out since the 8-Jul bake. Own
+            baked first paint refreshed to live truth: 1 available / 4 sold
+            out, next departure 12 September 2026 (returns 23 Sep), 5 Sep
+            struck in the month list.
+       v13 — BOOKING DATA ALIGNED TO THE LIVE-SITE WIDGETS (technical only; design
             untouched): the departures data script is now the proven widget block —
             full worker SCHEDULE baked (including the four Oct 2026 departures),
             SOLDOUT fallback refreshed to current live statuses, and the live merge
@@ -62,8 +90,6 @@
             between tour pages, the Journeys page, the site widgets and Checkfront.
             Booking list, hero count/range and cross-sell chips re-baked from the
             page's own scripts, so first paint byte-matches the render.
-       v13 — Review fixes (Ben, 8 Jul): accommodation counted in nights —
-            'eleven days of 4-Star+ accommodation' corrected to '10 nights'.
        v12 — TEXT-FINAL PASS (Ben, 3 Jul) adopted as-is: FAQ rebuilt to the official
             site-FAQ wording + a 'View all FAQs' button; NZ-English copy polish;
             cross-sell fact fixes (Milford optional on 27/28 cards; Pinnacle desc
@@ -77,15 +103,14 @@
             the literal "&lt;base" (from "i&lt;base[k]") never appears. Duda's publish
             sanitizer was reading it as a &lt;base> tag and stripping it, corrupting
             the block on every publish (the page "reset"). Same fix as 14-Day v12.
-       v10 — Content fixes: page &lt;title> set to the SEO-correct tour title;
-             confirmed meals read 10 breakfasts / 7 dinners / 8 lunches in both
-             the inclusions block and the FAQ; Day-10 walk corrected from
-             "Hooker Valley" to the brochure's "Mueller Lake walk and lookout"
-             (heading + body).
-       v9 — Swept to the revert-proof standard (baked dates, never-wipe guards, escalate-only merge) and quoted the rail-set names (&ldquo;Big 5&rdquo; etc.).
-       v8 — Section 2 ("What sets this tour apart") reframed around the South
-            Island highlights + shorter-trip positioning; "Big 5" kept in the
-            intro but no longer doubles as the heading (Section 3 owns it).
+       v10 — Content corrections (no dates/prices/layout changed): page &lt;title> set to "12-Day Winter Edition 2026 | Sir Edmund Hillary Explorer"; hero sub-headline "the Catlins" → "the deep south" (route doesn't visit the Catlins); Day-11 heading "Hooker Valley" → "National Park" and body changed from a Hooker Valley walk to a scenic Aoraki Mt Cook National Park drive; Day-11 optional activity reworded to "Optional scenic ski-plane and helicopter flights over the Tasman Glacier are available" (the glacier explorer cruise doesn't run in winter). Meals confirmed 11 breakfasts / 9 lunches / 8 dinners in both the inclusions block and the FAQ.
+       v9 — Swept to the revert-proof departures standard: baked booking dates, never-wipe render guards, escalate-only live merge. No content/price/date changes.
+       v8 — LIVE departures feed connected (sold-out shown red, not removed) +
+            added the 1 Aug 2026 departure (a booking cancellation freed seats;
+            Checkfront has it bookable but the page didn't). The hardcoded list
+            is now a fallback only; the panel, hero and cross-sell cards re-render
+            from the Worker. Rail-set names quoted (&ldquo;Super 6&rdquo;,
+            &ldquo;Big 5&rdquo;, &ldquo;Famous 4&rdquo;).
        v7 — extend the text-align lock to the "Still comparing tours?" cards
             (.sehe-journeys lives outside .sehe-tourpage, so it was still
             inheriting the Duda section's centering).
@@ -200,7 +225,7 @@
   background-image:
     linear-gradient(102deg, rgba(8,24,48,.94) 0%, rgba(8,24,48,.82) 26%, rgba(8,24,48,.5) 50%, rgba(8,24,48,.14) 72%, rgba(8,24,48,0) 100%),
     linear-gradient(0deg, rgba(8,24,48,.85) 0%, rgba(8,24,48,.2) 26%, rgba(8,24,48,0) 52%),
-    url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp');
+    url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp');
   background-size:cover; background-position:center 32%; background-repeat:no-repeat;
   color:#fff !important;
   overflow:hidden;
@@ -249,7 +274,7 @@
     padding:140px 20px 44px !important;
     background-image:
       linear-gradient(0deg, rgba(8,24,48,.92) 0%, rgba(8,24,48,.62) 52%, rgba(8,24,48,.36) 100%),
-      url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp');
+      url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp');
   }
   .sehe-tourpage .sehe-hx-inner{display:block; max-width:100%;}
   .sehe-tourpage .sehe-hx-top{flex-direction:column; align-items:flex-start; gap:0; margin-bottom:0;}
@@ -274,7 +299,7 @@
 }
 </style>
 <div class="sehe-tourpage">
-  <section class="sehe-hx" aria-label="11-Day Spring/Summer Tour 2026/27">
+  <section class="sehe-hx" aria-label="12-Day Winter Edition 2026">
     <div class="sehe-hx-inner">
       <div class="sehe-hx-top">
         <div class="sehe-hx-award sehe-hx-award--top">
@@ -288,15 +313,15 @@
       </div>
       <div class="sehe-hx-head">
         <p class="sehe-hx-eyebrow">Sir Edmund Hillary Explorer</p>
-        <h1 class="sehe-hx-title">11-Day Spring/Summer Tour <span class="yr">2026/27</span></h1>
-        <p class="sehe-hx-sub">The South Island by rail and luxury coach &mdash; featuring the &ldquo;Big 5&rdquo; scenic rail adventures, Milford Sound, Queenstown, Aoraki Mt Cook and the deep south across eleven carefully paced days. Starts and ends in Christchurch.</p>
+        <h1 class="sehe-hx-title">12-Day Winter Edition <span class="yr">2026</span></h1>
+        <p class="sehe-hx-sub">The South Island by rail and luxury coach &mdash; four winter rail journeys including the TranzAlpine, with snow-dusted alpine landscapes, Queenstown, Doubtful Sound, the deep south and Aoraki Mt Cook across twelve carefully paced days. Starts and ends in Christchurch.</p>
       </div>
       <div class="sehe-hx-ticket">
         <div class="sehe-hx-fields">
           <div class="sehe-hx-field"><div class="sehe-hx-k">Route</div><div class="sehe-hx-v">Christchurch return<a class="sehe-hx-route-link" href="#tour-route">View Route</a></div></div>
-          <div class="sehe-hx-field"><div class="sehe-hx-k">Duration</div><div class="sehe-hx-v">11 Days<small>10 nights</small></div></div>
-          <div class="sehe-hx-field"><div class="sehe-hx-k">From</div><div class="sehe-hx-v">NZ$7,495<small>per person, twin share</small></div></div>
-          <div class="sehe-hx-field"><div class="sehe-hx-k">Departures</div><div class="sehe-hx-v"><span data-sehe-dep-count>5</span><small data-sehe-dep-range>Nov 26 &ndash; Mar 27</small></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">Duration</div><div class="sehe-hx-v">12 Days<small>11 nights</small></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">From</div><div class="sehe-hx-v">NZ$7,995<small>per person, twin share</small></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">Departures</div><div class="sehe-hx-v"><span data-sehe-dep-count>Sold out</span><small data-sehe-dep-range>2027 season now booking</small></div></div>
         </div>
         <div class="sehe-hx-stub">
           <a class="sehe-hx-btn sehe-hx-btn--primary" href="#tour-dates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg> View Tour Dates </a>
@@ -306,6 +331,42 @@
       <div class="sehe-hx-award sehe-hx-award--bottom">
         <img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/new-zealands-leading-tour-operator-2025-winner-shield-256-816b3264-1920w.png" alt="">
         <div class="sehe-hx-award-t"><span class="sehe-hx-award-k">World Travel Awards</span><span class="sehe-hx-award-v">NZ's Leading Tour Operator 2025</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== 1b. 2026 season sold out ===== -->
+<style>
+  .sehe-tourpage .sehe-soldout-band { background: #153b67; }
+  .sehe-tourpage .sehe-soldout-inner { max-width: 1240px; margin: 0 auto; padding: 30px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; }
+  .sehe-tourpage .sehe-soldout-copy { flex: 1 1 640px; }
+  .sehe-tourpage .sehe-soldout-mark { display: inline-flex; align-items: center; gap: 8px; font-family: 'Montserrat', sans-serif !important; font-size: 11px !important; font-weight: 700 !important; letter-spacing: 2.2px; text-transform: uppercase; color: #fff !important; background: rgba(184, 64, 64, 0.95); padding: 7px 14px; border-radius: 20px; margin-bottom: 14px; }
+  .sehe-tourpage .sehe-soldout-copy h2 { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: 23px !important; line-height: 1.25 !important; letter-spacing: -0.2px; color: #fff !important; margin: 0 0 8px !important; }
+  .sehe-tourpage .sehe-soldout-copy p { font-family: 'Open Sans', sans-serif !important; font-size: 15px !important; line-height: 1.65 !important; color: rgba(255, 255, 255, 0.82) !important; margin: 0 !important; max-width: 62ch; }
+  .sehe-tourpage .sehe-soldout-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .sehe-tourpage .sehe-soldout-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Montserrat', sans-serif !important; font-size: 12px !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: 1.2px; text-decoration: none !important; padding: 15px 24px; border-radius: 4px; border: 1.5px solid #c8a56c; white-space: nowrap; }
+  .sehe-tourpage .sehe-soldout-btn--primary { background: #c8a56c; color: #0d2036 !important; }
+  .sehe-tourpage .sehe-soldout-btn--ghost { background: transparent; color: #fff !important; }
+  @media (max-width: 860px) {
+    .sehe-tourpage .sehe-soldout-inner { padding: 24px 20px; gap: 16px; }
+    .sehe-tourpage .sehe-soldout-copy h2 { font-size: 19px !important; }
+    .sehe-tourpage .sehe-soldout-copy p { font-size: 14.5px !important; }
+    .sehe-tourpage .sehe-soldout-actions { width: 100%; }
+    .sehe-tourpage .sehe-soldout-btn { width: 100%; }
+  }
+</style>
+<div class="sehe-tourpage">
+  <section class="sehe-soldout-band" aria-label="The 2026 Winter Edition is sold out">
+    <div class="sehe-soldout-inner">
+      <div class="sehe-soldout-copy">
+        <span class="sehe-soldout-mark">2026 Season Sold Out</span>
+        <h2>Every 2026 Winter Edition departure is now fully booked</h2>
+        <p>All five departures between June and September 2026 have sold. The 12-Day Winter Edition returns next winter with six departures from July to September 2027 &mdash; the same journey, the same snow-covered South Island.</p>
+      </div>
+      <div class="sehe-soldout-actions">
+        <a class="sehe-soldout-btn sehe-soldout-btn--primary" href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours">View the 2027 Winter Edition</a>
+        <a class="sehe-soldout-btn sehe-soldout-btn--ghost" href="#tour-brochure">Get the Brochure</a>
       </div>
     </div>
   </section>
@@ -385,23 +446,23 @@
   <section class="sehe-highlights">
    <div class="sehe-highlights-inner">
     <span class="sehe-section-eyebrow">What sets this tour apart</span>
-    <h2 class="sehe-section-heading">All the South Island's highlights — in eleven days</h2>
-    <p class="sehe-section-intro">Every major South Island highlight in one journey — Milford Sound, Queenstown, Aoraki Mt Cook, Franz Josef, Dunedin and the deep south — paired with the &ldquo;Big 5&rdquo; scenic rail journeys, fully guided touring and 10 nights of 4-Star+ accommodation. The full experience, for travellers who'd rather see it all in a shorter trip.</p>
+    <h2 class="sehe-section-heading">The South Island at its most dramatic, by winter rail</h2>
+    <p class="sehe-section-intro">Four winter rail journeys, fully guided touring, eleven nights of 4-Star+ accommodation, and major South Island highlights including Queenstown, Doubtful Sound, Aoraki Mt Cook, Franz Josef, Dunedin and the deep south &mdash; under snow-capped peaks and quiet winter skies.</p>
     <div class="sehe-highlights-grid">
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.5"></circle><circle cx="16" cy="19" r="1.5"></circle><path d="M5 16l-1.5 3M19 16l1.5 3"></path></svg></div>
-      <h3>The &ldquo;Big 5&rdquo; rail adventures</h3>
-      <p class="sehe-highlight-text">TranzAlpine, Kingston Flyer steam, The Mainlander, Taieri Gorge and a second Mainlander sector — all in one carefully designed 11-day tour.</p>
+      <h3>Four winter rail journeys</h3>
+      <p class="sehe-highlight-text">The TranzAlpine across a snow-dusted Arthur's Pass, two southern sectors aboard The Mainlander, and the remote Taieri Gorge — four memorable rail journeys in one carefully designed 12-day tour.</p>
      </div>
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"></path></svg></div>
-      <h3>4-Star+ hotels for 10 nights</h3>
-      <p class="sehe-highlight-text">From Sudima Airport Hotel in Christchurch to the Mercure on Lake Wakatipu and The Hermitage at Mt Cook. Accommodation is hand-picked to suit each location and the pace of the journey.</p>
+      <h3>4-Star+ hotels for 11 nights</h3>
+      <p class="sehe-highlight-text">From the Distinction Hotel in Christchurch to the Millennium in Queenstown and The Hermitage at Aoraki Mt Cook. Accommodation is hand-picked to suit each location and the pace of the journey.</p>
      </div>
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><path d="M3 20l5-8 3 4 4-7 6 11z" fill="none"></path><circle cx="17" cy="6" r="1.5" fill="none"></circle></svg></div>
-      <h3>Milford Sound &amp; Aoraki Mt Cook</h3>
-      <p class="sehe-highlight-text">A full-day Milford Sound excursion, including a scenic cruise, and two nights at Aoraki Mt Cook — a landscape closely tied to Sir Edmund Hillary's early mountaineering life.</p>
+      <h3>Doubtful Sound &amp; Aoraki Mt Cook</h3>
+      <p class="sehe-highlight-text">A full-day cruise into the remote wilderness of Doubtful Sound, and two nights at Aoraki Mt Cook — a landscape closely tied to Sir Edmund Hillary's early mountaineering life.</p>
      </div>
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.5"></circle><circle cx="16" cy="19" r="1.5"></circle><path d="M5 16l-1.5 3M19 16l1.5 3"></path></svg></div>
@@ -419,7 +480,7 @@
 </div>
 
 
-<!-- ===== 3. Big 5 rail adventures ===== -->
+<!-- ===== 3. Winter rail journeys ===== -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
   .sehe-tourpage, .sehe-tourpage *, .sehe-tourpage *::before, .sehe-tourpage *::after { box-sizing: border-box; }
@@ -476,25 +537,25 @@
 <div class="sehe-tourpage">
   <section class="sehe-super6">
    <div class="sehe-super6-inner">
-    <span class="sehe-section-eyebrow">The &ldquo;Big 5&rdquo;</span>
-    <h2 class="sehe-section-heading">The &ldquo;Big 5&rdquo; rail adventures in one 11-day tour</h2>
-    <p class="sehe-section-intro">Every 11-Day Spring/Summer Tour includes the &ldquo;Big 5&rdquo; rail adventures — five memorable rail sectors showing a different side of the South Island, from alpine passes and heritage steam rail to remote gorge country and exclusive Mainlander journeys through the deep south.</p>
+    <span class="sehe-section-eyebrow">Winter Rail Journeys</span>
+    <h2 class="sehe-section-heading">Four winter rail journeys in one 12-day tour</h2>
+    <p class="sehe-section-intro">Every 12-Day Winter Edition includes four memorable rail journeys, each showing a different side of the South Island in winter — from a snow-dusted Arthur's Pass aboard the TranzAlpine to remote gorge country and the exclusive Mainlander sectors through the deep south.</p>
     <div class="sehe-super6-grid">
      <article class="sehe-train">
       <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp');"><span class="sehe-train-day">Day 2</span></div>
-      <div class="sehe-train-info"><h3><span class="sehe-train-num">1</span>TranzAlpine</h3><p class="sehe-train-text">Christchurch to Greymouth across the Southern Alps via Arthur's Pass — alpine scenery, beech forest, braided rivers and wide Canterbury landscapes.</p></div>
+      <div class="sehe-train-info"><h3><span class="sehe-train-num">1</span>TranzAlpine</h3><p class="sehe-train-text">Christchurch to Greymouth across a snow-dusted Southern Alps via Arthur's Pass — alpine scenery, beech forest, braided rivers and wide Canterbury landscapes at their winter best.</p></div>
      </article>
      <article class="sehe-train">
-      <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Kingston-Flyer-34943537.jpg');"><span class="sehe-train-day">Day 5</span></div>
-      <div class="sehe-train-info"><h3><span class="sehe-train-num">2</span>Kingston Flyer (Steam)</h3><p class="sehe-train-text">A heritage steam rail experience between Kingston and Fairlight at the southern end of Lake Wakatipu.</p></div>
+      <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Glen+Antony+20251116+IMG_0748.webp');"><span class="sehe-train-day">Day 8</span></div>
+      <div class="sehe-train-info"><h3><span class="sehe-train-num">2</span>The Mainlander</h3><p class="sehe-train-text">Exclusive to Sir Edmund Hillary Explorer — the first southern sector, weaving from Invercargill to Dunedin through the rolling rural landscapes of the deep south.</p></div>
      </article>
      <article class="sehe-train">
-      <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Glen+Antony+20251116+IMG_0748.webp');"><span class="sehe-train-day">Day 7 &amp; 9</span></div>
-      <div class="sehe-train-info"><h3><span class="sehe-train-num">3</span>The Mainlander</h3><p class="sehe-train-text">Exclusive to Sir Edmund Hillary Explorer, The Mainlander brings two southern sectors into the journey — Invercargill to Dunedin, then Dunedin towards Oamaru — through rolling rural landscapes and the deep south.</p></div>
+      <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/About-SEHE-Rail-Tour-3.jpg');"><span class="sehe-train-day">Day 9</span></div>
+      <div class="sehe-train-info"><h3><span class="sehe-train-num">3</span>Taieri Gorge</h3><p class="sehe-train-text">A remote rail journey through river gorges, historic tunnels and the Wingatui Viaduct — one of New Zealand's great railway engineering landmarks.</p></div>
      </article>
      <article class="sehe-train">
-      <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/About-SEHE-Rail-Tour-3.jpg');"><span class="sehe-train-day">Day 8</span></div>
-      <div class="sehe-train-info"><h3><span class="sehe-train-num">4</span>Taieri Gorge</h3><p class="sehe-train-text">A remote rail journey through river gorges, historic tunnels and the Wingatui Viaduct — one of New Zealand's great railway engineering landmarks.</p></div>
+      <div class="sehe-train-image" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-13-1920w.webp');"><span class="sehe-train-day">Day 10</span></div>
+      <div class="sehe-train-info"><h3><span class="sehe-train-num">4</span>The Mainlander</h3><p class="sehe-train-text">The second exclusive sector — departing Dunedin to hug the coast towards Oamaru, before the journey turns inland for Aoraki Mt Cook.</p></div>
      </article>
     
     </div>
@@ -583,13 +644,13 @@
     <div class="sehe-brochure-cover">
      <div class="sehe-brochure-cover-wrap">
       <span class="sehe-brochure-badge">Free PDF Download</span>
-      <img class="sehe-brochure-cover-img" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/11+Day+26-27_Spring-Summer+Tour_Brochure-Cover-1920w.webp" alt="The Sir Edmund Hillary Explorer - 11-Day Spring/Summer 2026/27 Tour Brochure">
+      <img class="sehe-brochure-cover-img" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/2026+Winter+Tour+Brochure_SEHE-1-1920w.webp" alt="The Sir Edmund Hillary Explorer - 12-Day Winter Edition 2026 Tour Brochure">
      </div>
     </div>
     <div class="sehe-brochure-formside">
      <span class="sehe-brochure-eyebrow">Tour Brochure</span>
-     <h2 class="sehe-brochure-title">View the full 11-day tour brochure</h2>
-     <p class="sehe-brochure-subtitle">View the full itinerary, inclusions, season pricing and &ldquo;Big 5&rdquo; rail adventure details.</p>
+     <h2 class="sehe-brochure-title">View the full 12-day winter tour brochure</h2>
+     <p class="sehe-brochure-subtitle">View the full itinerary, inclusions, season pricing and winter rail journey details.</p>
      <div class="sehe-brochure-note" style="margin-top:6px; padding:14px 16px; background:var(--gold-pale); border-left:3px solid var(--gold); border-radius:6px; font-size:14px; color:var(--text);">Complete the short form just below to view the brochure collection &darr;</div>
      <div class="sehe-form-slot" data-sehe-form-slot hidden></div>
     </div>
