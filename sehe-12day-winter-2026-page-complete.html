@@ -1,8 +1,18 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 12-DAY WINTER EDITION 2026
-     COMPLETE TOUR PAGE  ·  VERSION v20  ·  2026-07-14  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v21  ·  2026-07-27  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v21 — 2026 SEASON SOLD OUT. All five departures are filled (worker feed:
+            no next date). The page stays live and indexed, but now says so
+            plainly: a sold-out band under the hero with the explanation and a
+            primary CTA to the 2027 Winter Edition; the hero ticket's
+            Departures cell reads "Sold out / 2027 season now booking"; the
+            dates section is retitled "The 2026 season has sold out" with a
+            link across to 2027. The hero-ticket script is now sold-out aware —
+            previously, with zero available dates it fell back to painting the
+            full count (5) over the cell, which read as availability. Brochure
+            form untouched: a sold-out season still makes a good 2027 lead.
        v20 — ROUTE MAP RESTORED (Ben's live report, post switch-over): the route
             map asset this page referenced (the "SEHE-Map-1" 1920w optimised
             variant) had been deleted from the Duda media library and returned
@@ -311,7 +321,7 @@
           <div class="sehe-hx-field"><div class="sehe-hx-k">Route</div><div class="sehe-hx-v">Christchurch return<a class="sehe-hx-route-link" href="#tour-route">View Route</a></div></div>
           <div class="sehe-hx-field"><div class="sehe-hx-k">Duration</div><div class="sehe-hx-v">12 Days<small>11 nights</small></div></div>
           <div class="sehe-hx-field"><div class="sehe-hx-k">From</div><div class="sehe-hx-v">NZ$7,995<small>per person, twin share</small></div></div>
-          <div class="sehe-hx-field"><div class="sehe-hx-k">Departures</div><div class="sehe-hx-v"><span data-sehe-dep-count>1</span><small data-sehe-dep-range>Sep 2026</small></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">Departures</div><div class="sehe-hx-v"><span data-sehe-dep-count>Sold out</span><small data-sehe-dep-range>2027 season now booking</small></div></div>
         </div>
         <div class="sehe-hx-stub">
           <a class="sehe-hx-btn sehe-hx-btn--primary" href="#tour-dates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg> View Tour Dates </a>
@@ -321,6 +331,42 @@
       <div class="sehe-hx-award sehe-hx-award--bottom">
         <img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/new-zealands-leading-tour-operator-2025-winner-shield-256-816b3264-1920w.png" alt="">
         <div class="sehe-hx-award-t"><span class="sehe-hx-award-k">World Travel Awards</span><span class="sehe-hx-award-v">NZ's Leading Tour Operator 2025</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== 1b. 2026 season sold out ===== -->
+<style>
+  .sehe-tourpage .sehe-soldout-band { background: #153b67; }
+  .sehe-tourpage .sehe-soldout-inner { max-width: 1240px; margin: 0 auto; padding: 30px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; }
+  .sehe-tourpage .sehe-soldout-copy { flex: 1 1 640px; }
+  .sehe-tourpage .sehe-soldout-mark { display: inline-flex; align-items: center; gap: 8px; font-family: 'Montserrat', sans-serif !important; font-size: 11px !important; font-weight: 700 !important; letter-spacing: 2.2px; text-transform: uppercase; color: #fff !important; background: rgba(184, 64, 64, 0.95); padding: 7px 14px; border-radius: 20px; margin-bottom: 14px; }
+  .sehe-tourpage .sehe-soldout-copy h2 { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: 23px !important; line-height: 1.25 !important; letter-spacing: -0.2px; color: #fff !important; margin: 0 0 8px !important; }
+  .sehe-tourpage .sehe-soldout-copy p { font-family: 'Open Sans', sans-serif !important; font-size: 15px !important; line-height: 1.65 !important; color: rgba(255, 255, 255, 0.82) !important; margin: 0 !important; max-width: 62ch; }
+  .sehe-tourpage .sehe-soldout-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .sehe-tourpage .sehe-soldout-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Montserrat', sans-serif !important; font-size: 12px !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: 1.2px; text-decoration: none !important; padding: 15px 24px; border-radius: 4px; border: 1.5px solid #c8a56c; white-space: nowrap; }
+  .sehe-tourpage .sehe-soldout-btn--primary { background: #c8a56c; color: #0d2036 !important; }
+  .sehe-tourpage .sehe-soldout-btn--ghost { background: transparent; color: #fff !important; }
+  @media (max-width: 860px) {
+    .sehe-tourpage .sehe-soldout-inner { padding: 24px 20px; gap: 16px; }
+    .sehe-tourpage .sehe-soldout-copy h2 { font-size: 19px !important; }
+    .sehe-tourpage .sehe-soldout-copy p { font-size: 14.5px !important; }
+    .sehe-tourpage .sehe-soldout-actions { width: 100%; }
+    .sehe-tourpage .sehe-soldout-btn { width: 100%; }
+  }
+</style>
+<div class="sehe-tourpage">
+  <section class="sehe-soldout-band" aria-label="The 2026 Winter Edition is sold out">
+    <div class="sehe-soldout-inner">
+      <div class="sehe-soldout-copy">
+        <span class="sehe-soldout-mark">2026 Season Sold Out</span>
+        <h2>Every 2026 Winter Edition departure is now fully booked</h2>
+        <p>All five departures between June and September 2026 have sold. The 12-Day Winter Edition returns next winter with six departures from July to September 2027 &mdash; the same journey, the same snow-covered South Island.</p>
+      </div>
+      <div class="sehe-soldout-actions">
+        <a class="sehe-soldout-btn sehe-soldout-btn--primary" href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours">View the 2027 Winter Edition</a>
+        <a class="sehe-soldout-btn sehe-soldout-btn--ghost" href="#tour-brochure">Get the Brochure</a>
       </div>
     </div>
   </section>
@@ -865,11 +911,16 @@
   @media (max-width: 600px) { .booking-info { flex-direction: column; } .booking-info-item { border-right: none; border-bottom: 1px solid var(--border); padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; text-align: left; } .booking-info-item:last-child { border-bottom: none; } .booking-bottom { flex-direction: column; text-align: center; } .booking-topbar { flex-direction: column; gap: 8px; text-align: center; } .booking-widget-area { padding: 16px; } .booking-tab { padding: 12px 14px; font-size: 12px !important; } }
 </style>
 <div class="sehe-tourpage">
+<style>
+  .sehe-tourpage .sehe-soldout-dates-note { font-family: 'Open Sans', sans-serif !important; font-size: 15px !important; line-height: 1.6 !important; color: #51617a !important; margin: 14px 0 0 !important; }
+  .sehe-tourpage .sehe-soldout-dates-note a { color: #153b67 !important; font-weight: 700; text-decoration: underline !important; text-underline-offset: 2px; }
+</style>
   <section class="sehe-booking-section" id="tour-dates">
    <div class="sehe-booking-header">
     <div class="sehe-booking-header-inner">
-     <span class="sehe-section-eyebrow">Available Dates</span>
-     <h2 class="sehe-section-heading">Choose your departure</h2>
+     <span class="sehe-section-eyebrow">2026 Departures</span>
+     <h2 class="sehe-section-heading">The 2026 season has sold out</h2>
+     <p class="sehe-soldout-dates-note">Every date below is fully booked. The same journey runs again next winter &mdash; <a href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours">see the 2027 Winter Edition departures</a>.</p>
     </div>
    </div>
    <div class="booking-wrapper">
@@ -2463,8 +2514,15 @@
     var avail = d.all.filter(function(x){ return x && x.status !== 'soldout'; });
     var all = avail.length ? avail : d.all;
     var cEl = document.querySelector('[data-sehe-dep-count]');
-    if (cEl) cEl.textContent = all.length;
     var rEl = document.querySelector('[data-sehe-dep-range]');
+    /* Sold-out season: never repaint a departure count over the sold-out
+       wording — the baked cell is already correct and more useful. */
+    if (!avail.length) {
+      if (cEl) cEl.textContent = 'Sold out';
+      if (rEl) rEl.innerHTML = '2027 season now booking';
+      return;
+    }
+    if (cEl) cEl.textContent = all.length;
     if (rEl) {
       var a = all[0].start.split('-'), b = all[all.length - 1].start.split('-');
       rEl.innerHTML = (a[0] === b[0] && a[1] === b[1]) ? full(all[0].start) : (lbl(all[0].start) + ' – ' + lbl(all[all.length - 1].start));

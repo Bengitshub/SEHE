@@ -1,8 +1,26 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v24  ·  2026-07-22  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v25  ·  2026-07-27  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v25 — BRAND ALIGNMENT TO THE TOUR PAGES + WINTER 2026 SOLD OUT.
+            Ben: the headings and tour boxes read slightly off-brand against
+            the tour landing pages (hero excepted — that one is right). Matched
+            to the tour pages' own system, measured from their CSS: headings
+            Montserrat 600 / -0.2px tracking (were 700 / -0.4px); section
+            headings to the .sehe-section-heading scale clamp(28px, 3.4vw,
+            38px) (were clamp(32px, 3.6vw, 48px)); the eyebrow is now the tour
+            pages' .sehe-section-eyebrow — 11px, 2.4px tracking, gold-dark,
+            with its own 28px leading rule — which retires the separate double
+            rule beneath it; season labels 600/19px. Tour boxes now match the
+            journey cards: white, 10px radius, hover lift with a gold border,
+            22px/-0.3px titles, and white badge pills with 1.2px tracking and a
+            soft shadow. Hero, film and final headings keep their display scale
+            deliberately. WINTER 2026: fully booked, so the 2027 card now leads
+            the Winter Editions group with 2026 beneath it, badged "2026 ·
+            Sold Out", reading "Season complete — 2027 now booking", and
+            linking across to the 2027 Winter Edition. Its live-chip hook is
+            removed so nothing can repaint a date over the sold-out wording.
        v24 — promise card "Small groups, real care" -> "Friendly, personal
             touring" (Ben/Paul: groups run up to two coaches in busy
             times, so "small groups" overclaims). Only instance on the
@@ -175,7 +193,7 @@
   .sehe-home-ledger {
     --ink: #0d2036; --ink-deep: #081525; --ink-soft: #1b3450;
     --paper: #f7f1e6; --paper-deep: #efe6d4; --paper-line: #d8cbb0;
-    --gold: #c8a56c; --gold-deep: #a5804a; --gold-pale: #e9d9ba;
+    --gold: #c8a56c; --gold-deep: #a68a55; --gold-light: #d4b37e; --gold-pale: #e9d9ba;
     --cream-ink: #f3ecdd; --body-ink: #26374d; --body-soft: #51617a;
     font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 18px; line-height: 1.7; color: var(--body-ink);
@@ -187,12 +205,13 @@
      row is not set to full width in Duda, these keep the design intact. */
   #dm .dmContent .dmRespRow, #dm .dmContent .dmRespColsWrapper, #dm .dmContent .dmRespCol { overflow: visible !important; max-width: none !important; }
   #dm .dmContent .dmCustomHtml { overflow: visible !important; }
-  .sehe-home-ledger .shx-display { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; letter-spacing: -0.4px; margin: 0; }
+  .sehe-home-ledger .shx-display { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; letter-spacing: -0.2px; margin: 0; }
   .sehe-home-ledger p { margin: 0; }
   .sehe-home-ledger a:focus-visible, .sehe-home-ledger button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
-  .shx-kicker { display: block; font-size: 13px !important; font-weight: 700 !important; letter-spacing: .42em; text-transform: uppercase; color: var(--gold-deep) !important; margin: 0 0 14px !important; }
-  .shx-kicker--light { color: var(--gold) !important; }
-  .shx-rule { width: 74px; border: 0; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); height: 5px; margin: 0 0 26px; background: transparent; }
+  .shx-kicker { display: inline-flex; align-items: center; gap: 10px; font-size: 11px !important; font-weight: 700 !important; letter-spacing: 2.4px; text-transform: uppercase; color: var(--gold-deep) !important; margin: 0 0 18px !important; }
+  .shx-kicker::before { content: ''; width: 28px; height: 1px; background: var(--gold); flex: none; }
+  .shx-kicker--light { color: var(--gold-light) !important; }
+  .shx-kicker--light::before { background: var(--gold-light); }
   .shx-btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 56px; padding: 16px 34px; border-radius: 3px; font-family: 'Open Sans', sans-serif !important; font-size: 17px !important; font-weight: 700 !important; letter-spacing: .04em; text-decoration: none !important; cursor: pointer; border: 2px solid transparent; transition: background .2s ease, color .2s ease, border-color .2s ease; }
   .shx-btn--gold { background: var(--gold); color: var(--ink-deep) !important; border-color: var(--gold); }
   .shx-btn--gold:hover { background: var(--gold-pale); border-color: var(--gold-pale); }
@@ -237,18 +256,20 @@
   /* ============ 2. CHOOSE YOUR JOURNEY (the centrepiece) ============ */
   .shx-journeys { background: var(--paper-deep); }
   .shx-journeys-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 46px; }
-  .shx-journeys h2 { font-size: clamp(32px, 3.6vw, 48px) !important; color: var(--ink) !important; line-height: 1.14 !important; margin: 0 !important; max-width: 18ch; }
+  .shx-journeys h2 { font-size: clamp(28px, 3.4vw, 38px) !important; color: var(--ink) !important; line-height: 1.14 !important; margin: 0 !important; max-width: 18ch; }
   .shx-journeys-head p { max-width: 46ch; font-size: 17px !important; color: var(--body-soft) !important; }
-  .shx-season { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 20px !important; color: var(--gold-deep) !important; margin: 44px 0 4px !important; }
+  .shx-season { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: 19px !important; letter-spacing: -0.2px; color: var(--gold-deep) !important; margin: 44px 0 4px !important; }
   .shx-season:first-of-type { margin-top: 0 !important; }
   .shx-jgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 18px; }
-  .shx-jc { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--paper-line); border-radius: 3px; overflow: hidden; }
+  .shx-jc { display: flex; flex-direction: column; background: #ffffff; border: 1px solid var(--paper-line); border-radius: 10px; overflow: hidden; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+  .shx-jc:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(21, 59, 103, .08); border-color: var(--gold); }
   .shx-jc--signature { border: 1px solid var(--gold); box-shadow: 0 0 0 4px rgba(200,165,108,.16); }
+  .shx-jc--signature:hover { box-shadow: 0 0 0 4px rgba(200,165,108,.16), 0 10px 28px rgba(21,59,103,.10); }
   .shx-jc-img { position: relative; width: 100%; aspect-ratio: 16 / 9; background-size: cover; background-position: center; }
-  .shx-jc-badge { position: absolute; top: 14px; left: 14px; background: var(--ink); color: #fff !important; font-size: 12.5px !important; font-weight: 700 !important; letter-spacing: .18em; text-transform: uppercase; padding: 8px 14px; border-radius: 3px; }
+  .shx-jc-badge { position: absolute; top: 14px; left: 14px; background: #ffffff; color: var(--ink) !important; font-size: 11px !important; font-weight: 700 !important; letter-spacing: 1.2px; text-transform: uppercase; padding: 6px 12px; border-radius: 3px; box-shadow: 0 2px 6px rgba(0,0,0,.15); }
   .shx-jc--signature .shx-jc-badge { background: var(--gold); color: var(--ink-deep) !important; }
   .shx-jc-body { display: flex; flex-direction: column; flex: 1; padding: 26px 28px 28px; }
-  .shx-jc-body h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: clamp(22px, 1.9vw, 27px) !important; line-height: 1.2 !important; color: var(--ink) !important; margin: 0 0 10px !important; }
+  .shx-jc-body h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 22px !important; line-height: 1.2 !important; letter-spacing: -0.3px; color: var(--ink) !important; margin: 0 0 10px !important; }
   .shx-jc-meta { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 0 0 12px; padding: 0; list-style: none; }
   .shx-jc-meta li { font-size: 16px !important; color: var(--body-soft) !important; }
   .shx-jc-meta strong { color: var(--ink); font-weight: 700; }
@@ -257,6 +278,9 @@
   .shx-jc-foot { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
   .shx-jc-next { flex-basis: 100%; font-size: 14px !important; letter-spacing: .08em; text-transform: uppercase; font-weight: 700 !important; color: var(--body-soft) !important; }
   .shx-jc-next strong { color: var(--ink) !important; font-size: 16.5px !important; letter-spacing: 0; text-transform: none; }
+  .shx-jc-badge--sold { background: #b84040; color: #ffffff !important; }
+  .shx-jc-next--sold strong { color: #b84040 !important; }
+  .shx-jc-line a { color: var(--ink) !important; font-weight: 700; text-decoration: underline !important; text-underline-offset: 3px; }
   .shx-jc-brochure { font-size: 16px !important; font-weight: 700 !important; color: var(--ink) !important; text-decoration: underline !important; text-underline-offset: 3px; }
   /* full-width Pinnacle feature card inside the grid */
   .shx-jc--pinnacle { grid-column: 1 / -1; flex-direction: row; background: var(--ink); border: 1px solid var(--gold); color: var(--cream-ink); }
@@ -283,7 +307,7 @@
 
   /* ============ 3. THE PROMISE ============ */
   .shx-promise { background: var(--ink); color: var(--cream-ink); }
-  .shx-promise h2 { font-size: clamp(32px, 3.6vw, 48px) !important; color: #ffffff !important; line-height: 1.14 !important; margin: 0 0 18px !important; }
+  .shx-promise h2 { font-size: clamp(28px, 3.4vw, 38px) !important; color: #ffffff !important; line-height: 1.14 !important; margin: 0 0 18px !important; }
   .shx-promise-intro { max-width: 62ch; font-size: 18.5px !important; color: rgba(243,236,221,.85) !important; margin: 0 0 58px !important; }
   .shx-promise-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 44px; }
   .shx-promise-item { border-top: 1px solid rgba(200,165,108,.55); padding-top: 26px; }
@@ -293,7 +317,7 @@
 
   /* ============ 4. THE SEASONS ============ */
   .shx-seasons { background: var(--ink); color: var(--cream-ink); border-top: 1px solid rgba(200,165,108,.25); }
-  .shx-seasons h2 { font-size: clamp(32px, 3.6vw, 48px) !important; color: #ffffff !important; line-height: 1.14 !important; margin: 0 0 18px !important; }
+  .shx-seasons h2 { font-size: clamp(28px, 3.4vw, 38px) !important; color: #ffffff !important; line-height: 1.14 !important; margin: 0 0 18px !important; }
   .shx-seasons-intro { max-width: 62ch; font-size: 18.5px !important; color: rgba(243,236,221,.85) !important; margin: 0 !important; }
   .shx-seasons-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 58px; }
   .shx-season-card { position: relative; min-height: 600px; display: flex; align-items: flex-end; border: 1px solid var(--gold); border-radius: 3px; overflow: hidden; background-size: cover; background-position: center; }
@@ -310,7 +334,7 @@
   /* ============ 5. SUPER 6 (compact grid) ============ */
   .shx-six { background: var(--paper); }
   .shx-six-head { max-width: 720px; margin-bottom: 50px; }
-  .shx-six h2 { font-size: clamp(32px, 3.6vw, 48px) !important; color: var(--ink) !important; line-height: 1.14 !important; margin: 0 0 18px !important; }
+  .shx-six h2 { font-size: clamp(28px, 3.4vw, 38px) !important; color: var(--ink) !important; line-height: 1.14 !important; margin: 0 0 18px !important; }
   .shx-six-head p { font-size: 18px !important; color: var(--body-ink) !important; }
   .shx-six-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .shx-six-card { background: #ffffff; border: 1px solid var(--paper-line); border-radius: 3px; overflow: hidden; display: flex; flex-direction: column; }
@@ -325,7 +349,7 @@
   /* ============ 6. LEGACY ============ */
   .shx-legacy { background: var(--paper-deep); }
   .shx-legacy-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 72px; align-items: center; }
-  .shx-legacy h2 { font-size: clamp(34px, 3.8vw, 52px) !important; line-height: 1.12 !important; color: var(--ink) !important; margin: 0 0 26px !important; }
+  .shx-legacy h2 { font-size: clamp(30px, 3.5vw, 40px) !important; line-height: 1.12 !important; color: var(--ink) !important; margin: 0 0 26px !important; }
   .shx-legacy-copy p { margin: 0 0 20px !important; font-size: 18.5px !important; color: var(--body-ink) !important; }
   .shx-legacy-copy p:last-of-type { margin-bottom: 0 !important; }
   .shx-quote { margin: 34px 0 0; padding: 26px 0 0; border-top: 5px double var(--gold); }
@@ -343,7 +367,7 @@
   .shx-film-media.is-live { opacity: 1; }
   .shx-film-media iframe { position: absolute; top: 50%; left: 50%; width: max(100vw, 178vh); height: max(100vh, 56.25vw); transform: translate(-50%, -50%); border: 0; pointer-events: none; }
   .shx-film-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,21,37,.42) 0%, rgba(8,21,37,.08) 38%, rgba(8,21,37,.30) 66%, rgba(8,21,37,.9) 100%); }
-  .shx-film-in .shx-kicker, .shx-film-in .shx-rule { text-shadow: 0 1px 12px rgba(8,21,37,.9); }
+  .shx-film-in .shx-kicker { text-shadow: 0 1px 12px rgba(8,21,37,.9); }
   .shx-film-in { position: relative; width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 32px 72px; }
   .shx-film-in h2 { font-size: clamp(34px, 4.2vw, 58px) !important; color: #ffffff !important; line-height: 1.08 !important; margin: 0 0 16px !important; text-shadow: 0 2px 22px rgba(8,21,37,.6); }
   .shx-film-sub { max-width: 560px; font-size: 18px !important; color: rgba(255,255,255,.92) !important; margin: 0 0 30px !important; text-shadow: 0 1px 14px rgba(8,21,37,.6); }
@@ -355,7 +379,7 @@
 
   /* ============ 8. GUESTS (quotes + photographs) ============ */
   .shx-guests { background: var(--paper); }
-  .shx-guests h2 { font-size: clamp(32px, 3.6vw, 48px) !important; color: var(--ink) !important; line-height: 1.14 !important; margin: 0 0 20px !important; }
+  .shx-guests h2 { font-size: clamp(28px, 3.4vw, 38px) !important; color: var(--ink) !important; line-height: 1.14 !important; margin: 0 0 20px !important; }
   .shx-guests-fav { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: 19px !important; color: var(--gold-deep) !important; margin: 0 0 54px !important; }
   .shx-guests-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; }
   .shx-g q { quotes: '\201C' '\201D'; font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: 20px !important; line-height: 1.5 !important; color: var(--ink) !important; display: block; margin-bottom: 22px; }
@@ -374,7 +398,7 @@
 
   /* ============ 9. BOOKING YOUR JOURNEY (steps + reassurance merged) ============ */
   .shx-booking { background: var(--paper-deep); }
-  .shx-booking h2 { font-size: clamp(30px, 3.2vw, 42px) !important; color: var(--ink) !important; line-height: 1.16 !important; margin: 0 0 54px !important; }
+  .shx-booking h2 { font-size: clamp(28px, 3.4vw, 38px) !important; color: var(--ink) !important; line-height: 1.16 !important; margin: 0 0 54px !important; }
   .shx-booking-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 70px; align-items: start; }
   .shx-step { border-top: 5px double var(--gold); padding-top: 22px; margin-bottom: 34px; }
   .shx-step:last-child { margin-bottom: 0; }
@@ -451,8 +475,8 @@
     .sehe-home-ledger { font-size: 16.5px; line-height: 1.6; }
     .shx-band { padding: 46px 16px !important; }
     .shx-btn { min-height: 50px; padding: 13px 22px; font-size: 16px !important; }
-    .shx-kicker { font-size: 11px !important; letter-spacing: .26em; margin-bottom: 10px !important; }
-    .shx-rule { margin-bottom: 18px; }
+    .shx-kicker { font-size: 10.5px !important; letter-spacing: 1.8px; gap: 8px; margin-bottom: 14px !important; }
+    .shx-kicker::before { width: 20px; }
     /* hero */
     .shx-hero-inner { padding: 104px 18px 0; }
     .shx-hero-kicker { font-size: 11px !important; letter-spacing: .26em; margin-bottom: 16px !important; }
@@ -483,8 +507,8 @@
     .shx-season { font-size: 16.5px !important; margin: 26px 0 2px !important; }
     .shx-jgrid { gap: 16px; margin-top: 12px; }
     .shx-jc-body { padding: 18px 16px 20px; }
-    .shx-jc-body h3 { font-size: 20px !important; margin-bottom: 8px !important; }
-    .shx-jc-badge { font-size: 11px !important; letter-spacing: .12em; padding: 6px 10px; }
+    .shx-jc-body h3 { font-size: 19px !important; margin-bottom: 8px !important; }
+    .shx-jc-badge { font-size: 10.5px !important; letter-spacing: 1px; padding: 5px 10px; }
     .shx-jc-meta { gap: 2px 16px; margin-bottom: 10px; }
     .shx-jc-meta li { font-size: 15px !important; line-height: 1.5 !important; }
     .shx-jc-line { font-size: 15px !important; line-height: 1.55 !important; }
@@ -663,24 +687,6 @@
       <h3 class="shx-season">Winter Editions</h3>
       <div class="shx-jgrid">
         <article class="shx-jc">
-          <div class="shx-jc-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/183840-lake-sarah-in-snow-b1e7ecbb.webp');" role="img" aria-label="Lake Sarah under winter snow"><span class="shx-jc-badge">Winter Edition</span></div>
-          <div class="shx-jc-body">
-            <h3>12-Day Winter Edition 2026</h3>
-            <ul class="shx-jc-meta">
-              <li><strong>12 days</strong> &middot; 11 nights</li>
-              <li>From <strong>NZ$7,995</strong> pp twin share</li>
-              <li>Final dates &middot; Sep 2026</li>
-            </ul>
-            <p class="shx-jc-line">The Southern Alps under snow &mdash; alpine rail, Tekapo&rsquo;s star-filled skies, Queenstown in its winter coat. Nearly sold out.</p>
-            <p class="shx-jc-rail">Hand-picked winter rail set</p>
-            <div class="shx-jc-foot">
-              <p class="shx-jc-next">Final departure <strong data-shx-next="winter-2026">12 September 2026</strong></p>
-              <a class="shx-btn shx-btn--ink" href="/2026-winter-edition-tours" aria-label="View the 12-Day Winter Edition 2026 tour">View Journey</a>
-              <a class="shx-jc-brochure" href="/2026-winter-edition-tours#tour-brochure" aria-label="View the Winter Edition 2026 brochure">View Brochure</a>
-            </div>
-          </div>
-        </article>
-        <article class="shx-jc">
           <div class="shx-jc-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/184587-tranzalpine-travelling-through-the-snow.webp');" role="img" aria-label="The TranzAlpine travelling through deep snow"><span class="shx-jc-badge">Winter Edition</span></div>
           <div class="shx-jc-body">
             <h3>12-Day Winter Edition 2027</h3>
@@ -695,6 +701,24 @@
               <p class="shx-jc-next">Next departure <strong data-shx-next="winter-2027">10 July 2027</strong></p>
               <a class="shx-btn shx-btn--ink" href="/2027-winter-edition-tours" aria-label="View the 12-Day Winter Edition 2027 tour">View Journey</a>
               <a class="shx-jc-brochure" href="/2027-winter-edition-tours#tour-brochure" aria-label="View the Winter Edition 2027 brochure">View Brochure</a>
+            </div>
+          </div>
+        </article>
+        <article class="shx-jc">
+          <div class="shx-jc-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/183840-lake-sarah-in-snow-b1e7ecbb.webp');" role="img" aria-label="Lake Sarah under winter snow"><span class="shx-jc-badge shx-jc-badge--sold">2026 &middot; Sold Out</span></div>
+          <div class="shx-jc-body">
+            <h3>12-Day Winter Edition 2026</h3>
+            <ul class="shx-jc-meta">
+              <li><strong>12 days</strong> &middot; 11 nights</li>
+              <li>From <strong>NZ$7,995</strong> pp twin share</li>
+              <li>Jun &ndash; Sep 2026</li>
+            </ul>
+            <p class="shx-jc-line">The Southern Alps under snow &mdash; alpine rail, Tekapo&rsquo;s star-filled skies, Queenstown in its winter coat. Every 2026 departure has now sold &mdash; <a href="/2027-winter-edition-tours">the 2027 Winter Edition is booking now</a>.</p>
+            <p class="shx-jc-rail">Hand-picked winter rail set</p>
+            <div class="shx-jc-foot">
+              <p class="shx-jc-next shx-jc-next--sold">Season complete &mdash; <strong>2027 now booking</strong></p>
+              <a class="shx-btn shx-btn--ink" href="/2026-winter-edition-tours" aria-label="View the 12-Day Winter Edition 2026 tour">View Journey</a>
+              <a class="shx-jc-brochure" href="/2026-winter-edition-tours#tour-brochure" aria-label="View the Winter Edition 2026 brochure">View Brochure</a>
             </div>
           </div>
         </article>
@@ -779,7 +803,6 @@
   <section class="shx-promise shx-band">
     <div class="shx-wrap">
       <span class="shx-kicker shx-kicker--light">Why Travel With Us</span>
-      <hr class="shx-rule">
       <h2 class="shx-display">Award-winning care.</h2>
       <p class="shx-promise-intro">Our journeys are designed for travellers who want to see everything without rushing anything &mdash; and never want to worry about the details.</p>
       <div class="shx-promise-grid">
@@ -811,7 +834,6 @@
   <section class="shx-seasons shx-band">
     <div class="shx-wrap">
       <span class="shx-kicker shx-kicker--light">The Seasons</span>
-      <hr class="shx-rule">
       <h2 class="shx-display">The seasons change everything.</h2>
       <p class="shx-seasons-intro">The same mountains, twice transformed. Choose the season that calls you &mdash; every journey above runs in one of them.</p>
       <div class="shx-seasons-duo">
@@ -841,7 +863,6 @@
     <div class="shx-wrap">
       <div class="shx-six-head">
         <span class="shx-kicker">The &ldquo;Super 6&rdquo;</span>
-        <hr class="shx-rule">
         <h2 class="shx-display">The rail adventures at the heart of it all</h2>
         <p>The complete set of the South Island&rsquo;s celebrated rail experiences &mdash; scheduled services, heritage steam, and The Mainlander, an exclusive charter no other tour carries.</p>
       </div>
@@ -881,7 +902,6 @@
       <div class="shx-legacy-grid">
         <div class="shx-legacy-copy">
           <span class="shx-kicker">The Name We Travel Under</span>
-          <hr class="shx-rule">
           <h2 class="shx-display">Named for the greatest explorer of them all</h2>
           <p>Sir Edmund Hillary epitomised the New Zealand spirit of adventure, and he is our inspiration in planning your experience of a lifetime. This journey carries his name with his family&rsquo;s blessing &mdash; and carries his spirit through the mountains, glaciers and high country he knew best.</p>
           <p>You&rsquo;ll cross the Southern Alps he trained in, stand beneath Aoraki Mt Cook where his climbing life began, and hear the story told where it happened &mdash; not from a guidebook, but from the people closest to it.</p>
@@ -907,7 +927,6 @@
     <div class="shx-film-veil"></div>
     <div class="shx-film-in">
       <span class="shx-kicker shx-kicker--light">The Explorer, In Motion</span>
-      <hr class="shx-rule">
       <h2 class="shx-display">See the journey move.</h2>
       <p class="shx-film-sub">Steam, steel and the South Island rolling past the window &mdash; a quiet minute in the company of the Explorer.</p>
       <div class="shx-film-ctas">
@@ -921,7 +940,6 @@
   <section class="shx-guests shx-band" id="guests">
     <div class="shx-wrap">
       <span class="shx-kicker">In Our Guests&rsquo; Words</span>
-      <hr class="shx-rule">
       <h2 class="shx-display">Don&rsquo;t take our word for it</h2>
       <p class="shx-guests-fav">&ldquo;Recommended for anybody &mdash; especially for the 50+ crowd. Our trip was truly the best of our lives.&rdquo;</p>
       <div class="shx-guests-grid">
@@ -967,7 +985,6 @@
   <section class="shx-booking shx-band" id="booking">
     <div class="shx-wrap">
       <span class="shx-kicker">Booking Your Journey</span>
-      <hr class="shx-rule">
       <h2 class="shx-display">Three easy steps &mdash; and a team that answers the phone</h2>
       <div class="shx-booking-grid">
         <div>

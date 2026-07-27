@@ -1,0 +1,1126 @@
+<!-- =====================================================================
+     SIR EDMUND HILLARY EXPLORER — BROCHURE COLLECTION PAGE
+     COMPLETE PAGE  ·  VERSION v1  ·  2026-07-27  (paste into the Duda HTML block)
+     -----------------------------------------------------------------------
+     NOTE: reconstructed from the published page (no prior source file existed).
+     CHANGELOG (latest first):
+       v1 — baseline captured from live + Winter 2026 moved last and marked
+            sold out, pointing to the 2027 Winter Edition.
+     ===================================================================== -->
+<!--
+  ═══════════════════════════════════════════════════════════════════════════════
+  SEHE BROCHURE COLLECTION — TOUR GRID
+  ═══════════════════════════════════════════════════════════════════════════════
+  VERSION v3 · 2026-06-24
+  ─── CHANGELOG ─────────────────────────────────────────────────────────────────
+  v3 (2026-06-24) — LIVE auto-update. The Worker is now the source of truth: the
+      load merge OVERRIDES the baked list per tour with the Worker's live list
+      (status included), so sell-outs, freed cancellations and twin-share dates
+      update on their own. The baked list stays only as the instant paint +
+      fallback if the Worker is unreachable (never wiped). Deploy the Worker first.
+  v2 (2026-06-23) — Departures now mirror the Journeys page & booking widgets.
+      • Added the shared top departure-data block + escalate-only live loader
+        (window.__seheDepartureData / window.__seheLoadDepartures) — the SAME
+        master list the tour pages and the Journeys index use.
+      • Baked a month-grouped departure-date list into every tour card
+        (sold-out = red strike-through, "filling fast" = amber), with a legend.
+      • Corrected the "Departures" counts to the live available figures —
+        Winter 2026 5→3, 14-Day 26/27 17→14, 11-Day 26/27 7→6,
+        14-Day 27/28 6→13, 11-Day 27/28 2→7.
+      • Replaced the old full-replace count script with a never-wipe render that
+        only ENHANCES the baked HTML and escalate-merges live status — so a
+        stale/offline Worker can never revert or blank the dates.
+      • Quoted the signature rail-set names in display copy (&ldquo;Super 6&rdquo;,
+        &ldquo;Big 5&rdquo;, &ldquo;Famous 4&rdquo;).
+  v1 (2026-06-23) — Initial brochure-collection grid scaffold (static counts).
+  ─── REPLACES ──────────────────────────────────────────────────────────────────
+  REPLACES the existing grid section of the Brochure Collection page.
+  The page hero (logo + waterfall), "Prefer to speak with us", and FAQ
+  sections above/below this block stay as-is.
+  ─── STATUS ──────────────────────────────────────────────────────────────────
+  This file is production-ready. All tour images are wired to the Duda CDN,
+  all eight brochure viewer links open the correct PDF in a new tab.
+  Paste the entire block into an HTML widget on the brochure collection page,
+  replacing the existing tour grid.
+  ─── RESPONSIVE ───────────────────────────────────────────────────────────────
+  • Desktop (≥1024px): 3-column grid
+  • Tablet (600–1023px): 2-column grid
+  • Mobile (<600px): 1-column stack
+  ═══════════════════════════════════════════════════════════════════════════════
+--><!-- ══ SHARED DEPARTURE DATA + ESCALATE-ONLY LIVE LOADER ════════════════════════
+     The authoritative master list (Kirsty's full schedule per tour). It mirrors
+     the tour pages and the Journeys index. The cards below are painted from this
+     block instantly, then the live Worker feed ESCALATES status only (available
+     -> filling fast -> sold), never reverts. Edit RAW / SOLDOUT here to change
+     departures by hand. ════════════════════════════════════════════════════════ --> <script>
+
+
+(function(){
+  /* Departure dates for the cards — Kirsty's full schedule per tour. Every date
+     shows; dates listed in SOLDOUT (not bookable in Checkfront) render RED.
+     The live feed below only ESCALATES a date's colour (available -> filling
+     fast -> sold) and never reverts this list. To change departures by hand,
+     edit RAW / SOLDOUT here. */
+  var RAW = {
+    'winter-2026'  : ['2026-06-27','2026-07-18','2026-08-01','2026-09-05','2026-09-12'],
+    'pinnacle-2027': ['2027-01-14'],
+    '11day-2627'   : ['2026-10-05','2026-11-02','2026-11-30','2027-02-01','2027-02-22','2027-03-01','2027-03-29'],
+    '14day-2627'   : ['2026-10-12','2026-10-19','2026-10-26','2026-11-09','2026-11-16','2026-11-23','2027-01-04','2027-01-11','2027-01-18','2027-01-25','2027-02-08','2027-02-15','2027-03-08','2027-03-15','2027-03-22','2027-04-05','2027-04-12'],
+    'winter-2027'  : ['2027-07-10','2027-07-24','2027-08-07','2027-08-14','2027-08-21','2027-08-28'],
+    '11day-2728'   : ['2027-09-27','2027-10-25','2027-11-29','2028-01-10','2028-02-28','2028-03-06','2028-04-17'],
+    '14day-2728'   : ['2027-10-04','2027-10-11','2027-10-18','2027-11-01','2027-11-08','2027-11-15','2027-11-22','2027-12-06','2028-01-17','2028-01-24','2028-01-31','2028-02-07','2028-02-14']
+  };
+  var SOLDOUT = {
+    'winter-2026': ['2026-06-27','2026-07-18','2026-08-01','2026-09-05','2026-09-12'],
+    '11day-2627' : ['2026-10-05'],
+    '14day-2627' : ['2026-10-12','2026-10-19','2026-10-26']
+  };
+  var ADD = { 'winter-2026':11,'winter-2027':11,'pinnacle-2027':14,'11day-2627':10,'11day-2728':10,'14day-2627':13,'14day-2728':13 };
+  function endOf(iso,n){ var d=new Date(iso+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10); }
+  var today=new Date().toISOString().slice(0,10), data={};
+  Object.keys(RAW).forEach(function(k){
+    var sold=SOLDOUT[k]||[];
+    var all=RAW[k].filter(function(x){return x>=today;}).map(function(x){return {start:x,end:endOf(x,ADD[k]),status:sold.indexOf(x)>=0?'soldout':'available'};});
+    var av=all.filter(function(x){return x.status!=='soldout';});
+    data[k]={ all:all, next: av.length?av[0].start:null };
+  });
+  window.__seheDepartureData=data;
+  /* ---- LIVE DATES (the worker is the source of truth) --------------------
+     The worker holds the full schedule and reads Checkfront for what's available
+     vs sold out. We OVERRIDE the baked list per tour with the worker's live list,
+     so sell-outs, freed cancellations and twin-share dates all update on their
+     own — no re-editing. SAFETY: if the worker is unreachable, or returns nothing
+     for a tour, we keep the baked list (we never wipe it to empty). */
+  var WORKER_URL='https://sehe-next-departures.ben-757.workers.dev/';
+  window.__seheDeparturePromise=null;
+  window.__seheLoadDepartures=function(){
+    if(window.__seheDeparturePromise) return window.__seheDeparturePromise;
+    window.__seheDeparturePromise=fetch(WORKER_URL,{cache:'no-store'})
+      .then(function(r){ if(!r.ok) throw new Error('Worker '+r.status); return r.json(); })
+      .then(function(live){
+        if(live && typeof live==='object' && !Array.isArray(live)){
+          Object.keys(window.__seheDepartureData).forEach(function(k){
+            var lt=live[k];
+            if(!lt || !lt.all || !lt.all.length) return;   /* nothing live for this tour -> keep the baked list (never wipe) */
+            var all=lt.all.filter(function(d){ return d && d.start; }).map(function(d){
+              return { start:d.start, end:d.end||endOf(d.start,ADD[k]), status:d.status||'available' };
+            });
+            if(!all.length) return;
+            window.__seheDepartureData[k].all=all;                       /* worker wins */
+            var av=all.filter(function(d){ return d.status!=='soldout'; });
+            window.__seheDepartureData[k].next= lt.next || (av.length?av[0].start:null);
+          });
+        }
+        return window.__seheDepartureData;
+      })
+      .catch(function(err){ if(window.console&&console.warn) console.warn('SEHE departures: live feed unavailable, keeping the in-page list.',err); return window.__seheDepartureData; });
+    return window.__seheDeparturePromise;
+  };
+})();
+         
+
+                </script> 
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/> <style>.sehe-brochures, .sehe-brochures * { box-sizing: border-box; }
+  .sehe-brochures {
+    --navy: #153b67;
+    --navy-light: #1e4a7a;
+    --navy-dark: #0e2d52;
+    --gold: #c8a56c;
+    --gold-light: #d4b37e;
+    --gold-pale: #f5edd8;
+    --gold-dark: #a68a55;
+    --white: #ffffff;
+    --off-white: #f9f7f3;
+    --cream: #faf8f3;
+    --text: #1a1a1a;
+    --text-light: #5a5a5a;
+    --text-muted: #8a8a8a;
+    --border: #d8d3c8;
+    --border-light: #e8e4db;
+    --red: #b84040;
+    --red-pale: #fdeeee;
+    --amber: #c47e16;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+    line-height: 1.6;
+  }
+  /* ── SECTION HEADER ───────────────────────────────────────────────────── */
+  .sehe-brochures-header {
+    text-align: center !important;
+    margin-bottom: 48px;
+    padding: 0 20px;
+  }
+  .sehe-brochures-header h2 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 40px !important;
+    font-weight: 600 !important;
+    color: var(--navy) !important;
+    margin: 0 0 10px !important;
+    letter-spacing: -0.3px;
+    text-align: center !important;
+  }
+  .sehe-brochures-header p {
+    font-size: 15px !important;
+    color: var(--text-light) !important;
+    margin: 0 auto !important;
+    max-width: 540px;
+    text-align: center !important;
+  }
+  .sehe-brochures-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 18px 0 20px;
+  }
+  .sehe-brochures-divider-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .sehe-brochures-divider-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+  /* ── GRID ────────────────────────────────────────────────────────────── */
+  .sehe-brochures-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-bottom: 56px;
+  }
+  /* ── TOUR CARD ───────────────────────────────────────────────────────── */
+  .tour-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .tour-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(21, 59, 103, 0.08);
+    border-color: var(--gold);
+  }
+  .tour-card.tour-card-pinnacle {
+    border: 1.5px solid var(--gold);
+    box-shadow: 0 4px 16px rgba(200, 165, 108, 0.12);
+  }
+  /* ── CARD IMAGE ──────────────────────────────────────────────────────── */
+  .tour-card-image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: var(--off-white);
+  }
+  .tour-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  /* ── BADGE STACK (top-left of image) ───────────────────────────────── */
+  .tour-card-badges {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .tour-card-badge {
+    padding: 6px 12px;
+    background: var(--white);
+    color: var(--navy);
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    white-space: nowrap;
+  }
+  .tour-card-badge-pinnacle {
+    background: var(--gold);
+    color: var(--navy-dark);
+  }
+  /* ── NOW BOOKING BADGE (livestream-style) ─────────────────────────────── */
+  .tour-card-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px 5px 9px;
+    background: rgba(42, 122, 74, 0.95);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 10.5px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    white-space: nowrap;
+  }
+  .tour-card-status-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--white);
+    border-radius: 50%;
+    animation: sehe-pulse-dot 1.6s ease-in-out infinite;
+  }
+  @keyframes sehe-pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(0.7); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tour-card-status-dot { animation: none; }
+  }
+  /* ── SOLD OUT / SEASON COMPLETE ──────────────────────────────────────── */
+  .tour-card-status-sold {
+    background: rgba(184, 64, 64, 0.95);
+  }
+  .tour-card-status-sold .tour-card-status-dot {
+    animation: none;
+  }
+  .tour-card-soldnote {
+    margin: 0 0 16px !important;
+    padding: 10px 12px;
+    background: var(--red-pale);
+    border-left: 3px solid var(--red);
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    color: var(--navy) !important;
+  }
+  .tour-card-soldnote a {
+    color: var(--navy) !important;
+    font-weight: 700;
+    text-decoration: underline !important;
+    text-underline-offset: 2px;
+  }
+  /* ── CARD BODY ───────────────────────────────────────────────────────── */
+  .tour-card-body {
+    padding: 22px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .tour-card-name {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 19px !important;
+    font-weight: 700 !important;
+    color: var(--navy) !important;
+    margin: 0 0 4px !important;
+    line-height: 1.25;
+    letter-spacing: -0.2px;
+  }
+  .tour-card-host {
+    font-size: 12px !important;
+    color: var(--gold-dark) !important;
+    font-style: italic;
+    margin: 0 0 10px !important;
+    letter-spacing: 0.2px;
+  }
+  .tour-card-tagline {
+    font-size: 13.5px !important;
+    color: var(--text-light) !important;
+    margin: 0 0 16px !important;
+    line-height: 1.5;
+    min-height: 42px;
+  }
+  /* ── FACTS STRIP ─────────────────────────────────────────────────────── */
+  .tour-card-facts {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 16px;
+  }
+  .tour-card-fact {
+    flex: 1;
+    min-width: 0;
+  }
+  .tour-card-fact-value {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: var(--navy) !important;
+    display: block;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+  .tour-card-fact-label {
+    font-size: 10.5px !important;
+    color: var(--text-muted) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.6px;
+    display: block;
+  }
+  .tour-card-fact + .tour-card-fact {
+    border-left: 1px solid var(--border-light);
+    padding-left: 12px;
+  }
+  /* ── INCLUDES / FEATURES ─────────────────────────────────────────────── */
+  .tour-card-includes {
+    margin-bottom: 20px;
+  }
+  .tour-card-includes-label {
+    font-size: 10.5px !important;
+    color: var(--text-muted) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .tour-card-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tour-card-pill {
+    font-size: 11.5px !important;
+    padding: 4px 10px;
+    background: var(--off-white);
+    color: var(--navy) !important;
+    border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+  }
+  .tour-card-pill-highlight {
+    background: var(--gold-pale);
+    color: var(--gold-dark) !important;
+  }
+  /* ── CARD CTA ────────────────────────────────────────────────────────── */
+  .tour-card-cta {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 18px;
+    background: var(--navy);
+    color: var(--white) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.2px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+    border: none;
+  }
+  .tour-card-cta:hover {
+    background: var(--navy-dark);
+    color: var(--white) !important;
+  }
+  .tour-card-cta-pinnacle {
+    background: var(--gold);
+    color: var(--navy-dark) !important;
+  }
+  .tour-card-cta-pinnacle:hover {
+    background: var(--gold-dark);
+    color: var(--white) !important;
+  }
+  .tour-card-cta svg {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+  }
+  /* ── SOLD OUT SECTION ────────────────────────────────────────────────── */
+  .sehe-soldout-section {
+    padding-top: 48px;
+    border-top: 1px solid var(--border-light);
+  }
+  .sehe-soldout-header {
+    text-align: center !important;
+    margin-bottom: 32px;
+  }
+  .sehe-soldout-header h3 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: var(--navy) !important;
+    margin: 0 0 6px !important;
+    letter-spacing: -0.1px;
+    text-align: center !important;
+  }
+  .sehe-soldout-header p {
+    font-size: 13px !important;
+    color: var(--text-muted) !important;
+    margin: 0 auto !important;
+    max-width: 560px;
+    line-height: 1.55;
+    text-align: center !important;
+  }
+  .sehe-soldout-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .soldout-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    min-height: 100px;
+  }
+  .soldout-card-image {
+    width: 110px;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(60%) brightness(0.92);
+    position: relative;
+  }
+  .soldout-card-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(21,59,103,0.08) 0%, rgba(21,59,103,0.22) 100%);
+  }
+  .soldout-card-body {
+    flex: 1;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .soldout-card-name {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: var(--navy) !important;
+    margin: 0 0 3px !important;
+    line-height: 1.25;
+  }
+  .soldout-card-meta {
+    font-size: 11.5px !important;
+    color: var(--text-muted) !important;
+    margin: 0 0 8px !important;
+  }
+  .soldout-card-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 10.5px !important;
+    font-weight: 700 !important;
+    color: var(--red) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  .soldout-card-status::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--red);
+  }
+  /* ── RESPONSIVE ──────────────────────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .sehe-brochures { padding: 28px 16px 40px; }
+    .sehe-brochures-header h2 { font-size: 24px !important; }
+    .sehe-brochures-header { margin-bottom: 32px; }
+    .sehe-brochures-grid { grid-template-columns: 1fr; gap: 20px; }
+    .sehe-soldout-grid { grid-template-columns: 1fr; }
+    .tour-card-name { font-size: 17px !important; }
+    .tour-card-tagline { min-height: auto; }
+    /* Override Duda's mobile-only paragraph centering */
+    .sehe-brochures .tour-card-body,
+    .sehe-brochures .tour-card-name,
+    .sehe-brochures .tour-card-host,
+    .sehe-brochures .tour-card-tagline,
+    .sehe-brochures .tour-card-fact-value,
+    .sehe-brochures .tour-card-fact-label,
+    .sehe-brochures .tour-card-includes-label,
+    .sehe-brochures .soldout-card-body,
+    .sehe-brochures .soldout-card-name,
+    .sehe-brochures .soldout-card-meta {
+      text-align: left !important;
+    }
+  }
+  /* ── PER-CARD DEPARTURE DATES (month-grouped; sold-out red, filling-fast amber) ── */
+  .sehe-brochures .journey-card-departures { margin: 0 0 18px; text-align: left !important; }
+  .sehe-brochures .journey-card-dates-label { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 10.5px !important; font-weight: 700 !important; color: var(--text-muted) !important; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
+  .sehe-brochures .jc-months { display: flex; flex-direction: column; gap: 0; }
+  .sehe-brochures .jc-month { display: grid; grid-template-columns: 92px 1fr; align-items: baseline; gap: 12px; padding: 6px 0; border-bottom: 1px dashed var(--border-light); }
+  .sehe-brochures .jc-month:last-of-type { border-bottom: none; }
+  .sehe-brochures .jc-month-label { font-family: 'Montserrat', sans-serif !important; font-size: 11px !important; font-weight: 700 !important; color: var(--text-muted) !important; text-transform: uppercase; letter-spacing: 1px; line-height: 1.4; }
+  .sehe-brochures .jc-days { font-family: 'Montserrat', sans-serif !important; font-size: 14px !important; font-weight: 700 !important; color: var(--navy) !important; line-height: 1.55; }
+  .sehe-brochures .jc-day-sep { color: var(--border) !important; font-weight: 400 !important; margin: 0 7px; }
+  .sehe-brochures .jc-day-sold { color: var(--red) !important; text-decoration: line-through; text-decoration-thickness: 2px; }
+  .sehe-brochures .jc-day-nearing { color: var(--amber) !important; }
+  .sehe-brochures .jc-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; }
+  .sehe-brochures .jc-legend-item { display: inline-flex; align-items: center; gap: 5px; font-size: 10.5px !important; color: var(--text-light) !important; }
+  .sehe-brochures .jc-legend-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .sehe-brochures .jc-legend-avail { background: var(--navy); }
+  .sehe-brochures .jc-legend-near { background: var(--amber); }
+  .sehe-brochures .jc-legend-sold { background: var(--red); }
+  @media (max-width: 600px) { .sehe-brochures .jc-month { grid-template-columns: 1fr; gap: 2px; } }</style> 
+ <div class="sehe-brochures"><!-- ── SECTION HEADER ─────────────────────────────────────────────────── --> <div class="sehe-brochures-header"> <h2>View or Download Tour Brochures</h2> 
+ <div class="sehe-brochures-divider"> <span class="sehe-brochures-divider-line"></span> 
+ <span class="sehe-brochures-divider-dot"></span> 
+ <span class="sehe-brochures-divider-line"></span> 
+</div> 
+ <p>Each brochure includes the full itinerary, inclusions, and departure dates. Click to view or download.</p> 
+</div> 
+<!-- ── AVAILABLE TOURS GRID ───────────────────────────────────────────── --> <div class="sehe-brochures-grid"><!-- ▸ 14-DAY SPRING/SUMMER ─────────────────────────────────────────── --> <article class="tour-card" data-tour-key="14day-2627"> <div class="tour-card-image-wrap"><img class="tour-card-image" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TSS+Earnslaw+2-1920w.webp" alt="14-Day Spring/Summer Tour" onerror="handleImageLoadError(this)"/> <div class="tour-card-badges"> <span class="tour-card-badge">Spring / Summer &middot; 2026/27</span> 
+ <span class="tour-card-status"> <span class="tour-card-status-dot"></span> 
+Now Booking</span> 
+</div> 
+</div> 
+ <div class="tour-card-body"> <h3 class="tour-card-name">14-Day Spring/Summer Tour</h3> 
+ <p class="tour-card-tagline">Our most comprehensive journey &mdash; coast to coast, top to bottom, with the &ldquo;Super 6&rdquo; rail adventures.</p> 
+ <div class="tour-card-facts"> <div class="tour-card-fact"> <span class="tour-card-fact-value">14 Days</span> 
+ <span class="tour-card-fact-label">Duration</span> 
+</div> 
+ <div class="tour-card-fact"> <span class="tour-card-fact-value">From NZ $8,995</span> 
+ <span class="tour-card-fact-label">Per person</span> 
+</div> 
+ <div class="tour-card-fact"> <span class="tour-card-fact-value" data-departure-value="">14</span> 
+ <span class="tour-card-fact-label" data-departure-label="">Departures</span> 
+</div> 
+</div> 
+ <div class="journey-card-departures"> <span class="journey-card-dates-label">All departure dates</span> 
+ <div class="jc-months"> <div class="jc-month"> <span class="jc-month-label">Oct 2026</span> 
+ <span class="jc-days"> <span class="jc-day-sold" title="Sold out">12</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span class="jc-day-sold" title="Sold out">19</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span class="jc-day-sold" title="Sold out">26</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Nov 2026</span> 
+ <span class="jc-days"> <span>9</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>16</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>23</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Jan 2027</span> 
+ <span class="jc-days"> <span>4</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>11</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>18</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>25</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Feb 2027</span> 
+ <span class="jc-days"> <span>8</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>15</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Mar 2027</span> 
+ <span class="jc-days"> <span>8</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>15</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>22</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Apr 2027</span> 
+ <span class="jc-days"> <span>5</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>12</span> 
+</span> 
+</div> 
+</div> 
+ <div class="jc-legend"> <span class="jc-legend-item"> <span class="jc-legend-dot jc-legend-avail"></span> 
+Available</span> 
+ <span class="jc-legend-item"> <span class="jc-legend-dot jc-legend-sold"></span> 
+Sold out</span> 
+</div> 
+</div> 
+ <div class="tour-card-includes"> <span class="tour-card-includes-label">Includes the &ldquo;Super 6&rdquo; Rail Adventures</span> 
+ <div class="tour-card-pills"> <span class="tour-card-pill">TranzAlpine</span> 
+ <span class="tour-card-pill">Kingston Flyer (Steam)</span> 
+ <span class="tour-card-pill">The Mainlander</span> 
+ <span class="tour-card-pill">Taieri Gorge</span> 
+ <span class="tour-card-pill">Coastal Pacific</span> 
+ <span class="tour-card-pill">Weka Pass</span> 
+</div> 
+</div> 
+ <a class="tour-card-cta" href="https://irp.cdn-website.com/35e9f777/files/uploaded/14+Day+26-27_Spring-Summer+Tour_Brochure-386d8750.pdf" target="_blank" rel="noopener">View Brochure <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"> <path d="M5 12h14"></path> 
+ <path d="M12 5l7 7-7 7"></path> 
+</svg> 
+</a> 
+</div> 
+</article> 
+<!-- ▸ 11-DAY SPRING/SUMMER ─────────────────────────────────────────── --> <article class="tour-card" data-tour-key="11day-2627"> <div class="tour-card-image-wrap"><img class="tour-card-image" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/Coastal-Pacific_North-of-Claverly--KR-1920w.webp" alt="11-Day Spring/Summer Tour" onerror="handleImageLoadError(this)"/> <div class="tour-card-badges"> <span class="tour-card-badge">Spring / Summer &middot; 2026/27</span> 
+ <span class="tour-card-status"> <span class="tour-card-status-dot"></span> 
+Now Booking</span> 
+</div> 
+</div> 
+ <div class="tour-card-body"> <h3 class="tour-card-name">11-Day Spring/Summer Tour</h3> 
+ <p class="tour-card-tagline">A well-balanced journey through the South Island's rail highlights &mdash; the &ldquo;Big 5&rdquo; rail adventures in eleven days.</p> 
+ <div class="tour-card-facts"> <div class="tour-card-fact"> <span class="tour-card-fact-value">11 Days</span> 
+ <span class="tour-card-fact-label">Duration</span> 
+</div> 
+ <div class="tour-card-fact"> <span class="tour-card-fact-value">From NZ $7,495</span> 
+ <span class="tour-card-fact-label">Per person</span> 
+</div> 
+ <div class="tour-card-fact"> <span class="tour-card-fact-value" data-departure-value="">6</span> 
+ <span class="tour-card-fact-label" data-departure-label="">Departures</span> 
+</div> 
+</div> 
+ <div class="journey-card-departures"> <span class="journey-card-dates-label">All departure dates</span> 
+ <div class="jc-months"> <div class="jc-month"> <span class="jc-month-label">Oct 2026</span> 
+ <span class="jc-days"> <span class="jc-day-sold" title="Sold out">5</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Nov 2026</span> 
+ <span class="jc-days"> <span>2</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>30</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Feb 2027</span> 
+ <span class="jc-days"> <span>1</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>22</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Mar 2027</span> 
+ <span class="jc-days"> <span>1</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>29</span> 
+</span> 
+</div> 
+</div> 
+ <div class="jc-legend"> <span class="jc-legend-item"> <span class="jc-legend-dot jc-legend-avail"></span> 
+Available</span> 
+ <span class="jc-legend-item"> <span class="jc-legend-dot jc-legend-sold"></span> 
+Sold out</span> 
+</div> 
+</div> 
+ <div class="tour-card-includes"> <span class="tour-card-includes-label">Includes the &ldquo;Big 5&rdquo; Rail Adventures</span> 
+ <div class="tour-card-pills"> <span class="tour-card-pill">TranzAlpine</span> 
+ <span class="tour-card-pill">Kingston Flyer (Steam)</span> 
+ <span class="tour-card-pill">The Mainlander (Inv&ndash;Dun)</span> 
+ <span class="tour-card-pill">Taieri Gorge</span> 
+ <span class="tour-card-pill">The Mainlander (Dun&ndash;Oam)</span> 
+</div> 
+</div> 
+ <a class="tour-card-cta" href="https://irp.cdn-website.com/35e9f777/files/uploaded/11+Day+26-27_Spring-Summer+Tour_Brochure-SEHE.pdf" target="_blank" rel="noopener">View Brochure <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"> <path d="M5 12h14"></path> 
+ <path d="M12 5l7 7-7 7"></path> 
+</svg> 
+</a> 
+</div> 
+</article> 
+<!-- ▸ PINNACLE TOUR 2027 ──────────────────────────────────────────── --> <article class="tour-card tour-card-pinnacle" data-tour-key="pinnacle-2027"> <div class="tour-card-image-wrap"><img class="tour-card-image" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY3-19-1920w.webp" alt="The Pinnacle Tour 2027" onerror="handleImageLoadError(this)"/> <div class="tour-card-badges"> <span class="tour-card-badge tour-card-badge-pinnacle">Small Group &middot; Luxury</span> 
+ <span class="tour-card-status"> <span class="tour-card-status-dot"></span> 
+Now Booking</span> 
+</div> 
+</div> 
+ <div class="tour-card-body"> <h3 class="tour-card-name">The 'Pinnacle Tour' 2027</h3> 
+ <p class="tour-card-host">Hosted by Peter Hillary, son of Sir Edmund Hillary</p> 
+ <p class="tour-card-tagline">An exclusive, small-group journey with premium inclusions and extended stays &mdash; a once-in-a-lifetime experience.</p> 
+ <div class="tour-card-facts"> <div class="tour-card-fact"> <span class="tour-card-fact-value">15 Days</span> 
+ <span class="tour-card-fact-label">Duration</span> 
+</div> 
+ <div class="tour-card-fact"> <span class="tour-card-fact-value">From NZ $25,995</span> 
+ <span class="tour-card-fact-label">Per person</span> 
+</div> 
+ <div class="tour-card-fact"> <span class="tour-card-fact-value" data-departure-value="">14 Jan</span> 
+ <span class="tour-card-fact-label" data-departure-label="">Departs 2027</span> 
+</div> 
+</div> 
+ <div class="journey-card-departures"> <span class="journey-card-dates-label">All departure dates</span> 
+ <div class="jc-months"> <div class="jc-month"> <span class="jc-month-label">Jan 2027</span> 
+ <span class="jc-days"> <span>14</span> 
+</span> 
+</div> 
+</div> 
+</div> 
+ <div class="tour-card-includes"> <span class="tour-card-includes-label">Includes the &ldquo;Famous 4&rdquo; Rail Adventures</span> 
+ <div class="tour-card-pills"> <span class="tour-card-pill tour-card-pill-highlight">★ Small Group</span> 
+ <span class="tour-card-pill">TranzAlpine</span> 
+ <span class="tour-card-pill">Kingston Flyer (Steam)</span> 
+ <span class="tour-card-pill">Taieri Gorge</span> 
+ <span class="tour-card-pill">Coastal Pacific</span> 
+</div> 
+</div> 
+ <a class="tour-card-cta tour-card-cta-pinnacle" href="https://irp.cdn-website.com/35e9f777/files/uploaded/New+Web_Pinnacle+Tour+Brochure_January+2027.pdf" target="_blank" rel="noopener">View Brochure <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"> <path d="M5 12h14"></path> 
+ <path d="M12 5l7 7-7 7"></path> 
+</svg> 
+</a> 
+</div> 
+</article> 
+<!-- ▸ 12-DAY WINTER EDITION 2027 ───────────────────────────────────── --> <article class="tour-card" data-tour-key="winter-2027"> <div class="tour-card-image-wrap"><img class="tour-card-image" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29-1920w.webp" alt="12-Day Winter Edition 2027" onerror="handleImageLoadError(this)"/> <div class="tour-card-badges"> <span class="tour-card-badge">Winter Edition &middot; 2027</span> 
+ <span class="tour-card-status"> <span class="tour-card-status-dot"></span> 
+Now Booking</span> 
+</div> 
+</div> 
+ <div class="tour-card-body"> <h3 class="tour-card-name">12-Day Winter Edition 2027</h3> 
+ <p class="tour-card-tagline">Epic rail routes through dramatic mountain passes &mdash; a beauty that only winter reveals.</p> 
+ <div class="tour-card-facts"> <div class="tour-card-fact"> <span class="tour-card-fact-value">12 Days</span> 
+ <span class="tour-card-fact-label">Duration</span> 
+</div> 
+ <div class="tour-card-fact"> <span class="tour-card-fact-value">From NZ $8,495</span> 
+ <span class="tour-card-fact-label">Per person</span> 
+</div> 
+ <div class="tour-card-fact"> <span class="tour-card-fact-value" data-departure-value="">6</span> 
+ <span class="tour-card-fact-label" data-departure-label="">Departures</span> 
+</div> 
+</div> 
+ <div class="journey-card-departures"> <span class="journey-card-dates-label">All departure dates</span> 
+ <div class="jc-months"> <div class="jc-month"> <span class="jc-month-label">Jul 2027</span> 
+ <span class="jc-days"> <span>10</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>24</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Aug 2027</span> 
+ <span class="jc-days"> <span>7</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>14</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>21</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>28</span> 
+</span> 
+</div> 
+</div> 
+</div> 
+ <div class="tour-card-includes"> <span class="tour-card-includes-label">Winter Edition Tour Highlights &middot; July &ndash; September 2027</span> 
+ <div class="tour-card-pills"> <span class="tour-card-pill">TranzAlpine</span> 
+ <span class="tour-card-pill">The Mainlander</span> 
+ <span class="tour-card-pill">Taieri Gorge</span> 
+ <span class="tour-card-pill">Queenstown</span> 
+ <span class="tour-card-pill">Doubtful Sound</span> 
+ <span class="tour-card-pill">Aoraki Mt Cook</span> 
+</div> 
+</div> 
+ <a class="tour-card-cta" href="https://irp.cdn-website.com/35e9f777/files/uploaded/Web_2027+Winter+Tour+Brochure_SEHE.pdf" target="_blank" rel="noopener">View Brochure <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"> <path d="M5 12h14"></path> 
+ <path d="M12 5l7 7-7 7"></path> 
+</svg> 
+</a> 
+</div> 
+</article> 
+<!-- ▸ 14-DAY SPRING/SUMMER 2027/28 ───────────────────────────────── --> <article class="tour-card" data-tour-key="14day-2728"> <div class="tour-card-image-wrap"><img class="tour-card-image" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low-1920w.jpg" alt="14-Day Spring/Summer Tour 2027/28" onerror="handleImageLoadError(this)"/> <div class="tour-card-badges"> <span class="tour-card-badge">Spring / Summer &middot; 2027/28</span> 
+ <span class="tour-card-status"> <span class="tour-card-status-dot"></span> 
+Now Booking</span> 
+</div> 
+</div> 
+ <div class="tour-card-body"> <h3 class="tour-card-name">14-Day Spring/Summer Tour 2027/28</h3> 
+ <p class="tour-card-tagline">Our most comprehensive journey &mdash; coast to coast, top to bottom, with the &ldquo;Super 6&rdquo; rail adventures.</p> 
+ <div class="tour-card-facts"> <div class="tour-card-fact"> <span class="tour-card-fact-value">14 Days</span> 
+ <span class="tour-card-fact-label">Duration</span> 
+</div> 
+ <div class="tour-card-fact"> <span class="tour-card-fact-value">From NZ $9,990</span> 
+ <span class="tour-card-fact-label">Per person</span> 
+</div> 
+ <div class="tour-card-fact"> <span class="tour-card-fact-value" data-departure-value="">13</span> 
+ <span class="tour-card-fact-label" data-departure-label="">Departures</span> 
+</div> 
+</div> 
+ <div class="journey-card-departures"> <span class="journey-card-dates-label">All departure dates</span> 
+ <div class="jc-months"> <div class="jc-month"> <span class="jc-month-label">Oct 2027</span> 
+ <span class="jc-days"> <span>4</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>11</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>18</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Nov 2027</span> 
+ <span class="jc-days"> <span>1</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>8</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>15</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>22</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Dec 2027</span> 
+ <span class="jc-days"> <span>6</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Jan 2028</span> 
+ <span class="jc-days"> <span>17</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>24</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>31</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Feb 2028</span> 
+ <span class="jc-days"> <span>7</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span>14</span> 
+</span> 
+</div> 
+</div> 
+</div> 
+ <div class="tour-card-includes"> <span class="tour-card-includes-label">Includes the &ldquo;Super 6&rdquo; Rail Adventures</span> 
+ <div class="tour-card-pills"> <span class="tour-card-pill">TranzAlpine</span> 
+ <span class="tour-card-pill">Kingston Flyer (Steam)</span> 
+ <span class="tour-card-pill">The Mainlander</span> 
+ <span class="tour-card-pill">Taieri Gorge</span> 
+ <span class="tour-card-pill">Coastal Pacific</span> 
+ <span class="tour-card-pill">Weka Pass</span> 
+</div> 
+</div> 
+ <a class="tour-card-cta" href="https://irp.cdn-website.com/35e9f777/files/uploaded/14+Day+27-28_Spring-Summer+Tour_Brochure.pdf" target="_blank" rel="noopener">View Brochure <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"> <path d="M5 12h14"></path> 
+ <path d="M12 5l7 7-7 7"></path> 
+</svg> 
+</a> 
+</div> 
+</article> 
+<!-- ▸ 11-DAY SPRING/SUMMER 2027/28 ───────────────────────────────── --> <article class="tour-card" data-tour-key="11day-2728"> <div class="tour-card-image-wrap"><img class="tour-card-image" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp" alt="11-Day Spring/Summer Tour 2027/28" onerror="handleImageLoadError(this)"/> <div class="tour-card-badges"> <span class="tour-card-badge">Spring / Summer &middot; 2027/28</span> 
+ <span class="tour-card-status"> <span class="tour-card-status-dot"></span> 
+Now Booking</span> 
+</div> 
+</div> 
+ <div class="tour-card-body"> <h3 class="tour-card-name">11-Day Spring/Summer Tour 2027/28</h3> 
+ <p class="tour-card-tagline">A well-balanced journey through the South Island's rail highlights &mdash; the &ldquo;Famous 4&rdquo; rail adventures in eleven days.</p> 
+ <div class="tour-card-facts"> <div class="tour-card-fact"> <span class="tour-card-fact-value">11 Days</span> 
+ <span class="tour-card-fact-label">Duration</span> 
+</div> 
+ <div class="tour-card-fact"> <span class="tour-card-fact-value">From NZ $8,490</span> 
+ <span class="tour-card-fact-label">Per person</span> 
+</div> 
+ <div class="tour-card-fact"> <span class="tour-card-fact-value" data-departure-value="">7</span> 
+ <span class="tour-card-fact-label" data-departure-label="">Departures</span> 
+</div> 
+</div> 
+ <div class="journey-card-departures"> <span class="journey-card-dates-label">All departure dates</span> 
+ <div class="jc-months"> <div class="jc-month"> <span class="jc-month-label">Sep 2027</span> 
+ <span class="jc-days"> <span>27</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Oct 2027</span> 
+ <span class="jc-days"> <span>25</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Nov 2027</span> 
+ <span class="jc-days"> <span>29</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Jan 2028</span> 
+ <span class="jc-days"> <span>10</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Feb 2028</span> 
+ <span class="jc-days"> <span>28</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Mar 2028</span> 
+ <span class="jc-days"> <span>6</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Apr 2028</span> 
+ <span class="jc-days"> <span>17</span> 
+</span> 
+</div> 
+</div> 
+</div> 
+ <div class="tour-card-includes"> <span class="tour-card-includes-label">Includes the &ldquo;Famous 4&rdquo; Rail Adventures</span> 
+ <div class="tour-card-pills"> <span class="tour-card-pill">TranzAlpine</span> 
+ <span class="tour-card-pill">Kingston Flyer (Steam)</span> 
+ <span class="tour-card-pill">The Mainlander (Invercargill-Dunedin)</span> 
+ <span class="tour-card-pill">Taieri Gorge</span> 
+</div> 
+</div> 
+ <a class="tour-card-cta" href="https://irp.cdn-website.com/35e9f777/files/uploaded/11+Day+27-28_Spring-Summer+Tour_Brochure.pdf" target="_blank" rel="noopener">View Brochure <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"> <path d="M5 12h14"></path> 
+ <path d="M12 5l7 7-7 7"></path> 
+</svg> 
+</a> 
+</div> 
+</article> 
+<!-- ▸ 12-DAY WINTER EDITION 2026 ───────────────────────────────────── --> <article class="tour-card" data-tour-key="winter-2026"> <div class="tour-card-image-wrap"><img class="tour-card-image" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/183840-lake-sarah-in-snow-b1e7ecbb-1920w.webp" alt="12-Day Winter Edition 2026" onerror="handleImageLoadError(this)"/> <div class="tour-card-badges"> <span class="tour-card-badge">Winter Edition &middot; 2026</span> 
+ <span class="tour-card-status tour-card-status-sold"> <span class="tour-card-status-dot"></span> 
+Sold Out</span> 
+</div> 
+</div> 
+ <div class="tour-card-body"> <h3 class="tour-card-name">12-Day Winter Edition 2026</h3> 
+ <p class="tour-card-tagline">The South Island at its most dramatic &mdash; snow-capped landscapes, quiet hospitality, and a rhythm all its own.</p> 
+ <div class="tour-card-facts"> <div class="tour-card-fact"> <span class="tour-card-fact-value">12 Days</span> 
+ <span class="tour-card-fact-label">Duration</span> 
+</div> 
+ <div class="tour-card-fact"> <span class="tour-card-fact-value">From NZ $7,995</span> 
+ <span class="tour-card-fact-label">Per person</span> 
+</div> 
+ <div class="tour-card-fact"> <span class="tour-card-fact-value" data-departure-value="">&mdash;</span> 
+ <span class="tour-card-fact-label" data-departure-label="">Departures</span> 
+</div> 
+</div> 
+ <div class="journey-card-departures"> <span class="journey-card-dates-label">All departure dates</span> 
+ <div class="jc-months"> <div class="jc-month"> <span class="jc-month-label">Jun 2026</span> 
+ <span class="jc-days"> <span class="jc-day-sold" title="Sold out">27</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Jul 2026</span> 
+ <span class="jc-days"> <span class="jc-day-sold" title="Sold out">18</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Aug 2026</span> 
+ <span class="jc-days"> <span class="jc-day-sold" title="Sold out">1</span> 
+</span> 
+</div> 
+ <div class="jc-month"> <span class="jc-month-label">Sep 2026</span> 
+ <span class="jc-days"> <span class="jc-day-sold" title="Sold out">5</span> 
+ <span class="jc-day-sep">&middot;</span> 
+ <span class="jc-day-sold" title="Sold out">12</span> 
+</span> 
+</div> 
+</div> 
+ <div class="jc-legend"> <span class="jc-legend-item"> <span class="jc-legend-dot jc-legend-avail"></span> 
+Available</span> 
+ <span class="jc-legend-item"> <span class="jc-legend-dot jc-legend-sold"></span> 
+Sold out</span> 
+</div> 
+</div> 
+ <div class="tour-card-includes"> <span class="tour-card-includes-label">Winter Edition Tour Highlights &middot; June &ndash; September 2026</span> 
+ <div class="tour-card-pills"> <span class="tour-card-pill">TranzAlpine</span> 
+ <span class="tour-card-pill">The Mainlander</span> 
+ <span class="tour-card-pill">Taieri Gorge</span> 
+ <span class="tour-card-pill">Queenstown</span> 
+ <span class="tour-card-pill">Doubtful Sound</span> 
+ <span class="tour-card-pill">Aoraki Mt Cook</span> 
+</div> 
+</div> 
+ <p class="tour-card-soldnote"><strong>2026 season fully booked.</strong> Every 2026 Winter Edition departure has now sold out. The 12-Day Winter Edition returns next winter &mdash; <a href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours">see the 2027 Winter Edition</a>.</p> 
+ <a class="tour-card-cta" href="https://irp.cdn-website.com/35e9f777/files/uploaded/2026+Winter+Tour+Brochure_SEHE.pdf" target="_blank" rel="noopener">View Brochure <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"> <path d="M5 12h14"></path> 
+ <path d="M12 5l7 7-7 7"></path> 
+</svg> 
+</a> 
+</div> 
+</article> 
+</div> 
+<!-- END AVAILABLE GRID --><!-- ── SOLD OUT SECTION ───────────────────────────────────────────────── --> <div class="sehe-soldout-section"> <div class="sehe-soldout-header"> <h3>Sold Out 2026 Departures</h3> 
+ <p>These tours for the current season have sold out. Most departures fill three to five months in advance &mdash; we recommend securing your preferred date early.</p> 
+</div> 
+ <div class="sehe-soldout-grid"><!-- ▸ 11-DAY AUTUMN ─────────────────────────────────────────────── --> <a class="soldout-card" href="https://irp.cdn-website.com/35e9f777/files/uploaded/Autumn+11+Day+May+2026_Tour+Brochure.pdf" target="_blank" rel="noopener"> <div class="soldout-card-image" style="background-image: url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-06-1920w.webp');"></div> 
+ <div class="soldout-card-body"> <h4 class="soldout-card-name">11-Day Autumn Tour</h4> 
+ <p class="soldout-card-meta">From NZ $6,995 &middot; May 2026</p> 
+ <span class="soldout-card-status">Sold Out</span> 
+</div> 
+</a> 
+<!-- ▸ 10-DAY SPRING/SUMMER ─────────────────────────────────────── --> <a class="soldout-card" href="https://irp.cdn-website.com/35e9f777/files/uploaded/Web_10+Day+Tour+Brochure_31+March-9+April+2026.pdf" target="_blank" rel="noopener"> <div class="soldout-card-image" style="background-image: url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/Rail-and-Tourism-Group-Holdings-Background-Image-1920w.webp');"></div> 
+ <div class="soldout-card-body"> <h4 class="soldout-card-name">10-Day Spring/Summer Tour</h4> 
+ <p class="soldout-card-meta">From NZ $7,245 &middot; 2026</p> 
+ <span class="soldout-card-status">Sold Out</span> 
+</div> 
+</a> 
+<!-- ▸ 13-DAY SPRING/SUMMER ─────────────────────────────────────── --> <a class="soldout-card" href="https://irp.cdn-website.com/35e9f777/files/uploaded/TA_25_26_Tour_Brochure_Sep_25-Apr_26-061f3770.pdf" target="_blank" rel="noopener"> <div class="soldout-card-image" style="background-image: url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-About-SEHE-Rail-Tour-4-1920w.jpg');"></div> 
+ <div class="soldout-card-body"> <h4 class="soldout-card-name">13-Day Spring/Summer Tour</h4> 
+ <p class="soldout-card-meta">From NZ $8,495 &middot; 2025/26</p> 
+ <span class="soldout-card-status">Sold Out</span> 
+</div> 
+</a> 
+</div> 
+</div> 
+</div> 
+ <script>
+
+
+ (function() {
+  // ──────────────────────────────────────────────────────────────────
+  // SEHE BROCHURE GRID — DEPARTURE DATES + LIVE COUNT (never-wipe render)
+  // Reads window.__seheDepartureData (set by the shared block at the top of
+  // this widget — the SAME master list the tour pages and Journeys index use).
+  // Per card it ENHANCES the baked HTML only: it re-renders the month-grouped
+  // date list and the "Departures" count, then applies the escalate-only live
+  // status. If a tour's data is missing it RETURNS and leaves the baked HTML
+  // untouched — so a render pass before the data block, or an offline Worker,
+  // can never blank or revert the dates.
+  // ──────────────────────────────────────────────────────────────────
+  var MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function availOf(info) { return (info && info.all ? info.all : []).filter(function(x) { return x && x.status !== 'soldout'; }); }
+  function updateCount(card, info) {
+    var valueEl = card.querySelector('[data-departure-value]');
+    var labelEl = card.querySelector('[data-departure-label]');
+    if (!valueEl || !labelEl) return;
+    var av = availOf(info);
+    if (av.length === 0) { valueEl.textContent = '—'; labelEl.textContent = 'Departures'; return; }
+    if (av.length === 1) {
+      var p = av[0].start.split('-'), m = parseInt(p[1], 10), d = parseInt(p[2], 10);
+      valueEl.textContent = d + ' ' + MONTHS_SHORT[m - 1];
+      labelEl.textContent = 'Departs ' + p[0];
+      return;
+    }
+    valueEl.textContent = av.length;
+    labelEl.textContent = 'Departures';
+  }
+  function buildDatesHtml(all) {
+    if (!all || !all.length) return '';
+    var groups = {}, order = [], sold = 0, near = 0;
+    for (var i = 0; i < all.length; i++) {
+      var dep = all[i], p = dep.start.split('-'), m = parseInt(p[1], 10);
+      var key = p[0] + '-' + p[1];
+      if (!groups[key]) { groups[key] = { label: MONTHS_SHORT[m - 1] + ' ' + p[0], days: [] }; order.push(key); }
+      if (dep.status === 'soldout') sold++; else if (dep.status === 'nearing') near++;
+      groups[key].days.push({ d: parseInt(p[2], 10), status: dep.status });
+    }
+    var rows = '';
+    for (var o = 0; o < order.length; o++) {
+      var g = groups[order[o]];
+      var days = g.days.map(function(day) {
+        if (day.status === 'soldout') return '<span class="jc-day-sold" title="Sold out">' + day.d + '</span>';
+        if (day.status === 'nearing') return '<span class="jc-day-nearing" title="Filling fast">' + day.d + '</span>';
+        return '<span>' + day.d + '</span>';
+      }).join('<span class="jc-day-sep">·</span>');
+      rows += '<div class="jc-month"><span class="jc-month-label">' + g.label + '</span><span class="jc-days">' + days + '</span></div>';
+    }
+    var legend = '';
+    if (sold > 0 || near > 0) {
+      legend = '<div class="jc-legend"><span class="jc-legend-item"><span class="jc-legend-dot jc-legend-avail"></span>Available</span>';
+      if (near > 0) legend += '<span class="jc-legend-item"><span class="jc-legend-dot jc-legend-near"></span>Filling fast</span>';
+      if (sold > 0) legend += '<span class="jc-legend-item"><span class="jc-legend-dot jc-legend-sold"></span>Sold out</span>';
+      legend += '</div>';
+    }
+    return '<span class="journey-card-dates-label">All departure dates</span><div class="jc-months">' + rows + '</div>' + legend;
+  }
+  function renderDatesList(card, info) {
+    if (!info || !info.all || !info.all.length) return;   // no data -> keep the baked-in list (never wipe it)
+    var html = buildDatesHtml(info.all);
+    if (!html) return;
+    var existing = card.querySelector('.journey-card-departures');
+    if (existing) { existing.innerHTML = html; return; }
+    var el = document.createElement('div');
+    el.className = 'journey-card-departures';
+    el.innerHTML = html;
+    var anchor = card.querySelector('.tour-card-facts');
+    if (anchor && anchor.parentNode) { anchor.parentNode.insertBefore(el, anchor.nextSibling); }
+    else { var body = card.querySelector('.tour-card-body'); if (body) body.appendChild(el); }
+  }
+  function renderCard(card, data) {
+    var key = card.getAttribute('data-tour-key');
+    if (!key) return;
+    var info = data[key];
+    if (!info || !info.all || !info.all.length) return;   // no data yet -> leave the card's baked content untouched
+    updateCount(card, info);
+    renderDatesList(card, info);
+  }
+  var widget = document.querySelector('.sehe-brochures');
+  if (!widget) return;
+  function renderAll() { var data = window.__seheDepartureData || {}; widget.querySelectorAll('.tour-card[data-tour-key]').forEach(function(card) { renderCard(card, data); }); }
+  renderAll();   /* paint the in-page list immediately */
+  if (typeof window.__seheLoadDepartures === 'function') { window.__seheLoadDepartures().then(renderAll); }   /* then apply live status (escalate-only merge) */
+})();
+          
+
+                </script> 
+<!-- END SEHE BROCHURES SECTION -->

@@ -1,6 +1,6 @@
 <!--
   ═══════════════════════════════════════════════════════════════════════════════
-  SEHE JOURNEYS PAGE — TOUR LISTINGS          (VERSION v15 · 2026-07-04)
+  SEHE JOURNEYS PAGE — TOUR LISTINGS          (VERSION v16 · 2026-07-27)
   v15: Text-final pass (Ben, 3 Jul) adopted: Pinnacle end offset 14 to 15 nights
        (ends 29 Jan 2027, matches brochure/FACTS); Pinnacle card copy softened to
        'Premium accommodation'; 11-Day 27/28 card Milford/Doubtful now shown as
@@ -84,7 +84,7 @@
     '14day-2728'   : ['2027-10-04','2027-10-11','2027-10-18','2027-11-01','2027-11-08','2027-11-15','2027-11-22','2027-12-06','2028-01-17','2028-01-24','2028-01-31','2028-02-07','2028-02-14']
   };
   var SOLDOUT = {
-    'winter-2026': ['2026-06-27','2026-07-18'],
+    'winter-2026': ['2026-06-27','2026-07-18','2026-08-01','2026-09-05','2026-09-12'],
     '11day-2627' : ['2026-10-05'],
     '14day-2627' : ['2026-10-12','2026-10-19','2026-10-26']
   };
@@ -598,6 +598,28 @@
   }
   .journey-card-next-soldout {
     border-left-color: var(--red);
+  }
+  .journey-card-status-sold {
+    background: rgba(184, 64, 64, 0.95);
+  }
+  .journey-card-status-sold .journey-card-status-dot {
+    animation: none;
+  }
+  .journey-card-soldnote {
+    margin: 0 0 14px !important;
+    padding: 10px 12px;
+    background: rgba(184, 64, 64, 0.06);
+    border-left: 3px solid var(--red);
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    color: var(--navy) !important;
+  }
+  .journey-card-soldnote a {
+    color: var(--navy) !important;
+    font-weight: 700;
+    text-decoration: underline !important;
+    text-underline-offset: 2px;
   }
   .journey-card-next-soldout .journey-card-next-pulse {
     background: var(--red);
@@ -1117,113 +1139,6 @@
   <!-- ── JOURNEYS LIST ──────────────────────────────────────────────────── -->
   <div class="sehe-journeys-list">
    <!-- ▸ 12-DAY WINTER EDITION 2026 ───────────────────────────────────── -->
-   <article class="journey-card" data-season="winter" data-tour="winter-2026">
-    <div class="journey-card-image-wrap">
-     <img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/183840-lake-sarah-in-snow-b1e7ecbb.webp" alt="12-Day Winter Edition 2026">
-     <div class="journey-card-badges">
-      <span class="journey-card-badge">
-       Winter Edition · 2026
-      </span>
-      <span class="journey-card-status">
-       <span class="journey-card-status-dot">
-       </span>
-       Now Booking
-      </span>
-     </div>
-    </div>
-    <div class="journey-card-body">
-     <h3 class="journey-card-name">
-      12-Day Winter Edition 2026
-     </h3>
-     <span class="journey-card-bestfor">
-      <svg viewBox="0 0 24 24">
-       <circle cx="12" cy="12" r="10">
-       </circle>
-       <path d="M12 6v6l4 2">
-       </path>
-      </svg>
-      Best for: Travellers who want the South Island at its most dramatic
-     </span>
-     <p class="journey-card-description">
-      Snow-capped landscapes, quiet alpine towns, and a pace that's all its own. Four rail journeys including the TranzAlpine, paired with extended stays in Queenstown, Doubtful Sound, and Aoraki Mt Cook.
-     </p>
-     <div class="journey-card-next" data-next-placeholder="">
-      <span class="journey-card-next-pulse">
-      </span>
-      <div class="journey-card-next-text">
-       <span class="journey-card-next-label">
-        Now Booking
-       </span>
-       <span class="journey-card-next-date">
-        Departures available — see tour
-       </span>
-      </div>
-     </div>
-     <div class="journey-card-departures"><span class="journey-card-dates-label">All departure dates</span><div class="jc-months"><div class="jc-month"><span class="jc-month-label">Jun 2026</span><span class="jc-days"><span class="jc-day-sold" title="Sold out">27</span></span></div><div class="jc-month"><span class="jc-month-label">Jul 2026</span><span class="jc-days"><span class="jc-day-sold" title="Sold out">18</span></span></div><div class="jc-month"><span class="jc-month-label">Aug 2026</span><span class="jc-days"><span>1</span></span></div><div class="jc-month"><span class="jc-month-label">Sep 2026</span><span class="jc-days"><span>5</span><span class="jc-day-sep">·</span><span>12</span></span></div></div><div class="jc-legend"><span class="jc-legend-item"><span class="jc-legend-dot jc-legend-avail"></span>Available</span><span class="jc-legend-item"><span class="jc-legend-dot jc-legend-sold"></span>Sold out</span></div></div>
-     <div class="journey-card-facts">
-      <div class="journey-card-fact">
-       <span class="journey-card-fact-value">
-        12 Days
-       </span>
-       <span class="journey-card-fact-label">
-        Duration
-       </span>
-      </div>
-      <div class="journey-card-fact">
-       <span class="journey-card-fact-value">
-        From NZ $7,995
-       </span>
-       <span class="journey-card-fact-label">
-        Per person
-       </span>
-      </div>
-      <div class="journey-card-fact">
-       <span class="journey-card-fact-value" data-departure-value="">
-        5
-       </span>
-       <span class="journey-card-fact-label" data-departure-label="">
-        Departures
-       </span>
-      </div>
-     </div>
-     <div class="journey-card-includes">
-      <span class="journey-card-includes-label">
-       Tour Highlights · June – September 2026
-      </span>
-      <div class="journey-card-pills">
-       <span class="journey-card-pill">
-        TranzAlpine
-       </span>
-       <span class="journey-card-pill">
-        The Mainlander
-       </span>
-       <span class="journey-card-pill">
-        Taieri Gorge
-       </span>
-       <span class="journey-card-pill">
-        Queenstown
-       </span>
-       <span class="journey-card-pill">
-        Doubtful Sound
-       </span>
-       <span class="journey-card-pill">
-        Aoraki Mt Cook
-       </span>
-      </div>
-     </div>
-     <div class="journey-card-actions">
-      <a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours">
-       View Tour
-      </a>
-      <a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours#tour-dates">
-       Check Dates
-      </a>
-      <a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours#tour-brochure">
-       Brochure
-      </a>
-     </div>
-    </div>
-   </article>
    <!-- ▸ 14-DAY SPRING/SUMMER ─────────────────────────────────────────── -->
    <article class="journey-card" data-season="spring-summer" data-tour="14day-2627">
     <div class="journey-card-image-wrap">
@@ -1863,6 +1778,115 @@
      </div>
     </div>
    </article>
+   <article class="journey-card" data-season="winter" data-tour="winter-2026">
+    <div class="journey-card-image-wrap">
+     <img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/183840-lake-sarah-in-snow-b1e7ecbb.webp" alt="12-Day Winter Edition 2026">
+     <div class="journey-card-badges">
+      <span class="journey-card-badge">
+       Winter Edition · 2026
+      </span>
+      <span class="journey-card-status journey-card-status-sold">
+       <span class="journey-card-status-dot">
+       </span>
+       Sold Out
+      </span>
+     </div>
+    </div>
+    <div class="journey-card-body">
+     <h3 class="journey-card-name">
+      12-Day Winter Edition 2026
+     </h3>
+     <span class="journey-card-bestfor">
+      <svg viewBox="0 0 24 24">
+       <circle cx="12" cy="12" r="10">
+       </circle>
+       <path d="M12 6v6l4 2">
+       </path>
+      </svg>
+      Best for: Travellers who want the South Island at its most dramatic
+     </span>
+     <p class="journey-card-description">
+      Snow-capped landscapes, quiet alpine towns, and a pace that's all its own. Four rail journeys including the TranzAlpine, paired with extended stays in Queenstown, Doubtful Sound, and Aoraki Mt Cook.
+     </p>
+     <div class="journey-card-next journey-card-next-soldout" data-next-placeholder="" data-sold-note="2027 season now booking">
+      <span class="journey-card-next-pulse">
+      </span>
+      <div class="journey-card-next-text">
+       <span class="journey-card-next-label">
+        Season Complete
+       </span>
+       <span class="journey-card-next-date">
+        2027 season now booking
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-departures"><span class="journey-card-dates-label">All departure dates</span><div class="jc-months"><div class="jc-month"><span class="jc-month-label">Jun 2026</span><span class="jc-days"><span class="jc-day-sold" title="Sold out">27</span></span></div><div class="jc-month"><span class="jc-month-label">Jul 2026</span><span class="jc-days"><span class="jc-day-sold" title="Sold out">18</span></span></div><div class="jc-month"><span class="jc-month-label">Aug 2026</span><span class="jc-days"><span class="jc-day-sold" title="Sold out">1</span></span></div><div class="jc-month"><span class="jc-month-label">Sep 2026</span><span class="jc-days"><span class="jc-day-sold" title="Sold out">5</span><span class="jc-day-sep">·</span><span class="jc-day-sold" title="Sold out">12</span></span></div></div><div class="jc-legend"><span class="jc-legend-item"><span class="jc-legend-dot jc-legend-avail"></span>Available</span><span class="jc-legend-item"><span class="jc-legend-dot jc-legend-sold"></span>Sold out</span></div></div>
+     <div class="journey-card-facts">
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value">
+        12 Days
+       </span>
+       <span class="journey-card-fact-label">
+        Duration
+       </span>
+      </div>
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value">
+        From NZ $7,995
+       </span>
+       <span class="journey-card-fact-label">
+        Per person
+       </span>
+      </div>
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value" data-departure-value="">
+        &mdash;
+       </span>
+       <span class="journey-card-fact-label" data-departure-label="">
+        Departures
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-includes">
+      <span class="journey-card-includes-label">
+       Tour Highlights · June – September 2026
+      </span>
+      <div class="journey-card-pills">
+       <span class="journey-card-pill">
+        TranzAlpine
+       </span>
+       <span class="journey-card-pill">
+        The Mainlander
+       </span>
+       <span class="journey-card-pill">
+        Taieri Gorge
+       </span>
+       <span class="journey-card-pill">
+        Queenstown
+       </span>
+       <span class="journey-card-pill">
+        Doubtful Sound
+       </span>
+       <span class="journey-card-pill">
+        Aoraki Mt Cook
+       </span>
+      </div>
+     </div>
+     <p class="journey-card-soldnote"><strong>2026 season sold out.</strong> Every 2026 Winter Edition departure has now been filled. The 12-Day Winter Edition returns next winter &mdash; <a href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours">see the 2027 departures</a>.</p>
+
+     <div class="journey-card-actions">
+      <a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours">
+       View Tour
+      </a>
+      <a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours#tour-dates">
+       Check Dates
+      </a>
+      <a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours#tour-brochure">
+       Brochure
+      </a>
+     </div>
+    </div>
+   </article>
   </div>
   <!-- END JOURNEYS LIST -->
   <!-- ── PAST DEPARTURES SECTION ────────────────────────────────────────── -->
@@ -2034,7 +2058,7 @@
       if (!nx) {
         placeholder.classList.add('journey-card-next-soldout');
         placeholder.querySelector('.journey-card-next-label').textContent = 'Season Complete';
-        placeholder.querySelector('.journey-card-next-date').textContent = 'New season opening soon';
+        placeholder.querySelector('.journey-card-next-date').textContent = (placeholder.getAttribute('data-sold-note') || 'New season opening soon');
       } else {
         placeholder.classList.remove('journey-card-next-soldout');
         placeholder.querySelector('.journey-card-next-label').textContent = 'Next Departure';
