@@ -1,8 +1,17 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 12-DAY WINTER EDITION 2026
-     COMPLETE TOUR PAGE  ·  VERSION v23  ·  2026-07-28  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v24  ·  2026-07-28  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v24 — dates section header reverted to normal (Ben): eyebrow back to
+            "Available Dates", title back to "Choose your departure", and the
+            sold-out note under it removed. The note was set in light-context
+            colours (grey text, navy link) on the booking section's NAVY
+            gradient band — invisible, my error. Also the right call on
+            substance: Checkfront has re-opened 12 Sep 2026, so "every date
+            below is fully booked" is no longer true; the calendar's per-date
+            status tells the real story. The Block A band's wording is
+            pending Ben/Kirsty's confirmation on the re-opened date.
        v23 — SOLD-OUT NOTICE REDESIGNED as a contained card (Ben: it rendered
             as a full page). Two causes addressed: the section had no padding
             of its own, so Duda's theme re-padded it 50px/40px into a tall
@@ -936,16 +945,11 @@
   @media (max-width: 600px) { .booking-info { flex-direction: column; } .booking-info-item { border-right: none; border-bottom: 1px solid var(--border); padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; text-align: left; } .booking-info-item:last-child { border-bottom: none; } .booking-bottom { flex-direction: column; text-align: center; } .booking-topbar { flex-direction: column; gap: 8px; text-align: center; } .booking-widget-area { padding: 16px; } .booking-tab { padding: 12px 14px; font-size: 12px !important; } }
 </style>
 <div class="sehe-tourpage">
-<style>
-  .sehe-tourpage .sehe-soldout-dates-note { font-family: 'Open Sans', sans-serif !important; font-size: 15px !important; line-height: 1.6 !important; color: #51617a !important; margin: 14px 0 0 !important; }
-  .sehe-tourpage .sehe-soldout-dates-note a { color: #153b67 !important; font-weight: 700; text-decoration: underline !important; text-underline-offset: 2px; }
-</style>
   <section class="sehe-booking-section" id="tour-dates">
    <div class="sehe-booking-header">
     <div class="sehe-booking-header-inner">
-     <span class="sehe-section-eyebrow">2026 Departures</span>
-     <h2 class="sehe-section-heading">The 2026 season has sold out</h2>
-     <p class="sehe-soldout-dates-note">Every date below is fully booked. The same journey runs again next winter &mdash; <a href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours">see the 2027 Winter Edition departures</a>.</p>
+     <span class="sehe-section-eyebrow">Available Dates</span>
+     <h2 class="sehe-section-heading">Choose your departure</h2>
     </div>
    </div>
    <div class="booking-wrapper">

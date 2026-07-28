@@ -1,8 +1,17 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 12-DAY WINTER EDITION 2026
-     COMPLETE TOUR PAGE  ·  VERSION v23  ·  2026-07-28  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v24  ·  2026-07-28  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v24 — dates section header reverted to normal (Ben): eyebrow back to
+            "Available Dates", title back to "Choose your departure", and the
+            sold-out note under it removed. The note was set in light-context
+            colours (grey text, navy link) on the booking section's NAVY
+            gradient band — invisible, my error. Also the right call on
+            substance: Checkfront has re-opened 12 Sep 2026, so "every date
+            below is fully booked" is no longer true; the calendar's per-date
+            status tells the real story. The Block A band's wording is
+            pending Ben/Kirsty's confirmation on the re-opened date.
        v23 — SOLD-OUT NOTICE REDESIGNED as a contained card (Ben: it rendered
             as a full page). Two causes addressed: the section had no padding
             of its own, so Duda's theme re-padded it 50px/40px into a tall
