@@ -1,8 +1,18 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 12-DAY WINTER EDITION 2026
-     COMPLETE TOUR PAGE  ·  VERSION v22  ·  2026-07-28  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v23  ·  2026-07-28  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v23 — SOLD-OUT NOTICE REDESIGNED as a contained card (Ben: it rendered
+            as a full page). Two causes addressed: the section had no padding
+            of its own, so Duda's theme re-padded it 50px/40px into a tall
+            slab on publish (and the editor canvas renders it heavier still);
+            and the full-width navy background read as a section, not a
+            notice. Now: a quiet paper strip with explicit !important padding
+            the theme cannot touch, holding a navy card (10px radius, gold
+            border — the journey-card language) with the red pill, heading,
+            copy and the two CTAs. Roughly half the previous height. Headings
+            and copy locked left for the mobile-served DOM.
        v22 — baked winter-2026 SOLDOUT completed to all five dates (12 Sep —
             and on the 14-day page 5 Sep — were missing). Found reviewing
             Block A: the baked departure data said 1-2 winter dates were
@@ -348,20 +358,25 @@
 
 <!-- ===== 1b. 2026 season sold out ===== -->
 <style>
-  .sehe-tourpage .sehe-soldout-band { background: #153b67; }
-  .sehe-tourpage .sehe-soldout-inner { max-width: 1240px; margin: 0 auto; padding: 30px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; }
-  .sehe-tourpage .sehe-soldout-copy { flex: 1 1 640px; }
-  .sehe-tourpage .sehe-soldout-mark { display: inline-flex; align-items: center; gap: 8px; font-family: 'Montserrat', sans-serif !important; font-size: 11px !important; font-weight: 700 !important; letter-spacing: 2.2px; text-transform: uppercase; color: #fff !important; background: rgba(184, 64, 64, 0.95); padding: 7px 14px; border-radius: 20px; margin-bottom: 14px; }
-  .sehe-tourpage .sehe-soldout-copy h2 { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: 23px !important; line-height: 1.25 !important; letter-spacing: -0.2px; color: #fff !important; margin: 0 0 8px !important; }
-  .sehe-tourpage .sehe-soldout-copy p { font-family: 'Open Sans', sans-serif !important; font-size: 15px !important; line-height: 1.65 !important; color: rgba(255, 255, 255, 0.82) !important; margin: 0 !important; max-width: 62ch; }
+  /* Sold-out notice: a contained card, not a full-width slab. The section is
+     a quiet paper strip with EXPLICIT padding (the Duda theme otherwise
+     re-pads every section 50px/40px); the navy card inside carries the
+     message. */
+  .sehe-tourpage .sehe-soldout-band { background: #f9f7f3; padding: 30px 20px !important; }
+  .sehe-tourpage .sehe-soldout-inner { max-width: 1240px; margin: 0 auto; background: #153b67; border: 1px solid #c8a56c; border-radius: 10px; padding: 28px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; }
+  .sehe-tourpage .sehe-soldout-copy { flex: 1 1 520px; }
+  .sehe-tourpage .sehe-soldout-mark { display: inline-flex; align-items: center; gap: 8px; font-family: 'Montserrat', sans-serif !important; font-size: 11px !important; font-weight: 700 !important; letter-spacing: 2.2px; text-transform: uppercase; color: #fff !important; background: rgba(184, 64, 64, 0.95); padding: 6px 13px; border-radius: 20px; margin-bottom: 12px; }
+  .sehe-tourpage .sehe-soldout-copy h2 { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: 21px !important; line-height: 1.25 !important; letter-spacing: -0.2px; color: #fff !important; margin: 0 0 6px !important; text-align: left !important; }
+  .sehe-tourpage .sehe-soldout-copy p { font-family: 'Open Sans', sans-serif !important; font-size: 14.5px !important; line-height: 1.6 !important; color: rgba(255, 255, 255, 0.82) !important; margin: 0 !important; max-width: 66ch; text-align: left !important; }
   .sehe-tourpage .sehe-soldout-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-  .sehe-tourpage .sehe-soldout-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Montserrat', sans-serif !important; font-size: 12px !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: 1.2px; text-decoration: none !important; padding: 15px 24px; border-radius: 4px; border: 1.5px solid #c8a56c; white-space: nowrap; }
+  .sehe-tourpage .sehe-soldout-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Montserrat', sans-serif !important; font-size: 12px !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: 1.2px; text-decoration: none !important; padding: 14px 22px; border-radius: 4px; border: 1.5px solid #c8a56c; white-space: nowrap; }
   .sehe-tourpage .sehe-soldout-btn--primary { background: #c8a56c; color: #0d2036 !important; }
   .sehe-tourpage .sehe-soldout-btn--ghost { background: transparent; color: #fff !important; }
   @media (max-width: 860px) {
-    .sehe-tourpage .sehe-soldout-inner { padding: 24px 20px; gap: 16px; }
-    .sehe-tourpage .sehe-soldout-copy h2 { font-size: 19px !important; }
-    .sehe-tourpage .sehe-soldout-copy p { font-size: 14.5px !important; }
+    .sehe-tourpage .sehe-soldout-band { padding: 20px 16px !important; }
+    .sehe-tourpage .sehe-soldout-inner { padding: 20px 18px; gap: 14px; }
+    .sehe-tourpage .sehe-soldout-copy h2 { font-size: 18px !important; }
+    .sehe-tourpage .sehe-soldout-copy p { font-size: 14px !important; }
     .sehe-tourpage .sehe-soldout-actions { width: 100%; }
     .sehe-tourpage .sehe-soldout-btn { width: 100%; }
   }

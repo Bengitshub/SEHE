@@ -1,4 +1,4 @@
-<!-- ═══ SEHE winter-2026 v22 — BLOCK B (paste in an HTML widget BELOW the Duda form row; Block A + form row sit above) ═══ -->
+<!-- ═══ SEHE winter-2026 v23 — BLOCK B (paste in an HTML widget BELOW the Duda form row; Block A + form row sit above) ═══ -->
 
 
 
