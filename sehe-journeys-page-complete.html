@@ -1,6 +1,6 @@
 <!--
   ═══════════════════════════════════════════════════════════════════════════════
-  SEHE JOURNEYS PAGE — TOUR LISTINGS          (VERSION v21 · 2026-07-28)
+  SEHE JOURNEYS PAGE — TOUR LISTINGS          (VERSION v22 · 2026-07-28)
   v15: Text-final pass (Ben, 3 Jul) adopted: Pinnacle end offset 14 to 15 nights
        (ends 29 Jan 2027, matches brochure/FACTS); Pinnacle card copy softened to
        'Premium accommodation'; 11-Day 27/28 card Milford/Doubtful now shown as
@@ -953,7 +953,30 @@
   .jc-legend-near { background: var(--amber); }
   .jc-legend-sold { background: var(--red); }
   @media (max-width: 600px) { .jc-month { grid-template-columns: 1fr; gap: 2px; } }
- </style>
+   /* ── FAQ + CONTACT (one-piece fold-in) ─────────────────────────────── */
+  .sehe-jfaq { margin-top: 56px; }
+  .jfaq-item { border: 1px solid var(--border); border-radius: 8px; background: var(--white); margin-bottom: 10px; overflow: hidden; }
+  .jfaq-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 18px; font-family: 'Montserrat', sans-serif !important; font-size: 15.5px !important; font-weight: 600 !important; color: var(--navy) !important; }
+  .jfaq-item summary::-webkit-details-marker { display: none; }
+  .jfaq-item summary::after { content: '+'; flex: none; width: 26px; height: 26px; border: 1.5px solid var(--gold); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: var(--gold-dark); font-size: 16px; font-weight: 600; }
+  .jfaq-item[open] summary::after { content: '\2212'; }
+  .jfaq-item[open] summary { border-bottom: 1px solid var(--border-light); }
+  .jfaq-a { padding: 14px 18px 18px; }
+  .jfaq-a p { font-size: 15px !important; line-height: 1.65 !important; color: var(--text-light) !important; margin: 0 !important; }
+  .sehe-jcontact { margin-top: 40px; background: var(--navy); border: 1px solid var(--gold); border-radius: 10px; padding: 28px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 32px; }
+  .sehe-jcontact-copy { flex: 1 1 480px; }
+  .sehe-jcontact h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: 21px !important; letter-spacing: -0.2px; color: #fff !important; margin: 0 0 6px !important; text-align: left !important; }
+  .sehe-jcontact p { font-family: 'Open Sans', sans-serif !important; font-size: 14.5px !important; line-height: 1.6 !important; color: rgba(255,255,255,.82) !important; margin: 0 !important; max-width: 62ch; }
+  .sehe-jcontact-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .sehe-jcontact-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Montserrat', sans-serif !important; font-size: 12px !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: 1.2px; text-decoration: none !important; padding: 14px 22px; border-radius: 4px; border: 1.5px solid var(--gold); white-space: nowrap; }
+  .sehe-jcontact-btn--primary { background: var(--gold); color: var(--navy-dark) !important; }
+  .sehe-jcontact-btn--ghost { background: transparent; color: #fff !important; }
+  @media (max-width: 860px) {
+    .sehe-jcontact { padding: 20px 18px; }
+    .sehe-jcontact-actions { width: 100%; }
+    .sehe-jcontact-btn { width: 100%; }
+  }
+</style>
 <!-- ═══ HERO ═══ -->
 <style>
   /* Duda: keep the hosting row from boxing or clipping a full-bleed hero, and
@@ -2006,6 +2029,61 @@
     </a>
    </div>
   </div>
+  <!-- ── FAQ (folded in from the old native Duda row — page is one piece) ── -->
+  <div class="sehe-jfaq">
+   <div class="sehe-past-header">
+    <h3>Frequently Asked Questions</h3>
+    <p>The questions we hear most when travellers are choosing between the journeys.</p>
+   </div>
+   <details class="jfaq-item">
+    <summary>What's the difference between the 14-day and 11-day Spring/Summer tours?</summary>
+    <div class="jfaq-a"><p>The 14-day tour is our most comprehensive journey, featuring the &ldquo;Super 6&rdquo; rail adventures and covering the full length of the South Island &mdash; from Franz Josef and Milford Sound through to Kaik&#333;ura and Marlborough. The 11-day tour focuses on the core highlights including Arthur's Pass, Queenstown, Milford Sound, Dunedin and Aoraki Mt Cook, making it ideal if you'd prefer a slightly shorter journey without missing the iconic experiences.</p></div>
+   </details>
+   <details class="jfaq-item">
+    <summary>What makes the Winter Edition tours different?</summary>
+    <div class="jfaq-a"><p>The Winter Edition tours are an entirely different experience. The South Island in winter offers snow-capped mountain scenery, crisp alpine air, and a cosier, more intimate atmosphere with smaller group sizes. The itinerary is tailored to make the most of the season, and it's our most affordable tour option.</p></div>
+   </details>
+   <details class="jfaq-item">
+    <summary>How is The Pinnacle Tour different from the other tours?</summary>
+    <div class="jfaq-a"><p>The Pinnacle is our most exclusive experience &mdash; a small-group luxury journey hosted by Peter Hillary, son of Sir Edmund Hillary. It includes premium accommodations, extended stays at key destinations, and a more personal, unhurried pace. With only one departure and strictly limited numbers, it's designed for travellers who want something truly exceptional.</p></div>
+   </details>
+   <details class="jfaq-item">
+    <summary>Which tour is best if it's my first time visiting the South Island?</summary>
+    <div class="jfaq-a"><p>The 14-day Spring/Summer tour covers the most ground, so it's a wonderful way to experience the full diversity of the South Island in one journey. If you have less time available, the 11-day tour still takes in all the must-see destinations. Both are designed so you don't need to worry about logistics &mdash; everything is taken care of.</p></div>
+   </details>
+   <details class="jfaq-item">
+    <summary>Can I choose my seat on the train carriage or coach?</summary>
+    <div class="jfaq-a"><p>For your enjoyment and comfort, seating is not pre-allocated. We ask that you rotate seating on a regular basis to allow different viewing opportunities for all passengers. If you wish to be seated with a group of friends, please let us know before the tour so that you will be allocated seating on the same coach. If you suffer from travel sickness, please ensure that you have appropriate medication with you.</p></div>
+   </details>
+   <details class="jfaq-item">
+    <summary>How far in advance should I book?</summary>
+    <div class="jfaq-a"><p>Our tours are limited in size and regularly sell out, particularly during the spring and summer season. We'd recommend booking at least 3&ndash;4 months ahead of your preferred departure to secure your place. You can see our recently sold-out departures just above &mdash; once they're gone, they're gone.</p></div>
+   </details>
+   <details class="jfaq-item">
+    <summary>Do I need to pay the full amount upfront?</summary>
+    <div class="jfaq-a"><p>No &mdash; only a 20% deposit is required to secure your booking. The remaining balance is due closer to your departure date. Payment is by internet banking; credit card bookings incur a 2% fee.</p></div>
+   </details>
+   <details class="jfaq-item">
+    <summary>Can I join the tour as a solo traveller?</summary>
+    <div class="jfaq-a"><p>Absolutely. We regularly welcome solo travellers and many of our guests travel independently. A single supplement applies for your own room, and you'll be joining a friendly group of like-minded travellers &mdash; many of our guests tell us the people they meet on tour become lasting friends.</p></div>
+   </details>
+   <details class="jfaq-item">
+    <summary>What's included in the tour price?</summary>
+    <div class="jfaq-a"><p>All tours include accommodation at 4-star or above properties, all rail journeys and coach travel, most meals (the exact number varies by tour &mdash; check the individual tour page for details), and entry to all scheduled attractions and experiences. Optional excursions such as helicopter flights or whale watching are available at additional cost.</p></div>
+   </details>
+  </div>
+  <!-- ── CONTACT (folded in from the old native Duda row) ── -->
+  <div class="sehe-jcontact">
+   <div class="sehe-jcontact-copy">
+    <h3>Need help choosing the right tour?</h3>
+    <p>Our team is here to help you find the perfect journey. Call us or get in touch and we'll match you with the right tour for your dates and interests.</p>
+   </div>
+   <div class="sehe-jcontact-actions">
+    <a class="sehe-jcontact-btn sehe-jcontact-btn--primary" href="/contact">Contact Us</a>
+    <a class="sehe-jcontact-btn sehe-jcontact-btn--ghost" href="tel:+6439741812">+64 3 974 1812</a>
+   </div>
+  </div>
+
  </div>
  <!-- END SEHE JOURNEYS SECTION -->
  <script>
