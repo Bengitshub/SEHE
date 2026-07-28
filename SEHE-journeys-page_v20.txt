@@ -1,6 +1,6 @@
 <!--
   ═══════════════════════════════════════════════════════════════════════════════
-  SEHE JOURNEYS PAGE — TOUR LISTINGS          (VERSION v19 · 2026-07-27)
+  SEHE JOURNEYS PAGE — TOUR LISTINGS          (VERSION v20 · 2026-07-28)
   v15: Text-final pass (Ben, 3 Jul) adopted: Pinnacle end offset 14 to 15 nights
        (ends 29 Jan 2027, matches brochure/FACTS); Pinnacle card copy softened to
        'Premium accommodation'; 11-Day 27/28 card Milford/Doubtful now shown as
@@ -966,20 +966,33 @@
     position: relative; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
     padding: 0 !important; min-height: max(560px, 72vh); min-height: max(560px, 72svh);
     display: flex; align-items: flex-end; background-color: #081525;
-    background-image: linear-gradient(180deg, rgba(8,21,37,.62) 0%, rgba(8,21,37,.26) 28%, rgba(8,21,37,.58) 56%, rgba(8,21,37,.95) 100%), url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp');
+    background-image: url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp');
     background-size: cover; background-position: center 46%;
   }
+  /* video layer (desktop only) — photo is the base state; the film fades in
+     only once the Vimeo player proves it is alive. Swap the video id here if
+     a different clip from the Pounamu Vimeo account is preferred. */
+  .sehe-jhero-media { position: absolute; inset: 0; overflow: hidden; opacity: 0; transition: opacity 1.4s ease; }
+  .sehe-jhero-media.is-live { opacity: 1; }
+  .sehe-jhero-media iframe { position: absolute; top: 50%; left: 50%; width: max(100vw, 178vh); height: max(100vh, 56.25vw); transform: translate(-50%, -50%); border: 0; pointer-events: none; }
+  .sehe-jhero-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,21,37,.62) 0%, rgba(8,21,37,.26) 28%, rgba(8,21,37,.58) 56%, rgba(8,21,37,.95) 100%); }
   /* the site header's logo slot is a transparent placeholder until you scroll —
      put the real roundel in its lane so the brand is there on load */
   .sehe-jhero-logo { position: absolute; top: 26px; left: 0; width: 16.66%; height: 92px; object-fit: contain; object-position: center; z-index: 2; filter: drop-shadow(0 2px 10px rgba(8,21,37,.5)); }
   .sehe-jhero-inner { position: relative; width: 100%; max-width: 1240px; margin: 0 auto; padding: 150px 30px 58px; }
-  .sehe-jhero-eyebrow { display: inline-flex; align-items: center; gap: 16px; font-family: 'Montserrat', sans-serif !important; font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: .42em; text-transform: uppercase; color: #c8a56c !important; margin: 0 0 22px !important; text-shadow: 0 1px 12px rgba(8,21,37,.95); }
-  .sehe-jhero-eyebrow::before, .sehe-jhero-eyebrow::after { content: ''; width: 44px; height: 1px; background: #c8a56c; flex: none; }
+  .sehe-jhero-eyebrow { display: inline-flex; align-items: center; gap: 16px; font-family: 'Montserrat', sans-serif !important; font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: .42em; text-transform: uppercase; color: #d4b37e !important; margin: 0 0 22px !important; text-shadow: 0 1px 12px rgba(8,21,37,.95); }
+  .sehe-jhero-eyebrow::before, .sehe-jhero-eyebrow::after { content: ''; width: 44px; height: 1px; background: #d4b37e; flex: none; }
   .sehe-jhero h1 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: clamp(40px, 5.2vw, 68px) !important; line-height: 1.06 !important; letter-spacing: -0.01em; color: #ffffff !important; margin: 0 !important; text-shadow: 0 2px 26px rgba(8,21,37,.55); }
   .sehe-jhero .sehe-nb { white-space: nowrap; }
   .sehe-jhero-sub { font-family: 'Open Sans', sans-serif !important; margin: 26px 0 0 !important; max-width: 560px; font-size: clamp(16.5px, 1.5vw, 19px) !important; line-height: 1.65 !important; color: rgba(255,255,255,.94) !important; text-shadow: 0 1px 14px rgba(8,21,37,.6); }
+  @media (max-width: 860px), (prefers-reduced-motion: reduce) {
+    .sehe-jhero-media { display: none; }
+  }
   @media (max-width: 860px) {
     .sehe-jhero { min-height: max(480px, 64svh); background-position: center 50%; }
+    /* phones crop to the brightest part of the frame — darken the veil so the
+       eyebrow and heading hold contrast for older readers */
+    .sehe-jhero-veil { background: linear-gradient(180deg, rgba(8,21,37,.66) 0%, rgba(8,21,37,.48) 30%, rgba(8,21,37,.72) 58%, rgba(8,21,37,.96) 100%); }
     .sehe-jhero-inner { padding: 118px 22px 44px; }
     .sehe-jhero-logo { left: 50%; width: auto; transform: translateX(-50%); top: 18px; height: 56px; }
     /* the flanking rules float mid-line once the eyebrow wraps */
@@ -995,6 +1008,10 @@
   }
 </style>
 <section class="sehe-jhero" aria-label="All Upcoming Tours">
+  <div class="sehe-jhero-media" aria-hidden="true">
+    <iframe src="https://player.vimeo.com/video/1046997096?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;dnt=1&amp;api=1" title="Sir Edmund Hillary Explorer scenery film" allow="autoplay; fullscreen" loading="lazy"></iframe>
+  </div>
+  <div class="sehe-jhero-veil" aria-hidden="true"></div>
   <img class="sehe-jhero-logo" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEH+Explorer_logo+white-350w.png" alt="Sir Edmund Hillary Explorer" loading="eager">
   <div class="sehe-jhero-inner">
     <span class="sehe-jhero-eyebrow">2026/27 – 2027/28 Seasons</span>
@@ -1002,6 +1019,18 @@
     <p class="sehe-jhero-sub">The Sir Edmund Hillary Explorer is New Zealand's leading tour operator, specialising in scenic rail and luxury coach tours of the South Island. Departures run across every season — and each year includes a <span class="sehe-nb">small-group</span> tour hosted personally by Peter Hillary, son of Sir Edmund Hillary.</p>
   </div>
 </section>
+<script>
+  /* HERO film: the video layer stays invisible until the Vimeo player proves
+     it is alive (any postMessage from vimeo). If it never loads — or on
+     phones, where the layer is display:none — the photograph simply remains.
+     Photo is the base state. */
+  window.addEventListener('message', function(ev) {
+    if (ev && typeof ev.origin === 'string' && ev.origin.indexOf('vimeo.com') !== -1) {
+      var media = document.querySelector('.sehe-jhero-media');
+      if (media && media.className.indexOf('is-live') === -1) { media.className += ' is-live'; }
+    }
+  });
+</script>
 
  <div class="sehe-journeys">
   <!-- ── HEADER ──────────────────────────────────────────────────────────── -->
