@@ -1,9 +1,18 @@
 <!-- =====================================================================
-     SIR EDMUND HILLARY EXPLORER — 14-DAY SPRING/SUMMER 2027/28
-     COMPLETE TOUR PAGE  ·  VERSION v29  ·  2026-07-29  (paste into a Duda HTML block)
+     SIR EDMUND HILLARY EXPLORER — 11-DAY SPRING/SUMMER 2027/28
+     COMPLETE TOUR PAGE  ·  VERSION v21  ·  2026-07-29  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
-       v29 — STATIC 5-STAR STRIP RETRACTED before it ever published (never
+       v21 — STATIC 5-STAR STRIP REINSTATED — Ben's informed decision. The
+            4.7-TrustScore facts were put to him plainly (twice); his call:
+            keep the 5-star presentation, as the outlier 1-star review is
+            being dealt with, and on its resolution the TrustScore is
+            expected to cross 4.8 (at which point Trustpilot's own widgets
+            agree). Repo re-aligned to match the versions held in the Duda
+            editors so the record equals what publishes. Content identical
+            to the retracted round; only this header differs. Item fix
+            (302,374 / 289,392) unchanged throughout.
+       v20 — STATIC 5-STAR STRIP RETRACTED before it ever published (never
             went live). Verified against Trustpilot's own widget API: the
             business's TrustScore is 4.7, which Trustpilot renders as
             4.5-star art (their 5-star image needs >=4.8) — 78 of 86 reviews
@@ -14,7 +23,7 @@
             4.7. Live Micro Star TrustBox restored; it will flip to 5-star
             art by itself the day TrustScore reaches 4.8. The Checkfront
             split-item fix (302,374 / 289,392) is unaffected and stays.
-       v28 — booking widget trust strip: the live TrustBox under the booking
+       v19 — booking widget trust strip: the live TrustBox under the booking
             calendar rendered Trustpilot's own star art, which was still
             showing 4.5 stars after the score reached 5.0 (their image only
             flips at their thresholds/cache). Replaced with the static
@@ -22,7 +31,7 @@
             whole row linking to the Trustpilot profile — same treatment
             family as the hero. The compare-grid quote TrustBox stays live.
             Ben's call.
-       v27 — BOOKING WIDGET: split Checkfront items now included (Kirsty's
+       v18 — BOOKING WIDGET: split Checkfront items now included (Kirsty's
             report: 8 Feb and 8 Mar 2027 not bookable on the 14-Day page).
             The booking tab config pinned each tour to ONE Checkfront
             item_id, but two tours sell across TWO items: the 14-Day 26/27
@@ -33,7 +42,7 @@
             and '289,392'. The worker already merged both items for the
             display list — display and booking now agree. All seven pages
             share this config, so all seven are updated.
-       v26 — baked winter-2026 SOLDOUT completed to all five dates (12 Sep —
+       v17 — baked winter-2026 SOLDOUT completed to all five dates (12 Sep —
             and on the 14-day page 5 Sep — were missing). Found reviewing
             Block A: the baked departure data said 1-2 winter dates were
             still available, so before the worker answered, the scripts
@@ -43,7 +52,7 @@
             HTML and the live feed (5 of 5 sold, no next date), per the
             enhance-only rule: missing live data must never make a page
             wrong.
-       v25 — WINTER 2026 SOLD OUT. The 12-Day Winter Edition 2026 is fully
+       v16 — WINTER 2026 SOLD OUT. The 12-Day Winter Edition 2026 is fully
             booked (worker feed: 5 of 5 departures sold, no next date), so in
             the "Still comparing tours?" grid its card moves to the LAST
             position and now ships the sold-out state baked in: red "Sold Out"
@@ -53,7 +62,7 @@
             page all stay live. The availability script now honours a per-card
             data-sold-note, so a sold-out tour can name its successor season
             instead of the generic "New season opening soon".
-       v24 — WINTER-LABEL LESSON APPLIED (Ben's Winter-2026 phone review):
+       v15 — WINTER-LABEL LESSON APPLIED (Ben's Winter-2026 phone review):
             each tour's submit label differs — the Winter one is 7 characters
             longer than the 14-Day label the size steps were tuned on, so it
             overflowed below ~420px; and web fonts loading after first paint
@@ -65,7 +74,7 @@
             load (0.7s / 2.6s / window load) and on every resize. Verified in
             a full-stylesheet render: label fits at 390px (auto 12px) and the
             button equals the field width at 430px.
-       v23 — BUTTON WIDTH ROOT-CAUSE FIX (found by reproducing the live page
+       v14 — BUTTON WIDTH ROOT-CAUSE FIX (found by reproducing the live page
             with Duda's real mobile stylesheets): Duda's mobile runtime CSS
             rule ".dmMobileBody ... .dmformsubmit { width:91%; max-width:91% }"
             capped the button container — a stylesheet max-width beats an
@@ -76,7 +85,7 @@
             button differs by more than 1px, assigns it the field's exact
             pixel width, re-checked on every resize/rotation. Verified equal
             (342px = 342px) in a full-stylesheet reproduction at iPhone width.
-       v22 — FIELDS AND BUTTON PINNED TO THE SAME BOX (Ben: "why can't the
+       v13 — FIELDS AND BUTTON PINNED TO THE SAME BOX (Ben: "why can't the
             button just be the same size as the form fields?"): on iPhone the
             fields rendered ~30px wider than the button — Duda's mobile device
             stylesheet inflates the input widths past their column, and only
@@ -84,7 +93,7 @@
             Name/Email/Country fields inline too (width/max-width 100%,
             border-box, block, zero margin), so fields and button occupy the
             identical box on every browser and are permanently edge-flush.
-       v21 — DOCKED BUTTON TYPE RE-TUNED (Ben's phone review of the first
+       v12 — DOCKED BUTTON TYPE RE-TUNED (Ben's phone review of the first
             mobile fix): the previous 360px breakpoint caught most Android
             phones and set the label at 11px — too small — and letter-spacing's
             trailing space biased the centred label left of true centre. Now
@@ -93,7 +102,7 @@
             cancels the centring bias at every size, desktop included.
             Measured with the real widget at 320 / 360 / 390 / 1440px: label
             fits with margin everywhere and sits optically centred.
-       v20 — MOBILE FIXES from Ben's phone pass: the docked Duda submit is an
+       v11 — MOBILE FIXES from Ben's phone pass: the docked Duda submit is an
             INPUT element, which cannot wrap its label, so the long "View /
             Download Tour Brochure" text overflowed the button on narrow
             screens — the docking script now steps font size / tracking /
@@ -101,7 +110,7 @@
             resize/rotation. Brochure cover ("FREE PDF DOWNLOAD") explicitly
             centred in the stacked mobile layout (justify-content + auto
             margins, belt and braces).
-       v19 — BROCHURE FORM DOCKING (rollout of the 14-Day pilot v15-v17): a form
+       v10 — BROCHURE FORM DOCKING (rollout of the 14-Day pilot v15-v17): a form
             slot now sits inside the brochure card and a loader script, on the
             published site only, moves the real Duda form widget into it and
             flattens the widget geometry inline (full-width fields and button,
@@ -109,7 +118,7 @@
             editor, or with no Duda form widget on the page, nothing moves.
             Shared SOLDOUT fallback map refreshed: 12 Oct 2026 (14-Day 26/27)
             and 5 Sep 2026 (Winter 2026) have sold out since the 8-Jul bake.
-       v18 — BOOKING DATA ALIGNED TO THE LIVE-SITE WIDGETS (technical only; design
+       v9 — BOOKING DATA ALIGNED TO THE LIVE-SITE WIDGETS (technical only; design
             untouched): the departures data script is now the proven widget block —
             full worker SCHEDULE baked (including the four Oct 2026 departures),
             SOLDOUT fallback refreshed to current live statuses, and the live merge
@@ -118,9 +127,10 @@
             between tour pages, the Journeys page, the site widgets and Checkfront.
             Booking list, hero count/range and cross-sell chips re-baked from the
             page's own scripts, so first paint byte-matches the render.
-       v17 — Review fix (Ben, 8 Jul): gallery caption now explicitly says the
-            Milford / Doubtful Sound cruise is optional.
-       v16 — TEXT-FINAL PASS (Ben, 3 Jul) adopted as-is: FAQ rebuilt to the official
+       v8 — Review fix (Ben, 8 Jul): gallery intro no longer names Milford Sound as a
+            core destination (Milford is an optional excursion on 27/28) — now
+            'Fiordland'.
+       v7 — TEXT-FINAL PASS (Ben, 3 Jul) adopted as-is: FAQ rebuilt to the official
             site-FAQ wording + a 'View all FAQs' button; NZ-English copy polish;
             cross-sell fact fixes (Milford optional on 27/28 cards; Pinnacle desc
             'Premium accommodation'); Pinnacle end offset 14 to 15 nights (ends
@@ -129,55 +139,51 @@
             element removed (the SEO title lives in Duda Page Settings — set it
             per SEHE_SEO_Titles.txt before/at publish). Adoption adds only this
             version bump + macron micro-fixes; no other text touched.
-       v15 — FIX (publish reset): renamed the live-departures loop variable so
+       v6 — FIX (publish reset): renamed the live-departures loop variable so
             the literal "&lt;base" (from "i&lt;base[k]") never appears. Duda's publish
             sanitizer was reading it as a &lt;base> tag and stripping it, corrupting
             the block on every publish (the page "reset"). Same fix as 14-Day v12.
-       v14 — Hero image swapped with the Pinnacle page (images only): the hero now
-            uses the Coastal Pacific photo. Nothing else changed.
-       v13 — content fixes: page &lt;title> set to the 14-Day 27/28 tour title; FAQ
-            single supplement corrected to NZ$1,595 (was NZ$1,495); Day-1
-            Christchurch hotel corrected to Distinction Hotel, Christchurch (was
-            Sudima Airport Hotel) to match the 27/28 brochure; meals confirmed at
-            12 breakfasts / 9 dinners / 9 lunches in both the inclusions block and
-            the FAQ.
-       v12 — Swept to the revert-proof standard (baked dates, never-wipe guards, escalate-only merge); dropped the stale 21 Feb 2028 date to match Kirsty's schedule (now 13 departures).
-       v11 — added 21 Feb 2028 to the 14-Day 27/28 departures fallback list:
-            Checkfront lists it as a live, bookable departure, so the page list
-            was one short. (The live feed now takes AVAILABLE dates straight
-            from Checkfront and auto-discovers such dates; this list is only the
-            offline fallback + sold-out memory.)
-       v10 — LIVE departures feed reconnected. The hardcoded list is now a
-            fallback only: one shared fetch of the Worker overrides it, and all
-            three consumers (departures panel, hero count/range, cross-sell
-            cards) re-render when it resolves. Sold-out departures are KEPT in
-            the list and rendered RED (with a legend) instead of being removed —
-            no more hand-editing when a date sells out. Degrades to the fallback
-            (all shown available) if the Worker is unreachable. Reference page
-            for rollout to the other tour pages once verified against Checkfront.
-       v9 — signature rail-set names quoted in display copy (&ldquo;Super 6&rdquo;,
-            &ldquo;Big 5&rdquo;, &ldquo;Famous 4&rdquo;) to match the brochure's own
-            styling; FAQ Q2 corrected so it matches the 27/28 itinerary — the
-            Mainlander runs one southern sector (Invercargill–Dunedin); the
-            Dunedin–Oamaru leg is now by coach (Moeraki Boulders, lunch in Oamaru).
-       v8 — differentiated from the 14-Day 26/27 so the season repeat reads as
-            its own product: new hero (Aoraki Mt Cook), rewritten hero + Section
-            2 copy, and "Super 6" dialled back across the page (kept prominent in
-            its own Section 3). New 27/28 season page facts set at v7.
-       v7 — extend the text-align lock to the "Still comparing tours?" cards
-            (.sehe-journeys lives outside .sehe-tourpage, so it was still
-            inheriting the Duda section's centering).
-       v6 — text-align lock: the page forces its own left alignment so the
-            eyebrows, section intros, card text, FAQ answers and About snippet
-            can't inherit centering from the Duda section the block sits in.
-       v5 — FAQ rebuilt from updated website FAQs + brochure (10 Qs);
-            departures made authoritative in-page (one master list drives the
-            booking list, the comparison cards and the hero count/range).
-       v4 — buttons + anchors wired (View Tour Dates, Download Brochure,
-            Section-12 cards); brochure-form CSS skin supplied separately.
-       v3 — hero rebuilt as a .sehe-tourpage section (mobile + desktop fixed).
-       v2 — full 13-section page assembled into one block.
-       v1 — hero header-space fix.
+       v5 — Content corrections against the 27/28 brochure (no design/layout/
+            date changes). (1) Page &lt;title> set to the real tour title. (2) Milford
+            Sound corrected from "included" to OPTIONAL: it is now "Doubtful Sound
+            or Milford Sound Cruise (both optional)". Day 6 reworded to a day at
+            leisure in Te Anau with an optional Milford/Doubtful cruise; removed the
+            "tour includes a cruise around the fiord" / "Milford Sound day trip and
+            cruise" included phrasing; moved it into Optional excursions as
+            "Optional Milford Sound or Doubtful Sound cruise"; hero, Section-2 and
+            the Day-6 gallery caption now read "with the option to cruise Milford or
+            Doubtful Sound". Meals already correct (10 breakfasts / 7 dinners /
+            8 lunches) in both the inclusions block and the FAQ — confirmed matching.
+       v4 — Swapped in the correct 27/28 assets now that they're hosted: the
+            brochure-cover thumbnail and the route-map image (both had been the
+            26/27 placeholders). No other changes.
+       v3 — REVERT FIX (the recurring "dates reset after paste" bug). The booking
+            and cross-sell render functions were WIPING the baked HTML whenever
+            window.__seheDepartureData wasn't populated at the instant they ran
+            (Duda can run a render pass before/without the top data script):
+            booking paint() fell through to "No departures", cross-sell
+            renderCard() flipped to "Season Complete". Added the same never-wipe
+            guards the hero render already had — each one now returns and LEAVES
+            the baked HTML when the data isn't ready, so the JS can only ENHANCE,
+            never blank. Also switched the live fetch from full-replace to an
+            escalate-only merge, so an incomplete or stale Worker response can
+            only raise a date's status, never drop dates or reset the page.
+       v2 — Bake the booking-section departure list into static HTML (the "Next"
+            strip + month-grouped dates), matching the Journeys-page setup, so
+            the dates show instantly and in source rather than behind a JS
+            "Loading" state. The live feed still enhances on top (sold-out red,
+            "Filling fast" amber) and never wipes the baked list.
+       v1 — New page. Built from the 11-Day 26/27 template against the official
+            11-Day Spring/Summer 2027/28 brochure. Differences from 26/27 that
+            are reflected here: "Famous 4" rail set (the Dunedin–Oamaru leg is
+            now by coach, not a 5th rail sector — that is what makes it the
+            Famous 4, not the Big 5), From NZ$8,490 / single supplement
+            NZ$1,595, Christchurch stay is the Distinction Hotel, Bill Richardson
+            Transport World added on Day 7, Pounamu Pathway removed, Day 10
+            Mueller Lake (not Hooker Valley). Unique Waimakariri TranzAlpine hero
+            and rewritten hero + Section-2 copy (season-repeat differentiation).
+            Live escalate-only departures feed (sold-out red, "Filling fast"
+            amber) wired the same way as the 14-Day 27/28 reference page.
      =====================================================================
      This is the full page. The Hero (Section 1) is now built the same way as
      the page sections that already render correctly: wrapped in .sehe-tourpage,
@@ -278,8 +284,8 @@
   background-image:
     linear-gradient(102deg, rgba(8,24,48,.94) 0%, rgba(8,24,48,.82) 26%, rgba(8,24,48,.5) 50%, rgba(8,24,48,.14) 72%, rgba(8,24,48,0) 100%),
     linear-gradient(0deg, rgba(8,24,48,.85) 0%, rgba(8,24,48,.2) 26%, rgba(8,24,48,0) 52%),
-    url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp');
-  background-size:cover; background-position:center 32%; background-repeat:no-repeat;
+    url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/184565-tranzalpine-crossing-the-waimakariri-river-1920w.webp');
+  background-size:cover; background-position:center 42%; background-repeat:no-repeat;
   color:#fff !important;
   overflow:hidden;
   display:flex; flex-direction:column;
@@ -327,7 +333,7 @@
     padding:140px 20px 44px !important;
     background-image:
       linear-gradient(0deg, rgba(8,24,48,.92) 0%, rgba(8,24,48,.62) 52%, rgba(8,24,48,.36) 100%),
-      url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp');
+      url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/184565-tranzalpine-crossing-the-waimakariri-river-1920w.webp');
   }
   .sehe-tourpage .sehe-hx-inner{display:block; max-width:100%;}
   .sehe-tourpage .sehe-hx-top{flex-direction:column; align-items:flex-start; gap:0; margin-bottom:0;}
@@ -352,7 +358,7 @@
 }
 </style>
 <div class="sehe-tourpage">
-  <section class="sehe-hx" aria-label="14-Day Spring/Summer Tour 2027/28">
+  <section class="sehe-hx" aria-label="11-Day Spring/Summer Tour 2027/28">
     <div class="sehe-hx-inner">
       <div class="sehe-hx-top">
         <div class="sehe-hx-award sehe-hx-award--top">
@@ -366,15 +372,15 @@
       </div>
       <div class="sehe-hx-head">
         <p class="sehe-hx-eyebrow">Sir Edmund Hillary Explorer</p>
-        <h1 class="sehe-hx-title">14-Day Spring/Summer Tour <span class="yr">2027/28</span></h1>
-        <p class="sehe-hx-sub">Two weeks across the whole South Island by rail and luxury coach &mdash; West Coast glaciers, Queenstown, Fiordland, Aoraki Mt Cook, Dunedin and the Kaik&#333;ura coast, with six scenic rail journeys along the way. Our most complete journey, starting and ending in Christchurch.</p>
+        <h1 class="sehe-hx-title">11-Day Spring/Summer Tour <span class="yr">2027/28</span></h1>
+        <p class="sehe-hx-sub">Eleven unhurried days through the South Island by rail and luxury coach &mdash; built around the &ldquo;Famous 4&rdquo; rail journeys, with the West Coast glaciers, Queenstown and Aoraki Mt Cook along the way, with the option to cruise Milford or Doubtful Sound. Fully guided, return from Christchurch.</p>
       </div>
       <div class="sehe-hx-ticket">
         <div class="sehe-hx-fields">
           <div class="sehe-hx-field"><div class="sehe-hx-k">Route</div><div class="sehe-hx-v">Christchurch return<a class="sehe-hx-route-link" href="#tour-route">View Route</a></div></div>
-          <div class="sehe-hx-field"><div class="sehe-hx-k">Duration</div><div class="sehe-hx-v">14 Days<small>13 nights</small></div></div>
-          <div class="sehe-hx-field"><div class="sehe-hx-k">From</div><div class="sehe-hx-v">NZ$9,990<small>per person, twin share</small></div></div>
-          <div class="sehe-hx-field"><div class="sehe-hx-k">Departures</div><div class="sehe-hx-v"><span data-sehe-dep-count>13</span><small data-sehe-dep-range>Oct 27 &ndash; Feb 28</small></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">Duration</div><div class="sehe-hx-v">11 Days<small>10 nights</small></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">From</div><div class="sehe-hx-v">NZ$8,490<small>per person, twin share</small></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">Departures</div><div class="sehe-hx-v"><span data-sehe-dep-count>7</span><small data-sehe-dep-range>Sep 27 &ndash; Apr 28</small></div></div>
         </div>
         <div class="sehe-hx-stub">
           <a class="sehe-hx-btn sehe-hx-btn--primary" href="#tour-dates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg> View Tour Dates </a>
@@ -463,28 +469,28 @@
   <section class="sehe-highlights">
    <div class="sehe-highlights-inner">
     <span class="sehe-section-eyebrow">What sets this tour apart</span>
-    <h2 class="sehe-section-heading">The complete South Island, coast to coast</h2>
-    <p class="sehe-section-intro">Our most comprehensive journey &mdash; fourteen days, top to bottom and coast to coast, fully guided, with thirteen nights of 4-Star+ accommodation. From West Coast glaciers and Queenstown to Aoraki Mt Cook, Dunedin and the dramatic Kaik&#333;ura coast, with the &ldquo;Super 6&rdquo; rail journeys woven all the way through.</p>
+    <h2 class="sehe-section-heading">Every South Island icon, at an unhurried pace</h2>
+    <p class="sehe-section-intro">From the Southern Alps and the West Coast glaciers to Queenstown and Aoraki Mt Cook, with the option to cruise Milford or Doubtful Sound, these eleven days thread the South Island's most iconic landscapes together by rail and luxury coach — fully guided, generously paced, and built around four of the country's most celebrated rail journeys.</p>
     <div class="sehe-highlights-grid">
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.5"></circle><circle cx="16" cy="19" r="1.5"></circle><path d="M5 16l-1.5 3M19 16l1.5 3"></path></svg></div>
-      <h3>Six scenic rail journeys</h3>
-      <p class="sehe-highlight-text">TranzAlpine, Kingston Flyer steam, The Mainlander, Taieri Gorge, Coastal Pacific and the Weka Pass — six rail experiences, each a different side of the South Island.</p>
+      <h3>Four signature rail journeys</h3>
+      <p class="sehe-highlight-text">The TranzAlpine over Arthur's Pass, the Kingston Flyer steam train, The Mainlander through the deep south and the Taieri Gorge — four of New Zealand's most celebrated rail journeys in a single trip.</p>
      </div>
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"></path></svg></div>
-      <h3>4-Star+ hotels for 13 nights</h3>
-      <p class="sehe-highlight-text">From The Hermitage at Mt Cook to the Mercure on Lake Wakatipu. Accommodation is hand-picked to suit each location and the pace of the journey.</p>
+      <h3>4-Star+ hotels for 10 nights</h3>
+      <p class="sehe-highlight-text">From the Distinction Hotel in Christchurch to the Mercure on Lake Wakatipu and The Hermitage at Aoraki Mt Cook — ten nights of hand-picked accommodation, matched to each location and the pace of the journey.</p>
      </div>
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><path d="M3 20l5-8 3 4 4-7 6 11z" fill="none"></path><circle cx="17" cy="6" r="1.5" fill="none"></circle></svg></div>
       <h3>Fiordland &amp; Aoraki Mt Cook</h3>
-      <p class="sehe-highlight-text">A day into Fiordland from Te Anau — with the option to cruise Milford or Doubtful Sound — and two nights at Aoraki Mt Cook, a landscape closely tied to Sir Edmund Hillary's early mountaineering life.</p>
+      <p class="sehe-highlight-text">A day in Fiordland with the option to cruise Milford or Doubtful Sound, and two nights beneath Aoraki Mt Cook — the alpine country that shaped Sir Edmund Hillary's climbing life.</p>
      </div>
      <div class="sehe-highlight">
-      <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><path d="M12 2L9.5 8.5 2 9.3l5.7 5L6 22l6-3.5 6 3.5-1.7-7.7 5.7-5-7.5-.8z"></path></svg></div>
-      <h3>Hillary family guest speaker</h3>
-      <p class="sehe-highlight-text">At Aoraki Mt Cook, a Hillary family representative joins the tour at the Sir Edmund Hillary Alpine Centre Theatre.</p>
+      <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.5"></circle><circle cx="16" cy="19" r="1.5"></circle><path d="M5 16l-1.5 3M19 16l1.5 3"></path></svg></div>
+      <h3>The Mainlander — exclusive to our tours</h3>
+      <p class="sehe-highlight-text">The recently re-established Mainlander carries you along the historic Main South Line from Invercargill to Dunedin — a deep-south rail sector you won't find on other tours.</p>
      </div>
      <div class="sehe-highlight">
       <div class="sehe-highlight-icon"><svg viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2" fill="none"></rect><path d="M2.5 10h19M6 15h3"></path></svg></div>
@@ -497,7 +503,7 @@
 </div>
 
 
-<!-- ===== 3. Super 6 rail adventures ===== -->
+<!-- ===== 3. Famous 4 rail adventures ===== -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
   .sehe-tourpage, .sehe-tourpage *, .sehe-tourpage *::before, .sehe-tourpage *::after { box-sizing: border-box; }
@@ -554,9 +560,9 @@
 <div class="sehe-tourpage">
   <section class="sehe-super6">
    <div class="sehe-super6-inner">
-    <span class="sehe-section-eyebrow">The &ldquo;Super 6&rdquo;</span>
-    <h2 class="sehe-section-heading">The &ldquo;Super 6&rdquo; rail adventures, coast to coast</h2>
-    <p class="sehe-section-intro">From the alpine TranzAlpine to the Pacific-coast Coastal Pacific and the heritage Weka Pass, the &ldquo;Super 6&rdquo; carry you through every kind of South Island landscape — alpine passes, wild coastlines, remote river gorges and rolling rural country.</p>
+    <span class="sehe-section-eyebrow">The &ldquo;Famous 4&rdquo;</span>
+    <h2 class="sehe-section-heading">The &ldquo;Famous 4&rdquo; rail adventures in one eleven-day tour</h2>
+    <p class="sehe-section-intro">Every 11-Day Spring/Summer Tour is built around the &ldquo;Famous 4&rdquo; rail adventures — four memorable rail journeys showing a different side of the South Island, from the alpine crossing of Arthur's Pass and heritage steam rail to the deep-south Main South Line and the remote Taieri Gorge.</p>
     <div class="sehe-super6-grid">
      <article class="sehe-train">
       <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp');"><span class="sehe-train-day">Day 2</span></div>
@@ -568,20 +574,13 @@
      </article>
      <article class="sehe-train">
       <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Glen+Antony+20251116+IMG_0748.webp');"><span class="sehe-train-day">Day 7</span></div>
-      <div class="sehe-train-info"><h3><span class="sehe-train-num">3</span>The Mainlander</h3><p class="sehe-train-text">Exclusive to Sir Edmund Hillary Explorer — a southern rail sector from Invercargill to Dunedin, through the rolling rural landscapes of the deep south.</p></div>
+      <div class="sehe-train-info"><h3><span class="sehe-train-num">3</span>The Mainlander</h3><p class="sehe-train-text">Exclusive to Sir Edmund Hillary Explorer, The Mainlander carries you from Invercargill to Dunedin along the historic Main South Line — weaving through rolling rural landscapes and the deep south of New Zealand.</p></div>
      </article>
      <article class="sehe-train">
       <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/About-SEHE-Rail-Tour-3.jpg');"><span class="sehe-train-day">Day 8</span></div>
       <div class="sehe-train-info"><h3><span class="sehe-train-num">4</span>Taieri Gorge</h3><p class="sehe-train-text">A remote rail journey through river gorges, historic tunnels and the Wingatui Viaduct — one of New Zealand's great railway engineering landmarks.</p></div>
      </article>
-     <article class="sehe-train">
-      <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp');"><span class="sehe-train-day">Day 12 &amp; 13</span></div>
-      <div class="sehe-train-info"><h3><span class="sehe-train-num">5</span>Coastal Pacific</h3><p class="sehe-train-text">The Pacific coast route between Christchurch, Kaik&#333;ura and Blenheim — remote beaches, mountains rising from the sea, and the Marlborough wine region.</p></div>
-     </article>
-     <article class="sehe-train">
-      <div class="sehe-train-image" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Weka-Pass-Journey-on-the-Sir-Edmund-Hillary-Explorer-Rail-Adventure.webp');"><span class="sehe-train-day">Day 14</span></div>
-      <div class="sehe-train-info"><h3><span class="sehe-train-num">6</span>Weka Pass Railway</h3><p class="sehe-train-text">Heritage carriages hauled by a vintage diesel-electric locomotive through the unique limestone landscape of the Weka Pass.</p></div>
-     </article>
+    
     </div>
    </div>
   </section>
@@ -668,13 +667,13 @@
     <div class="sehe-brochure-cover">
      <div class="sehe-brochure-cover-wrap">
       <span class="sehe-brochure-badge">Free PDF Download</span>
-      <img class="sehe-brochure-cover-img" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/Web_14+Day+27-28_Spring-Summer+Tour_Brochure-Cover-1920w.webp" alt="The Sir Edmund Hillary Explorer - 14-Day Spring/Summer 2027/28 Tour Brochure">
+      <img class="sehe-brochure-cover-img" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/Web_11+Day+27-28_Spring-Summer+Tour-1920w.webp" alt="The Sir Edmund Hillary Explorer - 11-Day Spring/Summer 2027/28 Tour Brochure">
      </div>
     </div>
     <div class="sehe-brochure-formside">
      <span class="sehe-brochure-eyebrow">Tour Brochure</span>
-     <h2 class="sehe-brochure-title">View the full 14-day tour brochure</h2>
-     <p class="sehe-brochure-subtitle">View the full itinerary, inclusions, season pricing and &ldquo;Super 6&rdquo; rail journey details.</p>
+     <h2 class="sehe-brochure-title">View the full 11-day tour brochure</h2>
+     <p class="sehe-brochure-subtitle">View the full itinerary, hotels, inclusions and season pricing for the 11-day tour.</p>
      <div class="sehe-brochure-note" style="margin-top:6px; padding:14px 16px; background:var(--gold-pale); border-left:3px solid var(--gold); border-radius:6px; font-size:14px; color:var(--text);">Complete the short form just below to view the brochure collection &darr;</div>
      <div class="sehe-form-slot" data-sehe-form-slot hidden></div>
     </div>

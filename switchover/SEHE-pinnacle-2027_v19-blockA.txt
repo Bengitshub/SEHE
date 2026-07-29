@@ -1,8 +1,17 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 15-DAY PINNACLE TOUR 2027
-     COMPLETE TOUR PAGE  ·  VERSION v18  ·  2026-07-29  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v19  ·  2026-07-29  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v19 — STATIC 5-STAR STRIP REINSTATED — Ben's informed decision. The
+            4.7-TrustScore facts were put to him plainly (twice); his call:
+            keep the 5-star presentation, as the outlier 1-star review is
+            being dealt with, and on its resolution the TrustScore is
+            expected to cross 4.8 (at which point Trustpilot's own widgets
+            agree). Repo re-aligned to match the versions held in the Duda
+            editors so the record equals what publishes. Content identical
+            to the retracted round; only this header differs. Item fix
+            (302,374 / 289,392) unchanged throughout.
        v18 — STATIC 5-STAR STRIP RETRACTED before it ever published (never
             went live). Verified against Trustpilot's own widget API: the
             business's TrustScore is 4.7, which Trustpilot renders as

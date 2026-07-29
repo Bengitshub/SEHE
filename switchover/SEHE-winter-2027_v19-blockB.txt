@@ -1,4 +1,4 @@
-<!-- ═══ SEHE 14day-2627 v27 — BLOCK B (paste in an HTML widget BELOW the Duda form row; Block A + form row sit above) ═══ -->
+<!-- ═══ SEHE winter-2027 v19 — BLOCK B (paste in an HTML widget BELOW the Duda form row; Block A + form row sit above) ═══ -->
 
 
 
@@ -47,7 +47,11 @@
   .booking-info-value { font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 700 !important; color: var(--navy) !important; margin-bottom: 2px; }
   .booking-info-label { font-size: 11px !important; color: var(--text-light) !important; text-transform: uppercase !important; letter-spacing: 0.8px !important; }
   .booking-info-supplement { display: block; font-size: 10.5px !important; color: rgba(90, 90, 90, 0.75) !important; margin-top: 4px; font-style: italic; }
-  .booking-trust { padding: 8px 24px; background: var(--off-white); text-align: center; }
+  .booking-trust { padding: 10px 24px; background: var(--off-white); text-align: center; }
+  .booking-trust-static { display: inline-flex; align-items: center; gap: 10px; text-decoration: none !important; }
+  .booking-trust-static img { height: 20px; width: auto; display: block; }
+  .booking-trust-static span { font-family: 'Open Sans', sans-serif !important; font-size: 13px !important; color: var(--text-light) !important; }
+  .booking-trust-static strong { color: var(--navy); }
   .booking-widget-area { padding: 24px; background: var(--off-white); min-height: 200px; }
   .booking-deposit { display: flex; align-items: flex-start; gap: 12px; padding: 14px 18px; background: var(--green-pale); border-radius: 6px; margin-top: 20px; border: 1px solid #c8e6d0; }
   .booking-deposit-icon { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
@@ -96,14 +100,14 @@
     <div class="booking-topbar">
      <div class="booking-topbar-left">
       <div class="booking-topbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#c8a56c" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
-      <span class="booking-topbar-label" id="bookingTourName">14-Day Spring/Summer Tour 2026/27</span>
+      <span class="booking-topbar-label" id="bookingTourName">12-Day Winter Edition 2027</span>
      </div>
      <span class="booking-topbar-secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> Secure booking</span>
     </div>
     <div class="booking-tabs" id="bookingTabs"></div>
     <div class="booking-info">
-     <div class="booking-info-item"><span class="booking-info-value" id="infoPrice">From NZ$8,995</span><span class="booking-info-label">Per person</span><span class="booking-info-supplement">Single Supplement NZ$1,495</span></div>
-     <div class="booking-info-item"><span class="booking-info-value" id="infoDuration">14 Days</span><span class="booking-info-label">Duration</span></div>
+     <div class="booking-info-item"><span class="booking-info-value" id="infoPrice">From NZ$8,495</span><span class="booking-info-label">Per person</span><span class="booking-info-supplement">Single Supplement NZ$1,595</span></div>
+     <div class="booking-info-item"><span class="booking-info-value" id="infoDuration">12 Days</span><span class="booking-info-label">Duration</span></div>
      <div class="booking-info-item"><span class="booking-info-value" id="infoStartsEnds">Christchurch return</span><span class="booking-info-label" id="infoStartsEndsLabel">Starts &amp; ends</span></div>
     </div>
     <style>
@@ -129,7 +133,7 @@
      .sehe-departure-day-nearing { color: var(--amber) !important; }
      .sehe-departure-next-sold { border-left-color: var(--red) !important; }
      .sehe-departure-next-sold .sehe-departure-next-label { color: var(--red) !important; }
-     .sehe-departure-legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--border-light); }
+     .sehe-departure-legend { display: flex; gap: 16px; margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--border-light); }
      .sehe-departure-legend-item { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px !important; color: var(--text-light) !important; }
      .sehe-departure-legend-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
      .sehe-departure-legend-avail { background: var(--navy); }
@@ -148,12 +152,12 @@
      }
     </style>
     <div class="booking-two-col">
-     <div class="sehe-departure-list" data-tour="14day-2627">
+     <div class="sehe-departure-list" data-tour="winter-2027">
       <div class="sehe-departure-list-header">
        <p class="sehe-departure-list-label">Available Departures</p>
-       <span class="sehe-departure-list-count" data-departure-count=""><span class="sehe-departure-list-count-pulse"></span>14 available · 3 sold out</span>
+       <span class="sehe-departure-list-count" data-departure-count=""><span class="sehe-departure-list-count-pulse"></span>6 departures available</span>
       </div>
-      <div data-departure-content=""><div class="sehe-departure-next"><span class="sehe-departure-next-label">Next</span><span class="sehe-departure-next-date">9 November 2026</span><span class="sehe-departure-next-end">→ Returns 22 Nov</span></div><div class="sehe-departure-months"><div class="sehe-departure-month"><span class="sehe-departure-month-label">October 2026</span><span class="sehe-departure-month-dates"><span class="sehe-departure-day-sold" title="Sold out">12</span><span class="sehe-departure-day-sep">·</span><span class="sehe-departure-day-sold" title="Sold out">19</span><span class="sehe-departure-day-sep">·</span><span class="sehe-departure-day-sold" title="Sold out">26</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">November 2026</span><span class="sehe-departure-month-dates"><span>9</span><span class="sehe-departure-day-sep">·</span><span>16</span><span class="sehe-departure-day-sep">·</span><span>23</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">January 2027</span><span class="sehe-departure-month-dates"><span>4</span><span class="sehe-departure-day-sep">·</span><span>11</span><span class="sehe-departure-day-sep">·</span><span>18</span><span class="sehe-departure-day-sep">·</span><span>25</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">February 2027</span><span class="sehe-departure-month-dates"><span>8</span><span class="sehe-departure-day-sep">·</span><span>15</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">March 2027</span><span class="sehe-departure-month-dates"><span>8</span><span class="sehe-departure-day-sep">·</span><span>15</span><span class="sehe-departure-day-sep">·</span><span>22</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">April 2027</span><span class="sehe-departure-month-dates"><span>5</span><span class="sehe-departure-day-sep">·</span><span>12</span></span></div></div><div class="sehe-departure-legend"><span class="sehe-departure-legend-item"><span class="sehe-departure-legend-dot sehe-departure-legend-avail"></span>Available</span><span class="sehe-departure-legend-item"><span class="sehe-departure-legend-dot sehe-departure-legend-sold"></span>Sold out</span></div></div>
+      <div data-departure-content=""><div class="sehe-departure-next"><span class="sehe-departure-next-label">Next</span><span class="sehe-departure-next-date">10 July 2027</span><span class="sehe-departure-next-end">→ Returns 21 Jul</span></div><div class="sehe-departure-months"><div class="sehe-departure-month"><span class="sehe-departure-month-label">July 2027</span><span class="sehe-departure-month-dates"><span>10</span><span class="sehe-departure-day-sep">·</span><span>24</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">August 2027</span><span class="sehe-departure-month-dates"><span>7</span><span class="sehe-departure-day-sep">·</span><span>14</span><span class="sehe-departure-day-sep">·</span><span>21</span><span class="sehe-departure-day-sep">·</span><span>28</span></span></div></div></div>
       <div class="booking-notes">
        <div class="booking-deposit">
         <svg class="booking-deposit-icon" viewBox="0 0 24 24" fill="none" stroke="#2a7a4a" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
@@ -258,9 +262,10 @@
      </div>
     </div>
     <div class="booking-trust">
-     <div class="trustpilot-widget" data-locale="en-NZ" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="67af6f95db89fc000f855205" data-style-height="20px" data-style-width="100%">
-      <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot</a>
-     </div>
+     <a class="booking-trust-static" href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener" aria-label="Rated 5 out of 5 stars on Trustpilot — read our reviews">
+      <img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="Rated 5 out of 5 stars">
+      <span>Rated 5 out of 5 on <strong>Trustpilot</strong></span>
+     </a>
     </div>
    </div>
   </section>
@@ -268,13 +273,13 @@
 <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async=""></script>
 <script type="text/javascript" src="//pounamutourismgroup.checkfront.com/lib/interface--0.js"></script>
 <script>
-  var DEFAULT_TOUR = '14day';  /* ← CHANGE THIS PER PAGE */
+  var DEFAULT_TOUR = 'winter27';  /* ← CHANGE THIS PER PAGE */
   var TOUR_DATA = {
    '14day': { name: '14-Day Spring⁠/⁠Summer Tour 2026/27', tabLabel: '14-Day Spring⁠/⁠Summer 2026/27', duration: '14 Days', price: 'From NZ$8,995', item_id: '302,374', date: '20261109', category_id: null, departureKey: '14day-2627', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
-   '11day': { name: '11-Day Spring⁠/⁠Summer Tour 2026/27', tabLabel: '11-Day Spring⁠/⁠Summer 2026/27', duration: '11 Days', price: 'From NZ$7,495', item_id: '305', date: '20261102', category_id: null, departureKey: '11day-2627', startsEnds: 'Christchurch', startsEndsLabel: 'Starts & ends' },
-   'winter26': { name: '12-Day Winter Edition 2026', tabLabel: 'Winter 2026', duration: '12 Days', price: 'From NZ$7,995', item_id: '289,392', date: '20260905', category_id: '5', departureKey: 'winter-2026', startsEnds: 'Christchurch', startsEndsLabel: 'Starts & ends' },
+   '11day': { name: '11-Day Spring⁠/⁠Summer Tour 2026/27', tabLabel: '11-Day Spring⁠/⁠Summer 2026/27', duration: '11 Days', price: 'From NZ$7,495', item_id: '305', date: '20261102', category_id: null, departureKey: '11day-2627', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
+   'winter26': { name: '12-Day Winter Edition 2026', tabLabel: 'Winter 2026', duration: '12 Days', price: 'From NZ$7,995', item_id: '289,392', date: '20260905', category_id: '5', departureKey: 'winter-2026', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
    'pinnacle': { name: '15-Day Pinnacle Tour 2027', tabLabel: 'Pinnacle 2027', duration: '15 Days', price: 'From NZ$25,995', item_id: '315', date: '20270114', category_id: '5', departureKey: 'pinnacle-2027', startsEnds: 'Christchurch → Auckland', startsEndsLabel: 'Starts → Ends' },
-   'winter27': { name: '12-Day Winter Edition 2027', tabLabel: 'Winter 2027', duration: '12 Days', price: 'From NZ$8,495', item_id: '373', date: '20270710', category_id: '5', departureKey: 'winter-2027', startsEnds: 'Christchurch', startsEndsLabel: 'Starts & ends' },
+   'winter27': { name: '12-Day Winter Edition 2027', tabLabel: 'Winter 2027', duration: '12 Days', price: 'From NZ$8,495', item_id: '373', date: '20270710', category_id: '5', departureKey: 'winter-2027', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
    '14day2728': { name: '14-Day Spring⁠/⁠Summer Tour 2027/28', tabLabel: '14-Day Spring⁠/⁠Summer 2027/28', duration: '14 Days', price: 'From NZ$9,990', item_id: '388', date: '20271004', category_id: null, departureKey: '14day-2728', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
    '11day2728': { name: '11-Day Spring⁠/⁠Summer Tour 2027/28', tabLabel: '11-Day Spring⁠/⁠Summer 2027/28', duration: '11 Days', price: 'From NZ$8,490', item_id: '387', date: '20270927', category_id: null, departureKey: '11day-2728', startsEnds: 'Christchurch', startsEndsLabel: 'Starts & ends' }
   };
@@ -367,7 +372,7 @@
       <div class="sehe-inc">
        <div class="sehe-inc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="11" rx="2"></rect><circle cx="7.5" cy="19" r="1.5"></circle><circle cx="16.5" cy="19" r="1.5"></circle><line x1="3" y1="12" x2="21" y2="12"></line><line x1="7" y1="9" x2="9" y2="9"></line></svg></div>
        <div class="sehe-inc-label">Luxury coach transfers</div>
-       <div class="sehe-inc-sub">Two coaches travel with the tour, providing smooth transfers between &ldquo;Super 6&rdquo; rail journeys, hotels and included experiences.</div>
+       <div class="sehe-inc-sub">Luxury coaches travel with the tour, providing smooth transfers between the winter rail journeys, hotels and included experiences.</div>
       </div>
       <div class="sehe-inc">
        <div class="sehe-inc-icon"><svg viewBox="0 0 24 24"><path d="M5 22V3"></path><path d="M5 3h13l-3 5 3 5H5"></path></svg></div>
@@ -377,17 +382,17 @@
       <div class="sehe-inc">
        <div class="sehe-inc-icon"><svg viewBox="0 0 24 24"><path d="M7 2v8a2 2 0 0 0 4 0V2"></path><path d="M9 10v12"></path><path d="M16.5 2c-1.5 0-2.5 2.2-2.5 5s1 5 2.5 5v10"></path></svg></div>
        <div class="sehe-inc-label">Meals included</div>
-       <div class="sehe-inc-sub">12 cooked breakfasts, 9 dinners and 9 lunches, including the Gourmet BBQ at Walter Peak Homestead.</div>
+       <div class="sehe-inc-sub">11 cooked breakfasts, 9 lunches and 8 dinners — including the gourmet BBQ lunch at Walter Peak Homestead and the Stratosfare buffet lunch in Queenstown.</div>
       </div>
       <div class="sehe-inc">
        <div class="sehe-inc-icon"><svg viewBox="0 0 24 24"><path d="M4 5h16a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4V7a2 2 0 0 1 2-2z"></path><path d="M9 8v2M9 13v2M9 17v0"></path></svg></div>
        <div class="sehe-inc-label">Included experiences</div>
-       <div class="sehe-inc-sub">TSS Earnslaw cruise, Walter Peak Farm, Pounamu Pathway, Takah&#275; Sanctuary, Antarctic Centre, and your choice of Allan Scott Winery or Omaka Aviation Heritage Centre.</div>
+       <div class="sehe-inc-sub">Christchurch tram trip, TranzAlpine, Pounamu Pathway, RealNZ cruise to Walter Peak, Skyline Gondola &amp; Stratosfare, Doubtful Sound cruise, Takah&#275; Sanctuary, Te Hikoi Museum, Bill Richardson Transport World, The Mainlander, Taieri Gorge, and the Sir Edmund Hillary Alpine Centre with a Hillary family guest speaker.</div>
       </div>
       <div class="sehe-inc">
        <div class="sehe-inc-icon"><svg viewBox="0 0 24 24"><line x1="2" y1="5" x2="22" y2="5"></line><line x1="12" y1="5" x2="12" y2="9"></line><rect x="5" y="9" width="11" height="6" rx="2"></rect><line x1="16" y1="12" x2="22" y2="12"></line><line x1="22" y1="10" x2="22" y2="14"></line><line x1="6" y1="18" x2="14" y2="18"></line><line x1="7" y1="15" x2="7" y2="18"></line><line x1="13" y1="15" x2="13" y2="18"></line></svg></div>
        <div class="sehe-inc-label">Optional excursions</div>
-       <div class="sehe-inc-sub">Selected optional experiences can be added before travel, including glacier helicopter flights, Doubtful Sound cruise, glowworm tour, whale watching, and Scenic Plus train upgrades.</div>
+       <div class="sehe-inc-sub">Selected optional experiences can be added before travel, including the Fox Glacier helicopter flight, the Te Anau glow-worm cave tour, the Larnach Castle tour &amp; high tea, the &ldquo;Galactic Journey&rdquo; Planetarium show and Tasman Glacier flights.</div>
       </div>
      </div>
     </div>
@@ -487,7 +492,7 @@
     <div class="sehe-itinerary-header">
      <div class="sehe-itinerary-header-left">
       <span class="sehe-section-eyebrow">Tour Itinerary</span>
-      <h2 class="sehe-section-heading">14 days, carefully paced</h2>
+      <h2 class="sehe-section-heading">12 days, carefully paced</h2>
       <p class="sehe-section-intro">Most days have a single transfer, with several full days built in at the South Island's standout stops.</p>
      </div>
      <button type="button" class="sehe-expand-toggle" id="seheExpandAllBtn" aria-pressed="false">
@@ -509,8 +514,6 @@
      <a href="#seheDay10" class="sehe-day-jump" data-jump="10">10</a>
      <a href="#seheDay11" class="sehe-day-jump" data-jump="11">11</a>
      <a href="#seheDay12" class="sehe-day-jump" data-jump="12">12</a>
-     <a href="#seheDay13" class="sehe-day-jump" data-jump="13">13</a>
-     <a href="#seheDay14" class="sehe-day-jump" data-jump="14">14</a>
     </div>
     <div class="sehe-timeline">
      <article class="sehe-day" id="seheDay1">
@@ -520,14 +523,14 @@
         <div class="sehe-day-thumb" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY1-10-1920w.webp');"></div>
         <div class="sehe-day-headline">
          <h3 class="sehe-day-title">Christchurch — Welcome &amp; Tour Briefing</h3>
-         <div class="sehe-day-tags"><span class="sehe-day-tag">Arrival</span><span class="sehe-day-tag">Welcome dinner</span></div>
+         <div class="sehe-day-tags"><span class="sehe-day-tag">Arrival</span><span class="sehe-day-tag">Tram ride</span><span class="sehe-day-tag">Welcome dinner</span></div>
         </div>
         <span class="sehe-day-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"></path></svg></span>
        </button>
        <div class="sehe-day-detail"><div class="sehe-day-detail-inner">
-        <p>Optional pre-tour accommodation is available at Sudima Airport Hotel. Registration to meet your fellow explorers and tour guides starts from 2.30pm – 5pm at Sudima Airport Hotel.</p>
-        <p>Welcome Dinner and Tour Briefing will be held at the hotel restaurant at 6pm.</p>
-        <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>Sudima Airport Hotel, Christchurch</div></div>
+        <p>A tram-ride voucher is included at hotel check-in, so you can explore &ldquo;The Garden City&rdquo; &#332;tautahi Christchurch at a leisurely pace. Tour registration to meet your fellow explorers and tour guides runs from 2.30pm &ndash; 5.00pm.</p>
+        <p>An &ldquo;Ice-Breaker&rdquo; welcome drink, tour briefing and dinner will be held at the hotel restaurant at 6.00pm.</p>
+        <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>Distinction Hotel Christchurch</div></div>
        </div></div>
       </div>
      </article>
@@ -535,7 +538,7 @@
       <div class="sehe-day-number"><span class="sehe-day-number-label">Day</span><span class="sehe-day-number-num">2</span></div>
       <div class="sehe-day-card">
        <button class="sehe-day-summary" type="button" aria-expanded="false">
-        <div class="sehe-day-thumb" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp');"></div>
+        <div class="sehe-day-thumb" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp');"></div>
         <div class="sehe-day-headline">
          <h3 class="sehe-day-title">Christchurch / Greymouth / Franz Josef</h3>
          <div class="sehe-day-tags"><span class="sehe-day-tag sehe-day-tag-rail">TranzAlpine</span><span class="sehe-day-tag">Coach</span><span class="sehe-day-tag">Pounamu Pathway</span></div>
@@ -562,9 +565,9 @@
         <span class="sehe-day-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"></path></svg></span>
        </button>
        <div class="sehe-day-detail"><div class="sehe-day-detail-inner">
-        <p>Wake up to enjoy the option for a helicopter tour of the Franz Josef glacier. Leaving Franz Josef, we travel down the West Coast through the Haast Pass, journeying through large tracts of native rain forest and over the Southern Alps. This remote area has a ruggedly beautiful landscape of vast rainforests, gushing waterfalls and snow-capped mountains. Continuing through Makarora on the border of Mount Aspiring World Heritage Park, we pass by the crystal-clear waters of Lake Wanaka, Lake Hawea and Lake Dunstan.</p>
+        <p>Wake up to enjoy the option for a helicopter tour of the Franz Josef glacier. Leaving Franz Josef, we travel down the West Coast through the Haast Pass, journeying through large tracts of native rain forest and over the Southern Alps. This remote area has a ruggedly beautiful landscape of vast rainforests, gushing waterfalls and snow-capped mountains, with a lunch stop at the Hard Antler Caf&eacute; in Haast and a pause at the Thunder Creek Falls lookout. Continuing through Makarora on the border of Mount Aspiring World Heritage Park, we pass by the crystal-clear waters of Lake Wanaka, Lake Hawea and Lake Dunstan.</p>
         <p>The adventure playground of Queenstown then awaits! Cap off a special day as we take in The Remarkables Mountain Range and the view of Lake Wakatipu from the hotel.</p>
-        <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>Mercure Queenstown Resort — with views over Lake Wakatipu and the Remarkables Mountain range</div></div>
+        <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>Millennium Hotel Queenstown — in the heart of Queenstown</div></div>
        </div></div>
       </div>
      </article>
@@ -574,14 +577,14 @@
        <button class="sehe-day-summary" type="button" aria-expanded="false">
         <div class="sehe-day-thumb" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp');"></div>
         <div class="sehe-day-headline">
-         <h3 class="sehe-day-title">Queenstown — TSS Earnslaw &amp; Walter Peak</h3>
-         <div class="sehe-day-tags"><span class="sehe-day-tag sehe-day-tag-hero">Steam ship</span><span class="sehe-day-tag">Lake cruise</span><span class="sehe-day-tag">Gourmet BBQ</span></div>
+         <h3 class="sehe-day-title">Queenstown — RealNZ Cruise &amp; Walter Peak</h3>
+         <div class="sehe-day-tags"><span class="sehe-day-tag sehe-day-tag-hero">Walter Peak</span><span class="sehe-day-tag">Lake cruise</span><span class="sehe-day-tag">Gourmet BBQ</span></div>
         </div>
         <span class="sehe-day-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"></path></svg></span>
        </button>
        <div class="sehe-day-detail"><div class="sehe-day-detail-inner">
-        <p>Wake up to join a lake cruise on board the historic TSS Earnslaw, the 1912 Edwardian steamboat, which takes us across Lake Wakatipu to Walter Peak High Country Farm for a gourmet BBQ lunch.</p>
-        <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>Mercure Queenstown Resort</div></div>
+        <p>Wake up to join a winter lake cruise with RealNZ across Lake Wakatipu to Walter Peak High Country Farm for a gourmet BBQ lunch, then enjoy the afternoon on your own exploring Queenstown.</p>
+        <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>Millennium Hotel Queenstown</div></div>
        </div></div>
       </div>
      </article>
@@ -591,15 +594,14 @@
        <button class="sehe-day-summary" type="button" aria-expanded="false">
         <div class="sehe-day-thumb" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp');"></div>
         <div class="sehe-day-headline">
-         <h3 class="sehe-day-title">Queenstown / Kingston / Te Anau</h3>
-         <div class="sehe-day-tags"><span class="sehe-day-tag sehe-day-tag-rail">Kingston Flyer</span><span class="sehe-day-tag">Fiordland</span><span class="sehe-day-tag">Takahe Sanctuary</span></div>
+         <h3 class="sehe-day-title">Queenstown / Te Anau</h3>
+         <div class="sehe-day-tags"><span class="sehe-day-tag">Skyline Gondola</span><span class="sehe-day-tag">Stratosfare</span><span class="sehe-day-tag">Fiordland</span></div>
         </div>
         <span class="sehe-day-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"></path></svg></span>
        </button>
        <div class="sehe-day-detail"><div class="sehe-day-detail-inner">
-        <p>Departing Queenstown, we continue to the village of Kingston which is nestled on southernmost end of Lake Wakatipu. Here, the iconic <strong><svg class="sehe-train-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.2"></circle><circle cx="16" cy="19" r="1.2"></circle></svg>Kingston Flyer Steam Train</strong> awaits to take you on a memorable return journey between Kingston &amp; Fairlight.</p>
-        <p>Then, we enter the Fiordland National Park district, continuing to traverse the Southern Scenic Route, our journey calls in to visit the Takahe Bird Sanctuary. Takahe are the stars of the show and meeting these prehistoric-looking characters is a 'must do' for Fiordland visitors. The sanctuary is a large part of the success of the Takahe Recovery Programme.</p>
-        <p>Experience breathtaking landscapes and for those who wish to add on a unique experience, take part in a guided Glowworm cave tour for a truly magical experience or an optional jet boat experience.</p>
+        <p>Before departing Queenstown, enjoy unforgettable views sky-high on the iconic Queenstown Gondola, followed by a buffet lunch on top of the world at the Stratosfare Restaurant &amp; Bar, looking out over Coronet Peak and The Remarkables. We then travel by luxury coach to Te Anau (via Mossburn), the gateway to Fiordland National Park.</p>
+        <p>Take in the breathtaking winter landscapes, and for those who wish to add a unique experience, an optional guided glow-worm cave tour at Te Anau makes for a truly magical evening.</p>
         <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>Distinction Hotel Luxmore, Te Anau</div></div>
        </div></div>
       </div>
@@ -610,14 +612,14 @@
        <button class="sehe-day-summary" type="button" aria-expanded="false">
         <div class="sehe-day-thumb" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg');"></div>
         <div class="sehe-day-headline">
-         <h3 class="sehe-day-title">Te Anau / Milford Sound / Te Anau</h3>
-         <div class="sehe-day-tags"><span class="sehe-day-tag sehe-day-tag-hero">Milford Sound</span><span class="sehe-day-tag">Fiord cruise</span><span class="sehe-day-tag">Optional Doubtful Sound</span></div>
+         <h3 class="sehe-day-title">Te Anau / Doubtful Sound / Te Anau</h3>
+         <div class="sehe-day-tags"><span class="sehe-day-tag sehe-day-tag-hero">Doubtful Sound</span><span class="sehe-day-tag">Fiord cruise</span><span class="sehe-day-tag">Wilmot Pass</span></div>
         </div>
         <span class="sehe-day-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"></path></svg></span>
        </button>
        <div class="sehe-day-detail"><div class="sehe-day-detail-inner">
-        <p>Travelling along the Milford Road (between Te Anau and Milford) is one of the finest alpine drives in the world. The scenery is exceptional, ranging from broad grassy flats, dense rainforest and towering mountains through to glacial lakes and alpine herb fields. A day tour to Milford Sound offers some of the most spectacular natural scenery to be viewed anywhere in the world. Board the coach and travel through stunning scenery along the Milford Road and into Fiordland, where your cruise boat awaits you. The tour includes a cruise around the fiord so you can experience its wonders up close and see landmarks like Mitre Peak and amazing wildlife, such as dolphins and seals. Cruise the innermost reaches of Milford Sound to the open Tasman Sea and back (or there is the optional upgrade to explore Doubtful Sound instead).</p>
-        <p>A one-day itinerary is enough to see all the beautiful views along the way, take a scenic cruise around the fiord, and get back to Te Anau in time for dinner.</p>
+        <p>Today we journey into the remote wilderness of Doubtful Sound — the deepest and one of the largest of the South Island fiords. From Te Anau we travel to Manapouri and cruise across the lake, then cross the Wilmot Pass by coach to reach the fiord, where a scenic cruise awaits. Far less visited than Milford, Doubtful Sound is a place of profound stillness — sheer cliffs, tumbling waterfalls and resident wildlife including fur seals, dolphins and, at times, penguins.</p>
+        <p>In winter, fresh snow on the surrounding peaks and quiet, mist-wrapped waters make the experience especially atmospheric. We return across Lake Manapouri to Te Anau in time for dinner.</p>
         <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>Distinction Hotel Luxmore, Te Anau</div></div>
        </div></div>
       </div>
@@ -626,21 +628,41 @@
       <div class="sehe-day-number"><span class="sehe-day-number-label">Day</span><span class="sehe-day-number-num">7</span></div>
       <div class="sehe-day-card">
        <button class="sehe-day-summary" type="button" aria-expanded="false">
-        <div class="sehe-day-thumb" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-13-1920w.webp');"></div>
+        <div class="sehe-day-thumb" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/183840-lake-sarah-in-snow-b1e7ecbb.webp');"></div>
         <div class="sehe-day-headline">
-         <h3 class="sehe-day-title">Te Anau / Invercargill / Dunedin</h3>
-         <div class="sehe-day-tags"><span class="sehe-day-tag sehe-day-tag-rail">The Mainlander</span><span class="sehe-day-tag">Coach</span><span class="sehe-day-tag">Deep south</span></div>
+         <h3 class="sehe-day-title">Te Anau / Tuatapere / Invercargill</h3>
+         <div class="sehe-day-tags"><span class="sehe-day-tag">Takah&#275; Sanctuary</span><span class="sehe-day-tag">Te Hikoi Museum</span><span class="sehe-day-tag">Southern Scenic Route</span></div>
         </div>
         <span class="sehe-day-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"></path></svg></span>
        </button>
        <div class="sehe-day-detail"><div class="sehe-day-detail-inner">
-        <p>Departing Te Anau for Invercargill, where we board a recently re-established train, <strong><svg class="sehe-train-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.2"></circle><circle cx="16" cy="19" r="1.2"></circle></svg>"The Mainlander"</strong> which weaves its way through rolling hills and lush scenic rural landscapes of the deep south of New Zealand, to Dunedin.</p>
-        <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>Distinction Hotel Dunedin — the city's premier luxury hotel, in the heart of Dunedin</div></div>
+        <p>As we depart Te Anau, the morning begins with a visit to the Takah&#275; Bird Sanctuary. Takah&#275; are the stars of the show, and meeting these prehistoric-looking characters is a 'must do' for Fiordland visitors — the sanctuary is a large part of the success of the Takah&#275; Recovery Programme.</p>
+        <p>We then follow the Southern Scenic Route south, stopping for lunch at the Tui Base Camp Bar &amp; Restaurant in Tuatapere before continuing to Riverton, one of the country's oldest settlements, where the Te Hikoi Museum showcases how M&#257;ori and Europeans adapted to life in this rugged southern region.</p>
+        <p>We continue to Invercargill — the southernmost city in New Zealand.</p>
+        <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>Distinction Hotel Invercargill — newly opened, in the heart of the city</div></div>
        </div></div>
       </div>
      </article>
      <article class="sehe-day" id="seheDay8">
       <div class="sehe-day-number"><span class="sehe-day-number-label">Day</span><span class="sehe-day-number-num">8</span></div>
+      <div class="sehe-day-card">
+       <button class="sehe-day-summary" type="button" aria-expanded="false">
+        <div class="sehe-day-thumb" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-13-1920w.webp');"></div>
+        <div class="sehe-day-headline">
+         <h3 class="sehe-day-title">Invercargill / Dunedin</h3>
+         <div class="sehe-day-tags"><span class="sehe-day-tag sehe-day-tag-rail">The Mainlander</span><span class="sehe-day-tag">Transport World</span><span class="sehe-day-tag">Deep south</span></div>
+        </div>
+        <span class="sehe-day-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"></path></svg></span>
+       </button>
+       <div class="sehe-day-detail"><div class="sehe-day-detail-inner">
+        <p>This morning, visit Invercargill's Bill Richardson Transport World, home to over 300 classic vehicles — an extraordinary private collection, lovingly restored and beautifully presented.</p>
+        <p>We then board a recently re-established train, <strong><svg class="sehe-train-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.2"></circle><circle cx="16" cy="19" r="1.2"></circle></svg>"The Mainlander"</strong>, which weaves its way through the rolling hills and lush rural landscapes of the deep south, to Dunedin.</p>
+        <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>Distinction Hotel Dunedin — the city's premier luxury hotel, in the heart of Dunedin</div></div>
+       </div></div>
+      </div>
+     </article>
+     <article class="sehe-day" id="seheDay9">
+      <div class="sehe-day-number"><span class="sehe-day-number-label">Day</span><span class="sehe-day-number-num">9</span></div>
       <div class="sehe-day-card">
        <button class="sehe-day-summary" type="button" aria-expanded="false">
         <div class="sehe-day-thumb" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY3-13-1920w.webp');"></div>
@@ -652,13 +674,13 @@
        </button>
        <div class="sehe-day-detail"><div class="sehe-day-detail-inner">
         <p>In the morning, we explore the remote <strong><svg class="sehe-train-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.2"></circle><circle cx="16" cy="19" r="1.2"></circle></svg>Taieri Gorge by Dunedin Rail</strong> over river gorges, weaving our way through a myriad of historic tunnels and guide you to the historic Wingatui Viaduct, a marvel of 1880s construction that remains the largest wrought iron structure in New Zealand.</p>
-        <p>An afternoon at leisure is planned or there are the optional excursions visit to Larnach Castle for a high tea &amp; garden tour or explore the 'hidden' underground Fort Taiaroa, located underneath the Royal Albatross breeding colony at Taiaroa Head.</p>
+        <p>An afternoon at leisure is planned, or there is the optional excursion to Larnach Castle for a decadent high tea &amp; garden tour.</p>
         <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>Distinction Hotel Dunedin</div></div>
        </div></div>
       </div>
      </article>
-     <article class="sehe-day" id="seheDay9">
-      <div class="sehe-day-number"><span class="sehe-day-number-label">Day</span><span class="sehe-day-number-num">9</span></div>
+     <article class="sehe-day" id="seheDay10">
+      <div class="sehe-day-number"><span class="sehe-day-number-label">Day</span><span class="sehe-day-number-num">10</span></div>
       <div class="sehe-day-card">
        <button class="sehe-day-summary" type="button" aria-expanded="false">
         <div class="sehe-day-thumb" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/186543043_4147260582001622_7980904646095756954_n-1920w.jpeg');"></div>
@@ -669,25 +691,8 @@
         <span class="sehe-day-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"></path></svg></span>
        </button>
        <div class="sehe-day-detail"><div class="sehe-day-detail-inner">
-        <p>Departing Dunedin by <strong><svg class="sehe-train-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.2"></circle><circle cx="16" cy="19" r="1.2"></circle></svg>The Mainlander Train</strong>, we continue to hug the coast towards Oamaru. We then detour inland via Waitaki Valley &amp; Omarama by coach and onwards towards the spectacular Aoraki Mt Cook. Here, we find the home of the tallest mountain in New Zealand, which helped Sir Edmund Hillary to develop his climbing skills in preparation for the conquest of Mt Everest. Recognised as part of the Te Wahipounamu UNESCO World Heritage Area, the National Park is a breath-taking environment of glaciers, terminal lakes, turbulent rivers and Australasia's tallest peak, the mighty Aoraki Mt Cook soaring above at 3,724 metres.</p>
+        <p>Departing Dunedin by <strong><svg class="sehe-train-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.2"></circle><circle cx="16" cy="19" r="1.2"></circle></svg>The Mainlander Train</strong>, we continue to hug the coast towards Oamaru, with a lunch stop at the Harbour Street Caf&eacute;. We then detour inland via Waitaki Valley &amp; Omarama by coach and onwards towards the spectacular Aoraki Mt Cook. Here, we find the home of the tallest mountain in New Zealand, which helped Sir Edmund Hillary to develop his climbing skills in preparation for the conquest of Mt Everest. Recognised as part of the Te Wahipounamu UNESCO World Heritage Area, the National Park is a breath-taking environment of glaciers, terminal lakes, turbulent rivers and Australasia's tallest peak, the mighty Aoraki Mt Cook soaring above at 3,724 metres.</p>
         <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>The Hermitage Hotel — iconic accommodation with majestic mountain views of Aoraki Mt Cook</div></div>
-       </div></div>
-      </div>
-     </article>
-     <article class="sehe-day" id="seheDay10">
-      <div class="sehe-day-number"><span class="sehe-day-number-label">Day</span><span class="sehe-day-number-num">10</span></div>
-      <div class="sehe-day-card">
-       <button class="sehe-day-summary" type="button" aria-expanded="false">
-        <div class="sehe-day-thumb" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L387-Aoraki-Mount-Cook-National-Park--Canterbury-Rob-Suisted-1920w.jpg');"></div>
-        <div class="sehe-day-headline">
-         <h3 class="sehe-day-title">Aoraki Mt Cook — Hillary Centre &amp; Mueller Lake</h3>
-         <div class="sehe-day-tags"><span class="sehe-day-tag sehe-day-tag-hero">Hillary family speaker</span><span class="sehe-day-tag">Alpine Centre</span><span class="sehe-day-tag">Optional ski plane</span></div>
-        </div>
-        <span class="sehe-day-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"></path></svg></span>
-       </button>
-       <div class="sehe-day-detail"><div class="sehe-day-detail-inner">
-        <p>Enjoy a leisurely morning and then a visit to the Sir Edmund Hillary Alpine Centre, which is a tribute to New Zealand's global icon as well as discovering New Zealand's colourful transport, climbing and hotel history. Followed by an afternoon Mueller Lake walk and lookout through the National Park, surrounded by the silent splendour of the Southern Alps. Morning optional activities include a glacier explorer cruise or a scenic ski plane flight with expert pilots navigating their way over the glacial lake, passing soaring mountain tops over NZ's longest glacier — the 600 metre thick, Tasman Glacier. Guest speaker is a Hillary family representative in the Sir Edmund Hillary Alpine Centre Theatre before dinner. The optional Planetarium Show takes place in the theatre after the Hillary presentation.</p>
-        <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>The Hermitage Hotel</div></div>
        </div></div>
       </div>
      </article>
@@ -695,16 +700,16 @@
       <div class="sehe-day-number"><span class="sehe-day-number-label">Day</span><span class="sehe-day-number-num">11</span></div>
       <div class="sehe-day-card">
        <button class="sehe-day-summary" type="button" aria-expanded="false">
-        <div class="sehe-day-thumb" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/IMG-20231019-WA0008-1920w.jpg');"></div>
+        <div class="sehe-day-thumb" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L387-Aoraki-Mount-Cook-National-Park--Canterbury-Rob-Suisted-1920w.jpg');"></div>
         <div class="sehe-day-headline">
-         <h3 class="sehe-day-title">Aoraki Mt Cook / Geraldine / Christchurch</h3>
-         <div class="sehe-day-tags"><span class="sehe-day-tag">Coach</span><span class="sehe-day-tag">Tekapo</span><span class="sehe-day-tag">Optional Tram or Antarctic Centre</span></div>
+         <h3 class="sehe-day-title">Aoraki Mt Cook — Hillary Centre &amp; alpine drive</h3>
+         <div class="sehe-day-tags"><span class="sehe-day-tag sehe-day-tag-hero">Hillary family speaker</span><span class="sehe-day-tag">Alpine Centre</span><span class="sehe-day-tag">Optional ski plane</span></div>
         </div>
         <span class="sehe-day-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"></path></svg></span>
        </button>
        <div class="sehe-day-detail"><div class="sehe-day-detail-inner">
-        <p>A morning departure from the hotel leaving Aoraki Mt Cook by coach, we journey back to the coast via Tekapo, Geraldine and Rakaia on the way to Christchurch. On arrival in Christchurch, enjoy either a privately chartered Tram for a historic tram journey around the city or explore modern day Antarctica at the International Antarctic Centre and experience a taste of this unique and breathtaking continent — just like the explorers before you.</p>
-        <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>Distinction Hotel Christchurch — centrally located</div></div>
+        <p>Enjoy a leisurely morning and then a visit to the Sir Edmund Hillary Alpine Centre, which is a tribute to New Zealand's global icon as well as discovering New Zealand's colourful transport, climbing and hotel history. Followed by an afternoon scenic drive through the National Park, surrounded by the silent splendour of the Southern Alps. An optional helicopter flight with a glacier landing (the "Tasman Taster") is available. Morning optional activities also include a scenic ski plane flight with expert pilots navigating their way over the glacial lake, passing soaring mountain tops over NZ's longest glacier — the 600 metre thick, Tasman Glacier. Guest speaker is a Hillary family representative in the Sir Edmund Hillary Alpine Centre Theatre before dinner. The optional Planetarium Show takes place in the theatre after the Hillary presentation.</p>
+        <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>The Hermitage Hotel</div></div>
        </div></div>
       </div>
      </article>
@@ -712,50 +717,15 @@
       <div class="sehe-day-number"><span class="sehe-day-number-label">Day</span><span class="sehe-day-number-num">12</span></div>
       <div class="sehe-day-card">
        <button class="sehe-day-summary" type="button" aria-expanded="false">
-        <div class="sehe-day-thumb" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp');"></div>
+        <div class="sehe-day-thumb" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/IMG-20231019-WA0008-1920w.jpg');"></div>
         <div class="sehe-day-headline">
-         <h3 class="sehe-day-title">Christchurch / Kaik&#333;ura</h3>
-         <div class="sehe-day-tags"><span class="sehe-day-tag sehe-day-tag-rail">Coastal Pacific</span><span class="sehe-day-tag sehe-day-tag-hero">Whale Watching</span><span class="sehe-day-tag">Optional zip line</span></div>
+         <h3 class="sehe-day-title">Aoraki Mt Cook / Geraldine / Christchurch</h3>
+         <div class="sehe-day-tags"><span class="sehe-day-tag">Coach</span><span class="sehe-day-tag">Tekapo</span><span class="sehe-day-tag">Tour ends</span></div>
         </div>
         <span class="sehe-day-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"></path></svg></span>
        </button>
        <div class="sehe-day-detail"><div class="sehe-day-detail-inner">
-        <p><em>"Where the mountains meet the sea"</em></p>
-        <p>Departing Christchurch on the <strong><svg class="sehe-train-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.2"></circle><circle cx="16" cy="19" r="1.2"></circle></svg>Coastal Pacific Scenic Train</strong>, our destination is Kaik&#333;ura, home of resident whales, where the guardians of the seas — the mountains of the Southern Alps — rise majestically from the deep trenches of the Pacific Ocean. Several different species of whale can be seen off the coast of Kaik&#333;ura at different times of the year, and most of the time, the huge resident Sperm Whales can be sighted. The ocean trench just off the coast means sperm whales are often seen close to shore. Enjoy the option to go on a whale watching cruise or a zip line experience whilst in Kaik&#333;ura.</p>
-        <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>Sudima Hotel Kaik&#333;ura — with views over the Kaik&#333;ura Esplanade</div></div>
-       </div></div>
-      </div>
-     </article>
-     <article class="sehe-day" id="seheDay13">
-      <div class="sehe-day-number"><span class="sehe-day-number-label">Day</span><span class="sehe-day-number-num">13</span></div>
-      <div class="sehe-day-card">
-       <button class="sehe-day-summary" type="button" aria-expanded="false">
-        <div class="sehe-day-thumb" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-18-1920w.webp');"></div>
-        <div class="sehe-day-headline">
-         <h3 class="sehe-day-title">Kaik&#333;ura / Blenheim / Kaik&#333;ura</h3>
-         <div class="sehe-day-tags"><span class="sehe-day-tag sehe-day-tag-rail">Coastal Pacific</span><span class="sehe-day-tag">Marlborough wine</span><span class="sehe-day-tag">Optional aviation centre</span></div>
-        </div>
-        <span class="sehe-day-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"></path></svg></span>
-       </button>
-       <div class="sehe-day-detail"><div class="sehe-day-detail-inner">
-        <p>This morning, we board the <strong><svg class="sehe-train-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.2"></circle><circle cx="16" cy="19" r="1.2"></circle></svg>Coastal Pacific train</strong> again, departing Kaik&#333;ura's dramatic mountain backdrops onwards to the Marlborough winelands region. The coastal route heads inland, crossing the historic railroad bridge at Seddon and bursting out to the Awatere Valley, then through the Dashwood Pass en route to Blenheim by train. Continuing back to Kaik&#333;ura by coach after enjoying a leisurely wine tasting at Allan Scott Winery or a visit to Omaka Aviation Heritage Centre via Ohau Point seal colony.</p>
-        <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Tonight's stay</span>Sudima Hotel Kaik&#333;ura</div></div>
-       </div></div>
-      </div>
-     </article>
-     <article class="sehe-day" id="seheDay14">
-      <div class="sehe-day-number"><span class="sehe-day-number-label">Day</span><span class="sehe-day-number-num">14</span></div>
-      <div class="sehe-day-card">
-       <button class="sehe-day-summary" type="button" aria-expanded="false">
-        <div class="sehe-day-thumb" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/wekapass-2-1920w.webp');"></div>
-        <div class="sehe-day-headline">
-         <h3 class="sehe-day-title">Kaik&#333;ura / Waikari / Christchurch</h3>
-         <div class="sehe-day-tags"><span class="sehe-day-tag sehe-day-tag-rail">Weka Pass</span><span class="sehe-day-tag">Heritage train</span><span class="sehe-day-tag">Tour ends</span></div>
-        </div>
-        <span class="sehe-day-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"></path></svg></span>
-       </button>
-       <div class="sehe-day-detail"><div class="sehe-day-detail-inner">
-        <p>Wake up in Kaik&#333;ura and travel via Greta Valley to Weka Pass Railway in Waikari — journey through the unique limestone beauty of the <strong><svg class="sehe-train-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16"></path><circle cx="8" cy="19" r="1.2"></circle><circle cx="16" cy="19" r="1.2"></circle></svg>Weka Pass</strong> in heritage carriages hauled by a vintage diesel-electric locomotive. Continue by coach through the rural Canterbury plains to Christchurch where the tour ends at lunchtime.</p>
+        <p>Depart Aoraki Mt Cook by coach and travel back towards Christchurch via Tekapo, Geraldine and Rakaia, with a lunch stop at Barkers of Geraldine. On arrival in Christchurch, the tour comes to an end.</p>
         <div class="sehe-day-hotel"><svg class="sehe-day-hotel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17h20M4 17V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8M8 11h8M2 21h20"></path></svg><div class="sehe-day-hotel-text"><span class="sehe-day-hotel-label">Optional post-tour</span>Distinction Hotel Christchurch — available for an additional night if desired</div></div>
        </div></div>
       </div>
@@ -878,11 +848,11 @@
     <div class="sehe-routemap-text">
      <span class="sehe-section-eyebrow">The Route</span>
      <h2 class="sehe-section-heading">The South Island, by rail and coach</h2>
-     <p class="sehe-section-intro">A complete South Island loop in fourteen days — coast to coast, across the Southern Alps, through Fiordland, Otago, Aoraki Mt Cook, Kaik&#333;ura and Marlborough by rail and luxury coach.</p>
+     <p class="sehe-section-intro">A South Island loop in twelve days — from Christchurch across a snow-dusted Southern Alps to the West Coast, through Queenstown, Fiordland, the deep south, Dunedin and Aoraki Mt Cook before returning to Christchurch by rail and luxury coach.</p>
     </div>
     <div class="sehe-routemap-media">
      <label for="seheRouteMapToggle" class="sehe-routemap-image-btn" aria-label="Open route map full size">
-      <img class="sehe-routemap-image" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/26-27+Spring-Summer+Tour_map-1920w.webp" alt="Sir Edmund Hillary Explorer 14-Day Spring/Summer Tour route map">
+      <img class="sehe-routemap-image" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/Web_2027+Winter+Tour+Brochure_SEHE-map-2027-1920w.webp" alt="Sir Edmund Hillary Explorer 12-Day Winter Edition 2027 route map">
       <span class="sehe-routemap-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M11 8v6M8 11h6M21 21l-4.35-4.35"></path></svg></span>
      </label>
      <p class="sehe-routemap-hint">Tap the map to enlarge</p>
@@ -893,7 +863,7 @@
   <div class="sehe-routemap-lightbox" role="dialog" aria-modal="true" aria-label="Tour route map">
    <label for="seheRouteMapToggle" class="sehe-routemap-lightbox-backdrop" aria-label="Close map"></label>
    <label for="seheRouteMapToggle" class="sehe-routemap-lightbox-close" aria-label="Close map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg></label>
-   <img class="sehe-routemap-lightbox-img" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/26-27+Spring-Summer+Tour_map-1920w.webp" alt="Sir Edmund Hillary Explorer 14-Day Spring/Summer Tour route map, full size">
+   <img class="sehe-routemap-lightbox-img" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/Web_2027+Winter+Tour+Brochure_SEHE-map-2027-1920w.webp" alt="Sir Edmund Hillary Explorer 12-Day Winter Edition 2027 route map, full size">
   </div>
 </div>
 
@@ -953,7 +923,7 @@
      <h2 class="sehe-section-heading">The Sir Edmund Hillary Explorer Experience</h2>
      <p class="sehe-section-intro">A short introduction to our award-winning rail and coach journeys through the heart of New Zealand&rsquo;s South Island.</p>
     </div>
-    <div class="sehe-video-frame" id="seheVideoFrame" role="button" tabindex="0" aria-label="Play the Sir Edmund Hillary Explorer journey video" data-video-src="1049200733" data-video-type="vimeo" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp');">
+    <div class="sehe-video-frame" id="seheVideoFrame" role="button" tabindex="0" aria-label="Play the Sir Edmund Hillary Explorer journey video" data-video-src="https://vid.cdn-website.com/35e9f777/videos/ENcK4SOQSsiryxnffZXR_PT+Testimonials+-+Short+Vid_1-v.mp4" data-video-type="mp4" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp');">
      <div class="sehe-video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6v12l9-6z"></path></svg></div>
      <div class="sehe-video-meta">
       <span class="sehe-video-meta-title">The Sir Edmund Hillary Explorer Tour Trailer</span>
@@ -1071,20 +1041,19 @@
    <div class="sehe-gallery-header">
     <span class="sehe-section-eyebrow">Photo Gallery</span>
     <h2 class="sehe-section-heading">What the journey feels like</h2>
-    <p class="sehe-section-intro">A look at the landscapes and moments that shape the journey, from the Southern Alps and West Coast to Aoraki Mt Cook and the Kaik&#333;ura coast.</p>
+    <p class="sehe-section-intro">A look at the landscapes and moments that shape the journey, from a snow-dusted Southern Alps and West Coast to Doubtful Sound, Aoraki Mt Cook and the deep south.</p>
    </div>
-   <div class="sehe-gallery-slider" id="seheGallerySlider" aria-roledescription="carousel" aria-label="14-day tour photo gallery">
+   <div class="sehe-gallery-slider" id="seheGallerySlider" aria-roledescription="carousel" aria-label="12-day winter tour photo gallery">
     <div class="sehe-gallery-viewport">
      <div class="sehe-gallery-track" id="seheGalleryTrack">
-      <div class="sehe-gallery-slide" aria-roledescription="slide" aria-label="1 of 9"><img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp" alt="TranzAlpine train crossing the Cragieburn Range across Lake Sarah"><div class="sehe-gallery-caption"><div class="sehe-gallery-caption-inner"><span class="sehe-gallery-day">Day 2</span><span class="sehe-gallery-place">The TranzAlpine through the Southern Alps</span></div></div></div>
-      <div class="sehe-gallery-slide" aria-roledescription="slide" aria-label="2 of 9"><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp" alt="Fox Glacier on the West Coast of the South Island"><div class="sehe-gallery-caption"><div class="sehe-gallery-caption-inner"><span class="sehe-gallery-day">Day 3</span><span class="sehe-gallery-place">Glacier country, West Coast</span></div></div></div>
-      <div class="sehe-gallery-slide" aria-roledescription="slide" aria-label="3 of 9"><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp" alt="TSS Earnslaw steamship on Lake Wakatipu, Queenstown"><div class="sehe-gallery-caption"><div class="sehe-gallery-caption-inner"><span class="sehe-gallery-day">Day 4</span><span class="sehe-gallery-place">TSS Earnslaw on Lake Wakatipu</span></div></div></div>
-      <div class="sehe-gallery-slide" aria-roledescription="slide" aria-label="4 of 9"><img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp" alt="Te Anau and the gateway to Fiordland National Park"><div class="sehe-gallery-caption"><div class="sehe-gallery-caption-inner"><span class="sehe-gallery-day">Day 5</span><span class="sehe-gallery-place">Through to Te Anau and Fiordland</span></div></div></div>
-      <div class="sehe-gallery-slide" aria-roledescription="slide" aria-label="5 of 9"><img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg" alt="Milford Sound with Mitre Peak rising from the fiord"><div class="sehe-gallery-caption"><div class="sehe-gallery-caption-inner"><span class="sehe-gallery-day">Day 6</span><span class="sehe-gallery-place">A full day exploring Milford Sound</span></div></div></div>
-      <div class="sehe-gallery-slide" aria-roledescription="slide" aria-label="6 of 9"><img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-13-1920w.webp" alt="The Mainlander train through southern New Zealand rural landscapes"><div class="sehe-gallery-caption"><div class="sehe-gallery-caption-inner"><span class="sehe-gallery-day">Day 7</span><span class="sehe-gallery-place">The Mainlander, through the deep south</span></div></div></div>
-      <div class="sehe-gallery-slide" aria-roledescription="slide" aria-label="7 of 9"><img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY3-13-1920w.webp" alt="Taieri Gorge rail journey from Dunedin"><div class="sehe-gallery-caption"><div class="sehe-gallery-caption-inner"><span class="sehe-gallery-day">Day 8</span><span class="sehe-gallery-place">Taieri Gorge by Dunedin Rail</span></div></div></div>
-      <div class="sehe-gallery-slide" aria-roledescription="slide" aria-label="8 of 9"><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp" alt="Coastal Pacific train north of Claverly on the Kaik&#333;ura coast"><div class="sehe-gallery-caption"><div class="sehe-gallery-caption-inner"><span class="sehe-gallery-day">Day 12</span><span class="sehe-gallery-place">The Coastal Pacific to Kaik&#333;ura</span></div></div></div>
-      <div class="sehe-gallery-slide" aria-roledescription="slide" aria-label="9 of 9"><img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/wekapass-2-1920w.webp" alt="Weka Pass Railway heritage train through limestone landscape"><div class="sehe-gallery-caption"><div class="sehe-gallery-caption-inner"><span class="sehe-gallery-day">Day 14</span><span class="sehe-gallery-place">Weka Pass Railway, the final leg</span></div></div></div>
+      <div class="sehe-gallery-slide" aria-roledescription="slide" aria-label="1 of 8"><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp" alt="TranzAlpine train passing Lake Sarah in winter"><div class="sehe-gallery-caption"><div class="sehe-gallery-caption-inner"><span class="sehe-gallery-day">Day 2</span><span class="sehe-gallery-place">The TranzAlpine through a snow-dusted Southern Alps</span></div></div></div>
+      <div class="sehe-gallery-slide" aria-roledescription="slide" aria-label="2 of 8"><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp" alt="Fox Glacier on the West Coast of the South Island"><div class="sehe-gallery-caption"><div class="sehe-gallery-caption-inner"><span class="sehe-gallery-day">Day 3</span><span class="sehe-gallery-place">Glacier country, West Coast</span></div></div></div>
+      <div class="sehe-gallery-slide" aria-roledescription="slide" aria-label="3 of 8"><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp" alt="A cruise across Lake Wakatipu to Walter Peak, Queenstown"><div class="sehe-gallery-caption"><div class="sehe-gallery-caption-inner"><span class="sehe-gallery-day">Day 4</span><span class="sehe-gallery-place">Across Lake Wakatipu to Walter Peak</span></div></div></div>
+      <div class="sehe-gallery-slide" aria-roledescription="slide" aria-label="4 of 8"><img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp" alt="Through to Te Anau and the gateway to Fiordland"><div class="sehe-gallery-caption"><div class="sehe-gallery-caption-inner"><span class="sehe-gallery-day">Day 5</span><span class="sehe-gallery-place">Skyline Queenstown &amp; through to Fiordland</span></div></div></div>
+      <div class="sehe-gallery-slide" aria-roledescription="slide" aria-label="5 of 8"><img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg" alt="A Fiordland sound in winter, sheer cliffs rising from still water"><div class="sehe-gallery-caption"><div class="sehe-gallery-caption-inner"><span class="sehe-gallery-day">Day 6</span><span class="sehe-gallery-place">A full day on Doubtful Sound</span></div></div></div>
+      <div class="sehe-gallery-slide" aria-roledescription="slide" aria-label="6 of 8"><img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-13-1920w.webp" alt="The Mainlander train through southern New Zealand rural landscapes"><div class="sehe-gallery-caption"><div class="sehe-gallery-caption-inner"><span class="sehe-gallery-day">Day 8</span><span class="sehe-gallery-place">The Mainlander, through the deep south</span></div></div></div>
+      <div class="sehe-gallery-slide" aria-roledescription="slide" aria-label="7 of 8"><img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY3-13-1920w.webp" alt="Taieri Gorge rail journey from Dunedin"><div class="sehe-gallery-caption"><div class="sehe-gallery-caption-inner"><span class="sehe-gallery-day">Day 9</span><span class="sehe-gallery-place">Taieri Gorge by Dunedin Rail</span></div></div></div>
+      <div class="sehe-gallery-slide" aria-roledescription="slide" aria-label="8 of 8"><img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L387-Aoraki-Mount-Cook-National-Park--Canterbury-Rob-Suisted-1920w.jpg" alt="Aoraki Mt Cook National Park, Canterbury"><div class="sehe-gallery-caption"><div class="sehe-gallery-caption-inner"><span class="sehe-gallery-day">Day 10</span><span class="sehe-gallery-place">Towards Aoraki Mt Cook</span></div></div></div>
      </div>
     </div>
     <button type="button" class="sehe-gallery-arrow sehe-gallery-arrow-prev" id="seheGalleryPrev" aria-label="Previous photo"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"></path></svg></button>
@@ -1098,9 +1067,8 @@
      <button type="button" class="sehe-gallery-dot" data-slide="5" aria-label="Go to photo 6"></button>
      <button type="button" class="sehe-gallery-dot" data-slide="6" aria-label="Go to photo 7"></button>
      <button type="button" class="sehe-gallery-dot" data-slide="7" aria-label="Go to photo 8"></button>
-     <button type="button" class="sehe-gallery-dot" data-slide="8" aria-label="Go to photo 9"></button>
     </div>
-    <div class="sehe-gallery-counter" aria-hidden="true"><span class="sehe-gallery-counter-current" id="seheGalleryCurrent">01</span><span> / 9</span></div>
+    <div class="sehe-gallery-counter" aria-hidden="true"><span class="sehe-gallery-counter-current" id="seheGalleryCurrent">01</span><span> / 8</span></div>
    </div>
   </section>
 </div>
@@ -1216,8 +1184,8 @@
       </button>
       <div class="sehe-faq-a"><div class="sehe-faq-a-inner">
         <p>Your tour includes professional Tour Guides to support you throughout your journey, providing live commentary and local insights along the way. Also included are quality accommodation, high-quality coach and train travel, all breakfasts and a selection of additional meals, along with a range of included sightseeing and excursions throughout your tour.</p>
-        <p>For this 14-day tour, inclusions include the complete &ldquo;Super 6&rdquo; rail adventures, Milford Sound Day Trip and Cruise, high-quality coach travel, 13 nights of accommodation, professional Tour Guides, prepaid sightseeing and excursions listed in the itinerary, and a selection of included meals.</p>
-        <p><strong>Meals:</strong> 12 cooked breakfasts, 9 dinners and 9 lunches.</p>
+        <p>For this Winter Edition tour, inclusions include the TranzAlpine, the Mainlander rail sectors, Taieri Gorge, Doubtful Sound Day Trip and Cruise, high-quality coach travel, 11 nights of accommodation, professional Tour Guides, prepaid sightseeing and excursions listed in the itinerary, and a selection of included meals.</p>
+        <p><strong>Meals:</strong> 11 cooked breakfasts, 8 dinners and 9 lunches.</p>
         <p><strong>Not included:</strong> flights to and from the tour start and end points, travel insurance, optional extra excursions, personal expenses, and any pre- or post-tour accommodation unless arranged separately.</p>
       </div></div>
      </article>
@@ -1246,7 +1214,7 @@
       </button>
       <div class="sehe-faq-a"><div class="sehe-faq-a-inner">
         <p>Absolutely. Many guests travel with us solo and our tours are designed to be welcoming and social without being overwhelming. Throughout the journey, there will be plenty of opportunities to meet and connect with other guests, including fellow solo travellers, during rail journeys, sightseeing, included meals and free time. Our Tour Guides are there to support all guests throughout the tour and will help ensure solo travellers feel comfortable and included as part of the group. Please note that a single supplement applies for guests requesting their own private room. Availability of solo rooms may be limited on some departures.</p>
-        <p>A single supplement of <strong>NZ$1,495</strong> applies for guests requesting their own private room on this tour.</p>
+        <p>A single supplement of <strong>NZ$1,595</strong> applies for guests requesting their own private room on this tour.</p>
       </div></div>
      </article>
      <article class="sehe-faq-item">
@@ -1429,17 +1397,32 @@
   <div class="sehe-journeys-list">
    <article class="journey-card" data-season="spring-summer" data-tour="11day-2627">
     <div class="journey-card-image-wrap">
-     <img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp" alt="11-Day Spring/Summer Tour">
+     <img class="journey-card-image" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp" alt="11-Day Spring/Summer Tour 2026/27">
      <div class="journey-card-badges"><span class="journey-card-badge">Spring / Summer · 2026/27</span><span class="journey-card-status"><span class="journey-card-status-dot"></span>Now Booking</span></div>
     </div>
     <div class="journey-card-body">
-     <h3 class="journey-card-name">11-Day Spring/Summer Tour</h3>
+     <h3 class="journey-card-name">11-Day Spring/Summer Tour 2026/27</h3>
      <span class="journey-card-bestfor"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>Best for: Travellers wanting the highlights without a long stay</span>
      <p class="journey-card-description">The South Island's most iconic experiences in eleven well-paced days. Arthur's Pass, Queenstown, Milford Sound, Dunedin, and Aoraki Mt Cook — every must-see, with time to actually enjoy each one.</p>
      <div class="journey-card-next" data-next-placeholder=""><span class="journey-card-next-pulse"></span><div class="journey-card-next-text"><span class="journey-card-next-label">Now Booking</span><span class="journey-card-next-date">Departures available — see tour</span></div></div>
      <div class="journey-card-facts"><div class="journey-card-fact"><span class="journey-card-fact-value">11 Days</span><span class="journey-card-fact-label">Duration</span></div><div class="journey-card-fact"><span class="journey-card-fact-value">From NZ $7,495</span><span class="journey-card-fact-label">Per person</span></div><div class="journey-card-fact"><span class="journey-card-fact-value" data-departure-value="">5</span><span class="journey-card-fact-label" data-departure-label="">Departures</span></div></div>
      <div class="journey-card-includes"><span class="journey-card-includes-label">Includes the &ldquo;Big 5&rdquo; Rail Adventures</span><div class="journey-card-pills"><span class="journey-card-pill">TranzAlpine</span><span class="journey-card-pill">Kingston Flyer (Steam)</span><span class="journey-card-pill">The Mainlander (Inv–Dun)</span><span class="journey-card-pill">Taieri Gorge</span><span class="journey-card-pill">The Mainlander (Dun–Oam)</span></div></div>
      <div class="journey-card-actions"><a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/summer-tour-11-day-tours">View Tour</a><a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/summer-tour-11-day-tours#tour-dates">Check Dates</a><a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/summer-tour-11-day-tours#tour-brochure">Brochure</a></div>
+    </div>
+   </article>
+   <article class="journey-card" data-season="spring-summer" data-tour="14day-2627">
+    <div class="journey-card-image-wrap">
+     <img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp" alt="14-Day Spring/Summer Tour 2026/27">
+     <div class="journey-card-badges"><span class="journey-card-badge">Spring / Summer · 2026/27</span><span class="journey-card-status"><span class="journey-card-status-dot"></span>Now Booking</span></div>
+    </div>
+    <div class="journey-card-body">
+     <h3 class="journey-card-name">14-Day Spring/Summer Tour 2026/27</h3>
+     <span class="journey-card-bestfor"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>Best for: First-timers who want the complete South Island experience</span>
+     <p class="journey-card-description">Our most comprehensive journey — coast to coast, top to bottom. Six iconic rail journeys including the TranzAlpine, Kingston Flyer steam train, and Coastal Pacific. Two weeks of glaciers, fiords, mountains, and wine country.</p>
+     <div class="journey-card-next" data-next-placeholder=""><span class="journey-card-next-pulse"></span><div class="journey-card-next-text"><span class="journey-card-next-label">Now Booking</span><span class="journey-card-next-date">Departures available — see tour</span></div></div>
+     <div class="journey-card-facts"><div class="journey-card-fact"><span class="journey-card-fact-value">14 Days</span><span class="journey-card-fact-label">Duration</span></div><div class="journey-card-fact"><span class="journey-card-fact-value">From NZ $8,995</span><span class="journey-card-fact-label">Per person</span></div><div class="journey-card-fact"><span class="journey-card-fact-value" data-departure-value="">15</span><span class="journey-card-fact-label" data-departure-label="">Departures</span></div></div>
+     <div class="journey-card-includes"><span class="journey-card-includes-label">Includes the &ldquo;Super 6&rdquo; Rail Adventures</span><div class="journey-card-pills"><span class="journey-card-pill">TranzAlpine</span><span class="journey-card-pill">Kingston Flyer (Steam)</span><span class="journey-card-pill">The Mainlander</span><span class="journey-card-pill">Taieri Gorge</span><span class="journey-card-pill">Coastal Pacific</span><span class="journey-card-pill">Weka Pass</span></div></div>
+     <div class="journey-card-actions"><a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/summer-tour-14-days">View Tour</a><a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/summer-tour-14-days#tour-dates">Check Dates</a><a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/summer-tour-14-days#tour-brochure">Brochure</a></div>
     </div>
    </article>
    <article class="journey-card journey-card-pinnacle" data-season="pinnacle" data-tour="pinnacle-2027">
@@ -1488,33 +1471,18 @@
      <div class="journey-card-actions"><a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/2027-2028-spring/summer-tour-11-days">View Tour</a><a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/2027-2028-spring/summer-tour-11-days#tour-dates">Check Dates</a><a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/2027-2028-spring/summer-tour-11-days#tour-brochure">Brochure</a></div>
     </div>
    </article>
-   <article class="journey-card" data-season="winter" data-tour="winter-2027">
-    <div class="journey-card-image-wrap">
-     <img class="journey-card-image" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/184565-tranzalpine-crossing-the-waimakariri-river-1920w.webp" alt="12-Day Winter Edition 2027">
-     <div class="journey-card-badges"><span class="journey-card-badge">Winter Edition · 2027</span><span class="journey-card-status"><span class="journey-card-status-dot"></span>Now Booking</span></div>
-    </div>
-    <div class="journey-card-body">
-     <h3 class="journey-card-name">12-Day Winter Edition 2027</h3>
-     <span class="journey-card-bestfor"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>Best for: Travellers who want the South Island at its most dramatic</span>
-     <p class="journey-card-description">Snow-capped landscapes, quiet alpine towns, and a pace that's all its own. Four rail journeys including the TranzAlpine, paired with extended stays in Queenstown, Doubtful Sound, and Aoraki Mt Cook.</p>
-     <div class="journey-card-next" data-next-placeholder=""><span class="journey-card-next-pulse"></span><div class="journey-card-next-text"><span class="journey-card-next-label">Now Booking</span><span class="journey-card-next-date">Departures available — see tour</span></div></div>
-     <div class="journey-card-facts"><div class="journey-card-fact"><span class="journey-card-fact-value">12 Days</span><span class="journey-card-fact-label">Duration</span></div><div class="journey-card-fact"><span class="journey-card-fact-value">From NZ $8,495</span><span class="journey-card-fact-label">Per person</span></div><div class="journey-card-fact"><span class="journey-card-fact-value" data-departure-value="">6</span><span class="journey-card-fact-label" data-departure-label="">Departures</span></div></div>
-     <div class="journey-card-includes"><span class="journey-card-includes-label">Tour Highlights · June – September 2027</span><div class="journey-card-pills"><span class="journey-card-pill">TranzAlpine</span><span class="journey-card-pill">The Mainlander</span><span class="journey-card-pill">Taieri Gorge</span><span class="journey-card-pill">Queenstown</span><span class="journey-card-pill">Doubtful Sound</span><span class="journey-card-pill">Aoraki Mt Cook</span></div></div>
-     <div class="journey-card-actions"><a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours">View Tour</a><a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours#tour-dates">Check Dates</a><a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours#tour-brochure">Brochure</a></div>
-    </div>
-   </article>
    <article class="journey-card" data-season="winter" data-tour="winter-2026">
     <div class="journey-card-image-wrap">
-     <img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/183840-lake-sarah-in-snow-b1e7ecbb.webp" alt="12-Day Winter Edition 2026">
+     <img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp" alt="12-Day Winter Edition 2026">
      <div class="journey-card-badges"><span class="journey-card-badge">Winter Edition · 2026</span><span class="journey-card-status journey-card-status-sold"><span class="journey-card-status-dot"></span>Sold Out</span></div>
     </div>
     <div class="journey-card-body">
      <h3 class="journey-card-name">12-Day Winter Edition 2026</h3>
      <span class="journey-card-bestfor"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>Best for: Travellers who want the South Island at its most dramatic</span>
-     <p class="journey-card-description">Snow-capped landscapes, quiet alpine towns, and a pace that's all its own. Four rail journeys including the TranzAlpine, paired with extended stays in Queenstown, Doubtful Sound, and Aoraki Mt Cook.</p>
+     <p class="journey-card-description">The same winter journey in the 2026 season — snow-capped landscapes, the TranzAlpine, Doubtful Sound, Queenstown and Aoraki Mt Cook, at winter's quietest and most dramatic.</p>
      <div class="journey-card-next journey-card-next-soldout" data-next-placeholder="" data-sold-note="2027 season now booking"><span class="journey-card-next-pulse"></span><div class="journey-card-next-text"><span class="journey-card-next-label">Season Complete</span><span class="journey-card-next-date">2027 season now booking</span></div></div>
      <div class="journey-card-facts"><div class="journey-card-fact"><span class="journey-card-fact-value">12 Days</span><span class="journey-card-fact-label">Duration</span></div><div class="journey-card-fact"><span class="journey-card-fact-value">From NZ $7,995</span><span class="journey-card-fact-label">Per person</span></div><div class="journey-card-fact"><span class="journey-card-fact-value" data-departure-value="">&mdash;</span><span class="journey-card-fact-label" data-departure-label="">Departures</span></div></div>
-     <div class="journey-card-includes"><span class="journey-card-includes-label">Tour Highlights · June – September 2026</span><div class="journey-card-pills"><span class="journey-card-pill">TranzAlpine</span><span class="journey-card-pill">The Mainlander</span><span class="journey-card-pill">Taieri Gorge</span><span class="journey-card-pill">Queenstown</span><span class="journey-card-pill">Doubtful Sound</span><span class="journey-card-pill">Aoraki Mt Cook</span></div></div>
+     <div class="journey-card-includes"><span class="journey-card-includes-label">Tour Highlights · Winter 2026</span><div class="journey-card-pills"><span class="journey-card-pill">TranzAlpine</span><span class="journey-card-pill">The Mainlander</span><span class="journey-card-pill">Taieri Gorge</span><span class="journey-card-pill">Queenstown</span><span class="journey-card-pill">Doubtful Sound</span><span class="journey-card-pill">Aoraki Mt Cook</span></div></div>
      <p class="journey-card-soldnote"><strong>2026 season sold out.</strong> Every 2026 Winter Edition departure has now been filled. The 12-Day Winter Edition returns next winter &mdash; <a href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours">see the 2027 departures</a>.</p>
      <div class="journey-card-actions"><a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours">View Tour</a><a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours#tour-dates">Check Dates</a><a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours#tour-brochure">Brochure</a></div>
     </div>
@@ -1715,18 +1683,22 @@
 <script>
 (function(){
   /* Which tour this page is. Change per tour when templating. */
-  var SEHE_PAGE_TOUR = '14day-2627';
+  var SEHE_PAGE_TOUR = 'winter-2027';
   var M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   function lbl(iso){ var p = iso.split('-'); return M[parseInt(p[1],10)-1] + ' ' + p[0].slice(2); }
+  function full(iso){ var p = iso.split('-'); return M[parseInt(p[1],10)-1] + ' ' + p[0]; }
   function paint(){
     var d = (window.__seheDepartureData || {})[SEHE_PAGE_TOUR];
     if (!d || !d.all || !d.all.length) return;
     var avail = d.all.filter(function(x){ return x && x.status !== 'soldout'; });
-    var list = avail.length ? avail : d.all;
+    var all = avail.length ? avail : d.all;
     var cEl = document.querySelector('[data-sehe-dep-count]');
-    if (cEl) cEl.textContent = list.length;
+    if (cEl) cEl.textContent = all.length;
     var rEl = document.querySelector('[data-sehe-dep-range]');
-    if (rEl) rEl.innerHTML = lbl(list[0].start) + ' – ' + lbl(list[list.length - 1].start);
+    if (rEl) {
+      var a = all[0].start.split('-'), b = all[all.length - 1].start.split('-');
+      rEl.innerHTML = (a[0] === b[0] && a[1] === b[1]) ? full(all[0].start) : (lbl(all[0].start) + ' – ' + lbl(all[all.length - 1].start));
+    }
   }
   paint();   /* instant paint from fallback / already-loaded live data */
   if (typeof window.__seheLoadDepartures === 'function') { window.__seheLoadDepartures().then(paint); }   /* re-render with live */
