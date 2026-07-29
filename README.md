@@ -1,9 +1,32 @@
 # SEHE — Sir Edmund Hillary Explorer website build
 
 Working repository for the Sir Edmund Hillary Explorer (Pounamu Tourism Group)
-tour-page rebuild: seven self-contained HTML landing pages, a Journeys index,
-a homepage, per-page booking widgets, a Cloudflare Worker that feeds live
-departure availability from Checkfront, and the switch-over / lead-capture kits.
+site rebuild: seven self-contained HTML tour pages, the Journeys index, the
+homepage, the brochure-collection page, per-page booking widgets, a Cloudflare
+Worker that feeds live departure availability from Checkfront (plus a new-item
+watchdog), and the switch-over / lead-capture kits.
+
+## Current state (29 Jul 2026)
+All pages LIVE on their real URLs, homepage included (root domain).
+
+| Page | Master file | Notes |
+|---|---|---|
+| Homepage (/) | `SEHE-homepage_v26.txt` | old homepage parked at /home-old (noindex) |
+| Journeys | `SEHE-journeys-page_v22.txt` | single-widget page (hero + FAQ + contact folded in) |
+| Brochure collection | `SEHE-brochure-collection_v2.txt` | single main widget; stale tablet duplicate deleted |
+| 7 tour pages | `SEHE-*-tour_v*.txt` (one per page) | pasted as Block A + native Duda form + Block B — see `switchover/` |
+
+- Tour pages carry the Checkfront split-item fix (`302,374` / `289,392`) and
+  the static 5-star Trustpilot strip (Ben's call, 4.7-TrustScore facts noted
+  in the changelogs). Winter 2026 is sold out and presented as such.
+- `worker/sehe-worker_LIVE-auto.js` is the paste-ready Worker
+  (`sehe-next-departures` on Cloudflare — same single worker for the feed,
+  `/lead`, `/items-audit`). `worker/worker.js` is identical plus test exports;
+  `node worker/worker.test.mjs` must stay green (48 tests).
+- `tools/make-blocks.py` regenerates the Block A/B pairs from the masters
+  (byte-verified split; Block A swaps the HTML form for the docking note).
+- Phase 2 (direct lead capture + UTM persistence) is built and parked:
+  `leadform/ENABLE-DIRECT-LEADS.md`.
 
 ## Rules of the road
 1. Bump the version on every change (filename + header + changelog).

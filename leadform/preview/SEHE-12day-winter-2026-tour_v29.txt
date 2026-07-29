@@ -1,9 +1,9 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 12-DAY WINTER EDITION 2026
-     COMPLETE TOUR PAGE  ·  VERSION v23  ·  2026-07-28  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v29  ·  2026-07-29  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
-       v23 — DIRECT LEAD CAPTURE: the brochure form now submits for real — the
+       v29 — DIRECT LEAD CAPTURE: the brochure form now submits for real — the
             lead goes to the Worker /lead endpoint, which forwards it to this
             tour's existing Zapier hook, so ActiveCampaign and the Excel log
             receive the same data as the old Duda-form flow (same field names).
@@ -14,6 +14,64 @@
             Requires the ZAPIER_HOOKS_JSON Worker secret (see
             leadform/ENABLE-DIRECT-LEADS.md); until it is set the endpoint
             answers 503 and the visitor experience is unchanged.
+       v28 — STATIC 5-STAR STRIP REINSTATED — Ben's informed decision. The
+            4.7-TrustScore facts were put to him plainly (twice); his call:
+            keep the 5-star presentation, as the outlier 1-star review is
+            being dealt with, and on its resolution the TrustScore is
+            expected to cross 4.8 (at which point Trustpilot's own widgets
+            agree). Repo re-aligned to match the versions held in the Duda
+            editors so the record equals what publishes. Content identical
+            to the retracted round; only this header differs. Item fix
+            (302,374 / 289,392) unchanged throughout.
+       v27 — STATIC 5-STAR STRIP RETRACTED before it ever published (never
+            went live). Verified against Trustpilot's own widget API: the
+            business's TrustScore is 4.7, which Trustpilot renders as
+            4.5-star art (their 5-star image needs >=4.8) — 78 of 86 reviews
+            are five-star, which is where the "5 stars" impression came
+            from. So the live TrustBox under the booking calendar was
+            accurate all along, and a baked "Rated 5 out of 5 on Trustpilot"
+            would overstate the official rating beside a link that shows
+            4.7. Live Micro Star TrustBox restored; it will flip to 5-star
+            art by itself the day TrustScore reaches 4.8. The Checkfront
+            split-item fix (302,374 / 289,392) is unaffected and stays.
+       v26 — booking widget trust strip: the live TrustBox under the booking
+            calendar rendered Trustpilot's own star art, which was still
+            showing 4.5 stars after the score reached 5.0 (their image only
+            flips at their thresholds/cache). Replaced with the static
+            official 5-star graphic + "Rated 5 out of 5 on Trustpilot", the
+            whole row linking to the Trustpilot profile — same treatment
+            family as the hero. The compare-grid quote TrustBox stays live.
+            Ben's call.
+       v25 — BOOKING WIDGET: split Checkfront items now included (Kirsty's
+            report: 8 Feb and 8 Mar 2027 not bookable on the 14-Day page).
+            The booking tab config pinned each tour to ONE Checkfront
+            item_id, but two tours sell across TWO items: the 14-Day 26/27
+            (302 + 374 — the missing dates live under 374) and the Winter
+            2026 (289 + 392, the same latent gap — plausibly where the
+            re-opened 12 Sep seats live). The Checkfront droplet accepts a
+            comma-separated item list, so the config now passes '302,374'
+            and '289,392'. The worker already merged both items for the
+            display list — display and booking now agree. All seven pages
+            share this config, so all seven are updated.
+       v24 — dates section header reverted to normal (Ben): eyebrow back to
+            "Available Dates", title back to "Choose your departure", and the
+            sold-out note under it removed. The note was set in light-context
+            colours (grey text, navy link) on the booking section's NAVY
+            gradient band — invisible, my error. Also the right call on
+            substance: Checkfront has re-opened 12 Sep 2026, so "every date
+            below is fully booked" is no longer true; the calendar's per-date
+            status tells the real story. The Block A band's wording is
+            pending Ben/Kirsty's confirmation on the re-opened date.
+       v23 — SOLD-OUT NOTICE REDESIGNED as a contained card (Ben: it rendered
+            as a full page). Two causes addressed: the section had no padding
+            of its own, so Duda's theme re-padded it 50px/40px into a tall
+            slab on publish (and the editor canvas renders it heavier still);
+            and the full-width navy background read as a section, not a
+            notice. Now: a quiet paper strip with explicit !important padding
+            the theme cannot touch, holding a navy card (10px radius, gold
+            border — the journey-card language) with the red pill, heading,
+            copy and the two CTAs. Roughly half the previous height. Headings
+            and copy locked left for the mobile-served DOM.
        v22 — baked winter-2026 SOLDOUT completed to all five dates (12 Sep —
             and on the 14-day page 5 Sep — were missing). Found reviewing
             Block A: the baked departure data said 1-2 winter dates were
@@ -359,20 +417,25 @@
 
 <!-- ===== 1b. 2026 season sold out ===== -->
 <style>
-  .sehe-tourpage .sehe-soldout-band { background: #153b67; }
-  .sehe-tourpage .sehe-soldout-inner { max-width: 1240px; margin: 0 auto; padding: 30px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; }
-  .sehe-tourpage .sehe-soldout-copy { flex: 1 1 640px; }
-  .sehe-tourpage .sehe-soldout-mark { display: inline-flex; align-items: center; gap: 8px; font-family: 'Montserrat', sans-serif !important; font-size: 11px !important; font-weight: 700 !important; letter-spacing: 2.2px; text-transform: uppercase; color: #fff !important; background: rgba(184, 64, 64, 0.95); padding: 7px 14px; border-radius: 20px; margin-bottom: 14px; }
-  .sehe-tourpage .sehe-soldout-copy h2 { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: 23px !important; line-height: 1.25 !important; letter-spacing: -0.2px; color: #fff !important; margin: 0 0 8px !important; }
-  .sehe-tourpage .sehe-soldout-copy p { font-family: 'Open Sans', sans-serif !important; font-size: 15px !important; line-height: 1.65 !important; color: rgba(255, 255, 255, 0.82) !important; margin: 0 !important; max-width: 62ch; }
+  /* Sold-out notice: a contained card, not a full-width slab. The section is
+     a quiet paper strip with EXPLICIT padding (the Duda theme otherwise
+     re-pads every section 50px/40px); the navy card inside carries the
+     message. */
+  .sehe-tourpage .sehe-soldout-band { background: #f9f7f3; padding: 30px 20px !important; }
+  .sehe-tourpage .sehe-soldout-inner { max-width: 1240px; margin: 0 auto; background: #153b67; border: 1px solid #c8a56c; border-radius: 10px; padding: 28px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; }
+  .sehe-tourpage .sehe-soldout-copy { flex: 1 1 520px; }
+  .sehe-tourpage .sehe-soldout-mark { display: inline-flex; align-items: center; gap: 8px; font-family: 'Montserrat', sans-serif !important; font-size: 11px !important; font-weight: 700 !important; letter-spacing: 2.2px; text-transform: uppercase; color: #fff !important; background: rgba(184, 64, 64, 0.95); padding: 6px 13px; border-radius: 20px; margin-bottom: 12px; }
+  .sehe-tourpage .sehe-soldout-copy h2 { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: 21px !important; line-height: 1.25 !important; letter-spacing: -0.2px; color: #fff !important; margin: 0 0 6px !important; text-align: left !important; }
+  .sehe-tourpage .sehe-soldout-copy p { font-family: 'Open Sans', sans-serif !important; font-size: 14.5px !important; line-height: 1.6 !important; color: rgba(255, 255, 255, 0.82) !important; margin: 0 !important; max-width: 66ch; text-align: left !important; }
   .sehe-tourpage .sehe-soldout-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-  .sehe-tourpage .sehe-soldout-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Montserrat', sans-serif !important; font-size: 12px !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: 1.2px; text-decoration: none !important; padding: 15px 24px; border-radius: 4px; border: 1.5px solid #c8a56c; white-space: nowrap; }
+  .sehe-tourpage .sehe-soldout-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Montserrat', sans-serif !important; font-size: 12px !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: 1.2px; text-decoration: none !important; padding: 14px 22px; border-radius: 4px; border: 1.5px solid #c8a56c; white-space: nowrap; }
   .sehe-tourpage .sehe-soldout-btn--primary { background: #c8a56c; color: #0d2036 !important; }
   .sehe-tourpage .sehe-soldout-btn--ghost { background: transparent; color: #fff !important; }
   @media (max-width: 860px) {
-    .sehe-tourpage .sehe-soldout-inner { padding: 24px 20px; gap: 16px; }
-    .sehe-tourpage .sehe-soldout-copy h2 { font-size: 19px !important; }
-    .sehe-tourpage .sehe-soldout-copy p { font-size: 14.5px !important; }
+    .sehe-tourpage .sehe-soldout-band { padding: 20px 16px !important; }
+    .sehe-tourpage .sehe-soldout-inner { padding: 20px 18px; gap: 14px; }
+    .sehe-tourpage .sehe-soldout-copy h2 { font-size: 18px !important; }
+    .sehe-tourpage .sehe-soldout-copy p { font-size: 14px !important; }
     .sehe-tourpage .sehe-soldout-actions { width: 100%; }
     .sehe-tourpage .sehe-soldout-btn { width: 100%; }
   }
@@ -925,7 +988,11 @@
   .booking-info-value { font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 700 !important; color: var(--navy) !important; margin-bottom: 2px; }
   .booking-info-label { font-size: 11px !important; color: var(--text-light) !important; text-transform: uppercase !important; letter-spacing: 0.8px !important; }
   .booking-info-supplement { display: block; font-size: 10.5px !important; color: rgba(90, 90, 90, 0.75) !important; margin-top: 4px; font-style: italic; }
-  .booking-trust { padding: 8px 24px; background: var(--off-white); text-align: center; }
+  .booking-trust { padding: 10px 24px; background: var(--off-white); text-align: center; }
+  .booking-trust-static { display: inline-flex; align-items: center; gap: 10px; text-decoration: none !important; }
+  .booking-trust-static img { height: 20px; width: auto; display: block; }
+  .booking-trust-static span { font-family: 'Open Sans', sans-serif !important; font-size: 13px !important; color: var(--text-light) !important; }
+  .booking-trust-static strong { color: var(--navy); }
   .booking-widget-area { padding: 24px; background: var(--off-white); min-height: 200px; }
   .booking-deposit { display: flex; align-items: flex-start; gap: 12px; padding: 14px 18px; background: var(--green-pale); border-radius: 6px; margin-top: 20px; border: 1px solid #c8e6d0; }
   .booking-deposit-icon { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
@@ -963,16 +1030,11 @@
   @media (max-width: 600px) { .booking-info { flex-direction: column; } .booking-info-item { border-right: none; border-bottom: 1px solid var(--border); padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; text-align: left; } .booking-info-item:last-child { border-bottom: none; } .booking-bottom { flex-direction: column; text-align: center; } .booking-topbar { flex-direction: column; gap: 8px; text-align: center; } .booking-widget-area { padding: 16px; } .booking-tab { padding: 12px 14px; font-size: 12px !important; } }
 </style>
 <div class="sehe-tourpage">
-<style>
-  .sehe-tourpage .sehe-soldout-dates-note { font-family: 'Open Sans', sans-serif !important; font-size: 15px !important; line-height: 1.6 !important; color: #51617a !important; margin: 14px 0 0 !important; }
-  .sehe-tourpage .sehe-soldout-dates-note a { color: #153b67 !important; font-weight: 700; text-decoration: underline !important; text-underline-offset: 2px; }
-</style>
   <section class="sehe-booking-section" id="tour-dates">
    <div class="sehe-booking-header">
     <div class="sehe-booking-header-inner">
-     <span class="sehe-section-eyebrow">2026 Departures</span>
-     <h2 class="sehe-section-heading">The 2026 season has sold out</h2>
-     <p class="sehe-soldout-dates-note">Every date below is fully booked. The same journey runs again next winter &mdash; <a href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours">see the 2027 Winter Edition departures</a>.</p>
+     <span class="sehe-section-eyebrow">Available Dates</span>
+     <h2 class="sehe-section-heading">Choose your departure</h2>
     </div>
    </div>
    <div class="booking-wrapper">
@@ -1141,9 +1203,10 @@
      </div>
     </div>
     <div class="booking-trust">
-     <div class="trustpilot-widget" data-locale="en-NZ" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="67af6f95db89fc000f855205" data-style-height="20px" data-style-width="100%">
-      <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot</a>
-     </div>
+     <a class="booking-trust-static" href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener" aria-label="Rated 5 out of 5 stars on Trustpilot — read our reviews">
+      <img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="Rated 5 out of 5 stars">
+      <span>Rated 5 out of 5 on <strong>Trustpilot</strong></span>
+     </a>
     </div>
    </div>
   </section>
@@ -1153,9 +1216,9 @@
 <script>
   var DEFAULT_TOUR = 'winter26';  /* ← CHANGE THIS PER PAGE */
   var TOUR_DATA = {
-   '14day': { name: '14-Day Spring⁠/⁠Summer Tour 2026/27', tabLabel: '14-Day Spring⁠/⁠Summer 2026/27', duration: '14 Days', price: 'From NZ$8,995', item_id: '302', date: '20261109', category_id: null, departureKey: '14day-2627', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
+   '14day': { name: '14-Day Spring⁠/⁠Summer Tour 2026/27', tabLabel: '14-Day Spring⁠/⁠Summer 2026/27', duration: '14 Days', price: 'From NZ$8,995', item_id: '302,374', date: '20261109', category_id: null, departureKey: '14day-2627', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
    '11day': { name: '11-Day Spring⁠/⁠Summer Tour 2026/27', tabLabel: '11-Day Spring⁠/⁠Summer 2026/27', duration: '11 Days', price: 'From NZ$7,495', item_id: '305', date: '20261102', category_id: null, departureKey: '11day-2627', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
-   'winter26': { name: '12-Day Winter Edition 2026', tabLabel: 'Winter 2026', duration: '12 Days', price: 'From NZ$7,995', item_id: '289', date: '20260905', category_id: '5', departureKey: 'winter-2026', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
+   'winter26': { name: '12-Day Winter Edition 2026', tabLabel: 'Winter 2026', duration: '12 Days', price: 'From NZ$7,995', item_id: '289,392', date: '20260905', category_id: '5', departureKey: 'winter-2026', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
    'pinnacle': { name: '15-Day Pinnacle Tour 2027', tabLabel: 'Pinnacle 2027', duration: '15 Days', price: 'From NZ$25,995', item_id: '315', date: '20270114', category_id: '5', departureKey: 'pinnacle-2027', startsEnds: 'Christchurch → Auckland', startsEndsLabel: 'Starts → Ends' },
    'winter27': { name: '12-Day Winter Edition 2027', tabLabel: 'Winter 2027', duration: '12 Days', price: 'From NZ$8,495', item_id: '373', date: '20270710', category_id: '5', departureKey: 'winter-2027', startsEnds: 'Christchurch', startsEndsLabel: 'Starts & ends' },
    '14day2728': { name: '14-Day Spring⁠/⁠Summer Tour 2027/28', tabLabel: '14-Day Spring⁠/⁠Summer 2027/28', duration: '14 Days', price: 'From NZ$9,990', item_id: '388', date: '20271004', category_id: null, departureKey: '14day-2728', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },

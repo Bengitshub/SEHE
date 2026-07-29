@@ -1,9 +1,9 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 14-DAY SPRING/SUMMER 2026/27
-     COMPLETE TOUR PAGE  ·  VERSION v15  ·  2026-07-12  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v29  ·  2026-07-29  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
-       v15 — DIRECT LEAD CAPTURE: the brochure form now submits for real — the
+       v29 — DIRECT LEAD CAPTURE: the brochure form now submits for real — the
             lead goes to the Worker /lead endpoint, which forwards it to this
             tour's existing Zapier hook, so ActiveCampaign and the Excel log
             receive the same data as the old Duda-form flow (same field names).
@@ -14,6 +14,138 @@
             Requires the ZAPIER_HOOKS_JSON Worker secret (see
             leadform/ENABLE-DIRECT-LEADS.md); until it is set the endpoint
             answers 503 and the visitor experience is unchanged.
+       v28 — STATIC 5-STAR STRIP REINSTATED — Ben's informed decision. The
+            4.7-TrustScore facts were put to him plainly (twice); his call:
+            keep the 5-star presentation, as the outlier 1-star review is
+            being dealt with, and on its resolution the TrustScore is
+            expected to cross 4.8 (at which point Trustpilot's own widgets
+            agree). Repo re-aligned to match the versions held in the Duda
+            editors so the record equals what publishes. Content identical
+            to the retracted round; only this header differs. Item fix
+            (302,374 / 289,392) unchanged throughout.
+       v27 — STATIC 5-STAR STRIP RETRACTED before it ever published (never
+            went live). Verified against Trustpilot's own widget API: the
+            business's TrustScore is 4.7, which Trustpilot renders as
+            4.5-star art (their 5-star image needs >=4.8) — 78 of 86 reviews
+            are five-star, which is where the "5 stars" impression came
+            from. So the live TrustBox under the booking calendar was
+            accurate all along, and a baked "Rated 5 out of 5 on Trustpilot"
+            would overstate the official rating beside a link that shows
+            4.7. Live Micro Star TrustBox restored; it will flip to 5-star
+            art by itself the day TrustScore reaches 4.8. The Checkfront
+            split-item fix (302,374 / 289,392) is unaffected and stays.
+       v26 — booking widget trust strip: the live TrustBox under the booking
+            calendar rendered Trustpilot's own star art, which was still
+            showing 4.5 stars after the score reached 5.0 (their image only
+            flips at their thresholds/cache). Replaced with the static
+            official 5-star graphic + "Rated 5 out of 5 on Trustpilot", the
+            whole row linking to the Trustpilot profile — same treatment
+            family as the hero. The compare-grid quote TrustBox stays live.
+            Ben's call.
+       v25 — BOOKING WIDGET: split Checkfront items now included (Kirsty's
+            report: 8 Feb and 8 Mar 2027 not bookable on the 14-Day page).
+            The booking tab config pinned each tour to ONE Checkfront
+            item_id, but two tours sell across TWO items: the 14-Day 26/27
+            (302 + 374 — the missing dates live under 374) and the Winter
+            2026 (289 + 392, the same latent gap — plausibly where the
+            re-opened 12 Sep seats live). The Checkfront droplet accepts a
+            comma-separated item list, so the config now passes '302,374'
+            and '289,392'. The worker already merged both items for the
+            display list — display and booking now agree. All seven pages
+            share this config, so all seven are updated.
+       v24 — baked winter-2026 SOLDOUT completed to all five dates (12 Sep —
+            and on the 14-day page 5 Sep — were missing). Found reviewing
+            Block A: the baked departure data said 1-2 winter dates were
+            still available, so before the worker answered, the scripts
+            repainted a departure count / "Next Departure 12 September"
+            over the baked sold-out state — and would show it indefinitely
+            if the worker were down. Baked data now agrees with the baked
+            HTML and the live feed (5 of 5 sold, no next date), per the
+            enhance-only rule: missing live data must never make a page
+            wrong.
+       v23 — WINTER 2026 SOLD OUT. The 12-Day Winter Edition 2026 is fully
+            booked (worker feed: 5 of 5 departures sold, no next date), so in
+            the "Still comparing tours?" grid its card moves to the LAST
+            position and now ships the sold-out state baked in: red "Sold Out"
+            pill, sold-out next-block reading "Season Complete / 2027 season
+            now booking", an em-dash departure count, and a note pointing to
+            the 2027 Winter Edition. The card, its brochure link and the tour
+            page all stay live. The availability script now honours a per-card
+            data-sold-note, so a sold-out tour can name its successor season
+            instead of the generic "New season opening soon".
+       v22 — CODE UNIFIED WITH THE OTHER SIX PAGES (Ben: "shouldn't they all
+            be the same?"): this page's shorter button label already fitted at
+            every width, but the docking script now carries the identical
+            label-measuring fitter and late width re-checks as the rest of the
+            set — one behaviour everywhere, and the page stays safe if the
+            button wording is ever changed in Duda.
+       v21 — BUTTON WIDTH ROOT-CAUSE FIX (found by reproducing the live page
+            with Duda's real mobile stylesheets): Duda's mobile runtime CSS
+            rule ".dmMobileBody ... .dmformsubmit { width:91%; max-width:91% }"
+            capped the button container — a stylesheet max-width beats an
+            inline width:100%, and max-width was the one property not pinned
+            (some widget instances also carry fixed widths like 317px). The
+            docking script now pins display + max-width inline AND runs a
+            closed-loop equalizer: it measures the Name field and, if the
+            button differs by more than 1px, assigns it the field's exact
+            pixel width, re-checked on every resize/rotation. Verified equal
+            (342px = 342px) in a full-stylesheet reproduction at iPhone width.
+       v20 — FIELDS AND BUTTON PINNED TO THE SAME BOX (Ben: "why can't the
+            button just be the same size as the form fields?"): on iPhone the
+            fields rendered ~30px wider than the button — Duda's mobile device
+            stylesheet inflates the input widths past their column, and only
+            the button was inline-pinned. The docking script now pins the
+            Name/Email/Country fields inline too (width/max-width 100%,
+            border-box, block, zero margin), so fields and button occupy the
+            identical box on every browser and are permanently edge-flush.
+       v19 — DOCKED BUTTON TYPE RE-TUNED (Ben's phone review of the first
+            mobile fix): the previous 360px breakpoint caught most Android
+            phones and set the label at 11px — too small — and letter-spacing's
+            trailing space biased the centred label left of true centre. Now
+            12.5px with 0.5px tracking covers every normal phone (11px is
+            reserved for 340px-and-under screens) and a matching text-indent
+            cancels the centring bias at every size, desktop included.
+            Measured with the real widget at 320 / 360 / 390 / 1440px: label
+            fits with margin everywhere and sits optically centred.
+       v18 — MOBILE FIXES from Ben's phone pass: the docked Duda submit is an
+            INPUT element, which cannot wrap its label, so the long "View /
+            Download Tour Brochure" text overflowed the button on narrow
+            screens — the docking script now steps font size / tracking /
+            padding down at 480px and 360px via matchMedia and re-applies on
+            resize/rotation. Brochure cover ("FREE PDF DOWNLOAD") explicitly
+            centred in the stacked mobile layout (justify-content + auto
+            margins, belt and braces).
+       v17 — BUTTON TEXT CENTRED on the docked form (Duda base CSS left-aligned
+            the submit input on the live site; the dock-time flattener now sets
+            text-align:center inline, matching the design button). BAKED
+            SNAPSHOT REFRESHED to current live statuses: 12 Oct 2026 sold out
+            since the 8-Jul bake, so first paint now shows 14 available · 3
+            sold out, next departure 9 Nov 2026, hero 14 · Nov 26 - Apr 27 —
+            identical to what the live worker merge resolves, so no number
+            flash on load. (Whether the hero stat should live-update at all is
+            parked for Kirsty post-launch; the live merge currently keeps it
+            consistent with the booking list.)
+       v16 — DOCKED FORM GEOMETRY FLATTENED (fixes Ben's two review points on the
+            v15 pilot): the Duda widget kept geometry from its old home — the
+            theme/instance CSS painted the submit CONTAINER navy (a slab behind
+            the real button) and indented the internal wrappers so the fields
+            did not share the heading's left edge. The docking script now
+            flattens the widget's internal geometry inline at dock time
+            (containers transparent + zero padding, rows full-width, button
+            container collapsed to the button), which outranks every
+            stylesheet. Fields and button now align with the heading exactly
+            like the design's own form. Colours/typography still come from the
+            widget skin.
+       v15 — BROCHURE FORM DOCKING for the switch-over sandwich: added an empty
+            form slot under the design form and a loader script that, on the
+            published site only, moves the real Duda form widget (pasted below
+            Block A) into the brochure card right-hand column — the live form
+            now renders exactly where the design intends instead of in a band
+            below the card. Docked-state CSS handles the fit; the widget skin
+            still styles fields and button. Enhance-only: in the Duda editor /
+            on this master preview / with no Duda widget on the page, nothing
+            moves. The "complete the short form just below" note hides itself
+            once the form docks.
        v14 — BOOKING DATA ALIGNED TO THE LIVE-SITE WIDGETS (technical only; design
             untouched): the departures data script is now the proven widget block —
             full worker SCHEDULE baked (including the four Oct 2026 departures),
@@ -88,9 +220,9 @@
     '14day-2728'   : ['2027-10-04','2027-10-11','2027-10-18','2027-11-01','2027-11-08','2027-11-15','2027-11-22','2027-12-06','2028-01-17','2028-01-24','2028-01-31','2028-02-07','2028-02-14']
   };
   var SOLDOUT = {
-    'winter-2026': ['2026-06-27','2026-07-18','2026-08-01'],
+    'winter-2026': ['2026-06-27','2026-07-18','2026-08-01','2026-09-05','2026-09-12'],
     '11day-2627' : ['2026-10-05','2026-11-02'],
-    '14day-2627' : ['2026-10-19','2026-10-26']
+    '14day-2627' : ['2026-10-12','2026-10-19','2026-10-26']
   };
   var ADD = { 'winter-2026':11,'winter-2027':11,'pinnacle-2027':15,'11day-2627':10,'11day-2728':10,'14day-2627':13,'14day-2728':13 };
   function endOf(iso,n){ var d=new Date(iso+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10); }
@@ -262,7 +394,7 @@
           <div class="sehe-hx-field"><div class="sehe-hx-k">Route</div><div class="sehe-hx-v">Christchurch return<a class="sehe-hx-route-link" href="#tour-route">View Route</a></div></div>
           <div class="sehe-hx-field"><div class="sehe-hx-k">Duration</div><div class="sehe-hx-v">14 Days<small>13 nights</small></div></div>
           <div class="sehe-hx-field"><div class="sehe-hx-k">From</div><div class="sehe-hx-v">NZ$8,995<small>per person, twin share</small></div></div>
-          <div class="sehe-hx-field"><div class="sehe-hx-k">Departures</div><div class="sehe-hx-v"><span data-sehe-dep-count>15</span><small data-sehe-dep-range>Oct 26 &ndash; Apr 27</small></div></div>
+          <div class="sehe-hx-field"><div class="sehe-hx-k">Departures</div><div class="sehe-hx-v"><span data-sehe-dep-count>14</span><small data-sehe-dep-range>Nov 26 &ndash; Apr 27</small></div></div>
         </div>
         <div class="sehe-hx-stub">
           <a class="sehe-hx-btn sehe-hx-btn--primary" href="#tour-dates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg> View Tour Dates </a>
@@ -532,6 +664,23 @@
     .sehe-brochure-title,.sehe-brochure-subtitle{text-align:left!important;margin-left:0!important;margin-right:0!important;}
     .sehe-brochure-eyebrow{justify-content:flex-start!important;}
   }
+  /* Docked Duda form (switch-over sandwich pages): the loader script below moves
+     the real Duda form widget into .sehe-form-slot so it renders exactly where
+     the design's form belongs. The widget's own custom CSS (the skin) styles the
+     fields and button; these rules only handle fit and the note hand-off. */
+  .sehe-form-slot { display: block; }
+  .sehe-form-slot .dmform { max-width: none !important; margin: 0 !important; padding: 0 !important; }
+  .sehe-form-slot .dmform-wrapper { padding: 0 !important; }
+  .sehe-form-slot .dmform-title { display: none !important; }
+  .sehe-form-slot .dmformsubmit { float: none !important; width: 100% !important; margin: 22px 0 0 0 !important; }
+  .sehe-form-slot .dmformsubmit input[type="submit"] { display: block !important; width: 100% !important; box-sizing: border-box !important; }
+  .sehe-brochure-formside.sehe-form-docked .sehe-brochure-note { display: none !important; }
+  @media (max-width: 860px) {
+    /* stacked mobile layout: keep the brochure cover (FREE PDF DOWNLOAD badge)
+       dead-centre regardless of what the host container does to flex */
+    .sehe-brochure-cover { justify-content: center !important; }
+    .sehe-brochure-cover-wrap { margin-left: auto !important; margin-right: auto !important; }
+  }
 </style>
 <div class="sehe-tourpage">
   <section class="sehe-brochure" id="tour-brochure">
@@ -565,9 +714,141 @@
       <div class="field" style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true"><input type="text" name="sehe_hp" tabindex="-1" autocomplete="off" value=""></div>
       <button type="submit">View the brochure collection</button>
      </form>
+     <div class="sehe-form-slot" data-sehe-form-slot hidden></div>
     </div>
    </div>
   </section>
+<script>
+  (function() {
+  /* Brochure form DOCKING (switch-over sandwich pages). The real Duda form
+     widget is pasted below this HTML block so its webhook keeps working; on
+     the published site this script moves that widget INTO the brochure card
+     form slot as soon as it appears in the DOM, so the form renders exactly
+     where the design intends. Enhance-only: in the Duda editor, on this
+     master preview, or if no Duda form widget exists on the page, nothing is
+     touched and the layout stays as pasted. */
+  if (!/(^|\.)siredmundhillaryexplorer\.com$/.test(window.location.hostname)) return;
+  var slot = document.querySelector('[data-sehe-form-slot]');
+  if (!slot) return;
+  var tries = 0;
+  var timer = window.setInterval(function() {
+    tries += 1;
+    if (tries > 75) { window.clearInterval(timer); return; }
+    var all = document.querySelectorAll('div[data-element-type="dContactUsRespId"]');
+    var w = null;
+    for (var i = 0; i < all.length; i += 1) {
+      if (all[i].querySelector('input[name="dmform-1"]') && all[i].querySelector('input[name="dmform-3"]')) { w = all[i]; break; }
+    }
+    if (!w) return;
+    window.clearInterval(timer);
+    var oldParent = w.parentElement;
+    slot.appendChild(w);
+    slot.removeAttribute('hidden');
+    /* The widget carries geometry from its old home: Duda instance CSS and the
+       site theme still size/paint its internal wrappers (fixed button width, a
+       painted submit CONTAINER that shows as a slab behind the button, left
+       padding that mis-aligns the fields). Class-level CSS cannot outrank
+       instance rules, so flatten the geometry INLINE at dock time — inline
+       importants beat every stylesheet. Colours/typography stay with the skin. */
+    var flat = function(el, geom) {
+      if (!el || !el.style) return;
+      for (var k in geom) { if (geom.hasOwnProperty(k)) { el.style.setProperty(k, geom[k], 'important'); } }
+    };
+    flat(w, { padding: '0', margin: '0', width: '100%', 'max-width': 'none', background: 'transparent', 'background-color': 'transparent', 'min-height': '0', height: 'auto' });
+    flat(w.querySelector('.dmform-wrapper'), { padding: '0', margin: '0', width: '100%', 'max-width': 'none', background: 'transparent' });
+    flat(w.querySelector('form'), { padding: '0', margin: '0', width: '100%', 'max-width': 'none' });
+    flat(w.querySelector('.spacing-container'), { padding: '0', margin: '0', width: '100%' });
+    var ttl = w.querySelector('.dmform-title');
+    if (ttl) { ttl.style.setProperty('display', 'none', 'important'); }
+    var rows = w.querySelectorAll('.dmforminput');
+    for (var j = 0; j < rows.length; j += 1) {
+      flat(rows[j], { float: 'none', width: '100%', margin: '0 0 16px 0', padding: '0', 'min-height': '0', height: 'auto', background: 'transparent' });
+    }
+    /* the fields themselves: Duda's device stylesheets can size inputs past
+       their column (seen on iPhone) — inline width pins the fields and the
+       button to the identical box so they are always edge-flush */
+    var flds = w.querySelectorAll('input[type="text"], input[type="email"], select');
+    for (var q = 0; q < flds.length; q += 1) {
+      flat(flds[q], { display: 'block', width: '100%', 'max-width': '100%', 'box-sizing': 'border-box', margin: '0' });
+    }
+    var sub = w.querySelector('.dmformsubmit');
+    flat(sub, { float: 'none', display: 'block', width: '100%', 'max-width': '100%', margin: '22px 0 0 0', padding: '0', background: 'transparent', 'background-color': 'transparent', border: '0', 'border-radius': '0', 'box-shadow': 'none', 'min-height': '0', height: 'auto', 'text-align': 'left' });
+    var btn = sub ? sub.querySelector('input[type="submit"]') : null;
+    flat(btn, { display: 'block', width: '100%', margin: '0', 'box-sizing': 'border-box', 'text-align': 'center' });
+    /* the submit is an INPUT and inputs cannot wrap their label, so on narrow
+       screens the long label overflows — step the type down responsively.
+       Tuned after Ben's phone review: 12.5px covers all normal phones (the
+       old 360px step caught most Androids at 11px — too small); 11px only on
+       tiny (340px and under) screens; text-indent equal to the letter-spacing
+       cancels the trailing-space bias so the label sits optically centre. */
+    var sizeBtn = function() {
+      if (!btn) return;
+      var fs = '13.5px', ls = 1.4, pad = '17px 24px';
+      if (window.matchMedia && window.matchMedia('(max-width: 480px)').matches) { fs = '12.5px'; ls = 0.5; pad = '17px 8px'; }
+      if (window.matchMedia && window.matchMedia('(max-width: 340px)').matches) { fs = '11px'; ls = 0.2; pad = '16px 6px'; }
+      btn.style.setProperty('font-size', fs, 'important');
+      btn.style.setProperty('letter-spacing', ls + 'px', 'important');
+      btn.style.setProperty('text-indent', ls + 'px', 'important');
+      btn.style.setProperty('padding', pad, 'important');
+      btn.style.setProperty('max-width', '100%', 'important');
+    };
+    /* CLOSED LOOP: Duda's mobile runtime stylesheet caps the submit container
+       at 91% (a stylesheet max-width beats an inline width:100%), and some
+       widget instances carry fixed pixel sizes. Belt: pin display + max-width
+       inline (above). Braces: MEASURE the Name field and, if the button still
+       differs, hand it the field's exact pixel width. Equal by construction,
+       re-checked on every resize/rotation. */
+    var equalize = function() {
+      if (!btn || !sub) return;
+      sub.style.setProperty('width', '100%', 'important');
+      sub.style.setProperty('max-width', '100%', 'important');
+      btn.style.setProperty('width', '100%', 'important');
+      btn.style.setProperty('max-width', '100%', 'important');
+      var ref = w.querySelector('input[name="dmform-1"]') || w.querySelector('input[type="text"]');
+      if (!ref) return;
+      var rw = ref.getBoundingClientRect().width;
+      if (rw && Math.abs(btn.getBoundingClientRect().width - rw) > 1) {
+        sub.style.setProperty('width', rw + 'px', 'important');
+        sub.style.setProperty('max-width', rw + 'px', 'important');
+        btn.style.setProperty('width', rw + 'px', 'important');
+        btn.style.setProperty('max-width', rw + 'px', 'important');
+      }
+    };
+    /* FIT THE LABEL: submit labels differ per tour (the Winter button is 7
+       characters longer than the 14-Day one the size steps were tuned on) —
+       measure the actual label with canvas and shrink the font until it fits
+       the button's inner width. Works for any tour's wording. */
+    var fitLabel = function() {
+      if (!btn) return;
+      var cs = window.getComputedStyle(btn);
+      var cv = document.createElement('canvas').getContext('2d');
+      var ls = parseFloat(cs.letterSpacing) || 0;
+      var label = (btn.value || '').toUpperCase();
+      var inner = btn.getBoundingClientRect().width - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0);
+      if (inner <= 0 || !label) return;
+      var s = parseFloat(cs.fontSize) || 13.5;
+      for (; s >= 9; s -= 0.5) {
+        cv.font = '600 ' + s + 'px Montserrat, sans-serif';
+        if (cv.measureText(label).width + ls * label.length <= inner - 2) { break; }
+      }
+      btn.style.setProperty('font-size', s + 'px', 'important');
+    };
+    var applyBtn = function() { sizeBtn(); equalize(); fitLabel(); };
+    applyBtn();
+    /* fonts and late stylesheets shift widths after first paint — re-check */
+    window.setTimeout(applyBtn, 700);
+    window.setTimeout(applyBtn, 2600);
+    if (window.addEventListener) {
+      window.addEventListener('resize', applyBtn);
+      window.addEventListener('load', applyBtn);
+    }
+    var side = slot.parentElement;
+    if (side && side.classList) side.classList.add('sehe-form-docked');
+    /* if the widget's old container is now completely empty, collapse it */
+    if (oldParent && oldParent !== slot && oldParent.children.length === 0 && !(oldParent.textContent || '').replace(/\s+/g, '')) { oldParent.style.display = 'none'; }
+  }, 200);
+})();
+</script>
 </div>
 <script>
   (function() {
@@ -667,7 +948,11 @@
   .booking-info-value { font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 700 !important; color: var(--navy) !important; margin-bottom: 2px; }
   .booking-info-label { font-size: 11px !important; color: var(--text-light) !important; text-transform: uppercase !important; letter-spacing: 0.8px !important; }
   .booking-info-supplement { display: block; font-size: 10.5px !important; color: rgba(90, 90, 90, 0.75) !important; margin-top: 4px; font-style: italic; }
-  .booking-trust { padding: 8px 24px; background: var(--off-white); text-align: center; }
+  .booking-trust { padding: 10px 24px; background: var(--off-white); text-align: center; }
+  .booking-trust-static { display: inline-flex; align-items: center; gap: 10px; text-decoration: none !important; }
+  .booking-trust-static img { height: 20px; width: auto; display: block; }
+  .booking-trust-static span { font-family: 'Open Sans', sans-serif !important; font-size: 13px !important; color: var(--text-light) !important; }
+  .booking-trust-static strong { color: var(--navy); }
   .booking-widget-area { padding: 24px; background: var(--off-white); min-height: 200px; }
   .booking-deposit { display: flex; align-items: flex-start; gap: 12px; padding: 14px 18px; background: var(--green-pale); border-radius: 6px; margin-top: 20px; border: 1px solid #c8e6d0; }
   .booking-deposit-icon { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
@@ -771,9 +1056,9 @@
      <div class="sehe-departure-list" data-tour="14day-2627">
       <div class="sehe-departure-list-header">
        <p class="sehe-departure-list-label">Available Departures</p>
-       <span class="sehe-departure-list-count" data-departure-count=""><span class="sehe-departure-list-count-pulse"></span>15 available · 2 sold out</span>
+       <span class="sehe-departure-list-count" data-departure-count=""><span class="sehe-departure-list-count-pulse"></span>14 available · 3 sold out</span>
       </div>
-      <div data-departure-content=""><div class="sehe-departure-next"><span class="sehe-departure-next-label">Next</span><span class="sehe-departure-next-date">12 October 2026</span><span class="sehe-departure-next-end">→ Returns 25 Oct</span></div><div class="sehe-departure-months"><div class="sehe-departure-month"><span class="sehe-departure-month-label">October 2026</span><span class="sehe-departure-month-dates"><span>12</span><span class="sehe-departure-day-sep">·</span><span class="sehe-departure-day-sold" title="Sold out">19</span><span class="sehe-departure-day-sep">·</span><span class="sehe-departure-day-sold" title="Sold out">26</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">November 2026</span><span class="sehe-departure-month-dates"><span>9</span><span class="sehe-departure-day-sep">·</span><span>16</span><span class="sehe-departure-day-sep">·</span><span>23</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">January 2027</span><span class="sehe-departure-month-dates"><span>4</span><span class="sehe-departure-day-sep">·</span><span>11</span><span class="sehe-departure-day-sep">·</span><span>18</span><span class="sehe-departure-day-sep">·</span><span>25</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">February 2027</span><span class="sehe-departure-month-dates"><span>8</span><span class="sehe-departure-day-sep">·</span><span>15</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">March 2027</span><span class="sehe-departure-month-dates"><span>8</span><span class="sehe-departure-day-sep">·</span><span>15</span><span class="sehe-departure-day-sep">·</span><span>22</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">April 2027</span><span class="sehe-departure-month-dates"><span>5</span><span class="sehe-departure-day-sep">·</span><span>12</span></span></div></div><div class="sehe-departure-legend"><span class="sehe-departure-legend-item"><span class="sehe-departure-legend-dot sehe-departure-legend-avail"></span>Available</span><span class="sehe-departure-legend-item"><span class="sehe-departure-legend-dot sehe-departure-legend-sold"></span>Sold out</span></div></div>
+      <div data-departure-content=""><div class="sehe-departure-next"><span class="sehe-departure-next-label">Next</span><span class="sehe-departure-next-date">9 November 2026</span><span class="sehe-departure-next-end">→ Returns 22 Nov</span></div><div class="sehe-departure-months"><div class="sehe-departure-month"><span class="sehe-departure-month-label">October 2026</span><span class="sehe-departure-month-dates"><span class="sehe-departure-day-sold" title="Sold out">12</span><span class="sehe-departure-day-sep">·</span><span class="sehe-departure-day-sold" title="Sold out">19</span><span class="sehe-departure-day-sep">·</span><span class="sehe-departure-day-sold" title="Sold out">26</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">November 2026</span><span class="sehe-departure-month-dates"><span>9</span><span class="sehe-departure-day-sep">·</span><span>16</span><span class="sehe-departure-day-sep">·</span><span>23</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">January 2027</span><span class="sehe-departure-month-dates"><span>4</span><span class="sehe-departure-day-sep">·</span><span>11</span><span class="sehe-departure-day-sep">·</span><span>18</span><span class="sehe-departure-day-sep">·</span><span>25</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">February 2027</span><span class="sehe-departure-month-dates"><span>8</span><span class="sehe-departure-day-sep">·</span><span>15</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">March 2027</span><span class="sehe-departure-month-dates"><span>8</span><span class="sehe-departure-day-sep">·</span><span>15</span><span class="sehe-departure-day-sep">·</span><span>22</span></span></div><div class="sehe-departure-month"><span class="sehe-departure-month-label">April 2027</span><span class="sehe-departure-month-dates"><span>5</span><span class="sehe-departure-day-sep">·</span><span>12</span></span></div></div><div class="sehe-departure-legend"><span class="sehe-departure-legend-item"><span class="sehe-departure-legend-dot sehe-departure-legend-avail"></span>Available</span><span class="sehe-departure-legend-item"><span class="sehe-departure-legend-dot sehe-departure-legend-sold"></span>Sold out</span></div></div>
       <div class="booking-notes">
        <div class="booking-deposit">
         <svg class="booking-deposit-icon" viewBox="0 0 24 24" fill="none" stroke="#2a7a4a" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
@@ -878,9 +1163,10 @@
      </div>
     </div>
     <div class="booking-trust">
-     <div class="trustpilot-widget" data-locale="en-NZ" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="67af6f95db89fc000f855205" data-style-height="20px" data-style-width="100%">
-      <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot</a>
-     </div>
+     <a class="booking-trust-static" href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener" aria-label="Rated 5 out of 5 stars on Trustpilot — read our reviews">
+      <img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="Rated 5 out of 5 stars">
+      <span>Rated 5 out of 5 on <strong>Trustpilot</strong></span>
+     </a>
     </div>
    </div>
   </section>
@@ -890,9 +1176,9 @@
 <script>
   var DEFAULT_TOUR = '14day';  /* ← CHANGE THIS PER PAGE */
   var TOUR_DATA = {
-   '14day': { name: '14-Day Spring⁠/⁠Summer Tour 2026/27', tabLabel: '14-Day Spring⁠/⁠Summer 2026/27', duration: '14 Days', price: 'From NZ$8,995', item_id: '302', date: '20261109', category_id: null, departureKey: '14day-2627', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
+   '14day': { name: '14-Day Spring⁠/⁠Summer Tour 2026/27', tabLabel: '14-Day Spring⁠/⁠Summer 2026/27', duration: '14 Days', price: 'From NZ$8,995', item_id: '302,374', date: '20261109', category_id: null, departureKey: '14day-2627', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
    '11day': { name: '11-Day Spring⁠/⁠Summer Tour 2026/27', tabLabel: '11-Day Spring⁠/⁠Summer 2026/27', duration: '11 Days', price: 'From NZ$7,495', item_id: '305', date: '20261102', category_id: null, departureKey: '11day-2627', startsEnds: 'Christchurch', startsEndsLabel: 'Starts & ends' },
-   'winter26': { name: '12-Day Winter Edition 2026', tabLabel: 'Winter 2026', duration: '12 Days', price: 'From NZ$7,995', item_id: '289', date: '20260905', category_id: '5', departureKey: 'winter-2026', startsEnds: 'Christchurch', startsEndsLabel: 'Starts & ends' },
+   'winter26': { name: '12-Day Winter Edition 2026', tabLabel: 'Winter 2026', duration: '12 Days', price: 'From NZ$7,995', item_id: '289,392', date: '20260905', category_id: '5', departureKey: 'winter-2026', startsEnds: 'Christchurch', startsEndsLabel: 'Starts & ends' },
    'pinnacle': { name: '15-Day Pinnacle Tour 2027', tabLabel: 'Pinnacle 2027', duration: '15 Days', price: 'From NZ$25,995', item_id: '315', date: '20270114', category_id: '5', departureKey: 'pinnacle-2027', startsEnds: 'Christchurch → Auckland', startsEndsLabel: 'Starts → Ends' },
    'winter27': { name: '12-Day Winter Edition 2027', tabLabel: 'Winter 2027', duration: '12 Days', price: 'From NZ$8,495', item_id: '373', date: '20270710', category_id: '5', departureKey: 'winter-2027', startsEnds: 'Christchurch', startsEndsLabel: 'Starts & ends' },
    '14day2728': { name: '14-Day Spring⁠/⁠Summer Tour 2027/28', tabLabel: '14-Day Spring⁠/⁠Summer 2027/28', duration: '14 Days', price: 'From NZ$9,990', item_id: '388', date: '20271004', category_id: null, departureKey: '14day-2728', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
@@ -1973,6 +2259,10 @@
   .journey-card-next-label { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 10.5px !important; font-weight: 700 !important; color: var(--green) !important; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 2px; }
   .journey-card-next-date { font-family: 'Montserrat', sans-serif !important; font-size: 14px !important; font-weight: 700 !important; color: var(--navy) !important; letter-spacing: -0.1px; }
   .journey-card-next-soldout { border-left-color: var(--red); }
+  .journey-card-status-sold { background: rgba(184, 64, 64, 0.95); }
+  .journey-card-status-sold .journey-card-status-dot { animation: none; }
+  .journey-card-soldnote { margin: 0 0 14px !important; padding: 10px 12px; background: rgba(184, 64, 64, 0.06); border-left: 3px solid var(--red); font-family: 'Open Sans', sans-serif !important; font-size: 13px !important; line-height: 1.5 !important; color: var(--navy) !important; }
+  .journey-card-soldnote a { color: var(--navy) !important; font-weight: 700; text-decoration: underline !important; text-underline-offset: 2px; }
   .journey-card-next-soldout .journey-card-next-pulse { background: var(--red); box-shadow: 0 0 0 0 rgba(184, 64, 64, 0.55); animation: none; }
   .journey-card-next-soldout .journey-card-next-label { color: var(--red) !important; }
   .journey-card-facts { display: flex; align-items: stretch; gap: 0; padding: 14px 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); margin-bottom: 18px; }
@@ -2043,21 +2333,6 @@
    <button type="button" class="sehe-filter-btn" data-filter="pinnacle">Pinnacle<span class="sehe-filter-count" aria-hidden="true"></span></button>
   </div>
   <div class="sehe-journeys-list">
-   <article class="journey-card" data-season="winter" data-tour="winter-2026">
-    <div class="journey-card-image-wrap">
-     <img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/183840-lake-sarah-in-snow-b1e7ecbb.webp" alt="12-Day Winter Edition 2026">
-     <div class="journey-card-badges"><span class="journey-card-badge">Winter Edition · 2026</span><span class="journey-card-status"><span class="journey-card-status-dot"></span>Now Booking</span></div>
-    </div>
-    <div class="journey-card-body">
-     <h3 class="journey-card-name">12-Day Winter Edition 2026</h3>
-     <span class="journey-card-bestfor"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>Best for: Travellers who want the South Island at its most dramatic</span>
-     <p class="journey-card-description">Snow-capped landscapes, quiet alpine towns, and a pace that's all its own. Four rail journeys including the TranzAlpine, paired with extended stays in Queenstown, Doubtful Sound, and Aoraki Mt Cook.</p>
-     <div class="journey-card-next" data-next-placeholder=""><span class="journey-card-next-pulse"></span><div class="journey-card-next-text"><span class="journey-card-next-label">Now Booking</span><span class="journey-card-next-date">Departures available — see tour</span></div></div>
-     <div class="journey-card-facts"><div class="journey-card-fact"><span class="journey-card-fact-value">12 Days</span><span class="journey-card-fact-label">Duration</span></div><div class="journey-card-fact"><span class="journey-card-fact-value">From NZ $7,995</span><span class="journey-card-fact-label">Per person</span></div><div class="journey-card-fact"><span class="journey-card-fact-value" data-departure-value="">2</span><span class="journey-card-fact-label" data-departure-label="">Departures</span></div></div>
-     <div class="journey-card-includes"><span class="journey-card-includes-label">Tour Highlights · June – September 2026</span><div class="journey-card-pills"><span class="journey-card-pill">TranzAlpine</span><span class="journey-card-pill">The Mainlander</span><span class="journey-card-pill">Taieri Gorge</span><span class="journey-card-pill">Queenstown</span><span class="journey-card-pill">Doubtful Sound</span><span class="journey-card-pill">Aoraki Mt Cook</span></div></div>
-     <div class="journey-card-actions"><a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours">View Tour</a><a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours#tour-dates">Check Dates</a><a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours#tour-brochure">Brochure</a></div>
-    </div>
-   </article>
    <article class="journey-card" data-season="spring-summer" data-tour="11day-2627">
     <div class="journey-card-image-wrap">
      <img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp" alt="11-Day Spring/Summer Tour">
@@ -2134,6 +2409,22 @@
      <div class="journey-card-actions"><a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours">View Tour</a><a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours#tour-dates">Check Dates</a><a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours#tour-brochure">Brochure</a></div>
     </div>
    </article>
+   <article class="journey-card" data-season="winter" data-tour="winter-2026">
+    <div class="journey-card-image-wrap">
+     <img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/183840-lake-sarah-in-snow-b1e7ecbb.webp" alt="12-Day Winter Edition 2026">
+     <div class="journey-card-badges"><span class="journey-card-badge">Winter Edition · 2026</span><span class="journey-card-status journey-card-status-sold"><span class="journey-card-status-dot"></span>Sold Out</span></div>
+    </div>
+    <div class="journey-card-body">
+     <h3 class="journey-card-name">12-Day Winter Edition 2026</h3>
+     <span class="journey-card-bestfor"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>Best for: Travellers who want the South Island at its most dramatic</span>
+     <p class="journey-card-description">Snow-capped landscapes, quiet alpine towns, and a pace that's all its own. Four rail journeys including the TranzAlpine, paired with extended stays in Queenstown, Doubtful Sound, and Aoraki Mt Cook.</p>
+     <div class="journey-card-next journey-card-next-soldout" data-next-placeholder="" data-sold-note="2027 season now booking"><span class="journey-card-next-pulse"></span><div class="journey-card-next-text"><span class="journey-card-next-label">Season Complete</span><span class="journey-card-next-date">2027 season now booking</span></div></div>
+     <div class="journey-card-facts"><div class="journey-card-fact"><span class="journey-card-fact-value">12 Days</span><span class="journey-card-fact-label">Duration</span></div><div class="journey-card-fact"><span class="journey-card-fact-value">From NZ $7,995</span><span class="journey-card-fact-label">Per person</span></div><div class="journey-card-fact"><span class="journey-card-fact-value" data-departure-value="">&mdash;</span><span class="journey-card-fact-label" data-departure-label="">Departures</span></div></div>
+     <div class="journey-card-includes"><span class="journey-card-includes-label">Tour Highlights · June – September 2026</span><div class="journey-card-pills"><span class="journey-card-pill">TranzAlpine</span><span class="journey-card-pill">The Mainlander</span><span class="journey-card-pill">Taieri Gorge</span><span class="journey-card-pill">Queenstown</span><span class="journey-card-pill">Doubtful Sound</span><span class="journey-card-pill">Aoraki Mt Cook</span></div></div>
+     <p class="journey-card-soldnote"><strong>2026 season sold out.</strong> Every 2026 Winter Edition departure has now been filled. The 12-Day Winter Edition returns next winter &mdash; <a href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours">see the 2027 departures</a>.</p>
+     <div class="journey-card-actions"><a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours">View Tour</a><a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours#tour-dates">Check Dates</a><a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours#tour-brochure">Brochure</a></div>
+    </div>
+   </article>
   </div>
 </div>
 <script>
@@ -2186,7 +2477,7 @@
       if (!nx) {
         placeholder.classList.add('journey-card-next-soldout');
         placeholder.querySelector('.journey-card-next-label').textContent = 'Season Complete';
-        placeholder.querySelector('.journey-card-next-date').textContent = 'New season opening soon';
+        placeholder.querySelector('.journey-card-next-date').textContent = (placeholder.getAttribute('data-sold-note') || 'New season opening soon');
       } else {
         placeholder.classList.remove('journey-card-next-soldout');
         placeholder.querySelector('.journey-card-next-label').textContent = 'Next Departure';
