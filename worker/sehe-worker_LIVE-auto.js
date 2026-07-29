@@ -416,6 +416,7 @@ const CORS = {
   'Access-Control-Allow-Headers': 'Content-Type'
 };
 
+
 export default {
   async fetch(request, env, ctx) {
     const path = new URL(request.url).pathname;
