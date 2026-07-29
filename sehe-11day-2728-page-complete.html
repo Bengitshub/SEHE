@@ -1,8 +1,16 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 11-DAY SPRING/SUMMER 2027/28
-     COMPLETE TOUR PAGE  ·  VERSION v18  ·  2026-07-29  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v19  ·  2026-07-29  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v19 — booking widget trust strip: the live TrustBox under the booking
+            calendar rendered Trustpilot's own star art, which was still
+            showing 4.5 stars after the score reached 5.0 (their image only
+            flips at their thresholds/cache). Replaced with the static
+            official 5-star graphic + "Rated 5 out of 5 on Trustpilot", the
+            whole row linking to the Trustpilot profile — same treatment
+            family as the hero. The compare-grid quote TrustBox stays live.
+            Ben's call.
        v18 — BOOKING WIDGET: split Checkfront items now included (Kirsty's
             report: 8 Feb and 8 Mar 2027 not bookable on the 14-Day page).
             The booking tab config pinned each tour to ONE Checkfront
@@ -868,7 +876,11 @@
   .booking-info-value { font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 700 !important; color: var(--navy) !important; margin-bottom: 2px; }
   .booking-info-label { font-size: 11px !important; color: var(--text-light) !important; text-transform: uppercase !important; letter-spacing: 0.8px !important; }
   .booking-info-supplement { display: block; font-size: 10.5px !important; color: rgba(90, 90, 90, 0.75) !important; margin-top: 4px; font-style: italic; }
-  .booking-trust { padding: 8px 24px; background: var(--off-white); text-align: center; }
+  .booking-trust { padding: 10px 24px; background: var(--off-white); text-align: center; }
+  .booking-trust-static { display: inline-flex; align-items: center; gap: 10px; text-decoration: none !important; }
+  .booking-trust-static img { height: 20px; width: auto; display: block; }
+  .booking-trust-static span { font-family: 'Open Sans', sans-serif !important; font-size: 13px !important; color: var(--text-light) !important; }
+  .booking-trust-static strong { color: var(--navy); }
   .booking-widget-area { padding: 24px; background: var(--off-white); min-height: 200px; }
   .booking-deposit { display: flex; align-items: flex-start; gap: 12px; padding: 14px 18px; background: var(--green-pale); border-radius: 6px; margin-top: 20px; border: 1px solid #c8e6d0; }
   .booking-deposit-icon { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
@@ -1079,9 +1091,10 @@
      </div>
     </div>
     <div class="booking-trust">
-     <div class="trustpilot-widget" data-locale="en-NZ" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="67af6f95db89fc000f855205" data-style-height="20px" data-style-width="100%">
-      <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot</a>
-     </div>
+     <a class="booking-trust-static" href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener" aria-label="Rated 5 out of 5 stars on Trustpilot — read our reviews">
+      <img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="Rated 5 out of 5 stars">
+      <span>Rated 5 out of 5 on <strong>Trustpilot</strong></span>
+     </a>
     </div>
    </div>
   </section>

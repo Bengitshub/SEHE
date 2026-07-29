@@ -1,8 +1,16 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 12-DAY WINTER EDITION 2026
-     COMPLETE TOUR PAGE  ·  VERSION v25  ·  2026-07-29  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v26  ·  2026-07-29  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v26 — booking widget trust strip: the live TrustBox under the booking
+            calendar rendered Trustpilot's own star art, which was still
+            showing 4.5 stars after the score reached 5.0 (their image only
+            flips at their thresholds/cache). Replaced with the static
+            official 5-star graphic + "Rated 5 out of 5 on Trustpilot", the
+            whole row linking to the Trustpilot profile — same treatment
+            family as the hero. The compare-grid quote TrustBox stays live.
+            Ben's call.
        v25 — BOOKING WIDGET: split Checkfront items now included (Kirsty's
             report: 8 Feb and 8 Mar 2027 not bookable on the 14-Day page).
             The booking tab config pinned each tour to ONE Checkfront
