@@ -59,6 +59,99 @@ const SCHEDULE = {
 const CACHE_SECONDS = 600;            // 10 min — availability isn't second-by-second
 let LAST_GOOD = null;                 // in-isolate last successful payload (resilience)
 
+/* ---- NEW-ITEM WATCHDOG --------------------------------------------------
+   Kirsty's Feb/Mar bug happened because two departures were created under a
+   NEW Checkfront item id the site had never heard of. This watchdog crawls
+   the Checkfront item list and flags any item whose name says it is a
+   "Sir Edmund Hillary Explorer" product but whose id is not in SCHEDULE —
+   the exact failure mode, self-maintaining (no baked ignore-list: Flyer /
+   Mountaineer products never match the name test).
+     • GET /items-audit             -> JSON report, on demand
+     • on each feed rebuild         -> silent check; if NEW_ITEM_ALERT_HOOK
+       (a Zapier catch-hook URL secret) is set, POSTs the finding once per
+       isolate per distinct set. Failures are swallowed — the watchdog can
+       never affect the availability feed. */
+const SEHE_ITEM_NAME = /sir\s+edmund\s+hillary\s+explorer/i;
+
+function knownItemIds() {
+  const ids = new Set();
+  for (const k of Object.keys(SCHEDULE)) for (const id of SCHEDULE[k].items) ids.add(String(id));
+  return ids;
+}
+
+function filterNewSeheItems(itemsJson, known) {
+  const items = (itemsJson && itemsJson.items) || {};
+  const found = [];
+  for (const id of Object.keys(items)) {
+    const it = items[id] || {};
+    const name = String(it.name || '');
+    if (!SEHE_ITEM_NAME.test(name)) continue;         // not an SEHE product
+    if (known.has(String(id))) continue;              // already scheduled
+    found.push({ id: String(id), name: name, category_id: it.category_id, status: it.status });
+  }
+  found.sort((a, b) => Number(a.id) - Number(b.id));
+  return found;
+}
+
+async function fetchAllItems(env) {
+  const headers = { 'Accept': 'application/json' };
+  if (env && env.CF_API_KEY && env.CF_API_SECRET) {
+    headers['Authorization'] = 'Basic ' + btoa(`${env.CF_API_KEY}:${env.CF_API_SECRET}`);
+  }
+  const res = await fetch(`https://${CHECKFRONT_HOST}/api/3.0/item`, { headers });
+  if (!res.ok) throw new Error(`Checkfront item list -> ${res.status}`);
+  return res.json();
+}
+
+let NEW_ITEMS_ALERTED_SIG = null;   // per-isolate: alert once per distinct set
+
+async function watchNewItems(env) {
+  try {
+    const newItems = filterNewSeheItems(await fetchAllItems(env), knownItemIds());
+    if (!newItems.length) return newItems;
+    const sig = newItems.map((x) => x.id).join(',');
+    if (env && env.NEW_ITEM_ALERT_HOOK && sig !== NEW_ITEMS_ALERTED_SIG) {
+      NEW_ITEMS_ALERTED_SIG = sig;
+      await fetch(env.NEW_ITEM_ALERT_HOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          alert: 'new_checkfront_items',
+          message: 'New Sir Edmund Hillary Explorer item(s) found in Checkfront that the website schedule does not know. Departures sold under these will NOT appear on the site until the worker SCHEDULE and the pages\' booking config include them.',
+          new_items: newItems,
+          detected: new Date().toISOString()
+        })
+      }).catch(() => {});
+    }
+    return newItems;
+  } catch (e) { return []; }   // never let the watchdog matter to the feed
+}
+
+async function handleItemsAudit(env) {
+  const known = knownItemIds();
+  let report;
+  try {
+    const itemsJson = await fetchAllItems(env);
+    const items = (itemsJson && itemsJson.items) || {};
+    const sehe = Object.keys(items)
+      .filter((id) => SEHE_ITEM_NAME.test(String((items[id] || {}).name || '')))
+      .map((id) => ({ id: String(id), name: items[id].name, known: known.has(String(id)) }))
+      .sort((a, b) => Number(a.id) - Number(b.id));
+    report = {
+      ok: true,
+      knownScheduleIds: Array.from(known).sort((a, b) => Number(a) - Number(b)),
+      seheItemsInCheckfront: sehe,
+      newItems: sehe.filter((x) => !x.known),
+      note: 'newItems non-empty means Checkfront sells SEHE product(s) this site does not know about.'
+    };
+  } catch (e) {
+    report = { ok: false, error: String(e && e.message || e) };
+  }
+  return new Response(JSON.stringify(report, null, 2), {
+    headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', ...CORS }
+  });
+}
+
 /* ---- date helpers (all UTC; Checkfront dates are plain calendar dates) -- */
 function todayISO() { return new Date().toISOString().slice(0, 10); }
 function isoToCompact(iso) { return iso.replace(/-/g, ''); }                 // 2027-10-04 -> 20271004
@@ -323,12 +416,13 @@ const CORS = {
   'Access-Control-Allow-Headers': 'Content-Type'
 };
 
-export { SCHEDULE, addNights, isoToCompact, extractAvailable, isAvailableValue, buildPayload, scheduleFallback, handleLead };
+export { SCHEDULE, addNights, isoToCompact, extractAvailable, isAvailableValue, buildPayload, scheduleFallback, handleLead, knownItemIds, filterNewSeheItems, watchNewItems, handleItemsAudit };
 
 export default {
   async fetch(request, env, ctx) {
     const path = new URL(request.url).pathname;
     if (path === '/lead') return handleLead(request, env, ctx);
+    if (path === '/items-audit') return handleItemsAudit(env);
     if (request.method === 'OPTIONS') return new Response(null, { headers: CORS });
 
     const cache = caches.default;
@@ -354,6 +448,7 @@ export default {
     };
     const response = new Response(body, { headers });
     if (ok) ctx.waitUntil(cache.put(cacheKey, response.clone()));  // only cache good payloads
+    ctx.waitUntil(watchNewItems(env));   // new-item watchdog: after the response, never in its way
     return response;
   }
 };

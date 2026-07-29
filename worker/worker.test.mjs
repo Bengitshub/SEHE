@@ -3,7 +3,8 @@
    kept as status:"soldout" (red). Only scheduled dates are shown. 302+374 merge.
    Run:  node worker/worker.test.mjs */
 import {
-  addNights, isoToCompact, extractAvailable, isAvailableValue, buildPayload, SCHEDULE, handleLead
+  addNights, isoToCompact, extractAvailable, isAvailableValue, buildPayload, SCHEDULE, handleLead,
+  knownItemIds, filterNewSeheItems, watchNewItems, handleItemsAudit
 } from './worker.js';
 
 let pass = 0, fail = 0;
@@ -153,6 +154,60 @@ for (let i = 0; i < 22; i++) last = await handleLead(leadReq({ name: 'A', email:
 sent = null;
 last = await handleLead(leadReq({ name: 'A', email: 'a@b.co', page: '14day-2627' }, ipFixed), { ZAPIER_HOOKS_JSON: HOOKS });
 ok(last.status === 200 && sent === null, '/lead: per-IP rate limit kicks in (fake success, nothing forwarded)');
+
+
+/* ---- 12. new-item watchdog ---------------------------------------------- */
+console.log('watchdog: known ids, name filter, alerting, failure isolation');
+{
+  const known = knownItemIds();
+  ok(known.has('302') && known.has('374') && known.has('289') && known.has('392'), 'knownItemIds carries the split items');
+  eq(known.size, 9, 'nine scheduled item ids');
+
+  const ITEMS = { items: {
+    '302': { name: 'Sir Edmund Hillary Explorer: 14-Day Tour', category_id: '5', status: 'U' },
+    '310': { name: 'General Admission - Marlborough Flyer Steam Train', category_id: '5', status: 'U' },
+    '401': { name: '* Sir Edmund Hillary Explorer: 14-Day Tour EXTRA', category_id: '5', status: 'U' },
+    '402': { name: 'SIR EDMUND HILLARY EXPLORER: Winter Edition 2028', category_id: '5', status: 'U' },
+    '403': { name: 'Family Pass - Return Trip (Blenheim)', category_id: '5', status: 'U' }
+  } };
+  const found = filterNewSeheItems(ITEMS, known);
+  eq(found.map((x) => x.id), ['401', '402'], 'flags only unscheduled SEHE-named items');
+  eq(filterNewSeheItems({ items: {} }, known), [], 'empty item list -> nothing');
+  eq(filterNewSeheItems(null, known), [], 'missing payload -> nothing');
+
+  // alert fires once per distinct set, to the hook, with the ids
+  const calls = [];
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = async (url, opts) => {
+    if (String(url).endsWith('/api/3.0/item')) return { ok: true, json: async () => ITEMS };
+    calls.push({ url: String(url), body: opts && opts.body });
+    return { ok: true };
+  };
+  const env = { NEW_ITEM_ALERT_HOOK: 'https://hooks.zapier.com/hooks/catch/TEST/abc' };
+  const r1 = await watchNewItems(env);
+  eq(r1.map((x) => x.id), ['401', '402'], 'watchdog returns the new items');
+  const r2 = await watchNewItems(env);
+  eq(r2.length, 2, 'second run still reports');
+  eq(calls.length, 1, 'but alerts only once per distinct set');
+  ok(calls[0].url.indexOf('hooks.zapier.com') !== -1, 'alert went to the hook');
+  ok(String(calls[0].body).indexOf('"401"') !== -1 && String(calls[0].body).indexOf('"402"') !== -1, 'alert body names the ids');
+
+  // /items-audit endpoint
+  const res = await handleItemsAudit(env);
+  const audit = JSON.parse(await res.text());
+  ok(audit.ok === true, 'items-audit ok');
+  eq(audit.newItems.map((x) => x.id), ['401', '402'], 'items-audit lists the new items');
+  ok(audit.seheItemsInCheckfront.some((x) => x.id === '302' && x.known === true), 'items-audit marks known items');
+
+  // failure isolation: item list down -> watchdog returns [], never throws
+  globalThis.fetch = async () => { throw new Error('checkfront down'); };
+  const r3 = await watchNewItems(env);
+  eq(r3, [], 'watchdog swallows fetch failure');
+  const res2 = await handleItemsAudit(env);
+  const audit2 = JSON.parse(await res2.text());
+  ok(audit2.ok === false, 'items-audit reports failure honestly');
+  globalThis.fetch = realFetch;
+}
 
 console.log(`\n${fail === 0 ? 'ALL PASSED' : 'FAILURES'} — ${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
