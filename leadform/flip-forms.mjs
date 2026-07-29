@@ -20,13 +20,13 @@ const OUT = 'leadform/preview/';
 const TODAY = new Date().toISOString().slice(0, 10);
 
 const PAGES = [
-  { file: 'SEHE-14day-tour_v26.txt',             key: '14day-2627',  tour: '14-Day Spring/Summer Tour 2026/27', prev: 'sehe-14day-page-complete.html' },
-  { file: 'SEHE-11day-2627-tour_v24.txt',        key: '11day-2627',  tour: '11-Day Spring/Summer Tour 2026/27', prev: 'sehe-11day-2627-page-complete.html' },
-  { file: 'SEHE-12day-winter-2026-tour_v26.txt', key: 'winter-2026', tour: '12-Day Winter Edition 2026',        prev: 'sehe-12day-winter-2026-page-complete.html' },
-  { file: 'SEHE-12day-winter-2027-tour_v17.txt',   key: 'winter-2027', tour: '12-Day Winter Edition 2027',        prev: 'sehe-12day-winter-2027-page-complete.html' },
-  { file: 'SEHE-pinnacle-2027-tour_v17.txt',       key: 'pinnacle-2027', tour: 'The Pinnacle Tour 2027',          prev: 'sehe-pinnacle-2027-page-complete.html' },
-  { file: 'SEHE-11day-2728-tour_v19.txt',         key: '11day-2728',  tour: '11-Day Spring/Summer Tour 2027/28', prev: 'sehe-11day-2728-page-complete.html' },
-  { file: 'SEHE-14day-2728-tour_v28.txt',        key: '14day-2728',  tour: '14-Day Spring/Summer Tour 2027/28', prev: 'sehe-14day-2728-page-complete.html' },
+  { file: 'SEHE-14day-tour_v27.txt',             key: '14day-2627',  tour: '14-Day Spring/Summer Tour 2026/27', prev: 'sehe-14day-page-complete.html' },
+  { file: 'SEHE-11day-2627-tour_v25.txt',        key: '11day-2627',  tour: '11-Day Spring/Summer Tour 2026/27', prev: 'sehe-11day-2627-page-complete.html' },
+  { file: 'SEHE-12day-winter-2026-tour_v27.txt', key: 'winter-2026', tour: '12-Day Winter Edition 2026',        prev: 'sehe-12day-winter-2026-page-complete.html' },
+  { file: 'SEHE-12day-winter-2027-tour_v18.txt',   key: 'winter-2027', tour: '12-Day Winter Edition 2027',        prev: 'sehe-12day-winter-2027-page-complete.html' },
+  { file: 'SEHE-pinnacle-2027-tour_v18.txt',       key: 'pinnacle-2027', tour: 'The Pinnacle Tour 2027',          prev: 'sehe-pinnacle-2027-page-complete.html' },
+  { file: 'SEHE-11day-2728-tour_v20.txt',         key: '11day-2728',  tour: '11-Day Spring/Summer Tour 2027/28', prev: 'sehe-11day-2728-page-complete.html' },
+  { file: 'SEHE-14day-2728-tour_v29.txt',        key: '14day-2728',  tour: '14-Day Spring/Summer Tour 2027/28', prev: 'sehe-14day-2728-page-complete.html' },
 ];
 
 const HONEYPOT = '<div class="field" style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true"><input type="text" name="sehe_hp" tabindex="-1" autocomplete="off" value=""></div>\n      ';

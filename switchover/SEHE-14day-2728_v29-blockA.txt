@@ -1,8 +1,19 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 14-DAY SPRING/SUMMER 2027/28
-     COMPLETE TOUR PAGE  ·  VERSION v28  ·  2026-07-29  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v29  ·  2026-07-29  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v29 — STATIC 5-STAR STRIP RETRACTED before it ever published (never
+            went live). Verified against Trustpilot's own widget API: the
+            business's TrustScore is 4.7, which Trustpilot renders as
+            4.5-star art (their 5-star image needs >=4.8) — 78 of 86 reviews
+            are five-star, which is where the "5 stars" impression came
+            from. So the live TrustBox under the booking calendar was
+            accurate all along, and a baked "Rated 5 out of 5 on Trustpilot"
+            would overstate the official rating beside a link that shows
+            4.7. Live Micro Star TrustBox restored; it will flip to 5-star
+            art by itself the day TrustScore reaches 4.8. The Checkfront
+            split-item fix (302,374 / 289,392) is unaffected and stays.
        v28 — booking widget trust strip: the live TrustBox under the booking
             calendar rendered Trustpilot's own star art, which was still
             showing 4.5 stars after the score reached 5.0 (their image only
