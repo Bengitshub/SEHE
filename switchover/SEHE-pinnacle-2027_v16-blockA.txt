@@ -1,8 +1,19 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 15-DAY PINNACLE TOUR 2027
-     COMPLETE TOUR PAGE  ·  VERSION v15  ·  2026-07-28  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v16  ·  2026-07-29  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v16 — BOOKING WIDGET: split Checkfront items now included (Kirsty's
+            report: 8 Feb and 8 Mar 2027 not bookable on the 14-Day page).
+            The booking tab config pinned each tour to ONE Checkfront
+            item_id, but two tours sell across TWO items: the 14-Day 26/27
+            (302 + 374 — the missing dates live under 374) and the Winter
+            2026 (289 + 392, the same latent gap — plausibly where the
+            re-opened 12 Sep seats live). The Checkfront droplet accepts a
+            comma-separated item list, so the config now passes '302,374'
+            and '289,392'. The worker already merged both items for the
+            display list — display and booking now agree. All seven pages
+            share this config, so all seven are updated.
        v15 — baked winter-2026 SOLDOUT completed to all five dates (12 Sep —
             and on the 14-day page 5 Sep — were missing). Found reviewing
             Block A: the baked departure data said 1-2 winter dates were

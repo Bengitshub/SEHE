@@ -1,8 +1,19 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — 14-DAY SPRING/SUMMER 2027/28
-     COMPLETE TOUR PAGE  ·  VERSION v26  ·  2026-07-28  (paste into a Duda HTML block)
+     COMPLETE TOUR PAGE  ·  VERSION v27  ·  2026-07-29  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v27 — BOOKING WIDGET: split Checkfront items now included (Kirsty's
+            report: 8 Feb and 8 Mar 2027 not bookable on the 14-Day page).
+            The booking tab config pinned each tour to ONE Checkfront
+            item_id, but two tours sell across TWO items: the 14-Day 26/27
+            (302 + 374 — the missing dates live under 374) and the Winter
+            2026 (289 + 392, the same latent gap — plausibly where the
+            re-opened 12 Sep seats live). The Checkfront droplet accepts a
+            comma-separated item list, so the config now passes '302,374'
+            and '289,392'. The worker already merged both items for the
+            display list — display and booking now agree. All seven pages
+            share this config, so all seven are updated.
        v26 — baked winter-2026 SOLDOUT completed to all five dates (12 Sep —
             and on the 14-day page 5 Sep — were missing). Found reviewing
             Block A: the baked departure data said 1-2 winter dates were
@@ -1090,9 +1101,9 @@
 <script>
   var DEFAULT_TOUR = '14day2728';  /* ← CHANGE THIS PER PAGE */
   var TOUR_DATA = {
-   '14day': { name: '14-Day Spring⁠/⁠Summer Tour 2026/27', tabLabel: '14-Day Spring⁠/⁠Summer 2026/27', duration: '14 Days', price: 'From NZ$8,995', item_id: '302', date: '20261109', category_id: null, departureKey: '14day-2627', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
+   '14day': { name: '14-Day Spring⁠/⁠Summer Tour 2026/27', tabLabel: '14-Day Spring⁠/⁠Summer 2026/27', duration: '14 Days', price: 'From NZ$8,995', item_id: '302,374', date: '20261109', category_id: null, departureKey: '14day-2627', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
    '11day': { name: '11-Day Spring⁠/⁠Summer Tour 2026/27', tabLabel: '11-Day Spring⁠/⁠Summer 2026/27', duration: '11 Days', price: 'From NZ$7,495', item_id: '305', date: '20261102', category_id: null, departureKey: '11day-2627', startsEnds: 'Christchurch', startsEndsLabel: 'Starts & ends' },
-   'winter26': { name: '12-Day Winter Edition 2026', tabLabel: 'Winter 2026', duration: '12 Days', price: 'From NZ$7,995', item_id: '289', date: '20260905', category_id: '5', departureKey: 'winter-2026', startsEnds: 'Christchurch', startsEndsLabel: 'Starts & ends' },
+   'winter26': { name: '12-Day Winter Edition 2026', tabLabel: 'Winter 2026', duration: '12 Days', price: 'From NZ$7,995', item_id: '289,392', date: '20260905', category_id: '5', departureKey: 'winter-2026', startsEnds: 'Christchurch', startsEndsLabel: 'Starts & ends' },
    'pinnacle': { name: '15-Day Pinnacle Tour 2027', tabLabel: 'Pinnacle 2027', duration: '15 Days', price: 'From NZ$25,995', item_id: '315', date: '20270114', category_id: '5', departureKey: 'pinnacle-2027', startsEnds: 'Christchurch → Auckland', startsEndsLabel: 'Starts → Ends' },
    'winter27': { name: '12-Day Winter Edition 2027', tabLabel: 'Winter 2027', duration: '12 Days', price: 'From NZ$8,495', item_id: '373', date: '20270710', category_id: '5', departureKey: 'winter-2027', startsEnds: 'Christchurch', startsEndsLabel: 'Starts & ends' },
    '14day2728': { name: '14-Day Spring⁠/⁠Summer Tour 2027/28', tabLabel: '14-Day Spring⁠/⁠Summer 2027/28', duration: '14 Days', price: 'From NZ$9,990', item_id: '388', date: '20271004', category_id: null, departureKey: '14day-2728', startsEnds: 'Christchurch return', startsEndsLabel: 'Starts & ends' },
