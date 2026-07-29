@@ -1,8 +1,12 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v26  ·  2026-07-27  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v27  ·  2026-07-29  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v27 — final section: "Talk to our small, friendly New Zealand team"
+            -> "Talk to our friendly New Zealand team" (Ben — consistent
+            with Paul's group-size accuracy calls). Only wording change;
+            "New Zealand" pairing kept. Last "small" descriptor on the page.
        v26 — hero heading back to Montserrat 700. v25 moved every heading to
             600 to match the tour pages, but that also caught the hero h1 —
             and the tour pages' own hero title is 700, plus Ben had said the
@@ -1034,7 +1038,7 @@
     <div class="shx-wrap">
       <span class="shx-kicker shx-kicker--light" style="display:block;">Sir Edmund Hillary Explorer</span>
       <h2 class="shx-display">Ready when you are.</h2>
-      <p class="shx-final-sub">Talk to our small, friendly New Zealand team about dates, rooms, travelling solo, or anything else on your mind.</p>
+      <p class="shx-final-sub">Talk to our friendly New Zealand team about dates, rooms, travelling solo, or anything else on your mind.</p>
       <a class="shx-final-phone" href="tel:+6439741812">+64 3 974 1812</a>
       <p class="shx-final-hours">New Zealand hours &middot; or enquire from any journey page</p>
       <div class="shx-final-ctas">
