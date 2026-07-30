@@ -116,6 +116,18 @@ def pretty(iso):
     return int(dy), MON3[int(mo) - 1], y
 
 
+def countdown(iso, today_iso):
+    from datetime import date as _d
+    a = _d(*[int(x) for x in today_iso.split('-')])
+    b = _d(*[int(x) for x in iso.split('-')])
+    n = (b - a).days
+    if n <= 0: return 'Departs today'
+    if n == 1: return 'Departs tomorrow'
+    if n < 14: return f'Departs in {n} days'
+    if n < 70: return f'Departs in {max(2, round(n / 7))} weeks'
+    return f'Departs in {max(2, round(n / 30.4))} months'
+
+
 def rng(a, b):
     d1, m1, y1 = pretty(a)
     d2, m2, y2 = pretty(b)
@@ -152,12 +164,16 @@ for d in deps:
     per_tour_idx[d['key']] = n_i + 1
     prev_img = img
     near = ' shx-dep--near' if d['status'] == 'nearing' else ''
-    nearchip = '<span class="shx-dep-chip">Filling fast</span>' if d['status'] == 'nearing' else ''
+    pill_mod = '--near' if d['status'] == 'nearing' else '--go'
+    pill_txt = 'Filling fast' if d['status'] == 'nearing' else 'Now Booking'
+    nearchip = f'<span class="shx-dep-pill shx-dep-pill{pill_mod}"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">{pill_txt}</span></span>'
+    count_txt = countdown(d['start'], today)
     cards.append(f'''        <article class="shx-dep{near}" data-shx-dep="{d['key']}|{d['start']}" data-month="{mkey}">
           <a class="shx-dep-link" href="{meta['href']}" aria-label="{meta['name']} departing {dy} {m3} {yy} — view the journey">
             <span class="shx-dep-img" style="background-image:url('{img}')" role="img" aria-label="{meta['name']}">{nearchip}</span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>{dy} {m3}</strong> {yy}</span>
+              <span class="shx-dep-count" data-shx-count="{d['start']}">{count_txt}</span>
               <span class="shx-dep-name">{meta['name']}</span>
               <span class="shx-dep-meta">{rng(d['start'], d['end'])} &middot; {meta['days']} days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From {meta['price']}</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -192,6 +208,13 @@ SECTION = f'''
     <div class="shx-deprail-outer">
       <div class="shx-deprail" data-shx-deprail tabindex="0" aria-label="Departures, earliest first — scroll for more">
 {chr(10).join(cards)}
+        <article class="shx-dep shx-dep-end">
+          <a class="shx-dep-endlink" href="/journeys">
+            <span class="shx-dep-endtitle">That&rsquo;s every departure to {months_seen[-1][1]}.</span>
+            <span class="shx-dep-endsub">Compare all seven journeys side by side &mdash; seasons, prices and every date.</span>
+            <span class="shx-dep-endgo">See every journey &rarr;</span>
+          </a>
+        </article>
       </div>
     </div>
     <div class="shx-wrap">
@@ -224,7 +247,17 @@ CSS = '''
   .shx-dep[hidden] { display: none; }
   .shx-dep-link { display: block; text-decoration: none !important; color: inherit; }
   .shx-dep-img { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; background-size: cover; background-position: center; }
-  .shx-dep-chip { position: absolute; top: 12px; left: 12px; background: #c47e16; color: #ffffff !important; font-family: 'Montserrat', sans-serif !important; font-size: 10.5px !important; font-weight: 700 !important; letter-spacing: 1px; text-transform: uppercase; padding: 6px 11px; border-radius: 20px; }
+  .shx-dep-pill { position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: 6px; color: #ffffff !important; font-family: 'Montserrat', sans-serif !important; font-size: 10.5px !important; font-weight: 700 !important; letter-spacing: 1px; text-transform: uppercase; padding: 6px 11px 6px 9px; border-radius: 20px; box-shadow: 0 2px 6px rgba(0,0,0,.18); }
+  .shx-dep-pill--go { background: rgba(42, 122, 74, .95); }
+  .shx-dep-pill--near { background: rgba(196, 126, 22, .96); }
+  .shx-dep-pill-dot { width: 6px; height: 6px; background: #ffffff; border-radius: 50%; animation: shx-deppulse-w 1.6s ease-in-out infinite; }
+  @keyframes shx-deppulse-w { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+  .shx-dep-count { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 11.5px !important; font-weight: 700 !important; letter-spacing: .8px; text-transform: uppercase; color: var(--gold-deep) !important; margin: 2px 0 8px; }
+  .shx-dep-end { background: var(--ink); border-color: var(--gold); display: flex; }
+  .shx-dep-endlink { display: flex; flex-direction: column; justify-content: center; gap: 10px; padding: 28px 26px; text-decoration: none !important; }
+  .shx-dep-endtitle { font-family: 'Montserrat', sans-serif !important; font-size: 20px !important; font-weight: 700 !important; letter-spacing: -0.2px; color: #ffffff !important; line-height: 1.3 !important; }
+  .shx-dep-endsub { font-size: 14.5px !important; color: rgba(243,236,221,.8) !important; line-height: 1.55 !important; }
+  .shx-dep-endgo { font-family: 'Montserrat', sans-serif !important; font-size: 12.5px !important; font-weight: 700 !important; letter-spacing: .6px; text-transform: uppercase; color: var(--gold) !important; }
   .shx-dep-body { display: block; padding: 16px 18px 18px; }
   .shx-dep-date { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 22px !important; color: var(--body-soft) !important; margin-bottom: 4px; }
   .shx-dep-date strong { color: var(--ink); font-weight: 700 !important; }
@@ -263,6 +296,19 @@ JS = '''
     var start = (cards[i].getAttribute('data-shx-dep') || '').split('|')[1] || '';
     if (start && start < today) { cards[i].setAttribute('hidden', ''); }
   }
+  var counts = rail.querySelectorAll('[data-shx-count]');
+  for (var i = 0; i < counts.length; i += 1) {
+    var d0 = new Date(today + 'T00:00:00Z');
+    var d1 = new Date(counts[i].getAttribute('data-shx-count') + 'T00:00:00Z');
+    var n = Math.round((d1 - d0) / 86400000);
+    var t = '';
+    if (n <= 0) { t = 'Departs today'; }
+    else if (n === 1) { t = 'Departs tomorrow'; }
+    else if (n < 14) { t = 'Departs in ' + n + ' days'; }
+    else if (n < 70) { t = 'Departs in ' + Math.max(2, Math.round(n / 7)) + ' weeks'; }
+    else { t = 'Departs in ' + Math.max(2, Math.round(n / 30.4)) + ' months'; }
+    counts[i].textContent = t;
+  }
   var away = document.querySelector('[data-shx-nextaway]');
   function refreshNextAway() {
     if (!away) return;
@@ -283,7 +329,13 @@ JS = '''
       for (var k = 0; k < tour.all.length; k += 1) {
         if (tour.all[k].start !== bits[1]) continue;
         if (tour.all[k].status === 'soldout') { list[i].setAttribute('hidden', ''); }
-        else if (tour.all[k].status === 'nearing') { list[i].className += (list[i].className.indexOf('shx-dep--near') < 0 ? ' shx-dep--near' : ''); }
+        else if (tour.all[k].status === 'nearing') {
+          list[i].className += (list[i].className.indexOf('shx-dep--near') < 0 ? ' shx-dep--near' : '');
+          var pill = list[i].querySelector('.shx-dep-pill');
+          var lab = list[i].querySelector('.shx-dep-pill-label');
+          if (pill) { pill.className = 'shx-dep-pill shx-dep-pill--near'; }
+          if (lab) { lab.textContent = 'Filling fast'; }
+        }
         break;
       }
     }

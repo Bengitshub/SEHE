@@ -1,8 +1,21 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v29  ·  2026-07-30  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v30  ·  2026-07-30  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v30 — departure board round three (Ben): the live pulse is now ON
+            EVERY CARD — the journeys page's own status-pill design
+            reciprocated here: green pulsing "Now Booking" on each image
+            (amber "Filling fast" when the feed says nearing, switched live).
+            Booking LEVELS deliberately not shown (the feed only knows
+            available/nearing/sold, and a percentage meter would advertise
+            quiet dates); instead each card carries DAYS TO DEPARTURE
+            ("Departs in 16 weeks"), baked at build and recomputed
+            client-side on every visit so it is always true. The rail is
+            finite by design — a date-ordered board that loops back in time
+            would break the mental model — and now ends at a navy end-cap
+            card ("That's every departure to Apr 2028 / See every journey")
+            instead of a dead stop.
        v29 — departure board round two (Ben): title is now the D-route
             "All aboard — pick your departure." with the urgency moved into
             the eyebrow ("Departing Soon"); a LIVE next-departure line joins
@@ -471,6 +484,7 @@
 
 
 
+
   /* ============ 1b. DEPARTURE BOARD ============ */
   .shx-depboard { background: var(--paper); border-bottom: 1px solid var(--paper-line); }
   .shx-depboard-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px; margin-bottom: 22px; }
@@ -494,7 +508,17 @@
   .shx-dep[hidden] { display: none; }
   .shx-dep-link { display: block; text-decoration: none !important; color: inherit; }
   .shx-dep-img { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; background-size: cover; background-position: center; }
-  .shx-dep-chip { position: absolute; top: 12px; left: 12px; background: #c47e16; color: #ffffff !important; font-family: 'Montserrat', sans-serif !important; font-size: 10.5px !important; font-weight: 700 !important; letter-spacing: 1px; text-transform: uppercase; padding: 6px 11px; border-radius: 20px; }
+  .shx-dep-pill { position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: 6px; color: #ffffff !important; font-family: 'Montserrat', sans-serif !important; font-size: 10.5px !important; font-weight: 700 !important; letter-spacing: 1px; text-transform: uppercase; padding: 6px 11px 6px 9px; border-radius: 20px; box-shadow: 0 2px 6px rgba(0,0,0,.18); }
+  .shx-dep-pill--go { background: rgba(42, 122, 74, .95); }
+  .shx-dep-pill--near { background: rgba(196, 126, 22, .96); }
+  .shx-dep-pill-dot { width: 6px; height: 6px; background: #ffffff; border-radius: 50%; animation: shx-deppulse-w 1.6s ease-in-out infinite; }
+  @keyframes shx-deppulse-w { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+  .shx-dep-count { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 11.5px !important; font-weight: 700 !important; letter-spacing: .8px; text-transform: uppercase; color: var(--gold-deep) !important; margin: 2px 0 8px; }
+  .shx-dep-end { background: var(--ink); border-color: var(--gold); display: flex; }
+  .shx-dep-endlink { display: flex; flex-direction: column; justify-content: center; gap: 10px; padding: 28px 26px; text-decoration: none !important; }
+  .shx-dep-endtitle { font-family: 'Montserrat', sans-serif !important; font-size: 20px !important; font-weight: 700 !important; letter-spacing: -0.2px; color: #ffffff !important; line-height: 1.3 !important; }
+  .shx-dep-endsub { font-size: 14.5px !important; color: rgba(243,236,221,.8) !important; line-height: 1.55 !important; }
+  .shx-dep-endgo { font-family: 'Montserrat', sans-serif !important; font-size: 12.5px !important; font-weight: 700 !important; letter-spacing: .6px; text-transform: uppercase; color: var(--gold) !important; }
   .shx-dep-body { display: block; padding: 16px 18px 18px; }
   .shx-dep-date { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 22px !important; color: var(--body-soft) !important; margin-bottom: 4px; }
   .shx-dep-date strong { color: var(--ink); font-weight: 700 !important; }
@@ -751,9 +775,10 @@
       <div class="shx-deprail" data-shx-deprail tabindex="0" aria-label="Departures, earliest first — scroll for more">
         <article class="shx-dep" data-shx-dep="14day-2627|2026-11-16" data-month="2026-11">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 16 Nov 2026 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="14-Day Spring/Summer Tour"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>16 Nov</strong> 2026</span>
+              <span class="shx-dep-count" data-shx-count="2026-11-16">Departs in 4 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
               <span class="shx-dep-meta">16&ndash;29 Nov 2026 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,995</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -762,9 +787,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2026-11-23" data-month="2026-11">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 23 Nov 2026 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>23 Nov</strong> 2026</span>
+              <span class="shx-dep-count" data-shx-count="2026-11-23">Departs in 4 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
               <span class="shx-dep-meta">23 Nov &ndash; 6 Dec 2026 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,995</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -773,9 +799,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2627|2026-11-30" data-month="2026-11">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-11-day-tours" aria-label="11-Day Spring/Summer Tour departing 30 Nov 2026 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp')" role="img" aria-label="11-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp')" role="img" aria-label="11-Day Spring/Summer Tour"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>30 Nov</strong> 2026</span>
+              <span class="shx-dep-count" data-shx-count="2026-11-30">Departs in 4 months</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour</span>
               <span class="shx-dep-meta">30 Nov &ndash; 10 Dec 2026 &middot; 11 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$7,495</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -784,9 +811,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-01-04" data-month="2027-01">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 4 Jan 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="14-Day Spring/Summer Tour"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>4 Jan</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-01-04">Departs in 5 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
               <span class="shx-dep-meta">4&ndash;17 Jan 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,995</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -795,9 +823,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-01-11" data-month="2027-01">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 11 Jan 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-13-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-13-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>11 Jan</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-01-11">Departs in 5 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
               <span class="shx-dep-meta">11&ndash;24 Jan 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,995</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -806,9 +835,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="pinnacle-2027|2027-01-14" data-month="2027-01">
           <a class="shx-dep-link" href="/pinnacle-tour-2027" aria-label="The Pinnacle Tour 2027 departing 14 Jan 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="The Pinnacle Tour 2027"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="The Pinnacle Tour 2027"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>14 Jan</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-01-14">Departs in 6 months</span>
               <span class="shx-dep-name">The Pinnacle Tour 2027</span>
               <span class="shx-dep-meta">14&ndash;29 Jan 2027 &middot; 15 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$25,995</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -817,9 +847,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-01-18" data-month="2027-01">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 18 Jan 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>18 Jan</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-01-18">Departs in 6 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
               <span class="shx-dep-meta">18&ndash;31 Jan 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,995</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -828,9 +859,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-01-25" data-month="2027-01">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 25 Jan 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>25 Jan</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-01-25">Departs in 6 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
               <span class="shx-dep-meta">25 Jan &ndash; 7 Feb 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,995</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -839,9 +871,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2627|2027-02-01" data-month="2027-02">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-11-day-tours" aria-label="11-Day Spring/Summer Tour departing 1 Feb 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="11-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="11-Day Spring/Summer Tour"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>1 Feb</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-02-01">Departs in 6 months</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour</span>
               <span class="shx-dep-meta">1&ndash;11 Feb 2027 &middot; 11 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$7,495</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -850,9 +883,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-02-08" data-month="2027-02">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 8 Feb 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>8 Feb</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-02-08">Departs in 6 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
               <span class="shx-dep-meta">8&ndash;21 Feb 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,995</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -861,9 +895,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-02-15" data-month="2027-02">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 15 Feb 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="14-Day Spring/Summer Tour"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>15 Feb</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-02-15">Departs in 7 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
               <span class="shx-dep-meta">15&ndash;28 Feb 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,995</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -872,9 +907,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2627|2027-02-22" data-month="2027-02">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-11-day-tours" aria-label="11-Day Spring/Summer Tour departing 22 Feb 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="11-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="11-Day Spring/Summer Tour"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>22 Feb</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-02-22">Departs in 7 months</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour</span>
               <span class="shx-dep-meta">22 Feb &ndash; 4 Mar 2027 &middot; 11 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$7,495</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -883,9 +919,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2627|2027-03-01" data-month="2027-03">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-11-day-tours" aria-label="11-Day Spring/Summer Tour departing 1 Mar 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="11-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="11-Day Spring/Summer Tour"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>1 Mar</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-03-01">Departs in 7 months</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour</span>
               <span class="shx-dep-meta">1&ndash;11 Mar 2027 &middot; 11 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$7,495</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -894,9 +931,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-03-08" data-month="2027-03">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 8 Mar 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-13-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-13-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>8 Mar</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-03-08">Departs in 7 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
               <span class="shx-dep-meta">8&ndash;21 Mar 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,995</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -905,9 +943,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-03-15" data-month="2027-03">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 15 Mar 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>15 Mar</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-03-15">Departs in 8 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
               <span class="shx-dep-meta">15&ndash;28 Mar 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,995</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -916,9 +955,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-03-22" data-month="2027-03">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 22 Mar 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>22 Mar</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-03-22">Departs in 8 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
               <span class="shx-dep-meta">22 Mar &ndash; 4 Apr 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,995</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -927,9 +967,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2627|2027-03-29" data-month="2027-03">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-11-day-tours" aria-label="11-Day Spring/Summer Tour departing 29 Mar 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="11-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="11-Day Spring/Summer Tour"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>29 Mar</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-03-29">Departs in 8 months</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour</span>
               <span class="shx-dep-meta">29 Mar &ndash; 8 Apr 2027 &middot; 11 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$7,495</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -938,9 +979,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-04-05" data-month="2027-04">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 5 Apr 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="14-Day Spring/Summer Tour"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>5 Apr</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-04-05">Departs in 8 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
               <span class="shx-dep-meta">5&ndash;18 Apr 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,995</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -949,9 +991,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-04-12" data-month="2027-04">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 12 Apr 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>12 Apr</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-04-12">Departs in 8 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
               <span class="shx-dep-meta">12&ndash;25 Apr 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,995</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -960,9 +1003,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="winter-2027|2027-07-10" data-month="2027-07">
           <a class="shx-dep-link" href="/2027-winter-edition-tours" aria-label="12-Day Winter Edition 2027 departing 10 Jul 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="12-Day Winter Edition 2027"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="12-Day Winter Edition 2027"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>10 Jul</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-07-10">Departs in 11 months</span>
               <span class="shx-dep-name">12-Day Winter Edition 2027</span>
               <span class="shx-dep-meta">10&ndash;21 Jul 2027 &middot; 12 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,495</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -971,9 +1015,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="winter-2027|2027-07-24" data-month="2027-07">
           <a class="shx-dep-link" href="/2027-winter-edition-tours" aria-label="12-Day Winter Edition 2027 departing 24 Jul 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%28Custom%29.webp')" role="img" aria-label="12-Day Winter Edition 2027"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%28Custom%29.webp')" role="img" aria-label="12-Day Winter Edition 2027"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>24 Jul</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-07-24">Departs in 12 months</span>
               <span class="shx-dep-name">12-Day Winter Edition 2027</span>
               <span class="shx-dep-meta">24 Jul &ndash; 4 Aug 2027 &middot; 12 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,495</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -982,9 +1027,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="winter-2027|2027-08-07" data-month="2027-08">
           <a class="shx-dep-link" href="/2027-winter-edition-tours" aria-label="12-Day Winter Edition 2027 departing 7 Aug 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp')" role="img" aria-label="12-Day Winter Edition 2027"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp')" role="img" aria-label="12-Day Winter Edition 2027"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>7 Aug</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-08-07">Departs in 12 months</span>
               <span class="shx-dep-name">12-Day Winter Edition 2027</span>
               <span class="shx-dep-meta">7&ndash;18 Aug 2027 &middot; 12 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,495</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -993,9 +1039,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="winter-2027|2027-08-14" data-month="2027-08">
           <a class="shx-dep-link" href="/2027-winter-edition-tours" aria-label="12-Day Winter Edition 2027 departing 14 Aug 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="12-Day Winter Edition 2027"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="12-Day Winter Edition 2027"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>14 Aug</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-08-14">Departs in 12 months</span>
               <span class="shx-dep-name">12-Day Winter Edition 2027</span>
               <span class="shx-dep-meta">14&ndash;25 Aug 2027 &middot; 12 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,495</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1004,9 +1051,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="winter-2027|2027-08-21" data-month="2027-08">
           <a class="shx-dep-link" href="/2027-winter-edition-tours" aria-label="12-Day Winter Edition 2027 departing 21 Aug 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="12-Day Winter Edition 2027"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="12-Day Winter Edition 2027"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>21 Aug</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-08-21">Departs in 13 months</span>
               <span class="shx-dep-name">12-Day Winter Edition 2027</span>
               <span class="shx-dep-meta">21 Aug &ndash; 1 Sep 2027 &middot; 12 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,495</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1015,9 +1063,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="winter-2027|2027-08-28" data-month="2027-08">
           <a class="shx-dep-link" href="/2027-winter-edition-tours" aria-label="12-Day Winter Edition 2027 departing 28 Aug 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="12-Day Winter Edition 2027"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="12-Day Winter Edition 2027"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>28 Aug</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-08-28">Departs in 13 months</span>
               <span class="shx-dep-name">12-Day Winter Edition 2027</span>
               <span class="shx-dep-meta">28 Aug &ndash; 8 Sep 2027 &middot; 12 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,495</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1026,9 +1075,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2728|2027-09-27" data-month="2027-09">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-11-days" aria-label="11-Day Spring/Summer Tour 2027/28 departing 27 Sep 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>27 Sep</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-09-27">Departs in 14 months</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">27 Sep &ndash; 7 Oct 2027 &middot; 11 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,490</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1037,9 +1087,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2027-10-04" data-month="2027-10">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 4 Oct 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>4 Oct</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-10-04">Departs in 14 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">4&ndash;17 Oct 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1048,9 +1099,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2027-10-11" data-month="2027-10">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 11 Oct 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>11 Oct</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-10-11">Departs in 14 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">11&ndash;24 Oct 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1059,9 +1111,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2027-10-18" data-month="2027-10">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 18 Oct 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>18 Oct</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-10-18">Departs in 15 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">18&ndash;31 Oct 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1070,9 +1123,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2728|2027-10-25" data-month="2027-10">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-11-days" aria-label="11-Day Spring/Summer Tour 2027/28 departing 25 Oct 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>25 Oct</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-10-25">Departs in 15 months</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">25 Oct &ndash; 4 Nov 2027 &middot; 11 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,490</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1081,9 +1135,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2027-11-01" data-month="2027-11">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 1 Nov 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>1 Nov</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-11-01">Departs in 15 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">1&ndash;14 Nov 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1092,9 +1147,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2027-11-08" data-month="2027-11">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 8 Nov 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>8 Nov</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-11-08">Departs in 15 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">8&ndash;21 Nov 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1103,9 +1159,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2027-11-15" data-month="2027-11">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 15 Nov 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>15 Nov</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-11-15">Departs in 16 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">15&ndash;28 Nov 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1114,9 +1171,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2027-11-22" data-month="2027-11">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 22 Nov 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>22 Nov</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-11-22">Departs in 16 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">22 Nov &ndash; 5 Dec 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1125,9 +1183,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2728|2027-11-29" data-month="2027-11">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-11-days" aria-label="11-Day Spring/Summer Tour 2027/28 departing 29 Nov 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>29 Nov</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-11-29">Departs in 16 months</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">29 Nov &ndash; 9 Dec 2027 &middot; 11 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,490</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1136,9 +1195,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2027-12-06" data-month="2027-12">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 6 Dec 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>6 Dec</strong> 2027</span>
+              <span class="shx-dep-count" data-shx-count="2027-12-06">Departs in 16 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">6&ndash;19 Dec 2027 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1147,9 +1207,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2728|2028-01-10" data-month="2028-01">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-11-days" aria-label="11-Day Spring/Summer Tour 2027/28 departing 10 Jan 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>10 Jan</strong> 2028</span>
+              <span class="shx-dep-count" data-shx-count="2028-01-10">Departs in 17 months</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">10&ndash;20 Jan 2028 &middot; 11 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,490</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1158,9 +1219,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-01-17" data-month="2028-01">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 17 Jan 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>17 Jan</strong> 2028</span>
+              <span class="shx-dep-count" data-shx-count="2028-01-17">Departs in 18 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">17&ndash;30 Jan 2028 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1169,9 +1231,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-01-24" data-month="2028-01">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 24 Jan 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>24 Jan</strong> 2028</span>
+              <span class="shx-dep-count" data-shx-count="2028-01-24">Departs in 18 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">24 Jan &ndash; 6 Feb 2028 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1180,9 +1243,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-01-31" data-month="2028-01">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 31 Jan 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>31 Jan</strong> 2028</span>
+              <span class="shx-dep-count" data-shx-count="2028-01-31">Departs in 18 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">31 Jan &ndash; 13 Feb 2028 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1191,9 +1255,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-02-07" data-month="2028-02">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 7 Feb 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>7 Feb</strong> 2028</span>
+              <span class="shx-dep-count" data-shx-count="2028-02-07">Departs in 18 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">7&ndash;20 Feb 2028 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1202,9 +1267,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-02-14" data-month="2028-02">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 14 Feb 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>14 Feb</strong> 2028</span>
+              <span class="shx-dep-count" data-shx-count="2028-02-14">Departs in 19 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">14&ndash;27 Feb 2028 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1213,9 +1279,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-02-21" data-month="2028-02">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 21 Feb 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>21 Feb</strong> 2028</span>
+              <span class="shx-dep-count" data-shx-count="2028-02-21">Departs in 19 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">21 Feb &ndash; 5 Mar 2028 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1224,9 +1291,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2728|2028-02-28" data-month="2028-02">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-11-days" aria-label="11-Day Spring/Summer Tour 2027/28 departing 28 Feb 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>28 Feb</strong> 2028</span>
+              <span class="shx-dep-count" data-shx-count="2028-02-28">Departs in 19 months</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">28 Feb &ndash; 9 Mar 2028 &middot; 11 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,490</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1235,9 +1303,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2728|2028-03-06" data-month="2028-03">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-11-days" aria-label="11-Day Spring/Summer Tour 2027/28 departing 6 Mar 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>6 Mar</strong> 2028</span>
+              <span class="shx-dep-count" data-shx-count="2028-03-06">Departs in 19 months</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">6&ndash;16 Mar 2028 &middot; 11 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,490</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1246,9 +1315,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-03-13" data-month="2028-03">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 13 Mar 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>13 Mar</strong> 2028</span>
+              <span class="shx-dep-count" data-shx-count="2028-03-13">Departs in 19 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">13&ndash;26 Mar 2028 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1257,9 +1327,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-03-20" data-month="2028-03">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 20 Mar 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>20 Mar</strong> 2028</span>
+              <span class="shx-dep-count" data-shx-count="2028-03-20">Departs in 20 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">20 Mar &ndash; 2 Apr 2028 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1268,9 +1339,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-03-27" data-month="2028-03">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 27 Mar 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>27 Mar</strong> 2028</span>
+              <span class="shx-dep-count" data-shx-count="2028-03-27">Departs in 20 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">27 Mar &ndash; 9 Apr 2028 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1279,9 +1351,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-04-03" data-month="2028-04">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 3 Apr 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>3 Apr</strong> 2028</span>
+              <span class="shx-dep-count" data-shx-count="2028-04-03">Departs in 20 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">3&ndash;16 Apr 2028 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1290,9 +1363,10 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-04-10" data-month="2028-04">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 10 Apr 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>10 Apr</strong> 2028</span>
+              <span class="shx-dep-count" data-shx-count="2028-04-10">Departs in 20 months</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">10&ndash;23 Apr 2028 &middot; 14 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$9,990</span><span class="shx-dep-go">View journey &rarr;</span></span>
@@ -1301,13 +1375,21 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2728|2028-04-17" data-month="2028-04">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-11-days" aria-label="11-Day Spring/Summer Tour 2027/28 departing 17 Apr 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"><span class="shx-dep-pill shx-dep-pill--go"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">Now Booking</span></span></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>17 Apr</strong> 2028</span>
+              <span class="shx-dep-count" data-shx-count="2028-04-17">Departs in 21 months</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour 2027/28</span>
               <span class="shx-dep-meta">17&ndash;27 Apr 2028 &middot; 11 days</span>
               <span class="shx-dep-foot"><span class="shx-dep-price">From NZ$8,490</span><span class="shx-dep-go">View journey &rarr;</span></span>
             </span>
+          </a>
+        </article>
+        <article class="shx-dep shx-dep-end">
+          <a class="shx-dep-endlink" href="/journeys">
+            <span class="shx-dep-endtitle">That&rsquo;s every departure to Apr 2028.</span>
+            <span class="shx-dep-endsub">Compare all seven journeys side by side &mdash; seasons, prices and every date.</span>
+            <span class="shx-dep-endgo">See every journey &rarr;</span>
           </a>
         </article>
       </div>
@@ -1760,6 +1842,19 @@
     var start = (cards[i].getAttribute('data-shx-dep') || '').split('|')[1] || '';
     if (start && start < today) { cards[i].setAttribute('hidden', ''); }
   }
+  var counts = rail.querySelectorAll('[data-shx-count]');
+  for (var i = 0; i < counts.length; i += 1) {
+    var d0 = new Date(today + 'T00:00:00Z');
+    var d1 = new Date(counts[i].getAttribute('data-shx-count') + 'T00:00:00Z');
+    var n = Math.round((d1 - d0) / 86400000);
+    var t = '';
+    if (n <= 0) { t = 'Departs today'; }
+    else if (n === 1) { t = 'Departs tomorrow'; }
+    else if (n < 14) { t = 'Departs in ' + n + ' days'; }
+    else if (n < 70) { t = 'Departs in ' + Math.max(2, Math.round(n / 7)) + ' weeks'; }
+    else { t = 'Departs in ' + Math.max(2, Math.round(n / 30.4)) + ' months'; }
+    counts[i].textContent = t;
+  }
   var away = document.querySelector('[data-shx-nextaway]');
   function refreshNextAway() {
     if (!away) return;
@@ -1780,7 +1875,13 @@
       for (var k = 0; k < tour.all.length; k += 1) {
         if (tour.all[k].start !== bits[1]) continue;
         if (tour.all[k].status === 'soldout') { list[i].setAttribute('hidden', ''); }
-        else if (tour.all[k].status === 'nearing') { list[i].className += (list[i].className.indexOf('shx-dep--near') < 0 ? ' shx-dep--near' : ''); }
+        else if (tour.all[k].status === 'nearing') {
+          list[i].className += (list[i].className.indexOf('shx-dep--near') < 0 ? ' shx-dep--near' : '');
+          var pill = list[i].querySelector('.shx-dep-pill');
+          var lab = list[i].querySelector('.shx-dep-pill-label');
+          if (pill) { pill.className = 'shx-dep-pill shx-dep-pill--near'; }
+          if (lab) { lab.textContent = 'Filling fast'; }
+        }
         break;
       }
     }
@@ -1825,6 +1926,7 @@
     });
   });
 })();
+
 
 
   (function() {
