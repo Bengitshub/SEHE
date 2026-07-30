@@ -1,8 +1,19 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v28  ·  2026-07-29  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v29  ·  2026-07-30  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v29 — departure board round two (Ben): title is now the D-route
+            "All aboard — pick your departure." with the urgency moved into
+            the eyebrow ("Departing Soon"); a LIVE next-departure line joins
+            the head — pulsing green dot + "Next departure: 16 Nov 2026 ·
+            14-Day Spring/Summer Tour" — baked from the snapshot and kept
+            honest on load (it re-reads the first visible card after the
+            date/sold-out hiding passes, so it always names the true next
+            train out). Cards now cycle PER-TOUR PHOTO POOLS built from each
+            tour page's own gallery (journeys-card image anchors position 0;
+            up to six shots per tour; adjacent cards are guaranteed distinct
+            even where galleries share photos). Sub ends "and away you go."
        v28 — "ALL ABOARD." DEPARTURE BOARD (Ben's idea): a date-first rail
             directly under the hero — every upcoming BOOKABLE departure
             across all tours in one line, earliest first, with month-jump
@@ -459,11 +470,16 @@
   }
 
 
+
   /* ============ 1b. DEPARTURE BOARD ============ */
   .shx-depboard { background: var(--paper); border-bottom: 1px solid var(--paper-line); }
   .shx-depboard-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px; margin-bottom: 22px; }
   .shx-depboard h2 { font-size: clamp(28px, 3.4vw, 38px) !important; color: var(--ink) !important; line-height: 1.15 !important; margin: 0 !important; }
   .shx-depboard-sub { margin: 10px 0 0 !important; max-width: 60ch; font-size: 17px !important; color: var(--body-soft) !important; }
+  .shx-depnext { display: flex; align-items: center; gap: 9px; margin: 12px 0 0 !important; font-size: 15px !important; color: var(--body-soft) !important; }
+  .shx-depnext strong { color: var(--ink); font-weight: 700 !important; }
+  .shx-depnext-dot { width: 9px; height: 9px; border-radius: 50%; background: #2a7a4a; flex: none; animation: shx-deppulse 1.8s ease-in-out infinite; }
+  @keyframes shx-deppulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(42, 122, 74, .45); } 55% { box-shadow: 0 0 0 7px rgba(42, 122, 74, 0); } }
   .shx-depboard-arrows { display: flex; gap: 10px; }
   .shx-deparrow { width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid var(--gold); background: #ffffff; color: var(--ink); font-size: 20px; cursor: pointer; transition: background .2s ease; }
   .shx-deparrow:hover { background: var(--gold-pale); }
@@ -703,9 +719,10 @@
     <div class="shx-wrap">
       <div class="shx-depboard-head">
         <div>
-          <span class="shx-kicker">Upcoming Departures</span>
-          <h2 class="shx-display">All aboard.</h2>
-          <p class="shx-depboard-sub">Every departure, every journey, in the order they leave &mdash; find the dates that fit and step on board.</p>
+          <span class="shx-kicker">Departing Soon</span>
+          <h2 class="shx-display">All aboard &mdash; pick your departure.</h2>
+          <p class="shx-depnext"><span class="shx-depnext-dot" aria-hidden="true"></span>Next departure: <strong data-shx-nextaway>16 Nov 2026 &middot; 14-Day Spring/Summer Tour</strong></p>
+          <p class="shx-depboard-sub">Every departure, every journey, in the order they leave &mdash; find the dates that fit, and away you go.</p>
         </div>
         <div class="shx-depboard-arrows" aria-hidden="false">
           <button type="button" class="shx-deparrow" data-shx-deparrow="-1" aria-label="Scroll to earlier departures">&larr;</button>
@@ -734,7 +751,7 @@
       <div class="shx-deprail" data-shx-deprail tabindex="0" aria-label="Departures, earliest first — scroll for more">
         <article class="shx-dep" data-shx-dep="14day-2627|2026-11-16" data-month="2026-11">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 16 Nov 2026 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>16 Nov</strong> 2026</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
@@ -745,7 +762,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2026-11-23" data-month="2026-11">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 23 Nov 2026 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>23 Nov</strong> 2026</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
@@ -767,7 +784,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-01-04" data-month="2027-01">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 4 Jan 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>4 Jan</strong> 2027</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
@@ -778,7 +795,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-01-11" data-month="2027-01">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 11 Jan 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-13-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>11 Jan</strong> 2027</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
@@ -789,7 +806,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="pinnacle-2027|2027-01-14" data-month="2027-01">
           <a class="shx-dep-link" href="/pinnacle-tour-2027" aria-label="The Pinnacle Tour 2027 departing 14 Jan 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/SEHE_OCT2024_DAY3-19.webp')" role="img" aria-label="The Pinnacle Tour 2027"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="The Pinnacle Tour 2027"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>14 Jan</strong> 2027</span>
               <span class="shx-dep-name">The Pinnacle Tour 2027</span>
@@ -811,7 +828,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-01-25" data-month="2027-01">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 25 Jan 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>25 Jan</strong> 2027</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
@@ -822,7 +839,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2627|2027-02-01" data-month="2027-02">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-11-day-tours" aria-label="11-Day Spring/Summer Tour departing 1 Feb 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp')" role="img" aria-label="11-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="11-Day Spring/Summer Tour"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>1 Feb</strong> 2027</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour</span>
@@ -833,7 +850,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-02-08" data-month="2027-02">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 8 Feb 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>8 Feb</strong> 2027</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
@@ -844,7 +861,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-02-15" data-month="2027-02">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 15 Feb 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>15 Feb</strong> 2027</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
@@ -855,7 +872,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2627|2027-02-22" data-month="2027-02">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-11-day-tours" aria-label="11-Day Spring/Summer Tour departing 22 Feb 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp')" role="img" aria-label="11-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="11-Day Spring/Summer Tour"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>22 Feb</strong> 2027</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour</span>
@@ -866,7 +883,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2627|2027-03-01" data-month="2027-03">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-11-day-tours" aria-label="11-Day Spring/Summer Tour departing 1 Mar 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp')" role="img" aria-label="11-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="11-Day Spring/Summer Tour"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>1 Mar</strong> 2027</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour</span>
@@ -877,7 +894,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-03-08" data-month="2027-03">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 8 Mar 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-13-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>8 Mar</strong> 2027</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
@@ -899,7 +916,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-03-22" data-month="2027-03">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 22 Mar 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>22 Mar</strong> 2027</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
@@ -910,7 +927,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2627|2027-03-29" data-month="2027-03">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-11-day-tours" aria-label="11-Day Spring/Summer Tour departing 29 Mar 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp')" role="img" aria-label="11-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="11-Day Spring/Summer Tour"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>29 Mar</strong> 2027</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour</span>
@@ -921,7 +938,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-04-05" data-month="2027-04">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 5 Apr 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>5 Apr</strong> 2027</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
@@ -932,7 +949,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2627|2027-04-12" data-month="2027-04">
           <a class="shx-dep-link" href="/2026-2027-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour departing 12 Apr 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>12 Apr</strong> 2027</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour</span>
@@ -943,7 +960,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="winter-2027|2027-07-10" data-month="2027-07">
           <a class="shx-dep-link" href="/2027-winter-edition-tours" aria-label="12-Day Winter Edition 2027 departing 10 Jul 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="12-Day Winter Edition 2027"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="12-Day Winter Edition 2027"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>10 Jul</strong> 2027</span>
               <span class="shx-dep-name">12-Day Winter Edition 2027</span>
@@ -954,7 +971,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="winter-2027|2027-07-24" data-month="2027-07">
           <a class="shx-dep-link" href="/2027-winter-edition-tours" aria-label="12-Day Winter Edition 2027 departing 24 Jul 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="12-Day Winter Edition 2027"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%28Custom%29.webp')" role="img" aria-label="12-Day Winter Edition 2027"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>24 Jul</strong> 2027</span>
               <span class="shx-dep-name">12-Day Winter Edition 2027</span>
@@ -965,7 +982,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="winter-2027|2027-08-07" data-month="2027-08">
           <a class="shx-dep-link" href="/2027-winter-edition-tours" aria-label="12-Day Winter Edition 2027 departing 7 Aug 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="12-Day Winter Edition 2027"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp')" role="img" aria-label="12-Day Winter Edition 2027"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>7 Aug</strong> 2027</span>
               <span class="shx-dep-name">12-Day Winter Edition 2027</span>
@@ -987,7 +1004,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="winter-2027|2027-08-21" data-month="2027-08">
           <a class="shx-dep-link" href="/2027-winter-edition-tours" aria-label="12-Day Winter Edition 2027 departing 21 Aug 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="12-Day Winter Edition 2027"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="12-Day Winter Edition 2027"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>21 Aug</strong> 2027</span>
               <span class="shx-dep-name">12-Day Winter Edition 2027</span>
@@ -998,7 +1015,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="winter-2027|2027-08-28" data-month="2027-08">
           <a class="shx-dep-link" href="/2027-winter-edition-tours" aria-label="12-Day Winter Edition 2027 departing 28 Aug 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="12-Day Winter Edition 2027"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="12-Day Winter Edition 2027"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>28 Aug</strong> 2027</span>
               <span class="shx-dep-name">12-Day Winter Edition 2027</span>
@@ -1009,7 +1026,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2728|2027-09-27" data-month="2027-09">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-11-days" aria-label="11-Day Spring/Summer Tour 2027/28 departing 27 Sep 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>27 Sep</strong> 2027</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour 2027/28</span>
@@ -1020,7 +1037,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2027-10-04" data-month="2027-10">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 4 Oct 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>4 Oct</strong> 2027</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
@@ -1031,7 +1048,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2027-10-11" data-month="2027-10">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 11 Oct 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>11 Oct</strong> 2027</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
@@ -1042,7 +1059,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2027-10-18" data-month="2027-10">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 18 Oct 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>18 Oct</strong> 2027</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
@@ -1053,7 +1070,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2728|2027-10-25" data-month="2027-10">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-11-days" aria-label="11-Day Spring/Summer Tour 2027/28 departing 25 Oct 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>25 Oct</strong> 2027</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour 2027/28</span>
@@ -1075,7 +1092,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2027-11-08" data-month="2027-11">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 8 Nov 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>8 Nov</strong> 2027</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
@@ -1086,7 +1103,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2027-11-15" data-month="2027-11">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 15 Nov 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>15 Nov</strong> 2027</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
@@ -1097,7 +1114,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2027-11-22" data-month="2027-11">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 22 Nov 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>22 Nov</strong> 2027</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
@@ -1108,7 +1125,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2728|2027-11-29" data-month="2027-11">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-11-days" aria-label="11-Day Spring/Summer Tour 2027/28 departing 29 Nov 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>29 Nov</strong> 2027</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour 2027/28</span>
@@ -1119,7 +1136,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2027-12-06" data-month="2027-12">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 6 Dec 2027 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>6 Dec</strong> 2027</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
@@ -1152,7 +1169,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-01-24" data-month="2028-01">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 24 Jan 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>24 Jan</strong> 2028</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
@@ -1163,7 +1180,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-01-31" data-month="2028-01">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 31 Jan 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>31 Jan</strong> 2028</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
@@ -1174,7 +1191,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-02-07" data-month="2028-02">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 7 Feb 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>7 Feb</strong> 2028</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
@@ -1185,7 +1202,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-02-14" data-month="2028-02">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 14 Feb 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>14 Feb</strong> 2028</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
@@ -1196,7 +1213,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-02-21" data-month="2028-02">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 21 Feb 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>21 Feb</strong> 2028</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
@@ -1207,7 +1224,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2728|2028-02-28" data-month="2028-02">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-11-days" aria-label="11-Day Spring/Summer Tour 2027/28 departing 28 Feb 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>28 Feb</strong> 2028</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour 2027/28</span>
@@ -1218,7 +1235,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2728|2028-03-06" data-month="2028-03">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-11-days" aria-label="11-Day Spring/Summer Tour 2027/28 departing 6 Mar 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>6 Mar</strong> 2028</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour 2027/28</span>
@@ -1240,7 +1257,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-03-20" data-month="2028-03">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 20 Mar 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>20 Mar</strong> 2028</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
@@ -1251,7 +1268,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-03-27" data-month="2028-03">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 27 Mar 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>27 Mar</strong> 2028</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
@@ -1262,7 +1279,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-04-03" data-month="2028-04">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 3 Apr 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>3 Apr</strong> 2028</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
@@ -1273,7 +1290,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="14day-2728|2028-04-10" data-month="2028-04">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-14-days" aria-label="14-Day Spring/Summer Tour 2027/28 departing 10 Apr 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-09-1920w.webp')" role="img" aria-label="14-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>10 Apr</strong> 2028</span>
               <span class="shx-dep-name">14-Day Spring/Summer Tour 2027/28</span>
@@ -1284,7 +1301,7 @@
         </article>
         <article class="shx-dep" data-shx-dep="11day-2728|2028-04-17" data-month="2028-04">
           <a class="shx-dep-link" href="/2026-2027-spring/2027-2028-spring/summer-tour-11-days" aria-label="11-Day Spring/Summer Tour 2027/28 departing 17 Apr 2028 — view the journey">
-            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
+            <span class="shx-dep-img" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp')" role="img" aria-label="11-Day Spring/Summer Tour 2027/28"></span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>17 Apr</strong> 2028</span>
               <span class="shx-dep-name">11-Day Spring/Summer Tour 2027/28</span>
@@ -1743,6 +1760,16 @@
     var start = (cards[i].getAttribute('data-shx-dep') || '').split('|')[1] || '';
     if (start && start < today) { cards[i].setAttribute('hidden', ''); }
   }
+  var away = document.querySelector('[data-shx-nextaway]');
+  function refreshNextAway() {
+    if (!away) return;
+    var first = rail.querySelector('[data-shx-dep]:not([hidden])');
+    if (!first) return;
+    var dateEl = first.querySelector('.shx-dep-date');
+    var nameEl = first.querySelector('.shx-dep-name');
+    if (dateEl && nameEl) { away.textContent = dateEl.textContent.trim() + ' · ' + nameEl.textContent.trim(); }
+  }
+  refreshNextAway();
   window.__shxRailApply = function (data) {
     if (!data || typeof data !== 'object') return;
     var list = rail.querySelectorAll('[data-shx-dep]');
@@ -1757,6 +1784,7 @@
         break;
       }
     }
+    refreshNextAway();
   };
   function step(dir) {
     var card = rail.querySelector('[data-shx-dep]:not([hidden])');
@@ -1797,6 +1825,7 @@
     });
   });
 })();
+
 
   (function() {
   /* Journey cards: refresh each "Next departure" chip from the live

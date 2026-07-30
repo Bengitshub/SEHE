@@ -19,7 +19,7 @@ between them; never touch it).
 CURRENT VERSIONS
 ------------------------------------------------------------
   brochure-collection.txt                v2    (SEHE-brochure-collection_v2.txt)
-  homepage.txt                           v28   (SEHE-homepage_v28.txt)
+  homepage.txt                           v29   (SEHE-homepage_v29.txt)
   journeys-page.txt                      v22   (SEHE-journeys-page_v22.txt)
   tourpage-11day-2627-blockA.txt         v26   (SEHE-11day-2627_v26-blockA.txt)
   tourpage-11day-2627-blockB.txt         -     (SEHE-11day-2627_v26-blockB.txt)

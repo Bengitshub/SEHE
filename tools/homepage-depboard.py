@@ -34,16 +34,44 @@ MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
           'August', 'September', 'October', 'November', 'December']
 MON3 = [m[:3] for m in MONTHS]
 
-# photos per tour — the journeys page's card images (Ben's spec)
-IMG = {
+# photo POOLS per tour — each tour page's own gallery (tour-relevant by
+# construction); the journeys-card image anchors position 0. Consecutive
+# departures of one tour cycle the pool, staggered per tour so adjacent rail
+# cards never repeat an image.
+ANCHOR_IMG = {
   '14day-2627': 'https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp',
   '11day-2627': 'https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp',
   'pinnacle-2027': 'https://irp.cdn-website.com/35e9f777/dms3rep/multi/SEHE_OCT2024_DAY3-19.webp',
-  'winter-2027': 'https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp',
+  'winter-2027': 'https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%28Custom%29.webp',
   '14day-2728': 'https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg',
   '11day-2728': 'https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP.webp',
   'winter-2026': 'https://irp.cdn-website.com/35e9f777/dms3rep/multi/183840-lake-sarah-in-snow-b1e7ecbb.webp',
 }
+import glob as _glob
+
+def build_pools():
+    masters = {}
+    for key, pat in [('14day-2627', 'SEHE-14day-tour_v*.txt'), ('11day-2627', 'SEHE-11day-2627-tour_v*.txt'),
+                     ('winter-2027', 'SEHE-12day-winter-2027-tour_v*.txt'), ('pinnacle-2027', 'SEHE-pinnacle-2027-tour_v*.txt'),
+                     ('11day-2728', 'SEHE-11day-2728-tour_v*.txt'), ('14day-2728', 'SEHE-14day-2728-tour_v*.txt')]:
+        hits = sorted(_glob.glob(os.path.join(REPO, pat)))
+        assert len(hits) == 1, (pat, hits)
+        masters[key] = hits[0]
+    pools = {}
+    for key, path in masters.items():
+        h = open(path, encoding='utf-8').read()
+        i = h.find('<section class="sehe-gallery"')
+        seg = h[i:h.find('</section>', i)] if i > 0 else ''
+        imgs = re.findall(r'(?:src|data-src)="(https://[^"]+\.(?:webp|jpg|jpeg|png)[^"]*)"', seg)
+        pool = [ANCHOR_IMG[key]]
+        for u in imgs:
+            if u not in pool:
+                pool.append(u)
+        pools[key] = pool[:6] if len(pool) >= 2 else pool
+    return pools
+
+IMG_POOLS = build_pools()
+TOUR_ORDINAL = {k: i for i, k in enumerate(sorted(IMG_POOLS.keys()))}
 
 body = open(os.path.join(REPO, SRC), encoding='utf-8').read()
 src_orig = body
@@ -99,8 +127,14 @@ def rng(a, b):
 
 
 # ---- month chips + cards -----------------------------------------------------
+first = deps[0]
+first_meta = META[first['key']]
+fd, fm, fy = pretty(first['start'])
+NEXTAWAY = f"{fd} {fm} {fy} &middot; {first_meta['name']}"
 months_seen = []
 cards = []
+per_tour_idx = {}
+prev_img = None
 for d in deps:
     y, mo = d['start'][:4], int(d['start'][5:7])
     mkey = f'{y}-{d["start"][5:7]}'
@@ -108,11 +142,20 @@ for d in deps:
         months_seen.append((mkey, f'{MON3[mo-1]} {y}'))
     meta = META[d['key']]
     dy, m3, yy = pretty(d['start'])
+    pool = IMG_POOLS.get(d['key'], [ANCHOR_IMG[d['key']]])
+    n_i = per_tour_idx.get(d['key'], TOUR_ORDINAL.get(d['key'], 0))
+    img = pool[n_i % len(pool)]
+    tries = 0
+    while cards and prev_img == img and tries < len(pool):
+        n_i += 1; tries += 1
+        img = pool[n_i % len(pool)]           # galleries overlap across tours — never repeat the neighbour
+    per_tour_idx[d['key']] = n_i + 1
+    prev_img = img
     near = ' shx-dep--near' if d['status'] == 'nearing' else ''
     nearchip = '<span class="shx-dep-chip">Filling fast</span>' if d['status'] == 'nearing' else ''
     cards.append(f'''        <article class="shx-dep{near}" data-shx-dep="{d['key']}|{d['start']}" data-month="{mkey}">
           <a class="shx-dep-link" href="{meta['href']}" aria-label="{meta['name']} departing {dy} {m3} {yy} — view the journey">
-            <span class="shx-dep-img" style="background-image:url('{IMG[d['key']]}')" role="img" aria-label="{meta['name']}">{nearchip}</span>
+            <span class="shx-dep-img" style="background-image:url('{img}')" role="img" aria-label="{meta['name']}">{nearchip}</span>
             <span class="shx-dep-body">
               <span class="shx-dep-date"><strong>{dy} {m3}</strong> {yy}</span>
               <span class="shx-dep-name">{meta['name']}</span>
@@ -132,9 +175,10 @@ SECTION = f'''
     <div class="shx-wrap">
       <div class="shx-depboard-head">
         <div>
-          <span class="shx-kicker">Upcoming Departures</span>
-          <h2 class="shx-display">All aboard.</h2>
-          <p class="shx-depboard-sub">Every departure, every journey, in the order they leave &mdash; find the dates that fit and step on board.</p>
+          <span class="shx-kicker">Departing Soon</span>
+          <h2 class="shx-display">All aboard &mdash; pick your departure.</h2>
+          <p class="shx-depnext"><span class="shx-depnext-dot" aria-hidden="true"></span>Next departure: <strong data-shx-nextaway>{NEXTAWAY}</strong></p>
+          <p class="shx-depboard-sub">Every departure, every journey, in the order they leave &mdash; find the dates that fit, and away you go.</p>
         </div>
         <div class="shx-depboard-arrows" aria-hidden="false">
           <button type="button" class="shx-deparrow" data-shx-deparrow="-1" aria-label="Scroll to earlier departures">&larr;</button>
@@ -162,6 +206,10 @@ CSS = '''
   .shx-depboard-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px; margin-bottom: 22px; }
   .shx-depboard h2 { font-size: clamp(28px, 3.4vw, 38px) !important; color: var(--ink) !important; line-height: 1.15 !important; margin: 0 !important; }
   .shx-depboard-sub { margin: 10px 0 0 !important; max-width: 60ch; font-size: 17px !important; color: var(--body-soft) !important; }
+  .shx-depnext { display: flex; align-items: center; gap: 9px; margin: 12px 0 0 !important; font-size: 15px !important; color: var(--body-soft) !important; }
+  .shx-depnext strong { color: var(--ink); font-weight: 700 !important; }
+  .shx-depnext-dot { width: 9px; height: 9px; border-radius: 50%; background: #2a7a4a; flex: none; animation: shx-deppulse 1.8s ease-in-out infinite; }
+  @keyframes shx-deppulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(42, 122, 74, .45); } 55% { box-shadow: 0 0 0 7px rgba(42, 122, 74, 0); } }
   .shx-depboard-arrows { display: flex; gap: 10px; }
   .shx-deparrow { width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid var(--gold); background: #ffffff; color: var(--ink); font-size: 20px; cursor: pointer; transition: background .2s ease; }
   .shx-deparrow:hover { background: var(--gold-pale); }
@@ -215,6 +263,16 @@ JS = '''
     var start = (cards[i].getAttribute('data-shx-dep') || '').split('|')[1] || '';
     if (start && start < today) { cards[i].setAttribute('hidden', ''); }
   }
+  var away = document.querySelector('[data-shx-nextaway]');
+  function refreshNextAway() {
+    if (!away) return;
+    var first = rail.querySelector('[data-shx-dep]:not([hidden])');
+    if (!first) return;
+    var dateEl = first.querySelector('.shx-dep-date');
+    var nameEl = first.querySelector('.shx-dep-name');
+    if (dateEl && nameEl) { away.textContent = dateEl.textContent.trim() + ' \u00b7 ' + nameEl.textContent.trim(); }
+  }
+  refreshNextAway();
   window.__shxRailApply = function (data) {
     if (!data || typeof data !== 'object') return;
     var list = rail.querySelectorAll('[data-shx-dep]');
@@ -229,6 +287,7 @@ JS = '''
         break;
       }
     }
+    refreshNextAway();
   };
   function step(dir) {
     var card = rail.querySelector('[data-shx-dep]:not([hidden])');
@@ -271,6 +330,25 @@ JS = '''
 })();
 '''
 
+# ---- strip any previously baked board (idempotent regeneration) -------------
+SEC_OPEN = '\n  <!-- ============ 1b. DEPARTURE BOARD'
+if SEC_OPEN in body:
+    i0 = body.find(SEC_OPEN)
+    i1 = body.find('</section>', i0) + len('</section>') + 1
+    body = body[:i0] + body[i1:]
+CSS_OPEN = '\n  /* ============ 1b. DEPARTURE BOARD ============ */'
+if CSS_OPEN in body:
+    c0 = body.find(CSS_OPEN)
+    c1 = body.find('  /* ============ RESPONSIVE ============ */', c0)
+    body = body[:c0] + '\n' + body[c1:]
+JS_OPEN = "\n  /* DEPARTURE BOARD — nothing moves"
+if JS_OPEN in body:
+    j0 = body.find(JS_OPEN)
+    j1 = body.find('})();', j0) + len('})();') + 1
+    body = body[:j0] + '\n' + body[j1:]
+OLD_HOOK = "\n    if (window.__shxRailApply) { window.__shxRailApply(data); }"
+body = body.replace(OLD_HOOK, '', 1)
+
 # ---- integrate ---------------------------------------------------------------
 # 1. section after the hero
 HERO_END = '  </section>\n\n  <!-- ============ 2. CHOOSE YOUR JOURNEY'
@@ -301,6 +379,9 @@ for tag in ('div', 'section', 'style', 'script', 'article', 'button', 'span'):
 scripts = re.findall(r'<script[^>]*>([\s\S]*?)</script>', body)
 bad = sum(len(re.findall(r'<[a-zA-Z]', s)) for s in scripts)
 assert bad == 0, f'{bad} tag-like tokens inside scripts (Duda sanitizer hazard)'
+imgs_seq = re.findall(r"shx-dep-img\" style=\"background-image:url\('([^']+)'\)", body)
+for a_i in range(1, len(imgs_seq)):
+    assert imgs_seq[a_i] != imgs_seq[a_i - 1], f'adjacent rail cards share an image at {a_i}'
 assert body.count('data-shx-dep=') == len(deps)
 assert body.count('shx-depmonth"') + body.count('shx-depmonth is-active"') >= len(months_seen)
 
