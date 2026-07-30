@@ -1,8 +1,22 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v30  ·  2026-07-30  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v31  ·  2026-07-30  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v31 — departure board round four (Ben): heading "Find your next
+            departure." with sub "Choose a date that suits you — now booking
+            through to April 2028" (month derived from the data, and April
+            because the last departure is 17 Apr 2028 — NZ autumn, so
+            "summer 2028" would overclaim; auto-updates when 2028/29 lands).
+            NEW pill state "Closing soon" (deep amber) for departures within
+            31 days — time-truth urgency; precedence closing > filling-fast
+            (still 75%) > now-booking, enforced at bake and client-side. The
+            next-departure line is now a LINK to that departure's tour page
+            (kept honest with the text by the same refresh). End-cap reads
+            "End of season. / That's every date to April 2028. The 2028/29
+            season will be released soon." Card text tightened (line-heights
+            + margins reduced) and "View journey" is now a real navy button
+            with border. Ben tests on /v2 (noindex it).
        v30 — departure board round three (Ben): the live pulse is now ON
             EVERY CARD — the journeys page's own status-pill design
             reciprocated here: green pulsing "Now Booking" on each image
@@ -485,12 +499,15 @@
 
 
 
+
   /* ============ 1b. DEPARTURE BOARD ============ */
   .shx-depboard { background: var(--paper); border-bottom: 1px solid var(--paper-line); }
   .shx-depboard-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px; margin-bottom: 22px; }
   .shx-depboard h2 { font-size: clamp(28px, 3.4vw, 38px) !important; color: var(--ink) !important; line-height: 1.15 !important; margin: 0 !important; }
   .shx-depboard-sub { margin: 10px 0 0 !important; max-width: 60ch; font-size: 17px !important; color: var(--body-soft) !important; }
   .shx-depnext { display: flex; align-items: center; gap: 9px; margin: 12px 0 0 !important; font-size: 15px !important; color: var(--body-soft) !important; }
+  .shx-depnext a { text-decoration: none !important; }
+  .shx-depnext a:hover strong { text-decoration: underline; text-underline-offset: 3px; }
   .shx-depnext strong { color: var(--ink); font-weight: 700 !important; }
   .shx-depnext-dot { width: 9px; height: 9px; border-radius: 50%; background: #2a7a4a; flex: none; animation: shx-deppulse 1.8s ease-in-out infinite; }
   @keyframes shx-deppulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(42, 122, 74, .45); } 55% { box-shadow: 0 0 0 7px rgba(42, 122, 74, 0); } }
@@ -513,20 +530,22 @@
   .shx-dep-pill--near { background: rgba(196, 126, 22, .96); }
   .shx-dep-pill-dot { width: 6px; height: 6px; background: #ffffff; border-radius: 50%; animation: shx-deppulse-w 1.6s ease-in-out infinite; }
   @keyframes shx-deppulse-w { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
-  .shx-dep-count { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 11.5px !important; font-weight: 700 !important; letter-spacing: .8px; text-transform: uppercase; color: var(--gold-deep) !important; margin: 2px 0 8px; }
+  .shx-dep-pill--closing { background: rgba(178, 74, 18, .96); }
+  .shx-dep-count { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 11.5px !important; font-weight: 700 !important; letter-spacing: .8px; text-transform: uppercase; color: var(--gold-deep) !important; line-height: 1.3 !important; margin: 1px 0 6px; }
   .shx-dep-end { background: var(--ink); border-color: var(--gold); display: flex; }
   .shx-dep-endlink { display: flex; flex-direction: column; justify-content: center; gap: 10px; padding: 28px 26px; text-decoration: none !important; }
   .shx-dep-endtitle { font-family: 'Montserrat', sans-serif !important; font-size: 20px !important; font-weight: 700 !important; letter-spacing: -0.2px; color: #ffffff !important; line-height: 1.3 !important; }
   .shx-dep-endsub { font-size: 14.5px !important; color: rgba(243,236,221,.8) !important; line-height: 1.55 !important; }
   .shx-dep-endgo { font-family: 'Montserrat', sans-serif !important; font-size: 12.5px !important; font-weight: 700 !important; letter-spacing: .6px; text-transform: uppercase; color: var(--gold) !important; }
-  .shx-dep-body { display: block; padding: 16px 18px 18px; }
-  .shx-dep-date { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 22px !important; color: var(--body-soft) !important; margin-bottom: 4px; }
+  .shx-dep-body { display: block; padding: 14px 16px 16px; }
+  .shx-dep-date { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 22px !important; line-height: 1.2 !important; color: var(--body-soft) !important; margin-bottom: 2px; }
   .shx-dep-date strong { color: var(--ink); font-weight: 700 !important; }
-  .shx-dep-name { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 16.5px !important; font-weight: 700 !important; letter-spacing: -0.2px; color: var(--ink) !important; margin-bottom: 6px; }
-  .shx-dep-meta { display: block; font-size: 14px !important; color: var(--body-soft) !important; margin-bottom: 12px; }
+  .shx-dep-name { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 16.5px !important; font-weight: 700 !important; letter-spacing: -0.2px; line-height: 1.25 !important; color: var(--ink) !important; margin-bottom: 3px; }
+  .shx-dep-meta { display: block; font-size: 14px !important; line-height: 1.45 !important; color: var(--body-soft) !important; margin-bottom: 10px; }
   .shx-dep-foot { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
   .shx-dep-price { font-size: 14px !important; color: var(--body-soft) !important; }
-  .shx-dep-go { font-family: 'Montserrat', sans-serif !important; font-size: 12.5px !important; font-weight: 700 !important; letter-spacing: .6px; text-transform: uppercase; color: var(--gold-deep) !important; white-space: nowrap; }
+  .shx-dep-go { display: inline-flex; align-items: center; font-family: 'Montserrat', sans-serif !important; font-size: 12px !important; font-weight: 700 !important; letter-spacing: .8px; text-transform: uppercase; color: #ffffff !important; background: var(--ink); border: 1.5px solid var(--ink); border-radius: 4px; padding: 9px 14px; white-space: nowrap; transition: background .2s ease; }
+  .shx-dep:hover .shx-dep-go { background: var(--ink-soft); }
   .shx-depboard-foot { margin: 4px 0 0 !important; font-size: 15px !important; color: var(--body-soft) !important; }
   .shx-depboard-foot a { color: var(--ink) !important; font-weight: 700; text-decoration: underline !important; text-underline-offset: 3px; }
   @media (max-width: 860px) {
@@ -744,9 +763,9 @@
       <div class="shx-depboard-head">
         <div>
           <span class="shx-kicker">Departing Soon</span>
-          <h2 class="shx-display">All aboard &mdash; pick your departure.</h2>
-          <p class="shx-depnext"><span class="shx-depnext-dot" aria-hidden="true"></span>Next departure: <strong data-shx-nextaway>16 Nov 2026 &middot; 14-Day Spring/Summer Tour</strong></p>
-          <p class="shx-depboard-sub">Every departure, every journey, in the order they leave &mdash; find the dates that fit, and away you go.</p>
+          <h2 class="shx-display">Find your next departure.</h2>
+          <p class="shx-depnext"><span class="shx-depnext-dot" aria-hidden="true"></span>Next departure: <a data-shx-nextaway href="/2026-2027-spring/summer-tour-14-days"><strong>16 Nov 2026 &middot; 14-Day Spring/Summer Tour</strong></a></p>
+          <p class="shx-depboard-sub">Choose a date that suits you &mdash; now booking through to April 2028.</p>
         </div>
         <div class="shx-depboard-arrows" aria-hidden="false">
           <button type="button" class="shx-deparrow" data-shx-deparrow="-1" aria-label="Scroll to earlier departures">&larr;</button>
@@ -1387,8 +1406,8 @@
         </article>
         <article class="shx-dep shx-dep-end">
           <a class="shx-dep-endlink" href="/journeys">
-            <span class="shx-dep-endtitle">That&rsquo;s every departure to Apr 2028.</span>
-            <span class="shx-dep-endsub">Compare all seven journeys side by side &mdash; seasons, prices and every date.</span>
+            <span class="shx-dep-endtitle">End of season.</span>
+            <span class="shx-dep-endsub">That&rsquo;s every date to April 2028. The 2028/29 season will be released soon.</span>
             <span class="shx-dep-endgo">See every journey &rarr;</span>
           </a>
         </article>
@@ -1854,6 +1873,14 @@
     else if (n < 70) { t = 'Departs in ' + Math.max(2, Math.round(n / 7)) + ' weeks'; }
     else { t = 'Departs in ' + Math.max(2, Math.round(n / 30.4)) + ' months'; }
     counts[i].textContent = t;
+    if (n <= 31 && n >= 0) {
+      var card = counts[i].closest('[data-shx-dep]');
+      var pill = card && card.querySelector('.shx-dep-pill');
+      var lab = card && card.querySelector('.shx-dep-pill-label');
+      if (card && card.className.indexOf('shx-dep--closing') < 0) { card.className += ' shx-dep--closing'; }
+      if (pill) { pill.className = 'shx-dep-pill shx-dep-pill--closing'; }
+      if (lab) { lab.textContent = 'Closing soon'; }
+    }
   }
   var away = document.querySelector('[data-shx-nextaway]');
   function refreshNextAway() {
@@ -1862,7 +1889,12 @@
     if (!first) return;
     var dateEl = first.querySelector('.shx-dep-date');
     var nameEl = first.querySelector('.shx-dep-name');
-    if (dateEl && nameEl) { away.textContent = dateEl.textContent.trim() + ' · ' + nameEl.textContent.trim(); }
+    if (dateEl && nameEl) {
+      var strongEl = away.querySelector('strong') || away;
+      strongEl.textContent = dateEl.textContent.trim() + ' · ' + nameEl.textContent.trim();
+      var linkEl = first.querySelector('.shx-dep-link');
+      if (away.tagName === 'A' && linkEl) { away.setAttribute('href', linkEl.getAttribute('href')); }
+    }
   }
   refreshNextAway();
   window.__shxRailApply = function (data) {
@@ -1875,7 +1907,7 @@
       for (var k = 0; k < tour.all.length; k += 1) {
         if (tour.all[k].start !== bits[1]) continue;
         if (tour.all[k].status === 'soldout') { list[i].setAttribute('hidden', ''); }
-        else if (tour.all[k].status === 'nearing') {
+        else if (tour.all[k].status === 'nearing' && list[i].className.indexOf('shx-dep--closing') < 0) {
           list[i].className += (list[i].className.indexOf('shx-dep--near') < 0 ? ' shx-dep--near' : '');
           var pill = list[i].querySelector('.shx-dep-pill');
           var lab = list[i].querySelector('.shx-dep-pill-label');
@@ -1926,6 +1958,7 @@
     });
   });
 })();
+
 
 
 

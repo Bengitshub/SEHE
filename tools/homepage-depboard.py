@@ -143,6 +143,7 @@ first = deps[0]
 first_meta = META[first['key']]
 fd, fm, fy = pretty(first['start'])
 NEXTAWAY = f"{fd} {fm} {fy} &middot; {first_meta['name']}"
+NEXTHREF = first_meta['href']
 months_seen = []
 cards = []
 per_tour_idx = {}
@@ -163,9 +164,14 @@ for d in deps:
         img = pool[n_i % len(pool)]           # galleries overlap across tours — never repeat the neighbour
     per_tour_idx[d['key']] = n_i + 1
     prev_img = img
-    near = ' shx-dep--near' if d['status'] == 'nearing' else ''
-    pill_mod = '--near' if d['status'] == 'nearing' else '--go'
-    pill_txt = 'Filling fast' if d['status'] == 'nearing' else 'Now Booking'
+    from datetime import date as _d
+    days_out = (_d(*[int(x) for x in d['start'].split('-')]) - _d(*[int(x) for x in today.split('-')])).days
+    if days_out <= 31:
+        pill_mod, pill_txt, near = '--closing', 'Closing soon', ' shx-dep--closing'
+    elif d['status'] == 'nearing':
+        pill_mod, pill_txt, near = '--near', 'Filling fast', ' shx-dep--near'
+    else:
+        pill_mod, pill_txt, near = '--go', 'Now Booking', ''
     nearchip = f'<span class="shx-dep-pill shx-dep-pill{pill_mod}"><span class="shx-dep-pill-dot"></span><span class="shx-dep-pill-label">{pill_txt}</span></span>'
     count_txt = countdown(d['start'], today)
     cards.append(f'''        <article class="shx-dep{near}" data-shx-dep="{d['key']}|{d['start']}" data-month="{mkey}">
@@ -181,6 +187,7 @@ for d in deps:
           </a>
         </article>''')
 
+LASTMONTH = months_seen[-1][1].replace('Apr', 'April').replace('Oct', 'October').replace('Nov', 'November').replace('Dec', 'December').replace('Jan', 'January').replace('Feb', 'February').replace('Mar', 'March').replace('Jun', 'June').replace('Jul', 'July').replace('Aug', 'August').replace('Sep', 'September').replace('May', 'May')
 chips = '\n'.join(
     f'        <button type="button" class="shx-depmonth{" is-active" if i == 0 else ""}" data-shx-month="{k}">{label}</button>'
     for i, (k, label) in enumerate(months_seen))
@@ -192,9 +199,9 @@ SECTION = f'''
       <div class="shx-depboard-head">
         <div>
           <span class="shx-kicker">Departing Soon</span>
-          <h2 class="shx-display">All aboard &mdash; pick your departure.</h2>
-          <p class="shx-depnext"><span class="shx-depnext-dot" aria-hidden="true"></span>Next departure: <strong data-shx-nextaway>{NEXTAWAY}</strong></p>
-          <p class="shx-depboard-sub">Every departure, every journey, in the order they leave &mdash; find the dates that fit, and away you go.</p>
+          <h2 class="shx-display">Find your next departure.</h2>
+          <p class="shx-depnext"><span class="shx-depnext-dot" aria-hidden="true"></span>Next departure: <a data-shx-nextaway href="{NEXTHREF}"><strong>{NEXTAWAY}</strong></a></p>
+          <p class="shx-depboard-sub">Choose a date that suits you &mdash; now booking through to {LASTMONTH}.</p>
         </div>
         <div class="shx-depboard-arrows" aria-hidden="false">
           <button type="button" class="shx-deparrow" data-shx-deparrow="-1" aria-label="Scroll to earlier departures">&larr;</button>
@@ -210,8 +217,8 @@ SECTION = f'''
 {chr(10).join(cards)}
         <article class="shx-dep shx-dep-end">
           <a class="shx-dep-endlink" href="/journeys">
-            <span class="shx-dep-endtitle">That&rsquo;s every departure to {months_seen[-1][1]}.</span>
-            <span class="shx-dep-endsub">Compare all seven journeys side by side &mdash; seasons, prices and every date.</span>
+            <span class="shx-dep-endtitle">End of season.</span>
+            <span class="shx-dep-endsub">That&rsquo;s every date to {LASTMONTH}. The 2028/29 season will be released soon.</span>
             <span class="shx-dep-endgo">See every journey &rarr;</span>
           </a>
         </article>
@@ -230,6 +237,8 @@ CSS = '''
   .shx-depboard h2 { font-size: clamp(28px, 3.4vw, 38px) !important; color: var(--ink) !important; line-height: 1.15 !important; margin: 0 !important; }
   .shx-depboard-sub { margin: 10px 0 0 !important; max-width: 60ch; font-size: 17px !important; color: var(--body-soft) !important; }
   .shx-depnext { display: flex; align-items: center; gap: 9px; margin: 12px 0 0 !important; font-size: 15px !important; color: var(--body-soft) !important; }
+  .shx-depnext a { text-decoration: none !important; }
+  .shx-depnext a:hover strong { text-decoration: underline; text-underline-offset: 3px; }
   .shx-depnext strong { color: var(--ink); font-weight: 700 !important; }
   .shx-depnext-dot { width: 9px; height: 9px; border-radius: 50%; background: #2a7a4a; flex: none; animation: shx-deppulse 1.8s ease-in-out infinite; }
   @keyframes shx-deppulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(42, 122, 74, .45); } 55% { box-shadow: 0 0 0 7px rgba(42, 122, 74, 0); } }
@@ -252,20 +261,22 @@ CSS = '''
   .shx-dep-pill--near { background: rgba(196, 126, 22, .96); }
   .shx-dep-pill-dot { width: 6px; height: 6px; background: #ffffff; border-radius: 50%; animation: shx-deppulse-w 1.6s ease-in-out infinite; }
   @keyframes shx-deppulse-w { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
-  .shx-dep-count { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 11.5px !important; font-weight: 700 !important; letter-spacing: .8px; text-transform: uppercase; color: var(--gold-deep) !important; margin: 2px 0 8px; }
+  .shx-dep-pill--closing { background: rgba(178, 74, 18, .96); }
+  .shx-dep-count { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 11.5px !important; font-weight: 700 !important; letter-spacing: .8px; text-transform: uppercase; color: var(--gold-deep) !important; line-height: 1.3 !important; margin: 1px 0 6px; }
   .shx-dep-end { background: var(--ink); border-color: var(--gold); display: flex; }
   .shx-dep-endlink { display: flex; flex-direction: column; justify-content: center; gap: 10px; padding: 28px 26px; text-decoration: none !important; }
   .shx-dep-endtitle { font-family: 'Montserrat', sans-serif !important; font-size: 20px !important; font-weight: 700 !important; letter-spacing: -0.2px; color: #ffffff !important; line-height: 1.3 !important; }
   .shx-dep-endsub { font-size: 14.5px !important; color: rgba(243,236,221,.8) !important; line-height: 1.55 !important; }
   .shx-dep-endgo { font-family: 'Montserrat', sans-serif !important; font-size: 12.5px !important; font-weight: 700 !important; letter-spacing: .6px; text-transform: uppercase; color: var(--gold) !important; }
-  .shx-dep-body { display: block; padding: 16px 18px 18px; }
-  .shx-dep-date { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 22px !important; color: var(--body-soft) !important; margin-bottom: 4px; }
+  .shx-dep-body { display: block; padding: 14px 16px 16px; }
+  .shx-dep-date { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 22px !important; line-height: 1.2 !important; color: var(--body-soft) !important; margin-bottom: 2px; }
   .shx-dep-date strong { color: var(--ink); font-weight: 700 !important; }
-  .shx-dep-name { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 16.5px !important; font-weight: 700 !important; letter-spacing: -0.2px; color: var(--ink) !important; margin-bottom: 6px; }
-  .shx-dep-meta { display: block; font-size: 14px !important; color: var(--body-soft) !important; margin-bottom: 12px; }
+  .shx-dep-name { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 16.5px !important; font-weight: 700 !important; letter-spacing: -0.2px; line-height: 1.25 !important; color: var(--ink) !important; margin-bottom: 3px; }
+  .shx-dep-meta { display: block; font-size: 14px !important; line-height: 1.45 !important; color: var(--body-soft) !important; margin-bottom: 10px; }
   .shx-dep-foot { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
   .shx-dep-price { font-size: 14px !important; color: var(--body-soft) !important; }
-  .shx-dep-go { font-family: 'Montserrat', sans-serif !important; font-size: 12.5px !important; font-weight: 700 !important; letter-spacing: .6px; text-transform: uppercase; color: var(--gold-deep) !important; white-space: nowrap; }
+  .shx-dep-go { display: inline-flex; align-items: center; font-family: 'Montserrat', sans-serif !important; font-size: 12px !important; font-weight: 700 !important; letter-spacing: .8px; text-transform: uppercase; color: #ffffff !important; background: var(--ink); border: 1.5px solid var(--ink); border-radius: 4px; padding: 9px 14px; white-space: nowrap; transition: background .2s ease; }
+  .shx-dep:hover .shx-dep-go { background: var(--ink-soft); }
   .shx-depboard-foot { margin: 4px 0 0 !important; font-size: 15px !important; color: var(--body-soft) !important; }
   .shx-depboard-foot a { color: var(--ink) !important; font-weight: 700; text-decoration: underline !important; text-underline-offset: 3px; }
   @media (max-width: 860px) {
@@ -308,6 +319,14 @@ JS = '''
     else if (n < 70) { t = 'Departs in ' + Math.max(2, Math.round(n / 7)) + ' weeks'; }
     else { t = 'Departs in ' + Math.max(2, Math.round(n / 30.4)) + ' months'; }
     counts[i].textContent = t;
+    if (n <= 31 && n >= 0) {
+      var card = counts[i].closest('[data-shx-dep]');
+      var pill = card && card.querySelector('.shx-dep-pill');
+      var lab = card && card.querySelector('.shx-dep-pill-label');
+      if (card && card.className.indexOf('shx-dep--closing') < 0) { card.className += ' shx-dep--closing'; }
+      if (pill) { pill.className = 'shx-dep-pill shx-dep-pill--closing'; }
+      if (lab) { lab.textContent = 'Closing soon'; }
+    }
   }
   var away = document.querySelector('[data-shx-nextaway]');
   function refreshNextAway() {
@@ -316,7 +335,12 @@ JS = '''
     if (!first) return;
     var dateEl = first.querySelector('.shx-dep-date');
     var nameEl = first.querySelector('.shx-dep-name');
-    if (dateEl && nameEl) { away.textContent = dateEl.textContent.trim() + ' \u00b7 ' + nameEl.textContent.trim(); }
+    if (dateEl && nameEl) {
+      var strongEl = away.querySelector('strong') || away;
+      strongEl.textContent = dateEl.textContent.trim() + ' \u00b7 ' + nameEl.textContent.trim();
+      var linkEl = first.querySelector('.shx-dep-link');
+      if (away.tagName === 'A' && linkEl) { away.setAttribute('href', linkEl.getAttribute('href')); }
+    }
   }
   refreshNextAway();
   window.__shxRailApply = function (data) {
@@ -329,7 +353,7 @@ JS = '''
       for (var k = 0; k < tour.all.length; k += 1) {
         if (tour.all[k].start !== bits[1]) continue;
         if (tour.all[k].status === 'soldout') { list[i].setAttribute('hidden', ''); }
-        else if (tour.all[k].status === 'nearing') {
+        else if (tour.all[k].status === 'nearing' && list[i].className.indexOf('shx-dep--closing') < 0) {
           list[i].className += (list[i].className.indexOf('shx-dep--near') < 0 ? ' shx-dep--near' : '');
           var pill = list[i].querySelector('.shx-dep-pill');
           var lab = list[i].querySelector('.shx-dep-pill-label');
