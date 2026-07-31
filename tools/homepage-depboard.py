@@ -406,6 +406,10 @@ scripts = re.findall(r'<script[^>]*>([\s\S]*?)</script>', body)
 bad = sum(len(re.findall(r'<[a-zA-Z]', s)) for s in scripts)
 assert bad == 0, f'{bad} tag-like tokens inside scripts (Duda sanitizer hazard)'
 assert 'shx-dep-img' not in body, 'photo cards survived the variant-C rebuild'
+# the CSS strip removes [board-CSS .. RESPONSIVE]; nothing else may live there.
+# v37 lesson: the brochure-band CSS did, and a regen shipped the band naked.
+if '<section class="shx-broch' in body:
+    assert '.shx-broch-card {' in body, 'brochure-band CSS lost — it must sit ABOVE the board CSS marker'
 assert body.count('shx-dep-head') >= len(deps) + 1  # every card + the CSS rule
 assert body.count('data-shx-dep=') == len(deps)
 assert body.count('shx-depmonth"') + body.count('shx-depmonth is-active"') >= len(months_seen)

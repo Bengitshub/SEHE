@@ -21,7 +21,7 @@ const TODAY = new Date().toISOString().slice(0, 10);
 
 const PAGES = [
   /* TODO Phase 2: the HOMEPAGE carries a brochure form too (v33+, section 8b
-     "Every brochure, one form.") — an HTML fallback form that GETs to
+     "Browse the brochure collection.") — an HTML fallback form that GETs to
      /brochure-collection, plus the tour-style .sehe-form-slot for the docked
      native Duda form. Its helper script's comment differs from the tour pages
      ("Brochure fallback form"), so the flip regexes below will NOT match it
