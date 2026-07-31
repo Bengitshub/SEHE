@@ -1,8 +1,17 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v33  ·  2026-07-31  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v34  ·  2026-07-31  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v34 — JOURNEYS INTRO UNDER THE HEADING + TEXT-GAP TIGHTENING (Ben).
+            The "Explore our journeys." intro no longer sits beside the heading
+            (flex space-between removed): kicker, heading, paragraph now stack.
+            Page-wide vertical-rhythm pass, desktop: head-to-content gaps
+            46-64px cut to 30-44px (journeys head, promise intro, seasons duo,
+            Super 6 head, guests pull-quote, booking h2, guests photo grid),
+            kicker-to-heading 18 to 14px, plus smaller trims (legacy copy,
+            quote block, steps, practicals, final call, brochure sub). Hero
+            untouched. Mobile keeps its v15 compaction overrides.
        v33 — BROCHURE COLLECTION BAND added (Ben): new section 8b between
             Guests and Booking — navy band, white two-column card: fanned
             covers (winter 2027 / 14-day 26-27 / pinnacle) + badge on the left,
@@ -293,7 +302,7 @@
   .sehe-home-ledger .shx-display { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; letter-spacing: -0.2px; margin: 0; }
   .sehe-home-ledger p { margin: 0; }
   .sehe-home-ledger a:focus-visible, .sehe-home-ledger button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
-  .shx-kicker { display: inline-flex; align-items: center; gap: 10px; font-size: 11px !important; font-weight: 700 !important; letter-spacing: 2.4px; text-transform: uppercase; color: var(--gold-deep) !important; margin: 0 0 18px !important; }
+  .shx-kicker { display: inline-flex; align-items: center; gap: 10px; font-size: 11px !important; font-weight: 700 !important; letter-spacing: 2.4px; text-transform: uppercase; color: var(--gold-deep) !important; margin: 0 0 14px !important; }
   .shx-kicker::before { content: ''; width: 28px; height: 1px; background: var(--gold); flex: none; }
   .shx-kicker--light { color: var(--gold-light) !important; }
   .shx-kicker--light::before { background: var(--gold-light); }
@@ -340,10 +349,10 @@
 
   /* ============ 2. CHOOSE YOUR JOURNEY (the centrepiece) ============ */
   .shx-journeys { background: var(--paper-deep); }
-  .shx-journeys-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 46px; }
+  .shx-journeys-head { margin-bottom: 30px; }
   .shx-journeys h2 { font-size: clamp(28px, 3.4vw, 38px) !important; color: var(--ink) !important; line-height: 1.14 !important; margin: 0 !important; max-width: 18ch; }
-  .shx-journeys-head p { max-width: 46ch; font-size: 17px !important; color: var(--body-soft) !important; }
-  .shx-season { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: 19px !important; letter-spacing: -0.2px; color: var(--gold-deep) !important; margin: 44px 0 4px !important; }
+  .shx-journeys-head p { max-width: 62ch; font-size: 17px !important; color: var(--body-soft) !important; margin: 12px 0 0 !important; }
+  .shx-season { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: 19px !important; letter-spacing: -0.2px; color: var(--gold-deep) !important; margin: 34px 0 4px !important; }
   .shx-season:first-of-type { margin-top: 0 !important; }
   .shx-jgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 18px; }
   .shx-jc { display: flex; flex-direction: column; background: #ffffff; border: 1px solid var(--paper-line); border-radius: 10px; overflow: hidden; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
@@ -380,7 +389,7 @@
   .shx-jc--pinnacle .shx-jc-brochure { color: #ffffff !important; }
   .shx-jc--pinnacle .shx-jc-badge { background: var(--gold); color: var(--ink-deep) !important; }
   /* finding-your-journey compact panel */
-  .shx-finder { margin-top: 52px; background: var(--paper); border: 1px solid var(--paper-line); border-radius: 3px; padding: 34px 38px; }
+  .shx-finder { margin-top: 40px; background: var(--paper); border: 1px solid var(--paper-line); border-radius: 3px; padding: 34px 38px; }
   .shx-finder h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 23px !important; color: var(--ink) !important; margin: 0 0 18px !important; }
   .shx-finder-rows { margin: 0 0 26px; padding: 0; list-style: none; }
   .shx-finder-rows li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; padding: 12px 0; border-top: 1px solid var(--paper-line); font-size: 16.5px !important; }
@@ -393,10 +402,10 @@
   /* ============ 3. THE PROMISE ============ */
   .shx-promise { background: var(--ink); color: var(--cream-ink); }
   .shx-promise h2 { font-size: clamp(28px, 3.4vw, 38px) !important; color: #ffffff !important; line-height: 1.14 !important; margin: 0 0 18px !important; }
-  .shx-promise-intro { max-width: 62ch; font-size: 18.5px !important; color: rgba(243,236,221,.85) !important; margin: 0 0 58px !important; }
+  .shx-promise-intro { max-width: 62ch; font-size: 18.5px !important; color: rgba(243,236,221,.85) !important; margin: 0 0 32px !important; }
   .shx-promise-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 44px; }
   .shx-promise-item { border-top: 1px solid rgba(200,165,108,.55); padding-top: 26px; }
-  .shx-promise-item svg { width: 34px; height: 34px; stroke: var(--gold); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 18px; }
+  .shx-promise-item svg { width: 34px; height: 34px; stroke: var(--gold); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 14px; }
   .shx-promise-item h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 21px !important; color: #ffffff !important; margin: 0 0 10px !important; line-height: 1.3 !important; }
   .shx-promise-item p { font-size: 16px !important; line-height: 1.65 !important; color: rgba(243,236,221,.78) !important; }
 
@@ -404,7 +413,7 @@
   .shx-seasons { background: var(--ink); color: var(--cream-ink); border-top: 1px solid rgba(200,165,108,.25); }
   .shx-seasons h2 { font-size: clamp(28px, 3.4vw, 38px) !important; color: #ffffff !important; line-height: 1.14 !important; margin: 0 0 18px !important; }
   .shx-seasons-intro { max-width: 62ch; font-size: 18.5px !important; color: rgba(243,236,221,.85) !important; margin: 0 !important; }
-  .shx-seasons-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 58px; }
+  .shx-seasons-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 34px; }
   .shx-season-card { position: relative; min-height: 600px; display: flex; align-items: flex-end; border: 1px solid var(--gold); border-radius: 3px; overflow: hidden; background-size: cover; background-position: center; }
   .shx-season-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,21,37,.12) 26%, rgba(8,21,37,.62) 60%, rgba(8,21,37,.95) 100%); }
   .shx-season-card-in { position: relative; padding: 0 44px 46px; }
@@ -418,7 +427,7 @@
 
   /* ============ 5. SUPER 6 (compact grid) ============ */
   .shx-six { background: var(--paper); }
-  .shx-six-head { max-width: 720px; margin-bottom: 50px; }
+  .shx-six-head { max-width: 720px; margin-bottom: 34px; }
   .shx-six h2 { font-size: clamp(28px, 3.4vw, 38px) !important; color: var(--ink) !important; line-height: 1.14 !important; margin: 0 0 18px !important; }
   .shx-six-head p { font-size: 18px !important; color: var(--body-ink) !important; }
   .shx-six-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -428,23 +437,23 @@
   .shx-six-card h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 19px !important; color: var(--ink) !important; margin: 0 0 6px !important; display: flex; align-items: center; gap: 10px; }
   .shx-six-num { display: inline-flex; align-items: center; justify-content: center; min-width: 26px; height: 26px; background: var(--gold); border-radius: 50%; color: var(--ink-deep) !important; font-size: 13px !important; font-weight: 700 !important; }
   .shx-six-card p { font-size: 15.5px !important; color: var(--body-soft) !important; line-height: 1.55 !important; }
-  .shx-six-note { margin-top: 30px; font-size: 16px !important; color: var(--body-soft) !important; }
+  .shx-six-note { margin-top: 24px; font-size: 16px !important; color: var(--body-soft) !important; }
   .shx-six-note strong { color: var(--ink); }
 
   /* ============ 6. LEGACY ============ */
   .shx-legacy { background: var(--paper-deep); }
   .shx-legacy-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 72px; align-items: center; }
-  .shx-legacy h2 { font-size: clamp(30px, 3.5vw, 40px) !important; line-height: 1.12 !important; color: var(--ink) !important; margin: 0 0 26px !important; }
-  .shx-legacy-copy p { margin: 0 0 20px !important; font-size: 18.5px !important; color: var(--body-ink) !important; }
+  .shx-legacy h2 { font-size: clamp(30px, 3.5vw, 40px) !important; line-height: 1.12 !important; color: var(--ink) !important; margin: 0 0 20px !important; }
+  .shx-legacy-copy p { margin: 0 0 16px !important; font-size: 18.5px !important; color: var(--body-ink) !important; }
   .shx-legacy-copy p:last-of-type { margin-bottom: 0 !important; }
-  .shx-quote { margin: 34px 0 0; padding: 26px 0 0; border-top: 5px double var(--gold); }
+  .shx-quote { margin: 26px 0 0; padding: 22px 0 0; border-top: 5px double var(--gold); }
   .shx-quote p { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: clamp(21px, 2.1vw, 26px) !important; line-height: 1.45 !important; color: var(--ink) !important; margin: 0 0 12px !important; }
   .shx-quote cite { font-style: normal; font-size: 14px !important; font-weight: 700 !important; letter-spacing: .28em; text-transform: uppercase; color: var(--gold-deep) !important; }
   .shx-portrait { position: relative; }
   .shx-portrait img { width: 100%; height: auto; display: block; filter: sepia(.14) contrast(1.02); }
   .shx-portrait::after { content: ''; position: absolute; inset: 18px -18px -18px 18px; border: 1px solid var(--gold); z-index: -1; }
   .shx-portrait figcaption { margin-top: 26px; font-size: 14px !important; color: var(--body-soft) !important; line-height: 1.55 !important; }
-  .shx-legacy-fact { margin-top: 30px; padding: 20px 24px; background: var(--paper); border-left: 3px solid var(--gold); font-size: 16.5px !important; color: var(--ink) !important; }
+  .shx-legacy-fact { margin-top: 24px; padding: 20px 24px; background: var(--paper); border-left: 3px solid var(--gold); font-size: 16.5px !important; color: var(--ink) !important; }
 
   /* ============ 7. THE FILM ============ */
   .shx-film { position: relative; min-height: 92vh; display: flex; align-items: flex-end; overflow: hidden; padding: 0 !important; background-color: var(--ink-deep); background-image: url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/184565-tranzalpine-crossing-the-waimakariri-river.webp'); background-size: cover; background-position: center 58%; color: #fff; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
@@ -465,34 +474,34 @@
   /* ============ 8. GUESTS (quotes + photographs) ============ */
   .shx-guests { background: var(--paper); }
   .shx-guests h2 { font-size: clamp(28px, 3.4vw, 38px) !important; color: var(--ink) !important; line-height: 1.14 !important; margin: 0 0 20px !important; }
-  .shx-guests-fav { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: 19px !important; color: var(--gold-deep) !important; margin: 0 0 54px !important; }
+  .shx-guests-fav { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: 19px !important; color: var(--gold-deep) !important; margin: 0 0 34px !important; }
   .shx-guests-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; }
-  .shx-g q { quotes: '\201C' '\201D'; font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: 20px !important; line-height: 1.5 !important; color: var(--ink) !important; display: block; margin-bottom: 22px; }
+  .shx-g q { quotes: '\201C' '\201D'; font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: 20px !important; line-height: 1.5 !important; color: var(--ink) !important; display: block; margin-bottom: 16px; }
   .shx-g q::before { content: open-quote; color: var(--gold); }
   .shx-g q::after { content: close-quote; color: var(--gold); }
   .shx-g figcaption { font-size: 14px !important; font-weight: 700 !important; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-deep) !important; }
   .shx-g figcaption small { display: block; letter-spacing: .05em; text-transform: none; font-weight: 400 !important; color: var(--body-soft) !important; font-size: 14px !important; margin-top: 4px; }
-  .shx-guests-photos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 64px; }
+  .shx-guests-photos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 44px; }
   .shx-gp .ph { width: 100%; aspect-ratio: 3 / 4; background-size: cover; background-position: center; border-radius: 2px; }
   .shx-gp figcaption { margin-top: 12px; font-size: 14.5px !important; line-height: 1.5 !important; color: var(--body-soft) !important; }
   .shx-gp figcaption strong { display: block; color: var(--ink); font-size: 15.5px !important; }
-  .shx-guests-more { margin-top: 54px; padding-top: 26px; border-top: 1px solid var(--paper-line); display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+  .shx-guests-more { margin-top: 38px; padding-top: 22px; border-top: 1px solid var(--paper-line); display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
   .shx-guests-more img { height: 26px; width: auto; }
   .shx-guests-more p { font-size: 16px !important; color: var(--body-soft) !important; }
   .shx-guests-more a { color: var(--ink) !important; font-weight: 700; }
 
   /* ============ 9. BOOKING YOUR JOURNEY (steps + reassurance merged) ============ */
   .shx-booking { background: var(--paper-deep); }
-  .shx-booking h2 { font-size: clamp(28px, 3.4vw, 38px) !important; color: var(--ink) !important; line-height: 1.16 !important; margin: 0 0 54px !important; }
+  .shx-booking h2 { font-size: clamp(28px, 3.4vw, 38px) !important; color: var(--ink) !important; line-height: 1.16 !important; margin: 0 0 34px !important; }
   .shx-booking-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 70px; align-items: start; }
-  .shx-step { border-top: 5px double var(--gold); padding-top: 22px; margin-bottom: 34px; }
+  .shx-step { border-top: 5px double var(--gold); padding-top: 18px; margin-bottom: 26px; }
   .shx-step:last-child { margin-bottom: 0; }
   .shx-step-num { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 36px !important; color: var(--gold) !important; line-height: 1 !important; display: block; margin-bottom: 12px; }
   .shx-step h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 22px !important; color: var(--ink) !important; margin: 0 0 8px !important; }
   .shx-step p { font-size: 16.5px !important; color: var(--body-soft) !important; line-height: 1.65 !important; }
   .shx-step a { color: var(--ink) !important; font-weight: 700; }
   .shx-practical { background: var(--paper); border: 1px solid var(--paper-line); border-radius: 3px; padding: 38px 40px; }
-  .shx-practical h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 23px !important; color: var(--ink) !important; margin: 0 0 22px !important; }
+  .shx-practical h3 { font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: 23px !important; color: var(--ink) !important; margin: 0 0 18px !important; }
   .shx-practical ul { margin: 0; padding: 0; list-style: none; }
   .shx-practical li { position: relative; padding: 12px 0 12px 40px; border-top: 1px solid var(--paper-line); font-size: 16.5px !important; color: var(--body-ink) !important; }
   .shx-practical li:first-child { border-top: 0; padding-top: 0; }
@@ -507,9 +516,9 @@
   .shx-final { background: var(--ink-deep); color: var(--cream-ink); text-align: center; background-image: linear-gradient(rgba(8,21,37,.9), rgba(8,21,37,.9)), url('https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg'); background-size: cover; background-position: center; }
   .shx-final h2 { font-size: clamp(38px, 4.6vw, 62px) !important; color: #ffffff !important; line-height: 1.1 !important; margin: 0 0 18px !important; text-align: center !important; }
   .shx-final .shx-kicker, .shx-final .shx-final-sub, .shx-final .shx-final-hours { text-align: center !important; }
-  .shx-final-sub { max-width: 56ch; margin: 0 auto 34px !important; font-size: 18.5px !important; color: rgba(243,236,221,.85) !important; }
+  .shx-final-sub { max-width: 56ch; margin: 0 auto 28px !important; font-size: 18.5px !important; color: rgba(243,236,221,.85) !important; }
   .shx-final-phone { display: block; font-family: 'Montserrat', sans-serif !important; font-weight: 700 !important; font-size: clamp(30px, 4vw, 46px) !important; color: var(--gold) !important; text-decoration: none !important; margin: 0 0 8px; }
-  .shx-final-hours { font-size: 14.5px !important; letter-spacing: .18em; text-transform: uppercase; color: rgba(243,236,221,.6) !important; margin-bottom: 40px !important; }
+  .shx-final-hours { font-size: 14.5px !important; letter-spacing: .18em; text-transform: uppercase; color: rgba(243,236,221,.6) !important; margin-bottom: 32px !important; }
   .shx-final-ctas { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; }
 
   /* ============ STICKY MOBILE ACTION BAR ============ */
@@ -598,7 +607,7 @@
   .shx-broch-badge { display: inline-flex; align-items: center; gap: 8px; font-family: 'Montserrat', sans-serif !important; font-size: 11px !important; font-weight: 700 !important; letter-spacing: 1.2px; text-transform: uppercase; color: var(--ink) !important; background: #ffffff; border: 1px solid var(--gold); border-radius: 20px; padding: 8px 16px; }
   .shx-broch-formside { padding: 50px 48px 44px; text-align: left; }
   .shx-broch-title { font-family: 'Montserrat', sans-serif !important; font-size: clamp(26px, 3vw, 33px) !important; font-weight: 600 !important; letter-spacing: -0.2px; line-height: 1.16 !important; color: var(--ink) !important; margin: 0 0 12px !important; }
-  .shx-broch-sub { font-size: 16.5px !important; line-height: 1.65 !important; color: var(--body-soft) !important; margin: 0 0 26px !important; max-width: 52ch; }
+  .shx-broch-sub { font-size: 16.5px !important; line-height: 1.65 !important; color: var(--body-soft) !important; margin: 0 0 22px !important; max-width: 52ch; }
   .shx-broch-sub strong { color: var(--body-ink); }
   .shx-broch-fine { margin: 14px 0 0 !important; font-size: 13px !important; letter-spacing: .3px; color: var(--body-soft) !important; }
   /* fallback form fields (hidden once the native Duda form docks) */
@@ -698,7 +707,7 @@
     .shx-film-in h2 { font-size: 28px !important; }
     .shx-final h2 { font-size: 29px !important; }
     /* journey cards + finder */
-    .shx-journeys-head { margin-bottom: 24px; gap: 12px; }
+    .shx-journeys-head { margin-bottom: 20px; }
     .shx-journeys-head p { font-size: 15.5px !important; }
     .shx-season { font-size: 16.5px !important; margin: 26px 0 2px !important; }
     .shx-jgrid { gap: 16px; margin-top: 12px; }
