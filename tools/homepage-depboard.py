@@ -14,8 +14,11 @@ Enhance-only, twice over:
     applied. Missing data can only ever leave the baked state standing.
 
 Tour names, prices, durations and links are read from the homepage's own
-journey cards (single source of voice); photos from the journeys page's
-cards (Ben's spec).
+journey cards (single source of voice). Cards carry NO photographs (Ben,
+31 Jul): the board's photo pools doubled the journeys-section imagery one
+scroll below, so each card opens with a navy date header instead — variant C
+of the assessed options (flat B / navy-header C), chosen because the date is
+the card's actual message and the header echoes the rail's navy end-cap.
 
 Usage: python3 tools/homepage-depboard.py <homepage-master.txt> [--apply]
 """
@@ -33,45 +36,6 @@ FEED = '/tmp/claude-0/-home-user-SEHE/0cc36833-90aa-502d-8b8c-c61310a548dd/scrat
 MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
           'August', 'September', 'October', 'November', 'December']
 MON3 = [m[:3] for m in MONTHS]
-
-# photo POOLS per tour — each tour page's own gallery (tour-relevant by
-# construction); the journeys-card image anchors position 0. Consecutive
-# departures of one tour cycle the pool, staggered per tour so adjacent rail
-# cards never repeat an image.
-ANCHOR_IMG = {
-  '14day-2627': 'https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp',
-  '11day-2627': 'https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp',
-  'pinnacle-2027': 'https://irp.cdn-website.com/35e9f777/dms3rep/multi/SEHE_OCT2024_DAY3-19.webp',
-  'winter-2027': 'https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%28Custom%29.webp',
-  '14day-2728': 'https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg',
-  '11day-2728': 'https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP.webp',
-  'winter-2026': 'https://irp.cdn-website.com/35e9f777/dms3rep/multi/183840-lake-sarah-in-snow-b1e7ecbb.webp',
-}
-import glob as _glob
-
-def build_pools():
-    masters = {}
-    for key, pat in [('14day-2627', 'SEHE-14day-tour_v*.txt'), ('11day-2627', 'SEHE-11day-2627-tour_v*.txt'),
-                     ('winter-2027', 'SEHE-12day-winter-2027-tour_v*.txt'), ('pinnacle-2027', 'SEHE-pinnacle-2027-tour_v*.txt'),
-                     ('11day-2728', 'SEHE-11day-2728-tour_v*.txt'), ('14day-2728', 'SEHE-14day-2728-tour_v*.txt')]:
-        hits = sorted(_glob.glob(os.path.join(REPO, pat)))
-        assert len(hits) == 1, (pat, hits)
-        masters[key] = hits[0]
-    pools = {}
-    for key, path in masters.items():
-        h = open(path, encoding='utf-8').read()
-        i = h.find('<section class="sehe-gallery"')
-        seg = h[i:h.find('</section>', i)] if i > 0 else ''
-        imgs = re.findall(r'(?:src|data-src)="(https://[^"]+\.(?:webp|jpg|jpeg|png)[^"]*)"', seg)
-        pool = [ANCHOR_IMG[key]]
-        for u in imgs:
-            if u not in pool:
-                pool.append(u)
-        pools[key] = pool[:6] if len(pool) >= 2 else pool
-    return pools
-
-IMG_POOLS = build_pools()
-TOUR_ORDINAL = {k: i for i, k in enumerate(sorted(IMG_POOLS.keys()))}
 
 body = open(os.path.join(REPO, SRC), encoding='utf-8').read()
 src_orig = body
@@ -146,8 +110,6 @@ NEXTAWAY = f"{fd} {fm} {fy} &middot; {first_meta['name']}"
 NEXTHREF = first_meta['href']
 months_seen = []
 cards = []
-per_tour_idx = {}
-prev_img = None
 for d in deps:
     y, mo = d['start'][:4], int(d['start'][5:7])
     mkey = f'{y}-{d["start"][5:7]}'
@@ -155,15 +117,6 @@ for d in deps:
         months_seen.append((mkey, f'{MON3[mo-1]} {y}'))
     meta = META[d['key']]
     dy, m3, yy = pretty(d['start'])
-    pool = IMG_POOLS.get(d['key'], [ANCHOR_IMG[d['key']]])
-    n_i = per_tour_idx.get(d['key'], TOUR_ORDINAL.get(d['key'], 0))
-    img = pool[n_i % len(pool)]
-    tries = 0
-    while cards and prev_img == img and tries < len(pool):
-        n_i += 1; tries += 1
-        img = pool[n_i % len(pool)]           # galleries overlap across tours — never repeat the neighbour
-    per_tour_idx[d['key']] = n_i + 1
-    prev_img = img
     from datetime import date as _d
     days_out = (_d(*[int(x) for x in d['start'].split('-')]) - _d(*[int(x) for x in today.split('-')])).days
     if days_out <= 31:
@@ -176,9 +129,8 @@ for d in deps:
     count_txt = countdown(d['start'], today)
     cards.append(f'''        <article class="shx-dep{near}" data-shx-dep="{d['key']}|{d['start']}" data-month="{mkey}">
           <a class="shx-dep-link" href="{meta['href']}" aria-label="{meta['name']} departing {dy} {m3} {yy} — view the journey">
-            <span class="shx-dep-img" style="background-image:url('{img}')" role="img" aria-label="{meta['name']}">{nearchip}</span>
+            <span class="shx-dep-head">{nearchip}<span class="shx-dep-date"><strong>{dy} {m3}</strong> {yy}</span><span class="shx-dep-rule"></span></span>
             <span class="shx-dep-body">
-              <span class="shx-dep-date"><strong>{dy} {m3}</strong> {yy}</span>
               <span class="shx-dep-count" data-shx-count="{d['start']}">{count_txt}</span>
               <span class="shx-dep-name">{meta['name']}</span>
               <span class="shx-dep-meta">{rng(d['start'], d['end'])} &middot; {meta['days']} days</span>
@@ -224,9 +176,6 @@ SECTION = f'''
         </article>
       </div>
     </div>
-    <div class="shx-wrap">
-      <p class="shx-depboard-foot">Dates update live from our booking system. <a href="/journeys">See every journey and departure &rarr;</a></p>
-    </div>
   </section>
 '''
 
@@ -255,30 +204,29 @@ CSS = '''
   .shx-dep:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(21, 59, 103, .08); border-color: var(--gold); }
   .shx-dep[hidden] { display: none; }
   .shx-dep-link { display: block; text-decoration: none !important; color: inherit; }
-  .shx-dep-img { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; background-size: cover; background-position: center; }
-  .shx-dep-pill { position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: 6px; color: #ffffff !important; font-family: 'Montserrat', sans-serif !important; font-size: 10.5px !important; font-weight: 700 !important; letter-spacing: 1px; text-transform: uppercase; padding: 6px 11px 6px 9px; border-radius: 20px; box-shadow: 0 2px 6px rgba(0,0,0,.18); }
+  .shx-dep-head { position: relative; display: block; background: var(--ink); padding: 22px 20px 20px; }
+  .shx-dep-rule { display: block; width: 44px; height: 2px; background: var(--gold); margin: 12px 0 0; }
+  .shx-dep-pill { position: absolute; top: 14px; right: 14px; display: inline-flex; align-items: center; gap: 6px; color: #ffffff !important; font-family: 'Montserrat', sans-serif !important; font-size: 10.5px !important; font-weight: 700 !important; letter-spacing: 1px; text-transform: uppercase; padding: 6px 11px 6px 9px; border-radius: 20px; box-shadow: 0 2px 6px rgba(0,0,0,.18); }
   .shx-dep-pill--go { background: rgba(42, 122, 74, .95); }
   .shx-dep-pill--near { background: rgba(196, 126, 22, .96); }
   .shx-dep-pill-dot { width: 6px; height: 6px; background: #ffffff; border-radius: 50%; animation: shx-deppulse-w 1.6s ease-in-out infinite; }
   @keyframes shx-deppulse-w { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
   .shx-dep-pill--closing { background: rgba(178, 74, 18, .96); }
-  .shx-dep-count { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 11.5px !important; font-weight: 700 !important; letter-spacing: .8px; text-transform: uppercase; color: var(--gold-deep) !important; line-height: 1.3 !important; margin: 1px 0 6px; }
+  .shx-dep-count { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 11.5px !important; font-weight: 700 !important; letter-spacing: .8px; text-transform: uppercase; color: var(--gold-deep) !important; line-height: 1.3 !important; margin: 0 0 6px; }
   .shx-dep-end { background: var(--ink); border-color: var(--gold); display: flex; }
   .shx-dep-endlink { display: flex; flex-direction: column; justify-content: center; gap: 10px; padding: 28px 26px; text-decoration: none !important; }
   .shx-dep-endtitle { font-family: 'Montserrat', sans-serif !important; font-size: 20px !important; font-weight: 700 !important; letter-spacing: -0.2px; color: #ffffff !important; line-height: 1.3 !important; }
   .shx-dep-endsub { font-size: 14.5px !important; color: rgba(243,236,221,.8) !important; line-height: 1.55 !important; }
   .shx-dep-endgo { font-family: 'Montserrat', sans-serif !important; font-size: 12.5px !important; font-weight: 700 !important; letter-spacing: .6px; text-transform: uppercase; color: var(--gold) !important; }
-  .shx-dep-body { display: block; padding: 14px 16px 16px; }
-  .shx-dep-date { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 22px !important; line-height: 1.2 !important; color: var(--body-soft) !important; margin-bottom: 2px; }
-  .shx-dep-date strong { color: var(--ink); font-weight: 700 !important; }
+  .shx-dep-body { display: block; padding: 16px 20px 18px; }
+  .shx-dep-date { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 30px !important; line-height: 1.15 !important; color: rgba(243,236,221,.72) !important; margin: 0; }
+  .shx-dep-date strong { color: #ffffff; font-weight: 700 !important; }
   .shx-dep-name { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 16.5px !important; font-weight: 700 !important; letter-spacing: -0.2px; line-height: 1.25 !important; color: var(--ink) !important; margin-bottom: 3px; }
   .shx-dep-meta { display: block; font-size: 14px !important; line-height: 1.45 !important; color: var(--body-soft) !important; margin-bottom: 10px; }
   .shx-dep-foot { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
   .shx-dep-price { font-size: 14px !important; color: var(--body-soft) !important; }
   .shx-dep-go { display: inline-flex; align-items: center; font-family: 'Montserrat', sans-serif !important; font-size: 12px !important; font-weight: 700 !important; letter-spacing: .8px; text-transform: uppercase; color: #ffffff !important; background: var(--ink); border: 1.5px solid var(--ink); border-radius: 4px; padding: 9px 14px; white-space: nowrap; transition: background .2s ease; }
   .shx-dep:hover .shx-dep-go { background: var(--ink-soft); }
-  .shx-depboard-foot { margin: 4px 0 0 !important; font-size: 15px !important; color: var(--body-soft) !important; }
-  .shx-depboard-foot a { color: var(--ink) !important; font-weight: 700; text-decoration: underline !important; text-underline-offset: 3px; }
   @media (max-width: 860px) {
     .shx-depboard-arrows { display: none; }
     .shx-deprail { padding-left: 20px; padding-right: 20px; }
@@ -287,7 +235,9 @@ CSS = '''
   @media (max-width: 540px) {
     .shx-deprail { gap: 12px; padding-left: 16px; padding-right: 16px; }
     .shx-dep { flex-basis: 82vw; }
-    .shx-dep-date { font-size: 19px !important; }
+    .shx-dep-head { padding: 18px 18px 16px; }
+    .shx-dep-date { font-size: 25px !important; }
+    .shx-dep-body { padding: 14px 18px 16px; }
     .shx-depboard-sub { font-size: 15.5px !important; }
   }
 '''
@@ -455,9 +405,8 @@ for tag in ('div', 'section', 'style', 'script', 'article', 'button', 'span'):
 scripts = re.findall(r'<script[^>]*>([\s\S]*?)</script>', body)
 bad = sum(len(re.findall(r'<[a-zA-Z]', s)) for s in scripts)
 assert bad == 0, f'{bad} tag-like tokens inside scripts (Duda sanitizer hazard)'
-imgs_seq = re.findall(r"shx-dep-img\" style=\"background-image:url\('([^']+)'\)", body)
-for a_i in range(1, len(imgs_seq)):
-    assert imgs_seq[a_i] != imgs_seq[a_i - 1], f'adjacent rail cards share an image at {a_i}'
+assert 'shx-dep-img' not in body, 'photo cards survived the variant-C rebuild'
+assert body.count('shx-dep-head') >= len(deps) + 1  # every card + the CSS rule
 assert body.count('data-shx-dep=') == len(deps)
 assert body.count('shx-depmonth"') + body.count('shx-depmonth is-active"') >= len(months_seen)
 
