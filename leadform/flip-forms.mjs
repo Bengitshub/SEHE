@@ -20,6 +20,13 @@ const OUT = 'leadform/preview/';
 const TODAY = new Date().toISOString().slice(0, 10);
 
 const PAGES = [
+  /* TODO Phase 2: the HOMEPAGE carries a brochure form too (v33+, section 8b
+     "Every brochure, one form.") — an HTML fallback form that GETs to
+     /brochure-collection, plus the tour-style .sehe-form-slot for the docked
+     native Duda form. Its helper script's comment differs from the tour pages
+     ("Brochure fallback form"), so the flip regexes below will NOT match it
+     as-is: give it its own entry + pattern when the Zap hooks arrive, with
+     key 'homepage' in ZAPIER_HOOKS_JSON. */
   { file: 'SEHE-14day-tour_v28.txt',             key: '14day-2627',  tour: '14-Day Spring/Summer Tour 2026/27', prev: 'sehe-14day-page-complete.html' },
   { file: 'SEHE-11day-2627-tour_v26.txt',        key: '11day-2627',  tour: '11-Day Spring/Summer Tour 2026/27', prev: 'sehe-11day-2627-page-complete.html' },
   { file: 'SEHE-12day-winter-2026-tour_v28.txt', key: 'winter-2026', tour: '12-Day Winter Edition 2026',        prev: 'sehe-12day-winter-2026-page-complete.html' },

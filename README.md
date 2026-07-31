@@ -6,12 +6,14 @@ homepage, the brochure-collection page, per-page booking widgets, a Cloudflare
 Worker that feeds live departure availability from Checkfront (plus a new-item
 watchdog), and the switch-over / lead-capture kits.
 
-## Current state (29 Jul 2026)
+## Current state (31 Jul 2026)
 All pages LIVE on their real URLs, homepage included (root domain).
+`LATEST/` holds every paste-ready deliverable under a STABLE filename —
+Ben pastes only from there (`tools/make-latest.py` regenerates it).
 
 | Page | Master file | Notes |
 |---|---|---|
-| Homepage (/) | `SEHE-homepage_v26.txt` | old homepage parked at /home-old (noindex) |
+| Homepage (/) | `SEHE-homepage_v33.txt` | departure board + brochure-collection band; v33 on /v2 for testing; old homepage parked at /home-old (noindex) |
 | Journeys | `SEHE-journeys-page_v22.txt` | single-widget page (hero + FAQ + contact folded in) |
 | Brochure collection | `SEHE-brochure-collection_v2.txt` | single main widget; stale tablet duplicate deleted |
 | 7 tour pages | `SEHE-*-tour_v*.txt` (one per page) | pasted as Block A + native Duda form + Block B — see `switchover/` |

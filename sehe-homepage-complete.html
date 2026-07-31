@@ -1,8 +1,20 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v32  ·  2026-07-31  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v33  ·  2026-07-31  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v33 — BROCHURE COLLECTION BAND added (Ben): new section 8b between
+            Guests and Booking — navy band, white two-column card: fanned
+            covers (winter 2027 / 14-day 26-27 / pinnacle) + badge on the left,
+            form on the right. Framed the OPPOSITE way to tour pages: one form,
+            access to ALL seven brochures, said up front. Ships the HTML
+            fallback form (continues to /brochure-collection; Phase-2
+            flippable) plus the standard .sehe-form-slot; the docking script is
+            lifted VERBATIM from the live 14-day master, so when the native
+            Duda form widget (the same form element as the tour pages = same
+            webhook/automations, no new Zapier work) is pasted below this
+            widget it docks in and the fallback hides. Hero's "View Tour
+            Brochures" ghost button retargeted #journeys -> #brochures.
        v32 — COPY PASS (Ben): the journeys section head was repeating the new
             departure board ("Find your next departure" straight into "Choose
             your South Island journey") — now "Explore our journeys." with a
@@ -573,6 +585,53 @@
     .shx-depboard-sub { font-size: 15.5px !important; }
   }
 
+
+  /* ---- 8b. BROCHURE COLLECTION (navy capture band) ---- */
+  .shx-broch { background: var(--ink); }
+  .shx-broch-card { display: grid; grid-template-columns: 0.92fr 1.08fr; max-width: 1080px; margin: 0 auto; background: #ffffff; border-radius: 14px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.32); }
+  .shx-broch-coverside { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; background: var(--paper); border-right: 1px solid var(--paper-line); padding: 52px 34px; }
+  .shx-broch-fan { position: relative; width: 100%; max-width: 320px; aspect-ratio: 5 / 4; }
+  .shx-broch-fan img { position: absolute; top: 50%; left: 50%; width: 52%; border-radius: 6px; box-shadow: 0 14px 30px rgba(13,32,54,.28); border: 1px solid rgba(13,32,54,.08); }
+  .shx-broch-fan img:nth-child(1) { transform: translate(-92%, -50%) rotate(-9deg); }
+  .shx-broch-fan img:nth-child(3) { transform: translate(-8%, -50%) rotate(9deg); }
+  .shx-broch-fan img:nth-child(2) { transform: translate(-50%, -54%); width: 56%; z-index: 2; box-shadow: 0 20px 44px rgba(13,32,54,.38); }
+  .shx-broch-badge { display: inline-flex; align-items: center; gap: 8px; font-family: 'Montserrat', sans-serif !important; font-size: 11px !important; font-weight: 700 !important; letter-spacing: 1.2px; text-transform: uppercase; color: var(--ink) !important; background: #ffffff; border: 1px solid var(--gold); border-radius: 20px; padding: 8px 16px; }
+  .shx-broch-formside { padding: 50px 48px 44px; text-align: left; }
+  .shx-broch-title { font-family: 'Montserrat', sans-serif !important; font-size: clamp(26px, 3vw, 33px) !important; font-weight: 600 !important; letter-spacing: -0.2px; line-height: 1.16 !important; color: var(--ink) !important; margin: 0 0 12px !important; }
+  .shx-broch-sub { font-size: 16.5px !important; line-height: 1.65 !important; color: var(--body-soft) !important; margin: 0 0 26px !important; max-width: 52ch; }
+  .shx-broch-sub strong { color: var(--body-ink); }
+  .shx-broch-fine { margin: 14px 0 0 !important; font-size: 13px !important; letter-spacing: .3px; color: var(--body-soft) !important; }
+  /* fallback form fields (hidden once the native Duda form docks) */
+  .sehe-brochure-form { display: block !important; }
+  .sehe-brochure-form .field { display: block !important; margin-bottom: 14px !important; }
+  .sehe-brochure-form .field:last-of-type { margin-bottom: 0 !important; }
+  .sehe-brochure-form label.field-label { display: block !important; font-family: 'Montserrat', sans-serif !important; font-size: 11px !important; font-weight: 700 !important; color: var(--body-ink) !important; text-transform: uppercase !important; letter-spacing: 1.2px !important; margin: 0 0 7px 0 !important; line-height: 1.3 !important; }
+  .sehe-brochure-form input[type="text"], .sehe-brochure-form input[type="email"], .sehe-brochure-form select { display: block !important; width: 100% !important; padding: 13px 16px !important; background: #ffffff !important; border: 1px solid var(--paper-line) !important; border-radius: 6px !important; font-family: 'Open Sans', sans-serif !important; font-size: 15px !important; color: var(--body-ink) !important; line-height: 1.4 !important; -webkit-appearance: none !important; appearance: none !important; outline: none !important; margin: 0 !important; box-sizing: border-box !important; transition: border-color .2s ease, box-shadow .2s ease !important; }
+  .sehe-brochure-form input:hover, .sehe-brochure-form select:hover { border-color: var(--gold) !important; }
+  .sehe-brochure-form input:focus, .sehe-brochure-form select:focus { border-color: var(--ink) !important; box-shadow: 0 0 0 3px rgba(13,32,54,.1) !important; }
+  .sehe-brochure-form input::placeholder { color: #8a93a3 !important; opacity: 1 !important; }
+  .sehe-brochure-form select { padding-right: 44px !important; background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%230d2036' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important; background-repeat: no-repeat !important; background-position: right 16px center !important; background-size: 12px 8px !important; cursor: pointer !important; color: #8a93a3 !important; }
+  .sehe-brochure-form select.has-value { color: var(--body-ink) !important; }
+  .sehe-brochure-form button[type="submit"] { display: block !important; width: 100% !important; padding: 17px 24px !important; background: var(--ink) !important; border: 1.5px solid var(--ink) !important; color: #ffffff !important; font-family: 'Montserrat', sans-serif !important; font-size: 13px !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 1.4px !important; border-radius: 6px !important; cursor: pointer !important; margin: 22px 0 0 0 !important; line-height: 1 !important; -webkit-appearance: none !important; appearance: none !important; transition: background .2s ease, box-shadow .2s ease !important; }
+  .sehe-brochure-form button[type="submit"]:hover { background: var(--ink-soft) !important; box-shadow: 0 6px 18px rgba(13,32,54,.3) !important; }
+  /* docked native Duda form: fit rules (skin CSS travels inside the widget) */
+  .sehe-form-slot { display: block; }
+  .sehe-form-slot .dmform { max-width: none !important; margin: 0 !important; padding: 0 !important; }
+  .sehe-form-slot .dmform-wrapper { padding: 0 !important; }
+  .sehe-form-slot .dmform-title { display: none !important; }
+  .sehe-form-slot .dmformsubmit { float: none !important; width: 100% !important; margin: 22px 0 0 0 !important; }
+  .sehe-form-slot .dmformsubmit input[type="submit"] { display: block !important; width: 100% !important; box-sizing: border-box !important; }
+  .shx-broch-formside.sehe-form-docked .sehe-brochure-form { display: none !important; }
+  @media (max-width: 1020px) {
+    .shx-broch-card { grid-template-columns: 1fr; }
+    .shx-broch-coverside { border-right: none; border-bottom: 1px solid var(--paper-line); padding: 44px 28px 36px; }
+  }
+  @media (max-width: 540px) {
+    .shx-broch-formside { padding: 34px 22px 32px; }
+    .shx-broch-fan { max-width: 260px; }
+    .shx-broch-sub { font-size: 15.5px !important; }
+  }
+
   /* ============ RESPONSIVE ============ */
   @media (max-width: 1020px) {
     .shx-promise-grid { grid-template-columns: repeat(2, 1fr); }
@@ -751,7 +810,7 @@
       <p class="shx-hero-sub">Fully guided rail-and-coach journeys through Aotearoa New Zealand&rsquo;s grandest landscapes &mdash; named in honour of Sir Edmund Hillary, and paced for travellers who like their adventure comfortable.</p>
       <div class="shx-hero-ctas">
         <a class="shx-btn shx-btn--gold" href="#journeys">Explore the Journeys</a>
-        <a class="shx-btn shx-btn--ghost" href="#journeys" aria-label="View tour brochures — free from every journey">View Tour Brochures</a>
+        <a class="shx-btn shx-btn--ghost" href="#brochures" aria-label="View tour brochures — free from every journey">View Tour Brochures</a>
         <p class="shx-hero-call">Or call our New Zealand team: <a href="tel:+6439741812">+64 3 974 1812</a></p>
       </div>
       <div class="shx-hero-proof">
@@ -1778,6 +1837,197 @@
       </div>
     </div>
   </section>
+
+  <!-- ============ 8b. BROCHURE COLLECTION ============ -->
+  <section class="shx-broch shx-band" id="brochures">
+    <div class="shx-wrap">
+      <div class="shx-broch-card">
+        <div class="shx-broch-coverside">
+          <div class="shx-broch-fan" aria-hidden="true">
+            <img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/Web_2027+Winter+Tour+Brochure_SEHE-1-1920w.webp" alt="" loading="lazy">
+            <img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/26-27+Spring-Summer+Tour_Brochure-Cover-1920w.webp" alt="" loading="lazy">
+            <img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/Web_Pinnacle+Tour+Brochure_January+2027-1-1920w.webp" alt="" loading="lazy">
+          </div>
+          <span class="shx-broch-badge">7 Journeys &middot; Free PDF Downloads</span>
+        </div>
+        <div class="shx-broch-formside">
+          <span class="shx-kicker">The Brochure Collection</span>
+          <h2 class="shx-broch-title">Every brochure, one form.</h2>
+          <p class="shx-broch-sub">Fill this in once and you unlock <strong>the complete collection</strong>: all seven journey brochures, with full itineraries, inclusions, season pricing and departure dates. Compare them at home, at your own pace.</p>
+          <form class="sehe-brochure-form" action="/brochure-collection" method="get" novalidate="">
+            <div class="field"><input type="text" name="dmform-1" placeholder="Name" autocomplete="name" required=""></div>
+            <div class="field"><input type="email" name="dmform-3" placeholder="Email" autocomplete="email" required=""></div>
+            <div class="field">
+              <label class="field-label" for="seheHomeCountry">Country of Residence</label>
+              <select name="dmform-2" id="seheHomeCountry" required="">
+                <option value="" selected="" disabled="" hidden="">Select your country</option>
+                <option value="Australia">Australia</option>
+                <option value="United States">United States</option>
+                <option value="New Zealand">New Zealand</option>
+                <option value="India">India</option>
+                <option value="Canada">Canada</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <button type="submit">Get the Brochure Collection</button>
+          </form>
+          <div class="sehe-form-slot" data-sehe-form-slot hidden></div>
+          <p class="shx-broch-fine">Instant access &middot; no obligation &middot; every journey in one place</p>
+        </div>
+      </div>
+    </div>
+  </section>
+<script>
+  (function() {
+  /* Brochure form DOCKING (switch-over sandwich pages). The real Duda form
+     widget is pasted below this HTML block so its webhook keeps working; on
+     the published site this script moves that widget INTO the brochure card
+     form slot as soon as it appears in the DOM, so the form renders exactly
+     where the design intends. Enhance-only: in the Duda editor, on this
+     master preview, or if no Duda form widget exists on the page, nothing is
+     touched and the layout stays as pasted. */
+  if (!/(^|\.)siredmundhillaryexplorer\.com$/.test(window.location.hostname)) return;
+  var slot = document.querySelector('[data-sehe-form-slot]');
+  if (!slot) return;
+  var tries = 0;
+  var timer = window.setInterval(function() {
+    tries += 1;
+    if (tries > 75) { window.clearInterval(timer); return; }
+    var all = document.querySelectorAll('div[data-element-type="dContactUsRespId"]');
+    var w = null;
+    for (var i = 0; i < all.length; i += 1) {
+      if (all[i].querySelector('input[name="dmform-1"]') && all[i].querySelector('input[name="dmform-3"]')) { w = all[i]; break; }
+    }
+    if (!w) return;
+    window.clearInterval(timer);
+    var oldParent = w.parentElement;
+    slot.appendChild(w);
+    slot.removeAttribute('hidden');
+    /* The widget carries geometry from its old home: Duda instance CSS and the
+       site theme still size/paint its internal wrappers (fixed button width, a
+       painted submit CONTAINER that shows as a slab behind the button, left
+       padding that mis-aligns the fields). Class-level CSS cannot outrank
+       instance rules, so flatten the geometry INLINE at dock time — inline
+       importants beat every stylesheet. Colours/typography stay with the skin. */
+    var flat = function(el, geom) {
+      if (!el || !el.style) return;
+      for (var k in geom) { if (geom.hasOwnProperty(k)) { el.style.setProperty(k, geom[k], 'important'); } }
+    };
+    flat(w, { padding: '0', margin: '0', width: '100%', 'max-width': 'none', background: 'transparent', 'background-color': 'transparent', 'min-height': '0', height: 'auto' });
+    flat(w.querySelector('.dmform-wrapper'), { padding: '0', margin: '0', width: '100%', 'max-width': 'none', background: 'transparent' });
+    flat(w.querySelector('form'), { padding: '0', margin: '0', width: '100%', 'max-width': 'none' });
+    flat(w.querySelector('.spacing-container'), { padding: '0', margin: '0', width: '100%' });
+    var ttl = w.querySelector('.dmform-title');
+    if (ttl) { ttl.style.setProperty('display', 'none', 'important'); }
+    var rows = w.querySelectorAll('.dmforminput');
+    for (var j = 0; j < rows.length; j += 1) {
+      flat(rows[j], { float: 'none', width: '100%', margin: '0 0 16px 0', padding: '0', 'min-height': '0', height: 'auto', background: 'transparent' });
+    }
+    /* the fields themselves: Duda's device stylesheets can size inputs past
+       their column (seen on iPhone) — inline width pins the fields and the
+       button to the identical box so they are always edge-flush */
+    var flds = w.querySelectorAll('input[type="text"], input[type="email"], select');
+    for (var q = 0; q < flds.length; q += 1) {
+      flat(flds[q], { display: 'block', width: '100%', 'max-width': '100%', 'box-sizing': 'border-box', margin: '0' });
+    }
+    var sub = w.querySelector('.dmformsubmit');
+    flat(sub, { float: 'none', display: 'block', width: '100%', 'max-width': '100%', margin: '22px 0 0 0', padding: '0', background: 'transparent', 'background-color': 'transparent', border: '0', 'border-radius': '0', 'box-shadow': 'none', 'min-height': '0', height: 'auto', 'text-align': 'left' });
+    var btn = sub ? sub.querySelector('input[type="submit"]') : null;
+    flat(btn, { display: 'block', width: '100%', margin: '0', 'box-sizing': 'border-box', 'text-align': 'center' });
+    /* the submit is an INPUT and inputs cannot wrap their label, so on narrow
+       screens the long label overflows — step the type down responsively.
+       Tuned after Ben's phone review: 12.5px covers all normal phones (the
+       old 360px step caught most Androids at 11px — too small); 11px only on
+       tiny (340px and under) screens; text-indent equal to the letter-spacing
+       cancels the trailing-space bias so the label sits optically centre. */
+    var sizeBtn = function() {
+      if (!btn) return;
+      var fs = '13.5px', ls = 1.4, pad = '17px 24px';
+      if (window.matchMedia && window.matchMedia('(max-width: 480px)').matches) { fs = '12.5px'; ls = 0.5; pad = '17px 8px'; }
+      if (window.matchMedia && window.matchMedia('(max-width: 340px)').matches) { fs = '11px'; ls = 0.2; pad = '16px 6px'; }
+      btn.style.setProperty('font-size', fs, 'important');
+      btn.style.setProperty('letter-spacing', ls + 'px', 'important');
+      btn.style.setProperty('text-indent', ls + 'px', 'important');
+      btn.style.setProperty('padding', pad, 'important');
+      btn.style.setProperty('max-width', '100%', 'important');
+    };
+    /* CLOSED LOOP: Duda's mobile runtime stylesheet caps the submit container
+       at 91% (a stylesheet max-width beats an inline width:100%), and some
+       widget instances carry fixed pixel sizes. Belt: pin display + max-width
+       inline (above). Braces: MEASURE the Name field and, if the button still
+       differs, hand it the field's exact pixel width. Equal by construction,
+       re-checked on every resize/rotation. */
+    var equalize = function() {
+      if (!btn || !sub) return;
+      sub.style.setProperty('width', '100%', 'important');
+      sub.style.setProperty('max-width', '100%', 'important');
+      btn.style.setProperty('width', '100%', 'important');
+      btn.style.setProperty('max-width', '100%', 'important');
+      var ref = w.querySelector('input[name="dmform-1"]') || w.querySelector('input[type="text"]');
+      if (!ref) return;
+      var rw = ref.getBoundingClientRect().width;
+      if (rw && Math.abs(btn.getBoundingClientRect().width - rw) > 1) {
+        sub.style.setProperty('width', rw + 'px', 'important');
+        sub.style.setProperty('max-width', rw + 'px', 'important');
+        btn.style.setProperty('width', rw + 'px', 'important');
+        btn.style.setProperty('max-width', rw + 'px', 'important');
+      }
+    };
+    /* FIT THE LABEL: submit labels differ per tour (the Winter button is 7
+       characters longer than the 14-Day one the size steps were tuned on) —
+       measure the actual label with canvas and shrink the font until it fits
+       the button's inner width. Works for any tour's wording. */
+    var fitLabel = function() {
+      if (!btn) return;
+      var cs = window.getComputedStyle(btn);
+      var cv = document.createElement('canvas').getContext('2d');
+      var ls = parseFloat(cs.letterSpacing) || 0;
+      var label = (btn.value || '').toUpperCase();
+      var inner = btn.getBoundingClientRect().width - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0);
+      if (inner <= 0 || !label) return;
+      var s = parseFloat(cs.fontSize) || 13.5;
+      for (; s >= 9; s -= 0.5) {
+        cv.font = '600 ' + s + 'px Montserrat, sans-serif';
+        if (cv.measureText(label).width + ls * label.length <= inner - 2) { break; }
+      }
+      btn.style.setProperty('font-size', s + 'px', 'important');
+    };
+    var applyBtn = function() { sizeBtn(); equalize(); fitLabel(); };
+    applyBtn();
+    /* fonts and late stylesheets shift widths after first paint — re-check */
+    window.setTimeout(applyBtn, 700);
+    window.setTimeout(applyBtn, 2600);
+    if (window.addEventListener) {
+      window.addEventListener('resize', applyBtn);
+      window.addEventListener('load', applyBtn);
+    }
+    var side = slot.parentElement;
+    if (side && side.classList) side.classList.add('sehe-form-docked');
+    /* if the widget's old container is now completely empty, collapse it */
+    if (oldParent && oldParent !== slot && oldParent.children.length === 0 && !(oldParent.textContent || '').replace(/\s+/g, '')) { oldParent.style.display = 'none'; }
+  }, 200);
+})();
+</script>
+<script>
+  (function() {
+  /* Brochure fallback form: submitting continues to the brochure collection
+     page. Hidden automatically once the native Duda form docks in its place. */
+  var form = document.querySelector('.shx-broch .sehe-brochure-form');
+  if (!form) return;
+  var sel = form.querySelector('select[name="dmform-2"]');
+  if (sel) {
+    sel.addEventListener('change', function() {
+      if (this.value) this.classList.add('has-value');
+      else this.classList.remove('has-value');
+    });
+  }
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    window.location.href = '/brochure-collection';
+  });
+})();
+</script>
 
   <!-- ============ 9. BOOKING YOUR JOURNEY ============ -->
   <section class="shx-booking shx-band" id="booking">
