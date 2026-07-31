@@ -1,8 +1,21 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v31  ·  2026-07-30  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v32  ·  2026-07-31  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v32 — COPY PASS (Ben): the journeys section head was repeating the new
+            departure board ("Find your next departure" straight into "Choose
+            your South Island journey") — now "Explore our journeys." with a
+            premium sub: "standard journeys" is gone (undersold the product)
+            and the Pinnacle flight-to-Auckland detail moves out of the
+            section intro (relevant to one departure; it stays on the
+            Pinnacle card and in the booking practicals, now phrased without
+            "Standard"). De-slop sweep of the whole page: em-dashes in
+            visible copy cut roughly in half (47 -> 14 incl. attribution
+            and hero), the "not from a guidebook, but" antithesis, "twice
+            transformed", "the season that calls you", "utterly spectacular",
+            doubled "quietly" and "Real guests, real glaciers" all rewritten
+            in plainer voice. Real guest quotes untouched.
        v31 — departure board round four (Ben): heading "Find your next
             departure." with sub "Choose a date that suits you — now booking
             through to April 2028" (month derived from the data, and April
@@ -1424,9 +1437,9 @@
       <div class="shx-journeys-head">
         <div>
           <span class="shx-kicker">Choose Your Journey</span>
-          <h2 class="shx-display">Choose your South Island journey.</h2>
+          <h2 class="shx-display">Explore our journeys.</h2>
         </div>
-        <p>All standard journeys start and end in Christchurch. The Pinnacle Tour departs Christchurch and finishes in Blenheim, with the flight to Auckland included.</p>
+        <p>Seven journeys across the seasons, all departing from Christchurch. Compare the pace, the length and the time of year that suit you.</p>
       </div>
 
       <h3 class="shx-season">Spring / Summer 2026&ndash;27</h3>
@@ -1458,7 +1471,7 @@
               <li>From <strong>NZ$7,495</strong> pp twin share</li>
               <li>Oct 2026 &ndash; Mar 2027</li>
             </ul>
-            <p class="shx-jc-line">The essential South Island &mdash; Milford Sound, Queenstown and Aoraki Mt Cook &mdash; a little more compact.</p>
+            <p class="shx-jc-line">The essential South Island: Milford Sound, Queenstown and Aoraki Mt Cook, in a more compact eleven days.</p>
             <p class="shx-jc-rail">Includes the &ldquo;Big 5&rdquo; rail adventures</p>
             <div class="shx-jc-foot">
               <p class="shx-jc-next">Next departure <strong data-shx-next="11day-2627">30 November 2026</strong></p>
@@ -1480,7 +1493,7 @@
               <li>From <strong>NZ$8,495</strong> pp twin share</li>
               <li>Jul &ndash; Aug 2027</li>
             </ul>
-            <p class="shx-jc-line">The winter journey returns for 2027 &mdash; six departures across the deep-snow months, booking now.</p>
+            <p class="shx-jc-line">The winter journey returns for 2027 with six departures across the deep-snow months, booking now.</p>
             <p class="shx-jc-rail">Hand-picked winter rail set</p>
             <div class="shx-jc-foot">
               <p class="shx-jc-next">Next departure <strong data-shx-next="winter-2027">10 July 2027</strong></p>
@@ -1498,10 +1511,10 @@
               <li>From <strong>NZ$7,995</strong> pp twin share</li>
               <li>Jun &ndash; Sep 2026</li>
             </ul>
-            <p class="shx-jc-line">The Southern Alps under snow &mdash; alpine rail, Tekapo&rsquo;s star-filled skies, Queenstown in its winter coat. Every 2026 departure has now sold &mdash; <a href="/2027-winter-edition-tours">the 2027 Winter Edition is booking now</a>.</p>
+            <p class="shx-jc-line">The Southern Alps under snow &mdash; alpine rail, Tekapo&rsquo;s star-filled skies, Queenstown in its winter coat. Every 2026 departure has now sold; <a href="/2027-winter-edition-tours">the 2027 Winter Edition is booking now</a>.</p>
             <p class="shx-jc-rail">Hand-picked winter rail set</p>
             <div class="shx-jc-foot">
-              <p class="shx-jc-next shx-jc-next--sold">Season complete &mdash; <strong>2027 now booking</strong></p>
+              <p class="shx-jc-next shx-jc-next--sold">Season complete &middot; <strong>2027 now booking</strong></p>
               <a class="shx-btn shx-btn--ink" href="/2026-winter-edition-tours" aria-label="View the 12-Day Winter Edition 2026 tour">View Journey</a>
               <a class="shx-jc-brochure" href="/2026-winter-edition-tours#tour-brochure" aria-label="View the Winter Edition 2026 brochure">View Brochure</a>
             </div>
@@ -1539,7 +1552,7 @@
               <li>From <strong>NZ$9,990</strong> pp twin share</li>
               <li>Oct 2027 &ndash; Apr 2028</li>
             </ul>
-            <p class="shx-jc-line">The full signature itinerary for the season after next &mdash; the widest choice of dates still open.</p>
+            <p class="shx-jc-line">The full signature itinerary for the season after next, with the widest choice of dates still open.</p>
             <p class="shx-jc-rail">Includes the complete &ldquo;Super 6&rdquo; rail adventures</p>
             <div class="shx-jc-foot">
               <p class="shx-jc-next">Next departure <strong data-shx-next="14day-2728">4 October 2027</strong></p>
@@ -1557,7 +1570,7 @@
               <li>From <strong>NZ$8,490</strong> pp twin share</li>
               <li>Sep 2027 &ndash; Apr 2028</li>
             </ul>
-            <p class="shx-jc-line">The fiords, lakes and high country in eleven days &mdash; early-booking season for 2027/28.</p>
+            <p class="shx-jc-line">The fiords, lakes and high country in eleven days. Early-booking season for 2027/28.</p>
             <p class="shx-jc-rail">Includes the &ldquo;Famous 4&rdquo; rail adventures</p>
             <div class="shx-jc-foot">
               <p class="shx-jc-next">Next departure <strong data-shx-next="11day-2728">27 September 2027</strong></p>
@@ -1578,7 +1591,7 @@
         </ul>
         <div class="shx-finder-foot">
           <a class="shx-btn shx-btn--ink" href="/journeys">Compare All Journeys</a>
-          <p>Every journey&rsquo;s <strong>brochure is free</strong> &mdash; request it on the journey page and it arrives by email straight away.</p>
+          <p>Every journey&rsquo;s <strong>brochure is free</strong>. Request it on the journey page and it arrives by email straight away.</p>
         </div>
       </div>
     </div>
@@ -1589,7 +1602,7 @@
     <div class="shx-wrap">
       <span class="shx-kicker shx-kicker--light">Why Travel With Us</span>
       <h2 class="shx-display">Award-winning care.</h2>
-      <p class="shx-promise-intro">Our journeys are designed for travellers who want to see everything without rushing anything &mdash; and never want to worry about the details.</p>
+      <p class="shx-promise-intro">Our journeys are designed for travellers who want to see everything without rushing anything, and never want to worry about the details.</p>
       <div class="shx-promise-grid">
         <div class="shx-promise-item">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg>
@@ -1599,17 +1612,17 @@
         <div class="shx-promise-item">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"></path></svg>
           <h3>4-star-plus hotels, every night</h3>
-          <p>From The Hermitage beneath Aoraki Mt Cook to lakefront Queenstown &mdash; hand-picked hotels, matched to each place.</p>
+          <p>From The Hermitage beneath Aoraki Mt Cook to lakefront Queenstown: hand-picked hotels, matched to each place.</p>
         </div>
         <div class="shx-promise-item">
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="12" rx="2"></rect><path d="M4 11h16M5 16l-1.5 3M19 16l1.5 3"></path><circle cx="8" cy="19" r="1.5"></circle><circle cx="16" cy="19" r="1.5"></circle></svg>
           <h3>Rail, coach &amp; meals included</h3>
-          <p>All rail journeys, luxury coach travel, breakfasts and most other meals &mdash; with inclusions and optional extras clearly set out before you travel.</p>
+          <p>All rail journeys, luxury coach travel, breakfasts and most other meals, with inclusions and optional extras clearly set out before you travel.</p>
         </div>
         <div class="shx-promise-item">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"></path><circle cx="10" cy="7" r="4"></circle><path d="M21 21v-2a4 4 0 0 0-3-3.87"></path></svg>
           <h3>Friendly, personal touring</h3>
-          <p>The crew know your name &mdash; and quietly make sure everyone is looked after, every day of the journey.</p>
+          <p>The crew know your name and make sure everyone is looked after, every day of the journey.</p>
         </div>
       </div>
     </div>
@@ -1620,20 +1633,20 @@
     <div class="shx-wrap">
       <span class="shx-kicker shx-kicker--light">The Seasons</span>
       <h2 class="shx-display">The seasons change everything.</h2>
-      <p class="shx-seasons-intro">The same mountains, twice transformed. Choose the season that calls you &mdash; every journey above runs in one of them.</p>
+      <p class="shx-seasons-intro">The same mountains, two very different seasons. Every journey above runs in one of them.</p>
       <div class="shx-seasons-duo">
         <div class="shx-season-card" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/SEHE_OCT2024_DAY3-14.webp');" role="img" aria-label="Guests photographing Aoraki Mt Cook over Lake Pukaki in spring sunshine">
           <div class="shx-season-card-in">
             <span class="shx-season-months">September &ndash; April</span>
             <h3>Spring &amp; Summer</h3>
-            <p>Long golden evenings, turquoise lakes, waterfalls at full song in Milford Sound &mdash; and the high country green from the carriage window. Our 11 and 14-day tours run right through the warm months.</p>
+            <p>Long golden evenings, turquoise lakes, waterfalls at full song in Milford Sound, and the high country green from the carriage window. Our 11 and 14-day tours run right through the warm months.</p>
           </div>
         </div>
         <div class="shx-season-card" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/184587-tranzalpine-travelling-through-the-snow.webp');" role="img" aria-label="The TranzAlpine travelling through deep snow">
           <div class="shx-season-card-in">
             <span class="shx-season-months">June &ndash; September</span>
             <h3>Winter Edition</h3>
-            <p>The Southern Alps under deep snow, crackling fires in high-country hotels, and some of the clearest night skies on Earth over Tekapo. Quieter, cosier, utterly spectacular &mdash; our 12-day Winter Editions.</p>
+            <p>The Southern Alps under deep snow, crackling fires in high-country hotels, and some of the clearest night skies on Earth over Tekapo. The South Island&rsquo;s quieter, cosier season: our 12-day Winter Editions.</p>
           </div>
         </div>
       </div>
@@ -1649,35 +1662,35 @@
       <div class="shx-six-head">
         <span class="shx-kicker">The &ldquo;Super 6&rdquo;</span>
         <h2 class="shx-display">The rail adventures at the heart of it all</h2>
-        <p>The complete set of the South Island&rsquo;s celebrated rail experiences &mdash; scheduled services, heritage steam, and The Mainlander, an exclusive charter no other tour carries.</p>
+        <p>The complete set of the South Island&rsquo;s celebrated rail experiences: scheduled services, heritage steam, and The Mainlander, an exclusive charter no other tour carries.</p>
       </div>
       <div class="shx-six-grid">
         <figure class="shx-six-card">
           <div class="ph" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine-passing-Lake-Sarah-in-winter-RP179+%281%29.webp');" role="img" aria-label="The TranzAlpine passing Lake Sarah"></div>
-          <figcaption class="shx-six-card-in"><h3><span class="shx-six-num">1</span>TranzAlpine</h3><p>Coast to coast across the Southern Alps via Arthur&rsquo;s Pass &mdash; one of the world&rsquo;s great train journeys.</p></figcaption>
+          <figcaption class="shx-six-card-in"><h3><span class="shx-six-num">1</span>TranzAlpine</h3><p>Coast to coast across the Southern Alps via Arthur&rsquo;s Pass, counted among the world&rsquo;s great train journeys.</p></figcaption>
         </figure>
         <figure class="shx-six-card">
           <div class="ph" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Kingston-Flyer-About-SEHE-Rail-Tour-1.jpg');" role="img" aria-label="The Kingston Flyer steam train"></div>
-          <figcaption class="shx-six-card-in"><h3><span class="shx-six-num">2</span>Kingston Flyer</h3><p>Heritage steam at the southern end of Lake Wakatipu &mdash; polished brass and mountain air.</p></figcaption>
+          <figcaption class="shx-six-card-in"><h3><span class="shx-six-num">2</span>Kingston Flyer</h3><p>Heritage steam at the southern end of Lake Wakatipu: polished brass and mountain air.</p></figcaption>
         </figure>
         <figure class="shx-six-card">
           <div class="ph" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Southland+track.jpg');" role="img" aria-label="The Mainlander route through Southland"></div>
-          <figcaption class="shx-six-card-in"><h3><span class="shx-six-num">3</span>The Mainlander</h3><p>Exclusive to the Sir Edmund Hillary Explorer &mdash; the deep south rail sectors no other tour reaches.</p></figcaption>
+          <figcaption class="shx-six-card-in"><h3><span class="shx-six-num">3</span>The Mainlander</h3><p>Exclusive to the Sir Edmund Hillary Explorer: the deep south rail sectors no other tour reaches.</p></figcaption>
         </figure>
         <figure class="shx-six-card">
           <div class="ph" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg');" role="img" aria-label="The Taieri Gorge railway"></div>
-          <figcaption class="shx-six-card-in"><h3><span class="shx-six-num">4</span>Taieri Gorge</h3><p>River gorges, ten tunnels and the Wingatui Viaduct &mdash; great railway engineering.</p></figcaption>
+          <figcaption class="shx-six-card-in"><h3><span class="shx-six-num">4</span>Taieri Gorge</h3><p>River gorges, ten tunnels and the Wingatui Viaduct: great railway engineering.</p></figcaption>
         </figure>
         <figure class="shx-six-card">
           <div class="ph" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp');" role="img" aria-label="The Coastal Pacific north of Claverley"></div>
-          <figcaption class="shx-six-card-in"><h3><span class="shx-six-num">5</span>Coastal Pacific</h3><p>The Pacific at your window from Christchurch to Blenheim &mdash; whale country and Marlborough vines.</p></figcaption>
+          <figcaption class="shx-six-card-in"><h3><span class="shx-six-num">5</span>Coastal Pacific</h3><p>The Pacific at your window from Christchurch to Blenheim: whale country and Marlborough vines.</p></figcaption>
         </figure>
         <figure class="shx-six-card">
           <div class="ph" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Weka-Pass-Journey-on-the-Sir-Edmund-Hillary-Explorer-Rail-Adventure.webp');" role="img" aria-label="The Weka Pass Railway"></div>
           <figcaption class="shx-six-card-in"><h3><span class="shx-six-num">6</span>Weka Pass Railway</h3><p>Vintage carriages through the limestone country of North Canterbury.</p></figcaption>
         </figure>
       </div>
-      <p class="shx-six-note"><strong>Which trains ride on which tour?</strong> The 14-day Spring/Summer tours include the complete &ldquo;Super 6&rdquo;; our 11-day, Winter and Pinnacle journeys each carry their own hand-picked rail set &mdash; every itinerary spells it out.</p>
+      <p class="shx-six-note"><strong>Which trains ride on which tour?</strong> The 14-day Spring/Summer tours include the complete &ldquo;Super 6&rdquo;; our 11-day, Winter and Pinnacle journeys each carry their own hand-picked rail set; every itinerary spells it out.</p>
     </div>
   </section>
 
@@ -1689,7 +1702,7 @@
           <span class="shx-kicker">The Name We Travel Under</span>
           <h2 class="shx-display">Named for the greatest explorer of them all</h2>
           <p>Sir Edmund Hillary epitomised the New Zealand spirit of adventure, and he is our inspiration in planning your experience of a lifetime. This journey carries his name with his family&rsquo;s blessing &mdash; and carries his spirit through the mountains, glaciers and high country he knew best.</p>
-          <p>You&rsquo;ll cross the Southern Alps he trained in, stand beneath Aoraki Mt Cook where his climbing life began, and hear the story told where it happened &mdash; not from a guidebook, but from the people closest to it.</p>
+          <p>You&rsquo;ll cross the Southern Alps he trained in, stand beneath Aoraki Mt Cook where his climbing life began, and hear the story told where it happened, by the people closest to it.</p>
           <div class="shx-legacy-fact">At Aoraki Mt Cook, a member of the <strong>Hillary family</strong> personally joins the tour for an evening at the Sir Edmund Hillary Alpine Centre.</div>
           <blockquote class="shx-quote">
             <p>&ldquo;Adventure for the sake of a dream, for the pleasure of searching.&rdquo;</p>
@@ -1698,7 +1711,7 @@
         </div>
         <figure class="shx-portrait">
           <img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Ed-Hillary-profile-1960.jpg" alt="Sir Edmund Hillary, 1960" loading="lazy">
-          <figcaption>Sir Edmund Hillary, 1960. One of the first two people to stand on Everest&rsquo;s summit &mdash; a mountaineer whose skills were forged in New Zealand&rsquo;s Southern Alps.</figcaption>
+          <figcaption>Sir Edmund Hillary, 1960. One of the first two people to stand on Everest&rsquo;s summit; his skills were forged in New Zealand&rsquo;s Southern Alps.</figcaption>
         </figure>
       </div>
     </div>
@@ -1748,7 +1761,7 @@
         </figure>
         <figure class="shx-gp">
           <div class="ph" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/SEHE_OCT2024_DAY4-31.webp');" role="img" aria-label="Guests together in front of a glacier"></div>
-          <figcaption><strong>Together out there</strong>Real guests, real glaciers &mdash; and a crew quietly making it all easy.</figcaption>
+          <figcaption><strong>Together out there</strong>Our guests on the West Coast glaciers, with a crew that makes it easy.</figcaption>
         </figure>
         <figure class="shx-gp">
           <div class="ph" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/275591-lake-tekapo-church-of-the-good-shepherd-at-sunrise.webp');" role="img" aria-label="Church of the Good Shepherd at sunrise, Lake Tekapo"></div>
@@ -1756,12 +1769,12 @@
         </figure>
         <figure class="shx-gp">
           <div class="ph" style="background-image:url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp');" role="img" aria-label="The TSS Earnslaw on Lake Wakatipu"></div>
-          <figcaption><strong>The TSS Earnslaw</strong>A 1912 coal-fired steamship, still working Lake Wakatipu &mdash; with a gourmet BBQ meal at Walter Peak High Country Farm.</figcaption>
+          <figcaption><strong>The TSS Earnslaw</strong>A 1912 coal-fired steamship, still working Lake Wakatipu. Includes a gourmet BBQ meal at Walter Peak High Country Farm.</figcaption>
         </figure>
       </div>
       <div class="shx-guests-more">
         <img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="Five stars on Trustpilot">
-        <p>Rated &ldquo;Excellent&rdquo; on Trustpilot &mdash; <a href="/reviews">read more of our guests&rsquo; reviews</a>.</p>
+        <p>Rated &ldquo;Excellent&rdquo; on Trustpilot. <a href="/reviews">Read more of our guests&rsquo; reviews</a>.</p>
       </div>
     </div>
   </section>
@@ -1776,26 +1789,26 @@
           <div class="shx-step">
             <span class="shx-step-num">1.</span>
             <h3>Choose your journey</h3>
-            <p>Browse the <a href="#journeys">journeys above</a>, or request a free brochure from any journey page &mdash; it arrives by email straight away.</p>
+            <p>Browse the <a href="#journeys">journeys above</a>, or request a free brochure from any journey page; it arrives by email straight away.</p>
           </div>
           <div class="shx-step">
             <span class="shx-step-num">2.</span>
             <h3>Pick your departure</h3>
-            <p>Every journey page shows live availability for every date. Prefer to talk it through? Call us &mdash; a real person in New Zealand will help you choose.</p>
+            <p>Every journey page shows live availability for every date. Prefer to talk it through? Call us and a real person in New Zealand will help you choose.</p>
           </div>
           <div class="shx-step">
             <span class="shx-step-num">3.</span>
             <h3>Secure it with 20%</h3>
-            <p>A 20% deposit holds your seats &mdash; then 40% six months out, and the balance a month before you travel. We&rsquo;ll take care of the rest.</p>
+            <p>A 20% deposit holds your seats, then 40% six months out, and the balance a month before you travel. We&rsquo;ll take care of the rest.</p>
           </div>
         </div>
         <div class="shx-practical">
           <h3>The practical bits</h3>
           <ul>
-            <li>Hold any departure with a <strong>20% deposit</strong> &mdash; then 40% six months out, and the balance a month before departure.</li>
-            <li>Pay by <strong>direct bank transfer with no card fee</strong>. Credit cards welcome &mdash; a 2% fee applies.</li>
-            <li>Standard journeys <strong>start and end in Christchurch</strong>; the Pinnacle Tour finishes in Blenheim with the included flight to Auckland.</li>
-            <li>Prices are in <strong>New Zealand dollars</strong> &mdash; our team is a phone call away to help Australian travellers with payment and planning.</li>
+            <li>Hold any departure with a <strong>20% deposit</strong>, then 40% six months out, and the balance a month before departure.</li>
+            <li>Pay by <strong>direct bank transfer with no card fee</strong>. Credit cards welcome; a 2% fee applies.</li>
+            <li>Journeys <strong>start and end in Christchurch</strong>; the Pinnacle Tour finishes in Blenheim, with a flight to Auckland included.</li>
+            <li>Prices are in <strong>New Zealand dollars</strong>; our team is a phone call away to help Australian travellers with payment and planning.</li>
             <li>Questions? <strong>Phone answered in New Zealand</strong>: +64 3 974 1812.</li>
           </ul>
           <div class="shx-shields">
