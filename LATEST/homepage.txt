@@ -1,8 +1,19 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v34  ·  2026-07-31  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v35  ·  2026-07-31  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v35 — FURNITURE-TEXT CRAWL (Ben): the board's foot line ("Dates
+            update live from our booking system. See every journey and
+            departure") CUT whole — behind-the-scenes narration, and the link
+            duplicated both the rail's end-cap card and the journeys section
+            directly below. Finder foot no longer sends people to a journey
+            page for the brochure ("Get the full collection below" -> the
+            page's own #brochures band). Brochure fine print trimmed ("every
+            journey in one place" repeated the band headline). Everything else
+            audited and kept deliberately: seasons Pinnacle note, Super 6
+            trains note, Trustpilot review line, board sub + live
+            next-departure line, end-cap, hero call line.
        v34 — JOURNEYS INTRO UNDER THE HEADING + TEXT-GAP TIGHTENING (Ben).
             The "Explore our journeys." intro no longer sits beside the heading
             (flex space-between removed): kicker, heading, paragraph now stack.
@@ -398,6 +409,7 @@
   .shx-finder-rows a { color: var(--ink) !important; font-weight: 700; }
   .shx-finder-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
   .shx-finder-foot p { font-size: 16px !important; color: var(--body-soft) !important; }
+  .shx-finder-foot p a { color: var(--ink) !important; font-weight: 700; text-decoration: underline !important; text-underline-offset: 3px; }
 
   /* ============ 3. THE PROMISE ============ */
   .shx-promise { background: var(--ink); color: var(--cream-ink); }
@@ -580,8 +592,6 @@
   .shx-dep-price { font-size: 14px !important; color: var(--body-soft) !important; }
   .shx-dep-go { display: inline-flex; align-items: center; font-family: 'Montserrat', sans-serif !important; font-size: 12px !important; font-weight: 700 !important; letter-spacing: .8px; text-transform: uppercase; color: #ffffff !important; background: var(--ink); border: 1.5px solid var(--ink); border-radius: 4px; padding: 9px 14px; white-space: nowrap; transition: background .2s ease; }
   .shx-dep:hover .shx-dep-go { background: var(--ink-soft); }
-  .shx-depboard-foot { margin: 4px 0 0 !important; font-size: 15px !important; color: var(--body-soft) !important; }
-  .shx-depboard-foot a { color: var(--ink) !important; font-weight: 700; text-decoration: underline !important; text-underline-offset: 3px; }
   @media (max-width: 860px) {
     .shx-depboard-arrows { display: none; }
     .shx-deprail { padding-left: 20px; padding-right: 20px; }
@@ -1495,7 +1505,6 @@
       </div>
     </div>
     <div class="shx-wrap">
-      <p class="shx-depboard-foot">Dates update live from our booking system. <a href="/journeys">See every journey and departure &rarr;</a></p>
     </div>
   </section>
 
@@ -1659,7 +1668,7 @@
         </ul>
         <div class="shx-finder-foot">
           <a class="shx-btn shx-btn--ink" href="/journeys">Compare All Journeys</a>
-          <p>Every journey&rsquo;s <strong>brochure is free</strong>. Request it on the journey page and it arrives by email straight away.</p>
+          <p>Every journey&rsquo;s <strong>brochure is free</strong>. <a href="#brochures">Get the full collection below</a>.</p>
         </div>
       </div>
     </div>
@@ -1882,7 +1891,7 @@
             <button type="submit">Get the Brochure Collection</button>
           </form>
           <div class="sehe-form-slot" data-sehe-form-slot hidden></div>
-          <p class="shx-broch-fine">Instant access &middot; no obligation &middot; every journey in one place</p>
+          <p class="shx-broch-fine">Instant access &middot; no obligation</p>
         </div>
       </div>
     </div>
