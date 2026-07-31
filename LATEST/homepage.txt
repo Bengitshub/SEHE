@@ -1,8 +1,10 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HOMEPAGE
-     COMPLETE PAGE  ·  VERSION v35  ·  2026-07-31  (paste into a Duda HTML block)
+     COMPLETE PAGE  ·  VERSION v36  ·  2026-07-31  (paste into a Duda HTML block)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v36 — cleanup: the v35 foot-line cut left the board's second
+            .shx-wrap div empty (zero-height, invisible) — removed.
        v35 — FURNITURE-TEXT CRAWL (Ben): the board's foot line ("Dates
             update live from our booking system. See every journey and
             departure") CUT whole — behind-the-scenes narration, and the link
@@ -1503,8 +1505,6 @@
           </a>
         </article>
       </div>
-    </div>
-    <div class="shx-wrap">
     </div>
   </section>
 
