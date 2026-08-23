@@ -32,3 +32,6 @@ Concepts:
 Copy rules honoured: "fully guided ... journeys by rail & coach", no
 "small groups", no prices (evergreen). All type/colours/photography match
 the live site so the ad and the landing page read as one thing.
+
+The full Performance Max build sheet (settings, verified text assets,
+conversions, audience signal, launch checklist) lives in `pmax/`.
