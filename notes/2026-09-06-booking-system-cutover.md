@@ -17,7 +17,8 @@ Ben: no bookings seen since Thursday.
 - Sun 6 Sep ~10:30: SIX pages back on this repo's LATEST Block Bs
   (14day v28, 11day v26, winter-2027 v19, pinnacle v19, 14day-2728 v30,
   11day-2728 v21 — exact LATEST versions). Winter-2026 still on the embed.
-  Not done from this repo; presumed Ben, following the previous reply.
+  Ben re-pasted LATEST Block Bs "to make all items bookable" (confirmed);
+  winter-2026 was left on the embed.
 
 ## Verified facts
 - GitHub never contained the embed; single branch; all commits ours.
