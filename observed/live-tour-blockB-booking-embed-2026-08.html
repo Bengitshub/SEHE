@@ -1,0 +1,63 @@
+<!-- OBSERVED on the live 14-day page (fetched 2026-09-06). NOT authored in this repo.
+     Live Block B header reads: "<!-- ═══ SEHE 14day-2627 — BLOCK B (booking embed) ═══ -->"
+     Section 5 below replaces the repo's Checkfront DROPLET widget + TOUR_DATA + static Trustpilot strip. -->
+<!-- ===== 5. Booking / Available Dates ===== --> <meta charset="UTF-8"></meta> 
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta> 
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/> <style>:root { --navy: #153b67; --navy-light: #1e4a7a; --navy-dark: #0e2d52; --gold: #c8a56c; --gold-light: #d4b37e; --white: #ffffff; --off-white: #f9f7f3; --border: #d8d3c8; }
+  .sehe-tourpage { font-family: 'Open Sans', sans-serif; color: #1a1a1a; }
+  .sehe-tourpage h1, .sehe-tourpage h2, .sehe-tourpage h3, .sehe-tourpage h4 { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; margin: 0; letter-spacing: -0.2px; }
+  .sehe-booking-section { background: var(--navy); background-image: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, var(--navy-light) 100%); padding: 60px 24px 70px; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
+  .sehe-booking-header { background: transparent; padding: 0 0 40px; width: auto; margin: 0; }
+  .sehe-booking-header-inner { max-width: 1000px; margin: 0 auto; text-align: left; display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
+  .sehe-booking-header .sehe-section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif !important; font-size: 11px !important; font-weight: 700 !important; color: var(--gold-light) !important; text-transform: uppercase; letter-spacing: 2.4px; margin: 0; }
+  .sehe-booking-header .sehe-section-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold) !important; flex-shrink: 0; }
+  .sehe-booking-header .sehe-section-heading { font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; font-size: clamp(28px, 3.4vw, 38px) !important; color: var(--white) !important; line-height: 1.15 !important; letter-spacing: -0.2px; max-width: 22ch; margin: 0 !important; }
+  .booking-wrapper { max-width: 1000px; margin: 0 auto; background: var(--white); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 16px 56px rgba(0, 0, 0, 0.35); }
+  .booking-wrapper .mlw-embed { display: block; width: 100%; min-height: 200px; border: 0; overflow: hidden; background: var(--off-white); }
+  @media (max-width: 700px) {
+    .sehe-booking-section { padding: 44px 18px 52px; }
+    .sehe-booking-header { padding: 0 0 28px; }
+    .sehe-booking-header-inner { gap: 14px; }
+  }</style> 
+ <div class="sehe-tourpage"> <section class="sehe-booking-section" id="tour-dates"> <div class="sehe-booking-header"> <div class="sehe-booking-header-inner"> <span class="sehe-section-eyebrow">Available Dates</span> 
+ <h2 class="sehe-section-heading">Choose your departure</h2> 
+</div> 
+</div> 
+ <div class="booking-wrapper"> <script>
+
+
+     (function () {
+       var ORIGIN = 'https://bookings.pounamutourismgroup.com';
+       var wrap = document.currentScript.parentNode;
+       var frame = document.createElement('iframe');
+       frame.className = 'mlw-embed';
+       frame.src = ORIGIN + '/sir-ed?keyword=14+day&from=2026-10-01&to=2027-04-30';
+       frame.title = 'Book the 14 Day Explorer 2026/27';
+       frame.setAttribute('scrolling', 'no');
+       frame.setAttribute('allow', 'payment; clipboard-write');
+       frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+       wrap.appendChild(frame);
+       window.addEventListener('message', function (e) {
+         if (e.origin !== ORIGIN) return;
+         if (!e.data || typeof e.data !== 'object') return;
+         if (e.data.type === 'mlw-resize' && typeof e.data.height === 'number') {
+           var h = Math.max(200, Math.round(e.data.height));
+           if (h > 12000) return;
+           frame.style.height = h + 'px';
+           return;
+         }
+         if (e.data.type === 'mlw-scroll-top' || e.data.type === 'mlw-open') {
+           if (frame && frame.scrollIntoView) {
+             frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
+           }
+         }
+       });
+     })();
+                
+
+                      </script> 
+</div> 
+</section> 
+</div> 
+ <noscript> <a href="https://bookings.pounamutourismgroup.com/sir-ed?keyword=14+day&from=2026-10-01&to=2027-04-30" style="font-size:16px">Continue to secure booking &raquo;</a> 
+</noscript> 

@@ -16,6 +16,12 @@ TOUR PAGES (two widgets per page): blockA -> the TOP HTML widget,
 blockB -> the BOTTOM HTML widget (the native Duda form row sits
 between them; never touch it).
 
+!! ON HOLD (Aug 2026): tourpage-*-blockB.txt. The live tour pages now
+   carry a DIFFERENT booking section (iframe to the new Pounamu Journeys
+   booking app, pasted outside this repo). Pasting these Block Bs would
+   put the Checkfront widget back. Do not paste until the booking-system
+   decision is made — see observed/README.md.
+
 CURRENT VERSIONS
 ------------------------------------------------------------
   brochure-collection.txt                v2    (SEHE-brochure-collection_v2.txt)

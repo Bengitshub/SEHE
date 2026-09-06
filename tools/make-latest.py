@@ -61,6 +61,12 @@ readme = ['SEHE — LATEST paste-ready files',
           'blockB -> the BOTTOM HTML widget (the native Duda form row sits',
           'between them; never touch it).',
           '',
+          '!! ON HOLD (Aug 2026): tourpage-*-blockB.txt. The live tour pages now',
+          '   carry a DIFFERENT booking section (iframe to the new Pounamu Journeys',
+          '   booking app, pasted outside this repo). Pasting these Block Bs would',
+          '   put the Checkfront widget back. Do not paste until the booking-system',
+          '   decision is made — see observed/README.md.',
+          '',
           'CURRENT VERSIONS',
           '-' * 60]
 for name, ver, src in manifest:

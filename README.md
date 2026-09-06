@@ -16,7 +16,7 @@ Ben pastes only from there (`tools/make-latest.py` regenerates it).
 | Homepage (/) | `SEHE-homepage_v33.txt` | departure board + brochure-collection band; v33 on /v2 for testing; old homepage parked at /home-old (noindex) |
 | Journeys | `SEHE-journeys-page_v22.txt` | single-widget page (hero + FAQ + contact folded in) |
 | Brochure collection | `SEHE-brochure-collection_v2.txt` | single main widget; stale tablet duplicate deleted |
-| 7 tour pages | `SEHE-*-tour_v*.txt` (one per page) | pasted as Block A + native Duda form + Block B — see `switchover/` |
+| 7 tour pages | `SEHE-*-tour_v*.txt` (one per page) | pasted as Block A + native Duda form + Block B — see `switchover/`. **LIVE DIVERGENCE (Aug 2026):** Block B section 5 on all seven pages was replaced outside this repo with an iframe to a new booking app (`bookings.pounamutourismgroup.com`); the Checkfront widget, split-item config and 5-star strip are no longer live. Tour Block Bs in `LATEST/` are ON HOLD — see `observed/README.md`. Live Block A is still the old v21. |
 
 - Tour pages carry the Checkfront split-item fix (`302,374` / `289,392`) and
   the static 5-star Trustpilot strip (Ben's call, 4.7-TrustScore facts noted
