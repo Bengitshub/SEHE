@@ -1,8 +1,3 @@
-<!-- LIVE EXTRACT /brochure-collection — fetched 2026-09-06. The SEHE custom-HTML widget(s) exactly as served by Duda
-     (Duda re-serialises: lowercased attributes, onerror handlers, /opt/ image URLs). 3 widget container(s). -->
-
-
-<!-- ═══════════ WIDGET 1 of 3 ═══════════ -->
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — BROCHURE COLLECTION PAGE
      COMPLETE PAGE  ·  VERSION v2  ·  2026-07-28  (paste into the Duda HTML block)
@@ -22,7 +17,8 @@
                version greps unambiguous.
        v1 — baseline captured from live + Winter 2026 moved last and marked
             sold out, pointing to the 2027 Winter Edition.
-     ===================================================================== --><!--
+     ===================================================================== -->
+<!--
   ═══════════════════════════════════════════════════════════════════════════════
   SEHE BROCHURE COLLECTION — TOUR GRID
   ═══════════════════════════════════════════════════════════════════════════════
@@ -132,7 +128,7 @@
     return window.__seheDeparturePromise;
   };
 })();
-                                                                                                                                                                                                                                                                   
+         
 
                 </script> 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/> <style>.sehe-brochures, .sehe-brochures * { box-sizing: border-box; }
@@ -588,7 +584,9 @@
   .sehe-brochures .jc-legend-near { background: var(--amber); }
   .sehe-brochures .jc-legend-sold { background: var(--red); }
   @media (max-width: 600px) { .sehe-brochures .jc-month { grid-template-columns: 1fr; gap: 2px; } }</style> 
-<!-- ═══ HERO (film) ═══ --> <style>/* Duda: keep the hosting row from boxing or clipping a full-bleed hero, and
+<!-- ═══ HERO (film) ═══ -->
+<style>
+  /* Duda: keep the hosting row from boxing or clipping a full-bleed hero, and
      stop the theme rule ".dmFullRowRespTmpl section{padding:50px 40px}" from
      re-padding it. */
   #dm .dmContent .dmRespRow, #dm .dmContent .dmRespColsWrapper, #dm .dmContent .dmRespCol { overflow: visible !important; max-width: none !important; }
@@ -633,18 +631,21 @@
     .sehe-bhero { min-height: max(400px, 54svh); }
     .sehe-bhero-inner { padding: 100px 18px 34px; }
     .sehe-bhero h1 { font-size: 29px !important; }
-  }</style> 
- <section class="sehe-bhero" aria-label="View or Download Tour Brochures"> <div class="sehe-bhero-media" aria-hidden="true"> <iframe src="https://player.vimeo.com/video/1046997096?background=1&autoplay=1&loop=1&muted=1&dnt=1&api=1" title="Sir Edmund Hillary Explorer scenery film" allow="autoplay; fullscreen" loading="lazy"></iframe> 
-</div> 
- <div class="sehe-bhero-veil" aria-hidden="true"></div> 
-<img class="sehe-bhero-logo" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEH+Explorer_logo+white-350w.png" alt="Sir Edmund Hillary Explorer" loading="eager" onerror="handleImageLoadError(this)"/> <div class="sehe-bhero-inner"> <span class="sehe-bhero-eyebrow">The Brochure Collection</span> 
- <h1>View or Download Tour Brochures</h1> 
- <p class="sehe-bhero-sub">Each brochure includes the full itinerary, inclusions, and departure dates. Click to view or download.</p> 
-</div> 
-</section> 
- <script>
-
-
+  }
+</style>
+<section class="sehe-bhero" aria-label="View or Download Tour Brochures">
+  <div class="sehe-bhero-media" aria-hidden="true">
+    <iframe src="https://player.vimeo.com/video/1046997096?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;dnt=1&amp;api=1" title="Sir Edmund Hillary Explorer scenery film" allow="autoplay; fullscreen" loading="lazy"></iframe>
+  </div>
+  <div class="sehe-bhero-veil" aria-hidden="true"></div>
+  <img class="sehe-bhero-logo" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEH+Explorer_logo+white-350w.png" alt="Sir Edmund Hillary Explorer" loading="eager">
+  <div class="sehe-bhero-inner">
+    <span class="sehe-bhero-eyebrow">The Brochure Collection</span>
+    <h1>View or Download Tour Brochures</h1>
+    <p class="sehe-bhero-sub">Each brochure includes the full itinerary, inclusions, and departure dates. Click to view or download.</p>
+  </div>
+</section>
+<script>
   /* HERO film: invisible until the Vimeo player proves it is alive (any
      postMessage from vimeo). If it never loads - or on phones, where the layer
      is display:none - the photograph simply remains. Photo is the base state. */
@@ -654,10 +655,9 @@
       if (media && media.className.indexOf('is-live') === -1) { media.className += ' is-live'; }
     }
   });
-                                                                                                                                                                                                                                                   
+</script>
 
-                </script> 
- <div class="sehe-brochures"><!-- ── SECTION HEADER ─────────────────────────────────────────────────── --><!-- ── AVAILABLE TOURS GRID ───────────────────────────────────────────── --> <div class="sehe-brochures-grid"><!-- ▸ 14-DAY SPRING/SUMMER ─────────────────────────────────────────── --> <article class="tour-card" data-tour-key="14day-2627"> <div class="tour-card-image-wrap"><img class="tour-card-image" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TSS+Earnslaw+2-1920w.webp" alt="14-Day Spring/Summer Tour" onerror="handleImageLoadError(this)"/> <div class="tour-card-badges"> <span class="tour-card-badge">Spring / Summer &middot; 2026/27</span> 
+ <div class="sehe-brochures"><!-- ── SECTION HEADER ─────────────────────────────────────────────────── --> <!-- ── AVAILABLE TOURS GRID ───────────────────────────────────────────── --> <div class="sehe-brochures-grid"><!-- ▸ 14-DAY SPRING/SUMMER ─────────────────────────────────────────── --> <article class="tour-card" data-tour-key="14day-2627"> <div class="tour-card-image-wrap"><img class="tour-card-image" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/TSS+Earnslaw+2-1920w.webp" alt="14-Day Spring/Summer Tour" onerror="handleImageLoadError(this)"/> <div class="tour-card-badges"> <span class="tour-card-badge">Spring / Summer &middot; 2026/27</span> 
  <span class="tour-card-status"> <span class="tour-card-status-dot"></span> 
 Now Booking</span> 
 </div> 
@@ -1078,8 +1078,7 @@ Sold out</span>
  <span class="tour-card-pill">Aoraki Mt Cook</span> 
 </div> 
 </div> 
- <p class="tour-card-soldnote"> <strong>2026 season fully booked.</strong> 
-Every 2026 Winter Edition departure has now sold out. The 12-Day Winter Edition returns next winter &mdash; <a href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours">see the 2027 Winter Edition</a>.</p> 
+ <p class="tour-card-soldnote"><strong>2026 season fully booked.</strong> Every 2026 Winter Edition departure has now sold out. The 12-Day Winter Edition returns next winter &mdash; <a href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours">see the 2027 Winter Edition</a>.</p> 
  <a class="tour-card-cta" href="https://irp.cdn-website.com/35e9f777/files/uploaded/2026+Winter+Tour+Brochure_SEHE.pdf" target="_blank" rel="noopener">View Brochure <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"> <path d="M5 12h14"></path> 
  <path d="M12 5l7 7-7 7"></path> 
 </svg> 
@@ -1198,643 +1197,7 @@ Every 2026 Winter Edition departure has now sold out. The 12-Day Winter Edition 
   renderAll();   /* paint the in-page list immediately */
   if (typeof window.__seheLoadDepartures === 'function') { window.__seheLoadDepartures().then(renderAll); }   /* then apply live status (escalate-only merge) */
 })();
-                                                                                                                                                                                                                                                                   
+          
 
                 </script> 
 <!-- END SEHE BROCHURES SECTION -->
-
-
-<!-- ═══════════ WIDGET 2 of 3 ═══════════ -->
-<!--
-  ═══════════════════════════════════════════════════════════════════════════════
-  SEHE CONTACT SECTION — "Prefer to speak with us?"
-  ═══════════════════════════════════════════════════════════════════════════════
-  REPLACES the existing "Prefer to speak with us?" text block below the
-  brochure collection grid (and can be reused on other pages too — journeys,
-  tour pages, home).
-  ─── WHAT TO SWAP IF NEEDED ────────────────────────────────────────────────────
-  The contact form CTA points to "/contact". If the Duda contact page sits at
-  a different URL, update that href only.
-  ─── RESPONSIVE ───────────────────────────────────────────────────────────────
-  • Desktop: 3-column grid (auto-fits to 2 or 1 on narrower containers)
-  • Mobile: single column stack with left-aligned card text
-  ═══════════════════════════════════════════════════════════════════════════════
---><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/> <style>.sehe-contact, .sehe-contact * { box-sizing: border-box; }
-  .sehe-contact {
-    --navy: #153b67;
-    --navy-light: #1e4a7a;
-    --navy-dark: #0e2d52;
-    --gold: #c8a56c;
-    --gold-light: #d4b37e;
-    --gold-pale: #f5edd8;
-    --gold-dark: #a68a55;
-    --white: #ffffff;
-    --off-white: #f9f7f3;
-    --cream: #faf8f3;
-    --text: #1a1a1a;
-    --text-light: #5a5a5a;
-    --text-muted: #8a8a8a;
-    --border: #d8d3c8;
-    --border-light: #e8e4db;
-    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: var(--text);
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    padding: 56px 40px 60px;
-    line-height: 1.6;
-  }
-  /* ── HEADER ─────────────────────────────────────────────────────────── */
-  .sehe-contact-header {
-    text-align: center !important;
-    margin-bottom: 40px;
-    padding: 0 20px;
-  }
-  .sehe-contact-header h2 {
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 28px !important;
-    font-weight: 700 !important;
-    color: var(--navy) !important;
-    margin: 0 0 10px !important;
-    letter-spacing: -0.2px;
-    text-align: center !important;
-  }
-  .sehe-contact-divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin: 14px 0 16px;
-  }
-  .sehe-contact-divider-line {
-    width: 32px;
-    height: 1px;
-    background: var(--gold);
-  }
-  .sehe-contact-divider-dot {
-    width: 5px;
-    height: 5px;
-    background: var(--gold);
-    border-radius: 50%;
-  }
-  .sehe-contact-header p {
-    font-size: 14.5px !important;
-    color: var(--text-light) !important;
-    margin: 0 auto !important;
-    max-width: 560px;
-    text-align: center !important;
-    line-height: 1.6;
-  }
-  /* ── GRID ───────────────────────────────────────────────────────────── */
-  .sehe-contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    max-width: 1080px;
-    margin: 0 auto 36px;
-  }
-  /* ── CONTACT CARD ───────────────────────────────────────────────────── */
-  .contact-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 28px 24px 24px;
-    display: flex;
-    flex-direction: column;
-    text-align: center !important;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  }
-  .contact-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(21, 59, 103, 0.08);
-    border-color: var(--gold);
-  }
-  .contact-card-icon-wrap {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: var(--navy);
-    border: 2px solid var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 18px;
-    flex-shrink: 0;
-  }
-  .contact-card-icon-wrap svg {
-    width: 22px;
-    height: 22px;
-    stroke: var(--gold);
-    fill: none;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .contact-card-label {
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 11px !important;
-    font-weight: 700 !important;
-    color: var(--gold-dark) !important;
-    text-align: center !important;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    display: block;
-    margin-bottom: 6px;
-  }
-  .contact-card-value {
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 17px !important;
-    font-weight: 700 !important;
-    color: var(--navy) !important;
-    text-align: center !important;
-    margin: 0 0 8px !important;
-    letter-spacing: -0.1px;
-    line-height: 1.3;
-    word-break: break-word;
-  }
-  .contact-card-value--email {
-    font-size: 14.5px !important;
-    letter-spacing: 0 !important;
-  }
-  .contact-card-sub {
-    font-size: 13px !important;
-    color: var(--text-light) !important;
-    text-align: center !important;
-    margin: 0 0 20px !important;
-    line-height: 1.5;
-    flex: 1;
-  }
-  .contact-card-cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    padding: 11px 20px;
-    background: var(--navy);
-    color: var(--white) !important;
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 12px !important;
-    font-weight: 700 !important;
-    text-decoration: none !important;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    border-radius: 6px;
-    transition: background 0.2s ease;
-    margin: 0 auto;
-    border: none;
-    white-space: nowrap;
-  }
-  .contact-card-cta:hover {
-    background: var(--navy-dark);
-    color: var(--white) !important;
-  }
-  .contact-card-cta svg {
-    width: 11px;
-    height: 11px;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 2.5;
-    flex-shrink: 0;
-  }
-  /* ── FOOTER INFO STRIP ──────────────────────────────────────────────── */
-  .sehe-contact-footer {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 10px 28px;
-    padding-top: 28px;
-    border-top: 1px solid var(--border-light);
-    text-align: center;
-    max-width: 1080px;
-    margin: 0 auto;
-  }
-  .sehe-contact-footer-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12.5px !important;
-    color: var(--text-muted) !important;
-    text-align: center !important;
-  }
-  .sehe-contact-footer-item svg {
-    width: 14px;
-    height: 14px;
-    stroke: var(--gold-dark);
-    fill: none;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    flex-shrink: 0;
-  }
-  /* ── RESPONSIVE ─────────────────────────────────────────────────────── */
-  @media (max-width: 600px) {
-    .sehe-contact { padding: 36px 16px 40px; }
-    .sehe-contact-header h2 { font-size: 22px !important; }
-    .sehe-contact-header { margin-bottom: 28px; }
-    .sehe-contact-grid { grid-template-columns: 1fr; gap: 14px; }
-    .contact-card { padding: 24px 20px 22px; }
-    .contact-card-value { font-size: 16px !important; }
-    .sehe-contact-footer {
-      flex-direction: column;
-      gap: 10px;
-    }
-    /* Override Duda's mobile-only paragraph centering for card body content.
-       Card heading, value, sub-text, CTA remain centered by design. */
-  }</style> 
- <div class="sehe-contact"><!-- ── HEADER ──────────────────────────────────────────────────────────── --> <div class="sehe-contact-header"> <h2>Prefer to speak with us?</h2> 
- <div class="sehe-contact-divider"> <span class="sehe-contact-divider-line"></span> 
- <span class="sehe-contact-divider-dot"></span> 
- <span class="sehe-contact-divider-line"></span> 
-</div> 
- <p>Our team is here to help &mdash; whether that's advice on the right tour, questions about a departure, or booking by phone.</p> 
-</div> 
-<!-- ── ACTION CARDS ───────────────────────────────────────────────────── --> <div class="sehe-contact-grid"><!-- ▸ CALL ──────────────────────────────────────────────────────────── --> <article class="contact-card"> <div class="contact-card-icon-wrap"> <svg viewbox="0 0 24 24"> <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path> 
-</svg> 
-</div> 
- <span class="contact-card-label">Call us</span> 
- <h3 class="contact-card-value">+64 (0)3 974 1812</h3> 
- <p class="contact-card-sub">Monday &ndash; Friday &middot; 8am &ndash; 5pm NZT</p> 
- <a href="tel:+6439741812" class="contact-card-cta">Call now <svg viewbox="0 0 24 24"> <path d="M5 12h14"></path> 
- <path d="M12 5l7 7-7 7"></path> 
-</svg> 
-</a> 
-</article> 
-<!-- ▸ EMAIL ─────────────────────────────────────────────────────────── --> <article class="contact-card"> <div class="contact-card-icon-wrap"> <svg viewbox="0 0 24 24"> <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path> 
- <polyline points="22,6 12,13 2,6"></polyline> 
-</svg> 
-</div> 
- <span class="contact-card-label">Email us</span> 
- <h3 class="contact-card-value contact-card-value--email">info@pounamutourismgroup.com</h3> 
- <p class="contact-card-sub">We'll reply within one business day</p> 
- <a href="mailto:info@pounamutourismgroup.com" class="contact-card-cta">Send email <svg viewbox="0 0 24 24"> <path d="M5 12h14"></path> 
- <path d="M12 5l7 7-7 7"></path> 
-</svg> 
-</a> 
-</article> 
-<!-- ▸ CONTACT FORM ─────────────────────────────────────────────────── --> <article class="contact-card"> <div class="contact-card-icon-wrap"> <svg viewbox="0 0 24 24"> <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path> 
-</svg> 
-</div> 
- <span class="contact-card-label">Send a message</span> 
- <h3 class="contact-card-value">Use our contact form</h3> 
- <p class="contact-card-sub">Share your travel dates and questions in detail</p> 
- <a href="/contact" class="contact-card-cta">Open form <svg viewbox="0 0 24 24"> <path d="M5 12h14"></path> 
- <path d="M12 5l7 7-7 7"></path> 
-</svg> 
-</a> 
-</article> 
-</div> 
-<!-- ── FOOTER INFO ────────────────────────────────────────────────────── --> <div class="sehe-contact-footer"> <span class="sehe-contact-footer-item"> <svg viewbox="0 0 24 24"> <circle cx="12" cy="12" r="10"></circle> 
- <polyline points="12 6 12 12 16 14"></polyline> 
-</svg> 
-Office hours: 8am &ndash; 5pm NZT, Monday &ndash; Friday</span> 
- <span class="sehe-contact-footer-item"> <svg viewbox="0 0 24 24"> <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path> 
- <circle cx="12" cy="10" r="3"></circle> 
-</svg> 
-PO Box 19735, Woolston, Christchurch 8241, New Zealand</span> 
-</div> 
-</div> 
-<!-- END SEHE CONTACT SECTION -->
-
-
-<!-- ═══════════ WIDGET 3 of 3 ═══════════ -->
-<!--
-  ═══════════════════════════════════════════════════════════════════════════════
-  SEHE FAQ SECTION — Frequently Asked Questions
-  ═══════════════════════════════════════════════════════════════════════════════
-  REPLACES the existing FAQ accordion below the brochure collection and
-  contact sections (and reusable on other pages — journeys, individual tour
-  pages, home).
-  Uses native <details>/<summary> — no JavaScript required, fully accessible,
-  keyboard-friendly.
-  ─── RESPONSIVE ───────────────────────────────────────────────────────────────
-  Max-width 900px, centred. Reads well at any viewport width. On mobile,
-  question text wraps naturally and the chevron stays tucked right.
-  ═══════════════════════════════════════════════════════════════════════════════
---><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/> <style>.sehe-faq, .sehe-faq * { box-sizing: border-box; }
-  .sehe-faq {
-    --navy: #153b67;
-    --navy-light: #1e4a7a;
-    --navy-dark: #0e2d52;
-    --gold: #c8a56c;
-    --gold-light: #d4b37e;
-    --gold-pale: #f5edd8;
-    --gold-dark: #a68a55;
-    --white: #ffffff;
-    --off-white: #f9f7f3;
-    --cream: #faf8f3;
-    --text: #1a1a1a;
-    --text-light: #5a5a5a;
-    --text-muted: #8a8a8a;
-    --border: #d8d3c8;
-    --border-light: #e8e4db;
-    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: var(--text);
-    max-width: 900px !important;
-    margin: 0 auto !important;
-    padding: 56px 40px 60px;
-    line-height: 1.6;
-  }
-  /* ── HEADER ─────────────────────────────────────────────────────────── */
-  .sehe-faq-header {
-    text-align: center !important;
-    margin-bottom: 40px;
-    padding: 0 20px;
-  }
-  .sehe-faq-header h2 {
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 28px !important;
-    font-weight: 700 !important;
-    color: var(--navy) !important;
-    margin: 0 0 10px !important;
-    letter-spacing: -0.2px;
-    text-align: center !important;
-  }
-  .sehe-faq-divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin: 14px 0 16px;
-  }
-  .sehe-faq-divider-line {
-    width: 32px;
-    height: 1px;
-    background: var(--gold);
-  }
-  .sehe-faq-divider-dot {
-    width: 5px;
-    height: 5px;
-    background: var(--gold);
-    border-radius: 50%;
-  }
-  .sehe-faq-header p {
-    font-size: 14.5px !important;
-    color: var(--text-light) !important;
-    margin: 0 auto !important;
-    max-width: 560px;
-    text-align: center !important;
-    line-height: 1.6;
-  }
-  /* ── ACCORDION LIST ─────────────────────────────────────────────────── */
-  .sehe-faq-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  /* ── ACCORDION ITEM ─────────────────────────────────────────────────── */
-  .faq-item {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    position: relative;
-  }
-  .faq-item:hover {
-    border-color: var(--gold);
-  }
-  .faq-item[open] {
-    border-color: var(--gold);
-    box-shadow: 0 4px 14px rgba(21, 59, 103, 0.05);
-  }
-  .faq-item[open]::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 3px;
-    background: var(--gold);
-  }
-  /* ── SUMMARY (the question row) ─────────────────────────────────────── */
-  .faq-item summary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 18px 22px;
-    cursor: pointer;
-    list-style: none;
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 15px !important;
-    font-weight: 700 !important;
-    color: var(--navy) !important;
-    line-height: 1.4;
-    letter-spacing: -0.1px;
-    text-align: left !important;
-    user-select: none;
-    transition: background 0.15s ease;
-  }
-  .faq-item summary:hover {
-    background: var(--off-white);
-  }
-  .faq-item[open] summary {
-    background: var(--cream);
-    padding-bottom: 14px;
-  }
-  /* Hide default triangle marker */
-  .faq-item summary::-webkit-details-marker { display: none; }
-  .faq-item summary::marker { display: none; content: ''; }
-  /* Custom chevron icon */
-  .faq-chevron {
-    flex-shrink: 0;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: var(--off-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.25s ease, background 0.2s ease;
-  }
-  .faq-chevron svg {
-    width: 12px;
-    height: 12px;
-    stroke: var(--navy);
-    fill: none;
-    stroke-width: 2.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .faq-item[open] .faq-chevron {
-    background: var(--gold-pale);
-    transform: rotate(180deg);
-  }
-  .faq-item[open] .faq-chevron svg {
-    stroke: var(--gold-dark);
-  }
-  /* ── ANSWER BODY ────────────────────────────────────────────────────── */
-  .faq-answer {
-    padding: 0 22px 22px;
-    font-size: 14.5px !important;
-    color: var(--text-light) !important;
-    line-height: 1.7;
-    text-align: left !important;
-  }
-  .faq-answer p {
-    margin: 0 0 12px !important;
-    text-align: left !important;
-    color: var(--text-light) !important;
-    font-size: 14.5px !important;
-    line-height: 1.7;
-  }
-  .faq-answer p:last-child { margin-bottom: 0 !important; }
-  .faq-answer strong {
-    color: var(--navy);
-    font-weight: 700;
-  }
-  /* ── FOOTER CTA ─────────────────────────────────────────────────────── */
-  .sehe-faq-footer {
-    margin-top: 36px;
-    padding-top: 28px;
-    border-top: 1px solid var(--border-light);
-    text-align: center;
-  }
-  .sehe-faq-footer p {
-    font-size: 14px !important;
-    color: var(--text-light) !important;
-    margin: 0 0 14px !important;
-    text-align: center !important;
-  }
-  .sehe-faq-footer-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 10px 20px;
-    background: transparent;
-    color: var(--navy) !important;
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 12px !important;
-    font-weight: 700 !important;
-    text-decoration: none !important;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    border: 1.5px solid var(--navy);
-    border-radius: 6px;
-    transition: all 0.2s ease;
-  }
-  .sehe-faq-footer-cta:hover {
-    background: var(--navy);
-    color: var(--white) !important;
-  }
-  .sehe-faq-footer-cta svg {
-    width: 11px;
-    height: 11px;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 2.5;
-  }
-  /* ── RESPONSIVE ─────────────────────────────────────────────────────── */
-  @media (max-width: 600px) {
-    .sehe-faq { padding: 36px 16px 40px; }
-    .sehe-faq-header h2 { font-size: 22px !important; }
-    .sehe-faq-header { margin-bottom: 28px; }
-    .faq-item summary {
-      padding: 16px 18px;
-      font-size: 14px !important;
-    }
-    .faq-answer,
-    .faq-answer p {
-      padding: 0 18px 18px;
-      font-size: 14px !important;
-    }
-    .faq-answer p { padding: 0 !important; }
-    /* Override Duda's mobile paragraph centering */
-    .sehe-faq .faq-item summary,
-    .sehe-faq .faq-answer,
-    .sehe-faq .faq-answer p {
-      text-align: left !important;
-    }
-  }</style> 
- <div class="sehe-faq"><!-- ── HEADER ──────────────────────────────────────────────────────────── --> <div class="sehe-faq-header"> <h2>Frequently Asked Questions</h2> 
- <div class="sehe-faq-divider"> <span class="sehe-faq-divider-line"></span> 
- <span class="sehe-faq-divider-dot"></span> 
- <span class="sehe-faq-divider-line"></span> 
-</div> 
- <p>Quick answers to the questions we're most often asked. Can't find what you're looking for? Get in touch &mdash; we're happy to help.</p> 
-</div> 
-<!-- ── FAQ ACCORDION ──────────────────────────────────────────────────── --> <div class="sehe-faq-list"><!-- ▸ Q1 ────────────────────────────────────────────────────────────── --> <details class="faq-item"> <summary>What's the difference between the 14-day and 11-day Spring/Summer tours? <span class="faq-chevron"> <svg viewbox="0 0 24 24"> <polyline points="6 9 12 15 18 9"></polyline> 
-</svg> 
-</span> 
-</summary> 
- <div class="faq-answer"> <p>The <strong>14-day tour</strong> 
-is our most comprehensive journey, covering the full length of the South Island with the &quot;Super 6&quot; rail adventures &mdash; TranzAlpine, Kingston Flyer (Steam), The Mainlander, Taieri Gorge, Coastal Pacific and Weka Pass. You'll travel from the West Coast and Fiordland through Dunedin, Aoraki Mt Cook, and along the Kaikōura coast to Marlborough.</p> 
- <p>The <strong>11-day tour</strong> 
-focuses on the iconic South Island highlights &mdash; Arthur's Pass, Queenstown, Milford Sound, Dunedin and Aoraki Mt Cook &mdash; with the &quot;Big 5&quot; rail adventures. It's ideal if you'd prefer a slightly shorter journey without missing the must-see experiences.</p> 
-</div> 
-</details> 
-<!-- ▸ Q2 ────────────────────────────────────────────────────────────── --> <details class="faq-item"> <summary>What makes the Winter Edition tours different? <span class="faq-chevron"> <svg viewbox="0 0 24 24"> <polyline points="6 9 12 15 18 9"></polyline> 
-</svg> 
-</span> 
-</summary> 
- <div class="faq-answer"> <p>Winter Edition tours depart between <strong>June and September</strong>, when the South Island is at its most dramatic &mdash; snow-capped alpine scenery, quieter towns, and a very different rhythm to the warmer months.</p> 
- <p>The 12-day itinerary features four rail journeys (TranzAlpine, both Mainlander train routes, and Taieri Gorge) alongside time exploring Queenstown, Doubtful Sound, and Aoraki Mt Cook. Accommodation, coaches and experiences are all selected with the winter climate in mind.</p> 
-</div> 
-</details> 
-<!-- ▸ Q3 ────────────────────────────────────────────────────────────── --> <details class="faq-item"> <summary>How is The Pinnacle Tour different from the other tours? <span class="faq-chevron"> <svg viewbox="0 0 24 24"> <polyline points="6 9 12 15 18 9"></polyline> 
-</svg> 
-</span> 
-</summary> 
- <div class="faq-answer"> <p>The Pinnacle is our exceptional <strong>5-star, small-group tour</strong>, hosted personally by Peter Hillary, son of Sir Edmund Hillary. It's a single 15-day departure on 14 January 2027.</p> 
- <p>You'll travel with a smaller group, stay in premium hotels, enjoy extended stays in places like Wanaka, and take part in experiences unique to this tour &mdash; a Haast jet boat safari, a Mt Aspiring 4WD adventure to the Aspinall family farm, helicopter flights, and more. The tour includes the Famous Four Rail Adventures: TranzAlpine, Kingston Flyer (Steam), Taieri Gorge, and Coastal Pacific.</p> 
-</div> 
-</details> 
-<!-- ▸ Q4 ────────────────────────────────────────────────────────────── --> <details class="faq-item"> <summary>Which tour is best if it's my first time visiting the South Island? <span class="faq-chevron"> <svg viewbox="0 0 24 24"> <polyline points="6 9 12 15 18 9"></polyline> 
-</svg> 
-</span> 
-</summary> 
- <div class="faq-answer"> <p>For first-time visitors, the <strong>14-day Spring/Summer tour</strong> 
-gives you the most complete picture of the South Island &mdash; you'll see the full coast-to-coast sweep, from the Southern Alps through Fiordland, the deep south, and up the Kaikōura coast.</p> 
- <p>If you have less time or prefer a slightly gentler pace, the 11-day tour still covers the iconic experiences without feeling rushed. Get in touch if you'd like a recommendation based on your interests.</p> 
-</div> 
-</details> 
-<!-- ▸ Q5 ────────────────────────────────────────────────────────────── --> <details class="faq-item"> <summary>Can I choose my seat on the train carriage or coach? <span class="faq-chevron"> <svg viewbox="0 0 24 24"> <polyline points="6 9 12 15 18 9"></polyline> 
-</svg> 
-</span> 
-</summary> 
- <div class="faq-answer"> <p>Train seating is allocated by the rail operator and can vary by journey. Most of our scenic routes have large panoramic windows and open-air viewing platforms, so there's no single &quot;best&quot; seat &mdash; every seat offers a great view.</p> 
- <p>On the coach, we rotate seating during the tour so everyone gets time at the front. If you have mobility or accessibility needs, let us know when you book and we'll make sure you're well looked after.</p> 
-</div> 
-</details> 
-<!-- ▸ Q6 ────────────────────────────────────────────────────────────── --> <details class="faq-item"> <summary>How far in advance should I book? <span class="faq-chevron"> <svg viewbox="0 0 24 24"> <polyline points="6 9 12 15 18 9"></polyline> 
-</svg> 
-</span> 
-</summary> 
- <div class="faq-answer"> <p>Most Sir Edmund Hillary Explorer tours fill <strong>three to five months ahead of departure</strong>, and some sell out well before that &mdash; the Autumn tour and Pinnacle departure especially.</p> 
- <p>To secure your preferred date, we recommend booking as early as you're able. A 20% deposit is all that's required to hold your place.</p> 
-</div> 
-</details> 
-<!-- ▸ Q7 ────────────────────────────────────────────────────────────── --> <details class="faq-item"> <summary>Do I need to pay the full amount upfront? <span class="faq-chevron"> <svg viewbox="0 0 24 24"> <polyline points="6 9 12 15 18 9"></polyline> 
-</svg> 
-</span> 
-</summary> 
- <div class="faq-answer"> <p>No. A <strong>20% deposit</strong> 
-secures your booking. A further 40% is due six months before your tour departs, and the balance is due the month before you travel.</p> 
- <p>The price shown is for payment by internet banking. Credit card bookings incur a 2% processing fee.</p> 
-</div> 
-</details> 
-<!-- ▸ Q8 ────────────────────────────────────────────────────────────── --> <details class="faq-item"> <summary>Can I join the tour as a solo traveller? <span class="faq-chevron"> <svg viewbox="0 0 24 24"> <polyline points="6 9 12 15 18 9"></polyline> 
-</svg> 
-</span> 
-</summary> 
- <div class="faq-answer"> <p>Absolutely &mdash; we welcome solo travellers, and many of our guests join on their own. A single supplement applies for a private room (NZ $1,495 for the 14-day tour; single supplements vary by tour).</p> 
- <p>You'll be part of a small, friendly group throughout the tour, and our guides make sure everyone feels included from day one.</p> 
-</div> 
-</details> 
-<!-- ▸ Q9 ────────────────────────────────────────────────────────────── --> <details class="faq-item"> <summary>What's included in the tour price? <span class="faq-chevron"> <svg viewbox="0 0 24 24"> <polyline points="6 9 12 15 18 9"></polyline> 
-</svg> 
-</span> 
-</summary> 
- <div class="faq-answer"> <p>Your tour price includes 4-star accommodation (5-star on the Pinnacle), all rail journeys and luxury coach transfers, most meals, all prepaid attractions listed in the brochure, guided touring throughout, and entry to the Sir Edmund Hillary Alpine Centre at Aoraki Mt Cook.</p> 
- <p>Flights to and from New Zealand, pre- and post-tour accommodation, travel insurance, and a small number of meals are not included. The full list of inclusions and exclusions is in each tour brochure.</p> 
-</div> 
-</details> 
-</div> 
-<!-- ── FOOTER CTA ─────────────────────────────────────────────────────── --> <div class="sehe-faq-footer"> <p>Still have questions?</p> 
- <a href="/contact" class="sehe-faq-footer-cta">Get in touch <svg viewbox="0 0 24 24"> <path d="M5 12h14"></path> 
- <path d="M12 5l7 7-7 7"></path> 
-</svg> 
-</a> 
-</div> 
-</div> 
-<!-- END SEHE FAQ SECTION -->

@@ -1,0 +1,12 @@
+worker-sehe-next-departures.js = the Cloudflare Worker (deployed as "sehe-next-departures").
+
+What it does: every 10 minutes it reads the SEHE departures from Checkfront and
+serves them as one JSON document at
+  https://sehe-next-departures.ben-757.workers.dev/
+keyed by tour (14day-2627, 11day-2627, winter-2026, winter-2027, pinnacle-2027,
+14day-2728, 11day-2728), each with "next" and "all": [{start, end, status}],
+status = available | nearing | soldout.
+
+The pages call it on load to update departure counts, next-departure dates and
+sold-out states. If it is unreachable the pages keep their baked-in content.
+Secrets (Checkfront API key) are in the Worker's settings, not in the file.

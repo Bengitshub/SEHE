@@ -1,8 +1,3 @@
-<!-- LIVE EXTRACT /journeys — fetched 2026-09-06. The SEHE custom-HTML widget(s) exactly as served by Duda
-     (Duda re-serialises: lowercased attributes, onerror handlers, /opt/ image URLs). 1 widget container(s). -->
-
-
-<!-- ═══════════ WIDGET 1 of 1 ═══════════ -->
 <!--
   ═══════════════════════════════════════════════════════════════════════════════
   SEHE JOURNEYS PAGE — TOUR LISTINGS          (VERSION v22 · 2026-07-28)
@@ -66,12 +61,13 @@
   • Desktop (≥860px): landscape cards, image left, content right
   • Mobile (<860px): cards stack vertically, image on top, content below
   ═══════════════════════════════════════════════════════════════════════════════
---><!-- ===== AUTHORITATIVE DEPARTURE DATES (single source of truth) ===== --><!-- Keep this block IDENTICAL to the same block on the tour pages. To update for
+-->
+<!-- ===== AUTHORITATIVE DEPARTURE DATES (single source of truth) ===== -->
+<!-- Keep this block IDENTICAL to the same block on the tour pages. To update for
      a new season, edit the date arrays below; return dates are worked out from
      each tour's length and past dates drop off automatically. Also update
-     Checkfront so the live booking calendars match this list. --> <script>
-
-
+     Checkfront so the live booking calendars match this list. -->
+<script>
 (function(){
   /* Departure dates for the cards — Kirsty's full schedule per tour. Every date
      shows; dates listed in SOLDOUT (not bookable in Checkfront) render RED.
@@ -102,6 +98,7 @@
     data[k]={ all:all, next: av.length?av[0].start:null };
   });
   window.__seheDepartureData=data;
+
   /* ---- LIVE DATES (the worker is the source of truth) --------------------
      The worker holds the full schedule and reads Checkfront for what's available
      vs sold out. We OVERRIDE the baked list per tour with the worker's live list,
@@ -134,16 +131,12 @@
     return window.__seheDeparturePromise;
   };
 })();
-                           
-
-                </script> 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/> <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async="">
-
-
-                            
-
-                </script> 
- <style>.sehe-journeys, .sehe-journeys * { box-sizing: border-box; }
+</script>
+ <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+ <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async="">
+ </script>
+ <style>
+  .sehe-journeys, .sehe-journeys * { box-sizing: border-box; }
   .sehe-journeys {
     --navy: #153b67;
     --navy-light: #1e4a7a;
@@ -982,8 +975,11 @@
     .sehe-jcontact { padding: 20px 18px; }
     .sehe-jcontact-actions { width: 100%; }
     .sehe-jcontact-btn { width: 100%; }
-  }</style> 
-<!-- ═══ HERO ═══ --> <style>/* Duda: keep the hosting row from boxing or clipping a full-bleed hero, and
+  }
+</style>
+<!-- ═══ HERO ═══ -->
+<style>
+  /* Duda: keep the hosting row from boxing or clipping a full-bleed hero, and
      stop the theme rule ".dmFullRowRespTmpl section{padding:50px 40px}" from
      re-padding it. */
   #dm .dmContent .dmRespRow, #dm .dmContent .dmRespColsWrapper, #dm .dmContent .dmRespCol { overflow: visible !important; max-width: none !important; }
@@ -1032,19 +1028,21 @@
     .sehe-jhero { min-height: max(440px, 60svh); }
     .sehe-jhero-inner { padding: 104px 18px 38px; }
     .sehe-jhero h1 { font-size: 30px !important; }
-  }</style> 
- <section class="sehe-jhero" aria-label="All Upcoming Tours"> <div class="sehe-jhero-media" aria-hidden="true"> <iframe src="https://player.vimeo.com/video/1046997096?background=1&autoplay=1&loop=1&muted=1&dnt=1&api=1" title="Sir Edmund Hillary Explorer scenery film" allow="autoplay; fullscreen" loading="lazy"></iframe> 
-</div> 
- <div class="sehe-jhero-veil" aria-hidden="true"></div> 
-<img class="sehe-jhero-logo" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEH+Explorer_logo+white-350w.png" alt="Sir Edmund Hillary Explorer" loading="eager" onerror="handleImageLoadError(this)"/> <div class="sehe-jhero-inner"> <span class="sehe-jhero-eyebrow">2026/27 &ndash; 2027/28 Seasons</span> 
- <h1>All Upcoming Tours</h1> 
- <p class="sehe-jhero-sub">The Sir Edmund Hillary Explorer is New Zealand's leading tour operator, specialising in scenic rail and luxury coach tours of the South Island. Departures run across every season &mdash; and each year includes a <span class="sehe-nb">small-group</span> 
-tour hosted personally by Peter Hillary, son of Sir Edmund Hillary.</p> 
-</div> 
-</section> 
- <script>
-
-
+  }
+</style>
+<section class="sehe-jhero" aria-label="All Upcoming Tours">
+  <div class="sehe-jhero-media" aria-hidden="true">
+    <iframe src="https://player.vimeo.com/video/1046997096?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;dnt=1&amp;api=1" title="Sir Edmund Hillary Explorer scenery film" allow="autoplay; fullscreen" loading="lazy"></iframe>
+  </div>
+  <div class="sehe-jhero-veil" aria-hidden="true"></div>
+  <img class="sehe-jhero-logo" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEH+Explorer_logo+white-350w.png" alt="Sir Edmund Hillary Explorer" loading="eager">
+  <div class="sehe-jhero-inner">
+    <span class="sehe-jhero-eyebrow">2026/27 – 2027/28 Seasons</span>
+    <h1>All Upcoming Tours</h1>
+    <p class="sehe-jhero-sub">The Sir Edmund Hillary Explorer is New Zealand's leading tour operator, specialising in scenic rail and luxury coach tours of the South Island. Departures run across every season — and each year includes a <span class="sehe-nb">small-group</span> tour hosted personally by Peter Hillary, son of Sir Edmund Hillary.</p>
+  </div>
+</section>
+<script>
   /* HERO film: the video layer stays invisible until the Vimeo player proves
      it is alive (any postMessage from vimeo). If it never loads — or on
      phones, where the layer is display:none — the photograph simply remains.
@@ -1055,644 +1053,1040 @@ tour hosted personally by Peter Hillary, son of Sir Edmund Hillary.</p>
       if (media && media.className.indexOf('is-live') === -1) { media.className += ' is-live'; }
     }
   });
-                           
+</script>
 
-                </script> 
- <div class="sehe-journeys"><!-- ── HEADER ──────────────────────────────────────────────────────────── --><!-- ── INCLUDED IN ALL TOURS ──────────────────────────────────────────── --> <div class="sehe-inclusions"> <div class="sehe-inclusions-eyebrow">Included in every tour</div> 
- <div class="sehe-inclusions-grid"> <div class="inclusion-item"> <div class="inclusion-icon"> <svg viewbox="0 0 24 24"> <rect x="4" y="4" width="16" height="12" rx="2"></rect> 
- <path d="M4 11h16"></path> 
- <rect x="6.5" y="6.5" width="4" height="3"></rect> 
- <rect x="13.5" y="6.5" width="4" height="3"></rect> 
- <circle cx="8" cy="19" r="1.5"></circle> 
- <circle cx="16" cy="19" r="1.5"></circle> 
- <path d="M9.5 19h5"></path> 
- <path d="M5 16l-1.5 3"></path> 
- <path d="M19 16l1.5 3"></path> 
-</svg> 
-</div> 
- <div class="inclusion-label">Iconic Rail Journeys</div> 
- <div class="inclusion-sub">Multiple scenic rail experiences on every tour</div> 
-</div> 
- <div class="inclusion-item"> <div class="inclusion-icon"> <svg viewbox="0 0 24 24"> <path d="M3 21h18"></path> 
- <path d="M5 21V8l7-5 7 5v13"></path> 
- <path d="M9 21v-6h6v6"></path> 
- <path d="M9 11h.01M15 11h.01"></path> 
-</svg> 
-</div> 
- <div class="inclusion-label">4-Star+ Accommodations</div> 
- <div class="inclusion-sub">Carefully selected accommodation</div> 
-</div> 
- <div class="inclusion-item"> <div class="inclusion-icon"> <svg viewbox="0 0 24 24"> <rect x="3" y="6" width="18" height="11" rx="2"></rect> 
- <circle cx="7.5" cy="19" r="1.5"></circle> 
- <circle cx="16.5" cy="19" r="1.5"></circle> 
- <line x1="3" y1="12" x2="21" y2="12"></line> 
- <line x1="7" y1="9" x2="9" y2="9"></line> 
-</svg> 
-</div> 
- <div class="inclusion-label">Luxury Coaches</div> 
- <div class="inclusion-sub">Seamless transfers and friendly drivers</div> 
-</div> 
- <div class="inclusion-item"> <div class="inclusion-icon"> <svg viewbox="0 0 24 24"> <line x1="6" y1="3" x2="6" y2="21"></line> 
- <path d="M6 4h12l-3 4 3 4H6"></path> 
-</svg> 
-</div> 
- <div class="inclusion-label">Expert Tour Leaders</div> 
- <div class="inclusion-sub">Experienced Kiwi tour leaders guide every turn</div> 
-</div> 
- <div class="inclusion-item"> <div class="inclusion-icon"> <svg viewbox="0 0 24 24"> <path d="M12 2L9.5 8.5 2 9.3l5.7 5L6 22l6-3.5 6 3.5-1.7-7.7 5.7-5-7.5-.8z"></path> 
-</svg> 
-</div> 
- <div class="inclusion-label">Hillary Family Speaker</div> 
- <div class="inclusion-sub">Guest speaker is a Hillary family representative</div> 
-</div> 
- <div class="inclusion-item"> <div class="inclusion-icon"> <svg viewbox="0 0 24 24"> <circle cx="12" cy="12" r="10"></circle> 
- <path d="M12 6v6l4 2"></path> 
-</svg> 
-</div> 
- <div class="inclusion-label">Only 20% Deposit</div> 
- <div class="inclusion-sub">Reserve your booking with a 20% deposit</div> 
-</div> 
-</div> 
-</div> 
-<!-- ── TRUSTPILOT TRUST STRIP ──────────────────────────────────────── --> <div class="sehe-trustpilot"> <p class="sehe-trustpilot-prefix"> <span class="sehe-trustpilot-quote" data-quote-target="">&ldquo;I would describe this as a world-class tour.&rdquo;</span> 
-</p> 
- <div class="sehe-trustpilot-widget"><!-- TrustBox widget - Micro Star --> <div class="trustpilot-widget" data-locale="en-NZ" data-template-id="5419b732fbfb950b10de65e5" data-businessunit-id="67af6f95db89fc000f855205" data-style-height="24px" data-style-width="100%"> <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot</a> 
-</div> 
-<!-- End TrustBox widget --></div> 
-</div> 
-<!-- ── FILTER BAR ─────────────────────────────────────────────────────── --> <div class="sehe-filter" role="tablist" aria-label="Filter tours by season"> <span class="sehe-filter-label">Filter by</span> 
- <button type="button" class="sehe-filter-btn is-active" data-filter="all">All Tours</button> 
- <button type="button" class="sehe-filter-btn" data-filter="spring-summer">Spring / Summer</button> 
- <button type="button" class="sehe-filter-btn" data-filter="winter">Winter</button> 
- <button type="button" class="sehe-filter-btn" data-filter="pinnacle">Pinnacle</button> 
-</div> 
-<!-- ── JOURNEYS LIST ──────────────────────────────────────────────────── --> <div class="sehe-journeys-list"><!-- ▸ 12-DAY WINTER EDITION 2026 ───────────────────────────────────── --><!-- ▸ 14-DAY SPRING/SUMMER ─────────────────────────────────────────── --> <article class="journey-card" data-season="spring-summer" data-tour="14day-2627"> <div class="journey-card-image-wrap"><img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/TSS+Earnslaw+2-1920w.webp" alt="14-Day Spring/Summer Tour" onerror="handleImageLoadError(this)"/> <div class="journey-card-badges"> <span class="journey-card-badge">Spring / Summer &middot; 2026/27</span> 
- <span class="journey-card-status"> <span class="journey-card-status-dot"></span> 
-Now Booking</span> 
-</div> 
-</div> 
- <div class="journey-card-body"> <h3 class="journey-card-name">14-Day Spring/Summer Tour 2026/27</h3> 
- <span class="journey-card-bestfor"> <svg viewbox="0 0 24 24"> <circle cx="12" cy="12" r="10"></circle> 
- <path d="M12 6v6l4 2"></path> 
-</svg> 
-Best for: First-timers who want the complete South Island experience</span> 
- <p class="journey-card-description">Our most comprehensive journey &mdash; coast to coast, top to bottom. Six iconic rail journeys including the TranzAlpine, Kingston Flyer steam train, and Coastal Pacific. Two weeks of glaciers, fiords, mountains, and wine country.</p> 
- <div class="journey-card-next" data-next-placeholder=""> <span class="journey-card-next-pulse"></span> 
- <div class="journey-card-next-text"> <span class="journey-card-next-label">Now Booking</span> 
- <span class="journey-card-next-date">Departures available &mdash; see tour</span> 
-</div> 
-</div> 
- <div class="journey-card-departures"> <span class="journey-card-dates-label">All departure dates</span> 
- <div class="jc-months"> <div class="jc-month"> <span class="jc-month-label">Oct 2026</span> 
- <span class="jc-days"> <span class="jc-day-sold" title="Sold out">12</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span class="jc-day-sold" title="Sold out">19</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span class="jc-day-sold" title="Sold out">26</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Nov 2026</span> 
- <span class="jc-days"> <span>9</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>16</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>23</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Jan 2027</span> 
- <span class="jc-days"> <span>4</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>11</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>18</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>25</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Feb 2027</span> 
- <span class="jc-days"> <span>8</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>15</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Mar 2027</span> 
- <span class="jc-days"> <span>8</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>15</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>22</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Apr 2027</span> 
- <span class="jc-days"> <span>5</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>12</span> 
-</span> 
-</div> 
-</div> 
- <div class="jc-legend"> <span class="jc-legend-item"> <span class="jc-legend-dot jc-legend-avail"></span> 
-Available</span> 
- <span class="jc-legend-item"> <span class="jc-legend-dot jc-legend-sold"></span> 
-Sold out</span> 
-</div> 
-</div> 
- <div class="journey-card-facts"> <div class="journey-card-fact"> <span class="journey-card-fact-value">14 Days</span> 
- <span class="journey-card-fact-label">Duration</span> 
-</div> 
- <div class="journey-card-fact"> <span class="journey-card-fact-value">From NZ $8,995</span> 
- <span class="journey-card-fact-label">Per person</span> 
-</div> 
- <div class="journey-card-fact"> <span class="journey-card-fact-value" data-departure-value="">17</span> 
- <span class="journey-card-fact-label" data-departure-label="">Departures</span> 
-</div> 
-</div> 
- <div class="journey-card-includes"> <span class="journey-card-includes-label">Includes the &ldquo;Super 6&rdquo; Rail Adventures</span> 
- <div class="journey-card-pills"> <span class="journey-card-pill">TranzAlpine</span> 
- <span class="journey-card-pill">Kingston Flyer (Steam)</span> 
- <span class="journey-card-pill">The Mainlander</span> 
- <span class="journey-card-pill">Taieri Gorge</span> 
- <span class="journey-card-pill">Coastal Pacific</span> 
- <span class="journey-card-pill">Weka Pass</span> 
-</div> 
-</div> 
- <div class="journey-card-actions"> <a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/summer-tour-14-days">View Tour</a> 
- <a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/summer-tour-14-days#tour-dates">Check Dates</a> 
- <a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/summer-tour-14-days#tour-brochure">Brochure</a> 
-</div> 
-</div> 
-</article> 
-<!-- ▸ 11-DAY SPRING/SUMMER ─────────────────────────────────────────── --> <article class="journey-card" data-season="spring-summer" data-tour="11day-2627"> <div class="journey-card-image-wrap"><img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Coastal-Pacific_North-of-Claverly--KR-1920w.webp" alt="11-Day Spring/Summer Tour" onerror="handleImageLoadError(this)"/> <div class="journey-card-badges"> <span class="journey-card-badge">Spring / Summer &middot; 2026/27</span> 
- <span class="journey-card-status"> <span class="journey-card-status-dot"></span> 
-Now Booking</span> 
-</div> 
-</div> 
- <div class="journey-card-body"> <h3 class="journey-card-name">11-Day Spring/Summer Tour 2026/27</h3> 
- <span class="journey-card-bestfor"> <svg viewbox="0 0 24 24"> <circle cx="12" cy="12" r="10"></circle> 
- <path d="M12 6v6l4 2"></path> 
-</svg> 
-Best for: Travellers wanting the highlights without a long stay</span> 
- <p class="journey-card-description">The South Island's most iconic experiences in eleven well-paced days. Arthur's Pass, Queenstown, Milford Sound, Dunedin, and Aoraki Mt Cook &mdash; every must-see, with time to actually enjoy each one.</p> 
- <div class="journey-card-next" data-next-placeholder=""> <span class="journey-card-next-pulse"></span> 
- <div class="journey-card-next-text"> <span class="journey-card-next-label">Now Booking</span> 
- <span class="journey-card-next-date">Departures available &mdash; see tour</span> 
-</div> 
-</div> 
- <div class="journey-card-departures"> <span class="journey-card-dates-label">All departure dates</span> 
- <div class="jc-months"> <div class="jc-month"> <span class="jc-month-label">Oct 2026</span> 
- <span class="jc-days"> <span class="jc-day-sold" title="Sold out">5</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Nov 2026</span> 
- <span class="jc-days"> <span>2</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>30</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Feb 2027</span> 
- <span class="jc-days"> <span>1</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>22</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Mar 2027</span> 
- <span class="jc-days"> <span>1</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>29</span> 
-</span> 
-</div> 
-</div> 
- <div class="jc-legend"> <span class="jc-legend-item"> <span class="jc-legend-dot jc-legend-avail"></span> 
-Available</span> 
- <span class="jc-legend-item"> <span class="jc-legend-dot jc-legend-sold"></span> 
-Sold out</span> 
-</div> 
-</div> 
- <div class="journey-card-facts"> <div class="journey-card-fact"> <span class="journey-card-fact-value">11 Days</span> 
- <span class="journey-card-fact-label">Duration</span> 
-</div> 
- <div class="journey-card-fact"> <span class="journey-card-fact-value">From NZ $7,495</span> 
- <span class="journey-card-fact-label">Per person</span> 
-</div> 
- <div class="journey-card-fact"> <span class="journey-card-fact-value" data-departure-value="">7</span> 
- <span class="journey-card-fact-label" data-departure-label="">Departures</span> 
-</div> 
-</div> 
- <div class="journey-card-includes"> <span class="journey-card-includes-label">Includes the &ldquo;Big 5&rdquo; Rail Adventures</span> 
- <div class="journey-card-pills"> <span class="journey-card-pill">TranzAlpine</span> 
- <span class="journey-card-pill">Kingston Flyer (Steam)</span> 
- <span class="journey-card-pill">The Mainlander (Inv&ndash;Dun)</span> 
- <span class="journey-card-pill">Taieri Gorge</span> 
- <span class="journey-card-pill">The Mainlander (Dun&ndash;Oam)</span> 
-</div> 
-</div> 
- <div class="journey-card-actions"> <a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/summer-tour-11-day-tours">View Tour</a> 
- <a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/summer-tour-11-day-tours#tour-dates">Check Dates</a> 
- <a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/summer-tour-11-day-tours#tour-brochure">Brochure</a> 
-</div> 
-</div> 
-</article> 
-<!-- ▸ PINNACLE TOUR 2027 ──────────────────────────────────────────── --> <article class="journey-card journey-card-pinnacle" data-season="pinnacle" data-tour="pinnacle-2027"> <div class="journey-card-image-wrap"><img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY3-19-1920w.webp" alt="The Pinnacle Tour 2027" onerror="handleImageLoadError(this)"/> <div class="journey-card-badges"> <span class="journey-card-badge journey-card-badge-pinnacle">Small Group &middot; 5-Star Luxury</span> 
- <span class="journey-card-status"> <span class="journey-card-status-dot"></span> 
-Now Booking</span> 
-</div> 
-</div> 
- <div class="journey-card-body"> <h3 class="journey-card-name">The 'Pinnacle Tour' 2027</h3> 
- <p class="journey-card-host">Hosted by Peter Hillary, son of Sir Edmund Hillary</p> 
- <span class="journey-card-bestfor"> <svg viewbox="0 0 24 24"> <circle cx="12" cy="12" r="10"></circle> 
- <path d="M12 6v6l4 2"></path> 
-</svg> 
-Best for: A once-in-a-lifetime experience</span> 
- <p class="journey-card-description">One small group. One departure. A 15-day journey hosted personally by Peter Hillary. Premium accommodation, helicopter flights, jet boat safaris, and a Kingston Flyer steam train experience &mdash; the South Island at its absolute best.</p> 
- <div class="journey-card-next" data-next-placeholder=""> <span class="journey-card-next-pulse"></span> 
- <div class="journey-card-next-text"> <span class="journey-card-next-label">Now Booking</span> 
- <span class="journey-card-next-date">Departures available &mdash; see tour</span> 
-</div> 
-</div> 
- <div class="journey-card-departures"> <span class="journey-card-dates-label">All departure dates</span> 
- <div class="jc-months"> <div class="jc-month"> <span class="jc-month-label">Jan 2027</span> 
- <span class="jc-days"> <span>14</span> 
-</span> 
-</div> 
-</div> 
-</div> 
- <div class="journey-card-facts"> <div class="journey-card-fact"> <span class="journey-card-fact-value">15 Days</span> 
- <span class="journey-card-fact-label">Duration</span> 
-</div> 
- <div class="journey-card-fact"> <span class="journey-card-fact-value">From NZ $25,995</span> 
- <span class="journey-card-fact-label">Per person</span> 
-</div> 
- <div class="journey-card-fact"> <span class="journey-card-fact-value" data-departure-value="">14 Jan</span> 
- <span class="journey-card-fact-label" data-departure-label="">Departs 2027</span> 
-</div> 
-</div> 
- <div class="journey-card-includes"> <span class="journey-card-includes-label">Includes the &ldquo;Famous 4&rdquo; Rail Adventures</span> 
- <div class="journey-card-pills"> <span class="journey-card-pill journey-card-pill-highlight">★ Small Group</span> 
- <span class="journey-card-pill">TranzAlpine</span> 
- <span class="journey-card-pill">Kingston Flyer (Steam)</span> 
- <span class="journey-card-pill">Taieri Gorge</span> 
- <span class="journey-card-pill">Coastal Pacific</span> 
-</div> 
-</div> 
- <div class="journey-card-actions"> <a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/pinnacle-tour-2027">View Tour</a> 
- <a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/pinnacle-tour-2027#tour-dates">Check Dates</a> 
- <a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/pinnacle-tour-2027#tour-brochure">Brochure</a> 
-</div> 
-</div> 
-</article> 
-<!-- ▸ 12-DAY WINTER EDITION 2027 ───────────────────────────────────── --> <article class="journey-card" data-season="winter" data-tour="winter-2027"> <div class="journey-card-image-wrap"><img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29-1920w.webp" alt="12-Day Winter Edition 2027" onerror="handleImageLoadError(this)"/> <div class="journey-card-badges"> <span class="journey-card-badge">Winter Edition &middot; 2027</span> 
- <span class="journey-card-status"> <span class="journey-card-status-dot"></span> 
-Now Booking</span> 
-</div> 
-</div> 
- <div class="journey-card-body"> <h3 class="journey-card-name">12-Day Winter Edition 2027</h3> 
- <span class="journey-card-bestfor"> <svg viewbox="0 0 24 24"> <circle cx="12" cy="12" r="10"></circle> 
- <path d="M12 6v6l4 2"></path> 
-</svg> 
-Best for: Securing a winter departure before the season fills</span> 
- <p class="journey-card-description">The South Island at its most dramatic &mdash; alpine passes wrapped in snow, glaciers in the West, and quiet towns where you'll often have the view to yourself. The same Winter Edition rhythm as 2026, twelve months out.</p> 
- <div class="journey-card-next" data-next-placeholder=""> <span class="journey-card-next-pulse"></span> 
- <div class="journey-card-next-text"> <span class="journey-card-next-label">Now Booking</span> 
- <span class="journey-card-next-date">Departures available &mdash; see tour</span> 
-</div> 
-</div> 
- <div class="journey-card-departures"> <span class="journey-card-dates-label">All departure dates</span> 
- <div class="jc-months"> <div class="jc-month"> <span class="jc-month-label">Jul 2027</span> 
- <span class="jc-days"> <span>10</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>24</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Aug 2027</span> 
- <span class="jc-days"> <span>7</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>14</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>21</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>28</span> 
-</span> 
-</div> 
-</div> 
-</div> 
- <div class="journey-card-facts"> <div class="journey-card-fact"> <span class="journey-card-fact-value">12 Days</span> 
- <span class="journey-card-fact-label">Duration</span> 
-</div> 
- <div class="journey-card-fact"> <span class="journey-card-fact-value">From NZ $8,495</span> 
- <span class="journey-card-fact-label">Per person</span> 
-</div> 
- <div class="journey-card-fact"> <span class="journey-card-fact-value" data-departure-value="">6</span> 
- <span class="journey-card-fact-label" data-departure-label="">Departures</span> 
-</div> 
-</div> 
- <div class="journey-card-includes"> <span class="journey-card-includes-label">Tour Highlights &middot; July &ndash; September 2027</span> 
- <div class="journey-card-pills"> <span class="journey-card-pill">TranzAlpine</span> 
- <span class="journey-card-pill">The Mainlander</span> 
- <span class="journey-card-pill">Taieri Gorge</span> 
- <span class="journey-card-pill">Queenstown</span> 
- <span class="journey-card-pill">Doubtful Sound</span> 
- <span class="journey-card-pill">Aoraki Mt Cook</span> 
-</div> 
-</div> 
- <div class="journey-card-actions"> <a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours">View Tour</a> 
- <a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours#tour-dates">Check Dates</a> 
- <a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours#tour-brochure">Brochure</a> 
-</div> 
-</div> 
-</article> 
-<!-- ▸ 14-DAY SPRING/SUMMER 2027/28 ─────────────────────────────────── --> <article class="journey-card" data-season="spring-summer" data-tour="14day-2728"> <div class="journey-card-image-wrap"><img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low-1920w.jpg" alt="14-Day Spring/Summer Tour 2027/28" onerror="handleImageLoadError(this)"/> <div class="journey-card-badges"> <span class="journey-card-badge">Spring / Summer &middot; 2027/28</span> 
- <span class="journey-card-status"> <span class="journey-card-status-dot"></span> 
-Now Booking</span> 
-</div> 
-</div> 
- <div class="journey-card-body"> <h3 class="journey-card-name">14-Day Spring/Summer Tour 2027/28</h3> 
- <span class="journey-card-bestfor"> <svg viewbox="0 0 24 24"> <circle cx="12" cy="12" r="10"></circle> 
- <path d="M12 6v6l4 2"></path> 
-</svg> 
-Best for: Securing a comprehensive 14-day departure in the 2027/28 season</span> 
- <p class="journey-card-description">The full &ldquo;Super 6&rdquo; rail journey across fourteen days &mdash; South Island loop to Aoraki Mt Cook, then on to Kaikōura, Marlborough, and the Weka Pass heritage railway. The complete route, with 2027/28 departures open from October.</p> 
- <div class="journey-card-next" data-next-placeholder=""> <span class="journey-card-next-pulse"></span> 
- <div class="journey-card-next-text"> <span class="journey-card-next-label">Now Booking</span> 
- <span class="journey-card-next-date">Departures available &mdash; see tour</span> 
-</div> 
-</div> 
- <div class="journey-card-departures"> <span class="journey-card-dates-label">All departure dates</span> 
- <div class="jc-months"> <div class="jc-month"> <span class="jc-month-label">Oct 2027</span> 
- <span class="jc-days"> <span>4</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>11</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>18</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Nov 2027</span> 
- <span class="jc-days"> <span>1</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>8</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>15</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>22</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Dec 2027</span> 
- <span class="jc-days"> <span>6</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Jan 2028</span> 
- <span class="jc-days"> <span>17</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>24</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>31</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Feb 2028</span> 
- <span class="jc-days"> <span>7</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span>14</span> 
-</span> 
-</div> 
-</div> 
-</div> 
- <div class="journey-card-facts"> <div class="journey-card-fact"> <span class="journey-card-fact-value">14 Days</span> 
- <span class="journey-card-fact-label">Duration</span> 
-</div> 
- <div class="journey-card-fact"> <span class="journey-card-fact-value">From NZ $9,990</span> 
- <span class="journey-card-fact-label">Per person</span> 
-</div> 
- <div class="journey-card-fact"> <span class="journey-card-fact-value" data-departure-value="">13</span> 
- <span class="journey-card-fact-label" data-departure-label="">Departures</span> 
-</div> 
-</div> 
- <div class="journey-card-includes"> <span class="journey-card-includes-label">Includes the &ldquo;Super 6&rdquo; Rail Adventures</span> 
- <div class="journey-card-pills"> <span class="journey-card-pill">TranzAlpine</span> 
- <span class="journey-card-pill">Kingston Flyer (Steam)</span> 
- <span class="journey-card-pill">The Mainlander</span> 
- <span class="journey-card-pill">Taieri Gorge</span> 
- <span class="journey-card-pill">Coastal Pacific</span> 
- <span class="journey-card-pill">Weka Pass</span> 
-</div> 
-</div> 
- <div class="journey-card-actions"> <a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/2027-2028-spring/summer-tour-14-days">View Tour</a> 
- <a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/2027-2028-spring/summer-tour-14-days#tour-dates">Check Dates</a> 
- <a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/2027-2028-spring/summer-tour-14-days#tour-brochure">Brochure</a> 
-</div> 
-</div> 
-</article> 
-<!-- ▸ 11-DAY SPRING/SUMMER 2027/28 ─────────────────────────────────── --> <article class="journey-card" data-season="spring-summer" data-tour="11day-2728"> <div class="journey-card-image-wrap"><img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp" alt="11-Day Spring/Summer Tour 2027/28" onerror="handleImageLoadError(this)"/> <div class="journey-card-badges"> <span class="journey-card-badge">Spring / Summer &middot; 2027/28</span> 
- <span class="journey-card-status"> <span class="journey-card-status-dot"></span> 
-Now Booking</span> 
-</div> 
-</div> 
- <div class="journey-card-body"> <h3 class="journey-card-name">11-Day Spring/Summer Tour 2027/28</h3> 
- <span class="journey-card-bestfor"> <svg viewbox="0 0 24 24"> <circle cx="12" cy="12" r="10"></circle> 
- <path d="M12 6v6l4 2"></path> 
-</svg> 
-Best for: Securing an 11-day departure in the 2027/28 season</span> 
- <p class="journey-card-description">The South Island's most iconic experiences across eleven well-paced days &mdash; Arthur's Pass, Queenstown, Te Anau, Dunedin and Aoraki Mt Cook &mdash; built around the &ldquo;Famous 4&rdquo; rail adventures, with optional Milford Sound or Doubtful Sound excursions available. 2027/28 departures open from September.</p> 
- <div class="journey-card-next" data-next-placeholder=""> <span class="journey-card-next-pulse"></span> 
- <div class="journey-card-next-text"> <span class="journey-card-next-label">Now Booking</span> 
- <span class="journey-card-next-date">Departures available &mdash; see tour</span> 
-</div> 
-</div> 
- <div class="journey-card-departures"> <span class="journey-card-dates-label">All departure dates</span> 
- <div class="jc-months"> <div class="jc-month"> <span class="jc-month-label">Sep 2027</span> 
- <span class="jc-days"> <span>27</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Oct 2027</span> 
- <span class="jc-days"> <span>25</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Nov 2027</span> 
- <span class="jc-days"> <span>29</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Jan 2028</span> 
- <span class="jc-days"> <span>10</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Feb 2028</span> 
- <span class="jc-days"> <span>28</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Mar 2028</span> 
- <span class="jc-days"> <span>6</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Apr 2028</span> 
- <span class="jc-days"> <span>17</span> 
-</span> 
-</div> 
-</div> 
-</div> 
- <div class="journey-card-facts"> <div class="journey-card-fact"> <span class="journey-card-fact-value">11 Days</span> 
- <span class="journey-card-fact-label">Duration</span> 
-</div> 
- <div class="journey-card-fact"> <span class="journey-card-fact-value">From NZ $8,490</span> 
- <span class="journey-card-fact-label">Per person</span> 
-</div> 
- <div class="journey-card-fact"> <span class="journey-card-fact-value" data-departure-value="">7</span> 
- <span class="journey-card-fact-label" data-departure-label="">Departures</span> 
-</div> 
-</div> 
- <div class="journey-card-includes"> <span class="journey-card-includes-label">Includes the &ldquo;Famous 4&rdquo; Rail Adventures</span> 
- <div class="journey-card-pills"> <span class="journey-card-pill">TranzAlpine</span> 
- <span class="journey-card-pill">Kingston Flyer (Steam)</span> 
- <span class="journey-card-pill">The Mainlander (Invercargill-Dunedin)</span> 
- <span class="journey-card-pill">Taieri Gorge</span> 
-</div> 
-</div> 
- <div class="journey-card-actions"> <a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/2027-2028-spring/summer-tour-11-days">View Tour</a> 
- <a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/2027-2028-spring/summer-tour-11-days#tour-dates">Check Dates</a> 
- <a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/2027-2028-spring/summer-tour-11-days#tour-brochure">Brochure</a> 
-</div> 
-</div> 
-</article> 
- <article class="journey-card" data-season="winter" data-tour="winter-2026"> <div class="journey-card-image-wrap"><img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/183840-lake-sarah-in-snow-b1e7ecbb-1920w.webp" alt="12-Day Winter Edition 2026" onerror="handleImageLoadError(this)"/> <div class="journey-card-badges"> <span class="journey-card-badge">Winter Edition &middot; 2026</span> 
- <span class="journey-card-status journey-card-status-sold"> <span class="journey-card-status-dot"></span> 
-Sold Out</span> 
-</div> 
-</div> 
- <div class="journey-card-body"> <h3 class="journey-card-name">12-Day Winter Edition 2026</h3> 
- <span class="journey-card-bestfor"> <svg viewbox="0 0 24 24"> <circle cx="12" cy="12" r="10"></circle> 
- <path d="M12 6v6l4 2"></path> 
-</svg> 
-Best for: Travellers who want the South Island at its most dramatic</span> 
- <p class="journey-card-description">Snow-capped landscapes, quiet alpine towns, and a pace that's all its own. Four rail journeys including the TranzAlpine, paired with extended stays in Queenstown, Doubtful Sound, and Aoraki Mt Cook.</p> 
- <div class="journey-card-next journey-card-next-soldout" data-next-placeholder="" data-sold-note="2027 season now booking"> <span class="journey-card-next-pulse"></span> 
- <div class="journey-card-next-text"> <span class="journey-card-next-label">Season Complete</span> 
- <span class="journey-card-next-date">2027 season now booking</span> 
-</div> 
-</div> 
- <div class="journey-card-departures"> <span class="journey-card-dates-label">All departure dates</span> 
- <div class="jc-months"> <div class="jc-month"> <span class="jc-month-label">Jun 2026</span> 
- <span class="jc-days"> <span class="jc-day-sold" title="Sold out">27</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Jul 2026</span> 
- <span class="jc-days"> <span class="jc-day-sold" title="Sold out">18</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Aug 2026</span> 
- <span class="jc-days"> <span class="jc-day-sold" title="Sold out">1</span> 
-</span> 
-</div> 
- <div class="jc-month"> <span class="jc-month-label">Sep 2026</span> 
- <span class="jc-days"> <span class="jc-day-sold" title="Sold out">5</span> 
- <span class="jc-day-sep">&middot;</span> 
- <span class="jc-day-sold" title="Sold out">12</span> 
-</span> 
-</div> 
-</div> 
- <div class="jc-legend"> <span class="jc-legend-item"> <span class="jc-legend-dot jc-legend-avail"></span> 
-Available</span> 
- <span class="jc-legend-item"> <span class="jc-legend-dot jc-legend-sold"></span> 
-Sold out</span> 
-</div> 
-</div> 
- <div class="journey-card-facts"> <div class="journey-card-fact"> <span class="journey-card-fact-value">12 Days</span> 
- <span class="journey-card-fact-label">Duration</span> 
-</div> 
- <div class="journey-card-fact"> <span class="journey-card-fact-value">From NZ $7,995</span> 
- <span class="journey-card-fact-label">Per person</span> 
-</div> 
- <div class="journey-card-fact"> <span class="journey-card-fact-value" data-departure-value="">&mdash;</span> 
- <span class="journey-card-fact-label" data-departure-label="">Departures</span> 
-</div> 
-</div> 
- <div class="journey-card-includes"> <span class="journey-card-includes-label">Tour Highlights &middot; June &ndash; September 2026</span> 
- <div class="journey-card-pills"> <span class="journey-card-pill">TranzAlpine</span> 
- <span class="journey-card-pill">The Mainlander</span> 
- <span class="journey-card-pill">Taieri Gorge</span> 
- <span class="journey-card-pill">Queenstown</span> 
- <span class="journey-card-pill">Doubtful Sound</span> 
- <span class="journey-card-pill">Aoraki Mt Cook</span> 
-</div> 
-</div> 
- <p class="journey-card-soldnote"> <strong>2026 season sold out.</strong> 
-Every 2026 Winter Edition departure has now been filled. The 12-Day Winter Edition returns next winter &mdash; <a href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours">see the 2027 departures</a>.</p> 
- <div class="journey-card-actions"> <a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours">View Tour</a> 
- <a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours#tour-dates">Check Dates</a> 
- <a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours#tour-brochure">Brochure</a> 
-</div> 
-</div> 
-</article> 
-</div> 
-<!-- END JOURNEYS LIST --><!-- ── PAST DEPARTURES SECTION ────────────────────────────────────────── --> <div class="sehe-past-section"> <div class="sehe-past-header"> <h3>Sold Out 2026 Departures</h3> 
- <p>These tours for the current season have sold out. Most departures fill three to five months in advance &mdash; we recommend securing your preferred date early.</p> 
-</div> 
- <div class="sehe-past-grid"> <a class="past-card" href="https://irp.cdn-website.com/35e9f777/files/uploaded/Autumn+11+Day+May+2026_Tour+Brochure.pdf" target="_blank" rel="noopener"> <div class="past-card-image" style="background-image: url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-06-1920w.webp');"></div> 
- <div class="past-card-body"> <h4 class="past-card-name">11-Day Autumn Tour</h4> 
- <p class="past-card-meta">From NZ $6,995 &middot; May 2026</p> 
- <span class="past-card-status">Sold Out</span> 
-</div> 
-</a> 
- <a class="past-card" href="https://irp.cdn-website.com/35e9f777/files/uploaded/Web_10+Day+Tour+Brochure_31+March-9+April+2026.pdf" target="_blank" rel="noopener"> <div class="past-card-image" style="background-image: url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Rail-and-Tourism-Group-Holdings-Background-Image-1920w.webp');"></div> 
- <div class="past-card-body"> <h4 class="past-card-name">10-Day Spring/Summer Tour</h4> 
- <p class="past-card-meta">From NZ $7,245 &middot; 2026</p> 
- <span class="past-card-status">Sold Out</span> 
-</div> 
-</a> 
- <a class="past-card" href="https://irp.cdn-website.com/35e9f777/files/uploaded/TA_25_26_Tour_Brochure_Sep_25-Apr_26-061f3770.pdf" target="_blank" rel="noopener"> <div class="past-card-image" style="background-image: url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-About-SEHE-Rail-Tour-4-1920w.jpg');"></div> 
- <div class="past-card-body"> <h4 class="past-card-name">13-Day Spring/Summer Tour</h4> 
- <p class="past-card-meta">From NZ $8,495 &middot; 2025/26</p> 
- <span class="past-card-status">Sold Out</span> 
-</div> 
-</a> 
-</div> 
-</div> 
-<!-- ── FAQ (folded in from the old native Duda row — page is one piece) ── --> <div class="sehe-jfaq"> <div class="sehe-past-header"> <h3>Frequently Asked Questions</h3> 
- <p>The questions we hear most when travellers are choosing between the journeys.</p> 
-</div> 
- <details class="jfaq-item"> <summary>What's the difference between the 14-day and 11-day Spring/Summer tours?</summary> 
- <div class="jfaq-a"> <p>The 14-day tour is our most comprehensive journey, featuring the &ldquo;Super 6&rdquo; rail adventures and covering the full length of the South Island &mdash; from Franz Josef and Milford Sound through to Kaikōura and Marlborough. The 11-day tour focuses on the core highlights including Arthur's Pass, Queenstown, Milford Sound, Dunedin and Aoraki Mt Cook, making it ideal if you'd prefer a slightly shorter journey without missing the iconic experiences.</p> 
-</div> 
-</details> 
- <details class="jfaq-item"> <summary>What makes the Winter Edition tours different?</summary> 
- <div class="jfaq-a"> <p>The Winter Edition tours are an entirely different experience. The South Island in winter offers snow-capped mountain scenery, crisp alpine air, and a cosier, more intimate atmosphere with smaller group sizes. The itinerary is tailored to make the most of the season, and it's our most affordable tour option.</p> 
-</div> 
-</details> 
- <details class="jfaq-item"> <summary>How is The Pinnacle Tour different from the other tours?</summary> 
- <div class="jfaq-a"> <p>The Pinnacle is our most exclusive experience &mdash; a small-group luxury journey hosted by Peter Hillary, son of Sir Edmund Hillary. It includes premium accommodations, extended stays at key destinations, and a more personal, unhurried pace. With only one departure and strictly limited numbers, it's designed for travellers who want something truly exceptional.</p> 
-</div> 
-</details> 
- <details class="jfaq-item"> <summary>Which tour is best if it's my first time visiting the South Island?</summary> 
- <div class="jfaq-a"> <p>The 14-day Spring/Summer tour covers the most ground, so it's a wonderful way to experience the full diversity of the South Island in one journey. If you have less time available, the 11-day tour still takes in all the must-see destinations. Both are designed so you don't need to worry about logistics &mdash; everything is taken care of.</p> 
-</div> 
-</details> 
- <details class="jfaq-item"> <summary>Can I choose my seat on the train carriage or coach?</summary> 
- <div class="jfaq-a"> <p>For your enjoyment and comfort, seating is not pre-allocated. We ask that you rotate seating on a regular basis to allow different viewing opportunities for all passengers. If you wish to be seated with a group of friends, please let us know before the tour so that you will be allocated seating on the same coach. If you suffer from travel sickness, please ensure that you have appropriate medication with you.</p> 
-</div> 
-</details> 
- <details class="jfaq-item"> <summary>How far in advance should I book?</summary> 
- <div class="jfaq-a"> <p>Our tours are limited in size and regularly sell out, particularly during the spring and summer season. We'd recommend booking at least 3&ndash;4 months ahead of your preferred departure to secure your place. You can see our recently sold-out departures just above &mdash; once they're gone, they're gone.</p> 
-</div> 
-</details> 
- <details class="jfaq-item"> <summary>Do I need to pay the full amount upfront?</summary> 
- <div class="jfaq-a"> <p>No &mdash; only a 20% deposit is required to secure your booking. The remaining balance is due closer to your departure date. Payment is by internet banking; credit card bookings incur a 2% fee.</p> 
-</div> 
-</details> 
- <details class="jfaq-item"> <summary>Can I join the tour as a solo traveller?</summary> 
- <div class="jfaq-a"> <p>Absolutely. We regularly welcome solo travellers and many of our guests travel independently. A single supplement applies for your own room, and you'll be joining a friendly group of like-minded travellers &mdash; many of our guests tell us the people they meet on tour become lasting friends.</p> 
-</div> 
-</details> 
- <details class="jfaq-item"> <summary>What's included in the tour price?</summary> 
- <div class="jfaq-a"> <p>All tours include accommodation at 4-star or above properties, all rail journeys and coach travel, most meals (the exact number varies by tour &mdash; check the individual tour page for details), and entry to all scheduled attractions and experiences. Optional excursions such as helicopter flights or whale watching are available at additional cost.</p> 
-</div> 
-</details> 
-</div> 
-<!-- ── CONTACT (folded in from the old native Duda row) ── --> <div class="sehe-jcontact"> <div class="sehe-jcontact-copy"> <h3>Need help choosing the right tour?</h3> 
- <p>Our team is here to help you find the perfect journey. Call us or get in touch and we'll match you with the right tour for your dates and interests.</p> 
-</div> 
- <div class="sehe-jcontact-actions"> <a class="sehe-jcontact-btn sehe-jcontact-btn--primary" href="/contact">Contact Us</a> 
- <a class="sehe-jcontact-btn sehe-jcontact-btn--ghost" href="tel:+6439741812">+64 3 974 1812</a> 
-</div> 
-</div> 
-</div> 
-<!-- END SEHE JOURNEYS SECTION --> <script>
+ <div class="sehe-journeys">
+  <!-- ── HEADER ──────────────────────────────────────────────────────────── -->
+  <!-- ── INCLUDED IN ALL TOURS ──────────────────────────────────────────── -->
+  <div class="sehe-inclusions">
+   <div class="sehe-inclusions-eyebrow">
+    Included in every tour
+   </div>
+   <div class="sehe-inclusions-grid">
+    <div class="inclusion-item">
+     <div class="inclusion-icon">
+      <svg viewBox="0 0 24 24">
+       <rect x="4" y="4" width="16" height="12" rx="2">
+       </rect>
+       <path d="M4 11h16">
+       </path>
+       <rect x="6.5" y="6.5" width="4" height="3">
+       </rect>
+       <rect x="13.5" y="6.5" width="4" height="3">
+       </rect>
+       <circle cx="8" cy="19" r="1.5">
+       </circle>
+       <circle cx="16" cy="19" r="1.5">
+       </circle>
+       <path d="M9.5 19h5">
+       </path>
+       <path d="M5 16l-1.5 3">
+       </path>
+       <path d="M19 16l1.5 3">
+       </path>
+      </svg>
+     </div>
+     <div class="inclusion-label">
+      Iconic Rail Journeys
+     </div>
+     <div class="inclusion-sub">
+      Multiple scenic rail experiences on every tour
+     </div>
+    </div>
+    <div class="inclusion-item">
+     <div class="inclusion-icon">
+      <svg viewBox="0 0 24 24">
+       <path d="M3 21h18">
+       </path>
+       <path d="M5 21V8l7-5 7 5v13">
+       </path>
+       <path d="M9 21v-6h6v6">
+       </path>
+       <path d="M9 11h.01M15 11h.01">
+       </path>
+      </svg>
+     </div>
+     <div class="inclusion-label">
+      4-Star+ Accommodations
+     </div>
+     <div class="inclusion-sub">
+      Carefully selected accommodation
+     </div>
+    </div>
+    <div class="inclusion-item">
+     <div class="inclusion-icon">
+      <svg viewBox="0 0 24 24">
+       <rect x="3" y="6" width="18" height="11" rx="2">
+       </rect>
+       <circle cx="7.5" cy="19" r="1.5">
+       </circle>
+       <circle cx="16.5" cy="19" r="1.5">
+       </circle>
+       <line x1="3" y1="12" x2="21" y2="12">
+       </line>
+       <line x1="7" y1="9" x2="9" y2="9">
+       </line>
+      </svg>
+     </div>
+     <div class="inclusion-label">
+      Luxury Coaches
+     </div>
+     <div class="inclusion-sub">
+      Seamless transfers and friendly drivers
+     </div>
+    </div>
+    <div class="inclusion-item">
+     <div class="inclusion-icon">
+      <svg viewBox="0 0 24 24">
+       <line x1="6" y1="3" x2="6" y2="21">
+       </line>
+       <path d="M6 4h12l-3 4 3 4H6">
+       </path>
+      </svg>
+     </div>
+     <div class="inclusion-label">
+      Expert Tour Leaders
+     </div>
+     <div class="inclusion-sub">
+      Experienced Kiwi tour leaders guide every turn
+     </div>
+    </div>
+    <div class="inclusion-item">
+     <div class="inclusion-icon">
+      <svg viewBox="0 0 24 24">
+       <path d="M12 2L9.5 8.5 2 9.3l5.7 5L6 22l6-3.5 6 3.5-1.7-7.7 5.7-5-7.5-.8z">
+       </path>
+      </svg>
+     </div>
+     <div class="inclusion-label">
+      Hillary Family Speaker
+     </div>
+     <div class="inclusion-sub">
+      Guest speaker is a Hillary family representative
+     </div>
+    </div>
+    <div class="inclusion-item">
+     <div class="inclusion-icon">
+      <svg viewBox="0 0 24 24">
+       <circle cx="12" cy="12" r="10">
+       </circle>
+       <path d="M12 6v6l4 2">
+       </path>
+      </svg>
+     </div>
+     <div class="inclusion-label">
+      Only 20% Deposit
+     </div>
+     <div class="inclusion-sub">
+      Reserve your booking with a 20% deposit
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- ── TRUSTPILOT TRUST STRIP ──────────────────────────────────────── -->
+  <div class="sehe-trustpilot">
+   <p class="sehe-trustpilot-prefix">
+    <span class="sehe-trustpilot-quote" data-quote-target="">
+     “I would describe this as a world-class tour.”
+    </span>
+   </p>
+   <div class="sehe-trustpilot-widget">
+    <!-- TrustBox widget - Micro Star -->
+    <div class="trustpilot-widget" data-locale="en-NZ" data-template-id="5419b732fbfb950b10de65e5" data-businessunit-id="67af6f95db89fc000f855205" data-style-height="24px" data-style-width="100%">
+     <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">
+      Trustpilot
+     </a>
+    </div>
+    <!-- End TrustBox widget -->
+   </div>
+  </div>
+  <!-- ── FILTER BAR ─────────────────────────────────────────────────────── -->
+  <div class="sehe-filter" role="tablist" aria-label="Filter tours by season">
+   <span class="sehe-filter-label">
+    Filter by
+   </span>
+   <button type="button" class="sehe-filter-btn is-active" data-filter="all">
+    All Tours
+   </button>
+   <button type="button" class="sehe-filter-btn" data-filter="spring-summer">
+    Spring / Summer
+   </button>
+   <button type="button" class="sehe-filter-btn" data-filter="winter">
+    Winter
+   </button>
+   <button type="button" class="sehe-filter-btn" data-filter="pinnacle">
+    Pinnacle
+   </button>
+  </div>
+  <!-- ── JOURNEYS LIST ──────────────────────────────────────────────────── -->
+  <div class="sehe-journeys-list">
+   <!-- ▸ 12-DAY WINTER EDITION 2026 ───────────────────────────────────── -->
+   <!-- ▸ 14-DAY SPRING/SUMMER ─────────────────────────────────────────── -->
+   <article class="journey-card" data-season="spring-summer" data-tour="14day-2627">
+    <div class="journey-card-image-wrap">
+     <img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/TSS+Earnslaw+2.webp" alt="14-Day Spring/Summer Tour">
+     <div class="journey-card-badges">
+      <span class="journey-card-badge">
+       Spring / Summer · 2026/27
+      </span>
+      <span class="journey-card-status">
+       <span class="journey-card-status-dot">
+       </span>
+       Now Booking
+      </span>
+     </div>
+    </div>
+    <div class="journey-card-body">
+     <h3 class="journey-card-name">
+      14-Day Spring/Summer Tour 2026/27
+     </h3>
+     <span class="journey-card-bestfor">
+      <svg viewBox="0 0 24 24">
+       <circle cx="12" cy="12" r="10">
+       </circle>
+       <path d="M12 6v6l4 2">
+       </path>
+      </svg>
+      Best for: First-timers who want the complete South Island experience
+     </span>
+     <p class="journey-card-description">
+      Our most comprehensive journey — coast to coast, top to bottom. Six iconic rail journeys including the TranzAlpine, Kingston Flyer steam train, and Coastal Pacific. Two weeks of glaciers, fiords, mountains, and wine country.
+     </p>
+     <div class="journey-card-next" data-next-placeholder="">
+      <span class="journey-card-next-pulse">
+      </span>
+      <div class="journey-card-next-text">
+       <span class="journey-card-next-label">
+        Now Booking
+       </span>
+       <span class="journey-card-next-date">
+        Departures available — see tour
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-departures"><span class="journey-card-dates-label">All departure dates</span><div class="jc-months"><div class="jc-month"><span class="jc-month-label">Oct 2026</span><span class="jc-days"><span class="jc-day-sold" title="Sold out">12</span><span class="jc-day-sep">·</span><span class="jc-day-sold" title="Sold out">19</span><span class="jc-day-sep">·</span><span class="jc-day-sold" title="Sold out">26</span></span></div><div class="jc-month"><span class="jc-month-label">Nov 2026</span><span class="jc-days"><span>9</span><span class="jc-day-sep">·</span><span>16</span><span class="jc-day-sep">·</span><span>23</span></span></div><div class="jc-month"><span class="jc-month-label">Jan 2027</span><span class="jc-days"><span>4</span><span class="jc-day-sep">·</span><span>11</span><span class="jc-day-sep">·</span><span>18</span><span class="jc-day-sep">·</span><span>25</span></span></div><div class="jc-month"><span class="jc-month-label">Feb 2027</span><span class="jc-days"><span>8</span><span class="jc-day-sep">·</span><span>15</span></span></div><div class="jc-month"><span class="jc-month-label">Mar 2027</span><span class="jc-days"><span>8</span><span class="jc-day-sep">·</span><span>15</span><span class="jc-day-sep">·</span><span>22</span></span></div><div class="jc-month"><span class="jc-month-label">Apr 2027</span><span class="jc-days"><span>5</span><span class="jc-day-sep">·</span><span>12</span></span></div></div><div class="jc-legend"><span class="jc-legend-item"><span class="jc-legend-dot jc-legend-avail"></span>Available</span><span class="jc-legend-item"><span class="jc-legend-dot jc-legend-sold"></span>Sold out</span></div></div>
+     <div class="journey-card-facts">
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value">
+        14 Days
+       </span>
+       <span class="journey-card-fact-label">
+        Duration
+       </span>
+      </div>
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value">
+        From NZ $8,995
+       </span>
+       <span class="journey-card-fact-label">
+        Per person
+       </span>
+      </div>
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value" data-departure-value="">
+        17
+       </span>
+       <span class="journey-card-fact-label" data-departure-label="">
+        Departures
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-includes">
+      <span class="journey-card-includes-label">
+       Includes the &ldquo;Super 6&rdquo; Rail Adventures
+      </span>
+      <div class="journey-card-pills">
+       <span class="journey-card-pill">
+        TranzAlpine
+       </span>
+       <span class="journey-card-pill">
+        Kingston Flyer (Steam)
+       </span>
+       <span class="journey-card-pill">
+        The Mainlander
+       </span>
+       <span class="journey-card-pill">
+        Taieri Gorge
+       </span>
+       <span class="journey-card-pill">
+        Coastal Pacific
+       </span>
+       <span class="journey-card-pill">
+        Weka Pass
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-actions">
+      <a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/summer-tour-14-days">
+       View Tour
+      </a>
+      <a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/summer-tour-14-days#tour-dates">
+       Check Dates
+      </a>
+      <a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/summer-tour-14-days#tour-brochure">
+       Brochure
+      </a>
+     </div>
+    </div>
+   </article>
+   <!-- ▸ 11-DAY SPRING/SUMMER ─────────────────────────────────────────── -->
+   <article class="journey-card" data-season="spring-summer" data-tour="11day-2627">
+    <div class="journey-card-image-wrap">
+     <img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Coastal-Pacific_North-of-Claverly--KR.webp" alt="11-Day Spring/Summer Tour">
+     <div class="journey-card-badges">
+      <span class="journey-card-badge">
+       Spring / Summer · 2026/27
+      </span>
+      <span class="journey-card-status">
+       <span class="journey-card-status-dot">
+       </span>
+       Now Booking
+      </span>
+     </div>
+    </div>
+    <div class="journey-card-body">
+     <h3 class="journey-card-name">
+      11-Day Spring/Summer Tour 2026/27
+     </h3>
+     <span class="journey-card-bestfor">
+      <svg viewBox="0 0 24 24">
+       <circle cx="12" cy="12" r="10">
+       </circle>
+       <path d="M12 6v6l4 2">
+       </path>
+      </svg>
+      Best for: Travellers wanting the highlights without a long stay
+     </span>
+     <p class="journey-card-description">
+      The South Island's most iconic experiences in eleven well-paced days. Arthur's Pass, Queenstown, Milford Sound, Dunedin, and Aoraki Mt Cook — every must-see, with time to actually enjoy each one.
+     </p>
+     <div class="journey-card-next" data-next-placeholder="">
+      <span class="journey-card-next-pulse">
+      </span>
+      <div class="journey-card-next-text">
+       <span class="journey-card-next-label">
+        Now Booking
+       </span>
+       <span class="journey-card-next-date">
+        Departures available — see tour
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-departures"><span class="journey-card-dates-label">All departure dates</span><div class="jc-months"><div class="jc-month"><span class="jc-month-label">Oct 2026</span><span class="jc-days"><span class="jc-day-sold" title="Sold out">5</span></span></div><div class="jc-month"><span class="jc-month-label">Nov 2026</span><span class="jc-days"><span>2</span><span class="jc-day-sep">·</span><span>30</span></span></div><div class="jc-month"><span class="jc-month-label">Feb 2027</span><span class="jc-days"><span>1</span><span class="jc-day-sep">·</span><span>22</span></span></div><div class="jc-month"><span class="jc-month-label">Mar 2027</span><span class="jc-days"><span>1</span><span class="jc-day-sep">·</span><span>29</span></span></div></div><div class="jc-legend"><span class="jc-legend-item"><span class="jc-legend-dot jc-legend-avail"></span>Available</span><span class="jc-legend-item"><span class="jc-legend-dot jc-legend-sold"></span>Sold out</span></div></div>
+     <div class="journey-card-facts">
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value">
+        11 Days
+       </span>
+       <span class="journey-card-fact-label">
+        Duration
+       </span>
+      </div>
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value">
+        From NZ $7,495
+       </span>
+       <span class="journey-card-fact-label">
+        Per person
+       </span>
+      </div>
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value" data-departure-value="">
+        7
+       </span>
+       <span class="journey-card-fact-label" data-departure-label="">
+        Departures
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-includes">
+      <span class="journey-card-includes-label">
+       Includes the &ldquo;Big 5&rdquo; Rail Adventures
+      </span>
+      <div class="journey-card-pills">
+       <span class="journey-card-pill">
+        TranzAlpine
+       </span>
+       <span class="journey-card-pill">
+        Kingston Flyer (Steam)
+       </span>
+       <span class="journey-card-pill">
+        The Mainlander (Inv–Dun)
+       </span>
+       <span class="journey-card-pill">
+        Taieri Gorge
+       </span>
+       <span class="journey-card-pill">
+        The Mainlander (Dun–Oam)
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-actions">
+      <a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/summer-tour-11-day-tours">
+       View Tour
+      </a>
+      <a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/summer-tour-11-day-tours#tour-dates">
+       Check Dates
+      </a>
+      <a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/summer-tour-11-day-tours#tour-brochure">
+       Brochure
+      </a>
+     </div>
+    </div>
+   </article>
+   <!-- ▸ PINNACLE TOUR 2027 ──────────────────────────────────────────── -->
+   <article class="journey-card journey-card-pinnacle" data-season="pinnacle" data-tour="pinnacle-2027">
+    <div class="journey-card-image-wrap">
+     <img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/SEHE_OCT2024_DAY3-19.webp" alt="The Pinnacle Tour 2027">
+     <div class="journey-card-badges">
+      <span class="journey-card-badge journey-card-badge-pinnacle">
+       Small Group · 5-Star Luxury
+      </span>
+      <span class="journey-card-status">
+       <span class="journey-card-status-dot">
+       </span>
+       Now Booking
+      </span>
+     </div>
+    </div>
+    <div class="journey-card-body">
+     <h3 class="journey-card-name">
+      The 'Pinnacle Tour' 2027
+     </h3>
+     <p class="journey-card-host">
+      Hosted by Peter Hillary, son of Sir Edmund Hillary
+     </p>
+     <span class="journey-card-bestfor">
+      <svg viewBox="0 0 24 24">
+       <circle cx="12" cy="12" r="10">
+       </circle>
+       <path d="M12 6v6l4 2">
+       </path>
+      </svg>
+      Best for: A once-in-a-lifetime experience
+     </span>
+     <p class="journey-card-description">
+      One small group. One departure. A 15-day journey hosted personally by Peter Hillary. Premium accommodation, helicopter flights, jet boat safaris, and a Kingston Flyer steam train experience — the South Island at its absolute best.
+     </p>
+     <div class="journey-card-next" data-next-placeholder="">
+      <span class="journey-card-next-pulse">
+      </span>
+      <div class="journey-card-next-text">
+       <span class="journey-card-next-label">
+        Now Booking
+       </span>
+       <span class="journey-card-next-date">
+        Departures available — see tour
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-departures"><span class="journey-card-dates-label">All departure dates</span><div class="jc-months"><div class="jc-month"><span class="jc-month-label">Jan 2027</span><span class="jc-days"><span>14</span></span></div></div></div>
+     <div class="journey-card-facts">
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value">
+        15 Days
+       </span>
+       <span class="journey-card-fact-label">
+        Duration
+       </span>
+      </div>
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value">
+        From NZ $25,995
+       </span>
+       <span class="journey-card-fact-label">
+        Per person
+       </span>
+      </div>
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value" data-departure-value="">
+        14 Jan
+       </span>
+       <span class="journey-card-fact-label" data-departure-label="">
+        Departs 2027
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-includes">
+      <span class="journey-card-includes-label">
+       Includes the &ldquo;Famous 4&rdquo; Rail Adventures
+      </span>
+      <div class="journey-card-pills">
+       <span class="journey-card-pill journey-card-pill-highlight">
+        ★ Small Group
+       </span>
+       <span class="journey-card-pill">
+        TranzAlpine
+       </span>
+       <span class="journey-card-pill">
+        Kingston Flyer (Steam)
+       </span>
+       <span class="journey-card-pill">
+        Taieri Gorge
+       </span>
+       <span class="journey-card-pill">
+        Coastal Pacific
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-actions">
+      <a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/pinnacle-tour-2027">
+       View Tour
+      </a>
+      <a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/pinnacle-tour-2027#tour-dates">
+       Check Dates
+      </a>
+      <a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/pinnacle-tour-2027#tour-brochure">
+       Brochure
+      </a>
+     </div>
+    </div>
+   </article>
+   <!-- ▸ 12-DAY WINTER EDITION 2027 ───────────────────────────────────── -->
+   <article class="journey-card" data-season="winter" data-tour="winter-2027">
+    <div class="journey-card-image-wrap">
+     <img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Fox-Glacier--West-Coast-20-%28credit-Clint-Trahan%29.webp" alt="12-Day Winter Edition 2027">
+     <div class="journey-card-badges">
+      <span class="journey-card-badge">
+       Winter Edition · 2027
+      </span>
+      <span class="journey-card-status">
+       <span class="journey-card-status-dot">
+       </span>
+       Now Booking
+      </span>
+     </div>
+    </div>
+    <div class="journey-card-body">
+     <h3 class="journey-card-name">
+      12-Day Winter Edition 2027
+     </h3>
+     <span class="journey-card-bestfor">
+      <svg viewBox="0 0 24 24">
+       <circle cx="12" cy="12" r="10">
+       </circle>
+       <path d="M12 6v6l4 2">
+       </path>
+      </svg>
+      Best for: Securing a winter departure before the season fills
+     </span>
+     <p class="journey-card-description">
+      The South Island at its most dramatic — alpine passes wrapped in snow, glaciers in the West, and quiet towns where you'll often have the view to yourself. The same Winter Edition rhythm as 2026, twelve months out.
+     </p>
+     <div class="journey-card-next" data-next-placeholder="">
+      <span class="journey-card-next-pulse">
+      </span>
+      <div class="journey-card-next-text">
+       <span class="journey-card-next-label">
+        Now Booking
+       </span>
+       <span class="journey-card-next-date">
+        Departures available — see tour
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-departures"><span class="journey-card-dates-label">All departure dates</span><div class="jc-months"><div class="jc-month"><span class="jc-month-label">Jul 2027</span><span class="jc-days"><span>10</span><span class="jc-day-sep">·</span><span>24</span></span></div><div class="jc-month"><span class="jc-month-label">Aug 2027</span><span class="jc-days"><span>7</span><span class="jc-day-sep">·</span><span>14</span><span class="jc-day-sep">·</span><span>21</span><span class="jc-day-sep">·</span><span>28</span></span></div></div></div>
+     <div class="journey-card-facts">
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value">
+        12 Days
+       </span>
+       <span class="journey-card-fact-label">
+        Duration
+       </span>
+      </div>
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value">
+        From NZ $8,495
+       </span>
+       <span class="journey-card-fact-label">
+        Per person
+       </span>
+      </div>
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value" data-departure-value="">
+        6
+       </span>
+       <span class="journey-card-fact-label" data-departure-label="">
+        Departures
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-includes">
+      <span class="journey-card-includes-label">
+       Tour Highlights · July – September 2027
+      </span>
+      <div class="journey-card-pills">
+       <span class="journey-card-pill">
+        TranzAlpine
+       </span>
+       <span class="journey-card-pill">
+        The Mainlander
+       </span>
+       <span class="journey-card-pill">
+        Taieri Gorge
+       </span>
+       <span class="journey-card-pill">
+        Queenstown
+       </span>
+       <span class="journey-card-pill">
+        Doubtful Sound
+       </span>
+       <span class="journey-card-pill">
+        Aoraki Mt Cook
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-actions">
+      <a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours">
+       View Tour
+      </a>
+      <a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours#tour-dates">
+       Check Dates
+      </a>
+      <a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours#tour-brochure">
+       Brochure
+      </a>
+     </div>
+    </div>
+   </article>
+   <!-- ▸ 14-DAY SPRING/SUMMER 2027/28 ─────────────────────────────────── -->
+   <article class="journey-card" data-season="spring-summer" data-tour="14day-2728">
+    <div class="journey-card-image-wrap">
+     <img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/ATTRACTIONS_TaieriGorgeRailway_026_DunedinNZ+low.jpg" alt="14-Day Spring/Summer Tour 2027/28">
+     <div class="journey-card-badges">
+      <span class="journey-card-badge">
+       Spring / Summer · 2027/28
+      </span>
+      <span class="journey-card-status">
+       <span class="journey-card-status-dot">
+       </span>
+       Now Booking
+      </span>
+     </div>
+    </div>
+    <div class="journey-card-body">
+     <h3 class="journey-card-name">
+      14-Day Spring/Summer Tour 2027/28
+     </h3>
+     <span class="journey-card-bestfor">
+      <svg viewBox="0 0 24 24">
+       <circle cx="12" cy="12" r="10">
+       </circle>
+       <path d="M12 6v6l4 2">
+       </path>
+      </svg>
+      Best for: Securing a comprehensive 14-day departure in the 2027/28 season
+     </span>
+     <p class="journey-card-description">
+      The full &ldquo;Super 6&rdquo; rail journey across fourteen days — South Island loop to Aoraki Mt Cook, then on to Kaik&#333;ura, Marlborough, and the Weka Pass heritage railway. The complete route, with 2027/28 departures open from October.
+     </p>
+     <div class="journey-card-next" data-next-placeholder="">
+      <span class="journey-card-next-pulse">
+      </span>
+      <div class="journey-card-next-text">
+       <span class="journey-card-next-label">
+        Now Booking
+       </span>
+       <span class="journey-card-next-date">
+        Departures available — see tour
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-departures"><span class="journey-card-dates-label">All departure dates</span><div class="jc-months"><div class="jc-month"><span class="jc-month-label">Oct 2027</span><span class="jc-days"><span>4</span><span class="jc-day-sep">·</span><span>11</span><span class="jc-day-sep">·</span><span>18</span></span></div><div class="jc-month"><span class="jc-month-label">Nov 2027</span><span class="jc-days"><span>1</span><span class="jc-day-sep">·</span><span>8</span><span class="jc-day-sep">·</span><span>15</span><span class="jc-day-sep">·</span><span>22</span></span></div><div class="jc-month"><span class="jc-month-label">Dec 2027</span><span class="jc-days"><span>6</span></span></div><div class="jc-month"><span class="jc-month-label">Jan 2028</span><span class="jc-days"><span>17</span><span class="jc-day-sep">·</span><span>24</span><span class="jc-day-sep">·</span><span>31</span></span></div><div class="jc-month"><span class="jc-month-label">Feb 2028</span><span class="jc-days"><span>7</span><span class="jc-day-sep">·</span><span>14</span></span></div></div></div>
+     <div class="journey-card-facts">
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value">
+        14 Days
+       </span>
+       <span class="journey-card-fact-label">
+        Duration
+       </span>
+      </div>
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value">
+        From NZ $9,990
+       </span>
+       <span class="journey-card-fact-label">
+        Per person
+       </span>
+      </div>
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value" data-departure-value="">
+        13
+       </span>
+       <span class="journey-card-fact-label" data-departure-label="">
+        Departures
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-includes">
+      <span class="journey-card-includes-label">
+       Includes the &ldquo;Super 6&rdquo; Rail Adventures
+      </span>
+      <div class="journey-card-pills">
+       <span class="journey-card-pill">
+        TranzAlpine
+       </span>
+       <span class="journey-card-pill">
+        Kingston Flyer (Steam)
+       </span>
+       <span class="journey-card-pill">
+        The Mainlander
+       </span>
+       <span class="journey-card-pill">
+        Taieri Gorge
+       </span>
+       <span class="journey-card-pill">
+        Coastal Pacific
+       </span>
+       <span class="journey-card-pill">
+        Weka Pass
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-actions">
+      <a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/2027-2028-spring/summer-tour-14-days">
+       View Tour
+      </a>
+      <a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/2027-2028-spring/summer-tour-14-days#tour-dates">
+       Check Dates
+      </a>
+      <a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/2027-2028-spring/summer-tour-14-days#tour-brochure">
+       Brochure
+      </a>
+     </div>
+    </div>
+   </article>
+   <!-- ▸ 11-DAY SPRING/SUMMER 2027/28 ─────────────────────────────────── -->
+   <article class="journey-card" data-season="spring-summer" data-tour="11day-2728">
+    <div class="journey-card-image-wrap">
+     <img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP.webp" alt="11-Day Spring/Summer Tour 2027/28">
+     <div class="journey-card-badges">
+      <span class="journey-card-badge">
+       Spring / Summer · 2027/28
+      </span>
+      <span class="journey-card-status">
+       <span class="journey-card-status-dot">
+       </span>
+       Now Booking
+      </span>
+     </div>
+    </div>
+    <div class="journey-card-body">
+     <h3 class="journey-card-name">
+      11-Day Spring/Summer Tour 2027/28
+     </h3>
+     <span class="journey-card-bestfor">
+      <svg viewBox="0 0 24 24">
+       <circle cx="12" cy="12" r="10">
+       </circle>
+       <path d="M12 6v6l4 2">
+       </path>
+      </svg>
+      Best for: Securing an 11-day departure in the 2027/28 season
+     </span>
+     <p class="journey-card-description">
+      The South Island's most iconic experiences across eleven well-paced days — Arthur's Pass, Queenstown, Te Anau, Dunedin and Aoraki Mt Cook — built around the &ldquo;Famous 4&rdquo; rail adventures, with optional Milford Sound or Doubtful Sound excursions available. 2027/28 departures open from September.
+     </p>
+     <div class="journey-card-next" data-next-placeholder="">
+      <span class="journey-card-next-pulse">
+      </span>
+      <div class="journey-card-next-text">
+       <span class="journey-card-next-label">
+        Now Booking
+       </span>
+       <span class="journey-card-next-date">
+        Departures available — see tour
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-departures"><span class="journey-card-dates-label">All departure dates</span><div class="jc-months"><div class="jc-month"><span class="jc-month-label">Sep 2027</span><span class="jc-days"><span>27</span></span></div><div class="jc-month"><span class="jc-month-label">Oct 2027</span><span class="jc-days"><span>25</span></span></div><div class="jc-month"><span class="jc-month-label">Nov 2027</span><span class="jc-days"><span>29</span></span></div><div class="jc-month"><span class="jc-month-label">Jan 2028</span><span class="jc-days"><span>10</span></span></div><div class="jc-month"><span class="jc-month-label">Feb 2028</span><span class="jc-days"><span>28</span></span></div><div class="jc-month"><span class="jc-month-label">Mar 2028</span><span class="jc-days"><span>6</span></span></div><div class="jc-month"><span class="jc-month-label">Apr 2028</span><span class="jc-days"><span>17</span></span></div></div></div>
+     <div class="journey-card-facts">
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value">
+        11 Days
+       </span>
+       <span class="journey-card-fact-label">
+        Duration
+       </span>
+      </div>
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value">
+        From NZ $8,490
+       </span>
+       <span class="journey-card-fact-label">
+        Per person
+       </span>
+      </div>
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value" data-departure-value="">
+        7
+       </span>
+       <span class="journey-card-fact-label" data-departure-label="">
+        Departures
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-includes">
+      <span class="journey-card-includes-label">
+       Includes the &ldquo;Famous 4&rdquo; Rail Adventures
+      </span>
+      <div class="journey-card-pills">
+       <span class="journey-card-pill">
+        TranzAlpine
+       </span>
+       <span class="journey-card-pill">
+        Kingston Flyer (Steam)
+       </span>
+       <span class="journey-card-pill">
+        The Mainlander (Invercargill-Dunedin)
+       </span>
+       <span class="journey-card-pill">
+        Taieri Gorge
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-actions">
+      <a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/2027-2028-spring/summer-tour-11-days">
+       View Tour
+      </a>
+      <a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/2027-2028-spring/summer-tour-11-days#tour-dates">
+       Check Dates
+      </a>
+      <a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-2027-spring/2027-2028-spring/summer-tour-11-days#tour-brochure">
+       Brochure
+      </a>
+     </div>
+    </div>
+   </article>
+   <article class="journey-card" data-season="winter" data-tour="winter-2026">
+    <div class="journey-card-image-wrap">
+     <img class="journey-card-image" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/183840-lake-sarah-in-snow-b1e7ecbb.webp" alt="12-Day Winter Edition 2026">
+     <div class="journey-card-badges">
+      <span class="journey-card-badge">
+       Winter Edition · 2026
+      </span>
+      <span class="journey-card-status journey-card-status-sold">
+       <span class="journey-card-status-dot">
+       </span>
+       Sold Out
+      </span>
+     </div>
+    </div>
+    <div class="journey-card-body">
+     <h3 class="journey-card-name">
+      12-Day Winter Edition 2026
+     </h3>
+     <span class="journey-card-bestfor">
+      <svg viewBox="0 0 24 24">
+       <circle cx="12" cy="12" r="10">
+       </circle>
+       <path d="M12 6v6l4 2">
+       </path>
+      </svg>
+      Best for: Travellers who want the South Island at its most dramatic
+     </span>
+     <p class="journey-card-description">
+      Snow-capped landscapes, quiet alpine towns, and a pace that's all its own. Four rail journeys including the TranzAlpine, paired with extended stays in Queenstown, Doubtful Sound, and Aoraki Mt Cook.
+     </p>
+     <div class="journey-card-next journey-card-next-soldout" data-next-placeholder="" data-sold-note="2027 season now booking">
+      <span class="journey-card-next-pulse">
+      </span>
+      <div class="journey-card-next-text">
+       <span class="journey-card-next-label">
+        Season Complete
+       </span>
+       <span class="journey-card-next-date">
+        2027 season now booking
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-departures"><span class="journey-card-dates-label">All departure dates</span><div class="jc-months"><div class="jc-month"><span class="jc-month-label">Jun 2026</span><span class="jc-days"><span class="jc-day-sold" title="Sold out">27</span></span></div><div class="jc-month"><span class="jc-month-label">Jul 2026</span><span class="jc-days"><span class="jc-day-sold" title="Sold out">18</span></span></div><div class="jc-month"><span class="jc-month-label">Aug 2026</span><span class="jc-days"><span class="jc-day-sold" title="Sold out">1</span></span></div><div class="jc-month"><span class="jc-month-label">Sep 2026</span><span class="jc-days"><span class="jc-day-sold" title="Sold out">5</span><span class="jc-day-sep">·</span><span class="jc-day-sold" title="Sold out">12</span></span></div></div><div class="jc-legend"><span class="jc-legend-item"><span class="jc-legend-dot jc-legend-avail"></span>Available</span><span class="jc-legend-item"><span class="jc-legend-dot jc-legend-sold"></span>Sold out</span></div></div>
+     <div class="journey-card-facts">
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value">
+        12 Days
+       </span>
+       <span class="journey-card-fact-label">
+        Duration
+       </span>
+      </div>
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value">
+        From NZ $7,995
+       </span>
+       <span class="journey-card-fact-label">
+        Per person
+       </span>
+      </div>
+      <div class="journey-card-fact">
+       <span class="journey-card-fact-value" data-departure-value="">
+        &mdash;
+       </span>
+       <span class="journey-card-fact-label" data-departure-label="">
+        Departures
+       </span>
+      </div>
+     </div>
+     <div class="journey-card-includes">
+      <span class="journey-card-includes-label">
+       Tour Highlights · June – September 2026
+      </span>
+      <div class="journey-card-pills">
+       <span class="journey-card-pill">
+        TranzAlpine
+       </span>
+       <span class="journey-card-pill">
+        The Mainlander
+       </span>
+       <span class="journey-card-pill">
+        Taieri Gorge
+       </span>
+       <span class="journey-card-pill">
+        Queenstown
+       </span>
+       <span class="journey-card-pill">
+        Doubtful Sound
+       </span>
+       <span class="journey-card-pill">
+        Aoraki Mt Cook
+       </span>
+      </div>
+     </div>
+     <p class="journey-card-soldnote"><strong>2026 season sold out.</strong> Every 2026 Winter Edition departure has now been filled. The 12-Day Winter Edition returns next winter &mdash; <a href="https://www.siredmundhillaryexplorer.com/2027-winter-edition-tours">see the 2027 departures</a>.</p>
 
+     <div class="journey-card-actions">
+      <a class="journey-cta journey-cta-primary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours">
+       View Tour
+      </a>
+      <a class="journey-cta journey-cta-secondary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours#tour-dates">
+       Check Dates
+      </a>
+      <a class="journey-cta journey-cta-tertiary" href="https://www.siredmundhillaryexplorer.com/2026-winter-edition-tours#tour-brochure">
+       Brochure
+      </a>
+     </div>
+    </div>
+   </article>
+  </div>
+  <!-- END JOURNEYS LIST -->
+  <!-- ── PAST DEPARTURES SECTION ────────────────────────────────────────── -->
+  <div class="sehe-past-section">
+   <div class="sehe-past-header">
+    <h3>
+     Sold Out 2026 Departures
+    </h3>
+    <p>
+     These tours for the current season have sold out. Most departures fill three to five months in advance — we recommend securing your preferred date early.
+    </p>
+   </div>
+   <div class="sehe-past-grid">
+    <a class="past-card" href="https://irp.cdn-website.com/35e9f777/files/uploaded/Autumn+11+Day+May+2026_Tour+Brochure.pdf" target="_blank" rel="noopener">
+     <div class="past-card-image" style="background-image: url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/SEHE_OCT2024_DAY2-06.webp');">
+     </div>
+     <div class="past-card-body">
+      <h4 class="past-card-name">
+       11-Day Autumn Tour
+      </h4>
+      <p class="past-card-meta">
+       From NZ $6,995 · May 2026
+      </p>
+      <span class="past-card-status">
+       Sold Out
+      </span>
+     </div>
+    </a>
+    <a class="past-card" href="https://irp.cdn-website.com/35e9f777/files/uploaded/Web_10+Day+Tour+Brochure_31+March-9+April+2026.pdf" target="_blank" rel="noopener">
+     <div class="past-card-image" style="background-image: url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/Rail-and-Tourism-Group-Holdings-Background-Image.webp');">
+     </div>
+     <div class="past-card-body">
+      <h4 class="past-card-name">
+       10-Day Spring/Summer Tour
+      </h4>
+      <p class="past-card-meta">
+       From NZ $7,245 · 2026
+      </p>
+      <span class="past-card-status">
+       Sold Out
+      </span>
+     </div>
+    </a>
+    <a class="past-card" href="https://irp.cdn-website.com/35e9f777/files/uploaded/TA_25_26_Tour_Brochure_Sep_25-Apr_26-061f3770.pdf" target="_blank" rel="noopener">
+     <div class="past-card-image" style="background-image: url('https://irp.cdn-website.com/35e9f777/dms3rep/multi/TranzAlpine--View-of-Cragieburn-Range-across-Lake-About-SEHE-Rail-Tour-4.jpg');">
+     </div>
+     <div class="past-card-body">
+      <h4 class="past-card-name">
+       13-Day Spring/Summer Tour
+      </h4>
+      <p class="past-card-meta">
+       From NZ $8,495 · 2025/26
+      </p>
+      <span class="past-card-status">
+       Sold Out
+      </span>
+     </div>
+    </a>
+   </div>
+  </div>
+  <!-- ── FAQ (folded in from the old native Duda row — page is one piece) ── -->
+  <div class="sehe-jfaq">
+   <div class="sehe-past-header">
+    <h3>Frequently Asked Questions</h3>
+    <p>The questions we hear most when travellers are choosing between the journeys.</p>
+   </div>
+   <details class="jfaq-item">
+    <summary>What's the difference between the 14-day and 11-day Spring/Summer tours?</summary>
+    <div class="jfaq-a"><p>The 14-day tour is our most comprehensive journey, featuring the &ldquo;Super 6&rdquo; rail adventures and covering the full length of the South Island &mdash; from Franz Josef and Milford Sound through to Kaik&#333;ura and Marlborough. The 11-day tour focuses on the core highlights including Arthur's Pass, Queenstown, Milford Sound, Dunedin and Aoraki Mt Cook, making it ideal if you'd prefer a slightly shorter journey without missing the iconic experiences.</p></div>
+   </details>
+   <details class="jfaq-item">
+    <summary>What makes the Winter Edition tours different?</summary>
+    <div class="jfaq-a"><p>The Winter Edition tours are an entirely different experience. The South Island in winter offers snow-capped mountain scenery, crisp alpine air, and a cosier, more intimate atmosphere with smaller group sizes. The itinerary is tailored to make the most of the season, and it's our most affordable tour option.</p></div>
+   </details>
+   <details class="jfaq-item">
+    <summary>How is The Pinnacle Tour different from the other tours?</summary>
+    <div class="jfaq-a"><p>The Pinnacle is our most exclusive experience &mdash; a small-group luxury journey hosted by Peter Hillary, son of Sir Edmund Hillary. It includes premium accommodations, extended stays at key destinations, and a more personal, unhurried pace. With only one departure and strictly limited numbers, it's designed for travellers who want something truly exceptional.</p></div>
+   </details>
+   <details class="jfaq-item">
+    <summary>Which tour is best if it's my first time visiting the South Island?</summary>
+    <div class="jfaq-a"><p>The 14-day Spring/Summer tour covers the most ground, so it's a wonderful way to experience the full diversity of the South Island in one journey. If you have less time available, the 11-day tour still takes in all the must-see destinations. Both are designed so you don't need to worry about logistics &mdash; everything is taken care of.</p></div>
+   </details>
+   <details class="jfaq-item">
+    <summary>Can I choose my seat on the train carriage or coach?</summary>
+    <div class="jfaq-a"><p>For your enjoyment and comfort, seating is not pre-allocated. We ask that you rotate seating on a regular basis to allow different viewing opportunities for all passengers. If you wish to be seated with a group of friends, please let us know before the tour so that you will be allocated seating on the same coach. If you suffer from travel sickness, please ensure that you have appropriate medication with you.</p></div>
+   </details>
+   <details class="jfaq-item">
+    <summary>How far in advance should I book?</summary>
+    <div class="jfaq-a"><p>Our tours are limited in size and regularly sell out, particularly during the spring and summer season. We'd recommend booking at least 3&ndash;4 months ahead of your preferred departure to secure your place. You can see our recently sold-out departures just above &mdash; once they're gone, they're gone.</p></div>
+   </details>
+   <details class="jfaq-item">
+    <summary>Do I need to pay the full amount upfront?</summary>
+    <div class="jfaq-a"><p>No &mdash; only a 20% deposit is required to secure your booking. The remaining balance is due closer to your departure date. Payment is by internet banking; credit card bookings incur a 2% fee.</p></div>
+   </details>
+   <details class="jfaq-item">
+    <summary>Can I join the tour as a solo traveller?</summary>
+    <div class="jfaq-a"><p>Absolutely. We regularly welcome solo travellers and many of our guests travel independently. A single supplement applies for your own room, and you'll be joining a friendly group of like-minded travellers &mdash; many of our guests tell us the people they meet on tour become lasting friends.</p></div>
+   </details>
+   <details class="jfaq-item">
+    <summary>What's included in the tour price?</summary>
+    <div class="jfaq-a"><p>All tours include accommodation at 4-star or above properties, all rail journeys and coach travel, most meals (the exact number varies by tour &mdash; check the individual tour page for details), and entry to all scheduled attractions and experiences. Optional excursions such as helicopter flights or whale watching are available at additional cost.</p></div>
+   </details>
+  </div>
+  <!-- ── CONTACT (folded in from the old native Duda row) ── -->
+  <div class="sehe-jcontact">
+   <div class="sehe-jcontact-copy">
+    <h3>Need help choosing the right tour?</h3>
+    <p>Our team is here to help you find the perfect journey. Call us or get in touch and we'll match you with the right tour for your dates and interests.</p>
+   </div>
+   <div class="sehe-jcontact-actions">
+    <a class="sehe-jcontact-btn sehe-jcontact-btn--primary" href="/contact">Contact Us</a>
+    <a class="sehe-jcontact-btn sehe-jcontact-btn--ghost" href="tel:+6439741812">+64 3 974 1812</a>
+   </div>
+  </div>
 
+ </div>
+ <!-- END SEHE JOURNEYS SECTION -->
+ <script>
   (function() {
   var widget = document.querySelector('.sehe-journeys');
   if (!widget) return;
@@ -1854,6 +2248,4 @@ Every 2026 Winter Edition departure has now been filled. The 12-Day Winter Editi
   }
   setInterval(cycle, ROTATION_MS);
 })();
-                            
-
-                </script>
+ </script>
