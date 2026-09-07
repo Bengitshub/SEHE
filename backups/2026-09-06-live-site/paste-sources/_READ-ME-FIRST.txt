@@ -1,0 +1,44 @@
+SEHE — LATEST paste-ready files
+============================================================
+Always paste from THIS folder. Filenames never change; the
+contents are regenerated whenever anything is updated, so the
+same link is always the newest version (shown below).
+
+WORKER  worker-sehe-next-departures.js
+        -> Cloudflare > Workers & Pages > sehe-next-departures >
+           Edit code > select all > paste > Deploy.
+
+SINGLE-WIDGET PAGES (paste the whole file into the page's one
+HTML widget): homepage.txt, journeys-page.txt,
+brochure-collection.txt
+
+TOUR PAGES (two widgets per page): blockA -> the TOP HTML widget,
+blockB -> the BOTTOM HTML widget (the native Duda form row sits
+between them; never touch it).
+
+!! ON HOLD (Aug 2026): tourpage-*-blockB.txt. The live tour pages now
+   carry a DIFFERENT booking section (iframe to the new Pounamu Journeys
+   booking app, pasted outside this repo). Pasting these Block Bs would
+   put the Checkfront widget back. Do not paste until the booking-system
+   decision is made — see observed/README.md.
+
+CURRENT VERSIONS
+------------------------------------------------------------
+  brochure-collection.txt                v2    (SEHE-brochure-collection_v2.txt)
+  homepage.txt                           v38   (SEHE-homepage_v38.txt)
+  journeys-page.txt                      v22   (SEHE-journeys-page_v22.txt)
+  tourpage-11day-2627-blockA.txt         v26   (SEHE-11day-2627_v26-blockA.txt)
+  tourpage-11day-2627-blockB.txt         -     (SEHE-11day-2627_v26-blockB.txt)
+  tourpage-11day-2728-blockA.txt         v21   (SEHE-11day-2728_v21-blockA.txt)
+  tourpage-11day-2728-blockB.txt         -     (SEHE-11day-2728_v21-blockB.txt)
+  tourpage-14day-2627-blockA.txt         v28   (SEHE-14day-2627_v28-blockA.txt)
+  tourpage-14day-2627-blockB.txt         -     (SEHE-14day-2627_v28-blockB.txt)
+  tourpage-14day-2728-blockA.txt         v30   (SEHE-14day-2728_v30-blockA.txt)
+  tourpage-14day-2728-blockB.txt         -     (SEHE-14day-2728_v30-blockB.txt)
+  tourpage-pinnacle-2027-blockA.txt      v19   (SEHE-pinnacle-2027_v19-blockA.txt)
+  tourpage-pinnacle-2027-blockB.txt      -     (SEHE-pinnacle-2027_v19-blockB.txt)
+  tourpage-winter-2026-blockA.txt        v28   (SEHE-winter-2026_v28-blockA.txt)
+  tourpage-winter-2026-blockB.txt        -     (SEHE-winter-2026_v28-blockB.txt)
+  tourpage-winter-2027-blockA.txt        v19   (SEHE-winter-2027_v19-blockA.txt)
+  tourpage-winter-2027-blockB.txt        -     (SEHE-winter-2027_v19-blockB.txt)
+  worker-sehe-next-departures.js         -     (sehe-worker_LIVE-auto.js)
