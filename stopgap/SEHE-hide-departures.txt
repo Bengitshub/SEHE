@@ -1,52 +1,60 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     SEHE — TEMPORARY: hide live departure data
+     SEHE — TEMPORARY: hide unverifiable departure data
      ───────────────────────────────────────────────────────────────────────
-     WHY: the site's departure dates, counts and availability are fed from
-     Checkfront. Bookings have moved to the new booking system, so that feed
-     is no longer authoritative and anything it shows may be wrong.
-     Kirsty asked (18 Sep 2026) for "Next departure" and "All departure
-     dates" to be removed in the meantime.
+     WHY: departure dates, counts and "next departure" come from the
+     Checkfront feed. Bookings have moved to the new booking system, so that
+     feed can no longer be trusted. Kirsty asked (18 Sep 2026) for
+     "Next departure" and "All departure dates" to be removed meanwhile.
 
-     WHERE TO PASTE: Duda → Site Settings → Head HTML (site-wide, one paste,
-     covers every page). No page widgets are modified.
+     WHAT IT HIDES  (unverifiable specifics only)
+       • "Next Departure" strips on every tour card
+       • "All departure dates" month lists (Journeys + Brochure Collection)
+       • departure COUNTS ("11 Departures", hero "Departures 11 · Nov 26 – Apr 27")
+       • the homepage departure board / next-departure lines
 
-     TO UNDO: delete this block from Head HTML and republish. Everything
-     returns exactly as it was — nothing is deleted from the pages.
+     WHAT IT DELIBERATELY KEEPS VISIBLE
+       • every SOLD OUT marker and sold-out note — removing these would make
+         a sold-out tour look bookable, which is worse than the problem
+       • prices, durations, routes, rail journeys, buttons, all other content
+
+     WHERE TO PASTE: Duda → Site Settings → Head HTML (one paste, all pages).
+     No page widget is touched. TO UNDO: delete this block and republish.
      ═══════════════════════════════════════════════════════════════════════ -->
 <style>
-  /* --- Journeys page + Brochure Collection: per-tour cards --------------- */
-  .journey-card-next,            /* "Next Departure" strip                   */
-  .journey-card-departures,      /* "All departure dates" month list         */
-  .journey-card-status,          /* "Now Booking" / "Sold Out" pill          */
-  .journey-card-soldnote,        /* "2026 season sold out" note              */
-  /* --- Brochure Collection page uses its own class names ---------------- */
-  .tour-card-status,             /* "Now Booking" / "Sold Out" pill          */
-  .tour-card-soldnote,           /* sold-out note                            */
-  /* --- Homepage departure board (where present) ------------------------- */
-  .shx-depboard,                 /* the whole "Find your next departure" rail */
-  .shx-depnext,                  /* "Next departure: ..." line               */
-  .shx-jc-next                   /* next-departure line on homepage cards    */
+  /* Next-departure strips and the month-by-month date lists */
+  .journey-card-next,
+  .journey-card-departures,
+  /* Availability pills — but NOT the sold-out variants (kept on purpose) */
+  .journey-card-status:not(.journey-card-status-sold),
+  .tour-card-status:not(.tour-card-status-sold),
+  /* Homepage: departure board and next-departure lines (not sold-out lines) */
+  .shx-depboard,
+  .shx-depnext,
+  .shx-jc-next:not(.shx-jc-next--sold)
   { display: none !important; }
 </style>
 <script>
   (function () {
-  /* Elements whose VALUE comes from the feed but whose LABEL would be left
-     stranded (e.g. a "Departures" heading above a now-hidden number). Hide
-     the whole field instead of the number alone. Enhance-only: if a page
-     does not have these, nothing happens. */
+  /* Counts whose LABEL would be stranded if only the number were hidden, so
+     the whole field goes. A field is kept when it reads "Sold out" — that is
+     still accurate and must stay visible. Enhance-only: absent hooks are
+     simply skipped, and nothing else on the page is touched. */
   var PAIRS = [
-    ['[data-sehe-dep-count]', '.sehe-hx-field'],   /* tour hero: "Departures 14 / Nov 26 - Apr 27" */
-    ['[data-sehe-dep-range]', '.sehe-hx-field'],
-    ['[data-departure-value]', '.journey-card-fact'], /* card fact: "17 Departures" */
-    ['[data-departure-label]', '.journey-card-fact'],
-    ['[data-departure-value]', '.tour-card-fact'],    /* brochure page variant */
-    ['[data-departure-label]', '.tour-card-fact']
+    ['[data-sehe-dep-count]', '.sehe-hx-field'],      /* tour hero "Departures 11 / Nov 26 - Apr 27" */
+    ['[data-departure-value]', '.journey-card-fact'], /* card fact "11 Departures" */
+    ['[data-departure-value]', '.tour-card-fact']     /* brochure page variant */
   ];
+  function keepIt(el) {
+    var txt = (el.textContent || '').toLowerCase();
+    return txt.indexOf('sold') !== -1;   /* never hide a sold-out statement */
+  }
   function hideAll() {
     for (var i = 0; i < PAIRS.length; i += 1) {
       var found = document.querySelectorAll(PAIRS[i][0]);
       for (var j = 0; j < found.length; j += 1) {
+        if (keepIt(found[j])) continue;
         var box = found[j].closest ? found[j].closest(PAIRS[i][1]) : null;
+        if (box && keepIt(box)) continue;
         (box || found[j]).style.setProperty('display', 'none', 'important');
       }
     }
@@ -55,7 +63,7 @@
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', hideAll);
   }
-  /* the feed repaints these after it loads — hide again once it has run */
+  /* the feed repaints these shortly after load — re-apply once it has run */
   window.setTimeout(hideAll, 1200);
   window.setTimeout(hideAll, 4000);
 })();
