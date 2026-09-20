@@ -42,3 +42,34 @@ departure fields, the homepage/v2 departure board. Verified hidden on all
   `keyword=winter` and differ only by `from`/`to`.
 - Page titles / meta descriptions carry seasons; the winter-2027
   description is already mislabelled 2026.
+
+---
+
+## Head HTML rewritten and published — verified 20 Sep 2026
+
+Live confirmation after publishing `stopgap/SEHE-head-html-REWRITE.txt`:
+
+| Check | Result |
+|---|---|
+| New head serving | yes (marker comment present on all pages) |
+| AdRoll URL quoted / old unquoted gone | yes / yes |
+| Escaped `&lt;` in our blocks | none |
+| `&amp;&amp;` in head | none |
+| **AdRoll firing** | `__adroll_loaded = true`, requests to `s.adroll.com` **and** `d.adroll.com/segment` — the pixel now tracks |
+| **Clarity firing** | `window.clarity` defined, requests `clarity.ms` — was never running before |
+| GTM / GA4 | gtm.js requested, `gtag` defined, dataLayer 14–16 entries |
+| Trustpilot loads | 4 (was 5) |
+| Departure claims left visible | **none** on journeys, 14-day, winter-2026, homepage |
+| Sold-out markers preserved | yes (2 journeys, 2 14-day, 1 homepage) |
+| Booking embed | visible and sized on every tour page |
+| JS errors | one remains in testing — traced to the test proxy serving HTML for the tawk.to script; a direct fetch of that URL returns valid JavaScript, so it is a rig artifact, not a site fault. The two genuine errors (AdRoll) are gone. |
+
+### Also discovered
+- **Clarity had never been running.** The unclosed GA4 `script` tag swallowed
+  everything after it, and Clarity sat last. Fixed by closing the tag.
+- A **third Google Ads tag** is on the site: `AW-16523865426` (separate from
+  the booking app's `AW-18077303178`). Worth resolving before campaign
+  conversions are wired.
+- Two GA4 properties still run side by side: `G-GKR67569LP` (head) and
+  `G-KESV7YYW1G` (injected by Duda). Left alone deliberately — Kirsty to
+  confirm which is the reporting one.
