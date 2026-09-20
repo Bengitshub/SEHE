@@ -1,0 +1,40 @@
+<!-- AdRoll — CORRECTED. Replace the existing AdRoll script block in
+     Duda > Site Settings > Head HTML with this one.
+
+     Two faults in the old block, either of which killed the whole script:
+       1. the URL was missing its quotes  ->  SyntaxError "Unexpected token ':'"
+       2. the loop contained a "<" which Duda turned into "&lt;"  ->  SyntaxError
+     Result: adroll.track("pageView") never ran, so NO pageviews, audiences
+     or conversions were ever recorded.
+
+     This version contains NO "<" character anywhere inside the script, so
+     Duda's editor cannot mangle it again. Same AdRoll IDs as before. -->
+<script>
+  adroll_adv_id = "E2XDEAS5ERHYVMCPAM3XX7";
+  adroll_pix_id = "V2TMPMEBHFGSHGD5DQQTZD";
+  adroll_version = "2.0";
+
+  (function (w, d, e, o) {
+    w.__adroll_loaded = true;
+    w.adroll = w.adroll || [];
+    w.adroll.f = ['setProperties', 'identify', 'track'];
+    var roundtripUrl = "https://s.adroll.com/j/" + adroll_adv_id + "/roundtrip.js";
+
+    /* the original used a for-loop with a less-than operator, which Duda
+   escapes and breaks. forEach needs no comparison operator, so it
+       survives publishing unharmed. */
+    w.adroll.f.forEach(function (n) {
+      w.adroll[n] = w.adroll[n] || function () {
+        w.adroll.push([n, arguments]);
+      };
+    });
+
+    e = d.createElement('script');
+    o = d.getElementsByTagName('script')[0];
+    e.async = 1;
+    e.src = roundtripUrl;
+    o.parentNode.insertBefore(e, o);
+  })(window, document);
+
+  adroll.track("pageView");
+</script>
