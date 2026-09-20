@@ -1,0 +1,144 @@
+<!-- ═══════════════════════════════════════════════════════════════════════
+     SEHE — Site Settings > Head HTML          rewritten 20 Sep 2026
+     ───────────────────────────────────────────────────────────────────────
+     Replaces the ENTIRE contents of the Head HTML field.
+
+     Every tracking ID is unchanged:
+       GTM       GTM-TPSTZ264
+       GA4       G-GKR67569LP
+       AdRoll    E2XDEAS5ERHYVMCPAM3XX7 / V2TMPMEBHFGSHGD5DQQTZD
+       Clarity   yefix0e9cy
+       Trustpilot bootstrap
+
+     What was fixed:
+       1. AdRoll was completely broken - unquoted URL, and a less-than sign
+          that Duda had escaped. The pixel never fired. Rewritten with no
+          less-than or ampersand characters anywhere, so Duda cannot break
+          it again.
+       2. The GA4 loader tag was never closed, so it swallowed the markup
+          that followed it. Closed properly.
+       3. Trustpilot's bootstrap was loaded twice here (four times on the
+          page). Loaded once.
+       4. Hundreds of blank lines removed.
+
+     NOT CHANGED, ON PURPOSE - see the note at the bottom about the second
+     GA4 property that Duda itself injects.
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+<!-- Google Tag Manager -->
+<script>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s);
+    j.async = true;
+    /* the stock snippet appends a dataLayer-name parameter here, which needs
+       an ampersand. This site uses the default name, so that parameter is
+       always empty - dropped, because Duda escapes ampersands in head. */
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-TPSTZ264');
+</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GKR67569LP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-GKR67569LP');
+</script>
+<!-- End Google Analytics 4 -->
+
+<!-- AdRoll (corrected - the previous version never ran) -->
+<script>
+  adroll_adv_id = "E2XDEAS5ERHYVMCPAM3XX7";
+  adroll_pix_id = "V2TMPMEBHFGSHGD5DQQTZD";
+  adroll_version = "2.0";
+
+  (function (w, d, e, o) {
+    w.__adroll_loaded = true;
+    w.adroll = w.adroll || [];
+    w.adroll.f = ['setProperties', 'identify', 'track'];
+    var roundtripUrl = "https://s.adroll.com/j/" + adroll_adv_id + "/roundtrip.js";
+    w.adroll.f.forEach(function (n) {
+      w.adroll[n] = w.adroll[n] || function () { w.adroll.push([n, arguments]); };
+    });
+    e = d.createElement('script');
+    o = d.getElementsByTagName('script')[0];
+    e.async = 1;
+    e.src = roundtripUrl;
+    o.parentNode.insertBefore(e, o);
+  })(window, document);
+
+  adroll.track("pageView");
+</script>
+<!-- End AdRoll -->
+
+<!-- Microsoft Clarity -->
+<script>
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "yefix0e9cy");
+</script>
+<!-- End Microsoft Clarity -->
+
+<!-- Trustpilot -->
+<script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+<!-- End Trustpilot -->
+
+<!-- ═══ TEMPORARY: hide unverifiable departure data ═══════════════════════
+     Departure dates, counts and "next departure" are fed from Checkfront,
+     which is no longer the booking system, so they can be wrong. Kirsty
+     asked for them to be removed meanwhile. Every SOLD OUT marker is kept
+     on purpose - hiding those would make a sold-out tour look bookable.
+     Does not touch the new booking embed. Remove this block to undo. ═══ -->
+<style>
+  .journey-card-next,
+  .journey-card-departures,
+  .journey-card-status:not(.journey-card-status-sold),
+  .tour-card-status:not(.tour-card-status-sold),
+  .shx-depboard,
+  .shx-depnext,
+  .shx-jc-next:not(.shx-jc-next--sold)
+  { display: none !important; }
+</style>
+<script>
+  (function () {
+    var PAIRS = [
+      ['[data-sehe-dep-count]', '.sehe-hx-field'],
+      ['[data-departure-value]', '.journey-card-fact'],
+      ['[data-departure-value]', '.tour-card-fact']
+    ];
+    /* No less-than and no ampersand anywhere in this script: Duda escapes
+       both inside head scripts, which is what silently broke the AdRoll
+       pixel. forEach needs no comparison; nested ifs replace "and". */
+    function keepIt(el) {
+      return (el.textContent || '').toLowerCase().indexOf('sold') !== -1;
+    }
+    function hideOne(el, parentSelector) {
+      if (keepIt(el)) { return; }
+      var box = el.closest ? el.closest(parentSelector) : null;
+      if (box) { if (keepIt(box)) { return; } }
+      var target = box || el;
+      target.style.setProperty('display', 'none', 'important');
+    }
+    function hideAll() {
+      PAIRS.forEach(function (pair) {
+        var found = document.querySelectorAll(pair[0]);
+        Array.prototype.forEach.call(found, function (el) { hideOne(el, pair[1]); });
+      });
+    }
+    hideAll();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', hideAll);
+    }
+    window.setTimeout(hideAll, 1200);
+    window.setTimeout(hideAll, 4000);
+  })();
+</script>
+<!-- ═══ END temporary departure block ═══ -->

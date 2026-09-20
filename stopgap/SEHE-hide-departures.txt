@@ -35,36 +35,35 @@
 </style>
 <script>
   (function () {
-  /* Counts whose LABEL would be stranded if only the number were hidden, so
-     the whole field goes. A field is kept when it reads "Sold out" — that is
-     still accurate and must stay visible. Enhance-only: absent hooks are
-     simply skipped, and nothing else on the page is touched. */
-  var PAIRS = [
-    ['[data-sehe-dep-count]', '.sehe-hx-field'],      /* tour hero "Departures 11 / Nov 26 - Apr 27" */
-    ['[data-departure-value]', '.journey-card-fact'], /* card fact "11 Departures" */
-    ['[data-departure-value]', '.tour-card-fact']     /* brochure page variant */
-  ];
-  function keepIt(el) {
-    var txt = (el.textContent || '').toLowerCase();
-    return txt.indexOf('sold') !== -1;   /* never hide a sold-out statement */
-  }
-  function hideAll() {
-    for (var i = 0; i < PAIRS.length; i += 1) {
-      var found = document.querySelectorAll(PAIRS[i][0]);
-      for (var j = 0; j < found.length; j += 1) {
-        if (keepIt(found[j])) continue;
-        var box = found[j].closest ? found[j].closest(PAIRS[i][1]) : null;
-        if (box && keepIt(box)) continue;
-        (box || found[j]).style.setProperty('display', 'none', 'important');
-      }
+    var PAIRS = [
+      ['[data-sehe-dep-count]', '.sehe-hx-field'],
+      ['[data-departure-value]', '.journey-card-fact'],
+      ['[data-departure-value]', '.tour-card-fact']
+    ];
+    /* No less-than and no ampersand anywhere in this script: Duda escapes
+       both inside head scripts, which is what silently broke the AdRoll
+       pixel. forEach needs no comparison; nested ifs replace "and". */
+    function keepIt(el) {
+      return (el.textContent || '').toLowerCase().indexOf('sold') !== -1;
     }
-  }
-  hideAll();
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', hideAll);
-  }
-  /* the feed repaints these shortly after load — re-apply once it has run */
-  window.setTimeout(hideAll, 1200);
-  window.setTimeout(hideAll, 4000);
-})();
+    function hideOne(el, parentSelector) {
+      if (keepIt(el)) { return; }
+      var box = el.closest ? el.closest(parentSelector) : null;
+      if (box) { if (keepIt(box)) { return; } }
+      var target = box || el;
+      target.style.setProperty('display', 'none', 'important');
+    }
+    function hideAll() {
+      PAIRS.forEach(function (pair) {
+        var found = document.querySelectorAll(pair[0]);
+        Array.prototype.forEach.call(found, function (el) { hideOne(el, pair[1]); });
+      });
+    }
+    hideAll();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', hideAll);
+    }
+    window.setTimeout(hideAll, 1200);
+    window.setTimeout(hideAll, 4000);
+  })();
 </script>
