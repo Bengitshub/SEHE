@@ -1,0 +1,62 @@
+<!-- ═══════════════════════════════════════════════════════════════════════
+     SEHE — TEMPORARY: hide live departure data
+     ───────────────────────────────────────────────────────────────────────
+     WHY: the site's departure dates, counts and availability are fed from
+     Checkfront. Bookings have moved to the new booking system, so that feed
+     is no longer authoritative and anything it shows may be wrong.
+     Kirsty asked (18 Sep 2026) for "Next departure" and "All departure
+     dates" to be removed in the meantime.
+
+     WHERE TO PASTE: Duda → Site Settings → Head HTML (site-wide, one paste,
+     covers every page). No page widgets are modified.
+
+     TO UNDO: delete this block from Head HTML and republish. Everything
+     returns exactly as it was — nothing is deleted from the pages.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<style>
+  /* --- Journeys page + Brochure Collection: per-tour cards --------------- */
+  .journey-card-next,            /* "Next Departure" strip                   */
+  .journey-card-departures,      /* "All departure dates" month list         */
+  .journey-card-status,          /* "Now Booking" / "Sold Out" pill          */
+  .journey-card-soldnote,        /* "2026 season sold out" note              */
+  /* --- Homepage departure board (where present) ------------------------- */
+  .shx-depboard,                 /* the whole "Find your next departure" rail */
+  .shx-depnext,                  /* "Next departure: ..." line               */
+  .shx-jc-next,                  /* next-departure line on homepage cards    */
+  [data-shx-next],               /* homepage card next-departure hooks       */
+  .sehe-next-strip,              /* legacy next-departure strip              */
+  [data-sehe-next]               /* legacy next-departure hooks              */
+  { display: none !important; }
+</style>
+<script>
+  (function () {
+  /* Elements whose VALUE comes from the feed but whose LABEL would be left
+     stranded (e.g. a "Departures" heading above a now-hidden number). Hide
+     the whole field instead of the number alone. Enhance-only: if a page
+     does not have these, nothing happens. */
+  var PAIRS = [
+    ['[data-sehe-dep-count]', '.sehe-hx-field'],   /* tour hero: "Departures 14 / Nov 26 - Apr 27" */
+    ['[data-sehe-dep-range]', '.sehe-hx-field'],
+    ['[data-departure-value]', '.journey-card-fact'], /* card fact: "17 Departures" */
+    ['[data-departure-label]', '.journey-card-fact'],
+    ['[data-departure-value]', '.tour-card-fact'],    /* brochure page variant */
+    ['[data-departure-label]', '.tour-card-fact']
+  ];
+  function hideAll() {
+    for (var i = 0; i < PAIRS.length; i += 1) {
+      var found = document.querySelectorAll(PAIRS[i][0]);
+      for (var j = 0; j < found.length; j += 1) {
+        var box = found[j].closest ? found[j].closest(PAIRS[i][1]) : null;
+        (box || found[j]).style.setProperty('display', 'none', 'important');
+      }
+    }
+  }
+  hideAll();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', hideAll);
+  }
+  /* the feed repaints these after it loads — hide again once it has run */
+  window.setTimeout(hideAll, 1200);
+  window.setTimeout(hideAll, 4000);
+})();
+</script>
