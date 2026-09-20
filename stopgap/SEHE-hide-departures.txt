@@ -19,13 +19,13 @@
   .journey-card-departures,      /* "All departure dates" month list         */
   .journey-card-status,          /* "Now Booking" / "Sold Out" pill          */
   .journey-card-soldnote,        /* "2026 season sold out" note              */
+  /* --- Brochure Collection page uses its own class names ---------------- */
+  .tour-card-status,             /* "Now Booking" / "Sold Out" pill          */
+  .tour-card-soldnote,           /* sold-out note                            */
   /* --- Homepage departure board (where present) ------------------------- */
   .shx-depboard,                 /* the whole "Find your next departure" rail */
   .shx-depnext,                  /* "Next departure: ..." line               */
-  .shx-jc-next,                  /* next-departure line on homepage cards    */
-  [data-shx-next],               /* homepage card next-departure hooks       */
-  .sehe-next-strip,              /* legacy next-departure strip              */
-  [data-sehe-next]               /* legacy next-departure hooks              */
+  .shx-jc-next                   /* next-departure line on homepage cards    */
   { display: none !important; }
 </style>
 <script>
