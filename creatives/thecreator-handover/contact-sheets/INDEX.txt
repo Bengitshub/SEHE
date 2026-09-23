@@ -1,0 +1,18 @@
+CONTACT SHEETS — one per export folder; every delivered PNG appears exactly once.
+
+ 13  01_Meta_Brand-Season/MOF_Feed_1x1                              -> 01_Meta_Brand-Season__MOF_Feed_1x1.png
+ 13  01_Meta_Brand-Season/MOF_Feed_4x5                              -> 01_Meta_Brand-Season__MOF_Feed_4x5.png
+  3  01_Meta_Brand-Season/MOF_Stories_9x16                          -> 01_Meta_Brand-Season__MOF_Stories_9x16.png
+ 16  01_Meta_Brand-Season/TOF_Feed                                  -> 01_Meta_Brand-Season__TOF_Feed.png
+  4  01_Meta_Brand-Season/TOF_Stories_9x16                          -> 01_Meta_Brand-Season__TOF_Stories_9x16.png
+ 15  02_Meta_14-Day-Tour/MOF                                        -> 02_Meta_14-Day-Tour__MOF.png
+ 15  02_Meta_14-Day-Tour/TOF_v1                                     -> 02_Meta_14-Day-Tour__TOF_v1.png
+ 15  02_Meta_14-Day-Tour/TOF_v2                                     -> 02_Meta_14-Day-Tour__TOF_v2.png
+ 11  03_Google_PMax/01_Journeys_Asset_Group                         -> 03_Google_PMax__01_Journeys_Asset_Group.png
+ 11  03_Google_PMax/02_Brand_Homepage_Asset_Group                   -> 03_Google_PMax__02_Brand_Homepage_Asset_Group.png
+  3  03_Google_PMax/03_Logos                                        -> 03_Google_PMax__03_Logos.png
+  1  04_Canvas_Only_Not_In_Exporter/01_Brand_TOF_Feed_extra         -> 04_Canvas_Only_Not_In_Exporter__01_Brand_TOF_Feed_extra.png
+  6  04_Canvas_Only_Not_In_Exporter/02_Brand_MOF_v1_HISTORICAL      -> 04_Canvas_Only_Not_In_Exporter__02_Brand_MOF_v1_HISTORICAL.png
+  6  04_Canvas_Only_Not_In_Exporter/03_Brand_MOF_v2_HISTORICAL      -> 04_Canvas_Only_Not_In_Exporter__03_Brand_MOF_v2_HISTORICAL.png
+
+TOTAL 132 creatives across 14 folders

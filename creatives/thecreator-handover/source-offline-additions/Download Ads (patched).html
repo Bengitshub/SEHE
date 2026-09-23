@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SEHE — Download Ad Creatives (PATCHED 23 Sep 2026: stage capture + V3 collision)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="fonts/fonts.css" rel="stylesheet" />
+    <style>
+      :root { --seh-navy:#1a3a5c; --seh-navy-deep:#112a45; --seh-gold:#b8935a; --seh-gold-soft:#d6b481; --seh-cream:#f6f1e6; --seh-ink:#1d2733; --seh-mute:#6b7785; --seh-rule:#e7e2d6; --seh-green:#2f6e4a; --seh-pill:#2f6e4a; }
+      html, body { margin:0; padding:0; background:#0a1628; font-family:'DM Sans',sans-serif; color:#fff; }
+      * { box-sizing:border-box; }
+      .panel { max-width:760px; margin:50px auto; padding:48px; background:#112a45; border:1px solid rgba(255,255,255,0.1); }
+      h1 { font-family:'Lora',serif; font-weight:500; font-size:34px; margin:0 0 6px; letter-spacing:-0.01em; }
+      p { color:rgba(255,255,255,0.7); font-size:16px; line-height:1.5; margin:0 0 24px; }
+      .secs { display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
+      label.sec { display:flex; align-items:center; gap:12px; font-size:17px; cursor:pointer; color:rgba(255,255,255,0.9); }
+      label.sec input { width:18px; height:18px; accent-color:#b8935a; }
+      label.sec .n { color:rgba(255,255,255,0.5); font-size:14px; font-family:'DM Mono',monospace; }
+      button { display:block; width:100%; padding:20px 32px; background:var(--seh-gold); color:#fff; border:0; cursor:pointer; font-family:'DM Sans',sans-serif; font-weight:600; font-size:19px; letter-spacing:0.06em; text-transform:uppercase; }
+      button:hover { background:#c9a368; }
+      button:disabled { opacity:0.5; cursor:progress; }
+      .progress { margin-top:26px; height:4px; background:rgba(255,255,255,0.08); overflow:hidden; }
+      .progress-bar { height:100%; background:var(--seh-gold); transition:width .2s; width:0%; }
+      .status { margin-top:16px; font-size:13px; color:rgba(255,255,255,0.6); letter-spacing:0.04em; font-family:'DM Mono',monospace; min-height:18px; }
+      #stage { position:fixed; top:0; left:-99999px; background:#fff; }
+    </style>
+  </head>
+  <body>
+    <div class="panel">
+      <h1>Sir Edmund Hillary Explorer</h1>
+      <p>Select the sets to export. Each creative renders at native resolution (1080-wide PNG) and everything downloads as one .zip, organised in folders.</p>
+      <div class="secs" id="secs"></div>
+      <button id="go" onclick="downloadAll()">Render &amp; Download Selected</button>
+      <div class="progress"><div class="progress-bar" id="bar"></div></div>
+      <div class="status" id="status">Pick sections, then click the button.</div>
+    </div>
+
+    <div id="stage"></div>
+
+    <script src="vendor/react.development.js"></script>
+    <script src="vendor/react-dom.development.js"></script>
+    <script src="vendor/babel.min.js"></script>
+    <script src="vendor/html-to-image.js"></script>
+    <script src="vendor/jszip.min.js"></script>
+
+    <script type="text/babel" src="ad-creatives.jsx"></script>
+    <script type="text/babel" src="mof-v3.jsx"></script>
+    <script type="text/babel" src="tof-stories.jsx"></script>
+    <script type="text/babel" src="tour-14day.jsx"></script>
+    <script type="text/babel" src="tour-14day-v2.jsx"></script>
+    <script type="text/babel" src="pmax.jsx"></script>
+
+    <script type="text/babel">
+      window.__SEHTweaks = window.__SEHTweaks || {};
+
+      const W = window;
+      const TOF16 = [
+        ['01-best-scenic-rail','CreativeAspirational',1080,1080],
+        ['02-super-6','CreativeSuper6',1080,1080],
+        ['03-winter-brand-intro','CreativeWinterIntro',1080,1080],
+        ['04-four-time-award-winning','CreativeAwardWinning',1080,1080],
+        ['05-pinnacle-peter-hillary','CreativePinnacle',1080,1350],
+        ['06-we-dont-miss-a-thing','CreativeDestinations',1080,1350],
+        ['07-winter-mood','CreativeWinterMood',1080,1350],
+        ['08-voted-leading-tour-operator','CreativeVoted',1080,1350],
+        ['09-past-guests','CreativeRealTravellers',1080,1080],
+        ['10-heritage-steam','CreativeHeritage',1080,1080],
+        ['11-brand-mood-taieri-aerial','CreativeBrandMood',1080,1350],
+        ['12-coastal-alpenglow','CreativeAlpenglow',1080,1350],
+        ['13-same-island-worlds-apart','CreativeThreeSeasons',1080,1350],
+        ['14-taieri-gorge','CreativeTaieriGorge',1080,1350],
+        ['15-lakeside-sunset','CreativeLakesideSunset',1080,1080],
+        ['16-christchurch-to-queenstown','CreativeRoute',1080,1350],
+      ].map(([id,c,w,h]) => ({ id, C: () => React.createElement(W[c]), w, h }));
+
+      const TOFSTORIES = [
+        ['01-best-scenic-rail-916','StoryAspirational'],
+        ['02-super-6-916','StorySuper6'],
+        ['04-award-winning-916','StoryAward'],
+        ['09-past-guests-916','StoryGuests'],
+      ].map(([id,c]) => ({ id, C: () => React.createElement(W[c]), w:1080, h:1920 }));
+
+      const V3LIST = [  /* PATCH 2: renamed from V3 — it clobbered mof-v3.jsx's V3 colour tokens */
+        ['1a-inclusions-editorial','C1_A'],['1b-inclusions-split','C1_B'],['2b-booking-split','C2_B'],
+        ['3a-brochure-editorial','C3_A'],['4c-still-considering','C4_C'],['5b-expert-led-split','C5_B'],
+        ['6f-guest-review-quote','C6_F'],['7e-by-rail-motif','C7_E'],['7d-by-rail-poster','C7_D'],
+        ['8c-journey-destination','C8_C'],['9d-hillary-poster','C9_D'],['9f-hillary-quote','C9_F'],
+        ['10c-this-time-next-year','C10_C'],
+      ];
+      const MOFV3_SQ = V3LIST.map(([id,c]) => ({ id, C: () => React.createElement(W[c]), w:1080, h:1080 }));
+      const MOFV3_PR = V3LIST.map(([id,c]) => ({ id, C: () => React.createElement(W[c]), w:1080, h:1350 }));
+      const MOFV3_ST = [['4-still-considering-916','C4_C'],['8-journey-destination-916','C8_C'],['10-this-time-next-year-916','C10_C']]
+        .map(([id,c]) => ({ id, C: () => React.createElement(W[c]), w:1080, h:1920 }));
+
+      const strip = s => s.replace(/^\d+\s*·\s*/, '').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+      const T14T = (W.T14_TOF||[]).map((a,i) => ({ id: String(i+1).padStart(2,'0') + '-' + strip(a.label), C: a.C, w: a.w, h: a.h }));
+      const T14M = (W.T14_MOF||[]).map((a,i) => ({ id: String(i+1).padStart(2,'0') + '-' + strip(a.label), C: a.C, w: a.w, h: a.h }));
+      const T14T2 = (W.T14_TOF_V2||[]).map((a,i) => ({ id: String(i+1).padStart(2,'0') + '-' + strip(a.label), C: a.C, w: a.w, h: a.h }));
+      const PMXJ = (W.PMX_J||[]).map(a => ({ id: a.id, C: a.C, w: a.w, h: a.h }));
+      const PMXB = (W.PMX_B||[]).map(a => ({ id: a.id, C: a.C, w: a.w, h: a.h }));
+      const PMXL = (W.PMX_LOGOS||[]).map(a => ({ id: a.id, C: a.C, w: a.w, h: a.h }));
+
+      const SECTIONS = [
+        { key:'01_Meta_Brand-Season/TOF_Feed',        name:'Brand TOF · Feed (1:1 + 4:5)',   items: TOF16 },
+        { key:'01_Meta_Brand-Season/TOF_Stories_9x16',     name:'Brand TOF · Stories 9:16',       items: TOFSTORIES },
+        { key:'01_Meta_Brand-Season/MOF_Feed_1x1',      name:'Brand MOF v3 · Feed 1:1',        items: MOFV3_SQ },
+        { key:'01_Meta_Brand-Season/MOF_Feed_4x5',      name:'Brand MOF v3 · Feed 4:5',        items: MOFV3_PR },
+        { key:'01_Meta_Brand-Season/MOF_Stories_9x16',  name:'Brand MOF v3 · Stories 9:16',    items: MOFV3_ST },
+        { key:'02_Meta_14-Day-Tour/TOF_v1',       name:'14-Day Tour · TOF (15)',         items: T14T },
+        { key:'02_Meta_14-Day-Tour/MOF',       name:'14-Day Tour · MOF (15)',         items: T14M },
+        { key:'02_Meta_14-Day-Tour/TOF_v2',    name:'14-Day Tour · TOF v2 (15)',      items: T14T2 },
+        { key:'03_Google_PMax/01_Journeys_Asset_Group',       name:'Google PMax · 01 Journeys',        items: PMXJ },
+        { key:'03_Google_PMax/02_Brand_Homepage_Asset_Group', name:'Google PMax · 02 Brand/Homepage',  items: PMXB },
+        { key:'03_Google_PMax/03_Logos',                      name:'Google PMax · Logos',              items: PMXL },
+      ];
+
+      const secsEl = document.getElementById('secs');
+      SECTIONS.forEach(s => {
+        const l = document.createElement('label');
+        l.className = 'sec';
+        l.innerHTML = `<input type="checkbox" checked data-key="${s.key}" /> ${s.name} <span class="n">${s.items.length} files</span>`;
+        secsEl.appendChild(l);
+      });
+
+      let root = null;
+      async function renderAndCapture(item) {
+        const stage = document.getElementById('stage');
+        stage.style.width = item.w + 'px';
+        stage.style.height = item.h + 'px';
+        if (!root) root = ReactDOM.createRoot(stage);
+        root.render(React.createElement(item.C));
+        await document.fonts.ready;
+        await new Promise(r => setTimeout(r, 450));
+        const imgs = stage.querySelectorAll('img');
+        await Promise.all([...imgs].map(img => img.complete ? Promise.resolve() : new Promise(r => { img.onload = img.onerror = r; })));
+        await new Promise(r => setTimeout(r, 250));
+        return window.htmlToImage.toBlob(stage, { width: item.w, height: item.h, pixelRatio: 1, cacheBust: false,
+          style: { position: 'static', left: '0', top: '0' } /* PATCH 1: the offscreen fixed stage produced transparent PNGs */ });
+      }
+
+      window.downloadAll = async function() {
+        const btn = document.getElementById('go'), bar = document.getElementById('bar'), status = document.getElementById('status');
+        const picked = [...document.querySelectorAll('input[data-key]:checked')].map(i => i.dataset.key);
+        const jobs = [];
+        SECTIONS.filter(s => picked.includes(s.key)).forEach(s => s.items.forEach(it => jobs.push({ folder: s.key, ...it })));
+        if (!jobs.length) { status.textContent = 'Nothing selected.'; return; }
+        btn.disabled = true;
+        const zip = new JSZip();
+        for (let i = 0; i < jobs.length; i++) {
+          const j = jobs[i];
+          status.textContent = `Rendering ${i+1}/${jobs.length} · ${j.folder}/${j.id}`;
+          try { zip.file(`${j.folder}/${j.id}.png`, await renderAndCapture(j)); }
+          catch (e) { status.textContent = `Error on ${j.id}: ${e.message}`; btn.disabled = false; return; }
+          bar.style.width = `${((i+1)/jobs.length)*100}%`;
+        }
+        zip.file('README.txt', [
+          'SIR EDMUND HILLARY EXPLORER — CREATIVE EXPORT',
+          'Exported ' + new Date().toLocaleDateString('en-AU'),
+          '',
+          '01_Meta_Brand-Season  — brand/season campaign (TOF discovery, MOF decision-support). Feed 1080x1080 / 1080x1350, Stories 1080x1920.',
+          '02_Meta_14-Day-Tour   — 14-Day Spring/Summer tour 2026/27 + 2027/28. All 1080x1080. TOF_v2 = fresh layout directions; cull against TOF_v1.',
+          '03_Google_PMax        — Performance Max. Upload each asset-group folder to its matching asset group. Landscape 1200x628, square 1200x1200, portrait 960x1200; logos 1200x1200 + 1200x300.',
+          '',
+          'Before publishing: confirm Trustpilot score/count, prices and departure dates are current.',
+        ].join('\n'));
+        status.textContent = 'Building zip…';
+        const out = await zip.generateAsync({ type:'blob' }, m => { status.textContent = `Building zip… ${Math.round(m.percent)}%`; });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(out);
+        a.download = 'SEHE_Creatives_' + new Date().toISOString().slice(0,10) + '.zip';
+        document.body.appendChild(a); a.click(); a.remove();
+        status.textContent = `✓ Done · ${jobs.length} creatives downloaded.`;
+        btn.disabled = false; btn.textContent = 'Download Again';
+      };
+    </script>
+  </body>
+</html>

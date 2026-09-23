@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<title>SEHE — export harness (replacement exporter)</title>
+<link id="fontcss" href="fonts/fonts.css" rel="stylesheet" />
+<style>
+  :root { --seh-navy:#1a3a5c; --seh-navy-deep:#112a45; --seh-gold:#b8935a; --seh-gold-soft:#d6b481; --seh-cream:#f6f1e6; --seh-ink:#1d2733; --seh-mute:#6b7785; --seh-rule:#e7e2d6; --seh-green:#2f6e4a; --seh-pill:#2f6e4a; }
+  html, body { margin:0; padding:0; background:#fff; font-family:'DM Sans',sans-serif; }
+  * { box-sizing:border-box; }
+  /* The stage is ON-SCREEN at 0,0 (not offset offscreen) so the capture is the real paint. */
+  #stage { position:absolute; top:0; left:0; background:#fff; overflow:hidden; }
+</style>
+<script>
+  // Allow the fallback-font comparison: ?nomontserrat=1 swaps the stylesheet BEFORE any render.
+  if (location.search.indexOf('nomontserrat=1') !== -1) document.getElementById('fontcss').href = 'fonts/fonts-no-montserrat.css';
+</script>
+</head><body>
+<div id="stage"></div>
+<script src="vendor/react.development.js"></script>
+<script src="vendor/react-dom.development.js"></script>
+<script src="vendor/babel.min.js"></script>
+<script type="text/babel" src="ad-creatives.jsx"></script>
+<script type="text/babel" src="mof-v3.jsx"></script>
+<script type="text/babel" src="tof-stories.jsx"></script>
+<script type="text/babel" src="tour-14day.jsx"></script>
+<script type="text/babel" src="tour-14day-v2.jsx"></script>
+<script type="text/babel" src="pmax.jsx"></script>
+<script type="text/babel">
+  // Tweak state identical to the original exporter (Download Ads.html sets {}; app.jsx defaults are equivalent).
+  window.__SEHTweaks = window.__SEHTweaks || {};
+  const W = window;
+  const mk = (c, w, h) => ({ C: () => React.createElement(W[c]), w, h, comp: c });
+
+  // ── The 119 exporter entries, copied VERBATIM from Download Ads.html ──
+  const TOF16 = [
+    ['01-best-scenic-rail','CreativeAspirational',1080,1080],['02-super-6','CreativeSuper6',1080,1080],
+    ['03-winter-brand-intro','CreativeWinterIntro',1080,1080],['04-four-time-award-winning','CreativeAwardWinning',1080,1080],
+    ['05-pinnacle-peter-hillary','CreativePinnacle',1080,1350],['06-we-dont-miss-a-thing','CreativeDestinations',1080,1350],
+    ['07-winter-mood','CreativeWinterMood',1080,1350],['08-voted-leading-tour-operator','CreativeVoted',1080,1350],
+    ['09-past-guests','CreativeRealTravellers',1080,1080],['10-heritage-steam','CreativeHeritage',1080,1080],
+    ['11-brand-mood-taieri-aerial','CreativeBrandMood',1080,1350],['12-coastal-alpenglow','CreativeAlpenglow',1080,1350],
+    ['13-same-island-worlds-apart','CreativeThreeSeasons',1080,1350],['14-taieri-gorge','CreativeTaieriGorge',1080,1350],
+    ['15-lakeside-sunset','CreativeLakesideSunset',1080,1080],['16-christchurch-to-queenstown','CreativeRoute',1080,1350],
+  ].map(([id,c,w,h]) => ({ id, ...mk(c,w,h) }));
+  const TOFSTORIES = [['01-best-scenic-rail-916','StoryAspirational'],['02-super-6-916','StorySuper6'],['04-award-winning-916','StoryAward'],['09-past-guests-916','StoryGuests']]
+    .map(([id,c]) => ({ id, ...mk(c,1080,1920) }));
+  const V3LIST = [['1a-inclusions-editorial','C1_A'],['1b-inclusions-split','C1_B'],['2b-booking-split','C2_B'],['3a-brochure-editorial','C3_A'],['4c-still-considering','C4_C'],['5b-expert-led-split','C5_B'],['6f-guest-review-quote','C6_F'],['7e-by-rail-motif','C7_E'],['7d-by-rail-poster','C7_D'],['8c-journey-destination','C8_C'],['9d-hillary-poster','C9_D'],['9f-hillary-quote','C9_F'],['10c-this-time-next-year','C10_C']];
+  const MOFV3_SQ = V3LIST.map(([id,c]) => ({ id, ...mk(c,1080,1080) }));
+  const MOFV3_PR = V3LIST.map(([id,c]) => ({ id, ...mk(c,1080,1350) }));
+  const MOFV3_ST = [['4-still-considering-916','C4_C'],['8-journey-destination-916','C8_C'],['10-this-time-next-year-916','C10_C']].map(([id,c]) => ({ id, ...mk(c,1080,1920) }));
+  const strip = s => s.replace(/^\d+\s*·\s*/, '').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  const T14T  = (W.T14_TOF||[]).map((a,i) => ({ id: String(i+1).padStart(2,'0')+'-'+strip(a.label), C:a.C, w:a.w, h:a.h, comp:a.id }));
+  const T14M  = (W.T14_MOF||[]).map((a,i) => ({ id: String(i+1).padStart(2,'0')+'-'+strip(a.label), C:a.C, w:a.w, h:a.h, comp:a.id }));
+  const T14T2 = (W.T14_TOF_V2||[]).map((a,i) => ({ id: String(i+1).padStart(2,'0')+'-'+strip(a.label), C:a.C, w:a.w, h:a.h, comp:a.id }));
+  const PMXJ = (W.PMX_J||[]).map(a => ({ id:a.id, C:a.C, w:a.w, h:a.h, comp:a.id }));
+  const PMXB = (W.PMX_B||[]).map(a => ({ id:a.id, C:a.C, w:a.w, h:a.h, comp:a.id }));
+  const PMXL = (W.PMX_LOGOS||[]).map(a => ({ id:a.id, C:a.C, w:a.w, h:a.h, comp:a.id }));
+
+  // ── The 13 creatives that exist on the canvas (app.jsx) but were never in the exporter ──
+  const EXTRA_TOF = [['14-sail-steam-and-steel','CreativeWalterPeak',1080,1080]].map(([id,c,w,h]) => ({ id, ...mk(c,w,h) }));
+  const MOFV1 = [['mof-01-inclusions','CreativeMofInclusions',1080,1080],['mof-02-booking-confidence','CreativeMofBooking',1080,1080],['mof-03-brochure','CreativeMofBrochure',1080,1350],['mof-04-still-considering','CreativeMofConsidering',1080,1080],['mof-05-why-guided','CreativeMofWhyGuided',1080,1080],['mof-06-guest-review','CreativeMofReview',1080,1350]].map(([id,c,w,h]) => ({ id, ...mk(c,w,h) }));
+  const MOFV2 = [['mof2-01-inclusions','CreativeMof2Inclusions',1080,1080],['mof2-02-booking-confidence','CreativeMof2Booking',1080,1080],['mof2-03-brochure','CreativeMof2Brochure',1080,1350],['mof2-04-need-help-choosing','CreativeMof2Considering',1080,1080],['mof2-05-arrive-without-a-bag','CreativeMof2WhyGuided',1080,1080],['mof2-06-value-and-proof','CreativeMof2Value',1080,1350]].map(([id,c,w,h]) => ({ id, ...mk(c,w,h) }));
+
+  const SECTIONS = [
+    { key:'01_Meta_Brand-Season/TOF_Feed', items:TOF16 }, { key:'01_Meta_Brand-Season/TOF_Stories_9x16', items:TOFSTORIES },
+    { key:'01_Meta_Brand-Season/MOF_Feed_1x1', items:MOFV3_SQ }, { key:'01_Meta_Brand-Season/MOF_Feed_4x5', items:MOFV3_PR },
+    { key:'01_Meta_Brand-Season/MOF_Stories_9x16', items:MOFV3_ST },
+    { key:'02_Meta_14-Day-Tour/TOF_v1', items:T14T }, { key:'02_Meta_14-Day-Tour/MOF', items:T14M }, { key:'02_Meta_14-Day-Tour/TOF_v2', items:T14T2 },
+    { key:'03_Google_PMax/01_Journeys_Asset_Group', items:PMXJ }, { key:'03_Google_PMax/02_Brand_Homepage_Asset_Group', items:PMXB }, { key:'03_Google_PMax/03_Logos', items:PMXL },
+    { key:'04_Canvas_Only_Not_In_Exporter/01_Brand_TOF_Feed_extra', items:EXTRA_TOF },
+    { key:'04_Canvas_Only_Not_In_Exporter/02_Brand_MOF_v1_HISTORICAL', items:MOFV1 },
+    { key:'04_Canvas_Only_Not_In_Exporter/03_Brand_MOF_v2_HISTORICAL', items:MOFV2 },
+  ];
+  const ITEMS = []; SECTIONS.forEach(s => s.items.forEach(it => ITEMS.push({ folder:s.key, id:it.id, w:it.w, h:it.h, comp:it.comp, C:it.C })));
+  window.EXPORT_ITEMS = ITEMS.map(({folder,id,w,h,comp}) => ({folder,id,w,h,comp}));
+
+  let root = null;
+  const raf = () => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+  // STRICT readiness: every <img> must decode with real natural dimensions; every CSS background-image must load.
+  async function readiness(stage) {
+    await document.fonts.ready;
+    const imgs = [...stage.querySelectorAll('img')];
+    const imgReports = await Promise.all(imgs.map(async img => {
+      let err = null; try { await img.decode(); } catch (e) { err = String(e && e.message || e); }
+      const ok = !err && img.complete && img.naturalWidth > 0 && img.naturalHeight > 0;
+      return { src: (img.getAttribute('src')||'').slice(0,120), ok, nw: img.naturalWidth, nh: img.naturalHeight, err };
+    }));
+    const bgUrls = new Set();
+    stage.querySelectorAll('*').forEach(el => { const bi = getComputedStyle(el).backgroundImage; const m = bi && bi.match(/url\(["']?([^"')]+)["']?\)/g); if (m) m.forEach(u => bgUrls.add(u.replace(/^url\(["']?/, '').replace(/["']?\)$/, ''))); });
+    const bgReports = await Promise.all([...bgUrls].map(u => new Promise(res => { const im = new Image(); im.onload = () => res({ src:u.slice(0,120), ok: im.naturalWidth>0, nw: im.naturalWidth, nh: im.naturalHeight }); im.onerror = () => res({ src:u.slice(0,120), ok:false, err:'load error' }); im.src = u; })));
+    // FONTS: collect every (family, weight, style) the creative's text actually uses, force-load each face,
+    // then verify it is loaded. Prevents capturing a fallback font before the webfont arrives.
+    const used = new Map();
+    stage.querySelectorAll('*').forEach(el => {
+      if (!(el.innerText || '').trim()) return;
+      const cs = getComputedStyle(el);
+      cs.fontFamily.split(',').map(x => x.trim().replace(/^["']|["']$/g,'')).slice(0,1).forEach(fam => {
+        if (/^(serif|sans-serif|monospace|system-ui|inherit|Georgia|-apple-system)$/i.test(fam)) return;
+        used.set(`${fam}|${cs.fontWeight}|${cs.fontStyle}`, { fam, weight: cs.fontWeight, style: cs.fontStyle });
+      });
+    });
+    await Promise.all([...used.values()].map(u => document.fonts.load(`${u.style} ${u.weight} 20px "${u.fam}"`).catch(() => [])));
+    await document.fonts.ready;
+    const declared = new Set([...document.fonts].map(f => f.family.replace(/^["']|["']$/g,'')));
+    const loadedFaces = [...document.fonts].filter(f => f.status === 'loaded').map(f => `${f.family.replace(/^["']|["']$/g,'')} ${f.weight}${f.style === 'italic' ? ' italic' : ''}`);
+    const fontsMissing = [...used.values()].filter(u => declared.has(u.fam) && !document.fonts.check(`${u.style} ${u.weight} 20px "${u.fam}"`)).map(u => `${u.fam} ${u.weight} ${u.style}`);
+    const fontsUndeclared = [...new Set([...used.values()].filter(u => !declared.has(u.fam)).map(u => u.fam))];
+    const text = (stage.innerText || '').replace(/\s+/g,' ').trim();
+    return { images: imgReports, backgrounds: bgReports, fontsUsed: [...used.keys()], loadedFaces, fontsMissing, fontsUndeclared, textChars: text.length, allImagesOk: imgReports.every(r => r.ok) && bgReports.every(r => r.ok) };
+  }
+  window.renderItem = async function(i) {
+    const it = ITEMS[i]; const stage = document.getElementById('stage');
+    stage.style.width = it.w + 'px'; stage.style.height = it.h + 'px';
+    if (!root) root = ReactDOM.createRoot(stage);
+    root.render(React.createElement(it.C));
+    await raf(); await raf();
+    await new Promise(r => setTimeout(r, 120));
+    const rep = await readiness(stage);
+    await raf();
+    return { folder: it.folder, id: it.id, w: it.w, h: it.h, comp: it.comp, ...rep };
+  };
+  window.HARNESS_READY = true;
+</script>
+</body></html>
