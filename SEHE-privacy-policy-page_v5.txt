@@ -1,12 +1,15 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — PRIVACY POLICY (/privacy-policy)
-     COMPLETE PAGE  ·  VERSION v4  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v5  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
-       v4 — END OF FILE line added as the last line (25 Sep 2026): if it is
-            the last line in Duda's code box, the whole file is pasted (two
-            Contact pastes had been cut off at line 150). Page code
-            identical to v3.
+       v5 — Kirsty's answers (email, 26 Sep 2026), the only wording changes:
+            P1 section 4 names the Pounamu Tourism Group booking app
+            instead of Checkfront; P2 the postal address is PO Box 19735,
+            Woolston, Christchurch 8241; P3 the sentence about managing
+            cookie preferences is removed. P4: section 8 already says the
+            services are not intended for under-13s, the position she
+            chose. Everything else still matches the live page.
        v3 — Shared kit fix (25 Sep 2026): no CSS child combinators any more.
             Duda publishes that character as an HTML entity and the browser
             drops the rule. This page has no show-more button, so nothing
@@ -234,14 +237,14 @@
     <ul><li>Full Name</li><li>Email Address</li><li>Phone Number (if voluntarily provided)</li><li>Country of Residence</li><li>Tour Preferences or Interests (if voluntarily provided)</li></ul>
     <p>In addition, we may automatically collect certain technical data through cookies and tracking technologies when you browse our website, including:</p>
     <ul><li>IP Address</li><li>Device &amp; Browser Information</li><li>Referring Website or Search Engine</li><li>Page Interaction Data (Clicks, Views, Scrolling Behaviour)</li></ul>
-    <p>We use cookies and tracking technologies in compliance with privacy regulations. You can manage or withdraw your cookie preferences via our website settings.</p>
+    <p>We use cookies and tracking technologies in compliance with privacy regulations.</p>
     <h2 id="section-3-how-we-use-your-information">3. How We Use Your Information</h2>
     <p>We collect and use your personal data for the following purposes:</p>
     <ul><li>Providing Services – Sending brochures, handling inquiries, and processing bookings.</li><li>Marketing &amp; Communications – Sending promotional emails, offers, and updates related to our tours. By providing your contact details, you consent to receiving marketing communications. You can withdraw consent at any time by using the 'unsubscribe' link or contacting us.</li><li>Customer Support – Assisting with questions and providing follow-up information.</li><li>Improving Our Services – Understanding website interactions to enhance user experience.</li></ul>
     <p>We do not sell, rent, or share your personal data with third parties for their independent marketing purposes.</p>
     <h2 id="section-4-how-we-store-protect-your-data">4. How We Store &amp; Protect Your Data</h2>
     <p>Your information is securely stored across multiple platforms, including but not limited to:</p>
-    <ul><li>Zapier (Automation &amp; Data Integration)</li><li>ActiveCampaign (Email Marketing &amp; CRM)</li><li>Mailchimp (Email Communications)</li><li>Checkfront (Booking &amp; Reservations System)</li></ul>
+    <ul><li>Zapier (Automation &amp; Data Integration)</li><li>ActiveCampaign (Email Marketing &amp; CRM)</li><li>Mailchimp (Email Communications)</li><li>Pounamu Tourism Group booking app (Booking &amp; Reservations System)</li></ul>
     <p>These platforms adhere to strict global security and privacy standards, including GDPR and ISO 27001 certification where applicable.</p>
     <p>If your data is transferred internationally, we ensure appropriate safeguards are in place, such as Standard Contractual Clauses (SCCs) or compliance with privacy frameworks.</p>
     <h2 id="section-5-sharing-of-data">5. Sharing of Data</h2>
@@ -260,7 +263,7 @@
     <p>To exercise any of these rights, please contact us:</p>
     <p>Email: info@pounamutourismgroup.com</p>
     <p>Phone: +64 (0)3 974 1812</p>
-    <p>Postal Address: PO Box 39018, Harewood, Christchurch, 8545, New Zealand</p>
+    <p>Postal Address: PO Box 19735, Woolston, Christchurch, 8241, New Zealand</p>
     <h2 id="section-8-compliance-governing-law">8. Compliance &amp; Governing Law</h2>
     <p>This Privacy Policy is governed by the laws of New Zealand, specifically the New Zealand Privacy Act 2020.</p>
     <p>If you reside outside New Zealand, local privacy laws may apply to how we process your data. We adhere to all relevant international privacy standards when handling data across borders.</p>
@@ -278,4 +281,4 @@
   </nav>
 </div>
 </div>
-<!-- END OF FILE: privacy-policy-page.txt v4. If this is the last line in the Duda code box, the whole file is pasted. -->
+<!-- END OF FILE: privacy-policy-page.txt v5. If this is the last line in the Duda code box, the whole file is pasted. -->
