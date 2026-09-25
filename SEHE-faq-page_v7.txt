@@ -1,8 +1,15 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — FAQ PAGE (/f-a-q)
-     COMPLETE PAGE  ·  VERSION v6  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v7  ·  2026-09-26  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v7 — Kirsty's answers (email, 26 Sep 2026). F8: the hygiene answer
+            loses the sentence about bringing N95-grade masks and Rapid
+            Antigen Tests. F3: when we cancel a tour, the cancellation answer
+            now says we will try to offer different suitable dates as an
+            option, and a 100% refund applies if none suit (matching the
+            Terms). END OF FILE line added. Every other answer, question and
+            anchor ID unchanged.
        v6 — Ben (25 Sep 2026): every button at the top is rounded the same.
             The four section links were pills; they are now the same ghost
             button as 'Open all answers' (6px corners, 2px navy border,
@@ -326,7 +333,7 @@
       <details class="fq-item" id="faq-what-is-your-cancellation-policy">
         <summary>What is your cancellation policy?</summary>
         <div class="fq-a">
-          <p>If cancellation is made more than 6-months prior to the tour departure, a full refund will apply, no cancellation fee; 60 days or more prior to departure, 20% of the tour package price will apply; If cancellation is made between 30 and 59 days prior to departure, 50% of the tour package price; If the cancellation is made less than 30 days prior to departure, 100% of the tour package price will apply. In the event that Pounamu Tourism Group cancels a tour, 100% refund will apply.</p>
+          <p>If cancellation is made more than 6-months prior to the tour departure, a full refund will apply, no cancellation fee; 60 days or more prior to departure, 20% of the tour package price will apply; If cancellation is made between 30 and 59 days prior to departure, 50% of the tour package price; If the cancellation is made less than 30 days prior to departure, 100% of the tour package price will apply. In the event that Pounamu Tourism Group cancels a tour, we will try to offer different suitable dates as an option. If none suit, a 100% refund will apply.</p>
         </div>
       </details>
       <details class="fq-item" id="faq-where-can-i-view-the-booking-terms-conditions">
@@ -416,7 +423,7 @@
       <details class="fq-item" id="faq-what-hygiene-measures-are-in-place-during-the-tour">
         <summary>What hygiene measures are in place during the tour?</summary>
         <div class="fq-a">
-          <p>A hygiene kit, including a limited supply of masks and hand sanitiser, is carried onboard each coach; however, we strongly encourage guests to bring their own personal supplies, including N95-grade face masks and Rapid Antigen Tests (RATs). Coach surfaces are cleaned daily throughout the tour. As guests are travelling in close quarters, we strongly recommend that you keep all relevant vaccinations up to date and wear a mask in enclosed, crowded, or confined spaces, particularly if you have underlying health concerns. For the safety and comfort of all guests, Tour Guides may request that passengers displaying symptoms of illness wear a face mask while travelling.</p>
+          <p>A hygiene kit, including a limited supply of masks and hand sanitiser, is carried onboard each coach. Coach surfaces are cleaned daily throughout the tour. As guests are travelling in close quarters, we strongly recommend that you keep all relevant vaccinations up to date and wear a mask in enclosed, crowded, or confined spaces, particularly if you have underlying health concerns. For the safety and comfort of all guests, Tour Guides may request that passengers displaying symptoms of illness wear a face mask while travelling.</p>
         </div>
       </details>
     </section>
@@ -472,3 +479,4 @@
   slot.appendChild(btn);
 })();
 </script>
+<!-- END OF FILE: faq-page.txt v7. If this is the last line in the Duda code box, the whole file is pasted. -->
