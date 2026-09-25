@@ -1,8 +1,30 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact)
-     MASTER  ·  VERSION v6  ·  2026-09-25
+     COMPLETE PAGE  ·  VERSION v7  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     -----------------------------------------------------------------------
+     WHERE IT GOES (the whole page is now ONE widget):
+       page "contact-new" (duplicate of /contact). Delete the banner row, the
+       "Contact Us" text row and the Facebook/Instagram row. In the form's row
+       delete the "Send us an enquiry" text and the Trustpilot widget, and KEEP
+       THE FORM exactly as it is (button stays "Send"). Add ONE full-width row
+       (padding 0) DIRECTLY ABOVE the form's row, add ONE HTML widget, paste
+       this whole file. Set the form row's padding to 0 too.
+       On the published page the form moves into the right-hand column. In the
+       Duda editor it stays in its own row below: that is expected.
+       Steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v7 — CONSOLIDATED: the three blocks (A/B/C) are now ONE HTML widget
+            (hero, contact details, form column, "Helpful information").
+            The native Duda form stays in its own row directly below the
+            widget; on the published site a small script moves that form
+            into the right-hand column as soon as the page contains it,
+            which is before Duda draws the reCAPTCHA checkbox (the same
+            docking the tour pages use for their brochure forms). If the
+            checkbox is already drawn, or the script can't run, nothing
+            moves and the form simply stays below. The script never changes
+            the form itself. Form styles now live inside the page wrapper,
+            so they no longer need :has(). Copy unchanged from v6.
        v6 — The native form's button stays "Send": the "Send enquiry" change
             (CT-13) is withdrawn, so there is no form setting to change.
             Page code unchanged from v5.
@@ -51,25 +73,15 @@
             email and the Zapier webhook receive) stay exactly as they are.
             (v1 also set aria-labels by script — removed in v2.)
      -----------------------------------------------------------------------
-     PASTE FROM LATEST/: contact-page-blockA-hero.txt, contact-page-blockB-
-     details.txt, contact-page-blockC-more.txt (tools/make-latest.py splits
-     this master at the BLOCK markers below — edit the master, not LATEST).
+     PASTE FROM LATEST/: contact-page.txt (one file, one widget).
      RULES KEPT: native form untouched (recipient, subject, webhook, field
      IDs, labels, reCAPTCHA, success message); every tel:/mailto: link is a
      plain link (GTM "Phone Link Clicked" fires on tel: clicks); nothing here
      can show .dmform-success (GTM "Contact Us Form Submitted" keys on it);
      no rating hard-coded (live TrustBox only); no extra bootstrap; no chat
      system added (tawk.to already loads site-wide); no schema; no tracking;
-     no departure data; CSS scoped to .sehe-pg-contact (form rules reach the
-     form only through the row that holds Block B).
-     ===================================================================== -->
-<!-- ▼▼▼ BLOCK A ▼▼▼ -->
-<!-- =====================================================================
-     SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact) — BLOCK A
-     VERSION v6  ·  2026-09-25  ·  paste into ONE Duda HTML widget
-     WHERE: page "contact-new", ROW 1 (full width, padding 0) — the top row.
-     WHAT:  compact hero + the CSS for the WHOLE page (Blocks B and C and the native form rely on it).
-     Full steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
+     no departure data; CSS scoped to .sehe-pg-contact (the form is styled
+     only once it sits inside the page wrapper).
      ===================================================================== -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
 <style>
@@ -78,10 +90,10 @@
      the transparent site header. :has() rules sit on their own so a browser
      without :has() drops only these lines (the runbook also sets the row's
      padding to 0 in the editor, which covers those browsers). */
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact .sp-hero) { padding-top: 0 !important; padding-bottom: 0 !important; overflow: visible !important; max-width: none !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact .sp-hero) .dmRespColsWrapper { overflow: visible !important; max-width: none !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact .sp-hero) .dmRespCol { overflow: visible !important; max-width: none !important; padding-left: 0 !important; padding-right: 0 !important; }
-  #dm .dmContent .dmCustomHtml:has(.sehe-pg-contact .sp-hero) { overflow: visible !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact) { padding-top: 0 !important; padding-bottom: 0 !important; overflow: visible !important; max-width: none !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact) .dmRespColsWrapper { overflow: visible !important; max-width: none !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact) .dmRespCol { overflow: visible !important; max-width: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+  #dm .dmContent .dmCustomHtml:has(.sehe-pg-contact) { overflow: visible !important; }
 
   /* ── Page scope + tokens (Journeys v22 palette) ─────────────────────── */
   .sehe-pg-contact, .sehe-pg-contact *, .sehe-pg-contact *::before, .sehe-pg-contact *::after { box-sizing: border-box; }
@@ -215,16 +227,17 @@
   .sehe-pg-contact .sp-hero--compact .sp-hero-inner { padding: 136px 30px 42px; }
   .sehe-pg-contact .sp-hero-sub { max-width: 640px; }
 
-  /* row 2 — details (left) + native form (right): one aligned 1240px band */
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) { max-width: 1240px !important; margin: 0 auto !important; padding: 56px 30px 8px !important; overflow: visible !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) > .dmRespColsWrapper { display: flex !important; flex-wrap: wrap !important; align-items: flex-start !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) > .dmRespColsWrapper > .dmRespCol { float: none !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) > .dmRespColsWrapper > .dmRespCol:first-child { padding: 0 32px 0 0 !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) > .dmRespColsWrapper > .dmRespCol:last-child { padding: 0 0 0 32px !important; }
-
-  .sehe-pg-contact.ct-details { display: block; }
+  /* details (left) + the docked native form (right). Until the form is docked
+     (or if it never is) the details take the full width and the form stays in
+     its own Duda row below this widget. */
+  .sehe-pg-contact .ct-body { padding-top: 56px !important; padding-bottom: 56px !important; }
+  .sehe-pg-contact .ct-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: start; }
+  .sehe-pg-contact.ct-docked .ct-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 64px; }
+  .sehe-pg-contact .ct-formside[hidden] { display: none !important; }
+  .sehe-pg-contact .ct-quick-sec { margin-top: 56px !important; }
+  .sehe-pg-contact .ct-details { display: block; }
   .sehe-pg-contact .ct-head h3 { font-family: 'Montserrat', -apple-system, 'Segoe UI', Arial, sans-serif !important; font-weight: 600 !important; font-size: clamp(26px, 2.6vw, 32px) !important; line-height: 1.2 !important; color: #153b67 !important; text-transform: none !important; text-align: left !important; letter-spacing: -0.01em !important; margin: 0 0 20px !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmform-title { font-family: 'Montserrat', -apple-system, 'Segoe UI', Arial, sans-serif !important; font-weight: 600 !important; font-size: clamp(26px, 2.6vw, 32px) !important; line-height: 1.2 !important; color: #153b67 !important; text-transform: none !important; text-align: left !important; letter-spacing: -0.01em !important; margin: 0 0 20px !important; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmform-title { font-family: 'Montserrat', -apple-system, 'Segoe UI', Arial, sans-serif !important; font-weight: 600 !important; font-size: clamp(26px, 2.6vw, 32px) !important; line-height: 1.2 !important; color: #153b67 !important; text-transform: none !important; text-align: left !important; letter-spacing: -0.01em !important; margin: 0 0 20px !important; }
   .sehe-pg-contact .ct-list { margin: 0 !important; padding: 0 !important; }
   .sehe-pg-contact .ct-item { margin: 0 !important; padding: 14px 0 !important; border-bottom: 1px solid var(--border-light); }
   .sehe-pg-contact .ct-item:first-child { padding-top: 0 !important; }
@@ -244,52 +257,47 @@
   .sehe-pg-contact .ct-trust-copy p { font-size: 15.5px !important; line-height: 1.5 !important; }
   .sehe-pg-contact .ct-trustbox { width: 100%; max-width: 420px; min-height: 24px; }
 
-  /* ── The native Duda form in the same row — LOOK ONLY ──────────────────
+  /* ── The native Duda form, once docked into .ct-formslot — LOOK ONLY ───
      The form stays a real Duda form: recipient, subject, Zapier webhook,
      field IDs (dmform-0/1/3), labels (%FIRSTNAME% %EMAIL% %ENQUIRY_MESSAGE% —
      they are the payload keys), reCAPTCHA and the success message are not
      touched. Visible field names are CSS text beside the untouched labels,
      matched by field TYPE (Duda renames the fields while it sends, so a name
      match would vanish after a failed send). */
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform { font-family: 'Open Sans', -apple-system, 'Segoe UI', Arial, sans-serif !important; max-width: none !important; padding: 0 !important; margin: 0 !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform, #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform * { box-sizing: border-box !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmform-title { display: block !important; visibility: visible !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmform-wrapper, #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform form { margin: 0 !important; padding: 0 !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput { float: none !important; width: 100% !important; margin: 0 0 18px !important; padding: 0 !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput::before { display: block; margin: 0 0 6px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 15.5px; line-height: 1.3; color: #1a1a1a; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput:has(> input[type="text"])::before { content: "Your name"; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput:has(> input[type="email"])::before { content: "Your email address"; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput:has(> textarea)::before { content: "Your message"; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput > input[type="text"], #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput > input[type="email"], #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput > textarea {
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform { font-family: 'Open Sans', -apple-system, 'Segoe UI', Arial, sans-serif !important; max-width: none !important; padding: 0 !important; margin: 0 !important; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform, #dm .dmContent .sehe-pg-contact .ct-formslot .dmform * { box-sizing: border-box !important; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmform-title { display: block !important; visibility: visible !important; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmform-wrapper, #dm .dmContent .sehe-pg-contact .ct-formslot .dmform form { margin: 0 !important; padding: 0 !important; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmforminput { float: none !important; width: 100% !important; margin: 0 0 18px !important; padding: 0 !important; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmforminput::before { display: block; margin: 0 0 6px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 15.5px; line-height: 1.3; color: #1a1a1a; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmforminput:has(> input[type="text"])::before { content: "Your name"; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmforminput:has(> input[type="email"])::before { content: "Your email address"; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmforminput:has(> textarea)::before { content: "Your message"; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmforminput > input[type="text"], #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmforminput > input[type="email"], #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmforminput > textarea {
     width: 100% !important; display: block !important; margin: 0 !important; padding: 13px 16px !important;
     background: #ffffff !important; color: #1a1a1a !important; border: 1px solid #8a8378 !important; border-radius: 6px !important;
     font-family: 'Open Sans', -apple-system, 'Segoe UI', Arial, sans-serif !important; font-size: 17px !important; line-height: 1.45 !important;
     height: auto !important; min-height: 52px !important; box-shadow: none !important; -webkit-appearance: none !important; appearance: none !important;
   }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput > textarea { min-height: 170px !important; resize: vertical !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput > input::placeholder, #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput > textarea::placeholder { color: #6b655c !important; opacity: 1 !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput > input[type="text"]:focus, #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput > input[type="email"]:focus, #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput > textarea:focus { outline: 3px solid #153b67 !important; outline-offset: 1px !important; border-color: #153b67 !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmformsubmit { float: none !important; display: block !important; width: 100% !important; height: auto !important; min-height: 0 !important; margin: 8px 0 0 !important; padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: none !important; box-shadow: none !important; text-align: left !important; line-height: normal !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmformsubmit::before, #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmformsubmit::after { display: none !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmformsubmit input[type="submit"] {
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmforminput > textarea { min-height: 170px !important; resize: vertical !important; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmforminput > input::placeholder, #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmforminput > textarea::placeholder { color: #6b655c !important; opacity: 1 !important; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmforminput > input[type="text"]:focus, #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmforminput > input[type="email"]:focus, #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmforminput > textarea:focus { outline: 3px solid #153b67 !important; outline-offset: 1px !important; border-color: #153b67 !important; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmformsubmit { float: none !important; display: block !important; width: 100% !important; max-width: none !important; height: auto !important; min-height: 0 !important; margin: 8px 0 0 !important; padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: none !important; box-shadow: none !important; text-align: left !important; line-height: normal !important; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmformsubmit::before, #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmformsubmit::after { display: none !important; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmformsubmit input[type="submit"] {
     width: 100% !important; display: block !important; height: auto !important; min-height: 54px !important; padding: 16px 24px !important; margin: 0 !important;
     background: #153b67 !important; border: 2px solid #153b67 !important; border-radius: 6px !important; color: #ffffff !important; cursor: pointer !important;
     font-family: 'Montserrat', sans-serif !important; font-size: 16px !important; font-weight: 600 !important; letter-spacing: .02em !important; text-transform: none !important; line-height: 1.2 !important;
     -webkit-appearance: none !important; appearance: none !important;
   }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmformsubmit input[type="submit"]:hover { background: #0e2d52 !important; border-color: #0e2d52 !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmformsubmit input[type="submit"]:focus-visible { outline: 3px solid #153b67 !important; outline-offset: 3px !important; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmformsubmit input[type="submit"]:hover { background: #0e2d52 !important; border-color: #0e2d52 !important; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmformsubmit input[type="submit"]:focus-visible { outline: 3px solid #153b67 !important; outline-offset: 3px !important; }
   /* success / error messages: shown by Duda's own script; GTM's "Contact Us
      Form Submitted" needs .dmform-success fully on screen — keep it compact */
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmform-success, #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmform-error { margin: 0 !important; padding: 18px 20px !important; border-radius: 8px !important; font-family: 'Open Sans', sans-serif !important; font-size: 17px !important; line-height: 1.6 !important; color: #1a1a1a !important; text-align: left !important; background: #faf8f3 !important; border: 1px solid #e8e4db !important; border-left: 4px solid #c8a56c !important; }
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmform-error { border-left-color: #b84040 !important; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmform-success, #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmform-error { margin: 0 !important; padding: 18px 20px !important; border-radius: 8px !important; font-family: 'Open Sans', sans-serif !important; font-size: 17px !important; line-height: 1.6 !important; color: #1a1a1a !important; text-align: left !important; background: #faf8f3 !important; border: 1px solid #e8e4db !important; border-left: 4px solid #c8a56c !important; }
+  #dm .dmContent .sehe-pg-contact .ct-formslot .dmform .dmform-error { border-left-color: #b84040 !important; }
 
-  /* row 3 — quick links. Duda's theme pads every row 120px top and bottom on
-     desktop (15px on phones) and gives the HTML widget 10px margins: drop both
-     here so the quick links sit close to the form and to the footer. */
-  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-more) { padding-top: 0 !important; padding-bottom: 0 !important; }
-  #dm .dmContent .dmCustomHtml:has(.sehe-pg-contact.ct-more) { margin-top: 0 !important; margin-bottom: 0 !important; }
-  .sehe-pg-contact.ct-more .sp-body { padding-top: 36px !important; padding-bottom: 56px !important; }
+  /* quick links */
   .sehe-pg-contact .ct-quick { list-style: none !important; margin: 0 !important; padding: 0 !important; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px; }
   .sehe-pg-contact .ct-quick li { margin: 0 !important; padding: 0 !important; list-style: none !important; }
   .sehe-pg-contact .ct-quick li::before, .sehe-pg-contact .ct-quick li::marker { content: none !important; }
@@ -299,13 +307,12 @@
   .sehe-pg-contact .ct-quick span { font-size: 15.5px; line-height: 1.5; color: var(--text-2); }
 
   @media (max-width: 860px) {
-    #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) { padding: 36px 18px 0 !important; }
-    #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) > .dmRespColsWrapper > .dmRespCol:first-child, #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) > .dmRespColsWrapper > .dmRespCol:last-child { width: 100% !important; padding: 0 !important; }
-    #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) > .dmRespColsWrapper > .dmRespCol:first-child { margin-bottom: 40px !important; }
+    .sehe-pg-contact.ct-docked .ct-grid { grid-template-columns: minmax(0, 1fr); gap: 44px; }
+    .sehe-pg-contact .ct-body { padding-top: 36px !important; padding-bottom: 40px !important; }
     .sehe-pg-contact .sp-hero--compact .sp-hero-inner { padding: 112px 20px 34px; }
     .sehe-pg-contact .ct-item--main dd a { font-size: 24px !important; }
     .sehe-pg-contact .ct-chat .sp-btn { width: 100%; }
-    .sehe-pg-contact.ct-more .sp-body { padding-top: 28px !important; padding-bottom: 40px !important; }
+    .sehe-pg-contact .ct-quick-sec { margin-top: 44px !important; }
   }
 </style>
 <div class="sehe-pg-contact">
@@ -319,60 +326,68 @@
     <p class="sp-hero-sub">Ask us about choosing a tour, travelling solo, room options or an existing booking. Our New Zealand team is here to help.</p>
   </div>
 </section>
-</div>
-<!-- ▲▲▲ END BLOCK A ▲▲▲ -->
-<!-- ▼▼▼ BLOCK B ▼▼▼ -->
-<!-- =====================================================================
-     SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact) — BLOCK B
-     VERSION v6  ·  2026-09-25  ·  paste into ONE Duda HTML widget
-     WHERE: page "contact-new", ROW 2, LEFT column. The native Duda form sits in the RIGHT column of the same row.
-     WHAT:  contact details (all tel:/mailto: links), live-chat button, trust line. The script only shows the chat button.
-     Full steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
-     ===================================================================== -->
-<div class="sehe-pg-contact ct-details">
+<div class="sp-body ct-body">
   <h2 class="sp-sr">Ways to get in touch</h2>
-  <div class="ct-head">
-    <h3>Contact details</h3>
-  </div>
-  <dl class="ct-list">
-    <div class="ct-item ct-item--main">
-      <dt>Phone</dt>
-      <dd><a href="tel:+6439741812">+64 3 974 1812</a></dd>
-    </div>
-    <div class="ct-item">
-      <dt>From within New Zealand</dt>
-      <dd><a href="tel:039741812">(03) 974 1812</a></dd>
-    </div>
-    <div class="ct-item">
-      <dt>From Australia</dt>
-      <dd><a href="tel:00116439741812">0011 64 3 974 1812</a></dd>
-    </div>
-    <div class="ct-item">
-      <dt>From the USA or Canada</dt>
-      <dd><a href="tel:0116439741812">011 64 3 974 1812</a></dd>
-    </div>
-    <div class="ct-item ct-item--email">
-      <dt>Email</dt>
-      <dd><a href="mailto:info@pounamutourismgroup.com">info@pounamutourismgroup.com</a></dd>
-    </div>
-    <div class="ct-item">
-      <dt>Postal address</dt>
-      <dd>PO Box 19735, Woolston, Christchurch 8241, New Zealand</dd>
-      <dd class="ct-note">For mail only.</dd>
-    </div>
-  </dl>
-  <div class="ct-chat" data-sehe-chat hidden>
-    <button type="button" class="sp-btn sp-btn--ghost">Chat with us</button>
-  </div>
-  <div class="ct-trust">
-    <img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/new-zealands-leading-tour-operator-2025-winner-shield-256-816b3264-1920w.png" alt="World Travel Awards: New Zealand&#39;s Leading Tour Operator 2025" width="256" height="256" loading="lazy">
-    <div class="ct-trust-copy">
-      <p>World Travel Awards winner: New Zealand&#39;s Leading Tour Operator 2025.</p>
+  <div class="ct-grid">
+    <div class="ct-details">
+      <div class="ct-head">
+        <h3>Contact details</h3>
+      </div>
+      <dl class="ct-list">
+        <div class="ct-item ct-item--main">
+          <dt>Phone</dt>
+          <dd><a href="tel:+6439741812">+64 3 974 1812</a></dd>
+        </div>
+        <div class="ct-item">
+          <dt>From within New Zealand</dt>
+          <dd><a href="tel:039741812">(03) 974 1812</a></dd>
+        </div>
+        <div class="ct-item">
+          <dt>From Australia</dt>
+          <dd><a href="tel:00116439741812">0011 64 3 974 1812</a></dd>
+        </div>
+        <div class="ct-item">
+          <dt>From the USA or Canada</dt>
+          <dd><a href="tel:0116439741812">011 64 3 974 1812</a></dd>
+        </div>
+        <div class="ct-item ct-item--email">
+          <dt>Email</dt>
+          <dd><a href="mailto:info@pounamutourismgroup.com">info@pounamutourismgroup.com</a></dd>
+        </div>
+        <div class="ct-item">
+          <dt>Postal address</dt>
+          <dd>PO Box 19735, Woolston, Christchurch 8241, New Zealand</dd>
+          <dd class="ct-note">For mail only.</dd>
+        </div>
+      </dl>
+      <div class="ct-chat" data-sehe-chat hidden>
+        <button type="button" class="sp-btn sp-btn--ghost">Chat with us</button>
+      </div>
+      <div class="ct-trust">
+        <img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/new-zealands-leading-tour-operator-2025-winner-shield-256-816b3264-1920w.png" alt="World Travel Awards: New Zealand&#39;s Leading Tour Operator 2025" width="256" height="256" loading="lazy">
+        <div class="ct-trust-copy">
+          <p>World Travel Awards winner: New Zealand&#39;s Leading Tour Operator 2025.</p>
         <div id="sehe-ct-trustbox" class="trustpilot-widget ct-trustbox" data-locale="en-NZ" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="67af6f95db89fc000f855205" data-style-height="20px" data-style-width="100%">
           <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Read our reviews on Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a>
         </div>
+        </div>
+      </div>
+    </div>
+    <div class="ct-formside" hidden>
+      <div class="ct-formslot" data-sehe-contact-slot></div>
     </div>
   </div>
+  <section class="sp-section ct-quick-sec" aria-labelledby="sehe-ct-quick">
+    <div class="sp-head">
+      <h2 id="sehe-ct-quick">Helpful information</h2>
+    </div>
+    <ul class="ct-quick" role="list">
+      <li><a href="/f-a-q"><strong>Frequently asked questions</strong><span>Booking, payments and what to expect on tour</span></a></li>
+      <li><a href="/journeys"><strong>Journeys and brochures</strong><span>Compare our tours, then request a brochure from any tour page</span></a></li>
+      <li><a href="/reviews"><strong>Guest reviews</strong><span>Read what our guests say about their journey</span></a></li>
+    </ul>
+  </section>
+</div>
 </div>
 <script>
 (function () {
@@ -425,27 +440,64 @@
   }, 500);
 })();
 </script>
-<!-- ▲▲▲ END BLOCK B ▲▲▲ -->
-<!-- ▼▼▼ BLOCK C ▼▼▼ -->
-<!-- =====================================================================
-     SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact) — BLOCK C
-     VERSION v6  ·  2026-09-25  ·  paste into ONE Duda HTML widget
-     WHERE: page "contact-new", ROW 3 (full width) — below the details + form row.
-     WHAT:  quick links (FAQ, journeys and brochures, reviews). Set the row padding to 0.
-     Full steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
-     ===================================================================== -->
-<div class="sehe-pg-contact ct-more">
-<div class="sp-body">
-  <section class="sp-section" aria-labelledby="sehe-ct-quick">
-    <div class="sp-head">
-      <h2 id="sehe-ct-quick">Helpful information</h2>
-    </div>
-    <ul class="ct-quick" role="list">
-      <li><a href="/f-a-q"><strong>Frequently asked questions</strong><span>Booking, payments and what to expect on tour</span></a></li>
-      <li><a href="/journeys"><strong>Journeys and brochures</strong><span>Compare our tours, then request a brochure from any tour page</span></a></li>
-      <li><a href="/reviews"><strong>Guest reviews</strong><span>Read what our guests say about their journey</span></a></li>
-    </ul>
-  </section>
-</div>
-</div>
-<!-- ▲▲▲ END BLOCK C ▲▲▲ -->
+<script>
+(function () {
+  /* Contact form DOCKING. The real Duda form sits in its own row directly
+     BELOW this widget, so its recipient, subject, webhook, reCAPTCHA and
+     success message are all Duda's own. On the published site this script
+     moves that form into the right-hand column as soon as the page contains
+     it, which is before Duda draws the reCAPTCHA checkbox. If a checkbox is
+     already drawn, or anything is missing, nothing moves and the form simply
+     stays below. In the Duda editor nothing moves. The script never changes
+     the form itself. No less-than sign and no ampersand in this script. */
+  if (!/(^|\.)siredmundhillaryexplorer\.com$/.test(window.location.hostname)) return;
+  var root = document.querySelector('.sehe-pg-contact');
+  var slot = root ? root.querySelector('[data-sehe-contact-slot]') : null;
+  if (!slot) return;
+  var side = slot.parentElement;
+  var done = false, tries = 0, timer = null, mo = null;
+  function stop() {
+    if (timer) window.clearInterval(timer);
+    if (mo) mo.disconnect();
+  }
+  function findForm() {
+    var all = document.querySelectorAll('div[data-element-type="dContactUsRespId"]');
+    for (var i = 0; i !== all.length; i += 1) {
+      if (all[i].querySelector('input[type="email"]')) return all[i];
+    }
+    return null;
+  }
+  function hideIfEmpty(row) {
+    if (!row.querySelector('[data-element-type]')) row.style.setProperty('display', 'none', 'important');
+  }
+  function tick() {
+    if (done) return;
+    var w = findForm();
+    if (!w) return;
+    done = true;
+    stop();
+    if (w.querySelector('iframe')) return;   /* reCAPTCHA already drawn: leave the form where it is */
+    var row = w.closest('.dmRespRow');
+    slot.appendChild(w);
+    side.hidden = false;
+    root.classList.add('ct-docked');
+    if (row) {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () { hideIfEmpty(row); });
+      } else {
+        hideIfEmpty(row);
+      }
+    }
+  }
+  if (window.MutationObserver) {
+    mo = new MutationObserver(tick);
+    mo.observe(document.documentElement, { childList: true, subtree: true });
+  }
+  timer = window.setInterval(function () {
+    tries += 1;
+    tick();
+    if (tries === 100) stop();
+  }, 100);
+  tick();
+})();
+</script>
