@@ -1,6 +1,6 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact) — BLOCK A
-     VERSION v2  ·  2026-09-25  ·  paste into ONE Duda HTML widget
+     VERSION v3  ·  2026-09-25  ·  paste into ONE Duda HTML widget
      WHERE: page "contact-new", ROW 1 (full width, padding 0) — the top row.
      WHAT:  compact hero + the CSS for the WHOLE page (Blocks B and C and the native form rely on it).
      Full steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
@@ -79,7 +79,7 @@
   .sehe-pg-contact .sp-head { max-width: 780px; margin: 0 0 28px !important; }
   .sehe-pg-contact .sp-kicker { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 14px !important; font-weight: 700 !important; letter-spacing: .14em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
   .sehe-pg-contact .sp-head h2 { font-size: clamp(28px, 3vw, 36px) !important; line-height: 1.2 !important; margin: 0 0 12px !important; }
-  .sehe-pg-contact .sp-head p { max-width: 68ch; }
+  .sehe-pg-contact .sp-head p { max-width: 60ch; }   /* ~66-72 characters per line in Open Sans */
   .sehe-pg-contact .sp-head p + p { margin-top: 10px !important; }
 
   /* ── Buttons (48px+ tap targets) ────────────────────────────────────── */
@@ -123,7 +123,7 @@
     .sehe-pg-contact .sp-hero { min-height: max(460px, 60svh); }
     .sehe-pg-contact .sp-hero--compact { min-height: max(340px, 42svh); }
     /* phones crop to the brightest part of the frame — darker veil keeps contrast */
-    .sehe-pg-contact .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.66) 0%, rgba(8,21,37,.48) 30%, rgba(8,21,37,.72) 58%, rgba(8,21,37,.96) 100%); }
+    .sehe-pg-contact .sp-hero-veil, .sehe-pg-contact .sp-hero--compact .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.66) 0%, rgba(8,21,37,.48) 30%, rgba(8,21,37,.72) 58%, rgba(8,21,37,.96) 100%); }
     .sehe-pg-contact .sp-hero-inner, .sehe-pg-contact .sp-hero--compact .sp-hero-inner { padding: 118px 20px 40px; }
     .sehe-pg-contact .sp-hero-logo { left: 50%; width: 56px !important; transform: translateX(-50%); top: 18px; height: 56px !important; }
     .sehe-pg-contact .sp-eyebrow { gap: 0; font-size: 12.5px !important; letter-spacing: .2em !important; margin-bottom: 14px !important; }

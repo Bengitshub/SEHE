@@ -3,7 +3,7 @@
 This runbook covers the eight pages rebuilt under Brief v2: Reviews, Contact, About, FAQ, Gallery, Himalayan Trust, Privacy Policy and Terms & Conditions.
 
 - **Paste files:** always paste from `LATEST/`, regenerated with `python3 tools/make-latest.py`.
-- **Masters:** the masters are `SEHE-<page>-page_v2.txt` in the repo root. v2 is the version checked by three independent reviewers.
+- **Masters:** each page has one master in the repo root: `SEHE-<page>-page_v3.txt` for Reviews, Contact, About, FAQ and Himalayan Trust, and `_v2.txt` for Gallery, Privacy and Terms. These are the versions after three independent reviews.
 - **Before snapshot:** the served HTML of every old page is saved in `backups/2026-09-25-old-pages/`.
 
 ## 0. Rules for every page
@@ -290,7 +290,7 @@ The wording on the new pages is exactly as it is live today, unless a master's c
 ### Gallery
 
 - **G1 — Intro sentence.** It says "Photos kindly supplied by passengers from previous tours.", but two photos are professional images: Marlborough Sounds by Rob Suisted and Dunedin Railway Station by David Wall. Both now show their credit. Kirsty could change the sentence to "Many of these photos were kindly supplied by passengers from previous tours."
-- **G2 — Two photos titled "Mirror Lake aka Lake Matheson (by Fox Glacier)".** They look like the Mirror Lakes on the Milford Road in Fiordland. Please confirm.
+- **G2 — Titles that look wrong.** Two photos are titled "Mirror Lake aka Lake Matheson (by Fox Glacier)", but they look like the Mirror Lakes in the Eglinton Valley on the Milford Road. The waterfall titled "Milford Sounds" looks like Thunder Creek Falls on the Haast Pass. Please confirm.
 - **G3 — Spellings kept verbatim:** "Milford Sounds", "Milford Sounds cruise", "Queen Charlotte Sounds", and "Kaikoura" without a macron.
 
 ### Himalayan Trust (the Trust's own words)
@@ -307,15 +307,22 @@ The wording on the new pages is exactly as it is live today, unless a master's c
 
 - **P1 — Checkfront.** Section 4 lists **Checkfront (Booking & Reservations System)**. Bookings now run through The Creator's booking app, so the policy should name the current processor.
 - **P2 — Postal address.** The policy gives PO Box 39018, Harewood, Christchurch 8545. Everywhere else uses PO Box 19735, Woolston.
-- **P3 — Cookie preferences.** The policy says "You can manage or withdraw your cookie preferences via our website settings", but no cookie settings control was seen on the site.
+- **P3 — Cookie preferences.** The policy says "You can manage or withdraw your cookie preferences via our website settings", but the site has no cookie-consent or settings tool. It does run two GA4 properties, Google Ads, AdRoll, the Meta Pixel, Microsoft Clarity and ActiveCampaign tracking.
+- **P4 — Under-13s.** Section 8 says the services "are not intended for individuals under the age of 13", but Terms clause 41 allows guests under 13 when accompanied.
+- **P5 — Missing full stop.** Section 9's last sentence has no full stop. This is kept verbatim.
 
 ### Terms & Conditions (no wording changes allowed; for legal review)
 
 - **T1 — Postcode.** Clause 1 gives "PO Box 19735, Woolston, Christchurch, **82415**". It should be 8241.
 - **T2 — Email.** Clause 1 gives info@siredmundhillaryexplorer.com (see C3).
 - **T3 — Privacy Officer address.** Clause 9 gives PO Box 39018, Harewood, Christchurch 8545 (see P2).
-- **T4 — Clause numbering** jumps from 18 to 20.
+- **T4 — Clause numbering** jumps from 18 to 20, so there is no clause 19.
 - **T5 — Missing link.** Clause 8 says the Privacy Policy "can be viewed here on this page", but there is no link.
 - **T6 — Ferry.** Clause 36 mentions a Picton–Wellington ferry ticket. Is that still part of any tour?
-- **T7 — Typos kept verbatim:** "It You are responsible" (clause 10); "PTG.." (clause 32).
+- **T7 — Typos kept verbatim:**
+  - "It You are responsible" (clause 10)
+  - "a refund the Tour Package Price" (clause 18)
+  - "PTG.." (clause 32)
+  - "on behalf or a Guest … that that Guest" (clause 41)
+  - "organisers ," (clause 44)
 - See also F1, F2, F3 and F7.
