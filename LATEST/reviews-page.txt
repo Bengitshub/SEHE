@@ -1,8 +1,18 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — REVIEWS PAGE (/reviews)
-     COMPLETE PAGE  ·  VERSION v3  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v4  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v4 — Round-2 feedback (25 Sep 2026): the 12 selected Trustpilot reviews
+            replaced with the newer set taken from the public profile on
+            25 Sep 2026 (Louise H. Sep 2026 ... David Mar 2026), verbatim,
+            newest first, 6 shown + 6 behind "Show more". Video is now
+            click-to-load: the video's own Vimeo thumbnail as the poster,
+            a play button and the title; the player loads on click (a
+            plain Vimeo link without JS; also covers networks that block
+            Vimeo); "Watch on Vimeo" kept. The help band no longer links
+            straight to /brochure-collection (every brochure form redirects
+            there, and a visit counts as a brochure conversion).
        v3 — Third independent review (25 Sep 2026): line length tightened to
             about 60 characters' width (~66-72 characters; the old caps
             rendered up to ~85); on phones the darker hero veil now also
@@ -195,6 +205,21 @@
   .sehe-pg-reviews .rv-video-frame { position: relative; width: 100%; max-width: 900px; background: var(--navy-dark); border-radius: 12px; overflow: hidden; }
   .sehe-pg-reviews .rv-video-frame::before { content: ''; display: block; padding-top: 56.25%; }
   .sehe-pg-reviews .rv-video-frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+  /* click-to-load: poster + play button; the player loads only when asked (also covers blocked Vimeo) */
+  .sehe-pg-reviews .rv-video-facade { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block; color: #ffffff !important; text-decoration: none !important; }
+  .sehe-pg-reviews .rv-video-facade img { position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; object-fit: cover; }
+  .sehe-pg-reviews .rv-video-facade::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 45%; background: linear-gradient(180deg, rgba(8,21,37,0) 0%, rgba(8,21,37,.85) 100%); }
+  .sehe-pg-reviews .rv-play { position: absolute; top: 50%; left: 50%; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; background: rgba(14,45,82,.88); border: 3px solid #ffffff; z-index: 2; transition: transform .2s, background-color .2s; }
+  .sehe-pg-reviews .rv-play::before { content: ''; position: absolute; top: 50%; left: 50%; margin: -15px 0 0 -9px; border-style: solid; border-width: 15px 0 15px 26px; border-color: transparent transparent transparent #ffffff; }
+  .sehe-pg-reviews .rv-video-facade:hover .rv-play { transform: scale(1.06); background: var(--gold-ink); }
+  .sehe-pg-reviews .rv-video-facade:focus-visible { outline: 3px solid var(--navy) !important; outline-offset: 3px !important; }
+  .sehe-pg-reviews .rv-video-title { position: absolute; left: 22px; right: 22px; bottom: 18px; z-index: 2; font-family: 'Montserrat', sans-serif !important; font-size: 18px !important; font-weight: 600 !important; line-height: 1.35 !important; color: #ffffff !important; text-shadow: 0 1px 10px rgba(8,21,37,.8); }
+  .sehe-pg-reviews .rv-video-len { font-weight: 400; opacity: .9; }
+  @media (max-width: 540px) {
+    .sehe-pg-reviews .rv-play { top: 40%; width: 60px; height: 60px; margin: -30px 0 0 -30px; }
+    .sehe-pg-reviews .rv-play::before { margin: -11px 0 0 -6px; border-width: 11px 0 11px 19px; }
+    .sehe-pg-reviews .rv-video-title { font-size: 15px !important; left: 14px; right: 14px; bottom: 10px; }
+  }
   .sehe-pg-reviews .rv-video-link { margin-top: 14px !important; }
   .sehe-pg-reviews .rv-write { background: var(--cream); border: 1px solid var(--border-light); border-left: 4px solid var(--gold); border-radius: 12px; padding: 28px 32px !important; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 32px; }
   .sehe-pg-reviews .rv-write h2 { font-size: clamp(24px, 2.4vw, 28px) !important; margin: 0 0 6px !important; }
@@ -252,6 +277,91 @@
         <figure>
           <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
           <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>What a wonderful trip! fantastic driver and passionate, friendly and caring guides. Nothing was too much trouble. Accommodation throughout was great and the food was exceptional.</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Louise H.</span>, Australia<br>Reviewed September 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>What a great experience. Looked after from day 1 right to the end by experiences hosts. Great sights, accommodation, experiences and food. I'd do it again anytime.</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Graeme M.</span>, Australia<br>Reviewed August 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>The tour was well organized and gave us broad exposure to New Zealand's natural diversity. We also enjoyed learning more about New Zealand's culture and history. …</p>
+          </blockquote>
+          <figcaption><span class="rv-name">SC H.</span>, USA<br>Reviewed July 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>It allowed me to catch up on experiences that over the years living in NZ I had missed. It was paced so that you were never really rushed and had time to take all the sites in. Great tour guides and they created a great atmosphere amongst the travelers and they created many laughs all along the trip. …</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Pam L.</span>, New Zealand<br>Reviewed July 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>The holiday was superb ! The route was well thought out to take in most of the places that we wanted to visit in South Island, and was so well organised. The guides ran a smooth operation and were most helpful when rain prevented tours on one day. We met some lovely people, had a lot of laughs and thoroughly enjoyed ourselves. Recommended !</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Mike</span>, New Zealand<br>Reviewed July 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>Every day is full of wonderful surprises! The destinations are remarkable but the beauty of this trip is all of the carefully thought out stops for coffee, ice cream, views, waterfalls or even short walks with very few other tourist groups. I highly recommend this tour. I’m doing a repeat!</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Jo B.</span>, USA<br>Reviewed June 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+    </ul>
+    <details class="sp-more rv-more">
+      <summary><span class="sp-when-closed">Show 6 more reviews</span><span class="sp-when-open">Show fewer reviews</span></summary>
+      <ul class="rv-grid" role="list">
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>This was an incredible trip! Our guides and driver were exceptional! We are early 70’s but fit and the pace of the trip was perfect. … This was a wonderfully organized trip and all the hotels and food stops were very good. …</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Rick P.</span>, USA<br>Reviewed June 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>From start to finish this experience was amazing. Accommodation,food,experiences &amp; guides were exceptional. Everything was as stated &amp; the commentary and knowledge of the guides was amazing.</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Leonie M.</span>, Australia<br>Reviewed June 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>The South Island is the true heart of New Zealand, and I can't think of a better way to experience it than with this particular tour. Trains, boats, and coaches took us to all the spots worth seeing, often in a better-planned fashion than other tours we observed. Friendly, helpful staff, excellent meals (even for us vegetarians), along with cooperative weather made this perfect. …</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Doug D.</span>, Canada<br>Reviewed June 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
           <p>Thank you for such a brilliant, well organised adventure. From day one to the last day everything flowed like a well oiled machine. We were very fortunate with the weather being able to see snow capped mountains, cascading waterfalls and glistening lakes. Highlights are too many to list. …</p>
           </blockquote>
           <figcaption><span class="rv-name">Richard S.</span>, Australia<br>Reviewed May 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
@@ -270,94 +380,9 @@
         <figure>
           <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
           <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
-          <p>A fantastic trip with all the magical sights of the South Island mixed with the fun of many train journeys. The organisation and communication was exceptional with nothing too much trouble or complicated for our guides to manage. Highly recommend this tour!</p>
-          </blockquote>
-          <figcaption><span class="rv-name">Sue</span>, New Zealand<br>Reviewed April 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
-        </figure>
-      </li>
-      <li class="rv-card">
-        <figure>
-          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
-          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
-          <p>A brilliantly organised tour with amazing guides that went above and beyond to make sure that everything ran smoothly and everyone was getting the best experience possible. … I could not recommend this company highly enough.</p>
-          </blockquote>
-          <figcaption><span class="rv-name">Jan</span>, Australia<br>Reviewed April 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
-        </figure>
-      </li>
-      <li class="rv-card">
-        <figure>
-          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
-          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
-          <p>An all round great experience from beginning to end. Whether it was the tour leaders, the activities, the transport, the accommodation, and the food they were all exceptional and the focus was on meeting the reasonable expectations of the tour participants. In the space of 14 days minor things were inevitably impacted, particularly by weather, and we quickly came to realise that the tour company would effectively work around them both on tour and in the back of house. The company can be relied upon to deliver the quality experience that it markets.</p>
-          </blockquote>
-          <figcaption><span class="rv-name">Jon W.</span>, Australia<br>Reviewed March 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
-        </figure>
-      </li>
-      <li class="rv-card">
-        <figure>
-          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
-          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
           <p>I would describe this as a "world-class" tour. The guides and drivers were amazing. The organization and logistics were impressive. The South Island is vast, beautiful, interesting, and often spectacular. We can definitely recommend the "Sir Edmund Hillary Explorer" Tour.</p>
           </blockquote>
           <figcaption><span class="rv-name">David</span>, USA<br>Reviewed March 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
-        </figure>
-      </li>
-    </ul>
-    <details class="sp-more rv-more">
-      <summary><span class="sp-when-closed">Show 6 more reviews</span><span class="sp-when-open">Show fewer reviews</span></summary>
-      <ul class="rv-grid" role="list">
-      <li class="rv-card">
-        <figure>
-          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
-          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
-          <p>Fabulous tour and experience! The itinerary was comprehensive- we saw so much of the South Island, without feeling rushed. The tour guides were all brilliant and nothing was too much trouble for them. …</p>
-          </blockquote>
-          <figcaption><span class="rv-name">Bronwyn L.</span>, Australia<br>Reviewed March 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
-        </figure>
-      </li>
-      <li class="rv-card">
-        <figure>
-          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
-          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
-          <p>Absolutely fabulous tour. I have done many organised tours both in Australia and overseas as a solo traveller and this was up there with the best. … The scenery, itinerary, accommodation, trains, excursions &amp; the extra bonus stops for our good timekeeping were outstanding. …</p>
-          </blockquote>
-          <figcaption><span class="rv-name">Stephen I.</span>, Australia<br>Reviewed February 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
-        </figure>
-      </li>
-      <li class="rv-card">
-        <figure>
-          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
-          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
-          <p>Fantastic! Everything was managed very professionally with special attention to all the details. Our guides provided clarity and instructions immediately before we needed them so there was very little to remember or be concerned about. It made the complete journey very relaxed for the pace of everyone, energetic or chill types alike. …</p>
-          </blockquote>
-          <figcaption><span class="rv-name">Jo B.</span>, USA<br>Reviewed February 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
-        </figure>
-      </li>
-      <li class="rv-card">
-        <figure>
-          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
-          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
-          <p>The tour is well organised. The tour guides and coach drivers provided excellent information and support. We found it very relaxing to be able to enjoy the spectacular scenery from a variety of modes of transportation. We had not previously been on a large group tour but the group didn't feel so large as the guides managed to make it feel like a very personalised experience.</p>
-          </blockquote>
-          <figcaption><span class="rv-name">Peter H.</span>, New Zealand<br>Reviewed November 2025 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
-        </figure>
-      </li>
-      <li class="rv-card">
-        <figure>
-          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
-          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
-          <p>This Tour was highly professional and very well organised. It really could not have been better in catering for the different levels of physical fitness. …</p>
-          </blockquote>
-          <figcaption><span class="rv-name">Carl T.</span>, Australia<br>Reviewed October 2025 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
-        </figure>
-      </li>
-      <li class="rv-card">
-        <figure>
-          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
-          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
-          <p>I can highly recommend the Sir Edmund Hillary Explorer Tour. It was, without a doubt, the most well-organized tour I have ever been on. …</p>
-          </blockquote>
-          <figcaption><span class="rv-name">Jessamy</span>, Australia<br>Reviewed July 2025 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
         </figure>
       </li>
       </ul>
@@ -371,7 +396,11 @@
       <h2 id="sehe-rv-video">More passenger testimonials</h2>
     </div>
     <div class="rv-video-frame">
-      <iframe src="https://player.vimeo.com/video/1067162461?dnt=1" title="The Sir Edmund Hillary Explorer Rail &amp; Coach Tour - More Passenger Testimonials" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      <a class="rv-video-facade" href="https://vimeo.com/1067162461" data-sehe-video="https://player.vimeo.com/video/1067162461?autoplay=1&amp;dnt=1" data-sehe-video-title="The Sir Edmund Hillary Explorer Rail &amp; Coach Tour - More Passenger Testimonials">
+        <img src="https://i.vimeocdn.com/video/1995021277-0571f59c32ed5cb894ea27fe0106547312b38278a5633158b36df60a16841444-d_1280?region=us" alt="" width="1280" height="720" loading="lazy">
+        <span class="rv-play" aria-hidden="true"></span>
+        <span class="rv-video-title">Play the video: More passenger testimonials <span class="rv-video-len">(1 min 30 sec)</span></span>
+      </a>
     </div>
     <p class="rv-video-link"><a href="https://vimeo.com/1067162461" target="_blank" rel="noopener">Watch on Vimeo<span class="sp-sr"> (opens in a new tab)</span></a></p>
   </section>
@@ -532,7 +561,6 @@
     </div>
     <div class="sp-actions">
       <a class="sp-btn sp-btn--gold" href="/journeys">View all journeys</a>
-      <a class="sp-btn sp-btn--light" href="/brochure-collection">Brochure collection</a>
       <a class="sp-btn sp-btn--light" href="/contact">Contact us</a>
       <a class="sp-btn sp-btn--light" href="tel:+6439741812">+64 3 974 1812</a>
     </div>
@@ -557,5 +585,24 @@
     if (ready()) { clearInterval(timer); return; }
     if (tries === 40) clearInterval(timer);
   }, 500);
+})();
+</script>
+<script>
+(function () {
+  /* Click-to-load video: the Vimeo player is created only when the visitor
+     presses play. Without JS the poster is a plain link to the video on
+     Vimeo. No less-than sign and no ampersand in this script. */
+  var a = document.querySelector('.sehe-pg-reviews [data-sehe-video]');
+  if (!a) return;
+  a.addEventListener('click', function (e) {
+    e.preventDefault();
+    var f = document.createElement('iframe');
+    f.src = a.getAttribute('data-sehe-video');
+    f.title = a.getAttribute('data-sehe-video-title') || 'Video';
+    f.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
+    f.setAttribute('allowfullscreen', '');
+    a.parentNode.replaceChild(f, a);
+    f.focus();
+  });
 })();
 </script>

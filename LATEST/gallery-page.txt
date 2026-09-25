@@ -1,8 +1,12 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — GALLERY PAGE (/gallery)
-     COMPLETE PAGE  ·  VERSION v2  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v3  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v3 — Round-2 feedback (25 Sep 2026): the help band no longer links
+            straight to /brochure-collection (every brochure form redirects
+            there, and a visit counts as a brochure conversion). Nothing
+            else changed.
        v2 — Review fixes (independent check, 25 Sep 2026): no tag-like tokens
             left in comments; kicker/button type larger (shared kit).
             Third independent review: photo ORDER corrected to the live
@@ -272,7 +276,6 @@
     </div>
     <div class="sp-actions">
       <a class="sp-btn sp-btn--gold" href="/journeys">View all journeys</a>
-      <a class="sp-btn sp-btn--light" href="/brochure-collection">Brochure collection</a>
       <a class="sp-btn sp-btn--light" href="/contact">Contact us</a>
       <a class="sp-btn sp-btn--light" href="tel:+6439741812">+64 3 974 1812</a>
     </div>

@@ -1,22 +1,115 @@
-# Old-design pages rebuild: runbook (25 Sep 2026)
+# Old-design pages rebuild: runbook (25 Sep 2026, updated after round-2 feedback)
 
-This runbook covers the eight pages rebuilt under Brief v2: Reviews, Contact, About, FAQ, Gallery, Himalayan Trust, Privacy Policy and Terms & Conditions.
+This runbook covers eight rebuilt pages: Reviews, Contact, About, FAQ, Gallery, Himalayan Trust, Privacy Policy and Terms & Conditions.
 
-- **Paste files:** always paste from `LATEST/`, regenerated with `python3 tools/make-latest.py`.
-- **Masters:** each page has one master in the repo root: `SEHE-<page>-page_v3.txt` for Reviews, Contact, About, FAQ and Himalayan Trust, and `_v2.txt` for Gallery, Privacy and Terms. These are the versions after three independent reviews.
-- **Before snapshot:** the served HTML of every old page is saved in `backups/2026-09-25-old-pages/`.
+- **Paste files:** always paste from `LATEST/`. They are regenerated with `python3 tools/make-latest.py`.
+- **Masters:** one per page in the repo root:
+  - `SEHE-reviews-page_v4.txt`
+  - `SEHE-contact-page_v4.txt`
+  - `SEHE-gallery-page_v3.txt`
+  - `SEHE-about-page_v3.txt`
+  - `SEHE-faq-page_v3.txt`
+  - `SEHE-himalayan-trust-page_v3.txt`
+  - `SEHE-privacy-policy-page_v2.txt`
+  - `SEHE-terms-page_v2.txt`
+- **Before snapshot:** the served HTML of every old page, from 25 Sep 2026, is in `backups/2026-09-25-old-pages/`.
+- **Draft emails:** for Kirsty and Paul, in `notes/2026-09-25-emails.md`.
+
+## Start here (if you are new to this project)
+
+**What this is.** Eight old pages on siredmundhillaryexplorer.com (a Duda site) have new designs. Each page's code is ready to paste. Nothing is live yet.
+
+- **Plan:** each page is built on a hidden copy first (`<slug>-new`) and published so Kirsty can preview it. It replaces the live page only after she approves.
+
+**Who does what.**
+
+| Person | Role |
+|---|---|
+| Ben | Builds Phase 1 (Reviews, Contact). Contract ends **31 Oct 2026**. |
+| The Creator (Izaac and Joel) | May build Phase 2 (About, FAQ, Gallery, Himalayan Trust, Privacy, Terms). They also have their own work in the same Duda editor (see rule 3 in §0). |
+| Kirsty | Approves every page before it goes live. Answers the content questions in §7. |
+| Paul | Owns the legal and policy wording: Privacy, Terms, and FAQ payment and cancellation. |
+
+**You need:**
+
+- Duda editor access;
+- this repo (or just the `LATEST/` folder);
+- about 20–30 minutes per page.
+
+No coding is needed. You paste whole files into Duda HTML widgets.
+
+**The flow for every page:**
+
+1. Duplicate → `-new`.
+2. Hide it from the menu.
+3. Paste.
+4. Check with Izaac and Joel, then publish.
+5. Send Kirsty the preview link.
+6. After her OK, swap.
+
+The details are in §0 to §4.
+
+**Changing a page's content later.** Edit the page's master in the repo root, never `LATEST/`:
+
+1. Bump the version in the file name, the header and the changelog.
+2. Run `python3 tools/make-latest.py`.
+3. Commit and push.
+
+**House rules for the code** (README "Rules of the road"):
+
+- No `<` or `&` inside inline `<script>` blocks, because Duda's publisher escapes them.
+- Scripts only add to the page.
+- All CSS stays under the page's `.sehe-pg-…` class.
+
+## First manual fix: two tour pages are hidden from Google
+
+Two tour pages are served with `<meta name="robots" content="noindex">`:
+
+- `/2026-2027-spring/summer-tour-14-days` (14-Day 2026/27)
+- `/2026-2027-spring/summer-tour-11-day-tours` (11-Day 2026/27)
+
+They already had it in the 6 Sep backup (`backups/2026-09-06-live-site/pages/`), so they have probably been out of Google since the July switch-over. They are also missing from `/sitemap.xml`. These are main tour pages and PMax sitelink destinations.
+
+1. In Duda, open each page, go to **Page settings → SEO**, and turn **"Hide from search engines" off**.
+2. Check with Izaac and Joel (rule 3 in §0), then **Publish**.
+3. In **Google Search Console → URL Inspection**, paste each full URL and click **Request indexing**.
+4. Open https://www.siredmundhillaryexplorer.com/sitemap.xml and check both URLs are now listed.
+
+**Leave `/brochure-collection` on noindex.** That is deliberate; see §6.
+
+## Go-live plan: two phases, Kirsty previews first
+
+**Phase 1: Reviews and Contact (Ben).**
+
+1. Build `reviews-new` and `contact-new` (§1 and §3). **Hide both from the menu.**
+2. Check with Izaac and Joel that nothing of theirs is pending, then publish.
+3. Email Kirsty the two preview links (draft in `notes/2026-09-25-emails.md`).
+4. **Kirsty must not submit the contact form on the preview.** The form on `contact-new` is live (rule 7 in §0).
+   - Alternative: agree **one** test submission on `contact-new` as the end-to-end test, and write down the date and time. Everyone then ignores that one conversion and inbox message.
+5. When Kirsty approves, swap each page (§2). **Nothing is swapped before she approves.**
+
+**Phase 2: About, FAQ, Gallery, Himalayan Trust, Privacy and Terms (Ben, or The Creator after 31 Oct).**
+
+- The steps are the same as Phase 1: build `-new`, hide it from the menu, check with Izaac and Joel, publish, send Kirsty the preview links, and swap after she approves.
+- **Kirsty's open questions on these pages** are in §7: About A1–A4, Gallery G1–G2 and FAQ F8. The pages can go live before she answers; any answers become small edits later.
+- **Privacy and Terms.** The new pages carry the **current** wording exactly. If Paul changes any wording, edit the text inside `<div class="lg-doc">` in that page's HTML widget, and update the master to match. Never paste old wording back.
 
 ## 0. Rules for every page
 
 1. **Build on a copy.** Duplicate the live page and name the copy `<slug>-new`. The live page stays untouched until the swap.
-2. **Nothing is live until the swap.**
-   - Duda gives a new page **noindex** by default.
-   - The copy is not in the menu.
-   - Publishing the site while a `-new` page exists is safe.
-3. **Never create a redirect from `/<slug>` to `/<slug>-old`.** After renaming, open **Site Settings → URL Redirects** and delete any rule whose source is `/<slug>`. Duda may add one automatically when a page URL changes.
-4. **Contact: copy the form, never move it.** Duplicating the page gives `contact-new` its own copy of the form. The original page, which becomes `contact-old`, keeps its form, so rollback stays possible.
-5. **Do not send test submissions to the live inbox.** They reach Kirsty's inbox and the Zapier lead Zap. If an end-to-end test is wanted, agree it with Kirsty first.
-6. **Removing noindex at the swap is a launch blocker**, except for the three pages that are noindex today (see the table).
+2. **Hide the copy from the menu.** Duda can add a duplicated page to the navigation. After duplicating, open the copy's **page settings** and hide it from navigation. Check the header menu **and** the footer menu.
+3. **Publishing publishes everything.** In Duda, Publish pushes **every** pending edit on the site, not just your page.
+   - **Before every publish:** check with Izaac and Joel that none of their unpublished work is sitting in the editor.
+   - **Before touching Body End or the global header (§5):** tell them first.
+4. **What a preview is.** A published `-new` page is noindex (Duda's default for new pages) and hidden from the menu, but anyone with the link can open it.
+5. **Never create a redirect from `/<slug>` to `/<slug>-old`.** After renaming, open **Site Settings → URL Redirects** and delete any rule whose source is `/<slug>`. Duda may add one automatically when a page URL changes.
+6. **Contact: copy the form, never move it.** Duplicating the page gives `contact-new` its own copy of the form. The original page, which becomes `contact-old`, keeps its form, so rollback stays possible.
+7. **The form on `contact-new` is live.** A submission there:
+   - reaches Kirsty's inbox and the Zapier lead Zap;
+   - counts as the **"Contact Us Form Submitted"** conversion. GTM matches any URL containing `/contact`, and `/contact-new` contains it.
+
+   So don't test it unless a test is agreed (see Phase 1).
+8. **Removing noindex at the swap is a launch blocker**, except for Himalayan Trust, Privacy and Terms, which are noindex today (see §4).
 
 ## 1. The row every single-widget page needs
 
@@ -29,24 +122,29 @@ In the `-new` page:
    - Background: none.
 3. Drag in an **HTML** widget, click **Edit HTML**, paste the whole `LATEST/<file>`, then click **Update**.
 
-The CSS also sets the row padding to 0 in modern browsers. The editor setting covers older browsers without `:has()` support.
+The CSS also sets the row padding to 0 in modern browsers. The editor setting covers older browsers. Duda's theme otherwise pads every row 120px top and bottom on desktop.
 
-## 2. The swap (launch), per page
+## 2. Preview, approval and swap
+
+**Preview.**
+
+1. Check with Izaac and Joel (rule 3), then **Publish**.
+2. Open `https://www.siredmundhillaryexplorer.com/<slug>-new` on a phone and a desktop.
+3. Send Kirsty the link.
+
+**Swap. Only after Kirsty approves.**
 
 1. **Old page → Page settings.**
    - Change the URL from `<slug>` to `<slug>-old`.
    - Turn **Hide from search engines** on.
-   - Remove it from the navigation.
+   - Hide it from the navigation.
 2. **Site Settings → URL Redirects.** Delete any rule from `/<slug>`.
 3. **New page → Page settings.**
    - Change the URL from `<slug>-new` to `<slug>`.
    - Paste the SEO title and description from the table in §4.
-   - Set **Hide from search engines**: **off** for Reviews, Contact, About, FAQ and Gallery.
-   - Keep it **on** for Himalayan Trust, Privacy and Terms, as today.
-4. **Site Navigation.** Duda menu items point to *pages*, not URLs, so the menu still points at the old page after the rename.
-   - Show the new page in the old page's position, with the same label.
-   - Check both the header menu and the footer menu.
-5. **Publish.** Then check the live URL on a phone and a desktop:
+   - Set **Hide from search engines**: **off** for Reviews, Contact, About, FAQ and Gallery. Keep it **on** for Himalayan Trust, Privacy and Terms.
+4. **Site Navigation.** Duda menu items point to *pages*, not URLs, so the menu still points at the old page after the rename. In **both** the header and footer menus, show the new page in the old page's position with the same label.
+5. **Publish** (after checking with Izaac and Joel). Then check the live URL on a phone and a desktop:
    - the menu link and the footer link;
    - that no redirect is in place (the URL stays `/<slug>`).
 
@@ -54,7 +152,7 @@ The CSS also sets the row padding to 0 in modern browsers. The editor setting co
 
 1. New page → `<slug>-new`, with noindex on.
 2. Old page → `<slug>`, with noindex off where it was indexed.
-3. Restore the menu.
+3. Restore the menus.
 4. Delete any redirect from `/<slug>`.
 5. Publish.
 
@@ -62,32 +160,37 @@ The old page is untouched throughout, so rollback takes about two minutes.
 
 ## 3. Page by page
 
-### Reviews (`/reviews`) — `LATEST/reviews-page.txt`
+### Reviews (`/reviews`): `LATEST/reviews-page.txt`
 
 **Build.** Use the §1 row. **After publishing `/reviews-new`, check:**
 
 - The Trustpilot Micro Combo shows in the hero. If it doesn't, the plain "Read our reviews on Trustpilot" link shows instead.
 - **Show 6 more reviews** opens.
-- The guest video plays. Click play once: Vimeo blocks automated playback checks, so it could not be tested here.
+- **The guest video.** It shows a poster with a play button and the title. Click it: the Vimeo player loads and should start. Vimeo blocks automated checks, so actual playback could not be tested here. Without JavaScript, or if Vimeo is blocked, the poster is a plain link to the video on Vimeo.
 
-**Trustpilot plan limit.** This Trustpilot account cannot use review-list TrustBoxes. Trustpilot's data service answers "BusinessUnit does not have access to that trustbox" for Carousel, Slider, List and Grid. Only Micro, Mini, Starter and Review Collector are available. So new reviews do **not** appear on the page automatically:
+**The 12 selected reviews.** They come from the public Trustpilot profile on 25 Sep 2026, newest first, from Louise H. (Sep 2026) to David (Mar 2026). All are 5-star. The first 6 show and 6 sit behind "Show more".
 
-- The live TrustBox always shows the current score and count.
-- The 12 selected reviews are fixed text.
+- They are verbatim. Cuts are at whole sentences, marked "…". The month shown is the month the review was **posted** on Trustpilot.
+- The brief's original set was a May snapshot; about 16 reviews are newer than it.
 
-**To refresh the selected reviews:**
+**To refresh the selected reviews later:**
 
 1. Copy the reviews verbatim, cut only at whole sentences, and mark cuts with "…".
-2. Keep name, country and review month.
+2. Keep name, country and the posting month.
 3. Edit `TP` in the master, bump the version, then run `tools/make-latest.py`.
 
-**Alternative:** upgrade the Trustpilot plan and paste the Carousel TrustBox "Get code" snippet, business unit `67af6f95db89fc000f855205`.
+**Trustpilot plan.** The public profile shows **"Paid Trustpilot subscription"**. But on 25 Sep, Trustpilot's widget service answered "BusinessUnit does not have access to that trustbox" for the review-list TrustBoxes: Carousel, Slider, List and Grid. Only Micro, Mini, Starter and Review Collector worked.
 
-### Contact (`/contact`) — three HTML widgets plus the native form
+- The Carousel may just need enabling in **Trustpilot Business → TrustBox library**, or it may need a higher tier.
+- **Whoever holds the Trustpilot login should check this before anyone pays for an upgrade.**
+- If a Carousel becomes available, its "Get code" snippet (business unit `67af6f95db89fc000f855205`) could show new reviews automatically.
+- Until then, the live TrustBox shows the current score and count (TrustScore 4.7 from 88 reviews on 25 Sep), and the 12 selected reviews are fixed text.
+
+### Contact (`/contact`): three HTML widgets plus the native form
 
 **Build.**
 
-1. Duplicate `/contact` → `contact-new`.
+1. Duplicate `/contact` → `contact-new`. Hide it from the menu (rule 2).
 2. In `contact-new`, delete these three rows:
    - the photo banner row;
    - the "Contact Us" text row;
@@ -95,9 +198,14 @@ The old page is untouched throughout, so rollback takes about two minutes.
 3. In the form row, delete the **"Send us an enquiry" text** and the **Trustpilot widget**. **Keep the form.**
 4. Drag an **HTML** widget onto the **left edge of the form**. Duda creates a left column.
    - Paste `LATEST/contact-page-blockB-details.txt`.
-   - Set the row padding to 0.
-5. Add a full-width row **above** it (padding 0) and paste `LATEST/contact-page-blockA-hero.txt`. Block A carries the CSS for the whole page, so it must stay on the page.
-6. Add a full-width row **below** it and paste `LATEST/contact-page-blockC-more.txt`.
+   - Set this row's padding to 0.
+5. Add a full-width row **above** it, with padding 0, and paste `LATEST/contact-page-blockA-hero.txt`. Block A carries the CSS for the whole page, so it must stay on the page.
+6. Add a full-width row **below** it, **set its padding to 0**, and paste `LATEST/contact-page-blockC-more.txt`. This block holds the quick links:
+   - FAQ;
+   - Journeys and brochures;
+   - Reviews.
+
+   There is no in-page Pounamu line and no social links, because the site footer already carries both.
 
 **Check the form's settings in `contact-new`** against `/contact`. Look only; change nothing:
 
@@ -113,9 +221,12 @@ The old page is untouched throughout, so rollback takes about two minutes.
 **Tracking stays intact.** The public GTM container, checked 25 Sep 2026, has these triggers:
 
 - *Phone Link Clicked* fires on any link containing `tel:`. Every number on the new page is a `tel:` link.
-- *Contact Us Form Submitted* fires when `.dmform-success` containing "Thank you for contacting us" is fully on screen, on a URL containing `/contact`. The native form keeps both.
+- *Contact Us Form Submitted* fires when `.dmform-success` containing "Thank you for contacting us" is fully on screen, on a URL containing `/contact`. The native form keeps both, which is also why a preview submission counts (rule 7).
 
-**Labels (optional, manual step for Ben).** The labels `%FIRSTNAME%`, `%EMAIL%` and `%ENQUIRY_MESSAGE%` are the **keys the email and the Zapier webhook receive**, because Duda posts them as `label-dmform-N`. That's why the page shows "Your name", "Your email address" and "Your message" with **CSS only** instead of renaming them. No script touches the form. Until the labels are renamed, screen readers still announce the tokens, exactly as they do on the live page today.
+**Labels (optional, manual step).** The labels `%FIRSTNAME%`, `%EMAIL%` and `%ENQUIRY_MESSAGE%` are the **keys the email and the Zapier webhook receive**, because Duda posts them as `label-dmform-N`. That's why the page shows "Your name", "Your email address" and "Your message" with **CSS only**, instead of renaming them.
+
+- No script touches the form.
+- Until the labels are renamed, screen readers still announce the tokens, as on the live page today.
 
 To rename them properly, in one sitting:
 
@@ -124,28 +235,23 @@ To rename them properly, in one sitting:
 3. Re-map the Zap.
 4. Delete the three `::before { content: "Your …" }` lines in Block A.
 
-**Chat button.** "Start a live chat" only appears once tawk.to has loaded. tawk.to is already on every page; no second chat system was added.
+**Chat button.** "Start a live chat" appears only once tawk.to has loaded. tawk.to is already on every page, so no second chat system was added.
 
-### About (`/about`) — `LATEST/about-page.txt`
+### About (`/about`): `LATEST/about-page.txt`
 
-Use the §1 row.
+Use the §1 row. The open questions for Kirsty are About A1–A4 in §7.
 
-**Flagged for Kirsty, not edited.** The live text says:
+**Left out** (see A4): three of the old carousel's seven slides.
 
-1. "In Christchurch, learn more about his team's expedition … at the International Antarctic Centre". Is that visit still part of every itinerary?
-2. "You will also travel through Marlborough, where Edmund was trained for the air force … Mt Tapuae-o-Uenuku". Is Marlborough still on every tour?
-3. "A guest speaker from the Hillary family will also give you an insight …". Is this true of every departure? The live homepage says "a member of the Hillary family personally joins the tour for an evening at the Sir Edmund Hillary Alpine Centre".
+- The **2025/26 Spring/Summer route map**, which is a past season.
+- The Wharf photo, whose 640w file is an 880 KB PNG.
+- The humpback whale photo, whose licence is unconfirmed.
 
-**Left out** (see §7, A4): three of the old carousel's seven slides.
-- The **2025/26 Spring/Summer route map**, a past season. Kirsty should send an updated map if one exists.
-- The Wharf photo. Its 640w file is an 880 KB PNG.
-- The humpback whale photo. Its licence is unconfirmed.
-
-### FAQ (`/f-a-q`) — `LATEST/faq-page.txt`
+### FAQ (`/f-a-q`): `LATEST/faq-page.txt`
 
 Use the §1 row. Every question has its own link, and opening the link opens that answer. For example: `/f-a-q#faq-what-are-the-payment-terms`.
 
-### Gallery (`/gallery`) — `LATEST/gallery-page.txt`
+### Gallery (`/gallery`): `LATEST/gallery-page.txt`
 
 Use the §1 row, then test the lightbox:
 
@@ -153,15 +259,15 @@ Use the §1 row, then test the lightbox:
 - The arrow keys move between photos.
 - Esc closes it.
 
-### Himalayan Trust (`/himalayan-trust`) — `LATEST/himalayan-trust-page.txt`
+### Himalayan Trust (`/himalayan-trust`): `LATEST/himalayan-trust-page.txt`
 
 Use the §1 row. The page is **noindex today; keep it**.
 
 ### Privacy Policy (`/privacy-policy`) and Terms (`/terms-and-conditions`)
 
-Paste `LATEST/privacy-policy-page.txt` and `LATEST/terms-page.txt` into a §1 row. Both pages are **noindex today; keep it** unless Ben decides otherwise.
+Paste `LATEST/privacy-policy-page.txt` and `LATEST/terms-page.txt` into a §1 row each. Both pages are **noindex today; keep it**.
 
-The documents are word-for-word copies. The build refuses to write the file if a single character differs from the live page.
+The documents copy the live wording word for word. The build refuses to write the file if a single character differs from the live page.
 
 ## 4. SEO title and description (Page settings → SEO)
 
@@ -178,9 +284,11 @@ The documents are word-for-word copies. The build refuses to write the file if a
 
 No page carries schema. Do not switch on the FAQ schema option or any review stars.
 
-## 5. Manual clean-up outside the pages (Ben; exact code)
+## 5. Manual clean-up outside the pages (exact code)
 
-### A. Body End HTML (Site Settings) — delete this block
+**Before A to C:** tell Izaac and Joel. These edits change the site-wide Body End HTML and the global header, and publishing pushes every pending edit (rule 3).
+
+### A. Body End HTML (Site Settings): delete this block
 
 It is the Trustpilot widget HTML pasted **inside a `<script>` tag**. It never displays, and it throws `SyntaxError: Unexpected token '<'` on **every page** (confirmed 25 Sep 2026):
 
@@ -194,7 +302,7 @@ It is the Trustpilot widget HTML pasted **inside a `<script>` tag**. It never di
  </script>
 ```
 
-### B. Body End HTML — delete the last line
+### B. Body End HTML: delete the last line
 
 This is a second Trustpilot bootstrap. Head HTML already loads it once.
 
@@ -202,7 +310,7 @@ This is a second Trustpilot bootstrap. Head HTML already loads it once.
 <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
 ```
 
-### C. Global header — delete the HTML widget called "TrustBox script"
+### C. Global header: delete the HTML widget called "TrustBox script"
 
 It holds only another copy of the same bootstrap:
 
@@ -210,9 +318,14 @@ It holds only another copy of the same bootstrap:
 <!-- TrustBox script --> <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async=""> </script> <!-- End TrustBox script -->
 ```
 
-After A–C, the bootstrap loads once, from Head HTML. On the live Journeys page it currently appears four times.
+**After A to C, publish, then check:**
 
-### D. Body End HTML — Meta pixel block with an empty ID
+1. **On `/reviews-new`** (or `/reviews` after the swap):
+   - Open DevTools → **Network** and filter on `tp.widget`. Reload. There should be **exactly one** `tp.widget.bootstrap.min.js` load.
+   - The TrustBox in the hero renders.
+2. **On one tour page** (e.g. `/pinnacle-tour-2027`), the Trustpilot TrustBox still renders. Tour pages carry their own bootstrap in the page widget, so **two loads there is expected**. Journeys likewise carries its own.
+
+### D. Body End HTML: Meta pixel block with an empty ID
 
 The block runs `fbq('init', '')` and has a `noscript` image with `tr?id=`. GTM already loads the Meta pixel (tag 16).
 
@@ -223,34 +336,69 @@ Do **not** touch the Tawk.to, `AW-16523865426` gtag or ActiveCampaign (`vgo`) sc
 
 ### E. Footer menu
 
-The footer menu (desktop and mobile) has no **Reviews** link, and its order differs from the header. Add Reviews after Journeys, matching the header: Home · About · Journeys · Reviews · Gallery · FAQ · Contact.
+The footer menu (desktop and mobile) has no **Reviews** link, and its order differs from the header. Add Reviews after Journeys, to match the header: Home · About · Journeys · Reviews · Gallery · FAQ · Contact.
 
 ### F. Mobile header phone icon
 
 It links to `tel:+64 3 974 1812`, with spaces. Change it to `tel:+6439741812` so every phone dials it cleanly.
 
-## 6. Found on out-of-scope pages (report only; nothing changed)
+## 6. Findings on other pages (report only; nothing changed)
 
-- **noindex on key pages.** The tour pages `/2026-2027-spring/summer-tour-14-days` and `/2026-2027-spring/summer-tour-11-day-tours`, and `/brochure-collection`, are served with `<meta name="robots" content="noindex">`. They are also missing from `/sitemap.xml`. These pages are PMax sitelinks and main menu destinations. Check whether this is intentional.
-- **Two old banner images** are PNG files named `.jpg`, and their 1280w and 1920w CDN sizes redirect in a loop:
+### `/brochure-collection`: keep it noindex; watch the traffic that reaches it without a form
+
+**Why it's noindex.** It is noindex on purpose. Every brochure form redirects there, and the Meta custom conversion **"Brochure Collection Page"** fires on URLs containing `brochure-collection`. The risk is visits that reach it **without** submitting a form.
+
+**What fires on a page view of `/brochure-collection`.** Checked 25 Sep 2026 against the public GTM container `GTM-TPSTZ264` and the page source.
+
+- **GTM**, all page views (no trigger is specific to this page):
+  - tag 14, Google tag `G-GKR67569LP` (GA4 page_view);
+  - tag 16, Meta Pixel base code (PageView);
+  - tag 36, Microsoft Clarity;
+  - tag 47, Microsoft UET page load (`97186072`);
+  - the link-click and element-visibility listeners.
+- **Head HTML:** GA4 `G-GKR67569LP` a second time, Duda's own GA4 `G-KESV7YYW1G`, AdRoll, and Clarity a second time.
+- **Body End:** Google Ads tag `AW-16523865426` (config), a Meta Pixel block with an empty ID (PageView), ActiveCampaign site tracking, and tawk.to.
+- **The gap:** nothing on the page tells "arrived after a form" apart from "arrived by a link". Any conversion defined as "URL contains brochure-collection" therefore counts every visit.
+
+**Internal links to `/brochure-collection`.**
+
+- **Live site:** none, apart from the page's own canonical tag. The Journeys cards' "Brochure" buttons go to each tour page's `#tour-brochure` form.
+- **New pages:** the earlier versions had three direct links (the Reviews band, the Contact quick link and the Gallery band). They are removed in Reviews v4, Contact v4 and Gallery v3.
+
+**PMax sitelinks: yes, they can count as brochure conversions.**
+
+- The repo's own PMax plan (`creatives/google-journeys/pmax/PMAX-CAMPAIGN.md`) has a **"Brochure Collection" sitelink to `/brochure-collection`**.
+- The same plan proposes the primary conversion `brochure_lead` as a **GA4 page view of `/brochure-collection`**, imported into Google Ads.
+- The Creator's handover sheet has a **"Free Tour Brochures"** sitelink to the same URL.
+
+So if either sitelink is live and the brochure conversion is URL-based, every sitelink click counts as a brochure lead, and PMax will learn to buy those clicks. Meta's "Brochure Collection Page" is URL-based. The Google Ads and GA4 definitions could not be checked, because I have no access to the accounts.
+
+**Recommendation:**
+
+- Move the brochure sitelink(s) off `/brochure-collection`, to `/journeys` or to a tour page's `#tour-brochure` form.
+- Keep `/brochure-collection` reachable only through the forms.
+- Later, count the form submission itself rather than the page visit.
+
+**Also seen, unverified:** GA4 `G-GKR67569LP` is configured twice (Head HTML and GTM tag 14), and Clarity loads twice. Page views may be double-counted in GA4; check in GA4 DebugView.
+
+### Other findings
+
+- **Two old banner images** are PNG files named `.jpg`, and their 1280w and 1920w CDN sizes redirect in a loop. Neither is used by the new pages.
   - the `/contact` banner (L161 Milford Sound, **3.9 MB**);
   - the `/gallery` banner (Wharf, 880 KB).
-
-  The new pages don't use them.
 - **Homepage v38 (on `/v2`).** The hero hard-codes the Trustpilot 5-star image with 'Rated "Excellent"'. This is the same honesty issue as the tour-page strips.
 - **Journeys v22** loads its own Trustpilot bootstrap. It also says "small-group", against Paul's no-"small groups" rule.
-- **Head HTML** contains a long explanatory comment ("What was fixed: …") that anyone can read in the page source. Optional tidy.
+- **Head HTML** contains a long explanatory comment ("What was fixed: …") that anyone can read in the page source. Tidying it is optional.
 
 ## 7. Content flags (Kirsty or the business to decide; nothing edited)
 
-The wording on the new pages is exactly as it is live today, unless a master's changelog says otherwise. These items look wrong, or disagree with other pages. They are listed here, not changed.
+The wording on the new pages is exactly as it is live today, unless a master's changelog says otherwise. The items below look wrong or disagree with other pages. They are listed here, not changed. The emails in `notes/2026-09-25-emails.md` send Kirsty's and Paul's items.
 
 ### Reviews
 
-- **R1 — Lisa Godwin (NSW, AUS, "April 2025 Tour").** On the live site her name links to her Trustpilot profile, so this is a Trustpilot review. It can't be shown as direct guest feedback with a travel date, so it is left out of "Earlier guest feedback", which now has 16 entries. To show it, add it to the selected Trustpilot reviews, verbatim, with its Trustpilot **review date**.
-- **R2 — Newer reviews exist.** The TrustBox showed **88** reviews on 25 Sep, against 86 in July/August, so there are reviews newer than the appendix set. Trustpilot blocks automated reading, so they couldn't be checked here. When convenient, refresh the 12 selected reviews newest-first (§3, Reviews).
-- **R3 — "Peter H., New Zealand" (November 2025).** Confirm the reviewer isn't connected to the business. Trustpilot doesn't allow featuring reviews from connected people. The risk is low: the review reads like a genuine guest's.
-- **R4 — Typos in the older testimonials**, such as "where wonderful", "every been on" and "Hilary". They are kept verbatim by rule.
+- **R1 — Lisa Godwin.** Her review is on Trustpilot, posted July 2025. On the old page it appeared as direct guest feedback, with a travel date and a link to her Trustpilot profile. It is simply not in the new selected set, and it is left out of "Earlier guest feedback", which now has 16 entries.
+- **R2 — Newer reviews.** About 16 reviews are newer than the brief's original May set. The selected set was replaced on 25 Sep with reviews up to September 2026 (§3, Reviews). Refresh it now and then.
+- **R3 — Typos in the older testimonials**, such as "where wonderful", "every been on" and "Hilary". They are kept verbatim by rule.
 
 ### Contact
 
@@ -258,22 +406,22 @@ The wording on the new pages is exactly as it is live today, unless a master's c
 - **C2 — Webhook URL in page source.** Duda's form puts its Zapier catch-hook URL in the public page source, so anyone could post to it. Consider a filter step in the Zap, for example: only continue when the subject is "SEHE Website Form Message".
 - **C3 — Two email addresses.** The site uses info@pounamutourismgroup.com, but the Terms use info@siredmundhillaryexplorer.com. Confirm both inboxes are monitored.
 
-### About
+### About (for Kirsty)
 
-- **A1 — International Antarctic Centre.** The page says: "In Christchurch, learn more about his team's expedition … at the International Antarctic Centre". Is this still on every itinerary?
-- **A2 — Marlborough.** The page says: "You will also travel through Marlborough … Mt Tapuae-o-Uenuku". Is this still true of every tour?
-- **A3 — Hillary family guest speaker.** The page says: "A guest speaker from the Hillary family will also give you an insight …". Is this on every departure? Other pages put it differently:
+- **A1 — International Antarctic Centre.** The page says: "In Christchurch, learn more about his team's expedition … at the International Antarctic Centre". Is that visit still on every itinerary?
+- **A2 — Marlborough.** The page says: "You will also travel through Marlborough … Mt Tapuae-o-Uenuku". Is that still true of every tour?
+- **A3 — Hillary family guest speaker.** The page says: "A guest speaker from the Hillary family will also give you an insight …". Is that on every departure? Other pages put it differently:
   - The live homepage says "a member of the Hillary family personally joins the tour for an evening at the Sir Edmund Hillary Alpine Centre".
   - Journeys shows a "Hillary Family Speaker" tile.
   - Peter Hillary hosts only the Pinnacle.
 - **A4 — Photos left out.** Three items from the old carousel are not on the new page:
-  - the 2025/26 route map, which is for a past season;
+  - the 2025/26 route map, which is for a past season (**is there an updated map?**);
   - the Wharf photo, whose 640w file is an 880 KB PNG;
   - the humpback whale photo. Its file name (`australasia_new_zealand_kaikoura_gallery_…`) suggests a third-party library image, and the licence is unconfirmed.
 
 ### FAQ (answers verbatim; conflicts with other pages)
 
-- **F1 — Mobility.** The FAQ says "two flights of stairs … manage your own bags at times". Terms clause 13 says "15 steps … carry your own bags".
+- **F1 — Mobility. URGENT for Paul.** Kirsty's ruling is "two flights of stairs", which is what the FAQ says. Terms clause 13 still says "15 steps … carry your own bags", and the Terms are the contract.
 - **F2 — Payment methods.** The pages disagree:
   - The FAQ offers bank transfer (AU$, US$ and NZ$ accounts), Wise and PayPal.
   - Terms clause 2 says internet banking, with a 2% credit-card surcharge.
@@ -283,14 +431,16 @@ The wording on the new pages is exactly as it is live today, unless a master's c
 - **F5 — Meals.** One answer says "all breakfasts and a selection of additional meals". Another says "Most meals are included".
 - **F6 — Seating (minor).** The FAQ page says some trains have allocated seating. The Journeys FAQ says seating "is not pre-allocated", but that answer is about the coach.
 - **F7 — Dietary requirements.** The FAQ says to use the "pre-trip documentation". Terms clause 23 says "at the time of booking".
-- **F8 — Hygiene answer.** It mentions N95 masks and Rapid Antigen Tests. Is this still current?
+- **F8 — Hygiene answer (for Kirsty).** It mentions N95 masks and Rapid Antigen Tests. Is that still current?
 - **F9 — Typo kept verbatim.** "Some train journeys feature allocated an allocated seating".
 - **F10 — Physical payment address.** The address "Level 3, 111 Cashel Street, Christchurch" stays in the FAQ's payment answer. It is deliberately not shown on Contact, because it isn't a visitor location.
 
-### Gallery
+### Gallery (for Kirsty)
 
-- **G1 — Intro sentence.** It says "Photos kindly supplied by passengers from previous tours.", but two photos are professional images: Marlborough Sounds by Rob Suisted and Dunedin Railway Station by David Wall. Both now show their credit. Kirsty could change the sentence to "Many of these photos were kindly supplied by passengers from previous tours."
-- **G2 — Titles that look wrong.** Two photos are titled "Mirror Lake aka Lake Matheson (by Fox Glacier)", but they look like the Mirror Lakes in the Eglinton Valley on the Milford Road. The waterfall titled "Milford Sounds" looks like Thunder Creek Falls on the Haast Pass. Please confirm.
+- **G1 — Intro sentence.** It says "Photos kindly supplied by passengers from previous tours.", but two photos are professional images: Marlborough Sounds by Rob Suisted and Dunedin Railway Station by David Wall. Both now show their credit. A possible fix: "Many of these photos were kindly supplied by passengers from previous tours."
+- **G2 — Titles that look wrong.**
+  - Two photos are titled "Mirror Lake aka Lake Matheson (by Fox Glacier)", but they look like the Mirror Lakes in the Eglinton Valley on the Milford Road.
+  - The waterfall titled "Milford Sounds" looks like Thunder Creek Falls on the Haast Pass.
 - **G3 — Spellings kept verbatim:** "Milford Sounds", "Milford Sounds cruise", "Queen Charlotte Sounds", and "Kaikoura" without a macron.
 
 ### Himalayan Trust (the Trust's own words)
@@ -303,15 +453,15 @@ The wording on the new pages is exactly as it is live today, unless a master's c
   - "Khunde Hospitals nurses, 2019" is on a file dated 2016_02_25.
 - **H3 — Typos kept verbatim:** "we need you help"; "Khunde Hospitals nurses".
 
-### Privacy Policy (no wording changes allowed; for legal review)
+### Privacy Policy (no wording changes allowed; for Paul)
 
 - **P1 — Checkfront.** Section 4 lists **Checkfront (Booking & Reservations System)**. Bookings now run through The Creator's booking app, so the policy should name the current processor.
 - **P2 — Postal address.** The policy gives PO Box 39018, Harewood, Christchurch 8545. Everywhere else uses PO Box 19735, Woolston.
-- **P3 — Cookie preferences.** The policy says "You can manage or withdraw your cookie preferences via our website settings", but the site has no cookie-consent or settings tool. It does run two GA4 properties, Google Ads, AdRoll, the Meta Pixel, Microsoft Clarity and ActiveCampaign tracking.
+- **P3 — Cookie preferences.** The policy says "You can manage or withdraw your cookie preferences via our website settings". The site has no cookie-consent or settings tool, but it runs two GA4 properties, Google Ads, AdRoll, the Meta Pixel, Microsoft Clarity and ActiveCampaign tracking.
 - **P4 — Under-13s.** Section 8 says the services "are not intended for individuals under the age of 13", but Terms clause 41 allows guests under 13 when accompanied.
-- **P5 — Missing full stop.** Section 9's last sentence has no full stop. This is kept verbatim.
+- **P5 — Missing full stop.** Section 9's last sentence has no full stop. It is kept verbatim.
 
-### Terms & Conditions (no wording changes allowed; for legal review)
+### Terms & Conditions (no wording changes allowed; for Paul)
 
 - **T1 — Postcode.** Clause 1 gives "PO Box 19735, Woolston, Christchurch, **82415**". It should be 8241.
 - **T2 — Email.** Clause 1 gives info@siredmundhillaryexplorer.com (see C3).

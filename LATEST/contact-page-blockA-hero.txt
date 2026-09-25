@@ -1,6 +1,6 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact) — BLOCK A
-     VERSION v3  ·  2026-09-25  ·  paste into ONE Duda HTML widget
+     VERSION v4  ·  2026-09-25  ·  paste into ONE Duda HTML widget
      WHERE: page "contact-new", ROW 1 (full width, padding 0) — the top row.
      WHAT:  compact hero + the CSS for the WHOLE page (Blocks B and C and the native form rely on it).
      Full steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
@@ -218,19 +218,19 @@
   #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmform-success, #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmform-error { margin: 0 !important; padding: 18px 20px !important; border-radius: 8px !important; font-family: 'Open Sans', sans-serif !important; font-size: 17px !important; line-height: 1.6 !important; color: #1a1a1a !important; text-align: left !important; background: #faf8f3 !important; border: 1px solid #e8e4db !important; border-left: 4px solid #c8a56c !important; }
   #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmform-error { border-left-color: #b84040 !important; }
 
-  /* row 3 — quick links + group line */
-  .sehe-pg-contact.ct-more .sp-body { padding-top: 48px !important; }
-  .sehe-pg-contact .ct-quick { list-style: none !important; margin: 0 !important; padding: 0 !important; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 16px; }
+  /* row 3 — quick links. Duda's theme pads every row 120px top and bottom on
+     desktop (15px on phones) and gives the HTML widget 10px margins: drop both
+     here so the quick links sit close to the form and to the footer. */
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-more) { padding-top: 0 !important; padding-bottom: 0 !important; }
+  #dm .dmContent .dmCustomHtml:has(.sehe-pg-contact.ct-more) { margin-top: 0 !important; margin-bottom: 0 !important; }
+  .sehe-pg-contact.ct-more .sp-body { padding-top: 36px !important; padding-bottom: 56px !important; }
+  .sehe-pg-contact .ct-quick { list-style: none !important; margin: 0 !important; padding: 0 !important; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px; }
   .sehe-pg-contact .ct-quick li { margin: 0 !important; padding: 0 !important; list-style: none !important; }
   .sehe-pg-contact .ct-quick li::before, .sehe-pg-contact .ct-quick li::marker { content: none !important; }
   .sehe-pg-contact .ct-quick a { display: flex; flex-direction: column; gap: 4px; height: 100%; min-height: 96px; padding: 18px 20px; border: 1px solid var(--border); border-radius: 10px; background: #ffffff; text-decoration: none !important; transition: border-color .2s, box-shadow .2s; }
   .sehe-pg-contact .ct-quick a:hover { border-color: var(--navy); box-shadow: 0 2px 10px rgba(21,59,103,.08); }
   .sehe-pg-contact .ct-quick strong { font-family: 'Montserrat', sans-serif !important; font-size: 17px; font-weight: 600; color: var(--navy); }
   .sehe-pg-contact .ct-quick span { font-size: 15.5px; line-height: 1.5; color: var(--text-2); }
-  .sehe-pg-contact .ct-group { margin-top: 48px !important; padding-top: 22px !important; border-top: 1px solid var(--border-light); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; }
-  .sehe-pg-contact .ct-group p { font-size: 16px !important; }
-  .sehe-pg-contact .ct-social { display: flex; gap: 22px; font-size: 16px; }
-  .sehe-pg-contact .ct-social a { display: inline-flex; align-items: center; min-height: 44px; }
 
   @media (max-width: 860px) {
     #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) { padding: 36px 18px 0 !important; }
@@ -239,7 +239,7 @@
     .sehe-pg-contact .sp-hero--compact .sp-hero-inner { padding: 112px 20px 34px; }
     .sehe-pg-contact .ct-item--main dd a { font-size: 24px !important; }
     .sehe-pg-contact .ct-chat .sp-btn { width: 100%; }
-    .sehe-pg-contact.ct-more .sp-body { padding-top: 40px !important; }
+    .sehe-pg-contact.ct-more .sp-body { padding-top: 28px !important; padding-bottom: 40px !important; }
   }
 </style>
 <div class="sehe-pg-contact">
