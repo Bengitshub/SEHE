@@ -1,17 +1,17 @@
-# Old-design pages rebuild: runbook (25 Sep 2026, updated after round-2 feedback)
+# Old-design pages rebuild: runbook (25 Sep 2026, updated after round-2 feedback and the Contact v8 fix)
 
 This runbook covers eight rebuilt pages: Reviews, Contact, About, FAQ, Gallery, Himalayan Trust, Privacy Policy and Terms & Conditions.
 
 - **Paste files:** always paste from `LATEST/`. They are regenerated with `python3 tools/make-latest.py`.
 - **Masters:** one per page in the repo root:
-  - `SEHE-reviews-page_v5.txt`
-  - `SEHE-contact-page_v7.txt`
-  - `SEHE-gallery-page_v4.txt`
-  - `SEHE-about-page_v4.txt`
-  - `SEHE-faq-page_v4.txt`
-  - `SEHE-himalayan-trust-page_v4.txt`
-  - `SEHE-privacy-policy-page_v2.txt`
-  - `SEHE-terms-page_v2.txt`
+  - `SEHE-reviews-page_v6.txt`
+  - `SEHE-contact-page_v8.txt`
+  - `SEHE-gallery-page_v5.txt`
+  - `SEHE-about-page_v5.txt`
+  - `SEHE-faq-page_v5.txt`
+  - `SEHE-himalayan-trust-page_v5.txt`
+  - `SEHE-privacy-policy-page_v3.txt`
+  - `SEHE-terms-page_v3.txt`
 - **Before snapshot:** the served HTML of every old page, from 25 Sep 2026, is in `backups/2026-09-25-old-pages/`.
 - **Draft emails:** for Kirsty and Paul, in `notes/2026-09-25-emails.md`.
 
@@ -60,6 +60,8 @@ The details are in §0 to §4.
 **House rules for the code** (README "Rules of the road"):
 
 - No `<` or `&` inside inline `<script>` blocks, because Duda's publisher escapes them.
+- **No `>` anywhere inside `<style>`, comments included** (found 25 Sep on the live `/reviews-new`). Duda publishes it as `&gt;`, and the browser then silently drops the whole rule. Write `.a .b`, never `.a > .b` or `:has(> …)`.
+- **Only use markup already working in this site's Duda widgets.** Contact v7's definition list (`dl`/`dt`/`dd`) was the one tag set no working page used, and v7 vanished in the editor. `verify.py` now fails on both of these.
 - Scripts only add to the page.
 - All CSS stays under the page's `.sehe-pg-…` class.
 
@@ -82,6 +84,8 @@ They already had it in the 6 Sep backup (`backups/2026-09-06-live-site/pages/`),
 ## Go-live plan: two phases, Kirsty previews first
 
 **Phase 1: Reviews and Contact (Ben).**
+
+Status 25 Sep: `reviews-new` and `about-new` are built and published. `reviews-new` needs **v6 pasted over v5** (the "Show 6 more reviews" fix, §3). `contact-new` needs **v8** (§3).
 
 1. Build `reviews-new` and `contact-new` (§1 and §3). **Hide both from the menu.**
 2. Check with Izaac and Joel that nothing of theirs is pending, then publish.
@@ -173,7 +177,7 @@ The old page is untouched throughout, so rollback takes about two minutes.
 **Build.** Use the §1 row. **After publishing `/reviews-new`, check:**
 
 - The Trustpilot Micro Combo shows in the hero. If it doesn't, the plain "Read our reviews on Trustpilot" link shows instead.
-- **Show 6 more reviews** opens.
+- **Show 6 more reviews** is a white button with a navy border and a **+**. Clicked, it opens, the + becomes **−**, and the label reads **Show fewer reviews**. (v5 showed it as plain text on the live page; v6 fixes that, so re-paste v6 into the same widget if `reviews-new` still has v5.)
 - **The guest video.** It shows a poster with a play button and the title. Click it: the Vimeo player loads and should start. Vimeo blocks automated checks, so actual playback could not be tested here. Without JavaScript, or if Vimeo is blocked, the poster is a plain link to the video on Vimeo.
 
 **The 12 selected reviews.** They come from the public Trustpilot profile on 25 Sep 2026, newest first, from Louise H. (Sep 2026) to David (Mar 2026). All are 5-star. The first 6 show and 6 sit behind "Show more".
@@ -196,7 +200,9 @@ The old page is untouched throughout, so rollback takes about two minutes.
 
 ### Contact (`/contact`): ONE HTML widget above the native form: `LATEST/contact-page.txt`
 
-Since v7 the whole page is one widget. The native Duda form stays in its own row directly below the widget. On the published page, a small script moves the form into the right-hand column. **In the Duda editor the form stays below the widget; that is expected.**
+The whole page is one widget (v8). The native Duda form stays in its own row directly below the widget. On the published page, a small script moves the form into the right-hand column. **In the Duda editor the form stays below the widget; that is expected.**
+
+**v7 vanished in the editor after Update; use v8.** v8 contains only markup already working in this site's other Duda widgets (see the house rules at the top). **What you should see in the editor after Update:** the photo banner, "Contact details" with the phone numbers, the awards line, "Helpful information" with three boxes, and the native form in its own row underneath.
 
 **Build.**
 
@@ -214,6 +220,12 @@ Since v7 the whole page is one widget. The native Duda form stays in its own row
 5. Check with Izaac and Joel, then Publish. Open `/contact-new` on a desktop, where the form should sit to the right of the contact details, and on a phone, where it sits below them.
 
 **If the form ever stays below the widget on the published page**, the page still works: the form simply shows under the contact details. The script leaves the form alone if the reCAPTCHA checkbox was already drawn, and it never changes the form itself.
+
+**If the widget still shows nothing after Update**, one two-minute test tells us whether it's the code or the widget:
+
+1. Open the same HTML widget, delete everything, type `<p>TEST</p>`, click **Update**.
+2. If **TEST shows**, the widget is fine: open it again, delete `TEST`, paste `LATEST/contact-page.txt` again (select all in the file first, so nothing is cut off), click **Update**. If it vanishes again, write down exactly that ("TEST shows, contact-page.txt vanishes") and send it to whoever maintains this repo.
+3. If **TEST does not show either**, the row or widget is the problem, not the code: delete that row, add a fresh full-width row directly above the form row, add a new HTML widget, and paste again.
 
 **Check the form's settings in `contact-new`** against `/contact`. Look only; change nothing:
 
@@ -242,7 +254,7 @@ To rename them properly, in one sitting:
 1. Open the Zap that starts from the Duda catch hook and note which fields it maps.
 2. Rename the labels in Duda.
 3. Re-map the Zap.
-4. Delete the three `::before { content: "Your …" }` lines in the Contact master, bump its version and paste the new `LATEST/contact-page.txt`.
+4. Delete the three `::before { content: 'Your …' }` lines in the Contact master, bump its version and paste the new `LATEST/contact-page.txt`.
 
 **Chat button.** "Chat with us" appears only once tawk.to has loaded. tawk.to is already on every page, so no second chat system was added.
 
