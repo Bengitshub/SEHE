@@ -39,9 +39,9 @@ CURRENT VERSIONS
 ------------------------------------------------------------
   about-page.txt                         v4    (SEHE-about-page_v4.txt)
   brochure-collection.txt                v2    (SEHE-brochure-collection_v2.txt)
-  contact-page-blockA-hero.txt           v5    (SEHE-contact-page_v5.txt [BLOCK A])
-  contact-page-blockB-details.txt        v5    (SEHE-contact-page_v5.txt [BLOCK B])
-  contact-page-blockC-more.txt           v5    (SEHE-contact-page_v5.txt [BLOCK C])
+  contact-page-blockA-hero.txt           v6    (SEHE-contact-page_v6.txt [BLOCK A])
+  contact-page-blockB-details.txt        v6    (SEHE-contact-page_v6.txt [BLOCK B])
+  contact-page-blockC-more.txt           v6    (SEHE-contact-page_v6.txt [BLOCK C])
   faq-page.txt                           v4    (SEHE-faq-page_v4.txt)
   gallery-page.txt                       v4    (SEHE-gallery-page_v4.txt)
   himalayan-trust-page.txt               v4    (SEHE-himalayan-trust-page_v4.txt)

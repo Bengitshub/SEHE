@@ -1,6 +1,6 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact) — BLOCK C
-     VERSION v5  ·  2026-09-25  ·  paste into ONE Duda HTML widget
+     VERSION v6  ·  2026-09-25  ·  paste into ONE Duda HTML widget
      WHERE: page "contact-new", ROW 3 (full width) — below the details + form row.
      WHAT:  quick links (FAQ, journeys and brochures, reviews). Set the row padding to 0.
      Full steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md

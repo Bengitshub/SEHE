@@ -1,6 +1,6 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact) — BLOCK B
-     VERSION v5  ·  2026-09-25  ·  paste into ONE Duda HTML widget
+     VERSION v6  ·  2026-09-25  ·  paste into ONE Duda HTML widget
      WHERE: page "contact-new", ROW 2, LEFT column. The native Duda form sits in the RIGHT column of the same row.
      WHAT:  contact details (all tel:/mailto: links), live-chat button, trust line. The script only shows the chat button.
      Full steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md

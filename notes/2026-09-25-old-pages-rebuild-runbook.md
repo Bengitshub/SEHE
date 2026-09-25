@@ -5,7 +5,7 @@ This runbook covers eight rebuilt pages: Reviews, Contact, About, FAQ, Gallery, 
 - **Paste files:** always paste from `LATEST/`. They are regenerated with `python3 tools/make-latest.py`.
 - **Masters:** one per page in the repo root:
   - `SEHE-reviews-page_v5.txt`
-  - `SEHE-contact-page_v5.txt`
+  - `SEHE-contact-page_v6.txt`
   - `SEHE-gallery-page_v4.txt`
   - `SEHE-about-page_v4.txt`
   - `SEHE-faq-page_v4.txt`
@@ -46,6 +46,8 @@ No coding is needed. You paste whole files into Duda HTML widgets.
 4. Check with Izaac and Joel, then publish.
 5. Send Kirsty the preview link.
 6. After her OK, swap.
+
+**About has one extra gate.** Its itinerary claims (A1 to A3 in §7) must be confirmed, qualified or removed **before `about-new` is published at all**, even as a preview. See Phase 2.
 
 The details are in §0 to §4.
 
@@ -91,7 +93,13 @@ They already had it in the 6 Sep backup (`backups/2026-09-06-live-site/pages/`),
 **Phase 2: About, FAQ, Gallery, Himalayan Trust, Privacy and Terms (Ben, or The Creator after 31 Oct).**
 
 - The steps are the same as Phase 1: build `-new`, hide it from the menu, check with Izaac and Joel, publish, send Kirsty the preview links, and swap after she approves.
-- **Kirsty's open questions on these pages** are in §7: About A1–A4, Gallery G1–G2 and FAQ F8. The pages can go live before she answers; any answers become small edits later.
+- **About is gated.** Do not publish `about-new` until Kirsty has answered A1 to A3 in §7: the Antarctic Centre visit, Marlborough, and the Hillary family guest speaker.
+  - **Confirmed for every tour:** keep the sentence.
+  - **True only for some tours:** qualify it in Kirsty's words.
+  - **Not true, or no answer:** delete the sentence.
+
+  §7 lists the exact sentences. Make the edits (see "Changing a page's content later"), then publish the preview and send it to Kirsty.
+- **Her other questions don't block anything:** A4 (an updated route map), Gallery G2 (photo titles) and FAQ F8 (hygiene). Those pages can go live, and the answers become small edits later.
 - **Privacy and Terms.** The new pages carry the **current** wording exactly. If Paul changes any wording, edit the text inside `<div class="lg-doc">` in that page's HTML widget, and update the master to match. Never paste old wording back.
 
 ## 0. Rules for every page
@@ -206,11 +214,8 @@ The old page is untouched throughout, so rollback takes about two minutes.
    - Reviews.
 
    There is no in-page Pounamu line and no social links, because the site footer already carries both.
-7. **Form button text (manual, not code).** In the form widget's settings, change the button text from **"Send"** to **"Send enquiry"**.
-   - **Change nothing else on the form.**
-   - This doesn't affect tracking: the "Contact Us Form Submitted" trigger only looks at the success message.
 
-**Check the form's settings in `contact-new`** against `/contact`. Apart from the button text in step 7, change nothing:
+**Check the form's settings in `contact-new`** against `/contact`. Look only; change nothing:
 
 | Setting | Expected value |
 |---|---|
@@ -220,7 +225,7 @@ The old page is untouched throughout, so rollback takes about two minutes.
 | reCAPTCHA | On (checkbox) |
 | Success message | "Thank you for contacting us. We will get back to you as soon as possible" |
 | Field labels | `%FIRSTNAME%`, `%EMAIL%`, `%ENQUIRY_MESSAGE%` |
-| Button text | "Send enquiry" (the only change, step 7) |
+| Button text | "Send" (keep it) |
 
 **Tracking stays intact.** The public GTM container, checked 25 Sep 2026, has these triggers:
 
@@ -243,7 +248,7 @@ To rename them properly, in one sitting:
 
 ### About (`/about`): `LATEST/about-page.txt`
 
-Use the §1 row. The open questions for Kirsty are About A1–A4 in §7.
+Use the §1 row. **Before you publish `about-new`, resolve A1 to A3 in §7** (see Phase 2). A4 doesn't block it.
 
 **Left out** (see A4): three of the old carousel's seven slides.
 
@@ -412,7 +417,18 @@ The wording on the new pages is exactly as it is live today, unless a master's c
 
 ### About (for Kirsty)
 
-The About text was rewritten in the approved copy update (round 3, 25 Sep 2026). A1 to A3 quote the new wording. The claims themselves are still waiting on Kirsty.
+The About text was rewritten in the approved copy update (round 3, 25 Sep 2026). A1 to A3 quote the new wording.
+
+**A1 to A3 block the About page.** `about-new` is not published until each one has been handled:
+
+- **Confirmed for every tour:** keep.
+- **True only for some:** qualify it in Kirsty's words.
+- **Not true, or no answer:** delete the sentence.
+
+All three sentences are in the second paragraph under "Our inspiration". To edit them:
+
+- **Before building:** edit the master (`SEHE-about-page_v*.txt`: bump the version, run `tools/make-latest.py`).
+- **Already pasted:** edit the text in the `about-new` HTML widget, then update the master to match.
 
 - **A1 — International Antarctic Centre.** The page says: "In Christchurch, learn about his team's Antarctic expedition using converted farm tractors at the International Antarctic Centre." Is that visit still on every itinerary?
 - **A2 — Marlborough.** The page says: "You will also travel through Marlborough, where Hillary trained for the air force during the Second World War and climbed Mt Tapuae-o-Uenuku." Is that still true of every tour?
