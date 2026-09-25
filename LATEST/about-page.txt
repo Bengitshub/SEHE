@@ -1,8 +1,18 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — ABOUT PAGE (/about)
-     COMPLETE PAGE  ·  VERSION v1  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v2  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v2 — Review fixes (independent check, 25 Sep 2026): the hero banner is
+            only 1920x480, so on desktop the hero is held at 480px (never
+            enlarged) and phones get the tall photo of the same statue (a
+            live Gallery photo) — sharp at every size. Two carousel photos
+            left out and FLAGGED: the Wharf photo (its 640w file is an
+            880 KB PNG) and the humpback whale (file name suggests a
+            third-party library image; licence unconfirmed). Four photos
+            remain. Declared: the old page's small Trustpilot box (hidden
+            on phones) is not carried over — guest reviews are one tap away
+            in the help band. Kicker/button type larger (shared kit).
        v1 — First new-design build of /about (Brief v2, 25 Sep 2026).
             Story in three parts: the Hillary connection (the live About
             text, verbatim, beside the 1960 portrait) · rail and coach (the
@@ -94,7 +104,7 @@
   .sehe-pg-about .sp-body { max-width: 1240px; margin: 0 auto !important; padding: 64px 30px 76px !important; }
   .sehe-pg-about .sp-section + .sp-section, .sehe-pg-about .sp-section + .sp-band, .sehe-pg-about .sp-band + .sp-section { margin-top: 76px !important; }
   .sehe-pg-about .sp-head { max-width: 780px; margin: 0 0 28px !important; }
-  .sehe-pg-about .sp-kicker { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 13px !important; font-weight: 700 !important; letter-spacing: .16em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
+  .sehe-pg-about .sp-kicker { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 14px !important; font-weight: 700 !important; letter-spacing: .14em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
   .sehe-pg-about .sp-head h2 { font-size: clamp(28px, 3vw, 36px) !important; line-height: 1.2 !important; margin: 0 0 12px !important; }
   .sehe-pg-about .sp-head p { max-width: 68ch; }
   .sehe-pg-about .sp-head p + p { margin-top: 10px !important; }
@@ -104,7 +114,7 @@
   .sehe-pg-about .sp-btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 12px 24px;
     border-radius: 6px; border: 2px solid var(--navy); background: var(--navy); color: #ffffff !important;
-    font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; line-height: 1.25 !important;
+    font-family: 'Montserrat', sans-serif !important; font-size: 16px !important; font-weight: 600 !important; line-height: 1.25 !important;
     text-decoration: none !important; text-align: center !important; cursor: pointer; transition: background-color .2s, color .2s, border-color .2s;
   }
   .sehe-pg-about .sp-btn:hover { background: var(--navy-dark); border-color: var(--navy-dark); color: #ffffff !important; }
@@ -115,11 +125,11 @@
   .sehe-pg-about .sp-btn--light { background: transparent; border-color: rgba(255,255,255,.85); color: #ffffff !important; }
   .sehe-pg-about .sp-btn--light:hover { background: #ffffff; border-color: #ffffff; color: var(--navy-dark) !important; }
 
-  /* ── Disclosure ("show more") — native <details>, works with JS off ─── */
+  /* ── Disclosure ("show more") — native details element, works with JS off ── */
   .sehe-pg-about details.sp-more > summary {
     list-style: none; display: inline-flex; align-items: center; gap: 12px; min-height: 50px; padding: 12px 22px;
     border: 2px solid var(--navy); border-radius: 6px; background: #ffffff; color: var(--navy) !important;
-    font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; cursor: pointer;
+    font-family: 'Montserrat', sans-serif !important; font-size: 16px !important; font-weight: 600 !important; cursor: pointer;
   }
   .sehe-pg-about details.sp-more > summary::-webkit-details-marker { display: none; }
   .sehe-pg-about details.sp-more > summary::after { content: '+'; font-size: 22px; line-height: 1; font-weight: 400; }
@@ -143,7 +153,7 @@
     .sehe-pg-about .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.66) 0%, rgba(8,21,37,.48) 30%, rgba(8,21,37,.72) 58%, rgba(8,21,37,.96) 100%); }
     .sehe-pg-about .sp-hero-inner, .sehe-pg-about .sp-hero--compact .sp-hero-inner { padding: 118px 20px 40px; }
     .sehe-pg-about .sp-hero-logo { left: 50%; width: 56px !important; transform: translateX(-50%); top: 18px; height: 56px !important; }
-    .sehe-pg-about .sp-eyebrow { gap: 0; font-size: 11.5px !important; letter-spacing: .24em !important; margin-bottom: 14px !important; }
+    .sehe-pg-about .sp-eyebrow { gap: 0; font-size: 12.5px !important; letter-spacing: .2em !important; margin-bottom: 14px !important; }
     .sehe-pg-about .sp-eyebrow::before, .sehe-pg-about .sp-eyebrow::after { display: none; }
     .sehe-pg-about .sp-hero h1, .sehe-pg-about .sp-hero--compact h1 { font-size: 34px !important; line-height: 1.14 !important; }
     .sehe-pg-about .sp-hero-sub { font-size: 17px !important; line-height: 1.6 !important; margin-top: 14px !important; }
@@ -164,6 +174,9 @@
   .sehe-pg-about .ab-copy h2 { font-size: clamp(28px, 3vw, 36px) !important; line-height: 1.2 !important; margin: 0 0 16px !important; }
   /* ── About page ─────────────────────────────────────────────────────── */
   .sehe-pg-about .sp-hero-img { object-position: 28% 40%; }
+  /* the desktop banner is 1920x480: hold the hero at 480px so it is never enlarged */
+  @media (min-width: 861px) { .sehe-pg-about .ab-hero { min-height: 0 !important; height: 480px; } }
+  @media (max-width: 860px) { .sehe-pg-about .ab-hero .sp-hero-img { object-position: center 0% !important; } }
   .sehe-pg-about .ab-story { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: start; }
   .sehe-pg-about .ab-portrait { margin: 0 !important; }
   .sehe-pg-about .ab-portrait img { display: block; width: 100% !important; height: auto !important; border-radius: 12px; }
@@ -171,11 +184,11 @@
   .sehe-pg-about .ab-copy p + p { margin-top: 16px !important; }
   .sehe-pg-about .ab-copy p { max-width: 68ch; }
   .sehe-pg-about .ab-links { margin-top: 24px !important; }
-  .sehe-pg-about .ab-photos { list-style: none !important; margin: 28px 0 0 !important; padding: 0 !important; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .sehe-pg-about .ab-photos { list-style: none !important; margin: 28px 0 0 !important; padding: 0 !important; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
   .sehe-pg-about .ab-photos li { margin: 0 !important; padding: 0 !important; list-style: none !important; }
   .sehe-pg-about .ab-photos li::before, .sehe-pg-about .ab-photos li::marker { content: none !important; }
   .sehe-pg-about .ab-photos figure { margin: 0 !important; }
-  .sehe-pg-about .ab-photos img { display: block; width: 100% !important; height: 240px !important; object-fit: cover; border-radius: 10px; }
+  .sehe-pg-about .ab-photos img { display: block; width: 100% !important; height: 220px !important; object-fit: cover; border-radius: 10px; }
   .sehe-pg-about .ab-photos figcaption { margin-top: 6px !important; font-size: 14.5px !important; line-height: 1.45 !important; color: var(--text-2) !important; }
   .sehe-pg-about .ab-facts { list-style: none !important; margin: 24px 0 0 !important; padding: 0 !important; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; }
   .sehe-pg-about .ab-facts li { margin: 0 !important; list-style: none !important; display: flex; align-items: center; gap: 16px; padding: 18px 20px !important; background: var(--cream); border: 1px solid var(--border-light); border-radius: 10px; }
@@ -194,8 +207,8 @@
   }
 </style>
 <div class="sehe-pg-about">
-<section class="sp-hero" aria-labelledby="sehe-ab-title">
-  <img class="sp-hero-img" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/14_52+Reasons_Sir+Edmond+Hillary+Alpine+Centre-3-1920w.jpg" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/14_52+Reasons_Sir+Edmond+Hillary+Alpine+Centre-3-640w.jpg 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/14_52+Reasons_Sir+Edmond+Hillary+Alpine+Centre-3-1280w.jpg 1280w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/14_52+Reasons_Sir+Edmond+Hillary+Alpine+Centre-3-1920w.jpg 1920w" sizes="100vw" alt="" style="object-position:28% 40%" fetchpriority="high">
+<section class="sp-hero ab-hero" aria-labelledby="sehe-ab-title">
+  <picture><source media="(max-width: 860px)" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/14_52+Reasons_Sir+Edmond+Hillary+Alpine+Centre-4-640w.jpg 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/14_52+Reasons_Sir+Edmond+Hillary+Alpine+Centre-4-1280w.jpg 1280w" sizes="100vw"><img class="sp-hero-img" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/14_52+Reasons_Sir+Edmond+Hillary+Alpine+Centre-3-1920w.jpg" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/14_52+Reasons_Sir+Edmond+Hillary+Alpine+Centre-3-1920w.jpg 1920w" sizes="100vw" alt="" style="object-position:28% 40%" fetchpriority="high"></picture>
   <div class="sp-hero-veil" aria-hidden="true"></div>
   <img class="sp-hero-logo" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEH+Explorer_logo+white-350w.png" alt="Sir Edmund Hillary Explorer" width="350" height="350">
   <div class="sp-hero-inner">
@@ -230,10 +243,8 @@
       <p>New Zealand’s stunning, rugged terrain means that some of the most spectacular hidden gems are only accessible by road. Because of this, high-quality coach travel is a key part of our journey on some travel days. We include frequent comfort stops during coach travel and can stop in unique places that often rail cannot. We have incorporated as much rail as possible within your itinerary, however, please note as New Zealand does not have sleeper trains, all overnight stays are in comfortable hotel accommodation.</p>
     </div>
     <ul class="ab-photos" role="list">
-      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Wharf-Pic---Sign-640w.jpg" alt="A wooden jetty reaching into a still alpine lake, with snow-capped mountains beyond" width="640" height="533" loading="lazy"></figure></li>
       <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/woman-on-the-coastal-pacific-640w.webp" alt="A passenger taking in the coastline from a window seat on the Coastal Pacific" width="640" height="442" loading="lazy"></figure></li>
       <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/L387-Aoraki-Mount-Cook-National-Park--Canterbury-Rob-Suisted-640w.jpg" alt="Aoraki Mount Cook, snow-covered above a turquoise lake and autumn trees" width="640" height="640" loading="lazy"><figcaption>Photo: Rob Suisted</figcaption></figure></li>
-      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/australasia_new_zealand_kaikoura_gallery_humpback_whale-640w.jpg" alt="A humpback whale breaching off Kaikōura" width="602" height="602" loading="lazy"></figure></li>
       <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Southland+track-640w.jpg" alt="A railway line running towards snow-capped mountains" width="640" height="640" loading="lazy"></figure></li>
       <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/01-Kaikoura-Canterbury-Kyle-Mulinder-640w.jpg" alt="Fur seals on the rocks at Kaikōura, with snow on the mountains behind" width="640" height="640" loading="lazy"><figcaption>Photo: Kyle Mulinder</figcaption></figure></li>
     </ul>

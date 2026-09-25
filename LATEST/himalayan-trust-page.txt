@@ -1,8 +1,14 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HIMALAYAN TRUST PAGE (/himalayan-trust)
-     COMPLETE PAGE  ·  VERSION v1  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v2  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v2 — Review fixes (independent check, 25 Sep 2026): the "who is
+            speaking" note now covers only the two sections headed "The
+            Himalayan Trust" (the closing band is SEHE speaking, and says
+            so); Khunde Hospital photo alt text corrected (cutting timber
+            planks). Two captions whose dates differ from their photo file
+            names are FLAGGED, not edited. Kicker/button type larger.
        v1 — First new-design build of /himalayan-trust (Brief v2, 25 Sep 2026).
             All text, captions, logos and links from the live page, wording
             unchanged (two sentences that were split across paragraphs are
@@ -93,7 +99,7 @@
   .sehe-pg-trust .sp-body { max-width: 1240px; margin: 0 auto !important; padding: 64px 30px 76px !important; }
   .sehe-pg-trust .sp-section + .sp-section, .sehe-pg-trust .sp-section + .sp-band, .sehe-pg-trust .sp-band + .sp-section { margin-top: 76px !important; }
   .sehe-pg-trust .sp-head { max-width: 780px; margin: 0 0 28px !important; }
-  .sehe-pg-trust .sp-kicker { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 13px !important; font-weight: 700 !important; letter-spacing: .16em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
+  .sehe-pg-trust .sp-kicker { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 14px !important; font-weight: 700 !important; letter-spacing: .14em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
   .sehe-pg-trust .sp-head h2 { font-size: clamp(28px, 3vw, 36px) !important; line-height: 1.2 !important; margin: 0 0 12px !important; }
   .sehe-pg-trust .sp-head p { max-width: 68ch; }
   .sehe-pg-trust .sp-head p + p { margin-top: 10px !important; }
@@ -103,7 +109,7 @@
   .sehe-pg-trust .sp-btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 12px 24px;
     border-radius: 6px; border: 2px solid var(--navy); background: var(--navy); color: #ffffff !important;
-    font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; line-height: 1.25 !important;
+    font-family: 'Montserrat', sans-serif !important; font-size: 16px !important; font-weight: 600 !important; line-height: 1.25 !important;
     text-decoration: none !important; text-align: center !important; cursor: pointer; transition: background-color .2s, color .2s, border-color .2s;
   }
   .sehe-pg-trust .sp-btn:hover { background: var(--navy-dark); border-color: var(--navy-dark); color: #ffffff !important; }
@@ -114,11 +120,11 @@
   .sehe-pg-trust .sp-btn--light { background: transparent; border-color: rgba(255,255,255,.85); color: #ffffff !important; }
   .sehe-pg-trust .sp-btn--light:hover { background: #ffffff; border-color: #ffffff; color: var(--navy-dark) !important; }
 
-  /* ── Disclosure ("show more") — native <details>, works with JS off ─── */
+  /* ── Disclosure ("show more") — native details element, works with JS off ── */
   .sehe-pg-trust details.sp-more > summary {
     list-style: none; display: inline-flex; align-items: center; gap: 12px; min-height: 50px; padding: 12px 22px;
     border: 2px solid var(--navy); border-radius: 6px; background: #ffffff; color: var(--navy) !important;
-    font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; cursor: pointer;
+    font-family: 'Montserrat', sans-serif !important; font-size: 16px !important; font-weight: 600 !important; cursor: pointer;
   }
   .sehe-pg-trust details.sp-more > summary::-webkit-details-marker { display: none; }
   .sehe-pg-trust details.sp-more > summary::after { content: '+'; font-size: 22px; line-height: 1; font-weight: 400; }
@@ -142,7 +148,7 @@
     .sehe-pg-trust .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.66) 0%, rgba(8,21,37,.48) 30%, rgba(8,21,37,.72) 58%, rgba(8,21,37,.96) 100%); }
     .sehe-pg-trust .sp-hero-inner, .sehe-pg-trust .sp-hero--compact .sp-hero-inner { padding: 118px 20px 40px; }
     .sehe-pg-trust .sp-hero-logo { left: 50%; width: 56px !important; transform: translateX(-50%); top: 18px; height: 56px !important; }
-    .sehe-pg-trust .sp-eyebrow { gap: 0; font-size: 11.5px !important; letter-spacing: .24em !important; margin-bottom: 14px !important; }
+    .sehe-pg-trust .sp-eyebrow { gap: 0; font-size: 12.5px !important; letter-spacing: .2em !important; margin-bottom: 14px !important; }
     .sehe-pg-trust .sp-eyebrow::before, .sehe-pg-trust .sp-eyebrow::after { display: none; }
     .sehe-pg-trust .sp-hero h1, .sehe-pg-trust .sp-hero--compact h1 { font-size: 34px !important; line-height: 1.14 !important; }
     .sehe-pg-trust .sp-hero-sub { font-size: 17px !important; line-height: 1.6 !important; margin-top: 14px !important; }
@@ -196,7 +202,7 @@
 </section>
 <div class="sp-body">
   <aside class="sp-section ht-note" aria-label="Who is speaking on this page">
-    <p>The words on this page are the Himalayan Trust&#8217;s own. &#8220;We&#8221; and &#8220;our&#8221; below mean the Himalayan Trust, the charity Sir Edmund Hillary founded &#8212; not Sir Edmund Hillary Explorer.</p>
+    <p>The text in the two sections headed &#8220;The Himalayan Trust&#8221; below is the Himalayan Trust&#8217;s own. There, &#8220;we&#8221; and &#8220;our&#8221; mean the Himalayan Trust, the charity Sir Edmund Hillary founded &#8212; not Sir Edmund Hillary Explorer.</p>
     <a class="ht-logo-link" href="https://himalayantrust.org/" target="_blank" rel="noopener"><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/HT+Logo+MAIN-640w.png" alt="Himalayan Trust logo" width="640" height="192"><span class="sp-sr"> — Himalayan Trust website (opens in a new tab)</span></a>
   </aside>
 
@@ -230,7 +236,7 @@
   <section class="sp-section" aria-label="Photographs from the Himalayan Trust">
     <ul class="ht-photos" role="list">
       <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+Hillary+recieving+Petition+from+Sherpas-640w.webp" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+Hillary+recieving+Petition+from+Sherpas-640w.webp 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+Hillary+recieving+Petition+from+Sherpas-1280w.webp 1280w" sizes="(max-width: 860px) 100vw, 400px" alt="Black-and-white photograph of Sir Edmund Hillary talking with a group of Sherpa men" width="1280" height="783" loading="lazy"><figcaption>Sir Ed receiving a petition for support from Sherpas in the Khumbu, 1960.</figcaption></figure></li>
-      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+building+Khunde+Hospital-640w.webp" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+building+Khunde+Hospital-640w.webp 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+building+Khunde+Hospital-1280w.webp 1280w" sizes="(max-width: 860px) 100vw, 400px" alt="Black-and-white photograph of volunteers carrying timber on the Khunde Hospital building site, mountains behind" width="1280" height="783" loading="lazy"><figcaption>Sir Ed alongside New Zealand volunteers including his brother, Rex, building Khunde Hospital, 1966.</figcaption></figure></li>
+      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+building+Khunde+Hospital-640w.webp" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+building+Khunde+Hospital-640w.webp 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+building+Khunde+Hospital-1280w.webp 1280w" sizes="(max-width: 860px) 100vw, 400px" alt="Black-and-white photograph of volunteers cutting timber planks at the Khunde Hospital building site, mountains behind" width="1280" height="783" loading="lazy"><figcaption>Sir Ed alongside New Zealand volunteers including his brother, Rex, building Khunde Hospital, 1966.</figcaption></figure></li>
       <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Nepal+Monitoring+2022+5MB-7684-640w.webp" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Nepal+Monitoring+2022+5MB-7684-640w.webp 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Nepal+Monitoring+2022+5MB-7684-1280w.webp 1280w" sizes="(max-width: 860px) 100vw, 400px" alt="Young children sitting on cushions in a bright classroom" width="1280" height="783" loading="lazy"><figcaption>Young students in a renovated classroom designed for early childhood learning, Sotang, 2023.</figcaption></figure></li>
       <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Himalayan+Trust+Trip-82-640w.webp" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Himalayan+Trust+Trip-82-640w.webp 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Himalayan+Trust+Trip-82-1280w.webp 1280w" sizes="(max-width: 860px) 100vw, 400px" alt="Three schoolchildren with their hands together in greeting, snow-capped peaks behind" width="1280" height="783" loading="lazy"><figcaption>Students from Thame school saying "Namaste" in front of the mountains of the Himalayas, 2018.</figcaption></figure></li>
       <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/2016_02_25_Nepal_Himalayan_Trust%C3%82-SamTarling_X7A1810-640w.webp" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/2016_02_25_Nepal_Himalayan_Trust%C3%82-SamTarling_X7A1810-640w.webp 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/2016_02_25_Nepal_Himalayan_Trust%C3%82-SamTarling_X7A1810-1280w.webp 1280w" sizes="(max-width: 860px) 100vw, 400px" alt="A nurse taking a patient’s blood pressure in a clinic" width="1280" height="783" loading="lazy"><figcaption>A patient receiving treatment by one of Khunde Hospitals nurses, 2019.<small>Photo: Sam Tarling</small></figcaption></figure></li>

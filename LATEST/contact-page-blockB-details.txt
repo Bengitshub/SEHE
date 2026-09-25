@@ -1,13 +1,14 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact) — BLOCK B
-     VERSION v1  ·  2026-09-25  ·  paste into ONE Duda HTML widget
+     VERSION v2  ·  2026-09-25  ·  paste into ONE Duda HTML widget
      WHERE: page "contact-new", ROW 2, LEFT column. The native Duda form sits in the RIGHT column of the same row.
-     WHAT:  contact details (all tel:/mailto: links), live-chat button, trust line. The script only adds.
+     WHAT:  contact details (all tel:/mailto: links), live-chat button, trust line. The script only shows the chat button.
      Full steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
      ===================================================================== -->
 <div class="sehe-pg-contact ct-details">
+  <h2 class="sp-sr">Ways to get in touch</h2>
   <div class="ct-head">
-    <h2>Contact details</h2>
+    <h3>Contact details</h3>
   </div>
   <dl class="ct-list">
     <div class="ct-item ct-item--main">
@@ -70,13 +71,11 @@
 </script>
 <script>
 (function () {
-  /* Contact page enhancements — add only, never remove.
-     1) "Start a chat" appears only once tawk.to (already on every page) is ready.
-     2) Accessible names for the native form's three fields (its labels are
-        payload keys and are NOT changed; aria-label only affects screen readers).
+  /* Contact page enhancement — add only, never remove.
+     "Start a chat" appears only once tawk.to (already on every page) is ready.
+     The native form is not touched by any script.
      No less-than sign and no ampersand in this script (Duda's publisher escapes both). */
   var tries = 0;
-  var NAMES = { 'dmform-0': 'Your name', 'dmform-1': 'Your email address', 'dmform-3': 'Your message' };
   function chat() {
     var box = document.querySelector('.sehe-pg-contact [data-sehe-chat]');
     if (!box) return true;
@@ -95,28 +94,9 @@
     }
     return false;
   }
-  function names() {
-    var details = document.querySelector('.sehe-pg-contact.ct-details');
-    if (!details) return true;
-    var row = details.closest('.dmRespRow');
-    var form = row ? row.querySelector('.dmform') : null;
-    if (!form) return false;
-    Object.keys(NAMES).forEach(function (n) {
-      var f = form.querySelector('[name="' + n + '"]');
-      if (f) {
-        f.setAttribute('aria-label', NAMES[n]);
-        var wrap = f.closest('.dmforminput');
-        if (wrap) { if (wrap.classList.contains('required')) f.setAttribute('aria-required', 'true'); }
-      }
-    });
-    return true;
-  }
-  var doneChat = false, doneNames = false;
   var timer = setInterval(function () {
     tries = tries + 1;
-    if (!doneChat) doneChat = chat();
-    if (!doneNames) doneNames = names();
-    if (doneChat) { if (doneNames) clearInterval(timer); }
+    if (chat()) { clearInterval(timer); return; }
     if (tries === 60) clearInterval(timer);
   }, 500);
 })();

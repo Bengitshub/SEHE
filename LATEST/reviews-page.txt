@@ -1,8 +1,17 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — REVIEWS PAGE (/reviews)
-     COMPLETE PAGE  ·  VERSION v1  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v2  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v2 — Review fixes (independent check, 25 Sep 2026): Lisa Godwin's entry
+            left out of earlier guest feedback — on the live site her name
+            links to her Trustpilot profile, so it is a Trustpilot review and
+            cannot be shown as direct feedback with a travel date (flagged;
+            16 entries remain). NZ Herald link updated to the article's
+            current address (the old one returns 404); ODT link set to its
+            current address (the old one redirects). Earlier-feedback lines
+            capped at 68 characters; "Watch on Vimeo" and the review-card
+            Trustpilot links get bigger tap areas; kicker/button type larger.
        v1 — First new-design build of /reviews (Brief v2, 25 Sep 2026).
             Order: hero with the live TrustBox · selected Trustpilot reviews
             (6 shown + 6 behind "Show more", all in the HTML) · guest video ·
@@ -12,9 +21,7 @@
             review dates; earlier feedback, press links, video and banner photo
             = the live /reviews page (25 Sep 2026), verbatim. Two deliberate
             edits: the press note drops "last year" (stale; no year added) and
-            reads "the Hillary family"; Lisa Godwin's name is no longer linked
-            to her Trustpilot profile so direct feedback stays separate from
-            Trustpilot reviews (flagged in the runbook).
+            reads "the Hillary family".
      -----------------------------------------------------------------------
      WHERE IT GOES: page "reviews-new" (duplicate of /reviews). Delete every
      old content row, add ONE full-width row (padding 0, no max width) with
@@ -98,7 +105,7 @@
   .sehe-pg-reviews .sp-body { max-width: 1240px; margin: 0 auto !important; padding: 64px 30px 76px !important; }
   .sehe-pg-reviews .sp-section + .sp-section, .sehe-pg-reviews .sp-section + .sp-band, .sehe-pg-reviews .sp-band + .sp-section { margin-top: 76px !important; }
   .sehe-pg-reviews .sp-head { max-width: 780px; margin: 0 0 28px !important; }
-  .sehe-pg-reviews .sp-kicker { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 13px !important; font-weight: 700 !important; letter-spacing: .16em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
+  .sehe-pg-reviews .sp-kicker { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 14px !important; font-weight: 700 !important; letter-spacing: .14em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
   .sehe-pg-reviews .sp-head h2 { font-size: clamp(28px, 3vw, 36px) !important; line-height: 1.2 !important; margin: 0 0 12px !important; }
   .sehe-pg-reviews .sp-head p { max-width: 68ch; }
   .sehe-pg-reviews .sp-head p + p { margin-top: 10px !important; }
@@ -108,7 +115,7 @@
   .sehe-pg-reviews .sp-btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 12px 24px;
     border-radius: 6px; border: 2px solid var(--navy); background: var(--navy); color: #ffffff !important;
-    font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; line-height: 1.25 !important;
+    font-family: 'Montserrat', sans-serif !important; font-size: 16px !important; font-weight: 600 !important; line-height: 1.25 !important;
     text-decoration: none !important; text-align: center !important; cursor: pointer; transition: background-color .2s, color .2s, border-color .2s;
   }
   .sehe-pg-reviews .sp-btn:hover { background: var(--navy-dark); border-color: var(--navy-dark); color: #ffffff !important; }
@@ -119,11 +126,11 @@
   .sehe-pg-reviews .sp-btn--light { background: transparent; border-color: rgba(255,255,255,.85); color: #ffffff !important; }
   .sehe-pg-reviews .sp-btn--light:hover { background: #ffffff; border-color: #ffffff; color: var(--navy-dark) !important; }
 
-  /* ── Disclosure ("show more") — native <details>, works with JS off ─── */
+  /* ── Disclosure ("show more") — native details element, works with JS off ── */
   .sehe-pg-reviews details.sp-more > summary {
     list-style: none; display: inline-flex; align-items: center; gap: 12px; min-height: 50px; padding: 12px 22px;
     border: 2px solid var(--navy); border-radius: 6px; background: #ffffff; color: var(--navy) !important;
-    font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; cursor: pointer;
+    font-family: 'Montserrat', sans-serif !important; font-size: 16px !important; font-weight: 600 !important; cursor: pointer;
   }
   .sehe-pg-reviews details.sp-more > summary::-webkit-details-marker { display: none; }
   .sehe-pg-reviews details.sp-more > summary::after { content: '+'; font-size: 22px; line-height: 1; font-weight: 400; }
@@ -147,7 +154,7 @@
     .sehe-pg-reviews .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.66) 0%, rgba(8,21,37,.48) 30%, rgba(8,21,37,.72) 58%, rgba(8,21,37,.96) 100%); }
     .sehe-pg-reviews .sp-hero-inner, .sehe-pg-reviews .sp-hero--compact .sp-hero-inner { padding: 118px 20px 40px; }
     .sehe-pg-reviews .sp-hero-logo { left: 50%; width: 56px !important; transform: translateX(-50%); top: 18px; height: 56px !important; }
-    .sehe-pg-reviews .sp-eyebrow { gap: 0; font-size: 11.5px !important; letter-spacing: .24em !important; margin-bottom: 14px !important; }
+    .sehe-pg-reviews .sp-eyebrow { gap: 0; font-size: 12.5px !important; letter-spacing: .2em !important; margin-bottom: 14px !important; }
     .sehe-pg-reviews .sp-eyebrow::before, .sehe-pg-reviews .sp-eyebrow::after { display: none; }
     .sehe-pg-reviews .sp-hero h1, .sehe-pg-reviews .sp-hero--compact h1 { font-size: 34px !important; line-height: 1.14 !important; }
     .sehe-pg-reviews .sp-hero-sub { font-size: 17px !important; line-height: 1.6 !important; margin-top: 14px !important; }
@@ -199,6 +206,9 @@
   .sehe-pg-reviews .rv-quote blockquote { margin: 0 0 10px !important; padding: 0 !important; border: 0 !important; background: none !important; }
   .sehe-pg-reviews .rv-quote blockquote p { color: var(--text) !important; font-style: normal !important; }
   .sehe-pg-reviews .rv-quote blockquote p + p { margin-top: 10px !important; }
+  .sehe-pg-reviews .rv-quote blockquote p, .sehe-pg-reviews .rv-quote figcaption { max-width: 68ch; }
+  .sehe-pg-reviews .rv-video-link a { display: inline-flex; align-items: center; min-height: 44px; }
+  .sehe-pg-reviews .rv-card figcaption a { display: inline-block; padding: 8px 0; margin: -8px 0; }
   .sehe-pg-reviews .rv-quote figcaption { font-size: 15.5px !important; line-height: 1.5 !important; color: var(--text-2) !important; }
   .sehe-pg-reviews .rv-quote figcaption strong { font-family: 'Montserrat', sans-serif !important; color: var(--navy); font-weight: 700; }
   @media (max-width: 860px) {
@@ -388,14 +398,14 @@
         <img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Southland+track-640w.jpg" alt="Southland Amazing Views" width="640" height="640" loading="lazy">
         <div class="rv-press-body">
           <h3>Otago Daily Times</h3>
-          <a class="sp-btn sp-btn--ghost" href="https://www.odt.co.nz/news/dunedin/south-%E2%80%98just-beautiful%E2%80%99-train" target="_blank" rel="noopener">Read the Otago Daily Times article<span class="sp-sr"> (opens in a new tab)</span></a>
+          <a class="sp-btn sp-btn--ghost" href="https://www.odt.co.nz/news/dunedin/south-just-beautiful-by-train-iwwoh6fm" target="_blank" rel="noopener">Read the Otago Daily Times article<span class="sp-sr"> (opens in a new tab)</span></a>
         </div>
       </li>
       <li>
         <img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Kingston-Flyer-About-SEHE-Rail-Tour-1-640w.jpg" alt="The Kingston Flyer" width="640" height="427" loading="lazy">
         <div class="rv-press-body">
           <h3>NZ Herald</h3>
-          <a class="sp-btn sp-btn--ghost" href="https://www.nzherald.co.nz/travel/flyer-to-return-as-part-of-southern-rail-tour-after-eight-years/H6B3Z5BLTUFTBJTFOPM2EDEZAA/" target="_blank" rel="noopener">Read the NZ Herald article<span class="sp-sr"> (opens in a new tab)</span></a>
+          <a class="sp-btn sp-btn--ghost" href="https://www.nzherald.co.nz/nz/flyer-to-return-as-part-of-southern-rail-tour-after-eight-years/H6B3Z5BLTUFTBJTFOPM2EDEZAA/" target="_blank" rel="noopener">Read the NZ Herald article<span class="sp-sr"> (opens in a new tab)</span></a>
         </div>
       </li>
     </ul>
@@ -410,12 +420,6 @@
     <details class="sp-more">
       <summary><span class="sp-when-closed">Show earlier guest feedback</span><span class="sp-when-open">Hide earlier guest feedback</span></summary>
       <div class="rv-earlier-list">
-      <figure class="rv-quote">
-        <blockquote>
-          <p>I loved the trip; the guides, the drivers were all kind and could not do enough for us. NZ is beautiful, people are lovely, the trains were great, food was great, it snowed! We could not have experienced this by ourselves. My partner hurt himself and they ensured we were so well looked after. Highly recommended!</p>
-        </blockquote>
-        <figcaption><strong>Lisa Godwin</strong>, NSW, AUS - April 2025 Tour</figcaption>
-      </figure>
       <figure class="rv-quote">
         <blockquote>
           <p>Ray and I have just completed the April tour. We were impressed with the organisation and professionalism of the staff, tour leaders and coach drivers. They made certain that we were all knew what we were about to experience and where to be at certain times! It was an amazing tour of South Island NZ. Many thanks to all, especially Lauren, Niki and Noah.</p>

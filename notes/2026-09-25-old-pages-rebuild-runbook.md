@@ -3,7 +3,7 @@
 This runbook covers the eight pages rebuilt under Brief v2: Reviews, Contact, About, FAQ, Gallery, Himalayan Trust, Privacy Policy and Terms & Conditions.
 
 - **Paste files:** always paste from `LATEST/`, regenerated with `python3 tools/make-latest.py`.
-- **Masters:** the masters are `SEHE-<page>-page_v1.txt` in the repo root.
+- **Masters:** the masters are `SEHE-<page>-page_v2.txt` in the repo root. v2 is the version checked by three independent reviewers.
 - **Before snapshot:** the served HTML of every old page is saved in `backups/2026-09-25-old-pages/`.
 
 ## 0. Rules for every page
@@ -115,7 +115,7 @@ The old page is untouched throughout, so rollback takes about two minutes.
 - *Phone Link Clicked* fires on any link containing `tel:`. Every number on the new page is a `tel:` link.
 - *Contact Us Form Submitted* fires when `.dmform-success` containing "Thank you for contacting us" is fully on screen, on a URL containing `/contact`. The native form keeps both.
 
-**Labels (optional, manual step for Ben).** The labels `%FIRSTNAME%`, `%EMAIL%` and `%ENQUIRY_MESSAGE%` are the **keys the email and the Zapier webhook receive**, because Duda posts them as `label-dmform-N`. That's why the page shows "Your name", "Your email address" and "Your message" with CSS and `aria-label` instead of renaming them.
+**Labels (optional, manual step for Ben).** The labels `%FIRSTNAME%`, `%EMAIL%` and `%ENQUIRY_MESSAGE%` are the **keys the email and the Zapier webhook receive**, because Duda posts them as `label-dmform-N`. That's why the page shows "Your name", "Your email address" and "Your message" with **CSS only** instead of renaming them. No script touches the form. Until the labels are renamed, screen readers still announce the tokens, exactly as they do on the live page today.
 
 To rename them properly, in one sitting:
 
@@ -136,7 +136,10 @@ Use the §1 row.
 2. "You will also travel through Marlborough, where Edmund was trained for the air force … Mt Tapuae-o-Uenuku". Is Marlborough still on every tour?
 3. "A guest speaker from the Hillary family will also give you an insight …". Is this true of every departure? The live homepage says "a member of the Hillary family personally joins the tour for an evening at the Sir Edmund Hillary Alpine Centre".
 
-**Left out.** The old carousel's first slide is a **2025/26 Spring/Summer route map**, a past season. Kirsty should send an updated map if one exists.
+**Left out** (see §7, A4): three of the old carousel's seven slides.
+- The **2025/26 Spring/Summer route map**, a past season. Kirsty should send an updated map if one exists.
+- The Wharf photo. Its 640w file is an 880 KB PNG.
+- The humpback whale photo. Its licence is unconfirmed.
 
 ### FAQ (`/f-a-q`) — `LATEST/faq-page.txt`
 
@@ -240,4 +243,79 @@ It links to `tel:+64 3 974 1812`, with spaces. Change it to `tel:+6439741812` so
 
 ## 7. Content flags (Kirsty or the business to decide; nothing edited)
 
-Collected in the final report of 25 Sep 2026, and also listed in each master's header.
+The wording on the new pages is exactly as it is live today, unless a master's changelog says otherwise. These items look wrong, or disagree with other pages. They are listed here, not changed.
+
+### Reviews
+
+- **R1 — Lisa Godwin (NSW, AUS, "April 2025 Tour").** On the live site her name links to her Trustpilot profile, so this is a Trustpilot review. It can't be shown as direct guest feedback with a travel date, so it is left out of "Earlier guest feedback", which now has 16 entries. To show it, add it to the selected Trustpilot reviews, verbatim, with its Trustpilot **review date**.
+- **R2 — Newer reviews exist.** The TrustBox showed **88** reviews on 25 Sep, against 86 in July/August, so there are reviews newer than the appendix set. Trustpilot blocks automated reading, so they couldn't be checked here. When convenient, refresh the 12 selected reviews newest-first (§3, Reviews).
+- **R3 — "Peter H., New Zealand" (November 2025).** Confirm the reviewer isn't connected to the business. Trustpilot doesn't allow featuring reviews from connected people. The risk is low: the review reads like a genuine guest's.
+- **R4 — Typos in the older testimonials**, such as "where wonderful", "every been on" and "Hilary". They are kept verbatim by rule.
+
+### Contact
+
+- **C1 — Form labels.** The labels `%FIRSTNAME%`, `%EMAIL%` and `%ENQUIRY_MESSAGE%` are the payload keys. Screen readers announce those tokens, as they do on the live page today. The fix is the label rename with the Zap check (§3, Contact).
+- **C2 — Webhook URL in page source.** Duda's form puts its Zapier catch-hook URL in the public page source, so anyone could post to it. Consider a filter step in the Zap, for example: only continue when the subject is "SEHE Website Form Message".
+- **C3 — Two email addresses.** The site uses info@pounamutourismgroup.com, but the Terms use info@siredmundhillaryexplorer.com. Confirm both inboxes are monitored.
+
+### About
+
+- **A1 — International Antarctic Centre.** The page says: "In Christchurch, learn more about his team's expedition … at the International Antarctic Centre". Is this still on every itinerary?
+- **A2 — Marlborough.** The page says: "You will also travel through Marlborough … Mt Tapuae-o-Uenuku". Is this still true of every tour?
+- **A3 — Hillary family guest speaker.** The page says: "A guest speaker from the Hillary family will also give you an insight …". Is this on every departure? Other pages put it differently:
+  - The live homepage says "a member of the Hillary family personally joins the tour for an evening at the Sir Edmund Hillary Alpine Centre".
+  - Journeys shows a "Hillary Family Speaker" tile.
+  - Peter Hillary hosts only the Pinnacle.
+- **A4 — Photos left out.** Three items from the old carousel are not on the new page:
+  - the 2025/26 route map, which is for a past season;
+  - the Wharf photo, whose 640w file is an 880 KB PNG;
+  - the humpback whale photo. Its file name (`australasia_new_zealand_kaikoura_gallery_…`) suggests a third-party library image, and the licence is unconfirmed.
+
+### FAQ (answers verbatim; conflicts with other pages)
+
+- **F1 — Mobility.** The FAQ says "two flights of stairs … manage your own bags at times". Terms clause 13 says "15 steps … carry your own bags".
+- **F2 — Payment methods.** The pages disagree:
+  - The FAQ offers bank transfer (AU$, US$ and NZ$ accounts), Wise and PayPal.
+  - Terms clause 2 says internet banking, with a 2% credit-card surcharge.
+  - The Journeys FAQ says internet banking plus a 2% card fee, and leaves out the 40%-at-six-months stage.
+- **F3 — When the operator cancels.** The FAQ says "100% refund". Terms clauses 3–4 say PTG first tries to reschedule or offer other dates. Terms item e) also says 100% refund.
+- **F4 — Flights.** The FAQ says flights to and from the start and end points are not included. The homepage says the Pinnacle includes the flight to Auckland.
+- **F5 — Meals.** One answer says "all breakfasts and a selection of additional meals". Another says "Most meals are included".
+- **F6 — Seating (minor).** The FAQ page says some trains have allocated seating. The Journeys FAQ says seating "is not pre-allocated", but that answer is about the coach.
+- **F7 — Dietary requirements.** The FAQ says to use the "pre-trip documentation". Terms clause 23 says "at the time of booking".
+- **F8 — Hygiene answer.** It mentions N95 masks and Rapid Antigen Tests. Is this still current?
+- **F9 — Typo kept verbatim.** "Some train journeys feature allocated an allocated seating".
+- **F10 — Physical payment address.** The address "Level 3, 111 Cashel Street, Christchurch" stays in the FAQ's payment answer. It is deliberately not shown on Contact, because it isn't a visitor location.
+
+### Gallery
+
+- **G1 — Intro sentence.** It says "Photos kindly supplied by passengers from previous tours.", but two photos are professional images: Marlborough Sounds by Rob Suisted and Dunedin Railway Station by David Wall. Both now show their credit. Kirsty could change the sentence to "Many of these photos were kindly supplied by passengers from previous tours."
+- **G2 — Two photos titled "Mirror Lake aka Lake Matheson (by Fox Glacier)".** They look like the Mirror Lakes on the Milford Road in Fiordland. Please confirm.
+- **G3 — Spellings kept verbatim:** "Milford Sounds", "Milford Sounds cruise", "Queen Charlotte Sounds", and "Kaikoura" without a macron.
+
+### Himalayan Trust (the Trust's own words)
+
+- **H1 — Statistics kept as written.** Confirm these are current with the Trust:
+  - "Over half the population lives on $3 a day or less"
+  - "planted over 2.6 million tree seedlings over 30 years"
+- **H2 — Caption dates differ from the photo file names.**
+  - "Sotang, 2023" is on a file named "Nepal Monitoring 2022".
+  - "Khunde Hospitals nurses, 2019" is on a file dated 2016_02_25.
+- **H3 — Typos kept verbatim:** "we need you help"; "Khunde Hospitals nurses".
+
+### Privacy Policy (no wording changes allowed; for legal review)
+
+- **P1 — Checkfront.** Section 4 lists **Checkfront (Booking & Reservations System)**. Bookings now run through The Creator's booking app, so the policy should name the current processor.
+- **P2 — Postal address.** The policy gives PO Box 39018, Harewood, Christchurch 8545. Everywhere else uses PO Box 19735, Woolston.
+- **P3 — Cookie preferences.** The policy says "You can manage or withdraw your cookie preferences via our website settings", but no cookie settings control was seen on the site.
+
+### Terms & Conditions (no wording changes allowed; for legal review)
+
+- **T1 — Postcode.** Clause 1 gives "PO Box 19735, Woolston, Christchurch, **82415**". It should be 8241.
+- **T2 — Email.** Clause 1 gives info@siredmundhillaryexplorer.com (see C3).
+- **T3 — Privacy Officer address.** Clause 9 gives PO Box 39018, Harewood, Christchurch 8545 (see P2).
+- **T4 — Clause numbering** jumps from 18 to 20.
+- **T5 — Missing link.** Clause 8 says the Privacy Policy "can be viewed here on this page", but there is no link.
+- **T6 — Ferry.** Clause 36 mentions a Picton–Wellington ferry ticket. Is that still part of any tour?
+- **T7 — Typos kept verbatim:** "It You are responsible" (clause 10); "PTG.." (clause 32).
+- See also F1, F2, F3 and F7.
