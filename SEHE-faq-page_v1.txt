@@ -1,0 +1,437 @@
+<!-- =====================================================================
+     SIR EDMUND HILLARY EXPLORER — FAQ PAGE (/f-a-q)
+     COMPLETE PAGE  ·  VERSION v1  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     -----------------------------------------------------------------------
+     CHANGELOG (latest first):
+       v1 — First new-design build of /f-a-q (Brief v2, 25 Sep 2026).
+            All 26 questions and answers from the live FAQ widget, WORDING
+            UNCHANGED (payment and cancellation terms included), grouped in
+            four sections with jump links: Choosing your journey · Booking
+            and payments · Before you travel · On tour. Native <details>
+            accordions (keyboard and screen-reader friendly, work with JS
+            off); each question has its own link (#faq-...). Presentation-
+            only changes: the three dash-led items in "What is not included
+            in the tour price?" show as a bulleted list (same words); the
+            email address in the two payment answers is a mailto: link;
+            the Terms link is a normal same-tab link. No FAQPage schema.
+            Facts that disagree with other pages are FLAGGED in the runbook,
+            not edited.
+     -----------------------------------------------------------------------
+     WHERE IT GOES: page "f-a-q-new" (duplicate of /f-a-q). Delete every old
+     content row, add ONE full-width row (padding 0), ONE HTML widget, paste
+     this whole file. Steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
+     RULES KEPT: no schema; no rating; no tracking; no departure data; CSS
+     scoped to .sehe-pg-faq; script adds only.
+     ===================================================================== -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  /* ── Duda host row ─────────────────────────────────────────────────────
+     Let the hero run full-bleed and stop the row adding a white strip under
+     the transparent site header. :has() rules sit on their own so a browser
+     without :has() drops only these lines (the runbook also sets the row's
+     padding to 0 in the editor, which covers those browsers). */
+  #dm .dmContent .dmRespRow:has(.sehe-pg-faq) { padding-top: 0 !important; padding-bottom: 0 !important; overflow: visible !important; max-width: none !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-faq) .dmRespColsWrapper { overflow: visible !important; max-width: none !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-faq) .dmRespCol { overflow: visible !important; max-width: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+  #dm .dmContent .dmCustomHtml:has(.sehe-pg-faq) { overflow: visible !important; }
+
+  /* ── Page scope + tokens (Journeys v22 palette) ─────────────────────── */
+  .sehe-pg-faq, .sehe-pg-faq *, .sehe-pg-faq *::before, .sehe-pg-faq *::after { box-sizing: border-box; }
+  .sehe-pg-faq {
+    --navy: #153b67; --navy-dark: #0e2d52; --gold: #c8a56c; --gold-light: #d4b37e;
+    --gold-ink: #7a5f30; /* gold for small text on light backgrounds (5.9:1 on white) */
+    --off-white: #f9f7f3; --cream: #faf8f3; --text: #1a1a1a; --text-2: #454545;
+    --border: #d8d3c8; --border-light: #e8e4db; --white: #ffffff;
+    display: block; width: 100%; margin: 0 !important; padding: 0 !important;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    font-size: 17px; line-height: 1.65; color: var(--text); text-align: left !important;
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; overflow-wrap: break-word;
+  }
+  /* theme rule ".dmFullRowRespTmpl section{padding:50px 40px}" would re-pad every section */
+  .sehe-pg-faq section, .sehe-pg-faq aside, .sehe-pg-faq nav { padding: 0 !important; margin: 0; }
+  .sehe-pg-faq h1, .sehe-pg-faq h2, .sehe-pg-faq h3, .sehe-pg-faq h4 {
+    font-family: 'Montserrat', -apple-system, 'Segoe UI', Arial, sans-serif !important; font-weight: 600 !important;
+    color: var(--navy) !important; text-transform: none !important; text-align: left !important;
+    letter-spacing: -0.01em !important; margin: 0 !important; padding: 0 !important;
+  }
+  .sehe-pg-faq p, .sehe-pg-faq li, .sehe-pg-faq dt, .sehe-pg-faq dd, .sehe-pg-faq figcaption, .sehe-pg-faq blockquote, .sehe-pg-faq summary, .sehe-pg-faq td, .sehe-pg-faq th {
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+    text-align: left !important; text-transform: none !important;
+  }
+  .sehe-pg-faq p { font-size: 17px !important; line-height: 1.7 !important; color: var(--text-2) !important; margin: 0 !important; }
+  .sehe-pg-faq a { color: var(--navy) !important; text-decoration: underline !important; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .sehe-pg-faq a:hover { color: var(--navy-dark) !important; text-decoration-thickness: 2px; }
+  .sehe-pg-faq a:focus-visible, .sehe-pg-faq summary:focus-visible, .sehe-pg-faq button:focus-visible { outline: 3px solid var(--navy) !important; outline-offset: 3px !important; border-radius: 4px; }
+  .sehe-pg-faq img { max-width: 100%; height: auto; border: 0; }
+  .sehe-pg-faq .sp-sr { position: absolute !important; width: 1px !important; height: 1px !important; margin: -1px !important; padding: 0 !important; overflow: hidden !important; clip: rect(0 0 0 0) !important; white-space: nowrap !important; border: 0 !important; }
+
+  /* ── Hero (same build as the Journeys / Brochure heroes) ────────────── */
+  .sehe-pg-faq .sp-hero {
+    position: relative; width: 100vw; margin-left: calc(50% - 50vw) !important; margin-right: calc(50% - 50vw) !important;
+    padding: 0 !important; min-height: max(540px, 68vh); min-height: max(540px, 68svh);
+    display: flex; align-items: flex-end; background-color: #081525; overflow: hidden;
+  }
+  .sehe-pg-faq .sp-hero--compact { min-height: max(380px, 46vh); min-height: max(380px, 46svh); }
+  .sehe-pg-faq .sp-hero-img { position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover; object-position: center 50%; display: block; }
+  .sehe-pg-faq .sp-hero-veil { position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(180deg, rgba(8,21,37,.62) 0%, rgba(8,21,37,.26) 28%, rgba(8,21,37,.58) 56%, rgba(8,21,37,.95) 100%); }
+  .sehe-pg-faq .sp-hero--compact .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.70) 0%, rgba(8,21,37,.52) 40%, rgba(8,21,37,.92) 100%); }
+  /* the site header's logo slot is a transparent placeholder until you scroll —
+     put the real roundel in its lane so the brand is there on load */
+  .sehe-pg-faq .sp-hero-logo { position: absolute; top: 26px; left: 0; width: 16.66% !important; height: 92px !important; max-width: none !important; object-fit: contain; object-position: center; z-index: 2; filter: drop-shadow(0 2px 10px rgba(8,21,37,.5)); }
+  .sehe-pg-faq .sp-hero-inner { position: relative; z-index: 1; width: 100%; max-width: 1240px; margin: 0 auto; padding: 150px 30px 58px; }
+  .sehe-pg-faq .sp-hero--compact .sp-hero-inner { padding: 140px 30px 46px; }
+  .sehe-pg-faq .sp-eyebrow {
+    display: inline-flex; align-items: center; gap: 16px; font-family: 'Montserrat', sans-serif !important;
+    font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: .42em !important; text-transform: uppercase !important;
+    color: #d4b37e !important; margin: 0 0 22px !important; text-shadow: 0 1px 12px rgba(8,21,37,.95);
+  }
+  .sehe-pg-faq .sp-eyebrow::before, .sehe-pg-faq .sp-eyebrow::after { content: ''; width: 44px; height: 1px; background: #d4b37e; flex: none; }
+  .sehe-pg-faq .sp-hero h1 { font-weight: 700 !important; font-size: clamp(40px, 5.2vw, 66px) !important; line-height: 1.08 !important; color: #ffffff !important; text-shadow: 0 2px 26px rgba(8,21,37,.55); }
+  .sehe-pg-faq .sp-hero--compact h1 { font-size: clamp(36px, 4.2vw, 54px) !important; }
+  .sehe-pg-faq .sp-hero-sub { margin: 22px 0 0 !important; max-width: 620px; font-size: clamp(17px, 1.5vw, 19px) !important; line-height: 1.65 !important; color: rgba(255,255,255,.95) !important; text-shadow: 0 1px 14px rgba(8,21,37,.6); }
+  .sehe-pg-faq .sp-hero a:focus-visible, .sehe-pg-faq .sp-band a:focus-visible { outline-color: var(--gold-light) !important; }
+
+  /* ── Body, section heads ────────────────────────────────────────────── */
+  .sehe-pg-faq .sp-body { max-width: 1240px; margin: 0 auto !important; padding: 64px 30px 76px !important; }
+  .sehe-pg-faq .sp-section + .sp-section, .sehe-pg-faq .sp-section + .sp-band, .sehe-pg-faq .sp-band + .sp-section { margin-top: 76px !important; }
+  .sehe-pg-faq .sp-head { max-width: 780px; margin: 0 0 28px !important; }
+  .sehe-pg-faq .sp-kicker { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 13px !important; font-weight: 700 !important; letter-spacing: .16em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
+  .sehe-pg-faq .sp-head h2 { font-size: clamp(28px, 3vw, 36px) !important; line-height: 1.2 !important; margin: 0 0 12px !important; }
+  .sehe-pg-faq .sp-head p { max-width: 68ch; }
+  .sehe-pg-faq .sp-head p + p { margin-top: 10px !important; }
+
+  /* ── Buttons (48px+ tap targets) ────────────────────────────────────── */
+  .sehe-pg-faq .sp-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .sehe-pg-faq .sp-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 12px 24px;
+    border-radius: 6px; border: 2px solid var(--navy); background: var(--navy); color: #ffffff !important;
+    font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; line-height: 1.25 !important;
+    text-decoration: none !important; text-align: center !important; cursor: pointer; transition: background-color .2s, color .2s, border-color .2s;
+  }
+  .sehe-pg-faq .sp-btn:hover { background: var(--navy-dark); border-color: var(--navy-dark); color: #ffffff !important; }
+  .sehe-pg-faq .sp-btn--ghost { background: transparent; color: var(--navy) !important; }
+  .sehe-pg-faq .sp-btn--ghost:hover { background: var(--navy); color: #ffffff !important; }
+  .sehe-pg-faq .sp-btn--gold { background: var(--gold); border-color: var(--gold); color: var(--navy-dark) !important; }
+  .sehe-pg-faq .sp-btn--gold:hover { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy-dark) !important; }
+  .sehe-pg-faq .sp-btn--light { background: transparent; border-color: rgba(255,255,255,.85); color: #ffffff !important; }
+  .sehe-pg-faq .sp-btn--light:hover { background: #ffffff; border-color: #ffffff; color: var(--navy-dark) !important; }
+
+  /* ── Disclosure ("show more") — native <details>, works with JS off ─── */
+  .sehe-pg-faq details.sp-more > summary {
+    list-style: none; display: inline-flex; align-items: center; gap: 12px; min-height: 50px; padding: 12px 22px;
+    border: 2px solid var(--navy); border-radius: 6px; background: #ffffff; color: var(--navy) !important;
+    font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; cursor: pointer;
+  }
+  .sehe-pg-faq details.sp-more > summary::-webkit-details-marker { display: none; }
+  .sehe-pg-faq details.sp-more > summary::after { content: '+'; font-size: 22px; line-height: 1; font-weight: 400; }
+  .sehe-pg-faq details.sp-more[open] > summary::after { content: '\2212'; }
+  .sehe-pg-faq details.sp-more > summary:hover { background: var(--navy); color: #ffffff !important; }
+  .sehe-pg-faq .sp-when-open { display: none; }
+  .sehe-pg-faq details[open] > summary .sp-when-open { display: inline; }
+  .sehe-pg-faq details[open] > summary .sp-when-closed { display: none; }
+
+  /* ── Navy help band (the Journeys contact card, scoped) ─────────────── */
+  .sehe-pg-faq .sp-band { background: var(--navy); border: 1px solid var(--gold); border-radius: 12px; padding: 34px 36px !important; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px 36px; }
+  .sehe-pg-faq .sp-band-copy { flex: 1 1 420px; }
+  .sehe-pg-faq .sp-band h2 { color: #ffffff !important; font-size: clamp(24px, 2.4vw, 28px) !important; line-height: 1.25 !important; margin: 0 0 8px !important; }
+  .sehe-pg-faq .sp-band p { color: rgba(255,255,255,.88) !important; max-width: 62ch; }
+  .sehe-pg-faq .sp-band .sp-actions { flex: 1 1 440px; justify-content: flex-end; }
+
+  @media (max-width: 860px) {
+    .sehe-pg-faq .sp-hero { min-height: max(460px, 60svh); }
+    .sehe-pg-faq .sp-hero--compact { min-height: max(340px, 42svh); }
+    /* phones crop to the brightest part of the frame — darker veil keeps contrast */
+    .sehe-pg-faq .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.66) 0%, rgba(8,21,37,.48) 30%, rgba(8,21,37,.72) 58%, rgba(8,21,37,.96) 100%); }
+    .sehe-pg-faq .sp-hero-inner, .sehe-pg-faq .sp-hero--compact .sp-hero-inner { padding: 118px 20px 40px; }
+    .sehe-pg-faq .sp-hero-logo { left: 50%; width: 56px !important; transform: translateX(-50%); top: 18px; height: 56px !important; }
+    .sehe-pg-faq .sp-eyebrow { gap: 0; font-size: 11.5px !important; letter-spacing: .24em !important; margin-bottom: 14px !important; }
+    .sehe-pg-faq .sp-eyebrow::before, .sehe-pg-faq .sp-eyebrow::after { display: none; }
+    .sehe-pg-faq .sp-hero h1, .sehe-pg-faq .sp-hero--compact h1 { font-size: 34px !important; line-height: 1.14 !important; }
+    .sehe-pg-faq .sp-hero-sub { font-size: 17px !important; line-height: 1.6 !important; margin-top: 14px !important; }
+    .sehe-pg-faq .sp-body { padding: 44px 18px 56px !important; }
+    .sehe-pg-faq .sp-section + .sp-section, .sehe-pg-faq .sp-section + .sp-band, .sehe-pg-faq .sp-band + .sp-section { margin-top: 56px !important; }
+    .sehe-pg-faq .sp-band { padding: 24px 20px !important; }
+    .sehe-pg-faq .sp-band .sp-actions { justify-content: flex-start; }
+    .sehe-pg-faq .sp-actions .sp-btn { flex: 1 1 100%; }
+  }
+  @media (max-width: 540px) {
+    .sehe-pg-faq .sp-hero h1, .sehe-pg-faq .sp-hero--compact h1 { font-size: 30px !important; }
+    .sehe-pg-faq .sp-hero-inner, .sehe-pg-faq .sp-hero--compact .sp-hero-inner { padding: 106px 18px 34px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sehe-pg-faq *, .sehe-pg-faq *::before, .sehe-pg-faq *::after { transition: none !important; scroll-behavior: auto !important; }
+  }
+
+  /* ── FAQ page ───────────────────────────────────────────────────────── */
+  .sehe-pg-faq .fq-jump { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 12px !important; padding: 0 !important; list-style: none !important; }
+  .sehe-pg-faq .fq-jump li { margin: 0 !important; padding: 0 !important; list-style: none !important; }
+  .sehe-pg-faq .fq-jump li::before, .sehe-pg-faq .fq-jump li::marker { content: none !important; }
+  .sehe-pg-faq .fq-jump a { display: inline-flex; align-items: center; min-height: 46px; padding: 10px 18px; border: 2px solid var(--navy); border-radius: 999px; font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; text-decoration: none !important; color: var(--navy) !important; background: #ffffff; }
+  .sehe-pg-faq .fq-jump a:hover { background: var(--navy); color: #ffffff !important; }
+  .sehe-pg-faq .fq-tools { margin: 18px 0 0 !important; min-height: 50px; }
+  .sehe-pg-faq .fq-cat { scroll-margin-top: 130px; }
+  .sehe-pg-faq .fq-cat + .fq-cat { margin-top: 56px !important; }
+  .sehe-pg-faq .fq-cat h2 { font-size: clamp(26px, 2.6vw, 32px) !important; line-height: 1.2 !important; margin: 0 0 18px !important; padding-bottom: 12px !important; border-bottom: 2px solid var(--gold); }
+  .sehe-pg-faq .fq-item { scroll-margin-top: 130px; border: 1px solid var(--border); border-radius: 10px; background: #ffffff; margin: 0 0 12px !important; overflow: hidden; }
+  .sehe-pg-faq .fq-item > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; padding: 16px 20px !important; font-family: 'Montserrat', sans-serif !important; font-size: 17.5px !important; font-weight: 600 !important; line-height: 1.4 !important; color: var(--navy) !important; }
+  .sehe-pg-faq .fq-item > summary::-webkit-details-marker { display: none; }
+  .sehe-pg-faq .fq-item > summary::after { content: '+'; flex: none; width: 30px; height: 30px; border: 2px solid var(--gold); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: var(--gold-ink); font-size: 20px; font-weight: 600; line-height: 1; }
+  .sehe-pg-faq .fq-item[open] > summary::after { content: '\2212'; }
+  .sehe-pg-faq .fq-item[open] > summary { border-bottom: 1px solid var(--border-light); }
+  .sehe-pg-faq .fq-item > summary:hover { background: var(--cream); }
+  .sehe-pg-faq .fq-item > summary:focus-visible { outline-offset: -3px !important; }
+  .sehe-pg-faq .fq-a { padding: 16px 20px 20px; max-width: 76ch; }
+  .sehe-pg-faq .fq-a p { font-size: 17px !important; line-height: 1.7 !important; color: var(--text) !important; }
+  .sehe-pg-faq .fq-a p + p, .sehe-pg-faq .fq-a p + ul, .sehe-pg-faq .fq-a ul + p { margin-top: 12px !important; }
+  .sehe-pg-faq .fq-list { margin: 0 !important; padding: 0 0 0 22px !important; }
+  .sehe-pg-faq .fq-list li { margin: 0 0 10px !important; font-size: 17px !important; line-height: 1.7 !important; color: var(--text) !important; list-style: disc !important; }
+  .sehe-pg-faq .fq-list li strong { color: var(--navy); }
+  @media (max-width: 860px) {
+    .sehe-pg-faq .fq-jump li { flex: 1 1 calc(50% - 10px); }
+    .sehe-pg-faq .fq-jump a { width: 100%; justify-content: center; text-align: center !important; }
+    .sehe-pg-faq .fq-item > summary { font-size: 17px !important; padding: 14px 16px !important; }
+    .sehe-pg-faq .fq-a { padding: 14px 16px 18px; }
+  }
+</style>
+<div class="sehe-pg-faq">
+<section class="sp-hero sp-hero--compact" aria-labelledby="sehe-fq-title">
+  <img class="sp-hero-img" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/185465114_4147253738668973_1837289544185548089_n-1920w.jpg" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/185465114_4147253738668973_1837289544185548089_n-640w.jpg 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/185465114_4147253738668973_1837289544185548089_n-1280w.jpg 1280w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/185465114_4147253738668973_1837289544185548089_n-1920w.jpg 1920w" sizes="100vw" alt="" style="object-position:center 55%" fetchpriority="high">
+  <div class="sp-hero-veil" aria-hidden="true"></div>
+  <img class="sp-hero-logo" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEH+Explorer_logo+white-350w.png" alt="Sir Edmund Hillary Explorer" width="350" height="350">
+  <div class="sp-hero-inner">
+    <p class="sp-eyebrow">FAQ</p>
+    <h1 id="sehe-fq-title">Frequently Asked Questions</h1>
+    <p class="sp-hero-sub">Answers to the questions we hear most often. Can&#39;t find what you need? Our New Zealand team is here to help.</p>
+  </div>
+</section>
+<div class="sp-body">
+  <nav class="sp-section" aria-label="FAQ sections">
+    <ul class="fq-jump" role="list">
+      <li><a href="#faq-choosing">Choosing your journey</a></li>
+      <li><a href="#faq-booking">Booking and payments</a></li>
+      <li><a href="#faq-before">Before you travel</a></li>
+      <li><a href="#faq-on-tour">On tour</a></li>
+    </ul>
+    <div class="fq-tools" data-fq-tools></div>
+  </nav>
+  <div class="sp-section" id="faq-accordion-1">
+    <section class="fq-cat" id="faq-choosing" aria-labelledby="faq-choosing-h">
+      <h2 id="faq-choosing-h">Choosing your journey</h2>
+      <details class="fq-item" id="faq-is-the-entire-tour-by-train">
+        <summary>Is the entire tour by train?</summary>
+        <div class="fq-a">
+          <p>New Zealand’s stunning, rugged terrain means that some of the most spectacular hidden gems are only accessible by road. Because of this, high-quality coach travel is a key part of our journey on some travel days. We include frequent comfort stops during coach travel and can stop in unique places that often rail cannot. We have incorporated as much rail as possible within your itinerary, however, please note as New Zealand does not have sleeper trains, all overnight stays are in comfortable hotel accommodation.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-i-have-mobility-issues-can-i-join-the-tour">
+        <summary>I have mobility issues, can I join the tour?</summary>
+        <div class="fq-a">
+          <p>For your enjoyment and safety during the tour, you will need to be able to climb and descend two flights of stairs, walk unassisted comfortably for 500 metres over uneven surfaces, manage your own bags at times and be able to look after yourself unassisted for an extended period, if required. Some hotels on the tour do not have walk-in showers (there are showers over baths). Please advise us in advance if you need a walk-in shower. Hotel walk-in showers are limited, so not all requests can be fulfilled. If bringing a walker or a fully collapsible zimmer frame, you would need to travel with an able-bodied companion to assist you during the tour as needed.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-what-is-the-pace-of-the-tour-like">
+        <summary>What is the pace of the tour like?</summary>
+        <div class="fq-a">
+          <p>Wherever possible, we aim to stay two nights in each location to reduce packing and unpacking and allow more time to explore. Some days include early starts to align with rail departures and sightseeing schedules, however there is also flexibility throughout the tour to enjoy free time or opt out of selected excursions if you prefer a slower pace.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-what-is-included-in-the-tour-price">
+        <summary>What is included in the tour price?</summary>
+        <div class="fq-a">
+          <p>Your tour includes professional Tour Guides to support you throughout your journey, providing live commentary and local insights along the way. Also included are quality accommodation, high-quality coach and train travel, all breakfasts and a selection of additional meals, along with a range of included sightseeing and excursions throughout your tour. You’ll travel in comfort aboard our high-quality coaches with onboard Wi-Fi and experience some of New Zealand’s truly exceptional rail journeys. A full breakdown of your specific inclusions and exclusions can be provided by our Customer Care Team upon request, depending on the tour and package you have booked.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-are-meals-included-during-the-tour">
+        <summary>Are meals included during the tour?</summary>
+        <div class="fq-a">
+          <p>New Zealand offers a variety of cuisine styles and dining experiences throughout the tour. Most meals are included in your package. You will receive a detailed itinerary clearly outlining which meals are included and which are at your own expense. On days where lunch or dinner is not included, your Tour Guide will be happy to assist with recommendations and help you make your own reservations if required. There will also be opportunities to visit local supermarkets for any additional supplies or snacks you may need during the journey.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-what-is-not-included-in-the-tour-price">
+        <summary>What is not included in the tour price?</summary>
+        <div class="fq-a">
+          <ul class="fq-list"><li><strong>Arrival &amp; Departure Flights:</strong> Your guided experience begins once you arrive at your destination. Flights to and from the tour start/end points are not included.</li><li><strong>Optional Extra Excursions:</strong> will be available to book prior to your tour departure. If you wish to add an excursion once you are already on tour, please speak with your Tour Guide. While we may not always be able to accommodate last-minute requests due to availability, we will always do our best to assist where possible.</li><li><strong>Personal Expenses:</strong> Visas, travel insurance, taxi fares, and personal spending money for non-included meals or items.</li></ul>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-can-i-join-the-tour-as-a-solo-traveller">
+        <summary>Can I join the tour as a solo traveller?</summary>
+        <div class="fq-a">
+          <p>Absolutely. Many guests travel with us solo and our tours are designed to be welcoming and social without being overwhelming. Throughout the journey, there will be plenty of opportunities to meet and connect with other guests, including fellow solo travellers, during rail journeys, sightseeing, included meals, and free time. Our Tour Guides are there to support all guests throughout the tour and will help ensure solo travellers feel comfortable and included as part of the group. Please note that a single supplement applies for guests requesting their own private room. Availability of solo rooms may be limited on some departures.</p>
+        </div>
+      </details>
+    </section>
+    <section class="fq-cat" id="faq-booking" aria-labelledby="faq-booking-h">
+      <h2 id="faq-booking-h">Booking and payments</h2>
+      <details class="fq-item" id="faq-is-pre-or-post-tour-accommodation-available">
+        <summary>Is pre- or post-tour accommodation available?</summary>
+        <div class="fq-a">
+          <p>Yes, you can book extra hotel nights through our customer care team or through your travel agent. All hotels are subject to availability.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-what-are-the-payment-terms">
+        <summary>What are the Payment Terms?</summary>
+        <div class="fq-a">
+          <p>The payment terms for the Sir Edmund Hillary Explorer Rail &amp; Coach Tour is a 20% deposit to secure a booking; 40% due six-months prior to the tour departure; the balance is due the month before the tour departure.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-how-do-i-make-bank-payments-to-nz-from-overseas">
+        <summary>How do I make bank payments to NZ from overseas?</summary>
+        <div class="fq-a">
+          <p>Bank Accounts: You have the option to pay by bank transfer into an AU$, US$ and a NZ$ currency account. To request an invoice to pay into one of these bank accounts, please contact <a href="mailto:info@pounamutourismgroup.com">info@pounamutourismgroup.com</a> If you require Pounamu Tourism Group’s physical address: Level 3, 111 Cashel Street, Christchurch, 8011, NZ. BNZ bank’s details: Bank of New Zealand, 80 Queen Street, Auckland, New Zealand.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-do-you-accept-payments-by-paypal-or-wise">
+        <summary>Do you accept payments by Paypal or Wise?</summary>
+        <div class="fq-a">
+          <p>Yes, we accept payments by Wise or Paypal. Please contact the Customer Service on <a href="mailto:info@pounamutourismgroup.com">info@pounamutourismgroup.com</a> to request more details or to request a payment link to be sent.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-what-is-your-cancellation-policy">
+        <summary>What is your Cancellation Policy?</summary>
+        <div class="fq-a">
+          <p>If cancellation is made more than 6-months prior to the tour departure, a full refund will apply, no cancellation fee; 60 days or more prior to departure, 20% of the tour package price will apply; If cancellation is made between 30 and 59 days prior to departure, 50% of the tour package price; If the cancellation is made less than 30 days prior to departure, 100% of the tour package price will apply. In the event that Pounamu Tourism Group cancels a tour, 100% refund will apply.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-where-can-i-view-the-booking-terms-conditions">
+        <summary>Where can I view the booking Terms &amp; Conditions?</summary>
+        <div class="fq-a">
+          <p>Terms &amp; conditions can be viewed <a href="/terms-and-conditions">here.</a></p>
+        </div>
+      </details>
+    </section>
+    <section class="fq-cat" id="faq-before" aria-labelledby="faq-before-h">
+      <h2 id="faq-before-h">Before you travel</h2>
+      <details class="fq-item" id="faq-how-much-luggage-can-i-take">
+        <summary>How much luggage can I take?</summary>
+        <div class="fq-a">
+          <p>Kindly try to limit your luggage to one case per person plus a shoulder style bag/backpack to be carried for personal items - including lunches, warm/waterproof clothing, medications and camera. The coach will transfer your main luggage from hotel to hotel, so you will not have access to your main luggage on a transit day. Please note the hotels we use often have porter services, but not all of them. You should be prepared to manage your own luggage within the hotel at times.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-what-should-i-pack-to-wear">
+        <summary>What should I pack to wear?</summary>
+        <div class="fq-a">
+          <p>Please remember that the weather in the New Zealand can be unpredictable and you might experience four seasons in one day, so please bring a waterproof jacket and layers of warm clothing, together with sensible walking shoes. We also recommend packing sunscreen, hand sanitiser and insect repellent.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-when-can-i-book-an-optional-extra-excursion">
+        <summary>When can I book an Optional Extra Excursion?</summary>
+        <div class="fq-a">
+          <p>You will be able to book these before the tour. A Personal Details Form will be sent to you prior to departure to complete and this is where any optional extra excursions can be requested. Please note that some excursions have limited spaces available. If you have any questions regarding the optional excursions, our Customer Care team will be happy to assist.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-do-i-need-travel-insurance">
+        <summary>Do I need Travel Insurance?</summary>
+        <div class="fq-a">
+          <p>We strongly recommend that all passengers take out comprehensive travel insurance and review their health insurance coverage prior to travel.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-are-special-dietary-requirements-catered-for">
+        <summary>Are special dietary requirements catered for?</summary>
+        <div class="fq-a">
+          <p>Yes - please complete the pre-trip documentation to let us know about any special dietary requirements. The tour leader will be available throughout the tour to discuss your needs, and to ensure that these are met.</p>
+        </div>
+      </details>
+    </section>
+    <section class="fq-cat" id="faq-on-tour" aria-labelledby="faq-on-tour-h">
+      <h2 id="faq-on-tour-h">On tour</h2>
+      <details class="fq-item" id="faq-what-facilities-are-available-on-the-coach-trains">
+        <summary>What facilities are available on the Coach &amp; Trains?</summary>
+        <div class="fq-a">
+          <p>Our coaches feature onboard Wi-Fi, air conditioning, bathroom facilities, and a selection of USB charging ports for guest use while travelling. Many of the scenic trains included throughout the tour also offer Wi-Fi, onboard commentary, café cart facilities, power outlets, and either onboard bathrooms or restroom facilities available at stations. Please note that facilities may vary depending on the train service and route. For commentary on services such as the TranzAlpine and Coastal Pacific, guests will need their own headphones to listen to the onboard commentary app. Pre-tour information will be provided with instructions on how to download and access the app before travel.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-will-i-have-mobile-reception-and-wi-fi-throughout-the-tour">
+        <summary>Will I have mobile reception and Wi-Fi throughout the tour?</summary>
+        <div class="fq-a">
+          <p>Wi-Fi is available on our coaches and at all hotels throughout the tour, with many rail journeys also offering onboard Wi-Fi. Please note that due to New Zealand’s rugged and remote landscapes, mobile reception and internet connectivity can occasionally be patchy in some regions.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-how-does-seating-work-on-the-coach-and-trains">
+        <summary>How does seating work on the Coach and Trains?</summary>
+        <div class="fq-a">
+          <p>Seating on the coach is not pre-allocated. A seat rotation system is managed by your Tour Guide to give guests the opportunity to enjoy different views and seating positions throughout the journey. Train seating arrangements vary depending on the rail service and operator. Some train journeys feature allocated an allocated seating or carriage while others may offer more flexibility on the day. Your Tour Guide will provide clear instructions prior to each rail journey. A note on travel sickness: If you are prone to travel sickness, please ensure you carry appropriate medication with you for both coach and Train journeys.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-are-there-laundry-facilities-during-the-tour">
+        <summary>Are there laundry facilities during the tour?</summary>
+        <div class="fq-a">
+          <p>All hotels have washing and drying facilities. Most of these facilities are coin or token operated, which you can get from the hotel reception. You will receive a hotel facilities document prior to your departure to view this information specific to your tour.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-do-i-have-to-participate-in-all-included-excursions">
+        <summary>Do I have to participate in all included excursions?</summary>
+        <div class="fq-a">
+          <p>You are never required to participate in an excursion unless it is part of the day’s travel (for example, a scenic rail journey transporting the group to the next destination). If you would prefer a quiet morning at the hotel or time to explore independently instead of joining a group activity, simply let your Tour Guide know on the day.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-what-happens-if-weather-affects-an-excursion">
+        <summary>What happens if weather affects an excursion?</summary>
+        <div class="fq-a">
+          <p>New Zealand weather can be unpredictable. If an excursion is cancelled due to weather or safety conditions, we will attempt to provide an alternative experience or reschedule where possible. Full refunds will be provided for any prepaid Optional Extra Excursions that are unable to operate. This will be issued promptly by our customer care team rather than the Tour Guides.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-am-i-able-to-access-medical-assistance-during-the-tour">
+        <summary>Am I able to access medical assistance during the tour?</summary>
+        <div class="fq-a">
+          <p>Medical centres, hospitals, pharmacies, and emergency contact services have been identified throughout the tour route and at overnight locations where possible. However, some remote areas of New Zealand have limited medical facilities. Our Tour Guides and Coach Drivers are trained in basic first aid. Each coach also carries a first aid kit and defibrillator onboard. Please ensure you travel with an adequate supply of all prescription medications, along with any essential over-the-counter items you may require during the journey. Please note that pharmacies in New Zealand are only able to process a prescription that has been issued by a NZ Doctor. If you require regular medication you should register with a GP in New Zealand and consult with them as soon as possible as some medications may not be available in New Zealand and you may need to be prescribed an alternative. It is recommended that you keep your passport and travel insurance information accessible during the tour in case medical assistance is required.</p>
+        </div>
+      </details>
+      <details class="fq-item" id="faq-what-hygiene-measures-are-in-place-during-the-tour">
+        <summary>What hygiene measures are in place during the tour?</summary>
+        <div class="fq-a">
+          <p>A hygiene kit, including a limited supply of masks and hand sanitiser, is carried onboard each coach; however, we strongly encourage guests to bring their own personal supplies, including N95-grade face masks and Rapid Antigen Tests (RATs). Coach surfaces are cleaned daily throughout the tour. As guests are travelling in close quarters, we strongly recommend that you keep all relevant vaccinations up to date and wear a mask in enclosed, crowded, or confined spaces, particularly if you have underlying health concerns. For the safety and comfort of all guests, Tour Guides may request that passengers displaying symptoms of illness wear a face mask while travelling.</p>
+        </div>
+      </details>
+    </section>
+  </div>
+  <aside class="sp-band" aria-label="Can&#x27;t find your answer?">
+    <div class="sp-band-copy">
+      <h2>Can&#39;t find your answer?</h2>
+      <p>Our New Zealand team is here to help. Call us, or send us a message from the contact page.</p>
+    </div>
+    <div class="sp-actions">
+      <a class="sp-btn sp-btn--gold" href="/contact">Contact us</a>
+      <a class="sp-btn sp-btn--light" href="tel:+6439741812">+64 3 974 1812</a>
+      <a class="sp-btn sp-btn--light" href="/journeys">View all journeys</a>
+    </div>
+  </aside>
+</div>
+</div>
+<script>
+(function () {
+  /* FAQ enhancements — add only. (1) A link to a question (#faq-...) opens
+     that answer. (2) An "Open all answers" button. With JS off every
+     question still opens on its own. No less-than sign and no ampersand. */
+  var root = document.querySelector('.sehe-pg-faq');
+  if (!root) return;
+  var items = Array.prototype.slice.call(root.querySelectorAll('details.fq-item'));
+  function openFromHash() {
+    var id = decodeURIComponent((location.hash || '').replace('#', ''));
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (!el) return;
+    if (el.tagName === 'DETAILS') { el.open = true; el.scrollIntoView(); }
+  }
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
+  var slot = root.querySelector('[data-fq-tools]');
+  if (!slot) return;
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'sp-btn sp-btn--ghost';
+  btn.setAttribute('aria-controls', 'faq-accordion-1');
+  function label() {
+    var allOpen = items.every(function (d) { return d.open; });
+    btn.textContent = allOpen ? 'Close all answers' : 'Open all answers';
+    btn.setAttribute('aria-expanded', allOpen ? 'true' : 'false');
+  }
+  btn.addEventListener('click', function () {
+    var allOpen = items.every(function (d) { return d.open; });
+    items.forEach(function (d) { d.open = !allOpen; });
+    label();
+  });
+  items.forEach(function (d) { d.addEventListener('toggle', label); });
+  label();
+  slot.appendChild(btn);
+})();
+</script>
