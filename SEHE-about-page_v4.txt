@@ -1,8 +1,16 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — ABOUT PAGE (/about)
-     COMPLETE PAGE  ·  VERSION v3  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v4  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v4 — Approved copy update (round 3, 25 Sep 2026): new hero intro
+            (AB-03); the Hillary-connection text rewritten (AB-07, AB-08);
+            the two links now read "Read our FAQs" and "About the
+            Himalayan Trust" (same destinations, now 44px buttons); the rail
+            and coach text rewritten (AB-12; the FAQ page's own answer is
+            unchanged); new help-band text (SH-02). The guest speaker, the
+            Antarctic Centre and Marlborough claims are still FLAGGED for
+            Kirsty (runbook section 7, A1-A3).
        v3 — Third independent review (25 Sep 2026): line length tightened to
             about 60 characters' width (~66-72 characters; the old caps
             rendered up to ~85); on phones the darker hero veil now also
@@ -218,7 +226,7 @@
   <div class="sp-hero-inner">
     <p class="sp-eyebrow">About us</p>
     <h1 id="sehe-ab-title">Inspired by Sir Edmund Hillary</h1>
-    <p class="sp-hero-sub">The Sir Edmund Hillary Explorer is New Zealand's leading tour operator, specialising in scenic rail and luxury coach tours of the South Island.</p>
+    <p class="sp-hero-sub">Explore New Zealand's South Island by scenic rail and luxury coach with Sir Edmund Hillary Explorer.</p>
   </div>
 </section>
 <div class="sp-body">
@@ -232,10 +240,12 @@
       <div class="ab-copy">
         <p class="sp-kicker">The Hillary connection</p>
         <h2 id="sehe-ab-hillary">Our inspiration</h2>
-        <p>Sir Edmund Hillary epitomised the New Zealand spirit of adventure and he is our inspiration when planning your experience of a lifetime. We pay homage to Sir Edmund Hillary as we explore the South Island of New Zealand and experience the postcard perfect vistas and dramatic alpine scenery that this part of the world is renowned for.</p>
-        <p>At Aoraki Mt Cook, a visit to the museum dedicated to Edmund’s adventurous spirit and his achievements is a must. A guest speaker from the Hillary family will also give you an insight into growing up as part of this famous family and find out about how they continue to keep their father’s memory alive. In Christchurch, learn more about his team’s expedition crossing Antarctica using converted farm tractors at the International Antarctic Centre. You will also travel through Marlborough, where Edmund was trained for the air force during the Second World War and where he made some daring ascents of Mt Tapuae-o-Uenuku.</p>
-        <p class="ab-links">Please view the <a href="/f-a-q">FAQ</a> page for more information.</p>
-        <p><a href="/himalayan-trust">Learn more</a> about the Himalayan Trust.</p>
+        <p>Sir Edmund Hillary's spirit of adventure inspires our journeys through New Zealand's South Island. We honour that spirit as we explore the dramatic alpine scenery and remarkable landscapes for which this part of the country is known.</p>
+        <p>At Aoraki Mt Cook, visit the museum celebrating Sir Edmund Hillary's life and achievements. A guest speaker from the Hillary family shares personal stories and how the family continues his legacy. In Christchurch, learn about his team's Antarctic expedition using converted farm tractors at the International Antarctic Centre. You will also travel through Marlborough, where Hillary trained for the air force during the Second World War and climbed Mt Tapuae-o-Uenuku.</p>
+        <div class="sp-actions ab-links">
+          <a class="sp-btn sp-btn--ghost" href="/f-a-q">Read our FAQs</a>
+          <a class="sp-btn sp-btn--ghost" href="/himalayan-trust">About the Himalayan Trust</a>
+        </div>
       </div>
     </div>
   </section>
@@ -244,7 +254,7 @@
     <div class="sp-head">
       <p class="sp-kicker">Rail and coach</p>
       <h2 id="sehe-ab-rail">How you travel</h2>
-      <p>New Zealand’s stunning, rugged terrain means that some of the most spectacular hidden gems are only accessible by road. Because of this, high-quality coach travel is a key part of our journey on some travel days. We include frequent comfort stops during coach travel and can stop in unique places that often rail cannot. We have incorporated as much rail as possible within your itinerary, however, please note as New Zealand does not have sleeper trains, all overnight stays are in comfortable hotel accommodation.</p>
+      <p>Rail and coach each offer a different view of the South Island. Scenic train journeys are complemented by coach travel to places the railway cannot reach, with frequent comfort stops along the way. All overnight stays are in comfortable hotels.</p>
     </div>
     <ul class="ab-photos" role="list">
       <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/woman-on-the-coastal-pacific-640w.webp" alt="A passenger taking in the coastline from a window seat on the Coastal Pacific" width="640" height="442" loading="lazy"></figure></li>
@@ -269,7 +279,7 @@
   <aside class="sp-band" aria-label="Need help choosing the right tour?">
     <div class="sp-band-copy">
       <h2>Need help choosing the right tour?</h2>
-      <p>Our team is here to help you find the perfect journey. Call us or get in touch and we&#39;ll match you with the right tour for your dates and interests.</p>
+      <p>Talk to our New Zealand team about dates, rooms and what you'd like to see. We'll help you choose a journey that suits you.</p>
     </div>
     <div class="sp-actions">
       <a class="sp-btn sp-btn--gold" href="/journeys">View all journeys</a>
