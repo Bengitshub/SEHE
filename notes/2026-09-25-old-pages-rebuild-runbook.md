@@ -85,22 +85,23 @@ They already had it in the 6 Sep backup (`backups/2026-09-06-live-site/pages/`),
 
 **Phase 1: Reviews and Contact (Ben).**
 
-**Check-over, 25 Sep 2026 (live site, second pass):**
+**Check-over, 25 Sep 2026 (live site, third pass):**
 
 | Preview | Live | Result | To do |
 |---|---|---|---|
 | `reviews-new` | v7 | OK: complete paste, "Show 6 more reviews" styled and toggles | None |
-| `contact-new` | v9 | v9 widget complete, but **the native form is still gone** and the two cut-off widgets (a v7 and a second v8) are still there | Delete the page and rebuild it from a fresh duplicate of `/contact` (§3 Contact), then paste **v9** |
-| `about-new` | v4 | Leftover old photo-slider row below the new content: 400px on phones, 0px on desktop, so switch the editor to mobile view to see it | Delete that row. Still held for A1 to A3 |
+| `contact-new` | v9 | Rebuilt. Form present, every setting identical to `/contact` (recipient, webhook, subject). It moves into the right-hand column on desktop and phones, with reCAPTCHA inside. **One leftover:** the "Send us an enquiry" text widget is still in the form row, so that row can't hide: the heading sits alone above the footer (197px row on desktop) | Delete that text widget from the form row |
+| `about-new` | v4 | OK: the old slider row is gone | Held for A1 to A3 |
 | `faq-new` | v6 | OK: 5 top buttons 6px, 26 answers, deep links open | None |
 | `gallery-new` | v7 | OK: 32 photos, 10 labels, viewer works | None |
 | `himalayan-trust-new` | v5 | OK | None |
 | `terms-new` | v3 | OK | None |
-| Privacy | none | No preview page yet | Build it with **v4** |
+| `privacy-policy-new` | v4 | OK: complete paste; policy text identical to the live page | None |
 
 - All previews are noindex and in no menu. The live pages are untouched.
 - **First manual fix: done.** Both tour pages are indexable and in the sitemap.
 - **§5 A to F: none done yet.**
+- **Addresses at the swap:** FAQ's preview is `faq-new` and Terms' is `terms-new`. At the swap set their URLs to `f-a-q` and `terms-and-conditions` exactly (the live addresses), not `faq` or `terms`, or existing links break.
 
 1. Build `reviews-new` and `contact-new` (§1 and §3). **Hide both from the menu.**
 2. Check with Izaac and Joel that nothing of theirs is pending, then publish.
@@ -167,7 +168,7 @@ The CSS also sets the row padding to 0 in modern browsers. The editor setting co
    - Hide it from the navigation.
 2. **Site Settings → URL Redirects.** Delete any rule from `/<slug>`.
 3. **New page → Page settings.**
-   - Change the URL from `<slug>-new` to `<slug>`.
+   - Change the URL from `<slug>-new` to `<slug>`. Use the live address exactly: `f-a-q` for FAQ (preview `faq-new`), `terms-and-conditions` for Terms (preview `terms-new`).
    - Paste the SEO title and description from the table in §4.
    - Set **Hide from search engines**: **off** for Reviews, Contact, About, FAQ and Gallery. Keep it **on** for Himalayan Trust, Privacy and Terms.
 4. **Site Navigation.** Duda menu items point to *pages*, not URLs, so the menu still points at the old page after the rename. In **both** the header and footer menus, show the new page in the old page's position with the same label.
