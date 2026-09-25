@@ -1,6 +1,6 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact)
-     COMPLETE PAGE  ·  VERSION v8  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v9  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      WHERE IT GOES (the whole page is ONE widget):
        page "contact-new" (duplicate of /contact). Delete the banner row, the
@@ -14,6 +14,14 @@
        Steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
      -----------------------------------------------------------------------
      CHANGELOG (latest first; v1 to v6 are in the repo history):
+       v9 — The real cause of the vanishing, found on the live contact-new
+            (25 Sep 2026): the copied text stopped at line 150, inside the
+            CSS, so the page's HTML never reached Duda (it happened to v7
+            and to one v8 attempt; the complete v8 paste works). The code
+            was never the problem. v9 adds an END OF FILE line as the last
+            line: if it is the last line in Duda's code box, the whole file
+            is pasted. Copy from the downloaded file, never from a preview.
+            Page code identical to v8.
        v8 — v7 vanished in the Duda editor after Update. v8 uses only markup
             already working in this site's Duda widgets: the contact list is
             a plain list (no definition-list tags), the CSS has no child
@@ -451,3 +459,4 @@
   tick();
 })();
 </script>
+<!-- END OF FILE: contact-page.txt v9. If this is the last line in the Duda code box, the whole file is pasted. -->
