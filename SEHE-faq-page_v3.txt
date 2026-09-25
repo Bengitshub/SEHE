@@ -1,8 +1,12 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — FAQ PAGE (/f-a-q)
-     COMPLETE PAGE  ·  VERSION v2  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v3  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v3 — Third independent review (25 Sep 2026): line length tightened to
+            about 60 characters' width (~66-72 characters; the old caps
+            rendered up to ~85); on phones the darker hero veil now also
+            applies to compact heroes (shared kit).
        v2 — Review fixes (independent check, 25 Sep 2026): no tag-like tokens
             left in comments; the bold item labels in "What is not included"
             are now declared below; conflicts with other pages are listed in
@@ -103,7 +107,7 @@
   .sehe-pg-faq .sp-head { max-width: 780px; margin: 0 0 28px !important; }
   .sehe-pg-faq .sp-kicker { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 14px !important; font-weight: 700 !important; letter-spacing: .14em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
   .sehe-pg-faq .sp-head h2 { font-size: clamp(28px, 3vw, 36px) !important; line-height: 1.2 !important; margin: 0 0 12px !important; }
-  .sehe-pg-faq .sp-head p { max-width: 68ch; }
+  .sehe-pg-faq .sp-head p { max-width: 60ch; }   /* ~66-72 characters per line in Open Sans */
   .sehe-pg-faq .sp-head p + p { margin-top: 10px !important; }
 
   /* ── Buttons (48px+ tap targets) ────────────────────────────────────── */
@@ -147,7 +151,7 @@
     .sehe-pg-faq .sp-hero { min-height: max(460px, 60svh); }
     .sehe-pg-faq .sp-hero--compact { min-height: max(340px, 42svh); }
     /* phones crop to the brightest part of the frame — darker veil keeps contrast */
-    .sehe-pg-faq .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.66) 0%, rgba(8,21,37,.48) 30%, rgba(8,21,37,.72) 58%, rgba(8,21,37,.96) 100%); }
+    .sehe-pg-faq .sp-hero-veil, .sehe-pg-faq .sp-hero--compact .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.66) 0%, rgba(8,21,37,.48) 30%, rgba(8,21,37,.72) 58%, rgba(8,21,37,.96) 100%); }
     .sehe-pg-faq .sp-hero-inner, .sehe-pg-faq .sp-hero--compact .sp-hero-inner { padding: 118px 20px 40px; }
     .sehe-pg-faq .sp-hero-logo { left: 50%; width: 56px !important; transform: translateX(-50%); top: 18px; height: 56px !important; }
     .sehe-pg-faq .sp-eyebrow { gap: 0; font-size: 12.5px !important; letter-spacing: .2em !important; margin-bottom: 14px !important; }
@@ -186,7 +190,7 @@
   .sehe-pg-faq .fq-item[open] > summary { border-bottom: 1px solid var(--border-light); }
   .sehe-pg-faq .fq-item > summary:hover { background: var(--cream); }
   .sehe-pg-faq .fq-item > summary:focus-visible { outline-offset: -3px !important; }
-  .sehe-pg-faq .fq-a { padding: 16px 20px 20px; max-width: 76ch; }
+  .sehe-pg-faq .fq-a { padding: 16px 20px 20px; max-width: 66ch; }
   .sehe-pg-faq .fq-a p { font-size: 17px !important; line-height: 1.7 !important; color: var(--text) !important; }
   .sehe-pg-faq .fq-a p + p, .sehe-pg-faq .fq-a p + ul, .sehe-pg-faq .fq-a ul + p { margin-top: 12px !important; }
   .sehe-pg-faq .fq-list { margin: 0 !important; padding: 0 0 0 22px !important; }
