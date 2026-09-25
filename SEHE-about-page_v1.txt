@@ -1,0 +1,268 @@
+<!-- =====================================================================
+     SIR EDMUND HILLARY EXPLORER — ABOUT PAGE (/about)
+     COMPLETE PAGE  ·  VERSION v1  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     -----------------------------------------------------------------------
+     CHANGELOG (latest first):
+       v1 — First new-design build of /about (Brief v2, 25 Sep 2026).
+            Story in three parts: the Hillary connection (the live About
+            text, verbatim, beside the 1960 portrait) · rail and coach (the
+            FAQ's own answer, verbatim, and six photographs from the old
+            carousel, now a still grid — no autoplay) · who we are (lines
+            already on the live homepage and Journeys page). FAQ and
+            Himalayan Trust links kept. Hero = the page's existing banner
+            (Hillary statue, Aoraki Mt Cook). The carousel's 2025/26 route-
+            map slide is not carried over (past season — flagged).
+            FLAGGED FOR KIRSTY, NOT EDITED: the International Antarctic
+            Centre visit; Marlborough / Mt Tapuae-o-Uenuku; "A guest speaker
+            from the Hillary family".
+     -----------------------------------------------------------------------
+     WHERE IT GOES: page "about-new" (duplicate of /about). Delete every old
+     content row, add ONE full-width row (padding 0), ONE HTML widget, paste
+     this whole file. Steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
+     RULES KEPT: no new tour facts; no rating hard-coded; no schema; no
+     tracking; no departure data; CSS scoped to .sehe-pg-about.
+     ===================================================================== -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  /* ── Duda host row ─────────────────────────────────────────────────────
+     Let the hero run full-bleed and stop the row adding a white strip under
+     the transparent site header. :has() rules sit on their own so a browser
+     without :has() drops only these lines (the runbook also sets the row's
+     padding to 0 in the editor, which covers those browsers). */
+  #dm .dmContent .dmRespRow:has(.sehe-pg-about) { padding-top: 0 !important; padding-bottom: 0 !important; overflow: visible !important; max-width: none !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-about) .dmRespColsWrapper { overflow: visible !important; max-width: none !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-about) .dmRespCol { overflow: visible !important; max-width: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+  #dm .dmContent .dmCustomHtml:has(.sehe-pg-about) { overflow: visible !important; }
+
+  /* ── Page scope + tokens (Journeys v22 palette) ─────────────────────── */
+  .sehe-pg-about, .sehe-pg-about *, .sehe-pg-about *::before, .sehe-pg-about *::after { box-sizing: border-box; }
+  .sehe-pg-about {
+    --navy: #153b67; --navy-dark: #0e2d52; --gold: #c8a56c; --gold-light: #d4b37e;
+    --gold-ink: #7a5f30; /* gold for small text on light backgrounds (5.9:1 on white) */
+    --off-white: #f9f7f3; --cream: #faf8f3; --text: #1a1a1a; --text-2: #454545;
+    --border: #d8d3c8; --border-light: #e8e4db; --white: #ffffff;
+    display: block; width: 100%; margin: 0 !important; padding: 0 !important;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    font-size: 17px; line-height: 1.65; color: var(--text); text-align: left !important;
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; overflow-wrap: break-word;
+  }
+  /* theme rule ".dmFullRowRespTmpl section{padding:50px 40px}" would re-pad every section */
+  .sehe-pg-about section, .sehe-pg-about aside, .sehe-pg-about nav { padding: 0 !important; margin: 0; }
+  .sehe-pg-about h1, .sehe-pg-about h2, .sehe-pg-about h3, .sehe-pg-about h4 {
+    font-family: 'Montserrat', -apple-system, 'Segoe UI', Arial, sans-serif !important; font-weight: 600 !important;
+    color: var(--navy) !important; text-transform: none !important; text-align: left !important;
+    letter-spacing: -0.01em !important; margin: 0 !important; padding: 0 !important;
+  }
+  .sehe-pg-about p, .sehe-pg-about li, .sehe-pg-about dt, .sehe-pg-about dd, .sehe-pg-about figcaption, .sehe-pg-about blockquote, .sehe-pg-about summary, .sehe-pg-about td, .sehe-pg-about th {
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+    text-align: left !important; text-transform: none !important;
+  }
+  .sehe-pg-about p { font-size: 17px !important; line-height: 1.7 !important; color: var(--text-2) !important; margin: 0 !important; }
+  .sehe-pg-about a { color: var(--navy) !important; text-decoration: underline !important; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .sehe-pg-about a:hover { color: var(--navy-dark) !important; text-decoration-thickness: 2px; }
+  .sehe-pg-about a:focus-visible, .sehe-pg-about summary:focus-visible, .sehe-pg-about button:focus-visible { outline: 3px solid var(--navy) !important; outline-offset: 3px !important; border-radius: 4px; }
+  .sehe-pg-about img { max-width: 100%; height: auto; border: 0; }
+  .sehe-pg-about .sp-sr { position: absolute !important; width: 1px !important; height: 1px !important; margin: -1px !important; padding: 0 !important; overflow: hidden !important; clip: rect(0 0 0 0) !important; white-space: nowrap !important; border: 0 !important; }
+
+  /* ── Hero (same build as the Journeys / Brochure heroes) ────────────── */
+  .sehe-pg-about .sp-hero {
+    position: relative; width: 100vw; margin-left: calc(50% - 50vw) !important; margin-right: calc(50% - 50vw) !important;
+    padding: 0 !important; min-height: max(540px, 68vh); min-height: max(540px, 68svh);
+    display: flex; align-items: flex-end; background-color: #081525; overflow: hidden;
+  }
+  .sehe-pg-about .sp-hero--compact { min-height: max(380px, 46vh); min-height: max(380px, 46svh); }
+  .sehe-pg-about .sp-hero-img { position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover; object-position: center 50%; display: block; }
+  .sehe-pg-about .sp-hero-veil { position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(180deg, rgba(8,21,37,.62) 0%, rgba(8,21,37,.26) 28%, rgba(8,21,37,.58) 56%, rgba(8,21,37,.95) 100%); }
+  .sehe-pg-about .sp-hero--compact .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.70) 0%, rgba(8,21,37,.52) 40%, rgba(8,21,37,.92) 100%); }
+  /* the site header's logo slot is a transparent placeholder until you scroll —
+     put the real roundel in its lane so the brand is there on load */
+  .sehe-pg-about .sp-hero-logo { position: absolute; top: 26px; left: 0; width: 16.66% !important; height: 92px !important; max-width: none !important; object-fit: contain; object-position: center; z-index: 2; filter: drop-shadow(0 2px 10px rgba(8,21,37,.5)); }
+  .sehe-pg-about .sp-hero-inner { position: relative; z-index: 1; width: 100%; max-width: 1240px; margin: 0 auto; padding: 150px 30px 58px; }
+  .sehe-pg-about .sp-hero--compact .sp-hero-inner { padding: 140px 30px 46px; }
+  .sehe-pg-about .sp-eyebrow {
+    display: inline-flex; align-items: center; gap: 16px; font-family: 'Montserrat', sans-serif !important;
+    font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: .42em !important; text-transform: uppercase !important;
+    color: #d4b37e !important; margin: 0 0 22px !important; text-shadow: 0 1px 12px rgba(8,21,37,.95);
+  }
+  .sehe-pg-about .sp-eyebrow::before, .sehe-pg-about .sp-eyebrow::after { content: ''; width: 44px; height: 1px; background: #d4b37e; flex: none; }
+  .sehe-pg-about .sp-hero h1 { font-weight: 700 !important; font-size: clamp(40px, 5.2vw, 66px) !important; line-height: 1.08 !important; color: #ffffff !important; text-shadow: 0 2px 26px rgba(8,21,37,.55); }
+  .sehe-pg-about .sp-hero--compact h1 { font-size: clamp(36px, 4.2vw, 54px) !important; }
+  .sehe-pg-about .sp-hero-sub { margin: 22px 0 0 !important; max-width: 620px; font-size: clamp(17px, 1.5vw, 19px) !important; line-height: 1.65 !important; color: rgba(255,255,255,.95) !important; text-shadow: 0 1px 14px rgba(8,21,37,.6); }
+  .sehe-pg-about .sp-hero a:focus-visible, .sehe-pg-about .sp-band a:focus-visible { outline-color: var(--gold-light) !important; }
+
+  /* ── Body, section heads ────────────────────────────────────────────── */
+  .sehe-pg-about .sp-body { max-width: 1240px; margin: 0 auto !important; padding: 64px 30px 76px !important; }
+  .sehe-pg-about .sp-section + .sp-section, .sehe-pg-about .sp-section + .sp-band, .sehe-pg-about .sp-band + .sp-section { margin-top: 76px !important; }
+  .sehe-pg-about .sp-head { max-width: 780px; margin: 0 0 28px !important; }
+  .sehe-pg-about .sp-kicker { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 13px !important; font-weight: 700 !important; letter-spacing: .16em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
+  .sehe-pg-about .sp-head h2 { font-size: clamp(28px, 3vw, 36px) !important; line-height: 1.2 !important; margin: 0 0 12px !important; }
+  .sehe-pg-about .sp-head p { max-width: 68ch; }
+  .sehe-pg-about .sp-head p + p { margin-top: 10px !important; }
+
+  /* ── Buttons (48px+ tap targets) ────────────────────────────────────── */
+  .sehe-pg-about .sp-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .sehe-pg-about .sp-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 12px 24px;
+    border-radius: 6px; border: 2px solid var(--navy); background: var(--navy); color: #ffffff !important;
+    font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; line-height: 1.25 !important;
+    text-decoration: none !important; text-align: center !important; cursor: pointer; transition: background-color .2s, color .2s, border-color .2s;
+  }
+  .sehe-pg-about .sp-btn:hover { background: var(--navy-dark); border-color: var(--navy-dark); color: #ffffff !important; }
+  .sehe-pg-about .sp-btn--ghost { background: transparent; color: var(--navy) !important; }
+  .sehe-pg-about .sp-btn--ghost:hover { background: var(--navy); color: #ffffff !important; }
+  .sehe-pg-about .sp-btn--gold { background: var(--gold); border-color: var(--gold); color: var(--navy-dark) !important; }
+  .sehe-pg-about .sp-btn--gold:hover { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy-dark) !important; }
+  .sehe-pg-about .sp-btn--light { background: transparent; border-color: rgba(255,255,255,.85); color: #ffffff !important; }
+  .sehe-pg-about .sp-btn--light:hover { background: #ffffff; border-color: #ffffff; color: var(--navy-dark) !important; }
+
+  /* ── Disclosure ("show more") — native <details>, works with JS off ─── */
+  .sehe-pg-about details.sp-more > summary {
+    list-style: none; display: inline-flex; align-items: center; gap: 12px; min-height: 50px; padding: 12px 22px;
+    border: 2px solid var(--navy); border-radius: 6px; background: #ffffff; color: var(--navy) !important;
+    font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; cursor: pointer;
+  }
+  .sehe-pg-about details.sp-more > summary::-webkit-details-marker { display: none; }
+  .sehe-pg-about details.sp-more > summary::after { content: '+'; font-size: 22px; line-height: 1; font-weight: 400; }
+  .sehe-pg-about details.sp-more[open] > summary::after { content: '\2212'; }
+  .sehe-pg-about details.sp-more > summary:hover { background: var(--navy); color: #ffffff !important; }
+  .sehe-pg-about .sp-when-open { display: none; }
+  .sehe-pg-about details[open] > summary .sp-when-open { display: inline; }
+  .sehe-pg-about details[open] > summary .sp-when-closed { display: none; }
+
+  /* ── Navy help band (the Journeys contact card, scoped) ─────────────── */
+  .sehe-pg-about .sp-band { background: var(--navy); border: 1px solid var(--gold); border-radius: 12px; padding: 34px 36px !important; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px 36px; }
+  .sehe-pg-about .sp-band-copy { flex: 1 1 420px; }
+  .sehe-pg-about .sp-band h2 { color: #ffffff !important; font-size: clamp(24px, 2.4vw, 28px) !important; line-height: 1.25 !important; margin: 0 0 8px !important; }
+  .sehe-pg-about .sp-band p { color: rgba(255,255,255,.88) !important; max-width: 62ch; }
+  .sehe-pg-about .sp-band .sp-actions { flex: 1 1 440px; justify-content: flex-end; }
+
+  @media (max-width: 860px) {
+    .sehe-pg-about .sp-hero { min-height: max(460px, 60svh); }
+    .sehe-pg-about .sp-hero--compact { min-height: max(340px, 42svh); }
+    /* phones crop to the brightest part of the frame — darker veil keeps contrast */
+    .sehe-pg-about .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.66) 0%, rgba(8,21,37,.48) 30%, rgba(8,21,37,.72) 58%, rgba(8,21,37,.96) 100%); }
+    .sehe-pg-about .sp-hero-inner, .sehe-pg-about .sp-hero--compact .sp-hero-inner { padding: 118px 20px 40px; }
+    .sehe-pg-about .sp-hero-logo { left: 50%; width: 56px !important; transform: translateX(-50%); top: 18px; height: 56px !important; }
+    .sehe-pg-about .sp-eyebrow { gap: 0; font-size: 11.5px !important; letter-spacing: .24em !important; margin-bottom: 14px !important; }
+    .sehe-pg-about .sp-eyebrow::before, .sehe-pg-about .sp-eyebrow::after { display: none; }
+    .sehe-pg-about .sp-hero h1, .sehe-pg-about .sp-hero--compact h1 { font-size: 34px !important; line-height: 1.14 !important; }
+    .sehe-pg-about .sp-hero-sub { font-size: 17px !important; line-height: 1.6 !important; margin-top: 14px !important; }
+    .sehe-pg-about .sp-body { padding: 44px 18px 56px !important; }
+    .sehe-pg-about .sp-section + .sp-section, .sehe-pg-about .sp-section + .sp-band, .sehe-pg-about .sp-band + .sp-section { margin-top: 56px !important; }
+    .sehe-pg-about .sp-band { padding: 24px 20px !important; }
+    .sehe-pg-about .sp-band .sp-actions { justify-content: flex-start; }
+    .sehe-pg-about .sp-actions .sp-btn { flex: 1 1 100%; }
+  }
+  @media (max-width: 540px) {
+    .sehe-pg-about .sp-hero h1, .sehe-pg-about .sp-hero--compact h1 { font-size: 30px !important; }
+    .sehe-pg-about .sp-hero-inner, .sehe-pg-about .sp-hero--compact .sp-hero-inner { padding: 106px 18px 34px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sehe-pg-about *, .sehe-pg-about *::before, .sehe-pg-about *::after { transition: none !important; scroll-behavior: auto !important; }
+  }
+
+  .sehe-pg-about .ab-copy h2 { font-size: clamp(28px, 3vw, 36px) !important; line-height: 1.2 !important; margin: 0 0 16px !important; }
+  /* ── About page ─────────────────────────────────────────────────────── */
+  .sehe-pg-about .sp-hero-img { object-position: 28% 40%; }
+  .sehe-pg-about .ab-story { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: start; }
+  .sehe-pg-about .ab-portrait { margin: 0 !important; }
+  .sehe-pg-about .ab-portrait img { display: block; width: 100% !important; height: auto !important; border-radius: 12px; }
+  .sehe-pg-about .ab-portrait figcaption { margin-top: 10px !important; font-size: 15px !important; color: var(--text-2) !important; }
+  .sehe-pg-about .ab-copy p + p { margin-top: 16px !important; }
+  .sehe-pg-about .ab-copy p { max-width: 68ch; }
+  .sehe-pg-about .ab-links { margin-top: 24px !important; }
+  .sehe-pg-about .ab-photos { list-style: none !important; margin: 28px 0 0 !important; padding: 0 !important; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .sehe-pg-about .ab-photos li { margin: 0 !important; padding: 0 !important; list-style: none !important; }
+  .sehe-pg-about .ab-photos li::before, .sehe-pg-about .ab-photos li::marker { content: none !important; }
+  .sehe-pg-about .ab-photos figure { margin: 0 !important; }
+  .sehe-pg-about .ab-photos img { display: block; width: 100% !important; height: 240px !important; object-fit: cover; border-radius: 10px; }
+  .sehe-pg-about .ab-photos figcaption { margin-top: 6px !important; font-size: 14.5px !important; line-height: 1.45 !important; color: var(--text-2) !important; }
+  .sehe-pg-about .ab-facts { list-style: none !important; margin: 24px 0 0 !important; padding: 0 !important; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; }
+  .sehe-pg-about .ab-facts li { margin: 0 !important; list-style: none !important; display: flex; align-items: center; gap: 16px; padding: 18px 20px !important; background: var(--cream); border: 1px solid var(--border-light); border-radius: 10px; }
+  .sehe-pg-about .ab-facts li::before, .sehe-pg-about .ab-facts li::marker { content: none !important; }
+  .sehe-pg-about .ab-facts img { width: 64px !important; height: auto !important; flex: none; }
+  .sehe-pg-about .ab-facts strong { display: block; font-family: 'Montserrat', sans-serif !important; color: var(--navy); font-size: 17px; }
+  .sehe-pg-about .ab-facts span { font-size: 16px; color: var(--text-2); }
+  @media (max-width: 860px) {
+    .sehe-pg-about .ab-story { grid-template-columns: 1fr; gap: 24px; }
+    .sehe-pg-about .ab-portrait { max-width: 420px; }
+    .sehe-pg-about .ab-photos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .sehe-pg-about .ab-photos img { height: 170px !important; }
+  }
+  @media (max-width: 420px) {
+    .sehe-pg-about .ab-photos img { height: 150px !important; }
+  }
+</style>
+<div class="sehe-pg-about">
+<section class="sp-hero" aria-labelledby="sehe-ab-title">
+  <img class="sp-hero-img" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/14_52+Reasons_Sir+Edmond+Hillary+Alpine+Centre-3-1920w.jpg" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/14_52+Reasons_Sir+Edmond+Hillary+Alpine+Centre-3-640w.jpg 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/14_52+Reasons_Sir+Edmond+Hillary+Alpine+Centre-3-1280w.jpg 1280w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/14_52+Reasons_Sir+Edmond+Hillary+Alpine+Centre-3-1920w.jpg 1920w" sizes="100vw" alt="" style="object-position:28% 40%" fetchpriority="high">
+  <div class="sp-hero-veil" aria-hidden="true"></div>
+  <img class="sp-hero-logo" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEH+Explorer_logo+white-350w.png" alt="Sir Edmund Hillary Explorer" width="350" height="350">
+  <div class="sp-hero-inner">
+    <p class="sp-eyebrow">About us</p>
+    <h1 id="sehe-ab-title">Inspired by Sir Edmund Hillary</h1>
+    <p class="sp-hero-sub">The Sir Edmund Hillary Explorer is New Zealand's leading tour operator, specialising in scenic rail and luxury coach tours of the South Island.</p>
+  </div>
+</section>
+<div class="sp-body">
+
+  <section class="sp-section" aria-labelledby="sehe-ab-hillary">
+    <div class="ab-story">
+      <figure class="ab-portrait">
+        <img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+Hillary+profile+1960-640w.jpg" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+Hillary+profile+1960-640w.jpg 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+Hillary+profile+1960-1920w.jpg 783w" sizes="(max-width: 860px) 420px, 480px" alt="Sir Edmund Hillary in 1960, smiling, in profile" width="640" height="800" loading="lazy">
+        <figcaption>Sir Edmund Hillary, 1960.</figcaption>
+      </figure>
+      <div class="ab-copy">
+        <p class="sp-kicker">The Hillary connection</p>
+        <h2 id="sehe-ab-hillary">Our inspiration</h2>
+        <p>Sir Edmund Hillary epitomised the New Zealand spirit of adventure and he is our inspiration when planning your experience of a lifetime. We pay homage to Sir Edmund Hillary as we explore the South Island of New Zealand and experience the postcard perfect vistas and dramatic alpine scenery that this part of the world is renowned for.</p>
+        <p>At Aoraki Mt Cook, a visit to the museum dedicated to Edmund’s adventurous spirit and his achievements is a must. A guest speaker from the Hillary family will also give you an insight into growing up as part of this famous family and find out about how they continue to keep their father’s memory alive. In Christchurch, learn more about his team’s expedition crossing Antarctica using converted farm tractors at the International Antarctic Centre. You will also travel through Marlborough, where Edmund was trained for the air force during the Second World War and where he made some daring ascents of Mt Tapuae-o-Uenuku.</p>
+        <p class="ab-links">Please view the <a href="/f-a-q">FAQ</a> page for more information.</p>
+        <p><a href="/himalayan-trust">Learn more</a> about the Himalayan Trust.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sp-section" aria-labelledby="sehe-ab-rail">
+    <div class="sp-head">
+      <p class="sp-kicker">Rail and coach</p>
+      <h2 id="sehe-ab-rail">How you travel</h2>
+      <p>New Zealand’s stunning, rugged terrain means that some of the most spectacular hidden gems are only accessible by road. Because of this, high-quality coach travel is a key part of our journey on some travel days. We include frequent comfort stops during coach travel and can stop in unique places that often rail cannot. We have incorporated as much rail as possible within your itinerary, however, please note as New Zealand does not have sleeper trains, all overnight stays are in comfortable hotel accommodation.</p>
+    </div>
+    <ul class="ab-photos" role="list">
+      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Wharf-Pic---Sign-640w.jpg" alt="A wooden jetty reaching into a still alpine lake, with snow-capped mountains beyond" width="640" height="533" loading="lazy"></figure></li>
+      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/woman-on-the-coastal-pacific-640w.webp" alt="A passenger taking in the coastline from a window seat on the Coastal Pacific" width="640" height="442" loading="lazy"></figure></li>
+      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/L387-Aoraki-Mount-Cook-National-Park--Canterbury-Rob-Suisted-640w.jpg" alt="Aoraki Mount Cook, snow-covered above a turquoise lake and autumn trees" width="640" height="640" loading="lazy"><figcaption>Photo: Rob Suisted</figcaption></figure></li>
+      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/australasia_new_zealand_kaikoura_gallery_humpback_whale-640w.jpg" alt="A humpback whale breaching off Kaikōura" width="602" height="602" loading="lazy"></figure></li>
+      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Southland+track-640w.jpg" alt="A railway line running towards snow-capped mountains" width="640" height="640" loading="lazy"></figure></li>
+      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/01-Kaikoura-Canterbury-Kyle-Mulinder-640w.jpg" alt="Fur seals on the rocks at Kaikōura, with snow on the mountains behind" width="640" height="640" loading="lazy"><figcaption>Photo: Kyle Mulinder</figcaption></figure></li>
+    </ul>
+  </section>
+
+  <section class="sp-section" aria-labelledby="sehe-ab-us">
+    <div class="sp-head">
+      <p class="sp-kicker">Who we are</p>
+      <h2 id="sehe-ab-us">Part of Pounamu Tourism Group</h2>
+      <p>Sir Edmund Hillary Explorer is part of <a href="https://www.pounamutourismgroup.com">Pounamu Tourism Group</a>.</p>
+    </div>
+    <ul class="ab-facts" role="list">
+      <li><img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/new-zealands-leading-tour-operator-2025-winner-shield-256-816b3264-1920w.png" alt="World Travel Awards winner shield, 2025" width="256" height="256" loading="lazy"><div><strong>World Travel Awards</strong><span>NZ&#8217;s Leading Tour Operator 2022 · 2023 · 2024 · 2025</span></div></li>
+      <li><div><strong>Pounamu Tourism Group</strong><span>100% New Zealand owned &amp; operated</span></div></li>
+    </ul>
+  </section>
+
+  <aside class="sp-band" aria-label="Need help choosing the right tour?">
+    <div class="sp-band-copy">
+      <h2>Need help choosing the right tour?</h2>
+      <p>Our team is here to help you find the perfect journey. Call us or get in touch and we&#39;ll match you with the right tour for your dates and interests.</p>
+    </div>
+    <div class="sp-actions">
+      <a class="sp-btn sp-btn--gold" href="/journeys">View all journeys</a>
+      <a class="sp-btn sp-btn--light" href="/reviews">Guest reviews</a>
+      <a class="sp-btn sp-btn--light" href="/contact">Contact us</a>
+      <a class="sp-btn sp-btn--light" href="tel:+6439741812">+64 3 974 1812</a>
+    </div>
+  </aside>
+
+</div>
+</div>
