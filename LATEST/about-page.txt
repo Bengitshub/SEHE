@@ -1,8 +1,17 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — ABOUT PAGE (/about)
-     COMPLETE PAGE  ·  VERSION v5  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v6  ·  2026-09-26  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v6 — Kirsty's answers (email, 26 Sep 2026). A3: "keep both consistent
+            with Hillary family member", so the sentence now matches the
+            homepage: a member of the Hillary family joins the tour for an
+            evening at the Sir Edmund Hillary Alpine Centre. A1 and A2 were
+            not answered; the current itineraries include the International
+            Antarctic Centre and Marlborough only on the 14-day and Pinnacle
+            tours, so both now start "On selected tours". A4: no route map
+            ("No need, please remove"). END OF FILE line added. Everything
+            else unchanged.
        v5 — Shared kit fix (25 Sep 2026): no CSS child combinators any more.
             Duda publishes that character as an HTML entity and the browser
             drops the rule. This page has no show-more button, so nothing
@@ -247,7 +256,7 @@
         <p class="sp-kicker">The Hillary connection</p>
         <h2 id="sehe-ab-hillary">Our inspiration</h2>
         <p>Sir Edmund Hillary's spirit of adventure inspires our journeys through New Zealand's South Island. We honour that spirit as we explore the dramatic alpine scenery and remarkable landscapes for which this part of the country is known.</p>
-        <p>At Aoraki Mt Cook, visit the museum celebrating Sir Edmund Hillary's life and achievements. A guest speaker from the Hillary family shares personal stories and how the family continues his legacy. In Christchurch, learn about his team's Antarctic expedition using converted farm tractors at the International Antarctic Centre. You will also travel through Marlborough, where Hillary trained for the air force during the Second World War and climbed Mt Tapuae-o-Uenuku.</p>
+        <p>At Aoraki Mt Cook, visit the museum celebrating Sir Edmund Hillary's life and achievements. A member of the Hillary family joins the tour for an evening at the Sir Edmund Hillary Alpine Centre, sharing personal stories and how the family continues his legacy. On selected tours, learn about his team's Antarctic expedition using converted farm tractors at the International Antarctic Centre in Christchurch, and travel through Marlborough, where Hillary trained for the air force during the Second World War and climbed Mt Tapuae-o-Uenuku.</p>
         <div class="sp-actions ab-links">
           <a class="sp-btn sp-btn--ghost" href="/f-a-q">Read our FAQs</a>
           <a class="sp-btn sp-btn--ghost" href="/himalayan-trust">About the Himalayan Trust</a>
@@ -297,3 +306,4 @@
 
 </div>
 </div>
+<!-- END OF FILE: about-page.txt v6. If this is the last line in the Duda code box, the whole file is pasted. -->

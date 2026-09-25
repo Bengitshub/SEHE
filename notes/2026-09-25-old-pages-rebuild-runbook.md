@@ -7,11 +7,11 @@ This runbook covers eight rebuilt pages: Reviews, Contact, About, FAQ, Gallery, 
   - `SEHE-reviews-page_v7.txt`
   - `SEHE-contact-page_v9.txt`
   - `SEHE-gallery-page_v7.txt`
-  - `SEHE-about-page_v5.txt`
-  - `SEHE-faq-page_v6.txt`
+  - `SEHE-about-page_v6.txt`
+  - `SEHE-faq-page_v7.txt`
   - `SEHE-himalayan-trust-page_v5.txt`
-  - `SEHE-privacy-policy-page_v4.txt`
-  - `SEHE-terms-page_v3.txt`
+  - `SEHE-privacy-policy-page_v5.txt`
+  - `SEHE-terms-page_v4.txt`
 - **Before snapshot:** the served HTML of every old page, from 25 Sep 2026, is in `backups/2026-09-25-old-pages/`.
 - **Draft emails:** for Kirsty and Paul, in `notes/2026-09-25-emails.md`.
 
@@ -48,7 +48,7 @@ No coding is needed. You paste whole files into Duda HTML widgets.
 5. Send Kirsty the preview link.
 6. After her OK, swap.
 
-**About has one extra gate.** Its itinerary claims (A1 to A3 in §7) must be confirmed, qualified or removed **before `about-new` is published at all**, even as a preview. See Phase 2.
+**About's gate is cleared (26 Sep 2026).** Kirsty answered A3 and approved the page; A1 and A2 are qualified with "On selected tours" (About v6). See §7.
 
 The details are in §0 to §4.
 
@@ -86,6 +86,13 @@ They already had it in the 6 Sep backup (`backups/2026-09-06-live-site/pages/`),
 
 **Phase 1: Reviews and Contact (built by Ben; Aaron swaps them after Kirsty approves).**
 
+**26 Sep 2026: Kirsty approved all eight pages** ("all the new pages look great") and answered most §7 questions. Her answers are in FAQ v7, About v6, Privacy v5 and Terms v4. Next:
+
+1. Paste those four files over their previews (`faq-new`, `about-new`, `privacy-policy-new`, `terms-new`), confirm the END OF FILE line, and publish.
+2. Then Aaron switches all eight pages over (§2, §4).
+
+Still open (none blocks the switch-over): F1 mobility and F2 payment methods (Terms clauses 13 and 2 against the FAQ), G2 and G4 (Kirsty: "Noted"), and the §5 clean-up.
+
 **Check-over, 25 Sep 2026 (live site, final pass):** every preview is ready for Kirsty except About (held for A1 to A3). Aaron does the switch-over after she approves.
 
 | Preview | Live | Result | To do |
@@ -114,13 +121,13 @@ They already had it in the 6 Sep backup (`backups/2026-09-06-live-site/pages/`),
 **Phase 2: About, FAQ, Gallery, Himalayan Trust, Privacy and Terms (built by Ben on 25 Sep; Aaron swaps them after Kirsty approves).**
 
 - The steps are the same as Phase 1: build `-new`, hide it from the menu, check with Izaac and Joel, publish, send Kirsty the preview links, and swap after she approves.
-- **About is gated.** Do not publish `about-new` until Kirsty has answered A1 to A3 in §7: the Antarctic Centre visit, Marlborough, and the Hillary family guest speaker.
+- **About's gate is cleared** (26 Sep 2026, see §7): paste About v6, then it can be switched over with the others.
   - **Confirmed for every tour:** keep the sentence.
   - **True only for some tours:** qualify it in Kirsty's words.
   - **Not true, or no answer:** delete the sentence.
 
   §7 lists the exact sentences. Make the edits (see "Changing a page's content later"), then publish the preview and send it to Kirsty.
-- **Her other questions don't block anything:** A4 (an updated route map), Gallery G2 and G4 (photo titles, photos of places no current tour visits) and FAQ F8 (hygiene). Those pages can go live, and the answers become small edits later.
+- **Open questions don't block anything:** Gallery G2 and G4, and FAQ F1 and F2 (see §7). Those pages can go live, and the answers become small edits later.
 - **Privacy and Terms.** The new pages carry the **current** wording exactly. If Paul changes any wording, edit the text inside `<div class="lg-doc">` in that page's HTML widget, and update the master to match. Never paste old wording back.
 
 ## 0. Rules for every page
@@ -279,7 +286,7 @@ To rename them properly, in one sitting:
 
 ### About (`/about`): `LATEST/about-page.txt`
 
-Use the §1 row. **Before you publish `about-new`, resolve A1 to A3 in §7** (see Phase 2). A4 doesn't block it.
+Use the §1 row. Paste **About v6** (Kirsty's answers, 26 Sep 2026).
 
 **Delete the old photo slider.** The live `about-new` (25 Sep) still has the old page's slider widget in a row below the new content. On phones it shows as a 400px block of old slides. Delete that whole row.
 
@@ -441,7 +448,7 @@ So if either sitelink is live and the brochure conversion is URL-based, every si
 - **Journeys v22** loads its own Trustpilot bootstrap. It also says "small-group", against Paul's no-"small groups" rule.
 - **Head HTML** contains a long explanatory comment ("What was fixed: …") that anyone can read in the page source. Tidying it is optional.
 
-## 7. Content flags (Kirsty or the business to decide; nothing edited)
+## 7. Content flags (Kirsty or the business to decide; answers of 26 Sep 2026 marked RESOLVED)
 
 The wording on the new pages is exactly as it is live today, unless a master's changelog says otherwise. The items below look wrong or disagree with other pages. They are listed here, not changed. The emails in `notes/2026-09-25-emails.md` send Kirsty's and Paul's items.
 
@@ -461,7 +468,7 @@ The wording on the new pages is exactly as it is live today, unless a master's c
 
 The About text was rewritten in the approved copy update (round 3, 25 Sep 2026). A1 to A3 quote the new wording.
 
-**A1 to A3 block the About page.** `about-new` is not published until each one has been handled:
+**Kirsty's answers (email, 26 Sep 2026), applied in About v6.** A1 to A3 no longer block the page. The original rule was:
 
 - **Confirmed for every tour:** keep.
 - **True only for some:** qualify it in Kirsty's words.
@@ -472,41 +479,41 @@ All three sentences are in the second paragraph under "Our inspiration". To edit
 - **Before building:** edit the master (`SEHE-about-page_v*.txt`: bump the version, run `tools/make-latest.py`).
 - **Already pasted:** edit the text in the `about-new` HTML widget, then update the master to match.
 
-- **A1 — International Antarctic Centre.** The page says: "In Christchurch, learn about his team's Antarctic expedition using converted farm tractors at the International Antarctic Centre." Is that visit still on every itinerary?
-- **A2 — Marlborough.** The page says: "You will also travel through Marlborough, where Hillary trained for the air force during the Second World War and climbed Mt Tapuae-o-Uenuku." Is that still true of every tour?
-- **A3 — Hillary family guest speaker.** The page says: "A guest speaker from the Hillary family shares personal stories and how the family continues his legacy." Is that on every departure? Other pages put it differently:
+- **A1 — International Antarctic Centre.** QUALIFIED (26 Sep 2026): not asked in the email that went out. The current itineraries include it only on the 14-day 2026/27 and Pinnacle tours, so About v6 says "On selected tours". Confirm with Kirsty if she wants different wording. The page says: "In Christchurch, learn about his team's Antarctic expedition using converted farm tractors at the International Antarctic Centre." Is that visit still on every itinerary?
+- **A2 — Marlborough.** QUALIFIED (26 Sep 2026): not answered. Marlborough is only on the 14-day and Pinnacle tours, so About v6 says "On selected tours". The page says: "You will also travel through Marlborough, where Hillary trained for the air force during the Second World War and climbed Mt Tapuae-o-Uenuku." Is that still true of every tour?
+- **A3 — Hillary family guest speaker.** RESOLVED (Kirsty, 26 Sep 2026: "keep both consistent with Hillary family member"). About v6: "A member of the Hillary family joins the tour for an evening at the Sir Edmund Hillary Alpine Centre, sharing personal stories and how the family continues his legacy." The page says: "A guest speaker from the Hillary family shares personal stories and how the family continues his legacy." Is that on every departure? Other pages put it differently:
   - The live homepage says "a member of the Hillary family personally joins the tour for an evening at the Sir Edmund Hillary Alpine Centre".
   - Journeys shows a "Hillary Family Speaker" tile.
   - Peter Hillary hosts only the Pinnacle.
-- **A4 — Photos left out.** Three items from the old carousel are not on the new page:
+- **A4 — Photos left out.** RESOLVED for the route map (Kirsty: "No need, please remove"). Three items from the old carousel are not on the new page:
   - the 2025/26 route map, which is for a past season (**is there an updated map?**);
   - the Wharf photo, whose 640w file is an 880 KB PNG;
   - the humpback whale photo. Its file name (`australasia_new_zealand_kaikoura_gallery_…`) suggests a third-party library image, and the licence is unconfirmed.
 
 ### FAQ (answers verbatim; conflicts with other pages)
 
-- **F1 — Mobility. URGENT for Paul.** Kirsty's ruling is "two flights of stairs", which is what the FAQ says. Terms clause 13 still says "15 steps … carry your own bags", and the Terms are the contract.
-- **F2 — Payment methods.** The pages disagree:
+- **F1 — Mobility. STILL OPEN, URGENT for Paul** (not in the email that went out). Kirsty's ruling is "two flights of stairs", which is what the FAQ says. Terms clause 13 still says "15 steps … carry your own bags", and the Terms are the contract.
+- **F2 — Payment methods.** STILL OPEN (asked 26 Sep; no answer yet). The pages disagree:
   - The FAQ offers bank transfer (AU$, US$ and NZ$ accounts), Wise and PayPal.
   - Terms clause 2 says internet banking, with a 2% credit-card surcharge.
   - The Journeys FAQ says internet banking plus a 2% card fee, and leaves out the 40%-at-six-months stage.
-- **F3 — When the operator cancels.** The FAQ says "100% refund". Terms clauses 3–4 say PTG first tries to reschedule or offer other dates. Terms item e) also says 100% refund.
+- **F3 — When the operator cancels.** RESOLVED (Kirsty: "We do try to offer different suitable dates as an option"). FAQ v7 and Terms v4 item e) now say we try to offer different suitable dates first, and a 100% refund applies if none suit. The FAQ says "100% refund". Terms clauses 3–4 say PTG first tries to reschedule or offer other dates. Terms item e) also says 100% refund.
 - **F4 — Flights.** The FAQ says flights to and from the start and end points are not included. The homepage says the Pinnacle includes the flight to Auckland.
 - **F5 — Meals.** One answer says "all breakfasts and a selection of additional meals". Another says "Most meals are included".
 - **F6 — Seating (minor).** The FAQ page says some trains have allocated seating. The Journeys FAQ says seating "is not pre-allocated", but that answer is about the coach.
-- **F7 — Dietary requirements.** The FAQ says to use the "pre-trip documentation". Terms clause 23 says "at the time of booking".
-- **F8 — Hygiene answer (for Kirsty).** It mentions N95 masks and Rapid Antigen Tests. Is that still current?
+- **F7 — Dietary requirements.** RESOLVED (Kirsty: "Pre-trip paperwork please"). Terms v4 clause 22 (was 23) now says "in your pre-trip documentation". The FAQ says to use the "pre-trip documentation". Terms clause 23 says "at the time of booking".
+- **F8 — Hygiene answer (for Kirsty).** RESOLVED: the N95/RAT sentence is removed (FAQ v7). It mentions N95 masks and Rapid Antigen Tests. Is that still current?
 - **F9 — Typo kept verbatim.** "Some train journeys feature allocated an allocated seating".
 - **F10 — Physical payment address.** The address "Level 3, 111 Cashel Street, Christchurch" stays in the FAQ's payment answer. It is deliberately not shown on Contact, because it isn't a visitor location.
 
 ### Gallery (for Kirsty)
 
 - **G1 — Intro sentence. RESOLVED (round 3, 25 Sep 2026).** The old intro said every photo came from passengers, but two are professional images (Rob Suisted, David Wall; both credited). The intro now reads "A closer look at the scenery and experiences along the way, including photographs shared by our guests."
-- **G2 — Titles that look wrong.**
+- **G2 — Titles that look wrong.** Kirsty: "Noted" (26 Sep 2026); no change yet.
   - Two photos are titled "Mirror Lake aka Lake Matheson (by Fox Glacier)", but they look like the Mirror Lakes in the Eglinton Valley on the Milford Road.
   - The waterfall titled "Milford Sound" looks like Thunder Creek Falls on the Haast Pass.
 - **G3 — Spellings.** RESOLVED for Milford (25 Sep 2026, Ben: "yes it is milford"): "Milford Sounds" and "Milford Sounds cruise" now read "Milford Sound" and "Milford Sound cruise" (Gallery v7), and the cruise photo carries the Milford Sound label. Still kept verbatim: "Queen Charlotte Sounds", and "Kaikoura" without a macron.
-- **G4 — Photos of places no current tour visits** (checked against the current tour pages' text on 25 Sep 2026): Queen Charlotte Sounds, Picton foreshore (also the page's banner photo), Arrowtown and "Moonshine tasting in Gore", plus the two G2 photos. They are still in the gallery, unlabelled. Keep them or remove them: Kirsty's call.
+- **G4 — Photos of places no current tour visits** (Kirsty: "Noted", 26 Sep 2026; no change yet) (checked against the current tour pages' text on 25 Sep 2026): Queen Charlotte Sounds, Picton foreshore (also the page's banner photo), Arrowtown and "Moonshine tasting in Gore", plus the two G2 photos. They are still in the gallery, unlabelled. Keep them or remove them: Kirsty's call.
 
 ### Himalayan Trust (the Trust's own words)
 
@@ -518,22 +525,24 @@ All three sentences are in the second paragraph under "Our inspiration". To edit
   - "Khunde Hospitals nurses, 2019" is on a file dated 2016_02_25.
 - **H3 — Typos kept verbatim:** "we need you help"; "Khunde Hospitals nurses".
 
-### Privacy Policy (no wording changes allowed; for Paul)
+### Privacy Policy (P1 to P3 changed in v5 per Kirsty, 26 Sep 2026; otherwise verbatim)
 
-- **P1 — Checkfront.** Section 4 lists **Checkfront (Booking & Reservations System)**. Bookings now run through The Creator's booking app, so the policy should name the current processor.
-- **P2 — Postal address.** The policy gives PO Box 39018, Harewood, Christchurch 8545. Everywhere else uses PO Box 19735, Woolston.
-- **P3 — Cookie preferences.** The policy says "You can manage or withdraw your cookie preferences via our website settings". The site has no cookie-consent or settings tool, but it runs two GA4 properties, Google Ads, AdRoll, the Meta Pixel, Microsoft Clarity and ActiveCampaign tracking.
-- **P4 — Under-13s.** Section 8 says the services "are not intended for individuals under the age of 13", but Terms clause 41 allows guests under 13 when accompanied.
+- **P1 — Checkfront.** RESOLVED: "Pounamu Tourism Group booking app" (Privacy v5). Section 4 lists **Checkfront (Booking & Reservations System)**. Bookings now run through The Creator's booking app, so the policy should name the current processor.
+- **P2 — Postal address.** RESOLVED: PO Box 19735, Woolston, Christchurch, 8241 (Privacy v5). The policy gives PO Box 39018, Harewood, Christchurch 8545. Everywhere else uses PO Box 19735, Woolston.
+- **P3 — Cookie preferences.** RESOLVED: the sentence is removed (Privacy v5). The policy says "You can manage or withdraw your cookie preferences via our website settings". The site has no cookie-consent or settings tool, but it runs two GA4 properties, Google Ads, AdRoll, the Meta Pixel, Microsoft Clarity and ActiveCampaign tracking.
+- **P4 — Under-13s.** RESOLVED: the Privacy position stands (not intended for under-13s); Terms v4 old clause 41 (now 39) says the tour is not intended for children under 13. Section 8 says the services "are not intended for individuals under the age of 13", but Terms clause 41 allows guests under 13 when accompanied.
 - **P5 — Missing full stop.** Section 9's last sentence has no full stop. It is kept verbatim.
 
-### Terms & Conditions (no wording changes allowed; for Paul)
+### Terms & Conditions (T1 to T6, F3, F7 and P4 changed in v4 per Kirsty, 26 Sep 2026; clauses renumbered 1 to 42)
 
-- **T1 — Postcode.** Clause 1 gives "PO Box 19735, Woolston, Christchurch, **82415**". It should be 8241.
-- **T2 — Email.** Clause 1 gives info@siredmundhillaryexplorer.com (see C3).
-- **T3 — Privacy Officer address.** Clause 9 gives PO Box 39018, Harewood, Christchurch 8545 (see P2).
-- **T4 — Clause numbering** jumps from 18 to 20, so there is no clause 19.
-- **T5 — Missing link.** Clause 8 says the Privacy Policy "can be viewed here on this page", but there is no link.
-- **T6 — Ferry.** Clause 36 mentions a Picton–Wellington ferry ticket. Is that still part of any tour?
+Clause numbers below are the OLD ones. In v4, old 20 to 35 are 19 to 34, the ferry clause (old 36) is gone, and old 37 to 44 are 35 to 42.
+
+- **T1 — Postcode.** RESOLVED: 8241. Clause 1 gives "PO Box 19735, Woolston, Christchurch, **82415**". It should be 8241.
+- **T2 — Email.** RESOLVED: info@pounamutourismgroup.com, in clauses 1 and 9. Clause 1 gives info@siredmundhillaryexplorer.com (see C3).
+- **T3 — Privacy Officer address.** RESOLVED: the Woolston PO Box. Clause 9 gives PO Box 39018, Harewood, Christchurch 8545 (see P2).
+- **T4 — Clause numbering** RESOLVED: renumbered 1 to 42 with no gaps (it used to jump from 18 to 20).
+- **T5 — Missing link.** RESOLVED: "can be viewed here.", with "here" linked to the Privacy Policy. Clause 8 says the Privacy Policy "can be viewed here on this page", but there is no link.
+- **T6 — Ferry.** RESOLVED: the clause is removed. Clause 36 mentions a Picton–Wellington ferry ticket. Is that still part of any tour?
 - **T7 — Typos kept verbatim:**
   - "It You are responsible" (clause 10)
   - "a refund the Tour Package Price" (clause 18)
