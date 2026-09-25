@@ -1,0 +1,553 @@
+<!-- =====================================================================
+     SIR EDMUND HILLARY EXPLORER — REVIEWS PAGE (/reviews)
+     COMPLETE PAGE  ·  VERSION v1  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     -----------------------------------------------------------------------
+     CHANGELOG (latest first):
+       v1 — First new-design build of /reviews (Brief v2, 25 Sep 2026).
+            Order: hero with the live TrustBox · selected Trustpilot reviews
+            (6 shown + 6 behind "Show more", all in the HTML) · guest video ·
+            "Travelled with us?" link · In the press · earlier guest feedback
+            2021–2025 (collapsed) · help band with journeys/brochures/contact.
+            Copy sources: Trustpilot reviews = the brief's appendix, verbatim,
+            review dates; earlier feedback, press links, video and banner photo
+            = the live /reviews page (25 Sep 2026), verbatim. Two deliberate
+            edits: the press note drops "last year" (stale; no year added) and
+            reads "the Hillary family"; Lisa Godwin's name is no longer linked
+            to her Trustpilot profile so direct feedback stays separate from
+            Trustpilot reviews (flagged in the runbook).
+     -----------------------------------------------------------------------
+     WHERE IT GOES: page "reviews-new" (duplicate of /reviews). Delete every
+     old content row, add ONE full-width row (padding 0, no max width) with
+     ONE HTML widget, paste this whole file. Full steps + rollback:
+     notes/2026-09-25-old-pages-rebuild-runbook.md
+     RULES KEPT: no rating/score/count is hard-coded — the only rating shown
+     is the live TrustBox (Micro Combo, template 5419b6ffb0d04a076446a9af).
+     No Trustpilot bootstrap here (Head HTML loads it once, site-wide); the
+     script below only asks it to render this box. No schema markup. No
+     departure data. No tracking code. All CSS scoped to .sehe-pg-reviews.
+     ===================================================================== -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  /* ── Duda host row ─────────────────────────────────────────────────────
+     Let the hero run full-bleed and stop the row adding a white strip under
+     the transparent site header. :has() rules sit on their own so a browser
+     without :has() drops only these lines (the runbook also sets the row's
+     padding to 0 in the editor, which covers those browsers). */
+  #dm .dmContent .dmRespRow:has(.sehe-pg-reviews) { padding-top: 0 !important; padding-bottom: 0 !important; overflow: visible !important; max-width: none !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-reviews) .dmRespColsWrapper { overflow: visible !important; max-width: none !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-reviews) .dmRespCol { overflow: visible !important; max-width: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+  #dm .dmContent .dmCustomHtml:has(.sehe-pg-reviews) { overflow: visible !important; }
+
+  /* ── Page scope + tokens (Journeys v22 palette) ─────────────────────── */
+  .sehe-pg-reviews, .sehe-pg-reviews *, .sehe-pg-reviews *::before, .sehe-pg-reviews *::after { box-sizing: border-box; }
+  .sehe-pg-reviews {
+    --navy: #153b67; --navy-dark: #0e2d52; --gold: #c8a56c; --gold-light: #d4b37e;
+    --gold-ink: #7a5f30; /* gold for small text on light backgrounds (5.9:1 on white) */
+    --off-white: #f9f7f3; --cream: #faf8f3; --text: #1a1a1a; --text-2: #454545;
+    --border: #d8d3c8; --border-light: #e8e4db; --white: #ffffff;
+    display: block; width: 100%; margin: 0 !important; padding: 0 !important;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    font-size: 17px; line-height: 1.65; color: var(--text); text-align: left !important;
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; overflow-wrap: break-word;
+  }
+  /* theme rule ".dmFullRowRespTmpl section{padding:50px 40px}" would re-pad every section */
+  .sehe-pg-reviews section, .sehe-pg-reviews aside, .sehe-pg-reviews nav { padding: 0 !important; margin: 0; }
+  .sehe-pg-reviews h1, .sehe-pg-reviews h2, .sehe-pg-reviews h3, .sehe-pg-reviews h4 {
+    font-family: 'Montserrat', -apple-system, 'Segoe UI', Arial, sans-serif !important; font-weight: 600 !important;
+    color: var(--navy) !important; text-transform: none !important; text-align: left !important;
+    letter-spacing: -0.01em !important; margin: 0 !important; padding: 0 !important;
+  }
+  .sehe-pg-reviews p, .sehe-pg-reviews li, .sehe-pg-reviews dt, .sehe-pg-reviews dd, .sehe-pg-reviews figcaption, .sehe-pg-reviews blockquote, .sehe-pg-reviews summary, .sehe-pg-reviews td, .sehe-pg-reviews th {
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+    text-align: left !important; text-transform: none !important;
+  }
+  .sehe-pg-reviews p { font-size: 17px !important; line-height: 1.7 !important; color: var(--text-2) !important; margin: 0 !important; }
+  .sehe-pg-reviews a { color: var(--navy) !important; text-decoration: underline !important; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .sehe-pg-reviews a:hover { color: var(--navy-dark) !important; text-decoration-thickness: 2px; }
+  .sehe-pg-reviews a:focus-visible, .sehe-pg-reviews summary:focus-visible, .sehe-pg-reviews button:focus-visible { outline: 3px solid var(--navy) !important; outline-offset: 3px !important; border-radius: 4px; }
+  .sehe-pg-reviews img { max-width: 100%; height: auto; border: 0; }
+  .sehe-pg-reviews .sp-sr { position: absolute !important; width: 1px !important; height: 1px !important; margin: -1px !important; padding: 0 !important; overflow: hidden !important; clip: rect(0 0 0 0) !important; white-space: nowrap !important; border: 0 !important; }
+
+  /* ── Hero (same build as the Journeys / Brochure heroes) ────────────── */
+  .sehe-pg-reviews .sp-hero {
+    position: relative; width: 100vw; margin-left: calc(50% - 50vw) !important; margin-right: calc(50% - 50vw) !important;
+    padding: 0 !important; min-height: max(540px, 68vh); min-height: max(540px, 68svh);
+    display: flex; align-items: flex-end; background-color: #081525; overflow: hidden;
+  }
+  .sehe-pg-reviews .sp-hero--compact { min-height: max(380px, 46vh); min-height: max(380px, 46svh); }
+  .sehe-pg-reviews .sp-hero-img { position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover; object-position: center 50%; display: block; }
+  .sehe-pg-reviews .sp-hero-veil { position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(180deg, rgba(8,21,37,.62) 0%, rgba(8,21,37,.26) 28%, rgba(8,21,37,.58) 56%, rgba(8,21,37,.95) 100%); }
+  .sehe-pg-reviews .sp-hero--compact .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.70) 0%, rgba(8,21,37,.52) 40%, rgba(8,21,37,.92) 100%); }
+  /* the site header's logo slot is a transparent placeholder until you scroll —
+     put the real roundel in its lane so the brand is there on load */
+  .sehe-pg-reviews .sp-hero-logo { position: absolute; top: 26px; left: 0; width: 16.66% !important; height: 92px !important; max-width: none !important; object-fit: contain; object-position: center; z-index: 2; filter: drop-shadow(0 2px 10px rgba(8,21,37,.5)); }
+  .sehe-pg-reviews .sp-hero-inner { position: relative; z-index: 1; width: 100%; max-width: 1240px; margin: 0 auto; padding: 150px 30px 58px; }
+  .sehe-pg-reviews .sp-hero--compact .sp-hero-inner { padding: 140px 30px 46px; }
+  .sehe-pg-reviews .sp-eyebrow {
+    display: inline-flex; align-items: center; gap: 16px; font-family: 'Montserrat', sans-serif !important;
+    font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: .42em !important; text-transform: uppercase !important;
+    color: #d4b37e !important; margin: 0 0 22px !important; text-shadow: 0 1px 12px rgba(8,21,37,.95);
+  }
+  .sehe-pg-reviews .sp-eyebrow::before, .sehe-pg-reviews .sp-eyebrow::after { content: ''; width: 44px; height: 1px; background: #d4b37e; flex: none; }
+  .sehe-pg-reviews .sp-hero h1 { font-weight: 700 !important; font-size: clamp(40px, 5.2vw, 66px) !important; line-height: 1.08 !important; color: #ffffff !important; text-shadow: 0 2px 26px rgba(8,21,37,.55); }
+  .sehe-pg-reviews .sp-hero--compact h1 { font-size: clamp(36px, 4.2vw, 54px) !important; }
+  .sehe-pg-reviews .sp-hero-sub { margin: 22px 0 0 !important; max-width: 620px; font-size: clamp(17px, 1.5vw, 19px) !important; line-height: 1.65 !important; color: rgba(255,255,255,.95) !important; text-shadow: 0 1px 14px rgba(8,21,37,.6); }
+  .sehe-pg-reviews .sp-hero a:focus-visible, .sehe-pg-reviews .sp-band a:focus-visible { outline-color: var(--gold-light) !important; }
+
+  /* ── Body, section heads ────────────────────────────────────────────── */
+  .sehe-pg-reviews .sp-body { max-width: 1240px; margin: 0 auto !important; padding: 64px 30px 76px !important; }
+  .sehe-pg-reviews .sp-section + .sp-section, .sehe-pg-reviews .sp-section + .sp-band, .sehe-pg-reviews .sp-band + .sp-section { margin-top: 76px !important; }
+  .sehe-pg-reviews .sp-head { max-width: 780px; margin: 0 0 28px !important; }
+  .sehe-pg-reviews .sp-kicker { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 13px !important; font-weight: 700 !important; letter-spacing: .16em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
+  .sehe-pg-reviews .sp-head h2 { font-size: clamp(28px, 3vw, 36px) !important; line-height: 1.2 !important; margin: 0 0 12px !important; }
+  .sehe-pg-reviews .sp-head p { max-width: 68ch; }
+  .sehe-pg-reviews .sp-head p + p { margin-top: 10px !important; }
+
+  /* ── Buttons (48px+ tap targets) ────────────────────────────────────── */
+  .sehe-pg-reviews .sp-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .sehe-pg-reviews .sp-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 12px 24px;
+    border-radius: 6px; border: 2px solid var(--navy); background: var(--navy); color: #ffffff !important;
+    font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; line-height: 1.25 !important;
+    text-decoration: none !important; text-align: center !important; cursor: pointer; transition: background-color .2s, color .2s, border-color .2s;
+  }
+  .sehe-pg-reviews .sp-btn:hover { background: var(--navy-dark); border-color: var(--navy-dark); color: #ffffff !important; }
+  .sehe-pg-reviews .sp-btn--ghost { background: transparent; color: var(--navy) !important; }
+  .sehe-pg-reviews .sp-btn--ghost:hover { background: var(--navy); color: #ffffff !important; }
+  .sehe-pg-reviews .sp-btn--gold { background: var(--gold); border-color: var(--gold); color: var(--navy-dark) !important; }
+  .sehe-pg-reviews .sp-btn--gold:hover { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy-dark) !important; }
+  .sehe-pg-reviews .sp-btn--light { background: transparent; border-color: rgba(255,255,255,.85); color: #ffffff !important; }
+  .sehe-pg-reviews .sp-btn--light:hover { background: #ffffff; border-color: #ffffff; color: var(--navy-dark) !important; }
+
+  /* ── Disclosure ("show more") — native <details>, works with JS off ─── */
+  .sehe-pg-reviews details.sp-more > summary {
+    list-style: none; display: inline-flex; align-items: center; gap: 12px; min-height: 50px; padding: 12px 22px;
+    border: 2px solid var(--navy); border-radius: 6px; background: #ffffff; color: var(--navy) !important;
+    font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; cursor: pointer;
+  }
+  .sehe-pg-reviews details.sp-more > summary::-webkit-details-marker { display: none; }
+  .sehe-pg-reviews details.sp-more > summary::after { content: '+'; font-size: 22px; line-height: 1; font-weight: 400; }
+  .sehe-pg-reviews details.sp-more[open] > summary::after { content: '\2212'; }
+  .sehe-pg-reviews details.sp-more > summary:hover { background: var(--navy); color: #ffffff !important; }
+  .sehe-pg-reviews .sp-when-open { display: none; }
+  .sehe-pg-reviews details[open] > summary .sp-when-open { display: inline; }
+  .sehe-pg-reviews details[open] > summary .sp-when-closed { display: none; }
+
+  /* ── Navy help band (the Journeys contact card, scoped) ─────────────── */
+  .sehe-pg-reviews .sp-band { background: var(--navy); border: 1px solid var(--gold); border-radius: 12px; padding: 34px 36px !important; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px 36px; }
+  .sehe-pg-reviews .sp-band-copy { flex: 1 1 420px; }
+  .sehe-pg-reviews .sp-band h2 { color: #ffffff !important; font-size: clamp(24px, 2.4vw, 28px) !important; line-height: 1.25 !important; margin: 0 0 8px !important; }
+  .sehe-pg-reviews .sp-band p { color: rgba(255,255,255,.88) !important; max-width: 62ch; }
+  .sehe-pg-reviews .sp-band .sp-actions { flex: 1 1 440px; justify-content: flex-end; }
+
+  @media (max-width: 860px) {
+    .sehe-pg-reviews .sp-hero { min-height: max(460px, 60svh); }
+    .sehe-pg-reviews .sp-hero--compact { min-height: max(340px, 42svh); }
+    /* phones crop to the brightest part of the frame — darker veil keeps contrast */
+    .sehe-pg-reviews .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.66) 0%, rgba(8,21,37,.48) 30%, rgba(8,21,37,.72) 58%, rgba(8,21,37,.96) 100%); }
+    .sehe-pg-reviews .sp-hero-inner, .sehe-pg-reviews .sp-hero--compact .sp-hero-inner { padding: 118px 20px 40px; }
+    .sehe-pg-reviews .sp-hero-logo { left: 50%; width: 56px !important; transform: translateX(-50%); top: 18px; height: 56px !important; }
+    .sehe-pg-reviews .sp-eyebrow { gap: 0; font-size: 11.5px !important; letter-spacing: .24em !important; margin-bottom: 14px !important; }
+    .sehe-pg-reviews .sp-eyebrow::before, .sehe-pg-reviews .sp-eyebrow::after { display: none; }
+    .sehe-pg-reviews .sp-hero h1, .sehe-pg-reviews .sp-hero--compact h1 { font-size: 34px !important; line-height: 1.14 !important; }
+    .sehe-pg-reviews .sp-hero-sub { font-size: 17px !important; line-height: 1.6 !important; margin-top: 14px !important; }
+    .sehe-pg-reviews .sp-body { padding: 44px 18px 56px !important; }
+    .sehe-pg-reviews .sp-section + .sp-section, .sehe-pg-reviews .sp-section + .sp-band, .sehe-pg-reviews .sp-band + .sp-section { margin-top: 56px !important; }
+    .sehe-pg-reviews .sp-band { padding: 24px 20px !important; }
+    .sehe-pg-reviews .sp-band .sp-actions { justify-content: flex-start; }
+    .sehe-pg-reviews .sp-actions .sp-btn { flex: 1 1 100%; }
+  }
+  @media (max-width: 540px) {
+    .sehe-pg-reviews .sp-hero h1, .sehe-pg-reviews .sp-hero--compact h1 { font-size: 30px !important; }
+    .sehe-pg-reviews .sp-hero-inner, .sehe-pg-reviews .sp-hero--compact .sp-hero-inner { padding: 106px 18px 34px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sehe-pg-reviews *, .sehe-pg-reviews *::before, .sehe-pg-reviews *::after { transition: none !important; scroll-behavior: auto !important; }
+  }
+
+  /* ── Reviews page ───────────────────────────────────────────────────── */
+  .sehe-pg-reviews .rv-proof { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 28px; }
+  .sehe-pg-reviews .rv-trustbox { width: 100%; max-width: 440px; min-height: 24px; }
+  .sehe-pg-reviews .rv-trustbox a { color: #ffffff !important; font-weight: 600; }
+  .sehe-pg-reviews .rv-grid { list-style: none !important; margin: 0 !important; padding: 0 !important; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 22px; align-items: stretch; }
+  .sehe-pg-reviews .rv-card { margin: 0 !important; padding: 0 !important; list-style: none !important; }
+  .sehe-pg-reviews .rv-card::before, .sehe-pg-reviews .rv-card::marker { content: none !important; }
+  .sehe-pg-reviews .rv-card figure { margin: 0 !important; height: 100%; display: flex; flex-direction: column; background: #ffffff; border: 1px solid var(--border); border-radius: 12px; padding: 26px 26px 22px; }
+  .sehe-pg-reviews .rv-stars { display: block; width: 118px; height: auto; margin: 0 0 16px; }
+  .sehe-pg-reviews .rv-card blockquote { flex: 1 1 auto; margin: 0 0 20px !important; padding: 0 !important; border: 0 !important; quotes: none; background: none !important; }
+  .sehe-pg-reviews .rv-card blockquote p { font-size: 17.5px !important; line-height: 1.7 !important; color: var(--text) !important; font-style: normal !important; }
+  .sehe-pg-reviews .rv-card figcaption { border-top: 1px solid var(--border-light); padding-top: 14px; font-size: 15.5px !important; line-height: 1.55 !important; color: var(--text-2) !important; }
+  .sehe-pg-reviews .rv-name { font-family: 'Montserrat', sans-serif !important; font-weight: 700; color: var(--navy); font-size: 16px; }
+  .sehe-pg-reviews .rv-more { margin-top: 24px; }
+  .sehe-pg-reviews .rv-more > .rv-grid { margin-top: 24px !important; }
+  .sehe-pg-reviews .rv-all { margin-top: 26px !important; }
+  .sehe-pg-reviews .rv-video-frame { position: relative; width: 100%; max-width: 900px; background: var(--navy-dark); border-radius: 12px; overflow: hidden; }
+  .sehe-pg-reviews .rv-video-frame::before { content: ''; display: block; padding-top: 56.25%; }
+  .sehe-pg-reviews .rv-video-frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+  .sehe-pg-reviews .rv-video-link { margin-top: 14px !important; }
+  .sehe-pg-reviews .rv-write { background: var(--cream); border: 1px solid var(--border-light); border-left: 4px solid var(--gold); border-radius: 12px; padding: 28px 32px !important; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 32px; }
+  .sehe-pg-reviews .rv-write h2 { font-size: clamp(24px, 2.4vw, 28px) !important; margin: 0 0 6px !important; }
+  .sehe-pg-reviews .rv-write-copy { flex: 1 1 420px; }
+  .sehe-pg-reviews .rv-press { list-style: none !important; margin: 0 !important; padding: 0 !important; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 22px; }
+  .sehe-pg-reviews .rv-press li { margin: 0 !important; padding: 0 !important; list-style: none !important; background: #ffffff; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+  .sehe-pg-reviews .rv-press li::before, .sehe-pg-reviews .rv-press li::marker { content: none !important; }
+  .sehe-pg-reviews .rv-press img { display: block; width: 100%; height: 210px; object-fit: cover; }
+  .sehe-pg-reviews .rv-press-body { padding: 18px 22px 22px; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; flex: 1 1 auto; }
+  .sehe-pg-reviews .rv-press h3 { font-size: 20px !important; line-height: 1.3 !important; }
+  .sehe-pg-reviews .rv-earlier-list { margin-top: 26px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); gap: 30px 40px; }
+  .sehe-pg-reviews .rv-quote { margin: 0 !important; padding: 2px 0 2px 20px !important; border-left: 3px solid var(--gold); }
+  .sehe-pg-reviews .rv-quote blockquote { margin: 0 0 10px !important; padding: 0 !important; border: 0 !important; background: none !important; }
+  .sehe-pg-reviews .rv-quote blockquote p { color: var(--text) !important; font-style: normal !important; }
+  .sehe-pg-reviews .rv-quote blockquote p + p { margin-top: 10px !important; }
+  .sehe-pg-reviews .rv-quote figcaption { font-size: 15.5px !important; line-height: 1.5 !important; color: var(--text-2) !important; }
+  .sehe-pg-reviews .rv-quote figcaption strong { font-family: 'Montserrat', sans-serif !important; color: var(--navy); font-weight: 700; }
+  @media (max-width: 860px) {
+    .sehe-pg-reviews .rv-card figure { padding: 22px 20px 18px; }
+    .sehe-pg-reviews .rv-write { padding: 22px 20px !important; }
+    .sehe-pg-reviews .rv-proof .sp-btn, .sehe-pg-reviews .rv-write .sp-btn, .sehe-pg-reviews .rv-more > summary { width: 100%; justify-content: center; }
+    .sehe-pg-reviews .rv-press img { height: 190px; }
+  }
+</style>
+<div class="sehe-pg-reviews">
+<section class="sp-hero" aria-labelledby="sehe-rv-title">
+  <img class="sp-hero-img" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-640w.webp 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1280w.webp 1280w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/TranzAlpine--View-of-Cragieburn-Range-across-Lake-Sarah--CLEM1410_-43.050997-171.773006--CROP-1920w.webp 1920w" sizes="100vw" alt="" fetchpriority="high">
+  <div class="sp-hero-veil" aria-hidden="true"></div>
+  <img class="sp-hero-logo" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEH+Explorer_logo+white-350w.png" alt="Sir Edmund Hillary Explorer" width="350" height="350">
+  <div class="sp-hero-inner">
+    <p class="sp-eyebrow">Guest reviews</p>
+    <h1 id="sehe-rv-title">In our guests&#39; words</h1>
+    <p class="sp-hero-sub">Recent reviews from guests who have travelled New Zealand&#39;s South Island with us, shared on Trustpilot.</p>
+    <div class="rv-proof">
+      <div id="sehe-rv-trustbox" class="trustpilot-widget rv-trustbox" data-locale="en-NZ" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="67af6f95db89fc000f855205" data-style-height="20px" data-style-width="100%" data-theme="dark">
+        <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Read our reviews on Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a>
+      </div>
+      <a class="sp-btn sp-btn--gold" href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Read all reviews on Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a>
+    </div>
+  </div>
+</section>
+<div class="sp-body">
+
+  <section class="sp-section" aria-labelledby="sehe-rv-selected">
+    <div class="sp-head">
+      <p class="sp-kicker">From Trustpilot</p>
+      <h2 id="sehe-rv-selected">Selected reviews</h2>
+      <p>A selection of recent reviews from our Trustpilot profile, newest first. Dates shown are the dates each review was posted. <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Read all reviews on Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></p>
+    </div>
+    <ul class="rv-grid" role="list">
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>Thank you for such a brilliant, well organised adventure. From day one to the last day everything flowed like a well oiled machine. We were very fortunate with the weather being able to see snow capped mountains, cascading waterfalls and glistening lakes. Highlights are too many to list. …</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Richard S.</span>, Australia<br>Reviewed May 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>Words can not describe the beauty you will see, the wonderful people you will meet and the fun you will have on this tour. From the start when you book your tour until your final day on the tour it’s all so easy and they look after you, they care. A truly unforgettable experience.</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Ellen J.</span>, Australia<br>Reviewed April 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>A fantastic trip with all the magical sights of the South Island mixed with the fun of many train journeys. The organisation and communication was exceptional with nothing too much trouble or complicated for our guides to manage. Highly recommend this tour!</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Sue</span>, New Zealand<br>Reviewed April 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>A brilliantly organised tour with amazing guides that went above and beyond to make sure that everything ran smoothly and everyone was getting the best experience possible. … I could not recommend this company highly enough.</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Jan</span>, Australia<br>Reviewed April 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>An all round great experience from beginning to end. Whether it was the tour leaders, the activities, the transport, the accommodation, and the food they were all exceptional and the focus was on meeting the reasonable expectations of the tour participants. In the space of 14 days minor things were inevitably impacted, particularly by weather, and we quickly came to realise that the tour company would effectively work around them both on tour and in the back of house. The company can be relied upon to deliver the quality experience that it markets.</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Jon W.</span>, Australia<br>Reviewed March 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>I would describe this as a "world-class" tour. The guides and drivers were amazing. The organization and logistics were impressive. The South Island is vast, beautiful, interesting, and often spectacular. We can definitely recommend the "Sir Edmund Hillary Explorer" Tour.</p>
+          </blockquote>
+          <figcaption><span class="rv-name">David</span>, USA<br>Reviewed March 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+    </ul>
+    <details class="sp-more rv-more">
+      <summary><span class="sp-when-closed">Show 6 more reviews</span><span class="sp-when-open">Show fewer reviews</span></summary>
+      <ul class="rv-grid" role="list">
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>Fabulous tour and experience! The itinerary was comprehensive- we saw so much of the South Island, without feeling rushed. The tour guides were all brilliant and nothing was too much trouble for them. …</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Bronwyn L.</span>, Australia<br>Reviewed March 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>Absolutely fabulous tour. I have done many organised tours both in Australia and overseas as a solo traveller and this was up there with the best. … The scenery, itinerary, accommodation, trains, excursions &amp; the extra bonus stops for our good timekeeping were outstanding. …</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Stephen I.</span>, Australia<br>Reviewed February 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>Fantastic! Everything was managed very professionally with special attention to all the details. Our guides provided clarity and instructions immediately before we needed them so there was very little to remember or be concerned about. It made the complete journey very relaxed for the pace of everyone, energetic or chill types alike. …</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Jo B.</span>, USA<br>Reviewed February 2026 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>The tour is well organised. The tour guides and coach drivers provided excellent information and support. We found it very relaxing to be able to enjoy the spectacular scenery from a variety of modes of transportation. We had not previously been on a large group tour but the group didn't feel so large as the guides managed to make it feel like a very personalised experience.</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Peter H.</span>, New Zealand<br>Reviewed November 2025 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>This Tour was highly professional and very well organised. It really could not have been better in catering for the different levels of physical fitness. …</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Carl T.</span>, Australia<br>Reviewed October 2025 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      <li class="rv-card">
+        <figure>
+          <img class="rv-stars" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/Trustpilot_ratings_5star-RGB.png" alt="5 out of 5 stars" width="1000" height="188" loading="lazy">
+          <blockquote cite="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com">
+          <p>I can highly recommend the Sir Edmund Hillary Explorer Tour. It was, without a doubt, the most well-organized tour I have ever been on. …</p>
+          </blockquote>
+          <figcaption><span class="rv-name">Jessamy</span>, Australia<br>Reviewed July 2025 on <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></figcaption>
+        </figure>
+      </li>
+      </ul>
+    </details>
+    <p class="rv-all"><a class="sp-btn" href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Read all reviews on Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></p>
+  </section>
+
+  <section class="sp-section" aria-labelledby="sehe-rv-video">
+    <div class="sp-head">
+      <p class="sp-kicker">Guest video</p>
+      <h2 id="sehe-rv-video">More passenger testimonials</h2>
+    </div>
+    <div class="rv-video-frame">
+      <iframe src="https://player.vimeo.com/video/1067162461?dnt=1" title="The Sir Edmund Hillary Explorer Rail &amp; Coach Tour - More Passenger Testimonials" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <p class="rv-video-link"><a href="https://vimeo.com/1067162461" target="_blank" rel="noopener">Watch on Vimeo<span class="sp-sr"> (opens in a new tab)</span></a></p>
+  </section>
+
+  <section class="sp-section rv-write" aria-labelledby="sehe-rv-write">
+    <div class="rv-write-copy">
+      <h2 id="sehe-rv-write">Travelled with us?</h2>
+      <p>We would love to hear how your journey went. You can share your experience on Trustpilot.</p>
+    </div>
+    <a class="sp-btn sp-btn--ghost" href="https://nz.trustpilot.com/evaluate/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Write a review on Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a>
+  </section>
+
+  <section class="sp-section" aria-labelledby="sehe-rv-press">
+    <div class="sp-head">
+      <p class="sp-kicker">In the press</p>
+      <h2 id="sehe-rv-press">Newspaper articles of the inaugural tour in 2021</h2>
+      <p>The tour was originally called the Great Southern Steam Tour, before a relationship was established with the Hillary family.</p>
+    </div>
+    <ul class="rv-press" role="list">
+      <li>
+        <img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/N34A3054-500eeb72-640w.jpg" alt="The Marlborough Flyer" width="640" height="340" loading="lazy">
+        <div class="rv-press-body">
+          <h3>Stuff</h3>
+          <a class="sp-btn sp-btn--ghost" href="https://www.stuff.co.nz/travel/back-your-backyard/300285057/all-aboard-for-the-first-great-southern-train-tour" target="_blank" rel="noopener">Read the Stuff article<span class="sp-sr"> (opens in a new tab)</span></a>
+        </div>
+      </li>
+      <li>
+        <img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Southland+track-640w.jpg" alt="Southland Amazing Views" width="640" height="640" loading="lazy">
+        <div class="rv-press-body">
+          <h3>Otago Daily Times</h3>
+          <a class="sp-btn sp-btn--ghost" href="https://www.odt.co.nz/news/dunedin/south-%E2%80%98just-beautiful%E2%80%99-train" target="_blank" rel="noopener">Read the Otago Daily Times article<span class="sp-sr"> (opens in a new tab)</span></a>
+        </div>
+      </li>
+      <li>
+        <img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Kingston-Flyer-About-SEHE-Rail-Tour-1-640w.jpg" alt="The Kingston Flyer" width="640" height="427" loading="lazy">
+        <div class="rv-press-body">
+          <h3>NZ Herald</h3>
+          <a class="sp-btn sp-btn--ghost" href="https://www.nzherald.co.nz/travel/flyer-to-return-as-part-of-southern-rail-tour-after-eight-years/H6B3Z5BLTUFTBJTFOPM2EDEZAA/" target="_blank" rel="noopener">Read the NZ Herald article<span class="sp-sr"> (opens in a new tab)</span></a>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="sp-section" aria-labelledby="sehe-rv-earlier">
+    <div class="sp-head">
+      <p class="sp-kicker">Guest feedback</p>
+      <h2 id="sehe-rv-earlier">Earlier guest feedback, 2021–2025</h2>
+      <p>Feedback from guests on our earlier tours, as previously published on this page. Names, places and dates are as originally published.</p>
+    </div>
+    <details class="sp-more">
+      <summary><span class="sp-when-closed">Show earlier guest feedback</span><span class="sp-when-open">Hide earlier guest feedback</span></summary>
+      <div class="rv-earlier-list">
+      <figure class="rv-quote">
+        <blockquote>
+          <p>I loved the trip; the guides, the drivers were all kind and could not do enough for us. NZ is beautiful, people are lovely, the trains were great, food was great, it snowed! We could not have experienced this by ourselves. My partner hurt himself and they ensured we were so well looked after. Highly recommended!</p>
+        </blockquote>
+        <figcaption><strong>Lisa Godwin</strong>, NSW, AUS - April 2025 Tour</figcaption>
+      </figure>
+      <figure class="rv-quote">
+        <blockquote>
+          <p>Ray and I have just completed the April tour. We were impressed with the organisation and professionalism of the staff, tour leaders and coach drivers. They made certain that we were all knew what we were about to experience and where to be at certain times! It was an amazing tour of South Island NZ. Many thanks to all, especially Lauren, Niki and Noah.</p>
+        </blockquote>
+        <figcaption><strong>Catherine Robertson</strong>, Melbourne, AUS - April 2025</figcaption>
+      </figure>
+      <figure class="rv-quote">
+        <blockquote>
+          <p>I had longed to go to New Zealand and when this tour showed up on my Facebook page I was intrigued! I loved the tour! The tour guides, all four of them, where wonderful and the itinerary was excellent. It provided a variety of activities and rail excursions that I found to be excellent. Being that I travelled by myself I was hopeful that I would meet some great people and I must tell you that everyone I met was wonderful. I had the privilege to meet three other women who were travelling solo and became good friends. I would recommend this tour to everyone!</p>
+        </blockquote>
+        <figcaption><strong>Denice Reilly</strong>, Arizona, USA - April 2025 Tour</figcaption>
+      </figure>
+      <figure class="rv-quote">
+        <blockquote>
+          <p>Barry and I were lucky to be on the Sir Edmund Hillary tour. What a trip - cannot speak more highly of it and would recommend anyone to take it. I had not been to the South Island and was looking forward to enjoying the scenery and this tour gave me just that. Our guides were amazing and made a fantastic team. The trains made for an interesting inclusion to the itinerary and gave a different perspective to road travel. Highlight for me without a doubt was Mt Cook, it blew me away - could not imagine staying anywhere else but the Hermitage and what a treat having Peter Hillary give us a talk. All in all, a perfect holiday.</p>
+        </blockquote>
+        <figcaption><strong>Barry &amp; Gay Goss</strong>, Australia - March 2025 Tour</figcaption>
+      </figure>
+      <figure class="rv-quote">
+        <blockquote>
+          <p>Highly recommend this tour, stunning scenery, quality accommodation &amp; meals, mix of coach &amp; train travel is excellent. The guides &amp; drivers are professional, friendly &amp; knowledgeable. The tour organization is faultless. 10 out of 10 in every aspect!!</p>
+        </blockquote>
+        <figcaption><strong>Louise Matheson</strong>, Auckland, NZ - January 2025</figcaption>
+      </figure>
+      <figure class="rv-quote">
+        <blockquote>
+          <p>Recommended for anybody… especially for 50+ crowd. The trains and excursions are really excellent. Our trip was truly best of our lives. I would do it all again.</p>
+        </blockquote>
+        <figcaption><strong>Lynn &amp; Debra Willis</strong>, Florida, USA - September 2024</figcaption>
+      </figure>
+      <figure class="rv-quote">
+        <blockquote>
+          <p>I rate the trip 10 out of 10. The organisation and execution of the trip were excellent along with the top quality transport, accommodation, meals and experiences. Everyone on the team was welcoming, friendly, helpful and really informative. The places we went to and the scenery on the trip were outstanding - even the weather Gods smiled on us!</p>
+          <p>I was initially nervous that my hearing impairment would be a barrier, but soon realised that this was not a problem at all. Everyone made sure that I could hear them or helped out when I missed information. I have already recommended this trip to family, friends &amp; even a stranger on the ferry &amp; will continue to do so!</p>
+        </blockquote>
+        <figcaption><strong>Dorothy Wilson</strong>, Lower Hutt, NZ - March '24 Tour</figcaption>
+      </figure>
+      <figure class="rv-quote">
+        <blockquote>
+          <p>What a fabulous tour! A trip of a lifetime encompassing our love of trains. We meet some awesome tour mates and made some friends from overseas. The tour was professionally put together with excellent tour guides and leaders and nothing was too much trouble. Bucket list adventures all ticked off and the most gorgeous weather, we were spoilt.</p>
+        </blockquote>
+        <figcaption><strong>Raewyn Quayle</strong>, Auckland, NZ - March '24 Tour</figcaption>
+      </figure>
+      <figure class="rv-quote">
+        <blockquote>
+          <p>Thanks again for the great trip and we will be recommending it to others. It was one of the best run tours I have every been on and I have been on quite a few! We have been to NZ several times and visited most of the places before but doing this as a group works really well and gave us a different insight to some of the places.</p>
+        </blockquote>
+        <figcaption><strong>Les &amp; Lesley Dickenson</strong>, NSW, AUS - October '23 Tour</figcaption>
+      </figure>
+      <figure class="rv-quote">
+        <blockquote>
+          <p>My overall experience was excellent - I enjoyed the trip so much, it certainly was "a trip of a lifetime". I would like to do it all again and I found that sentiment amongst fellow travellers. I would most certainly recommend the trip to friends and family. The included activities were excellent - every day was a highlight.</p>
+        </blockquote>
+        <figcaption><strong>Helen Bessey</strong>, Canberra, AUS – April 2023 Tour</figcaption>
+      </figure>
+      <figure class="rv-quote">
+        <blockquote>
+          <p>We thoroughly enjoyed our Sir Edmund Hilary Tour 13th – 22nd April 2023. The tour was very well organized with excellent tour guides and bus drivers. Enjoyed the train trips and watching enthusiastic people taking photos and waving wherever we went. Accommodation and meals were excellent. Loved all the places we visited and seeing how the South Island has changed in fifty years since I have travelled around NZ. We were very jealous of your beautiful country with everywhere so green. Cattle and sheep so healthy plus all the tractors we saw! We rate our holiday 10 out of 10. We would recommend the Sir Edmund Hilary Explorer Tour to our friends and family.</p>
+        </blockquote>
+        <figcaption><strong>Anne Foley</strong>, New South Wales AUS – April 2023 Tour</figcaption>
+      </figure>
+      <figure class="rv-quote">
+        <blockquote>
+          <p>I did the tour in April 2023. It was a wonderful trip through stunning landscapes, conducted by expert guides with top notch accommodation and meals. The trains are relaxing and the scenery is panoramic. The staff go all out to make it happen seamlessly and have interesting stories to tell. It is very good value with no hidden extras and fair refunds if optional tours are cancelled by weather or other events.</p>
+        </blockquote>
+        <figcaption><strong>Mary Carstensen</strong>, Darwin, AUS - April 2023 Tour</figcaption>
+      </figure>
+      <figure class="rv-quote">
+        <blockquote>
+          <p>This trip was one of the best I have ever been on! The crew were happy, knowledgeable and helpful but above all professional. The hotels were exceptional, the food excellent especially the breakfasts and dinners. I would be very happy to recommend your company and this trip in particular to anyone!</p>
+        </blockquote>
+        <figcaption><strong>Sue Berkland</strong>, Turangi, NZ – April 2023 Tour</figcaption>
+      </figure>
+      <figure class="rv-quote">
+        <blockquote>
+          <p>My overall experience was fantastic and I would and have recommended it to family and friends. Everything, the hotels, the food and places we visited were a great experience for me and I wasn't disappointed with anything! All of our tour personnel were friendly and helpful. The Sir Edmund Hillary Explorer Tour is worth every single penny and I wish you all the best for next the one.</p>
+        </blockquote>
+        <figcaption><strong>Robbie Summers</strong>, Nelson, NZ – October 2022 Tour</figcaption>
+      </figure>
+      <figure class="rv-quote">
+        <blockquote>
+          <p>I enjoyed the unique method of travel. There is something special about travelling in a heritage train. I really enjoyed the ability to stand at the end of the carriage and watch the world roll by. We were very fortunate with the weather when visiting Mt Cook/Aoraki and that was a highlight for sure.</p>
+        </blockquote>
+        <figcaption><strong>Joke De Boer</strong>, Victoria, AUS – October 2022 Tour</figcaption>
+      </figure>
+      <figure class="rv-quote">
+        <blockquote>
+          <p>There are two words, both beginning with “f” that for me describe the Tour – fantastic and fabulous. I booked for the Tour back in June last year and from the initial contact right through to the time I walked back into my house on Friday 6 May there is absolutely nothing I could fault. I thought it was outstanding and I enjoyed every minute. I would certainly be interested in doing further trips with Pounamu.</p>
+        </blockquote>
+        <figcaption><strong>John McBrearty</strong>, Christchurch, NZ - April 2021 Tour</figcaption>
+      </figure>
+      <figure class="rv-quote">
+        <blockquote>
+          <p>Home again after a wonderful trip with the Pounamu Tourism Group. The planning that has been put into and executed by the staff is mind boggling. From the Tour Leader and his Support team to the Bus Drivers they all worked very hard to make it a holiday to remember. We only had to sit back and enjoy which we certainly did.</p>
+        </blockquote>
+        <figcaption><strong>Francie Taylor</strong>, Darfield, NZ - April 2021 Tour</figcaption>
+      </figure>
+      </div>
+    </details>
+  </section>
+
+  <aside class="sp-band" aria-label="Need help choosing the right tour?">
+    <div class="sp-band-copy">
+      <h2>Need help choosing the right tour?</h2>
+      <p>Our team is here to help you find the perfect journey. Call us or get in touch and we&#39;ll match you with the right tour for your dates and interests.</p>
+    </div>
+    <div class="sp-actions">
+      <a class="sp-btn sp-btn--gold" href="/journeys">View all journeys</a>
+      <a class="sp-btn sp-btn--light" href="/brochure-collection">Brochure collection</a>
+      <a class="sp-btn sp-btn--light" href="/contact">Contact us</a>
+      <a class="sp-btn sp-btn--light" href="tel:+6439741812">+64 3 974 1812</a>
+    </div>
+  </aside>
+
+</div>
+</div>
+<script>
+(function () {
+  var box = document.getElementById('sehe-rv-trustbox');
+  if (!box) return;
+  var tries = 0;
+  function ready() {
+    if (box.querySelector('iframe')) return true;
+    if (window.Trustpilot) {
+      if (typeof window.Trustpilot.loadFromElement === 'function') { window.Trustpilot.loadFromElement(box, true); return true; }
+    }
+    return false;
+  }
+  var timer = setInterval(function () {
+    tries = tries + 1;
+    if (ready()) { clearInterval(timer); return; }
+    if (tries === 40) clearInterval(timer);
+  }, 500);
+})();
+</script>
