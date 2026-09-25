@@ -17,7 +17,7 @@ This runbook covers eight rebuilt pages: Reviews, Contact, About, FAQ, Gallery, 
 
 ## Start here (if you are new to this project)
 
-**What this is.** Eight old pages on siredmundhillaryexplorer.com (a Duda site) have new designs. Each page's code is ready to paste. Nothing is live yet.
+**What this is.** Eight old pages on siredmundhillaryexplorer.com (a Duda site) have new designs. As of 25 Sep 2026 all eight are built on hidden, noindex preview pages (`<slug>-new`). None has replaced its live page yet.
 
 - **Plan:** each page is built on a hidden copy first (`<slug>-new`) and published so Kirsty can preview it. It replaces the live page only after she approves.
 
@@ -25,8 +25,9 @@ This runbook covers eight rebuilt pages: Reviews, Contact, About, FAQ, Gallery, 
 
 | Person | Role |
 |---|---|
-| Ben | Builds Phase 1 (Reviews, Contact). Contract ends **31 Oct 2026**. |
-| The Creator (Izaac and Joel) | May build Phase 2 (About, FAQ, Gallery, Himalayan Trust, Privacy, Terms). They also have their own work in the same Duda editor (see rule 3 in §0). |
+| Ben | Built all eight preview pages (25 Sep 2026). Contract ends **31 Oct 2026**. |
+| Aaron | Manages the site. **Does the switch-over** (§2 swap and §4 SEO) for each page once Kirsty approves it, as usual. |
+| The Creator (Izaac and Joel) | Have their own work in the same Duda editor (see rule 3 in §0). Nothing of theirs was pending on 25 Sep. |
 | Kirsty | Approves every page before it goes live. Answers the content questions in §7. |
 | Paul | Owns the legal and policy wording: Privacy, Terms, and FAQ payment and cancellation. |
 
@@ -83,14 +84,14 @@ They already had it in the 6 Sep backup (`backups/2026-09-06-live-site/pages/`),
 
 ## Go-live plan: two phases, Kirsty previews first
 
-**Phase 1: Reviews and Contact (Ben).**
+**Phase 1: Reviews and Contact (built by Ben; Aaron swaps them after Kirsty approves).**
 
-**Check-over, 25 Sep 2026 (live site, third pass):**
+**Check-over, 25 Sep 2026 (live site, final pass):** every preview is ready for Kirsty except About (held for A1 to A3). Aaron does the switch-over after she approves.
 
 | Preview | Live | Result | To do |
 |---|---|---|---|
 | `reviews-new` | v7 | OK: complete paste, "Show 6 more reviews" styled and toggles | None |
-| `contact-new` | v9 | Rebuilt. Form present, every setting identical to `/contact` (recipient, webhook, subject). It moves into the right-hand column on desktop and phones, with reCAPTCHA inside. **One leftover:** the "Send us an enquiry" text widget is still in the form row, so that row can't hide: the heading sits alone above the footer (197px row on desktop) | Delete that text widget from the form row |
+| `contact-new` | v9 | OK: rebuilt; form present with every setting identical to `/contact` (recipient, webhook, subject); it moves into the right-hand column on desktop and phones with reCAPTCHA inside; the emptied form row hides itself | None |
 | `about-new` | v4 | OK: the old slider row is gone | Held for A1 to A3 |
 | `faq-new` | v6 | OK: 5 top buttons 6px, 26 answers, deep links open | None |
 | `gallery-new` | v7 | OK: 32 photos, 10 labels, viewer works | None |
@@ -110,7 +111,7 @@ They already had it in the 6 Sep backup (`backups/2026-09-06-live-site/pages/`),
    - Alternative: agree **one** test submission on `contact-new` as the end-to-end test, and write down the date and time. Everyone then ignores that one conversion and inbox message.
 5. When Kirsty approves, swap each page (§2). **Nothing is swapped before she approves.**
 
-**Phase 2: About, FAQ, Gallery, Himalayan Trust, Privacy and Terms (Ben, or The Creator after 31 Oct).**
+**Phase 2: About, FAQ, Gallery, Himalayan Trust, Privacy and Terms (built by Ben on 25 Sep; Aaron swaps them after Kirsty approves).**
 
 - The steps are the same as Phase 1: build `-new`, hide it from the menu, check with Izaac and Joel, publish, send Kirsty the preview links, and swap after she approves.
 - **About is gated.** Do not publish `about-new` until Kirsty has answered A1 to A3 in §7: the Antarctic Centre visit, Marlborough, and the Hillary family guest speaker.
