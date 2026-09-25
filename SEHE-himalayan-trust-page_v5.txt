@@ -1,8 +1,12 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HIMALAYAN TRUST PAGE (/himalayan-trust)
-     COMPLETE PAGE  ·  VERSION v4  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v5  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v5 — Shared kit fix (25 Sep 2026): no CSS child combinators any more.
+            Duda publishes that character as an HTML entity and the browser
+            drops the rule. This page has no show-more button, so nothing
+            visible changes. Copy unchanged.
        v4 — Approved copy update (round 3, 25 Sep 2026): our note above the
             Trust's sections now reads "The Himalayan Trust shares its story
             and its work in the Everest region below, in its own words."
@@ -130,19 +134,21 @@
   .sehe-pg-trust .sp-btn--light { background: transparent; border-color: rgba(255,255,255,.85); color: #ffffff !important; }
   .sehe-pg-trust .sp-btn--light:hover { background: #ffffff; border-color: #ffffff; color: var(--navy-dark) !important; }
 
-  /* ── Disclosure ("show more") — native details element, works with JS off ── */
-  .sehe-pg-trust details.sp-more > summary {
+  /* ── Disclosure ("show more") — native details element, works with JS off.
+     Plain descendant selectors only: Duda's publisher rewrites the child
+     combinator as an HTML entity, and the browser then drops the whole rule. ── */
+  .sehe-pg-trust details.sp-more summary {
     list-style: none; display: inline-flex; align-items: center; gap: 12px; min-height: 50px; padding: 12px 22px;
     border: 2px solid var(--navy); border-radius: 6px; background: #ffffff; color: var(--navy) !important;
     font-family: 'Montserrat', sans-serif !important; font-size: 16px !important; font-weight: 600 !important; cursor: pointer;
   }
-  .sehe-pg-trust details.sp-more > summary::-webkit-details-marker { display: none; }
-  .sehe-pg-trust details.sp-more > summary::after { content: '+'; font-size: 22px; line-height: 1; font-weight: 400; }
-  .sehe-pg-trust details.sp-more[open] > summary::after { content: '\2212'; }
-  .sehe-pg-trust details.sp-more > summary:hover { background: var(--navy); color: #ffffff !important; }
+  .sehe-pg-trust details.sp-more summary::-webkit-details-marker { display: none; }
+  .sehe-pg-trust details.sp-more summary::after { content: '+'; font-size: 22px; line-height: 1; font-weight: 400; }
+  .sehe-pg-trust details.sp-more[open] summary::after { content: '\2212'; }
+  .sehe-pg-trust details.sp-more summary:hover { background: var(--navy); color: #ffffff !important; }
   .sehe-pg-trust .sp-when-open { display: none; }
-  .sehe-pg-trust details[open] > summary .sp-when-open { display: inline; }
-  .sehe-pg-trust details[open] > summary .sp-when-closed { display: none; }
+  .sehe-pg-trust details[open] summary .sp-when-open { display: inline; }
+  .sehe-pg-trust details[open] summary .sp-when-closed { display: none; }
 
   /* ── Navy help band (the Journeys contact card, scoped) ─────────────── */
   .sehe-pg-trust .sp-band { background: var(--navy); border: 1px solid var(--gold); border-radius: 12px; padding: 34px 36px !important; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px 36px; }
