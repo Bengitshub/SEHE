@@ -1,8 +1,15 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — FAQ PAGE (/f-a-q)
-     COMPLETE PAGE  ·  VERSION v5  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v6  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v6 — Ben (25 Sep 2026): every button at the top is rounded the same.
+            The four section links were pills; they are now the same ghost
+            button as 'Open all answers' (6px corners, 2px navy border,
+            16px Montserrat, 50px tall), in one row on desktop. On phones
+            they form a 2 x 2 grid of equal-height buttons, with 'Open all
+            answers' full width below. Copy, answers and anchor IDs
+            unchanged.
        v5 — Fix before first paste (25 Sep 2026): Duda publishes the CSS
             child combinator as an HTML entity and the browser drops the
             rule, so the question accordions would have lost their styling
@@ -186,12 +193,16 @@
   }
 
   /* ── FAQ page ───────────────────────────────────────────────────────── */
-  .sehe-pg-faq .fq-jump { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 12px !important; padding: 0 !important; list-style: none !important; }
-  .sehe-pg-faq .fq-jump li { margin: 0 !important; padding: 0 !important; list-style: none !important; }
+  /* top of the page: the four section links and 'Open all answers' are the
+     SAME button (the kit's ghost button: 6px corners, 2px navy border, 16px
+     Montserrat, 50px tall). One row on desktop; on phones the section links
+     form a 2 x 2 grid of equal-height buttons with 'Open all answers' below. */
+  .sehe-pg-faq .fq-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; }
+  .sehe-pg-faq .fq-jump { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 !important; padding: 0 !important; list-style: none !important; }
+  .sehe-pg-faq .fq-jump li { display: flex; margin: 0 !important; padding: 0 !important; list-style: none !important; }
   .sehe-pg-faq .fq-jump li::before, .sehe-pg-faq .fq-jump li::marker { content: none !important; }
-  .sehe-pg-faq .fq-jump a { display: inline-flex; align-items: center; min-height: 46px; padding: 10px 18px; border: 2px solid var(--navy); border-radius: 999px; font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; text-decoration: none !important; color: var(--navy) !important; background: #ffffff; }
-  .sehe-pg-faq .fq-jump a:hover { background: var(--navy); color: #ffffff !important; }
-  .sehe-pg-faq .fq-tools { margin: 18px 0 0 !important; min-height: 50px; }
+  .sehe-pg-faq .fq-jump .sp-btn { flex: 1 1 auto; }
+  .sehe-pg-faq .fq-tools { margin: 0 !important; min-height: 50px; }
   .sehe-pg-faq .fq-cat { scroll-margin-top: 130px; }
   .sehe-pg-faq .fq-cat + .fq-cat { margin-top: 56px !important; }
   .sehe-pg-faq .fq-cat h2 { font-size: clamp(26px, 2.6vw, 32px) !important; line-height: 1.2 !important; margin: 0 0 18px !important; padding-bottom: 12px !important; border-bottom: 2px solid var(--gold); }
@@ -210,8 +221,11 @@
   .sehe-pg-faq .fq-list li { margin: 0 0 10px !important; font-size: 17px !important; line-height: 1.7 !important; color: var(--text) !important; list-style: disc !important; }
   .sehe-pg-faq .fq-list li strong { color: var(--navy); }
   @media (max-width: 860px) {
-    .sehe-pg-faq .fq-jump li { flex: 1 1 calc(50% - 10px); }
-    .sehe-pg-faq .fq-jump a { width: 100%; justify-content: center; text-align: center !important; }
+    .sehe-pg-faq .fq-top { display: block; }
+    .sehe-pg-faq .fq-jump { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; }
+    .sehe-pg-faq .fq-jump .sp-btn { width: 100%; padding: 10px 14px; }
+    .sehe-pg-faq .fq-tools { margin: 10px 0 0 !important; }
+    .sehe-pg-faq .fq-tools .sp-btn { width: 100%; }
     .sehe-pg-faq .fq-item summary { font-size: 17px !important; padding: 14px 16px !important; }
     .sehe-pg-faq .fq-a { padding: 14px 16px 18px; }
   }
@@ -228,12 +242,12 @@
   </div>
 </section>
 <div class="sp-body">
-  <nav class="sp-section" aria-label="FAQ sections">
+  <nav class="sp-section fq-top" aria-label="FAQ sections">
     <ul class="fq-jump" role="list">
-      <li><a href="#faq-choosing">Choosing your journey</a></li>
-      <li><a href="#faq-booking">Booking and payments</a></li>
-      <li><a href="#faq-before">Before you travel</a></li>
-      <li><a href="#faq-on-tour">On tour</a></li>
+      <li><a class="sp-btn sp-btn--ghost" href="#faq-choosing">Choosing your journey</a></li>
+      <li><a class="sp-btn sp-btn--ghost" href="#faq-booking">Booking and payments</a></li>
+      <li><a class="sp-btn sp-btn--ghost" href="#faq-before">Before you travel</a></li>
+      <li><a class="sp-btn sp-btn--ghost" href="#faq-on-tour">On tour</a></li>
     </ul>
     <div class="fq-tools" data-fq-tools></div>
   </nav>
