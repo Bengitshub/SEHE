@@ -1,8 +1,12 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — REVIEWS PAGE (/reviews)
-     COMPLETE PAGE  ·  VERSION v6  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v7  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v7 — END OF FILE line added as the last line (25 Sep 2026): if it is
+            the last line in Duda's code box, the whole file is pasted (two
+            Contact pastes had been cut off at line 150). Page code
+            identical to v6.
        v6 — Fix (25 Sep 2026): the "Show 6 more reviews" button showed as
             plain text on the published page and its label never changed
             to "Show fewer reviews". Duda publishes the CSS child
@@ -620,3 +624,4 @@
   });
 })();
 </script>
+<!-- END OF FILE: reviews-page.txt v7. If this is the last line in the Duda code box, the whole file is pasted. -->

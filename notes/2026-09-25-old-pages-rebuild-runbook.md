@@ -4,13 +4,13 @@ This runbook covers eight rebuilt pages: Reviews, Contact, About, FAQ, Gallery, 
 
 - **Paste files:** always paste from `LATEST/`. They are regenerated with `python3 tools/make-latest.py`.
 - **Masters:** one per page in the repo root:
-  - `SEHE-reviews-page_v6.txt`
-  - `SEHE-contact-page_v8.txt`
+  - `SEHE-reviews-page_v7.txt`
+  - `SEHE-contact-page_v9.txt`
   - `SEHE-gallery-page_v7.txt`
   - `SEHE-about-page_v5.txt`
   - `SEHE-faq-page_v6.txt`
   - `SEHE-himalayan-trust-page_v5.txt`
-  - `SEHE-privacy-policy-page_v3.txt`
+  - `SEHE-privacy-policy-page_v4.txt`
   - `SEHE-terms-page_v3.txt`
 - **Before snapshot:** the served HTML of every old page, from 25 Sep 2026, is in `backups/2026-09-25-old-pages/`.
 - **Draft emails:** for Kirsty and Paul, in `notes/2026-09-25-emails.md`.
@@ -61,7 +61,7 @@ The details are in §0 to §4.
 
 - No `<` or `&` inside inline `<script>` blocks, because Duda's publisher escapes them.
 - **No `>` anywhere inside `<style>`, comments included** (found 25 Sep on the live `/reviews-new`). Duda publishes it as `&gt;`, and the browser then silently drops the whole rule. Write `.a .b`, never `.a > .b` or `:has(> …)`.
-- **Only use markup already working in this site's Duda widgets.** Contact v7's definition list (`dl`/`dt`/`dd`) was the one tag set no working page used, and v7 vanished in the editor. `verify.py` now fails on both of these.
+- **Paste the whole file.** Open the downloaded file (or GitHub's Raw view), select all, copy. Never copy from a preview. On 25 Sep two Contact pastes were cut off at exactly line 150, inside the CSS, so the page's HTML never reached Duda and the widget "vanished". The code was never the problem. Contact, Reviews and Privacy now end with an `END OF FILE` line: after pasting, it must be the last line in Duda's code box.
 - Scripts only add to the page.
 - All CSS stays under the page's `.sehe-pg-…` class.
 
@@ -85,7 +85,22 @@ They already had it in the 6 Sep backup (`backups/2026-09-06-live-site/pages/`),
 
 **Phase 1: Reviews and Contact (Ben).**
 
-Status 25 Sep: `reviews-new` and `about-new` are built and published. `reviews-new` needs **v6 pasted over v5** (the "Show 6 more reviews" fix, §3). `contact-new` needs **v8** (§3).
+**Check-over, 25 Sep 2026 (live site):**
+
+| Preview | Live | Result | To do |
+|---|---|---|---|
+| `reviews-new` | v5 | "Show 6 more reviews" still plain text | Paste **v7** over it |
+| `contact-new` | v8 | **The native form is gone**, plus two cut-off widgets (a v7 and a second v8, 150 lines each) | Delete the page and rebuild it from a fresh duplicate of `/contact` (§3 Contact), then paste **v9** |
+| `about-new` | v4 | Leftover old photo-slider row below the new content (400px on phones) | Delete that row. Still held for A1 to A3 |
+| `faq-new` | v6 | OK: 5 top buttons 6px, 26 answers, deep links open | None |
+| `gallery-new` | v7 | OK: 32 photos, 10 labels, viewer works | None |
+| `himalayan-trust-new` | v5 | OK | None |
+| `terms-new` | v3 | OK | None |
+| Privacy | none | No preview page yet | Build it with **v4** |
+
+- All previews are noindex and in no menu. The live pages are untouched.
+- **First manual fix: done.** Both tour pages are indexable and in the sitemap.
+- **§5 A to F: none done yet.**
 
 1. Build `reviews-new` and `contact-new` (§1 and §3). **Hide both from the menu.**
 2. Check with Izaac and Joel that nothing of theirs is pending, then publish.
@@ -202,7 +217,9 @@ The old page is untouched throughout, so rollback takes about two minutes.
 
 The whole page is one widget (v8). The native Duda form stays in its own row directly below the widget. On the published page, a small script moves the form into the right-hand column. **In the Duda editor the form stays below the widget; that is expected.**
 
-**v7 vanished in the editor after Update; use v8.** v8 contains only markup already working in this site's other Duda widgets (see the house rules at the top). **What you should see in the editor after Update:** the photo banner, "Contact details" with the phone numbers, the awards line, "Helpful information" with three boxes, and the native form in its own row underneath.
+**Why v7 vanished (found 25 Sep on the live page):** the copied text stopped at line 150, inside the CSS, so only the header note and part of the CSS reached Duda. Paste the whole file (see the house rules at the top). The last line in Duda's code box must be the `END OF FILE` line. **What you should see in the editor after Update:** the photo banner, "Contact details" with the phone numbers, the awards line, "Helpful information" with three boxes, and the native form in its own row underneath.
+
+**If the form has gone** (as on 25 Sep): don't try to rebuild the form. Delete `contact-new`, duplicate `/contact` again (the duplicate carries its own copy of the form with every setting), and follow the build steps below.
 
 **Build.**
 
@@ -221,7 +238,7 @@ The whole page is one widget (v8). The native Duda form stays in its own row dir
 
 **If the form ever stays below the widget on the published page**, the page still works: the form simply shows under the contact details. The script leaves the form alone if the reCAPTCHA checkbox was already drawn, and it never changes the form itself.
 
-**If the widget still shows nothing after Update**, one two-minute test tells us whether it's the code or the widget:
+**If the widget still shows nothing after Update**, first open the code box and scroll to the bottom. If the last line is not the `END OF FILE` line, the paste was cut off: copy the whole file again from the downloaded file. If the paste is complete, one two-minute test tells us whether it's the code or the widget:
 
 1. Open the same HTML widget, delete everything, type `<p>TEST</p>`, click **Update**.
 2. If **TEST shows**, the widget is fine: open it again, delete `TEST`, paste `LATEST/contact-page.txt` again (select all in the file first, so nothing is cut off), click **Update**. If it vanishes again, write down exactly that ("TEST shows, contact-page.txt vanishes") and send it to whoever maintains this repo.
@@ -261,6 +278,8 @@ To rename them properly, in one sitting:
 ### About (`/about`): `LATEST/about-page.txt`
 
 Use the §1 row. **Before you publish `about-new`, resolve A1 to A3 in §7** (see Phase 2). A4 doesn't block it.
+
+**Delete the old photo slider.** The live `about-new` (25 Sep) still has the old page's slider widget in a row below the new content. On phones it shows as a 400px block of old slides. Delete that whole row.
 
 **Left out** (see A4): three of the old carousel's seven slides.
 

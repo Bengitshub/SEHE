@@ -4,6 +4,13 @@ Always paste from THIS folder. Filenames never change; the
 contents are regenerated whenever anything is updated, so the
 same link is always the newest version (shown below).
 
+COPY THE WHOLE FILE. Open the downloaded file (or GitHub's Raw view),
+select all, copy. Never copy from a preview: on 25 Sep two Contact
+pastes were cut off at line 150 and the page vanished. After
+pasting, scroll to the bottom of Duda's code box. Files ending in an
+"END OF FILE" line (contact, reviews, privacy) must show that line
+last.
+
 WORKER  worker-sehe-next-departures.js
         -> Cloudflare > Workers & Pages > sehe-next-departures >
            Edit code > select all > paste > Deploy.
@@ -36,14 +43,14 @@ CURRENT VERSIONS
 ------------------------------------------------------------
   about-page.txt                         v5    (SEHE-about-page_v5.txt)
   brochure-collection.txt                v2    (SEHE-brochure-collection_v2.txt)
-  contact-page.txt                       v8    (SEHE-contact-page_v8.txt)
+  contact-page.txt                       v9    (SEHE-contact-page_v9.txt)
   faq-page.txt                           v6    (SEHE-faq-page_v6.txt)
   gallery-page.txt                       v7    (SEHE-gallery-page_v7.txt)
   himalayan-trust-page.txt               v5    (SEHE-himalayan-trust-page_v5.txt)
   homepage.txt                           v38   (SEHE-homepage_v38.txt)
   journeys-page.txt                      v22   (SEHE-journeys-page_v22.txt)
-  privacy-policy-page.txt                v3    (SEHE-privacy-policy-page_v3.txt)
-  reviews-page.txt                       v6    (SEHE-reviews-page_v6.txt)
+  privacy-policy-page.txt                v4    (SEHE-privacy-policy-page_v4.txt)
+  reviews-page.txt                       v7    (SEHE-reviews-page_v7.txt)
   terms-page.txt                         v3    (SEHE-terms-page_v3.txt)
   tourpage-11day-2627-blockA.txt         v26   (SEHE-11day-2627_v26-blockA.txt)
   tourpage-11day-2627-blockB.txt         -     (SEHE-11day-2627_v26-blockB.txt)
