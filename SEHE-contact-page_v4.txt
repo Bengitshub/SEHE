@@ -1,0 +1,443 @@
+<!-- =====================================================================
+     SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact)
+     MASTER  ·  VERSION v4  ·  2026-09-25
+     -----------------------------------------------------------------------
+     CHANGELOG (latest first):
+       v4 — Round-2 feedback (25 Sep 2026): the white gaps around the quick
+            links are closed (Duda's theme pads rows 120px on desktop; the
+            quick-links row and its widget are now zeroed and Block C's own
+            padding tightened; the runbook also sets that row to padding 0).
+            The in-page Pounamu Tourism Group line and Facebook/Instagram
+            links are removed: the site footer already carries both. The
+            quick links no longer point straight at /brochure-collection
+            (brochure forms redirect there and a visit counts as a brochure
+            conversion): "Journeys and brochures" goes to /journeys, whose
+            cards link to each tour page's brochure form.
+       v3 — Third independent review (25 Sep 2026): line length tightened to
+            about 60 characters' width (~66-72 characters; the old caps
+            rendered up to ~85); on phones the darker hero veil now also
+            applies to compact heroes (shared kit).
+       v2 — Review fixes (independent check, 25 Sep 2026): the native form is
+            now touched by CSS ONLY — the script that added aria-label /
+            aria-required to its fields is removed (Guardrail 12); proper
+            field names for screen readers = the label rename in the
+            runbook (check the Zap first). CSS field names now match by
+            field type, so they survive Duda renaming fields during a send
+            (e.g. after an unticked reCAPTCHA). Send button focus ring navy
+            (gold on white failed 3:1). Facebook/Instagram links 44px tall.
+            Heading order: one hidden h2 over both columns, "Contact
+            details" is an h3 beside the form's own h3 title. The :has()
+            form rule is split from the plain heading rule. Kicker/button
+            type larger (shared kit).
+       v1 — First new-design build of /contact (Brief v2, 25 Sep 2026).
+            Three HTML widgets around the NATIVE Duda form (never rebuilt,
+            never moved by script):
+              ROW 1  Block A  — compact hero + all page CSS
+              ROW 2  Block B  (left)  |  native Duda form (right)
+              ROW 3  Block C  — quick links + Pounamu Tourism Group line
+            Fixes the live page's broken email link ("mailto:Email: …"),
+            adds the NZ / Australia / USA-Canada dialling numbers as tap-to-
+            call links, and gives the form visible field names by CSS while
+            its labels (%FIRSTNAME% %EMAIL% %ENQUIRY_MESSAGE% — the keys the
+            email and the Zapier webhook receive) stay exactly as they are.
+            (v1 also set aria-labels by script — removed in v2.)
+     -----------------------------------------------------------------------
+     PASTE FROM LATEST/: contact-page-blockA-hero.txt, contact-page-blockB-
+     details.txt, contact-page-blockC-more.txt (tools/make-latest.py splits
+     this master at the BLOCK markers below — edit the master, not LATEST).
+     RULES KEPT: native form untouched (recipient, subject, webhook, field
+     IDs, labels, reCAPTCHA, success message); every tel:/mailto: link is a
+     plain link (GTM "Phone Link Clicked" fires on tel: clicks); nothing here
+     can show .dmform-success (GTM "Contact Us Form Submitted" keys on it);
+     no rating hard-coded (live TrustBox only); no extra bootstrap; no chat
+     system added (tawk.to already loads site-wide); no schema; no tracking;
+     no departure data; CSS scoped to .sehe-pg-contact (form rules reach the
+     form only through the row that holds Block B).
+     ===================================================================== -->
+<!-- ▼▼▼ BLOCK A ▼▼▼ -->
+<!-- =====================================================================
+     SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact) — BLOCK A
+     VERSION v4  ·  2026-09-25  ·  paste into ONE Duda HTML widget
+     WHERE: page "contact-new", ROW 1 (full width, padding 0) — the top row.
+     WHAT:  compact hero + the CSS for the WHOLE page (Blocks B and C and the native form rely on it).
+     Full steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
+     ===================================================================== -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  /* ── Duda host row ─────────────────────────────────────────────────────
+     Let the hero run full-bleed and stop the row adding a white strip under
+     the transparent site header. :has() rules sit on their own so a browser
+     without :has() drops only these lines (the runbook also sets the row's
+     padding to 0 in the editor, which covers those browsers). */
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact .sp-hero) { padding-top: 0 !important; padding-bottom: 0 !important; overflow: visible !important; max-width: none !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact .sp-hero) .dmRespColsWrapper { overflow: visible !important; max-width: none !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact .sp-hero) .dmRespCol { overflow: visible !important; max-width: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+  #dm .dmContent .dmCustomHtml:has(.sehe-pg-contact .sp-hero) { overflow: visible !important; }
+
+  /* ── Page scope + tokens (Journeys v22 palette) ─────────────────────── */
+  .sehe-pg-contact, .sehe-pg-contact *, .sehe-pg-contact *::before, .sehe-pg-contact *::after { box-sizing: border-box; }
+  .sehe-pg-contact {
+    --navy: #153b67; --navy-dark: #0e2d52; --gold: #c8a56c; --gold-light: #d4b37e;
+    --gold-ink: #7a5f30; /* gold for small text on light backgrounds (5.9:1 on white) */
+    --off-white: #f9f7f3; --cream: #faf8f3; --text: #1a1a1a; --text-2: #454545;
+    --border: #d8d3c8; --border-light: #e8e4db; --white: #ffffff;
+    display: block; width: 100%; margin: 0 !important; padding: 0 !important;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    font-size: 17px; line-height: 1.65; color: var(--text); text-align: left !important;
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; overflow-wrap: break-word;
+  }
+  /* theme rule ".dmFullRowRespTmpl section{padding:50px 40px}" would re-pad every section */
+  .sehe-pg-contact section, .sehe-pg-contact aside, .sehe-pg-contact nav { padding: 0 !important; margin: 0; }
+  .sehe-pg-contact h1, .sehe-pg-contact h2, .sehe-pg-contact h3, .sehe-pg-contact h4 {
+    font-family: 'Montserrat', -apple-system, 'Segoe UI', Arial, sans-serif !important; font-weight: 600 !important;
+    color: var(--navy) !important; text-transform: none !important; text-align: left !important;
+    letter-spacing: -0.01em !important; margin: 0 !important; padding: 0 !important;
+  }
+  .sehe-pg-contact p, .sehe-pg-contact li, .sehe-pg-contact dt, .sehe-pg-contact dd, .sehe-pg-contact figcaption, .sehe-pg-contact blockquote, .sehe-pg-contact summary, .sehe-pg-contact td, .sehe-pg-contact th {
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+    text-align: left !important; text-transform: none !important;
+  }
+  .sehe-pg-contact p { font-size: 17px !important; line-height: 1.7 !important; color: var(--text-2) !important; margin: 0 !important; }
+  .sehe-pg-contact a { color: var(--navy) !important; text-decoration: underline !important; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .sehe-pg-contact a:hover { color: var(--navy-dark) !important; text-decoration-thickness: 2px; }
+  .sehe-pg-contact a:focus-visible, .sehe-pg-contact summary:focus-visible, .sehe-pg-contact button:focus-visible { outline: 3px solid var(--navy) !important; outline-offset: 3px !important; border-radius: 4px; }
+  .sehe-pg-contact img { max-width: 100%; height: auto; border: 0; }
+  .sehe-pg-contact .sp-sr { position: absolute !important; width: 1px !important; height: 1px !important; margin: -1px !important; padding: 0 !important; overflow: hidden !important; clip: rect(0 0 0 0) !important; white-space: nowrap !important; border: 0 !important; }
+
+  /* ── Hero (same build as the Journeys / Brochure heroes) ────────────── */
+  .sehe-pg-contact .sp-hero {
+    position: relative; width: 100vw; margin-left: calc(50% - 50vw) !important; margin-right: calc(50% - 50vw) !important;
+    padding: 0 !important; min-height: max(540px, 68vh); min-height: max(540px, 68svh);
+    display: flex; align-items: flex-end; background-color: #081525; overflow: hidden;
+  }
+  .sehe-pg-contact .sp-hero--compact { min-height: max(380px, 46vh); min-height: max(380px, 46svh); }
+  .sehe-pg-contact .sp-hero-img { position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover; object-position: center 50%; display: block; }
+  .sehe-pg-contact .sp-hero-veil { position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(180deg, rgba(8,21,37,.62) 0%, rgba(8,21,37,.26) 28%, rgba(8,21,37,.58) 56%, rgba(8,21,37,.95) 100%); }
+  .sehe-pg-contact .sp-hero--compact .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.70) 0%, rgba(8,21,37,.52) 40%, rgba(8,21,37,.92) 100%); }
+  /* the site header's logo slot is a transparent placeholder until you scroll —
+     put the real roundel in its lane so the brand is there on load */
+  .sehe-pg-contact .sp-hero-logo { position: absolute; top: 26px; left: 0; width: 16.66% !important; height: 92px !important; max-width: none !important; object-fit: contain; object-position: center; z-index: 2; filter: drop-shadow(0 2px 10px rgba(8,21,37,.5)); }
+  .sehe-pg-contact .sp-hero-inner { position: relative; z-index: 1; width: 100%; max-width: 1240px; margin: 0 auto; padding: 150px 30px 58px; }
+  .sehe-pg-contact .sp-hero--compact .sp-hero-inner { padding: 140px 30px 46px; }
+  .sehe-pg-contact .sp-eyebrow {
+    display: inline-flex; align-items: center; gap: 16px; font-family: 'Montserrat', sans-serif !important;
+    font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: .42em !important; text-transform: uppercase !important;
+    color: #d4b37e !important; margin: 0 0 22px !important; text-shadow: 0 1px 12px rgba(8,21,37,.95);
+  }
+  .sehe-pg-contact .sp-eyebrow::before, .sehe-pg-contact .sp-eyebrow::after { content: ''; width: 44px; height: 1px; background: #d4b37e; flex: none; }
+  .sehe-pg-contact .sp-hero h1 { font-weight: 700 !important; font-size: clamp(40px, 5.2vw, 66px) !important; line-height: 1.08 !important; color: #ffffff !important; text-shadow: 0 2px 26px rgba(8,21,37,.55); }
+  .sehe-pg-contact .sp-hero--compact h1 { font-size: clamp(36px, 4.2vw, 54px) !important; }
+  .sehe-pg-contact .sp-hero-sub { margin: 22px 0 0 !important; max-width: 620px; font-size: clamp(17px, 1.5vw, 19px) !important; line-height: 1.65 !important; color: rgba(255,255,255,.95) !important; text-shadow: 0 1px 14px rgba(8,21,37,.6); }
+  .sehe-pg-contact .sp-hero a:focus-visible, .sehe-pg-contact .sp-band a:focus-visible { outline-color: var(--gold-light) !important; }
+
+  /* ── Body, section heads ────────────────────────────────────────────── */
+  .sehe-pg-contact .sp-body { max-width: 1240px; margin: 0 auto !important; padding: 64px 30px 76px !important; }
+  .sehe-pg-contact .sp-section + .sp-section, .sehe-pg-contact .sp-section + .sp-band, .sehe-pg-contact .sp-band + .sp-section { margin-top: 76px !important; }
+  .sehe-pg-contact .sp-head { max-width: 780px; margin: 0 0 28px !important; }
+  .sehe-pg-contact .sp-kicker { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 14px !important; font-weight: 700 !important; letter-spacing: .14em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
+  .sehe-pg-contact .sp-head h2 { font-size: clamp(28px, 3vw, 36px) !important; line-height: 1.2 !important; margin: 0 0 12px !important; }
+  .sehe-pg-contact .sp-head p { max-width: 60ch; }   /* ~66-72 characters per line in Open Sans */
+  .sehe-pg-contact .sp-head p + p { margin-top: 10px !important; }
+
+  /* ── Buttons (48px+ tap targets) ────────────────────────────────────── */
+  .sehe-pg-contact .sp-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .sehe-pg-contact .sp-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 12px 24px;
+    border-radius: 6px; border: 2px solid var(--navy); background: var(--navy); color: #ffffff !important;
+    font-family: 'Montserrat', sans-serif !important; font-size: 16px !important; font-weight: 600 !important; line-height: 1.25 !important;
+    text-decoration: none !important; text-align: center !important; cursor: pointer; transition: background-color .2s, color .2s, border-color .2s;
+  }
+  .sehe-pg-contact .sp-btn:hover { background: var(--navy-dark); border-color: var(--navy-dark); color: #ffffff !important; }
+  .sehe-pg-contact .sp-btn--ghost { background: transparent; color: var(--navy) !important; }
+  .sehe-pg-contact .sp-btn--ghost:hover { background: var(--navy); color: #ffffff !important; }
+  .sehe-pg-contact .sp-btn--gold { background: var(--gold); border-color: var(--gold); color: var(--navy-dark) !important; }
+  .sehe-pg-contact .sp-btn--gold:hover { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy-dark) !important; }
+  .sehe-pg-contact .sp-btn--light { background: transparent; border-color: rgba(255,255,255,.85); color: #ffffff !important; }
+  .sehe-pg-contact .sp-btn--light:hover { background: #ffffff; border-color: #ffffff; color: var(--navy-dark) !important; }
+
+  /* ── Disclosure ("show more") — native details element, works with JS off ── */
+  .sehe-pg-contact details.sp-more > summary {
+    list-style: none; display: inline-flex; align-items: center; gap: 12px; min-height: 50px; padding: 12px 22px;
+    border: 2px solid var(--navy); border-radius: 6px; background: #ffffff; color: var(--navy) !important;
+    font-family: 'Montserrat', sans-serif !important; font-size: 16px !important; font-weight: 600 !important; cursor: pointer;
+  }
+  .sehe-pg-contact details.sp-more > summary::-webkit-details-marker { display: none; }
+  .sehe-pg-contact details.sp-more > summary::after { content: '+'; font-size: 22px; line-height: 1; font-weight: 400; }
+  .sehe-pg-contact details.sp-more[open] > summary::after { content: '\2212'; }
+  .sehe-pg-contact details.sp-more > summary:hover { background: var(--navy); color: #ffffff !important; }
+  .sehe-pg-contact .sp-when-open { display: none; }
+  .sehe-pg-contact details[open] > summary .sp-when-open { display: inline; }
+  .sehe-pg-contact details[open] > summary .sp-when-closed { display: none; }
+
+  /* ── Navy help band (the Journeys contact card, scoped) ─────────────── */
+  .sehe-pg-contact .sp-band { background: var(--navy); border: 1px solid var(--gold); border-radius: 12px; padding: 34px 36px !important; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px 36px; }
+  .sehe-pg-contact .sp-band-copy { flex: 1 1 420px; }
+  .sehe-pg-contact .sp-band h2 { color: #ffffff !important; font-size: clamp(24px, 2.4vw, 28px) !important; line-height: 1.25 !important; margin: 0 0 8px !important; }
+  .sehe-pg-contact .sp-band p { color: rgba(255,255,255,.88) !important; max-width: 62ch; }
+  .sehe-pg-contact .sp-band .sp-actions { flex: 1 1 440px; justify-content: flex-end; }
+
+  @media (max-width: 860px) {
+    .sehe-pg-contact .sp-hero { min-height: max(460px, 60svh); }
+    .sehe-pg-contact .sp-hero--compact { min-height: max(340px, 42svh); }
+    /* phones crop to the brightest part of the frame — darker veil keeps contrast */
+    .sehe-pg-contact .sp-hero-veil, .sehe-pg-contact .sp-hero--compact .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.66) 0%, rgba(8,21,37,.48) 30%, rgba(8,21,37,.72) 58%, rgba(8,21,37,.96) 100%); }
+    .sehe-pg-contact .sp-hero-inner, .sehe-pg-contact .sp-hero--compact .sp-hero-inner { padding: 118px 20px 40px; }
+    .sehe-pg-contact .sp-hero-logo { left: 50%; width: 56px !important; transform: translateX(-50%); top: 18px; height: 56px !important; }
+    .sehe-pg-contact .sp-eyebrow { gap: 0; font-size: 12.5px !important; letter-spacing: .2em !important; margin-bottom: 14px !important; }
+    .sehe-pg-contact .sp-eyebrow::before, .sehe-pg-contact .sp-eyebrow::after { display: none; }
+    .sehe-pg-contact .sp-hero h1, .sehe-pg-contact .sp-hero--compact h1 { font-size: 34px !important; line-height: 1.14 !important; }
+    .sehe-pg-contact .sp-hero-sub { font-size: 17px !important; line-height: 1.6 !important; margin-top: 14px !important; }
+    .sehe-pg-contact .sp-body { padding: 44px 18px 56px !important; }
+    .sehe-pg-contact .sp-section + .sp-section, .sehe-pg-contact .sp-section + .sp-band, .sehe-pg-contact .sp-band + .sp-section { margin-top: 56px !important; }
+    .sehe-pg-contact .sp-band { padding: 24px 20px !important; }
+    .sehe-pg-contact .sp-band .sp-actions { justify-content: flex-start; }
+    .sehe-pg-contact .sp-actions .sp-btn { flex: 1 1 100%; }
+  }
+  @media (max-width: 540px) {
+    .sehe-pg-contact .sp-hero h1, .sehe-pg-contact .sp-hero--compact h1 { font-size: 30px !important; }
+    .sehe-pg-contact .sp-hero-inner, .sehe-pg-contact .sp-hero--compact .sp-hero-inner { padding: 106px 18px 34px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sehe-pg-contact *, .sehe-pg-contact *::before, .sehe-pg-contact *::after { transition: none !important; scroll-behavior: auto !important; }
+  }
+
+  /* ── Contact page ───────────────────────────────────────────────────── */
+  .sehe-pg-contact .sp-hero--compact { min-height: max(340px, 40vh); min-height: max(340px, 40svh); }
+  .sehe-pg-contact .sp-hero--compact .sp-hero-inner { padding: 136px 30px 42px; }
+  .sehe-pg-contact .sp-hero-sub { max-width: 640px; }
+
+  /* row 2 — details (left) + native form (right): one aligned 1240px band */
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) { max-width: 1240px !important; margin: 0 auto !important; padding: 56px 30px 8px !important; overflow: visible !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) > .dmRespColsWrapper { display: flex !important; flex-wrap: wrap !important; align-items: flex-start !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) > .dmRespColsWrapper > .dmRespCol { float: none !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) > .dmRespColsWrapper > .dmRespCol:first-child { padding: 0 32px 0 0 !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) > .dmRespColsWrapper > .dmRespCol:last-child { padding: 0 0 0 32px !important; }
+
+  .sehe-pg-contact.ct-details { display: block; }
+  .sehe-pg-contact .ct-head h3 { font-family: 'Montserrat', -apple-system, 'Segoe UI', Arial, sans-serif !important; font-weight: 600 !important; font-size: clamp(26px, 2.6vw, 32px) !important; line-height: 1.2 !important; color: #153b67 !important; text-transform: none !important; text-align: left !important; letter-spacing: -0.01em !important; margin: 0 0 20px !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmform-title { font-family: 'Montserrat', -apple-system, 'Segoe UI', Arial, sans-serif !important; font-weight: 600 !important; font-size: clamp(26px, 2.6vw, 32px) !important; line-height: 1.2 !important; color: #153b67 !important; text-transform: none !important; text-align: left !important; letter-spacing: -0.01em !important; margin: 0 0 20px !important; }
+  .sehe-pg-contact .ct-list { margin: 0 !important; padding: 0 !important; }
+  .sehe-pg-contact .ct-item { margin: 0 !important; padding: 14px 0 !important; border-bottom: 1px solid var(--border-light); }
+  .sehe-pg-contact .ct-item:first-child { padding-top: 0 !important; }
+  .sehe-pg-contact .ct-item dt { font-family: 'Montserrat', sans-serif !important; font-size: 14px !important; font-weight: 700 !important; letter-spacing: .04em; color: var(--gold-ink) !important; margin: 0 0 2px !important; }
+  .sehe-pg-contact .ct-item dd { margin: 0 !important; font-size: 18px !important; line-height: 1.5 !important; color: var(--text) !important; }
+  .sehe-pg-contact .ct-item dd a { display: inline-block; padding: 6px 0; min-height: 44px; font-weight: 600; }
+  .sehe-pg-contact .ct-item--main dd a { font-family: 'Montserrat', sans-serif !important; font-size: 26px !important; font-weight: 700 !important; text-decoration: none !important; color: var(--navy) !important; }
+  .sehe-pg-contact .ct-item--main dd a:hover { text-decoration: underline !important; }
+  .sehe-pg-contact .ct-item--email dd a { word-break: break-all; }
+  .sehe-pg-contact .ct-note { font-size: 15.5px !important; color: var(--text-2) !important; margin-top: 2px !important; }
+  .sehe-pg-contact .ct-chat { margin: 22px 0 0; }
+  .sehe-pg-contact .ct-chat[hidden] { display: none !important; }
+  .sehe-pg-contact button.sp-btn { -webkit-appearance: none; appearance: none; }
+  .sehe-pg-contact .ct-trust { display: flex; align-items: center; gap: 16px; margin: 26px 0 0; padding: 18px 0 0; border-top: 1px solid var(--border-light); }
+  .sehe-pg-contact .ct-trust img { width: 72px !important; height: auto !important; flex: none; }
+  .sehe-pg-contact .ct-trust-copy { display: flex; flex-direction: column; gap: 8px; min-width: 0; flex: 1 1 auto; }
+  .sehe-pg-contact .ct-trust-copy p { font-size: 15.5px !important; line-height: 1.5 !important; }
+  .sehe-pg-contact .ct-trustbox { width: 100%; max-width: 420px; min-height: 24px; }
+
+  /* ── The native Duda form in the same row — LOOK ONLY ──────────────────
+     The form stays a real Duda form: recipient, subject, Zapier webhook,
+     field IDs (dmform-0/1/3), labels (%FIRSTNAME% %EMAIL% %ENQUIRY_MESSAGE% —
+     they are the payload keys), reCAPTCHA and the success message are not
+     touched. Visible field names are CSS text beside the untouched labels,
+     matched by field TYPE (Duda renames the fields while it sends, so a name
+     match would vanish after a failed send). */
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform { font-family: 'Open Sans', -apple-system, 'Segoe UI', Arial, sans-serif !important; max-width: none !important; padding: 0 !important; margin: 0 !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform, #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform * { box-sizing: border-box !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmform-title { display: block !important; visibility: visible !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmform-wrapper, #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform form { margin: 0 !important; padding: 0 !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput { float: none !important; width: 100% !important; margin: 0 0 18px !important; padding: 0 !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput::before { display: block; margin: 0 0 6px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 15.5px; line-height: 1.3; color: #1a1a1a; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput:has(> input[type="text"])::before { content: "Your name"; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput:has(> input[type="email"])::before { content: "Your email address"; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput:has(> textarea)::before { content: "Your message"; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput > input[type="text"], #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput > input[type="email"], #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput > textarea {
+    width: 100% !important; display: block !important; margin: 0 !important; padding: 13px 16px !important;
+    background: #ffffff !important; color: #1a1a1a !important; border: 1px solid #8a8378 !important; border-radius: 6px !important;
+    font-family: 'Open Sans', -apple-system, 'Segoe UI', Arial, sans-serif !important; font-size: 17px !important; line-height: 1.45 !important;
+    height: auto !important; min-height: 52px !important; box-shadow: none !important; -webkit-appearance: none !important; appearance: none !important;
+  }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput > textarea { min-height: 170px !important; resize: vertical !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput > input::placeholder, #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput > textarea::placeholder { color: #6b655c !important; opacity: 1 !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput > input[type="text"]:focus, #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput > input[type="email"]:focus, #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmforminput > textarea:focus { outline: 3px solid #153b67 !important; outline-offset: 1px !important; border-color: #153b67 !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmformsubmit { float: none !important; display: block !important; width: 100% !important; height: auto !important; min-height: 0 !important; margin: 8px 0 0 !important; padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: none !important; box-shadow: none !important; text-align: left !important; line-height: normal !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmformsubmit::before, #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmformsubmit::after { display: none !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmformsubmit input[type="submit"] {
+    width: 100% !important; display: block !important; height: auto !important; min-height: 54px !important; padding: 16px 24px !important; margin: 0 !important;
+    background: #153b67 !important; border: 2px solid #153b67 !important; border-radius: 6px !important; color: #ffffff !important; cursor: pointer !important;
+    font-family: 'Montserrat', sans-serif !important; font-size: 16px !important; font-weight: 600 !important; letter-spacing: .02em !important; text-transform: none !important; line-height: 1.2 !important;
+    -webkit-appearance: none !important; appearance: none !important;
+  }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmformsubmit input[type="submit"]:hover { background: #0e2d52 !important; border-color: #0e2d52 !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmformsubmit input[type="submit"]:focus-visible { outline: 3px solid #153b67 !important; outline-offset: 3px !important; }
+  /* success / error messages: shown by Duda's own script; GTM's "Contact Us
+     Form Submitted" needs .dmform-success fully on screen — keep it compact */
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmform-success, #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmform-error { margin: 0 !important; padding: 18px 20px !important; border-radius: 8px !important; font-family: 'Open Sans', sans-serif !important; font-size: 17px !important; line-height: 1.6 !important; color: #1a1a1a !important; text-align: left !important; background: #faf8f3 !important; border: 1px solid #e8e4db !important; border-left: 4px solid #c8a56c !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) .dmform .dmform-error { border-left-color: #b84040 !important; }
+
+  /* row 3 — quick links. Duda's theme pads every row 120px top and bottom on
+     desktop (15px on phones) and gives the HTML widget 10px margins: drop both
+     here so the quick links sit close to the form and to the footer. */
+  #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-more) { padding-top: 0 !important; padding-bottom: 0 !important; }
+  #dm .dmContent .dmCustomHtml:has(.sehe-pg-contact.ct-more) { margin-top: 0 !important; margin-bottom: 0 !important; }
+  .sehe-pg-contact.ct-more .sp-body { padding-top: 36px !important; padding-bottom: 56px !important; }
+  .sehe-pg-contact .ct-quick { list-style: none !important; margin: 0 !important; padding: 0 !important; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px; }
+  .sehe-pg-contact .ct-quick li { margin: 0 !important; padding: 0 !important; list-style: none !important; }
+  .sehe-pg-contact .ct-quick li::before, .sehe-pg-contact .ct-quick li::marker { content: none !important; }
+  .sehe-pg-contact .ct-quick a { display: flex; flex-direction: column; gap: 4px; height: 100%; min-height: 96px; padding: 18px 20px; border: 1px solid var(--border); border-radius: 10px; background: #ffffff; text-decoration: none !important; transition: border-color .2s, box-shadow .2s; }
+  .sehe-pg-contact .ct-quick a:hover { border-color: var(--navy); box-shadow: 0 2px 10px rgba(21,59,103,.08); }
+  .sehe-pg-contact .ct-quick strong { font-family: 'Montserrat', sans-serif !important; font-size: 17px; font-weight: 600; color: var(--navy); }
+  .sehe-pg-contact .ct-quick span { font-size: 15.5px; line-height: 1.5; color: var(--text-2); }
+
+  @media (max-width: 860px) {
+    #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) { padding: 36px 18px 0 !important; }
+    #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) > .dmRespColsWrapper > .dmRespCol:first-child, #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) > .dmRespColsWrapper > .dmRespCol:last-child { width: 100% !important; padding: 0 !important; }
+    #dm .dmContent .dmRespRow:has(.sehe-pg-contact.ct-details) > .dmRespColsWrapper > .dmRespCol:first-child { margin-bottom: 40px !important; }
+    .sehe-pg-contact .sp-hero--compact .sp-hero-inner { padding: 112px 20px 34px; }
+    .sehe-pg-contact .ct-item--main dd a { font-size: 24px !important; }
+    .sehe-pg-contact .ct-chat .sp-btn { width: 100%; }
+    .sehe-pg-contact.ct-more .sp-body { padding-top: 28px !important; padding-bottom: 40px !important; }
+  }
+</style>
+<div class="sehe-pg-contact">
+<section class="sp-hero sp-hero--compact" aria-labelledby="sehe-ct-title">
+  <img class="sp-hero-img" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg" srcset="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-640w.jpg 640w, https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1280w.jpg 1280w, https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted-1920w.jpg 1920w" sizes="100vw" alt="" style="object-position:center 62%" fetchpriority="high">
+  <div class="sp-hero-veil" aria-hidden="true"></div>
+  <img class="sp-hero-logo" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEH+Explorer_logo+white-350w.png" alt="Sir Edmund Hillary Explorer" width="350" height="350">
+  <div class="sp-hero-inner">
+    <p class="sp-eyebrow">Contact us</p>
+    <h1 id="sehe-ct-title">Let&#39;s plan your New Zealand journey.</h1>
+    <p class="sp-hero-sub">Ask us about choosing a tour, travelling solo, room options or an existing booking. Our New Zealand team is here to help.</p>
+  </div>
+</section>
+</div>
+<!-- ▲▲▲ END BLOCK A ▲▲▲ -->
+<!-- ▼▼▼ BLOCK B ▼▼▼ -->
+<!-- =====================================================================
+     SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact) — BLOCK B
+     VERSION v4  ·  2026-09-25  ·  paste into ONE Duda HTML widget
+     WHERE: page "contact-new", ROW 2, LEFT column. The native Duda form sits in the RIGHT column of the same row.
+     WHAT:  contact details (all tel:/mailto: links), live-chat button, trust line. The script only shows the chat button.
+     Full steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
+     ===================================================================== -->
+<div class="sehe-pg-contact ct-details">
+  <h2 class="sp-sr">Ways to get in touch</h2>
+  <div class="ct-head">
+    <h3>Contact details</h3>
+  </div>
+  <dl class="ct-list">
+    <div class="ct-item ct-item--main">
+      <dt>Phone</dt>
+      <dd><a href="tel:+6439741812">+64 3 974 1812</a></dd>
+    </div>
+    <div class="ct-item">
+      <dt>From within New Zealand</dt>
+      <dd><a href="tel:039741812">(03) 974 1812</a></dd>
+    </div>
+    <div class="ct-item">
+      <dt>From Australia</dt>
+      <dd><a href="tel:00116439741812">0011 64 3 974 1812</a></dd>
+    </div>
+    <div class="ct-item">
+      <dt>From the USA or Canada</dt>
+      <dd><a href="tel:0116439741812">011 64 3 974 1812</a></dd>
+    </div>
+    <div class="ct-item ct-item--email">
+      <dt>Email</dt>
+      <dd><a href="mailto:info@pounamutourismgroup.com">info@pounamutourismgroup.com</a></dd>
+    </div>
+    <div class="ct-item">
+      <dt>Postal address</dt>
+      <dd>PO Box 19735, Woolston, Christchurch 8241, New Zealand</dd>
+      <dd class="ct-note">For mail only.</dd>
+    </div>
+  </dl>
+  <div class="ct-chat" data-sehe-chat hidden>
+    <button type="button" class="sp-btn sp-btn--ghost">Start a live chat</button>
+  </div>
+  <div class="ct-trust">
+    <img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/new-zealands-leading-tour-operator-2025-winner-shield-256-816b3264-1920w.png" alt="World Travel Awards — New Zealand&#39;s Leading Tour Operator 2025" width="256" height="256" loading="lazy">
+    <div class="ct-trust-copy">
+      <p>World Travel Awards winner: New Zealand&#39;s Leading Tour Operator 2025.</p>
+        <div id="sehe-ct-trustbox" class="trustpilot-widget ct-trustbox" data-locale="en-NZ" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="67af6f95db89fc000f855205" data-style-height="20px" data-style-width="100%">
+          <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Read our reviews on Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a>
+        </div>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var box = document.getElementById('sehe-ct-trustbox');
+  if (!box) return;
+  var tries = 0;
+  function ready() {
+    if (box.querySelector('iframe')) return true;
+    if (window.Trustpilot) {
+      if (typeof window.Trustpilot.loadFromElement === 'function') { window.Trustpilot.loadFromElement(box, true); return true; }
+    }
+    return false;
+  }
+  var timer = setInterval(function () {
+    tries = tries + 1;
+    if (ready()) { clearInterval(timer); return; }
+    if (tries === 40) clearInterval(timer);
+  }, 500);
+})();
+</script>
+<script>
+(function () {
+  /* Contact page enhancement — add only, never remove.
+     "Start a chat" appears only once tawk.to (already on every page) is ready.
+     The native form is not touched by any script.
+     No less-than sign and no ampersand in this script (Duda's publisher escapes both). */
+  var tries = 0;
+  function chat() {
+    var box = document.querySelector('.sehe-pg-contact [data-sehe-chat]');
+    if (!box) return true;
+    if (window.Tawk_API) {
+      if (typeof window.Tawk_API.maximize === 'function') {
+        box.hidden = false;
+        var btn = box.querySelector('button');
+        if (btn) {
+          if (!btn.getAttribute('data-bound')) {
+            btn.setAttribute('data-bound', '1');
+            btn.addEventListener('click', function () { window.Tawk_API.maximize(); });
+          }
+        }
+        return true;
+      }
+    }
+    return false;
+  }
+  var timer = setInterval(function () {
+    tries = tries + 1;
+    if (chat()) { clearInterval(timer); return; }
+    if (tries === 60) clearInterval(timer);
+  }, 500);
+})();
+</script>
+<!-- ▲▲▲ END BLOCK B ▲▲▲ -->
+<!-- ▼▼▼ BLOCK C ▼▼▼ -->
+<!-- =====================================================================
+     SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact) — BLOCK C
+     VERSION v4  ·  2026-09-25  ·  paste into ONE Duda HTML widget
+     WHERE: page "contact-new", ROW 3 (full width) — below the details + form row.
+     WHAT:  quick links (FAQ, journeys and brochures, reviews). Set the row padding to 0.
+     Full steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
+     ===================================================================== -->
+<div class="sehe-pg-contact ct-more">
+<div class="sp-body">
+  <section class="sp-section" aria-labelledby="sehe-ct-quick">
+    <div class="sp-head">
+      <p class="sp-kicker">Before you get in touch</p>
+      <h2 id="sehe-ct-quick">You may find your answer here</h2>
+    </div>
+    <ul class="ct-quick" role="list">
+      <li><a href="/f-a-q"><strong>Frequently asked questions</strong><span>Booking, payments and what to expect on tour</span></a></li>
+      <li><a href="/journeys"><strong>Journeys and brochures</strong><span>Compare our tours, then request a brochure from any tour page</span></a></li>
+      <li><a href="/reviews"><strong>Guest reviews</strong><span>Read what our guests say about their journey</span></a></li>
+    </ul>
+  </section>
+</div>
+</div>
+<!-- ▲▲▲ END BLOCK C ▲▲▲ -->
