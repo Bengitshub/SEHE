@@ -1,8 +1,12 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — REVIEWS PAGE (/reviews)
-     COMPLETE PAGE  ·  VERSION v2  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v3  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v3 — Third independent review (25 Sep 2026): line length tightened to
+            about 60 characters' width (~66-72 characters; the old caps
+            rendered up to ~85); on phones the darker hero veil now also
+            applies to compact heroes (shared kit).
        v2 — Review fixes (independent check, 25 Sep 2026): Lisa Godwin's entry
             left out of earlier guest feedback — on the live site her name
             links to her Trustpilot profile, so it is a Trustpilot review and
@@ -107,7 +111,7 @@
   .sehe-pg-reviews .sp-head { max-width: 780px; margin: 0 0 28px !important; }
   .sehe-pg-reviews .sp-kicker { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 14px !important; font-weight: 700 !important; letter-spacing: .14em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
   .sehe-pg-reviews .sp-head h2 { font-size: clamp(28px, 3vw, 36px) !important; line-height: 1.2 !important; margin: 0 0 12px !important; }
-  .sehe-pg-reviews .sp-head p { max-width: 68ch; }
+  .sehe-pg-reviews .sp-head p { max-width: 60ch; }   /* ~66-72 characters per line in Open Sans */
   .sehe-pg-reviews .sp-head p + p { margin-top: 10px !important; }
 
   /* ── Buttons (48px+ tap targets) ────────────────────────────────────── */
@@ -151,7 +155,7 @@
     .sehe-pg-reviews .sp-hero { min-height: max(460px, 60svh); }
     .sehe-pg-reviews .sp-hero--compact { min-height: max(340px, 42svh); }
     /* phones crop to the brightest part of the frame — darker veil keeps contrast */
-    .sehe-pg-reviews .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.66) 0%, rgba(8,21,37,.48) 30%, rgba(8,21,37,.72) 58%, rgba(8,21,37,.96) 100%); }
+    .sehe-pg-reviews .sp-hero-veil, .sehe-pg-reviews .sp-hero--compact .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.66) 0%, rgba(8,21,37,.48) 30%, rgba(8,21,37,.72) 58%, rgba(8,21,37,.96) 100%); }
     .sehe-pg-reviews .sp-hero-inner, .sehe-pg-reviews .sp-hero--compact .sp-hero-inner { padding: 118px 20px 40px; }
     .sehe-pg-reviews .sp-hero-logo { left: 50%; width: 56px !important; transform: translateX(-50%); top: 18px; height: 56px !important; }
     .sehe-pg-reviews .sp-eyebrow { gap: 0; font-size: 12.5px !important; letter-spacing: .2em !important; margin-bottom: 14px !important; }
@@ -206,7 +210,7 @@
   .sehe-pg-reviews .rv-quote blockquote { margin: 0 0 10px !important; padding: 0 !important; border: 0 !important; background: none !important; }
   .sehe-pg-reviews .rv-quote blockquote p { color: var(--text) !important; font-style: normal !important; }
   .sehe-pg-reviews .rv-quote blockquote p + p { margin-top: 10px !important; }
-  .sehe-pg-reviews .rv-quote blockquote p, .sehe-pg-reviews .rv-quote figcaption { max-width: 68ch; }
+  .sehe-pg-reviews .rv-quote blockquote p, .sehe-pg-reviews .rv-quote figcaption { max-width: 60ch; }
   .sehe-pg-reviews .rv-video-link a { display: inline-flex; align-items: center; min-height: 44px; }
   .sehe-pg-reviews .rv-card figcaption a { display: inline-block; padding: 8px 0; margin: -8px 0; }
   .sehe-pg-reviews .rv-quote figcaption { font-size: 15.5px !important; line-height: 1.5 !important; color: var(--text-2) !important; }
