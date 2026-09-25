@@ -6,7 +6,7 @@ This runbook covers eight rebuilt pages: Reviews, Contact, About, FAQ, Gallery, 
 - **Masters:** one per page in the repo root:
   - `SEHE-reviews-page_v6.txt`
   - `SEHE-contact-page_v8.txt`
-  - `SEHE-gallery-page_v6.txt`
+  - `SEHE-gallery-page_v7.txt`
   - `SEHE-about-page_v5.txt`
   - `SEHE-faq-page_v6.txt`
   - `SEHE-himalayan-trust-page_v5.txt`
@@ -103,7 +103,7 @@ Status 25 Sep: `reviews-new` and `about-new` are built and published. `reviews-n
   - **Not true, or no answer:** delete the sentence.
 
   §7 lists the exact sentences. Make the edits (see "Changing a page's content later"), then publish the preview and send it to Kirsty.
-- **Her other questions don't block anything:** A4 (an updated route map), Gallery G2 to G4 (photo titles, the Milford spelling, photos of places no current tour visits) and FAQ F8 (hygiene). Those pages can go live, and the answers become small edits later.
+- **Her other questions don't block anything:** A4 (an updated route map), Gallery G2 and G4 (photo titles, photos of places no current tour visits) and FAQ F8 (hygiene). Those pages can go live, and the answers become small edits later.
 - **Privacy and Terms.** The new pages carry the **current** wording exactly. If Paul changes any wording, edit the text inside `<div class="lg-doc">` in that page's HTML widget, and update the master to match. Never paste old wording back.
 
 ## 0. Rules for every page
@@ -278,8 +278,8 @@ Use the §1 row. Every question has its own link, and opening the link opens tha
 
 Use the §1 row. **v6 is photos first:** there is no caption under the photos.
 
-- **Labels.** A navy label with a gold dash sits on 9 photos only, one per signature experience the current tours name: Queenstown, Aoraki Mt Cook, Kaikoura, Kingston Flyer, Rogers K92, TSS Earnslaw, Larnach Castle, Walter Peak, Taieri Gorge photostop. The label is the photo's own title, word for word.
-- **Milford Sound** gets a label once Kirsty settles the spelling (G3). Then add `21: 'Milford Sounds cruise'` (or the corrected title) to `KEY` in the Gallery builder, bump the version and paste again.
+- **Labels.** A navy label with a gold dash sits on 10 photos only, one per signature experience the current tours name: Queenstown, Aoraki Mt Cook, Kaikoura, Kingston Flyer, Rogers K92, Milford Sound cruise, TSS Earnslaw, Larnach Castle, Walter Peak, Taieri Gorge photostop. The label is the photo's own title.
+- **All 32 photos of the live gallery are on the page**, in the same order. The live page's other images are not gallery photos: its old banner (`Wharf-Pic---Sign.jpg`), its social-share image (`Southland+track.jpg`) and the Qualmark and TIA logos in the site footer.
 - **Credits.** The two photographer credits stay on their photos.
 - **Every other title** shows when a photo is opened, and screen readers still hear it.
 
@@ -483,8 +483,8 @@ All three sentences are in the second paragraph under "Our inspiration". To edit
 - **G1 — Intro sentence. RESOLVED (round 3, 25 Sep 2026).** The old intro said every photo came from passengers, but two are professional images (Rob Suisted, David Wall; both credited). The intro now reads "A closer look at the scenery and experiences along the way, including photographs shared by our guests."
 - **G2 — Titles that look wrong.**
   - Two photos are titled "Mirror Lake aka Lake Matheson (by Fox Glacier)", but they look like the Mirror Lakes in the Eglinton Valley on the Milford Road.
-  - The waterfall titled "Milford Sounds" looks like Thunder Creek Falls on the Haast Pass.
-- **G3 — Spellings kept verbatim:** "Milford Sounds", "Milford Sounds cruise", "Queen Charlotte Sounds", and "Kaikoura" without a macron. Since v6 this also holds back the Milford Sound label: Milford is a signature experience, but a label reading "Milford Sounds" would put the misspelling on the page. Once Kirsty approves "Milford Sound", correct both titles and add the label.
+  - The waterfall titled "Milford Sound" looks like Thunder Creek Falls on the Haast Pass.
+- **G3 — Spellings.** RESOLVED for Milford (25 Sep 2026, Ben: "yes it is milford"): "Milford Sounds" and "Milford Sounds cruise" now read "Milford Sound" and "Milford Sound cruise" (Gallery v7), and the cruise photo carries the Milford Sound label. Still kept verbatim: "Queen Charlotte Sounds", and "Kaikoura" without a macron.
 - **G4 — Photos of places no current tour visits** (checked against the current tour pages' text on 25 Sep 2026): Queen Charlotte Sounds, Picton foreshore (also the page's banner photo), Arrowtown and "Moonshine tasting in Gore", plus the two G2 photos. They are still in the gallery, unlabelled. Keep them or remove them: Kirsty's call.
 
 ### Himalayan Trust (the Trust's own words)
