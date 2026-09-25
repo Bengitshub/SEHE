@@ -1,8 +1,15 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — PRIVACY POLICY (/privacy-policy)
-     COMPLETE PAGE  ·  VERSION v1  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v2  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v2 — Review fixes (independent check, 25 Sep 2026): layout and type
+            only (shared kit: larger kicker/button type); wording re-proven
+            identical to the live page. Third independent review: line
+            length ~62 characters' width (72ch rendered up to ~87
+            characters); contents and related links 44px tall; the sticky
+            contents list scrolls on short laptop screens; darker hero veil
+            on phones.
        v1 — First new-design build of /privacy-policy (Brief v2, 25 Sep 2026).
             TYPOGRAPHY AND NAVIGATION ONLY — ZERO WORDING CHANGES, typos
             included. The document is the live page's text, word for word
@@ -92,9 +99,9 @@
   .sehe-pg-privacy .sp-body { max-width: 1240px; margin: 0 auto !important; padding: 64px 30px 76px !important; }
   .sehe-pg-privacy .sp-section + .sp-section, .sehe-pg-privacy .sp-section + .sp-band, .sehe-pg-privacy .sp-band + .sp-section { margin-top: 76px !important; }
   .sehe-pg-privacy .sp-head { max-width: 780px; margin: 0 0 28px !important; }
-  .sehe-pg-privacy .sp-kicker { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 13px !important; font-weight: 700 !important; letter-spacing: .16em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
+  .sehe-pg-privacy .sp-kicker { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 14px !important; font-weight: 700 !important; letter-spacing: .14em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
   .sehe-pg-privacy .sp-head h2 { font-size: clamp(28px, 3vw, 36px) !important; line-height: 1.2 !important; margin: 0 0 12px !important; }
-  .sehe-pg-privacy .sp-head p { max-width: 68ch; }
+  .sehe-pg-privacy .sp-head p { max-width: 60ch; }   /* ~66-72 characters per line in Open Sans */
   .sehe-pg-privacy .sp-head p + p { margin-top: 10px !important; }
 
   /* ── Buttons (48px+ tap targets) ────────────────────────────────────── */
@@ -102,7 +109,7 @@
   .sehe-pg-privacy .sp-btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 12px 24px;
     border-radius: 6px; border: 2px solid var(--navy); background: var(--navy); color: #ffffff !important;
-    font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; line-height: 1.25 !important;
+    font-family: 'Montserrat', sans-serif !important; font-size: 16px !important; font-weight: 600 !important; line-height: 1.25 !important;
     text-decoration: none !important; text-align: center !important; cursor: pointer; transition: background-color .2s, color .2s, border-color .2s;
   }
   .sehe-pg-privacy .sp-btn:hover { background: var(--navy-dark); border-color: var(--navy-dark); color: #ffffff !important; }
@@ -113,11 +120,11 @@
   .sehe-pg-privacy .sp-btn--light { background: transparent; border-color: rgba(255,255,255,.85); color: #ffffff !important; }
   .sehe-pg-privacy .sp-btn--light:hover { background: #ffffff; border-color: #ffffff; color: var(--navy-dark) !important; }
 
-  /* ── Disclosure ("show more") — native <details>, works with JS off ─── */
+  /* ── Disclosure ("show more") — native details element, works with JS off ── */
   .sehe-pg-privacy details.sp-more > summary {
     list-style: none; display: inline-flex; align-items: center; gap: 12px; min-height: 50px; padding: 12px 22px;
     border: 2px solid var(--navy); border-radius: 6px; background: #ffffff; color: var(--navy) !important;
-    font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; cursor: pointer;
+    font-family: 'Montserrat', sans-serif !important; font-size: 16px !important; font-weight: 600 !important; cursor: pointer;
   }
   .sehe-pg-privacy details.sp-more > summary::-webkit-details-marker { display: none; }
   .sehe-pg-privacy details.sp-more > summary::after { content: '+'; font-size: 22px; line-height: 1; font-weight: 400; }
@@ -138,10 +145,10 @@
     .sehe-pg-privacy .sp-hero { min-height: max(460px, 60svh); }
     .sehe-pg-privacy .sp-hero--compact { min-height: max(340px, 42svh); }
     /* phones crop to the brightest part of the frame — darker veil keeps contrast */
-    .sehe-pg-privacy .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.66) 0%, rgba(8,21,37,.48) 30%, rgba(8,21,37,.72) 58%, rgba(8,21,37,.96) 100%); }
+    .sehe-pg-privacy .sp-hero-veil, .sehe-pg-privacy .sp-hero--compact .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.66) 0%, rgba(8,21,37,.48) 30%, rgba(8,21,37,.72) 58%, rgba(8,21,37,.96) 100%); }
     .sehe-pg-privacy .sp-hero-inner, .sehe-pg-privacy .sp-hero--compact .sp-hero-inner { padding: 118px 20px 40px; }
     .sehe-pg-privacy .sp-hero-logo { left: 50%; width: 56px !important; transform: translateX(-50%); top: 18px; height: 56px !important; }
-    .sehe-pg-privacy .sp-eyebrow { gap: 0; font-size: 11.5px !important; letter-spacing: .24em !important; margin-bottom: 14px !important; }
+    .sehe-pg-privacy .sp-eyebrow { gap: 0; font-size: 12.5px !important; letter-spacing: .2em !important; margin-bottom: 14px !important; }
     .sehe-pg-privacy .sp-eyebrow::before, .sehe-pg-privacy .sp-eyebrow::after { display: none; }
     .sehe-pg-privacy .sp-hero h1, .sehe-pg-privacy .sp-hero--compact h1 { font-size: 34px !important; line-height: 1.14 !important; }
     .sehe-pg-privacy .sp-hero-sub { font-size: 17px !important; line-height: 1.6 !important; margin-top: 14px !important; }
@@ -161,14 +168,14 @@
 
   /* ── Legal page (typography + navigation only) ──────────────────────── */
   .sehe-pg-privacy .lg-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 56px; align-items: start; }
-  .sehe-pg-privacy .lg-toc { position: sticky; top: 140px; padding: 20px 22px !important; background: var(--cream); border: 1px solid var(--border-light); border-radius: 12px; }
+  .sehe-pg-privacy .lg-toc { position: sticky; top: 140px; max-height: calc(100vh - 160px); overflow-y: auto; padding: 20px 22px !important; background: var(--cream); border: 1px solid var(--border-light); border-radius: 12px; }
   .sehe-pg-privacy .lg-toc h2 { font-size: 15px !important; letter-spacing: .12em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
   .sehe-pg-privacy .lg-toc ol { list-style: none !important; margin: 0 !important; padding: 0 !important; }
   .sehe-pg-privacy .lg-toc li { margin: 0 !important; padding: 0 !important; list-style: none !important; }
   .sehe-pg-privacy .lg-toc li::before, .sehe-pg-privacy .lg-toc li::marker { content: none !important; }
-  .sehe-pg-privacy .lg-toc a { display: block; padding: 7px 0; font-size: 15.5px !important; line-height: 1.4 !important; text-decoration: none !important; }
+  .sehe-pg-privacy .lg-toc a { display: flex; align-items: center; min-height: 44px; padding: 6px 0; font-size: 16px !important; line-height: 1.35 !important; text-decoration: none !important; }
   .sehe-pg-privacy .lg-toc a:hover { text-decoration: underline !important; }
-  .sehe-pg-privacy .lg-doc { max-width: 72ch; }
+  .sehe-pg-privacy .lg-doc { max-width: 62ch; }   /* ~68-74 characters per line */
   .sehe-pg-privacy .lg-doc h2 { scroll-margin-top: 130px; font-size: clamp(22px, 2.2vw, 27px) !important; line-height: 1.3 !important; margin: 40px 0 14px !important; padding-top: 18px !important; border-top: 1px solid var(--border-light); }
   .sehe-pg-privacy .lg-doc h2:first-child { margin-top: 0 !important; padding-top: 0 !important; border-top: 0; }
   .sehe-pg-privacy .lg-doc p { font-size: 17px !important; line-height: 1.75 !important; color: var(--text) !important; margin: 0 0 14px !important; }
@@ -176,7 +183,7 @@
   .sehe-pg-privacy .lg-doc li { font-size: 17px !important; line-height: 1.7 !important; color: var(--text) !important; margin: 0 0 6px !important; list-style: disc !important; }
   .sehe-pg-privacy .lg-doc strong { color: #111; }
   .sehe-pg-privacy .lg-related { margin-top: 48px !important; padding-top: 20px !important; border-top: 1px solid var(--border-light); display: flex; flex-wrap: wrap; gap: 10px 26px; }
-  .sehe-pg-privacy .lg-related a { font-size: 16px !important; }
+  .sehe-pg-privacy .lg-related a { display: inline-flex; align-items: center; min-height: 44px; font-size: 16px !important; }
   @media (max-width: 960px) {
     .sehe-pg-privacy .lg-wrap { grid-template-columns: 1fr; gap: 28px; }
     .sehe-pg-privacy .lg-toc { position: static; }
