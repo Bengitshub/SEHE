@@ -1,8 +1,13 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — FAQ PAGE (/f-a-q)
-     COMPLETE PAGE  ·  VERSION v3  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v4  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v4 — Approved copy update (round 3, 25 Sep 2026): 12 QUESTIONS reworded
+            (Q2, Q8-Q13, Q15-Q17, Q19, Q21 in this page's order). Every
+            answer is unchanged, word for word, and every anchor ID is
+            unchanged (IDs still come from the original question wording,
+            so links like #faq-what-are-the-payment-terms keep working).
        v3 — Third independent review (25 Sep 2026): line length tightened to
             about 60 characters' width (~66-72 characters; the old caps
             rendered up to ~85); on phones the darker hero veil now also
@@ -234,7 +239,7 @@
         </div>
       </details>
       <details class="fq-item" id="faq-i-have-mobility-issues-can-i-join-the-tour">
-        <summary>I have mobility issues, can I join the tour?</summary>
+        <summary>Can I join the tour if I have limited mobility?</summary>
         <div class="fq-a">
           <p>For your enjoyment and safety during the tour, you will need to be able to climb and descend two flights of stairs, walk unassisted comfortably for 500 metres over uneven surfaces, manage your own bags at times and be able to look after yourself unassisted for an extended period, if required. Some hotels on the tour do not have walk-in showers (there are showers over baths). Please advise us in advance if you need a walk-in shower. Hotel walk-in showers are limited, so not all requests can be fulfilled. If bringing a walker or a fully collapsible zimmer frame, you would need to travel with an able-bodied companion to assist you during the tour as needed.</p>
         </div>
@@ -273,37 +278,37 @@
     <section class="fq-cat" id="faq-booking" aria-labelledby="faq-booking-h">
       <h2 id="faq-booking-h">Booking and payments</h2>
       <details class="fq-item" id="faq-is-pre-or-post-tour-accommodation-available">
-        <summary>Is pre- or post-tour accommodation available?</summary>
+        <summary>Can I book accommodation before or after the tour?</summary>
         <div class="fq-a">
           <p>Yes, you can book extra hotel nights through our customer care team or through your travel agent. All hotels are subject to availability.</p>
         </div>
       </details>
       <details class="fq-item" id="faq-what-are-the-payment-terms">
-        <summary>What are the Payment Terms?</summary>
+        <summary>What are the payment terms?</summary>
         <div class="fq-a">
           <p>The payment terms for the Sir Edmund Hillary Explorer Rail &amp; Coach Tour is a 20% deposit to secure a booking; 40% due six-months prior to the tour departure; the balance is due the month before the tour departure.</p>
         </div>
       </details>
       <details class="fq-item" id="faq-how-do-i-make-bank-payments-to-nz-from-overseas">
-        <summary>How do I make bank payments to NZ from overseas?</summary>
+        <summary>How do I pay by bank transfer from overseas?</summary>
         <div class="fq-a">
           <p>Bank Accounts: You have the option to pay by bank transfer into an AU$, US$ and a NZ$ currency account. To request an invoice to pay into one of these bank accounts, please contact <a href="mailto:info@pounamutourismgroup.com">info@pounamutourismgroup.com</a> If you require Pounamu Tourism Group’s physical address: Level 3, 111 Cashel Street, Christchurch, 8011, NZ. BNZ bank’s details: Bank of New Zealand, 80 Queen Street, Auckland, New Zealand.</p>
         </div>
       </details>
       <details class="fq-item" id="faq-do-you-accept-payments-by-paypal-or-wise">
-        <summary>Do you accept payments by Paypal or Wise?</summary>
+        <summary>Do you accept payments by PayPal or Wise?</summary>
         <div class="fq-a">
           <p>Yes, we accept payments by Wise or Paypal. Please contact the Customer Service on <a href="mailto:info@pounamutourismgroup.com">info@pounamutourismgroup.com</a> to request more details or to request a payment link to be sent.</p>
         </div>
       </details>
       <details class="fq-item" id="faq-what-is-your-cancellation-policy">
-        <summary>What is your Cancellation Policy?</summary>
+        <summary>What is your cancellation policy?</summary>
         <div class="fq-a">
           <p>If cancellation is made more than 6-months prior to the tour departure, a full refund will apply, no cancellation fee; 60 days or more prior to departure, 20% of the tour package price will apply; If cancellation is made between 30 and 59 days prior to departure, 50% of the tour package price; If the cancellation is made less than 30 days prior to departure, 100% of the tour package price will apply. In the event that Pounamu Tourism Group cancels a tour, 100% refund will apply.</p>
         </div>
       </details>
       <details class="fq-item" id="faq-where-can-i-view-the-booking-terms-conditions">
-        <summary>Where can I view the booking Terms &amp; Conditions?</summary>
+        <summary>Where can I view the booking terms and conditions?</summary>
         <div class="fq-a">
           <p>Terms &amp; conditions can be viewed <a href="/terms-and-conditions">here.</a></p>
         </div>
@@ -318,19 +323,19 @@
         </div>
       </details>
       <details class="fq-item" id="faq-what-should-i-pack-to-wear">
-        <summary>What should I pack to wear?</summary>
+        <summary>What clothes should I pack?</summary>
         <div class="fq-a">
           <p>Please remember that the weather in the New Zealand can be unpredictable and you might experience four seasons in one day, so please bring a waterproof jacket and layers of warm clothing, together with sensible walking shoes. We also recommend packing sunscreen, hand sanitiser and insect repellent.</p>
         </div>
       </details>
       <details class="fq-item" id="faq-when-can-i-book-an-optional-extra-excursion">
-        <summary>When can I book an Optional Extra Excursion?</summary>
+        <summary>When can I book an optional extra excursion?</summary>
         <div class="fq-a">
           <p>You will be able to book these before the tour. A Personal Details Form will be sent to you prior to departure to complete and this is where any optional extra excursions can be requested. Please note that some excursions have limited spaces available. If you have any questions regarding the optional excursions, our Customer Care team will be happy to assist.</p>
         </div>
       </details>
       <details class="fq-item" id="faq-do-i-need-travel-insurance">
-        <summary>Do I need Travel Insurance?</summary>
+        <summary>Do I need travel insurance?</summary>
         <div class="fq-a">
           <p>We strongly recommend that all passengers take out comprehensive travel insurance and review their health insurance coverage prior to travel.</p>
         </div>
@@ -345,7 +350,7 @@
     <section class="fq-cat" id="faq-on-tour" aria-labelledby="faq-on-tour-h">
       <h2 id="faq-on-tour-h">On tour</h2>
       <details class="fq-item" id="faq-what-facilities-are-available-on-the-coach-trains">
-        <summary>What facilities are available on the Coach &amp; Trains?</summary>
+        <summary>What facilities are available on the coach and trains?</summary>
         <div class="fq-a">
           <p>Our coaches feature onboard Wi-Fi, air conditioning, bathroom facilities, and a selection of USB charging ports for guest use while travelling. Many of the scenic trains included throughout the tour also offer Wi-Fi, onboard commentary, café cart facilities, power outlets, and either onboard bathrooms or restroom facilities available at stations. Please note that facilities may vary depending on the train service and route. For commentary on services such as the TranzAlpine and Coastal Pacific, guests will need their own headphones to listen to the onboard commentary app. Pre-tour information will be provided with instructions on how to download and access the app before travel.</p>
         </div>
@@ -357,7 +362,7 @@
         </div>
       </details>
       <details class="fq-item" id="faq-how-does-seating-work-on-the-coach-and-trains">
-        <summary>How does seating work on the Coach and Trains?</summary>
+        <summary>How does seating work on the coach and trains?</summary>
         <div class="fq-a">
           <p>Seating on the coach is not pre-allocated. A seat rotation system is managed by your Tour Guide to give guests the opportunity to enjoy different views and seating positions throughout the journey. Train seating arrangements vary depending on the rail service and operator. Some train journeys feature allocated an allocated seating or carriage while others may offer more flexibility on the day. Your Tour Guide will provide clear instructions prior to each rail journey. A note on travel sickness: If you are prone to travel sickness, please ensure you carry appropriate medication with you for both coach and Train journeys.</p>
         </div>
