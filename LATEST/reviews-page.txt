@@ -1,8 +1,17 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — REVIEWS PAGE (/reviews)
-     COMPLETE PAGE  ·  VERSION v4  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v5  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v5 — Approved copy update (round 3, 25 Sep 2026): H1 "What our guests
+            say"; new hero intro; the intro paragraphs under "Selected
+            reviews" and "Earlier guest feedback" removed (each review card
+            still shows "Reviewed <month year> on Trustpilot", and the "Read
+            all reviews on Trustpilot" link stays below the cards); video
+            heading "Hear from our guests", and the play button's label
+            matches; press heading "Our first tour in 2021" with a new
+            intro; new help-band text (SH-02). Reviews and testimonials
+            unchanged, word for word.
        v4 — Round-2 feedback (25 Sep 2026): the 12 selected Trustpilot reviews
             replaced with the newer set taken from the public profile on
             25 Sep 2026 (Louise H. Sep 2026 ... David Mar 2026), verbatim,
@@ -254,8 +263,8 @@
   <img class="sp-hero-logo" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEH+Explorer_logo+white-350w.png" alt="Sir Edmund Hillary Explorer" width="350" height="350">
   <div class="sp-hero-inner">
     <p class="sp-eyebrow">Guest reviews</p>
-    <h1 id="sehe-rv-title">In our guests&#39; words</h1>
-    <p class="sp-hero-sub">Recent reviews from guests who have travelled New Zealand&#39;s South Island with us, shared on Trustpilot.</p>
+    <h1 id="sehe-rv-title">What our guests say</h1>
+    <p class="sp-hero-sub">From scenic rail journeys to the people along the way, hear what our guests remember most.</p>
     <div class="rv-proof">
       <div id="sehe-rv-trustbox" class="trustpilot-widget rv-trustbox" data-locale="en-NZ" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="67af6f95db89fc000f855205" data-style-height="20px" data-style-width="100%" data-theme="dark">
         <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Read our reviews on Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a>
@@ -270,7 +279,6 @@
     <div class="sp-head">
       <p class="sp-kicker">From Trustpilot</p>
       <h2 id="sehe-rv-selected">Selected reviews</h2>
-      <p>A selection of recent reviews from our Trustpilot profile, newest first. Dates shown are the dates each review was posted. <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Read all reviews on Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a></p>
     </div>
     <ul class="rv-grid" role="list">
       <li class="rv-card">
@@ -393,13 +401,13 @@
   <section class="sp-section" aria-labelledby="sehe-rv-video">
     <div class="sp-head">
       <p class="sp-kicker">Guest video</p>
-      <h2 id="sehe-rv-video">More passenger testimonials</h2>
+      <h2 id="sehe-rv-video">Hear from our guests</h2>
     </div>
     <div class="rv-video-frame">
       <a class="rv-video-facade" href="https://vimeo.com/1067162461" data-sehe-video="https://player.vimeo.com/video/1067162461?autoplay=1&amp;dnt=1" data-sehe-video-title="The Sir Edmund Hillary Explorer Rail &amp; Coach Tour - More Passenger Testimonials">
         <img src="https://i.vimeocdn.com/video/1995021277-0571f59c32ed5cb894ea27fe0106547312b38278a5633158b36df60a16841444-d_1280?region=us" alt="" width="1280" height="720" loading="lazy">
         <span class="rv-play" aria-hidden="true"></span>
-        <span class="rv-video-title">Play the video: More passenger testimonials <span class="rv-video-len">(1 min 30 sec)</span></span>
+        <span class="rv-video-title">Play the video: Hear from our guests <span class="rv-video-len">(1 min 30 sec)</span></span>
       </a>
     </div>
     <p class="rv-video-link"><a href="https://vimeo.com/1067162461" target="_blank" rel="noopener">Watch on Vimeo<span class="sp-sr"> (opens in a new tab)</span></a></p>
@@ -416,8 +424,8 @@
   <section class="sp-section" aria-labelledby="sehe-rv-press">
     <div class="sp-head">
       <p class="sp-kicker">In the press</p>
-      <h2 id="sehe-rv-press">Newspaper articles of the inaugural tour in 2021</h2>
-      <p>The tour was originally called the Great Southern Steam Tour, before a relationship was established with the Hillary family.</p>
+      <h2 id="sehe-rv-press">Our first tour in 2021</h2>
+      <p>Our first tour was called the Great Southern Steam Tour. Our association with the Hillary family came later.</p>
     </div>
     <ul class="rv-press" role="list">
       <li>
@@ -448,7 +456,6 @@
     <div class="sp-head">
       <p class="sp-kicker">Guest feedback</p>
       <h2 id="sehe-rv-earlier">Earlier guest feedback, 2021–2025</h2>
-      <p>Feedback from guests on our earlier tours, as previously published on this page. Names, places and dates are as originally published.</p>
     </div>
     <details class="sp-more">
       <summary><span class="sp-when-closed">Show earlier guest feedback</span><span class="sp-when-open">Hide earlier guest feedback</span></summary>
@@ -557,7 +564,7 @@
   <aside class="sp-band" aria-label="Need help choosing the right tour?">
     <div class="sp-band-copy">
       <h2>Need help choosing the right tour?</h2>
-      <p>Our team is here to help you find the perfect journey. Call us or get in touch and we&#39;ll match you with the right tour for your dates and interests.</p>
+      <p>Talk to our New Zealand team about dates, rooms and what you&#39;d like to see. We&#39;ll help you choose a journey that suits you.</p>
     </div>
     <div class="sp-actions">
       <a class="sp-btn sp-btn--gold" href="/journeys">View all journeys</a>

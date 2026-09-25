@@ -1,6 +1,6 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact) — BLOCK B
-     VERSION v4  ·  2026-09-25  ·  paste into ONE Duda HTML widget
+     VERSION v5  ·  2026-09-25  ·  paste into ONE Duda HTML widget
      WHERE: page "contact-new", ROW 2, LEFT column. The native Duda form sits in the RIGHT column of the same row.
      WHAT:  contact details (all tel:/mailto: links), live-chat button, trust line. The script only shows the chat button.
      Full steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
@@ -38,10 +38,10 @@
     </div>
   </dl>
   <div class="ct-chat" data-sehe-chat hidden>
-    <button type="button" class="sp-btn sp-btn--ghost">Start a live chat</button>
+    <button type="button" class="sp-btn sp-btn--ghost">Chat with us</button>
   </div>
   <div class="ct-trust">
-    <img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/new-zealands-leading-tour-operator-2025-winner-shield-256-816b3264-1920w.png" alt="World Travel Awards — New Zealand&#39;s Leading Tour Operator 2025" width="256" height="256" loading="lazy">
+    <img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/new-zealands-leading-tour-operator-2025-winner-shield-256-816b3264-1920w.png" alt="World Travel Awards: New Zealand&#39;s Leading Tour Operator 2025" width="256" height="256" loading="lazy">
     <div class="ct-trust-copy">
       <p>World Travel Awards winner: New Zealand&#39;s Leading Tour Operator 2025.</p>
         <div id="sehe-ct-trustbox" class="trustpilot-widget ct-trustbox" data-locale="en-NZ" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="67af6f95db89fc000f855205" data-style-height="20px" data-style-width="100%">

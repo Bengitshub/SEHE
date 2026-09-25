@@ -1,8 +1,14 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — HIMALAYAN TRUST PAGE (/himalayan-trust)
-     COMPLETE PAGE  ·  VERSION v3  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v4  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v4 — Approved copy update (round 3, 25 Sep 2026): our note above the
+            Trust's sections now reads "The Himalayan Trust shares its story
+            and its work in the Everest region below, in its own words."
+            (HT-03); the closing band's line is HT-06; the two logo links
+            lose their em dash and read "Himalayan Trust website (opens in
+            a new tab)". The Trust's own text is unchanged, word for word.
        v3 — Third independent review (25 Sep 2026): line length tightened to
             about 60 characters' width (~66-72 characters; the old caps
             rendered up to ~85); on phones the darker hero veil now also
@@ -198,7 +204,7 @@
   <div class="sp-hero-veil" aria-hidden="true"></div>
   <img class="sp-hero-logo" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEH+Explorer_logo+white-350w.png" alt="Sir Edmund Hillary Explorer" width="350" height="350">
   <div class="sp-hero-inner">
-    <a class="ht-logo-link" href="https://himalayantrust.org/" target="_blank" rel="noopener"><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Himalayan+Logo+White-640w.png" alt="Himalayan Trust logo" width="640" height="199"><span class="sp-sr"> — Himalayan Trust website (opens in a new tab)</span></a>
+    <a class="ht-logo-link" href="https://himalayantrust.org/" target="_blank" rel="noopener"><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Himalayan+Logo+White-640w.png" alt="Himalayan Trust" width="640" height="199"><span class="sp-sr"> website (opens in a new tab)</span></a>
     <p class="sp-eyebrow">Founded in 1960</p>
     <h1 id="sehe-ht-title">Sir Edmund Hillary's Himalayan Trust</h1>
     <p class="sp-hero-sub">"Committed to the people of the Everest region since 1960"</p>
@@ -206,8 +212,8 @@
 </section>
 <div class="sp-body">
   <aside class="sp-section ht-note" aria-label="Who is speaking on this page">
-    <p>The text in the two sections headed &#8220;The Himalayan Trust&#8221; below is the Himalayan Trust&#8217;s own. There, &#8220;we&#8221; and &#8220;our&#8221; mean the Himalayan Trust, the charity Sir Edmund Hillary founded &#8212; not Sir Edmund Hillary Explorer.</p>
-    <a class="ht-logo-link" href="https://himalayantrust.org/" target="_blank" rel="noopener"><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/HT+Logo+MAIN-640w.png" alt="Himalayan Trust logo" width="640" height="192"><span class="sp-sr"> — Himalayan Trust website (opens in a new tab)</span></a>
+    <p>The Himalayan Trust shares its story and its work in the Everest region below, in its own words.</p>
+    <a class="ht-logo-link" href="https://himalayantrust.org/" target="_blank" rel="noopener"><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/HT+Logo+MAIN-640w.png" alt="Himalayan Trust" width="640" height="192"><span class="sp-sr"> website (opens in a new tab)</span></a>
   </aside>
 
   <section class="sp-section ht-copy" aria-labelledby="sehe-ht-heritage">
@@ -250,7 +256,7 @@
   <aside class="sp-band" aria-label="About the Sir Edmund Hillary Explorer">
     <div class="sp-band-copy">
       <h2>About the Sir Edmund Hillary Explorer</h2>
-      <p>Sir Edmund Hillary epitomised the New Zealand spirit of adventure and he is our inspiration when planning your experience of a lifetime.</p>
+      <p>Sir Edmund Hillary's spirit of adventure inspires our rail and coach journeys through New Zealand's South Island.</p>
     </div>
     <div class="sp-actions">
       <a class="sp-btn sp-btn--gold" href="/about">About us</a>

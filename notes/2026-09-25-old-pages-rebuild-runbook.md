@@ -4,12 +4,12 @@ This runbook covers eight rebuilt pages: Reviews, Contact, About, FAQ, Gallery, 
 
 - **Paste files:** always paste from `LATEST/`. They are regenerated with `python3 tools/make-latest.py`.
 - **Masters:** one per page in the repo root:
-  - `SEHE-reviews-page_v4.txt`
-  - `SEHE-contact-page_v4.txt`
-  - `SEHE-gallery-page_v3.txt`
-  - `SEHE-about-page_v3.txt`
-  - `SEHE-faq-page_v3.txt`
-  - `SEHE-himalayan-trust-page_v3.txt`
+  - `SEHE-reviews-page_v5.txt`
+  - `SEHE-contact-page_v5.txt`
+  - `SEHE-gallery-page_v4.txt`
+  - `SEHE-about-page_v4.txt`
+  - `SEHE-faq-page_v4.txt`
+  - `SEHE-himalayan-trust-page_v4.txt`
   - `SEHE-privacy-policy-page_v2.txt`
   - `SEHE-terms-page_v2.txt`
 - **Before snapshot:** the served HTML of every old page, from 25 Sep 2026, is in `backups/2026-09-25-old-pages/`.
@@ -200,14 +200,17 @@ The old page is untouched throughout, so rollback takes about two minutes.
    - Paste `LATEST/contact-page-blockB-details.txt`.
    - Set this row's padding to 0.
 5. Add a full-width row **above** it, with padding 0, and paste `LATEST/contact-page-blockA-hero.txt`. Block A carries the CSS for the whole page, so it must stay on the page.
-6. Add a full-width row **below** it, **set its padding to 0**, and paste `LATEST/contact-page-blockC-more.txt`. This block holds the quick links:
+6. Add a full-width row **below** it, **set its padding to 0**, and paste `LATEST/contact-page-blockC-more.txt`. This block holds the quick links, under the heading "Helpful information":
    - FAQ;
    - Journeys and brochures;
    - Reviews.
 
    There is no in-page Pounamu line and no social links, because the site footer already carries both.
+7. **Form button text (manual, not code).** In the form widget's settings, change the button text from **"Send"** to **"Send enquiry"**.
+   - **Change nothing else on the form.**
+   - This doesn't affect tracking: the "Contact Us Form Submitted" trigger only looks at the success message.
 
-**Check the form's settings in `contact-new`** against `/contact`. Look only; change nothing:
+**Check the form's settings in `contact-new`** against `/contact`. Apart from the button text in step 7, change nothing:
 
 | Setting | Expected value |
 |---|---|
@@ -217,6 +220,7 @@ The old page is untouched throughout, so rollback takes about two minutes.
 | reCAPTCHA | On (checkbox) |
 | Success message | "Thank you for contacting us. We will get back to you as soon as possible" |
 | Field labels | `%FIRSTNAME%`, `%EMAIL%`, `%ENQUIRY_MESSAGE%` |
+| Button text | "Send enquiry" (the only change, step 7) |
 
 **Tracking stays intact.** The public GTM container, checked 25 Sep 2026, has these triggers:
 
@@ -235,7 +239,7 @@ To rename them properly, in one sitting:
 3. Re-map the Zap.
 4. Delete the three `::before { content: "Your …" }` lines in Block A.
 
-**Chat button.** "Start a live chat" appears only once tawk.to has loaded. tawk.to is already on every page, so no second chat system was added.
+**Chat button.** "Chat with us" appears only once tawk.to has loaded. tawk.to is already on every page, so no second chat system was added.
 
 ### About (`/about`): `LATEST/about-page.txt`
 
@@ -408,9 +412,11 @@ The wording on the new pages is exactly as it is live today, unless a master's c
 
 ### About (for Kirsty)
 
-- **A1 — International Antarctic Centre.** The page says: "In Christchurch, learn more about his team's expedition … at the International Antarctic Centre". Is that visit still on every itinerary?
-- **A2 — Marlborough.** The page says: "You will also travel through Marlborough … Mt Tapuae-o-Uenuku". Is that still true of every tour?
-- **A3 — Hillary family guest speaker.** The page says: "A guest speaker from the Hillary family will also give you an insight …". Is that on every departure? Other pages put it differently:
+The About text was rewritten in the approved copy update (round 3, 25 Sep 2026). A1 to A3 quote the new wording. The claims themselves are still waiting on Kirsty.
+
+- **A1 — International Antarctic Centre.** The page says: "In Christchurch, learn about his team's Antarctic expedition using converted farm tractors at the International Antarctic Centre." Is that visit still on every itinerary?
+- **A2 — Marlborough.** The page says: "You will also travel through Marlborough, where Hillary trained for the air force during the Second World War and climbed Mt Tapuae-o-Uenuku." Is that still true of every tour?
+- **A3 — Hillary family guest speaker.** The page says: "A guest speaker from the Hillary family shares personal stories and how the family continues his legacy." Is that on every departure? Other pages put it differently:
   - The live homepage says "a member of the Hillary family personally joins the tour for an evening at the Sir Edmund Hillary Alpine Centre".
   - Journeys shows a "Hillary Family Speaker" tile.
   - Peter Hillary hosts only the Pinnacle.
@@ -437,7 +443,7 @@ The wording on the new pages is exactly as it is live today, unless a master's c
 
 ### Gallery (for Kirsty)
 
-- **G1 — Intro sentence.** It says "Photos kindly supplied by passengers from previous tours.", but two photos are professional images: Marlborough Sounds by Rob Suisted and Dunedin Railway Station by David Wall. Both now show their credit. A possible fix: "Many of these photos were kindly supplied by passengers from previous tours."
+- **G1 — Intro sentence. RESOLVED (round 3, 25 Sep 2026).** The old intro said every photo came from passengers, but two are professional images (Rob Suisted, David Wall; both credited). The intro now reads "A closer look at the scenery and experiences along the way, including photographs shared by our guests."
 - **G2 — Titles that look wrong.**
   - Two photos are titled "Mirror Lake aka Lake Matheson (by Fox Glacier)", but they look like the Mirror Lakes in the Eglinton Valley on the Milford Road.
   - The waterfall titled "Milford Sounds" looks like Thunder Creek Falls on the Haast Pass.

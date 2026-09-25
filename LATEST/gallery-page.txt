@@ -1,8 +1,12 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — GALLERY PAGE (/gallery)
-     COMPLETE PAGE  ·  VERSION v3  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v4  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v4 — Approved copy update (round 3, 25 Sep 2026): new hero intro
+            (GL-03), which resolves flag G1 (the old intro said every photo
+            came from passengers); new help-band text (SH-02). Photo titles
+            unchanged, word for word.
        v3 — Round-2 feedback (25 Sep 2026): the help band no longer links
             straight to /brochure-collection (every brochure form redirects
             there, and a visit counts as a brochure conversion). Nothing
@@ -229,7 +233,7 @@
   <div class="sp-hero-inner">
     <p class="sp-eyebrow">On tour</p>
     <h1 id="sehe-gl-title">Gallery</h1>
-    <p class="sp-hero-sub">Photos kindly supplied by passengers from previous tours.</p>
+    <p class="sp-hero-sub">A closer look at the scenery and experiences along the way, including photographs shared by our guests.</p>
   </div>
 </section>
 <div class="sp-body">
@@ -272,7 +276,7 @@
   <aside class="sp-band" aria-label="Need help choosing the right tour?">
     <div class="sp-band-copy">
       <h2>Need help choosing the right tour?</h2>
-      <p>Our team is here to help you find the perfect journey. Call us or get in touch and we&#39;ll match you with the right tour for your dates and interests.</p>
+      <p>Talk to our New Zealand team about dates, rooms and what you'd like to see. We'll help you choose a journey that suits you.</p>
     </div>
     <div class="sp-actions">
       <a class="sp-btn sp-btn--gold" href="/journeys">View all journeys</a>
