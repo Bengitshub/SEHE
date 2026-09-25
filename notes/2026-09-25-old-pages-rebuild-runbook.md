@@ -85,13 +85,13 @@ They already had it in the 6 Sep backup (`backups/2026-09-06-live-site/pages/`),
 
 **Phase 1: Reviews and Contact (Ben).**
 
-**Check-over, 25 Sep 2026 (live site):**
+**Check-over, 25 Sep 2026 (live site, second pass):**
 
 | Preview | Live | Result | To do |
 |---|---|---|---|
-| `reviews-new` | v5 | "Show 6 more reviews" still plain text | Paste **v7** over it |
-| `contact-new` | v8 | **The native form is gone**, plus two cut-off widgets (a v7 and a second v8, 150 lines each) | Delete the page and rebuild it from a fresh duplicate of `/contact` (§3 Contact), then paste **v9** |
-| `about-new` | v4 | Leftover old photo-slider row below the new content (400px on phones) | Delete that row. Still held for A1 to A3 |
+| `reviews-new` | v7 | OK: complete paste, "Show 6 more reviews" styled and toggles | None |
+| `contact-new` | v9 | v9 widget complete, but **the native form is still gone** and the two cut-off widgets (a v7 and a second v8) are still there | Delete the page and rebuild it from a fresh duplicate of `/contact` (§3 Contact), then paste **v9** |
+| `about-new` | v4 | Leftover old photo-slider row below the new content: 400px on phones, 0px on desktop, so switch the editor to mobile view to see it | Delete that row. Still held for A1 to A3 |
 | `faq-new` | v6 | OK: 5 top buttons 6px, 26 answers, deep links open | None |
 | `gallery-new` | v7 | OK: 32 photos, 10 labels, viewer works | None |
 | `himalayan-trust-new` | v5 | OK | None |
