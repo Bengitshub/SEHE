@@ -1,8 +1,12 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — PRIVACY POLICY (/privacy-policy)
-     COMPLETE PAGE  ·  VERSION v3  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v4  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v4 — END OF FILE line added as the last line (25 Sep 2026): if it is
+            the last line in Duda's code box, the whole file is pasted (two
+            Contact pastes had been cut off at line 150). Page code
+            identical to v3.
        v3 — Shared kit fix (25 Sep 2026): no CSS child combinators any more.
             Duda publishes that character as an HTML entity and the browser
             drops the rule. This page has no show-more button, so nothing
@@ -274,3 +278,4 @@
   </nav>
 </div>
 </div>
+<!-- END OF FILE: privacy-policy-page.txt v4. If this is the last line in the Duda code box, the whole file is pasted. -->
