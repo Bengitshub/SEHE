@@ -21,13 +21,10 @@ page first; full steps, SEO text and rollback in
 notes/2026-09-25-old-pages-rebuild-runbook.md
   one HTML widget each: reviews-page.txt, about-page.txt,
   faq-page.txt, gallery-page.txt, himalayan-trust-page.txt,
-  privacy-policy-page.txt, terms-page.txt
-  CONTACT (three HTML widgets + the NATIVE Duda form, untouched):
-    contact-page-blockA-hero.txt    -> row 1, full width (carries
-                                       the CSS for the whole page)
-    contact-page-blockB-details.txt -> row 2, LEFT column
-    (native Duda form)              -> row 2, RIGHT column
-    contact-page-blockC-more.txt    -> row 3, full width
+  privacy-policy-page.txt, terms-page.txt, contact-page.txt
+  CONTACT: paste contact-page.txt into ONE widget in a full-width
+  row placed DIRECTLY ABOVE the native Duda form row. Keep the form
+  as it is; on the published page it moves into the design.
 
 !! ON HOLD (Aug 2026): tourpage-*-blockB.txt. The live tour pages now
    carry a DIFFERENT booking section (iframe to the new Pounamu Journeys
@@ -39,9 +36,7 @@ CURRENT VERSIONS
 ------------------------------------------------------------
   about-page.txt                         v4    (SEHE-about-page_v4.txt)
   brochure-collection.txt                v2    (SEHE-brochure-collection_v2.txt)
-  contact-page-blockA-hero.txt           v6    (SEHE-contact-page_v6.txt [BLOCK A])
-  contact-page-blockB-details.txt        v6    (SEHE-contact-page_v6.txt [BLOCK B])
-  contact-page-blockC-more.txt           v6    (SEHE-contact-page_v6.txt [BLOCK C])
+  contact-page.txt                       v7    (SEHE-contact-page_v7.txt)
   faq-page.txt                           v4    (SEHE-faq-page_v4.txt)
   gallery-page.txt                       v4    (SEHE-gallery-page_v4.txt)
   himalayan-trust-page.txt               v4    (SEHE-himalayan-trust-page_v4.txt)

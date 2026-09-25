@@ -5,7 +5,7 @@ This runbook covers eight rebuilt pages: Reviews, Contact, About, FAQ, Gallery, 
 - **Paste files:** always paste from `LATEST/`. They are regenerated with `python3 tools/make-latest.py`.
 - **Masters:** one per page in the repo root:
   - `SEHE-reviews-page_v5.txt`
-  - `SEHE-contact-page_v6.txt`
+  - `SEHE-contact-page_v7.txt`
   - `SEHE-gallery-page_v4.txt`
   - `SEHE-about-page_v4.txt`
   - `SEHE-faq-page_v4.txt`
@@ -194,7 +194,9 @@ The old page is untouched throughout, so rollback takes about two minutes.
 - If a Carousel becomes available, its "Get code" snippet (business unit `67af6f95db89fc000f855205`) could show new reviews automatically.
 - Until then, the live TrustBox shows the current score and count (TrustScore 4.7 from 88 reviews on 25 Sep), and the 12 selected reviews are fixed text.
 
-### Contact (`/contact`): three HTML widgets plus the native form
+### Contact (`/contact`): ONE HTML widget above the native form: `LATEST/contact-page.txt`
+
+Since v7 the whole page is one widget. The native Duda form stays in its own row directly below the widget. On the published page, a small script moves the form into the right-hand column. **In the Duda editor the form stays below the widget; that is expected.**
 
 **Build.**
 
@@ -203,17 +205,15 @@ The old page is untouched throughout, so rollback takes about two minutes.
    - the photo banner row;
    - the "Contact Us" text row;
    - the Facebook/Instagram row.
-3. In the form row, delete the **"Send us an enquiry" text** and the **Trustpilot widget**. **Keep the form.**
-4. Drag an **HTML** widget onto the **left edge of the form**. Duda creates a left column.
-   - Paste `LATEST/contact-page-blockB-details.txt`.
+3. In the form row, delete the **"Send us an enquiry" text** and the **Trustpilot widget**.
+   - **Keep the form, and change none of its settings.** The button stays "Send".
    - Set this row's padding to 0.
-5. Add a full-width row **above** it, with padding 0, and paste `LATEST/contact-page-blockA-hero.txt`. Block A carries the CSS for the whole page, so it must stay on the page.
-6. Add a full-width row **below** it, **set its padding to 0**, and paste `LATEST/contact-page-blockC-more.txt`. This block holds the quick links, under the heading "Helpful information":
-   - FAQ;
-   - Journeys and brochures;
-   - Reviews.
+4. Add **one** full-width row **directly above** the form row, with padding 0. Add **one** HTML widget and paste `LATEST/contact-page.txt`.
 
-   There is no in-page Pounamu line and no social links, because the site footer already carries both.
+   There are no other rows to add. The widget holds the hero, the contact details, the form's column and "Helpful information". The site footer already carries the Pounamu line and social links, so the page doesn't repeat them.
+5. Check with Izaac and Joel, then Publish. Open `/contact-new` on a desktop, where the form should sit to the right of the contact details, and on a phone, where it sits below them.
+
+**If the form ever stays below the widget on the published page**, the page still works: the form simply shows under the contact details. The script leaves the form alone if the reCAPTCHA checkbox was already drawn, and it never changes the form itself.
 
 **Check the form's settings in `contact-new`** against `/contact`. Look only; change nothing:
 
@@ -234,7 +234,7 @@ The old page is untouched throughout, so rollback takes about two minutes.
 
 **Labels (optional, manual step).** The labels `%FIRSTNAME%`, `%EMAIL%` and `%ENQUIRY_MESSAGE%` are the **keys the email and the Zapier webhook receive**, because Duda posts them as `label-dmform-N`. That's why the page shows "Your name", "Your email address" and "Your message" with **CSS only**, instead of renaming them.
 
-- No script touches the form.
+- No script changes the form. The docking script only moves it into place.
 - Until the labels are renamed, screen readers still announce the tokens, as on the live page today.
 
 To rename them properly, in one sitting:
@@ -242,7 +242,7 @@ To rename them properly, in one sitting:
 1. Open the Zap that starts from the Duda catch hook and note which fields it maps.
 2. Rename the labels in Duda.
 3. Re-map the Zap.
-4. Delete the three `::before { content: "Your …" }` lines in Block A.
+4. Delete the three `::before { content: "Your …" }` lines in the Contact master, bump its version and paste the new `LATEST/contact-page.txt`.
 
 **Chat button.** "Chat with us" appears only once tawk.to has loaded. tawk.to is already on every page, so no second chat system was added.
 
