@@ -1,0 +1,294 @@
+<!-- =====================================================================
+     SIR EDMUND HILLARY EXPLORER — TERMS & CONDITIONS (/terms-and-conditions)
+     COMPLETE PAGE  ·  VERSION v1  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     -----------------------------------------------------------------------
+     CHANGELOG (latest first):
+       v1 — First new-design build of /terms-and-conditions (Brief v2, 25 Sep 2026).
+            TYPOGRAPHY AND NAVIGATION ONLY — ZERO WORDING CHANGES, typos
+            included. The document is the live page's text, word for word
+            (the build compares it with the live page and refuses to write
+            the file if a single character differs). Changes: readable
+            line length and heading scale; the 10 existing section
+            headings are now real headings with a contents list; the two
+            old H1 lines become the eyebrow ("Sir Edmund Hillary Explorer Rail &amp; Coach Tours") and the H1
+            ("Terms &amp; Conditions"); empty spacer paragraphs removed. Nothing flagged
+            in the runbook has been corrected here.
+            The live page is noindex — keep it that way unless Ben decides.
+     -----------------------------------------------------------------------
+     WHERE IT GOES: page "terms-and-conditions-new" (duplicate of /terms-and-conditions). Delete every
+     old content row, add ONE full-width row (padding 0), ONE HTML widget,
+     paste this whole file. Steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
+     RULES KEPT: no schema; no tracking; CSS scoped to .sehe-pg-terms.
+     ===================================================================== -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  /* ── Duda host row ─────────────────────────────────────────────────────
+     Let the hero run full-bleed and stop the row adding a white strip under
+     the transparent site header. :has() rules sit on their own so a browser
+     without :has() drops only these lines (the runbook also sets the row's
+     padding to 0 in the editor, which covers those browsers). */
+  #dm .dmContent .dmRespRow:has(.sehe-pg-terms) { padding-top: 0 !important; padding-bottom: 0 !important; overflow: visible !important; max-width: none !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-terms) .dmRespColsWrapper { overflow: visible !important; max-width: none !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-terms) .dmRespCol { overflow: visible !important; max-width: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+  #dm .dmContent .dmCustomHtml:has(.sehe-pg-terms) { overflow: visible !important; }
+
+  /* ── Page scope + tokens (Journeys v22 palette) ─────────────────────── */
+  .sehe-pg-terms, .sehe-pg-terms *, .sehe-pg-terms *::before, .sehe-pg-terms *::after { box-sizing: border-box; }
+  .sehe-pg-terms {
+    --navy: #153b67; --navy-dark: #0e2d52; --gold: #c8a56c; --gold-light: #d4b37e;
+    --gold-ink: #7a5f30; /* gold for small text on light backgrounds (5.9:1 on white) */
+    --off-white: #f9f7f3; --cream: #faf8f3; --text: #1a1a1a; --text-2: #454545;
+    --border: #d8d3c8; --border-light: #e8e4db; --white: #ffffff;
+    display: block; width: 100%; margin: 0 !important; padding: 0 !important;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    font-size: 17px; line-height: 1.65; color: var(--text); text-align: left !important;
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; overflow-wrap: break-word;
+  }
+  /* theme rule ".dmFullRowRespTmpl section{padding:50px 40px}" would re-pad every section */
+  .sehe-pg-terms section, .sehe-pg-terms aside, .sehe-pg-terms nav { padding: 0 !important; margin: 0; }
+  .sehe-pg-terms h1, .sehe-pg-terms h2, .sehe-pg-terms h3, .sehe-pg-terms h4 {
+    font-family: 'Montserrat', -apple-system, 'Segoe UI', Arial, sans-serif !important; font-weight: 600 !important;
+    color: var(--navy) !important; text-transform: none !important; text-align: left !important;
+    letter-spacing: -0.01em !important; margin: 0 !important; padding: 0 !important;
+  }
+  .sehe-pg-terms p, .sehe-pg-terms li, .sehe-pg-terms dt, .sehe-pg-terms dd, .sehe-pg-terms figcaption, .sehe-pg-terms blockquote, .sehe-pg-terms summary, .sehe-pg-terms td, .sehe-pg-terms th {
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+    text-align: left !important; text-transform: none !important;
+  }
+  .sehe-pg-terms p { font-size: 17px !important; line-height: 1.7 !important; color: var(--text-2) !important; margin: 0 !important; }
+  .sehe-pg-terms a { color: var(--navy) !important; text-decoration: underline !important; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .sehe-pg-terms a:hover { color: var(--navy-dark) !important; text-decoration-thickness: 2px; }
+  .sehe-pg-terms a:focus-visible, .sehe-pg-terms summary:focus-visible, .sehe-pg-terms button:focus-visible { outline: 3px solid var(--navy) !important; outline-offset: 3px !important; border-radius: 4px; }
+  .sehe-pg-terms img { max-width: 100%; height: auto; border: 0; }
+  .sehe-pg-terms .sp-sr { position: absolute !important; width: 1px !important; height: 1px !important; margin: -1px !important; padding: 0 !important; overflow: hidden !important; clip: rect(0 0 0 0) !important; white-space: nowrap !important; border: 0 !important; }
+
+  /* ── Hero (same build as the Journeys / Brochure heroes) ────────────── */
+  .sehe-pg-terms .sp-hero {
+    position: relative; width: 100vw; margin-left: calc(50% - 50vw) !important; margin-right: calc(50% - 50vw) !important;
+    padding: 0 !important; min-height: max(540px, 68vh); min-height: max(540px, 68svh);
+    display: flex; align-items: flex-end; background-color: #081525; overflow: hidden;
+  }
+  .sehe-pg-terms .sp-hero--compact { min-height: max(380px, 46vh); min-height: max(380px, 46svh); }
+  .sehe-pg-terms .sp-hero-img { position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover; object-position: center 50%; display: block; }
+  .sehe-pg-terms .sp-hero-veil { position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(180deg, rgba(8,21,37,.62) 0%, rgba(8,21,37,.26) 28%, rgba(8,21,37,.58) 56%, rgba(8,21,37,.95) 100%); }
+  .sehe-pg-terms .sp-hero--compact .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.70) 0%, rgba(8,21,37,.52) 40%, rgba(8,21,37,.92) 100%); }
+  /* the site header's logo slot is a transparent placeholder until you scroll —
+     put the real roundel in its lane so the brand is there on load */
+  .sehe-pg-terms .sp-hero-logo { position: absolute; top: 26px; left: 0; width: 16.66% !important; height: 92px !important; max-width: none !important; object-fit: contain; object-position: center; z-index: 2; filter: drop-shadow(0 2px 10px rgba(8,21,37,.5)); }
+  .sehe-pg-terms .sp-hero-inner { position: relative; z-index: 1; width: 100%; max-width: 1240px; margin: 0 auto; padding: 150px 30px 58px; }
+  .sehe-pg-terms .sp-hero--compact .sp-hero-inner { padding: 140px 30px 46px; }
+  .sehe-pg-terms .sp-eyebrow {
+    display: inline-flex; align-items: center; gap: 16px; font-family: 'Montserrat', sans-serif !important;
+    font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: .42em !important; text-transform: uppercase !important;
+    color: #d4b37e !important; margin: 0 0 22px !important; text-shadow: 0 1px 12px rgba(8,21,37,.95);
+  }
+  .sehe-pg-terms .sp-eyebrow::before, .sehe-pg-terms .sp-eyebrow::after { content: ''; width: 44px; height: 1px; background: #d4b37e; flex: none; }
+  .sehe-pg-terms .sp-hero h1 { font-weight: 700 !important; font-size: clamp(40px, 5.2vw, 66px) !important; line-height: 1.08 !important; color: #ffffff !important; text-shadow: 0 2px 26px rgba(8,21,37,.55); }
+  .sehe-pg-terms .sp-hero--compact h1 { font-size: clamp(36px, 4.2vw, 54px) !important; }
+  .sehe-pg-terms .sp-hero-sub { margin: 22px 0 0 !important; max-width: 620px; font-size: clamp(17px, 1.5vw, 19px) !important; line-height: 1.65 !important; color: rgba(255,255,255,.95) !important; text-shadow: 0 1px 14px rgba(8,21,37,.6); }
+  .sehe-pg-terms .sp-hero a:focus-visible, .sehe-pg-terms .sp-band a:focus-visible { outline-color: var(--gold-light) !important; }
+
+  /* ── Body, section heads ────────────────────────────────────────────── */
+  .sehe-pg-terms .sp-body { max-width: 1240px; margin: 0 auto !important; padding: 64px 30px 76px !important; }
+  .sehe-pg-terms .sp-section + .sp-section, .sehe-pg-terms .sp-section + .sp-band, .sehe-pg-terms .sp-band + .sp-section { margin-top: 76px !important; }
+  .sehe-pg-terms .sp-head { max-width: 780px; margin: 0 0 28px !important; }
+  .sehe-pg-terms .sp-kicker { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 13px !important; font-weight: 700 !important; letter-spacing: .16em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
+  .sehe-pg-terms .sp-head h2 { font-size: clamp(28px, 3vw, 36px) !important; line-height: 1.2 !important; margin: 0 0 12px !important; }
+  .sehe-pg-terms .sp-head p { max-width: 68ch; }
+  .sehe-pg-terms .sp-head p + p { margin-top: 10px !important; }
+
+  /* ── Buttons (48px+ tap targets) ────────────────────────────────────── */
+  .sehe-pg-terms .sp-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .sehe-pg-terms .sp-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 12px 24px;
+    border-radius: 6px; border: 2px solid var(--navy); background: var(--navy); color: #ffffff !important;
+    font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; line-height: 1.25 !important;
+    text-decoration: none !important; text-align: center !important; cursor: pointer; transition: background-color .2s, color .2s, border-color .2s;
+  }
+  .sehe-pg-terms .sp-btn:hover { background: var(--navy-dark); border-color: var(--navy-dark); color: #ffffff !important; }
+  .sehe-pg-terms .sp-btn--ghost { background: transparent; color: var(--navy) !important; }
+  .sehe-pg-terms .sp-btn--ghost:hover { background: var(--navy); color: #ffffff !important; }
+  .sehe-pg-terms .sp-btn--gold { background: var(--gold); border-color: var(--gold); color: var(--navy-dark) !important; }
+  .sehe-pg-terms .sp-btn--gold:hover { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy-dark) !important; }
+  .sehe-pg-terms .sp-btn--light { background: transparent; border-color: rgba(255,255,255,.85); color: #ffffff !important; }
+  .sehe-pg-terms .sp-btn--light:hover { background: #ffffff; border-color: #ffffff; color: var(--navy-dark) !important; }
+
+  /* ── Disclosure ("show more") — native <details>, works with JS off ─── */
+  .sehe-pg-terms details.sp-more > summary {
+    list-style: none; display: inline-flex; align-items: center; gap: 12px; min-height: 50px; padding: 12px 22px;
+    border: 2px solid var(--navy); border-radius: 6px; background: #ffffff; color: var(--navy) !important;
+    font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; cursor: pointer;
+  }
+  .sehe-pg-terms details.sp-more > summary::-webkit-details-marker { display: none; }
+  .sehe-pg-terms details.sp-more > summary::after { content: '+'; font-size: 22px; line-height: 1; font-weight: 400; }
+  .sehe-pg-terms details.sp-more[open] > summary::after { content: '\2212'; }
+  .sehe-pg-terms details.sp-more > summary:hover { background: var(--navy); color: #ffffff !important; }
+  .sehe-pg-terms .sp-when-open { display: none; }
+  .sehe-pg-terms details[open] > summary .sp-when-open { display: inline; }
+  .sehe-pg-terms details[open] > summary .sp-when-closed { display: none; }
+
+  /* ── Navy help band (the Journeys contact card, scoped) ─────────────── */
+  .sehe-pg-terms .sp-band { background: var(--navy); border: 1px solid var(--gold); border-radius: 12px; padding: 34px 36px !important; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px 36px; }
+  .sehe-pg-terms .sp-band-copy { flex: 1 1 420px; }
+  .sehe-pg-terms .sp-band h2 { color: #ffffff !important; font-size: clamp(24px, 2.4vw, 28px) !important; line-height: 1.25 !important; margin: 0 0 8px !important; }
+  .sehe-pg-terms .sp-band p { color: rgba(255,255,255,.88) !important; max-width: 62ch; }
+  .sehe-pg-terms .sp-band .sp-actions { flex: 1 1 440px; justify-content: flex-end; }
+
+  @media (max-width: 860px) {
+    .sehe-pg-terms .sp-hero { min-height: max(460px, 60svh); }
+    .sehe-pg-terms .sp-hero--compact { min-height: max(340px, 42svh); }
+    /* phones crop to the brightest part of the frame — darker veil keeps contrast */
+    .sehe-pg-terms .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.66) 0%, rgba(8,21,37,.48) 30%, rgba(8,21,37,.72) 58%, rgba(8,21,37,.96) 100%); }
+    .sehe-pg-terms .sp-hero-inner, .sehe-pg-terms .sp-hero--compact .sp-hero-inner { padding: 118px 20px 40px; }
+    .sehe-pg-terms .sp-hero-logo { left: 50%; width: 56px !important; transform: translateX(-50%); top: 18px; height: 56px !important; }
+    .sehe-pg-terms .sp-eyebrow { gap: 0; font-size: 11.5px !important; letter-spacing: .24em !important; margin-bottom: 14px !important; }
+    .sehe-pg-terms .sp-eyebrow::before, .sehe-pg-terms .sp-eyebrow::after { display: none; }
+    .sehe-pg-terms .sp-hero h1, .sehe-pg-terms .sp-hero--compact h1 { font-size: 34px !important; line-height: 1.14 !important; }
+    .sehe-pg-terms .sp-hero-sub { font-size: 17px !important; line-height: 1.6 !important; margin-top: 14px !important; }
+    .sehe-pg-terms .sp-body { padding: 44px 18px 56px !important; }
+    .sehe-pg-terms .sp-section + .sp-section, .sehe-pg-terms .sp-section + .sp-band, .sehe-pg-terms .sp-band + .sp-section { margin-top: 56px !important; }
+    .sehe-pg-terms .sp-band { padding: 24px 20px !important; }
+    .sehe-pg-terms .sp-band .sp-actions { justify-content: flex-start; }
+    .sehe-pg-terms .sp-actions .sp-btn { flex: 1 1 100%; }
+  }
+  @media (max-width: 540px) {
+    .sehe-pg-terms .sp-hero h1, .sehe-pg-terms .sp-hero--compact h1 { font-size: 30px !important; }
+    .sehe-pg-terms .sp-hero-inner, .sehe-pg-terms .sp-hero--compact .sp-hero-inner { padding: 106px 18px 34px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sehe-pg-terms *, .sehe-pg-terms *::before, .sehe-pg-terms *::after { transition: none !important; scroll-behavior: auto !important; }
+  }
+
+  /* ── Legal page (typography + navigation only) ──────────────────────── */
+  .sehe-pg-terms .lg-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 56px; align-items: start; }
+  .sehe-pg-terms .lg-toc { position: sticky; top: 140px; padding: 20px 22px !important; background: var(--cream); border: 1px solid var(--border-light); border-radius: 12px; }
+  .sehe-pg-terms .lg-toc h2 { font-size: 15px !important; letter-spacing: .12em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
+  .sehe-pg-terms .lg-toc ol { list-style: none !important; margin: 0 !important; padding: 0 !important; }
+  .sehe-pg-terms .lg-toc li { margin: 0 !important; padding: 0 !important; list-style: none !important; }
+  .sehe-pg-terms .lg-toc li::before, .sehe-pg-terms .lg-toc li::marker { content: none !important; }
+  .sehe-pg-terms .lg-toc a { display: block; padding: 7px 0; font-size: 15.5px !important; line-height: 1.4 !important; text-decoration: none !important; }
+  .sehe-pg-terms .lg-toc a:hover { text-decoration: underline !important; }
+  .sehe-pg-terms .lg-doc { max-width: 72ch; }
+  .sehe-pg-terms .lg-doc h2 { scroll-margin-top: 130px; font-size: clamp(22px, 2.2vw, 27px) !important; line-height: 1.3 !important; margin: 40px 0 14px !important; padding-top: 18px !important; border-top: 1px solid var(--border-light); }
+  .sehe-pg-terms .lg-doc h2:first-child { margin-top: 0 !important; padding-top: 0 !important; border-top: 0; }
+  .sehe-pg-terms .lg-doc p { font-size: 17px !important; line-height: 1.75 !important; color: var(--text) !important; margin: 0 0 14px !important; }
+  .sehe-pg-terms .lg-doc ul, .sehe-pg-terms .lg-doc ol { margin: 0 0 16px !important; padding: 0 0 0 24px !important; }
+  .sehe-pg-terms .lg-doc li { font-size: 17px !important; line-height: 1.7 !important; color: var(--text) !important; margin: 0 0 6px !important; list-style: disc !important; }
+  .sehe-pg-terms .lg-doc strong { color: #111; }
+  .sehe-pg-terms .lg-related { margin-top: 48px !important; padding-top: 20px !important; border-top: 1px solid var(--border-light); display: flex; flex-wrap: wrap; gap: 10px 26px; }
+  .sehe-pg-terms .lg-related a { font-size: 16px !important; }
+  @media (max-width: 960px) {
+    .sehe-pg-terms .lg-wrap { grid-template-columns: 1fr; gap: 28px; }
+    .sehe-pg-terms .lg-toc { position: static; }
+  }
+</style>
+<div class="sehe-pg-terms">
+<section class="sp-hero sp-hero--compact" aria-labelledby="sehe-lg-title">
+  <img class="sp-hero-img" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-18-1920w.webp" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-18-640w.webp 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-18-1280w.webp 1280w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEHE_OCT2024_DAY2-18-1920w.webp 1920w" sizes="100vw" alt="" fetchpriority="high">
+  <div class="sp-hero-veil" aria-hidden="true"></div>
+  <img class="sp-hero-logo" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEH+Explorer_logo+white-350w.png" alt="Sir Edmund Hillary Explorer" width="350" height="350">
+  <div class="sp-hero-inner">
+    <p class="sp-eyebrow">Sir Edmund Hillary Explorer Rail &amp; Coach Tours</p>
+    <h1 id="sehe-lg-title">Terms &amp; Conditions</h1>
+  </div>
+</section>
+<div class="sp-body">
+  <div class="lg-wrap">
+    <nav class="lg-toc" aria-labelledby="sehe-lg-toc">
+      <h2 id="sehe-lg-toc">Contents</h2>
+      <ol role="list">
+        <li><a href="#section-sehe-tour-details">SEHE Tour Details</a></li>
+        <li><a href="#section-cancellation-by-you-prior-to-tour-commencing">Cancellation by you prior to tour commencing</a></li>
+        <li><a href="#section-personal-information-and-privacy">Personal Information and Privacy</a></li>
+        <li><a href="#section-health-and-safety">Health and Safety</a></li>
+        <li><a href="#section-sehe-tour-rules-and-regulations">SEHE Tour Rules and Regulations</a></li>
+        <li><a href="#section-liability-and-indemnity">Liability and indemnity</a></li>
+        <li><a href="#section-exclusion-of-third-party-representations">Exclusion of third-party representations</a></li>
+        <li><a href="#section-consent-to-medical-assistance">Consent to Medical Assistance</a></li>
+        <li><a href="#section-tickets-and-refunds">Tickets and Refunds</a></li>
+        <li><a href="#section-declaration">Declaration</a></li>
+      </ol>
+    </nav>
+    <div class="lg-doc">
+    <p><strong>Pounamu Tourism Group Limited (“PTG”) organises the Sir Edmund Hillary Explorer Rail &amp; Coach Tours (the “SEHE Tour”). In these terms and conditions “Terms” the Tour Guest is referred to as “Guest” and “you” and PTG is referred to as “PTG”, “we”, “us” and “our”. </strong></p>
+    <p>The SEHE Tours start and end in various locations. Your booking confirmation will set out the start and end locations. If you’re travelling from outside the start and end locations, you are responsible for your own travel arrangements and flights to the starting location and from the end location, plus any associated pre-tour and/or post-tour accommodation and meal costs.</p>
+    <p>Each Guest who registers for the SEHE Tour agrees to be bound by these terms and conditions and acknowledges that these terms may be subject to change from time to time at the discretion of PTG without notice to the Guest. Where you are registering for the SEHE Tour on behalf of others, then it is your responsibility to bring these Terms and Conditions to the attention of all individuals you have registered for the SEHE Tour. You will be deemed to have accepted the Terms and Conditions for all people you have registered for the SEHE Tour.</p>
+    <p>PTG strongly recommends that all Guests obtain suitable insurance to cover SEHE Tour delays, cancellations or other loss that may occur as part of the SEHE Tour. It is your responsibility to ensure that you are adequately covered.</p>
+    <h2 id="section-sehe-tour-details">SEHE Tour Details</h2>
+    <p><strong>1</strong>. If you wish to attend the SEHE Tour you will need to register for the SEHE Tour by completing the booking form online or request a booking form to be couriered by contacting:</p>
+    <p><strong>SEHE Tour </strong></p>
+    <p>PO Box 19735, Woolston, Christchurch, 82415, New Zealand</p>
+    <p>Email: info@siredmundhillaryexplorer.com</p>
+    <p>Phone: +64 (0)3 974 1812 during business hours</p>
+    <p>Registration does not guarantee you a space on the SEHE Tour, as Tickets for the SEHE Tour (“<strong>Tickets</strong>”) are subject to availability and are available on a first in first served basis. Right of entry reserved.</p>
+    <p><strong>2</strong>. All prices are quoted in NZD. A 20% deposit is required to secure a booking which is to be paid by internet banking. Payment by credit card is subject to a 2% surcharge. Please refer to your booking form for the Tour Package Price.</p>
+    <p>Full Payment Schedule:</p>
+    <ul><li>20% deposit confirms the booking.</li><li>40% due six-months prior to the tour departure.</li><li>Balance due the month before the tour departure.</li></ul>
+    <p><strong>3</strong>. PTG may be required to change the date or cancel the SEHE Tour at any time for unforeseen circumstances beyond its control including, but not limited to Force Majeure. For the purposes of these terms, Force Majeure means any event beyond PTG’s or PTG’s suppliers control including but not limited to weather events, earthquake, national disaster, civil unrest or health emergency. Where the SEHE Tour is cancelled PTG will endeavour to reschedule the SEHE Tour. If PTG cannot reschedule the SEHE Tour, or you are unable to participate in the rescheduled SEHE Tour you will be entitled to a refund of the Tour Package Price.</p>
+    <p><strong>4</strong>. PTG reserves the right to cancel the tour if the minimum numbers to operate the SEHE Tour are not met. In this instance, alternative tour dates will be offered.</p>
+    <p><strong>5</strong>. You are responsible for all additional costs associated with your participation in the SEHE Tour including additional meals, where these are not provided for in the itinerary. The itinerary may be subject to reasonable change, at the discretion of PTG. Every attempt will be made to keep Guests informed of any alterations to the itinerary.</p>
+    <h2 id="section-cancellation-by-you-prior-to-tour-commencing">Cancellation by you prior to tour commencing</h2>
+    <p><strong>6</strong>. If you can no longer attend the SEHE Tour, you must notify PTG in writing as soon as possible so that your space may be reallocated.</p>
+    <p>The Cancellation Policy for "Sir Edmund Hillary Explorer" Rail &amp; Coach Tour is as follows - in the event the passenger cancels a tour, the following cancellation fees apply prior to departure:</p>
+    <p><strong>a)</strong> More than 6-months prior to tour departure, a full refund will apply, no cancellation fee.</p>
+    <p><strong>b)</strong> Between 60 days and 6 months prior to departure, a cancellation fee of 20% of the Tour Package Price.</p>
+    <p><strong>c)</strong> Between 30 and 59 days prior to departure, a cancellation fee of 50% of the Tour Package Price.</p>
+    <p><strong>d)</strong> Less than 30 days prior to departure, a cancellation fee of 100% of the Tour Package Price.</p>
+    <p><strong>e)</strong> If Pounamu Tourism Group cancels the tour, 100% refund will apply.</p>
+    <p><strong>f)</strong> SEHE Tour Guests will not be refunded the third-party credit card surcharge fee.</p>
+    <h2 id="section-personal-information-and-privacy">Personal Information and Privacy</h2>
+    <p><strong>7</strong>. You declare that all the information supplied in registering for the SEHE Tours is true and correct, and that you will update PTG with any changes in the time between applying and the SEHE Tour commencing.</p>
+    <p><strong>8</strong>. All information provided by you to PTG is subject to PTG’s Privacy Policy which can be viewed here on this page. PTG may disclose the information to its related companies and may use the information to offer products and services of potential interest to you.</p>
+    <p><strong>9</strong>. You are entitled to request access to your personal information and request that such details be updated if they change in the future by writing to the Privacy Officer, Pounamu Tourism Group Limited, PO Box 39018, Harewood, Christchurch, 8545 or by email at 
+<a href="mailto:info@siredmundhillaryexplorer.com">info@siredmundhillaryexplorer.com</a></p>
+    <p><strong>10</strong>. We strongly advise you to obtain suitable travel insurance to cover SEHE Tour cancellation or delay costs. It You are responsible for arranging your own insurance. You should satisfy yourself that the insurance covers any possible risk that may occur, including all Tour activities and ‘force majeure’ events.</p>
+    <p><strong>11</strong>. By participating in the SEHE Tour, you are consenting to PTG carrying out filming, sound recording, videography and/or photography of the SEHE Tour as a Guest and you consent to the use by PTG of any such recording or photography for promotional, marketing and other purposes without payment or compensation. Please advise PTG at the time of registration if you do not wish to be included in any such promotional and marketing material.</p>
+    <h2 id="section-health-and-safety">Health and Safety</h2>
+    <p><strong>12</strong>. You agree to follow the direction of our employees, tour leaders and agents during the Tour. Failure to do this may result in being removed from the SEHE Tour.</p>
+    <p><strong>13</strong>. At times entering and exiting trains, coaches and vessels can be demanding for those with restricted mobility. To ensure the tour is enjoyable for you, a good standard of physical and mental health and fitness is required. You will need to be able to climb and descend 15 steps, walk unassisted comfortably for 500 metres over uneven surfaces, carry your own bags and be able to look after yourself unassisted for an extended period, if required.</p>
+    <p><strong>14</strong>. You agree to indemnify PTG from any liability for any claim arising out of any want of health and fitness.</p>
+    <p><strong>15</strong>. Some of the destinations we visit do not have facilities for people with accessibility or mobility requirements. If you require mobility assistance you must contact PTG prior to registering so we can assess whether the SEHE Tour may be suitable for you.</p>
+    <p><strong>16</strong>. PTG is not responsible for any denial of service by any third party (e.g. excursion providers).</p>
+    <p><strong>17</strong>. Personal assistance is not available as part of the SEHE Tour. If travellers require personal assistance, then they must travel with a companion capable of providing this.</p>
+    <p><strong>18</strong>. If in PTG’s reasonable opinion, we consider you are not able to participate safely in the SEHE Tour or you are impacting on other travellers, then PTG reserves the right to arrange for you to leave the SEHE Tour. You will not receive a refund the Tour Package Price for any missed part of the SEHE Tour.</p>
+    <h2 id="section-sehe-tour-rules-and-regulations">SEHE Tour Rules and Regulations</h2>
+    <p><strong>20</strong>. I acknowledge that PTG or its representatives may remove me from the SEHE Tour and/or exclude me from participating (a) if my behaviour is inappropriate, offensive, or abusive, (b) to prevent damage to any property, (c) on medical or health and safety grounds (including to prevent possible harm or injury to myself or any other person).</p>
+    <p><strong>21</strong>. Tickets may not, without the prior written consent of PTG, be resold or offered for resale at a premium (including via online auction sites) or used for advertising, promotion, or other commercial purposes (including competitions and trade promotions) or to enhance the demand for other goods or services, either by the original purchaser or any subsequent bearer. If a Ticket is sold or used in breach of this condition, the Ticket may be cancelled without a refund and the bearer of the Ticket may be refused admission.</p>
+    <h2 id="section-liability-and-indemnity">Liability and indemnity</h2>
+    <p><strong>22</strong>. PTG will not be liable for any loss or damage (including consequential loss or damage, loss of profits, loss of revenue or loss of savings) which may be suffered or incurred, or which may arise directly or indirectly in respect of your registration and or participation in the SEHE Tours or any failure or omission on the part of PTG to comply with its obligations under these Terms. In the event that PTG is found liable for any loss, our liability will be limited to the amount paid by the passenger for the Tour.</p>
+    <p><strong>23</strong>. Please advise us of any dietary requirements at the time of booking. We will use our best endeavours to accommodate any dietary requirements, however we cannot guarantee that suitable options will be available at every destination. Please discuss any concerns with us and we will work with you to address these. This may include you bringing suitable food with you for parts of the trip. We will not be liable if your dietary requirements prevent you from partaking in the meals provided.</p>
+    <p><strong>24</strong>. All conditions and warranties which may be implied by law into these Terms are excluded except to the extent that it would be unlawful to do so. You agree that to the extent that you are acquiring goods or services under these Terms for the purposes of a business, the guarantees provided under the Consumer Guarantees Act 1993 shall not apply to PTG’s supply of such goods and services.</p>
+    <p><strong>25</strong>. You acknowledge that PTG is not liable for any activities you choose to partake in outside of the SEHE Tour itinerary.</p>
+    <p><strong>26</strong>. You will indemnify PTG against any costs, losses and damages and will, at your cost, defend or settle any claim suit, action or proceeding brought against PTG arising from: (a) any breach of these Terms by you; and (b) your participation in the SEHE Tours.</p>
+    <h2 id="section-exclusion-of-third-party-representations">Exclusion of third-party representations</h2>
+    <p><strong>27</strong>. Whilst all material and content provided regarding the SEHE Tours is derived from sources believed to be accurate and current we give no representation or warranty as to the reliability, accuracy or completeness of the content.</p>
+    <h2 id="section-consent-to-medical-assistance">Consent to Medical Assistance</h2>
+    <p><strong>28</strong>. I consent to receive such medical aid or preventative treatment which may be deemed advisable in the unfettered direction of the SEHE Tour staff in the event of any injury, accident, or illness to me during my participation in the SEHE Tours. The cost of any medical assistance will be at your cost, including any prescriptions or medication.</p>
+    <p><strong>29</strong>. I consent to the release of my personal information to medical assistance personnel and the SEHE Tour staff in the event of a medical emergency during my participation in the SEHE Tour.</p>
+    <p><strong>30</strong>. I consent to the release of my personal information to third party providers when required and strictly only for the purposes of facilitating my participation in excursions provided by that third party.</p>
+    <h2 id="section-tickets-and-refunds">Tickets and Refunds</h2>
+    <p><strong>31</strong>. I agree that registration for the SEHE Tour is personal and specific to me, and that no other person is permitted to participate in my place. Your booking is not transferable to other guests without prior approval from PTG. If a person-to-person transfer option is made available, I understand that an administration fee may be payable.</p>
+    <p><strong>32</strong>. I acknowledge that bookings are not transferable to future SEHE Tours, except at the sole discretion of PTG..</p>
+    <p><strong>33</strong>. I understand that should my personal or contact details change after my registration is completed it is my responsibility to notify PTG.</p>
+    <p><strong>34</strong>. Refunds may, at PTG’s discretion, be made available outside of the cancellation policy in clause 6 where participation in the SEHE Tour is not appropriate due to a medical reason that is supported by a current medical certificate outlining the condition. Refunds will not be made for any additional items purchased, such as merchandise or charitable donations. SEHE Tour guests will not be refunded the credit card surcharge fee.</p>
+    <p><strong>35</strong>. Should the SEHE Tour, or parts of the SEHE Tour, have to be cancelled or amended by PTG due to reasons beyond our control (including Force Majeure events) after the SEHE Tour has commenced, partial refunds may, at PTG’s discretion, be made available. PTG will use their reasonable endeavours to assist you with making alternative arrangements should the SEHE Tour be interrupted by a third party cancellation or delay but PTG shall not be liable for any additional costs you may incur.</p>
+    <p><strong>36</strong>. The SEHE Tour may include a ferry ticket from Picton to Wellington. In the event of cancellation by the ferry provider, PTG is not responsible for arranging alternative transport. PTG will arrange a refund for the fare or will assist with transferring you to a different ferry. PTG will not be responsible for any additional accommodation or travel costs which occur due to delay or cancellation of the ferry.</p>
+    <p><strong>37</strong>. PTG will use best endeavours to make alternative arrangements should there be an event outside of PTG’s control (for example mechanical breakdown or road closures) which require PTG to adapt the SEHE Tour programme. Alternative arrangements will be made in PTG’s sole discretion. PTG will not accept any liability for any loss suffered in this instance.</p>
+    <p><strong>38</strong>. Should you leave the SEHE Tour for any reason (whether by choice or otherwise) after it has commenced, there will be no refund of fees.</p>
+    <p><strong>39</strong>. Where solely due to your acts or omission, you are responsible for missing a connection of the SEHE Tour, there will be no partial refund offered.</p>
+    <p><strong>40</strong>. You acknowledge that PTG may amend its marketing material to accurately reflect the tour as required. If any material changes occur to your tour after the time of your booking, PTG will endeavour to communicate these changes to the tour to you as soon as possible.</p>
+    <h2 id="section-declaration">Declaration</h2>
+    <p>In respect of myself and any other persons whom I have registered for the Tour:</p>
+    <p><strong>41</strong>. I certify that I am 18 years or older, or that I am the parent/legal guardian of the Guest who is under the age of 18 years, and I have read this document and fully understand it. As a parent or legal guardian, I agree to these Terms for and on behalf of the guest. I also agree that, if signing this on behalf or a Guest under the age of 13 years, that that Guest will always be accompanied by an adult during the SEHE Tour.</p>
+    <p><strong>42</strong>. I declare, as a condition of registering for the SEHE Tour, that I am not aware of any illness, injury, physical disability or impairment which may cause me injury or death during or because of my participation in the SEHE Tour. I will communicate any change in condition that may be relevant to PTG as soon as practicable.</p>
+    <p><strong>43</strong>. I confirm that I am in a state of well-being in which I realize my own abilities, can cope with the extra stresses of extended travel, and can function adequately without causing undue encumbrance to the SEHE Tour group.</p>
+    <p><strong>44</strong>. The decision to participate is entirely my own and I accept all risks associated with my participation in the SEHE Tour, including but not limited to loss of life or permanent injury. I agree to accept full responsibility to inform myself and assess all the dangers, hazards and risks of registration in the SEHE Tour and rely solely on my own assessment of these dangers, hazards and risks before participating in the SEHE Tour and notwithstanding any decision thereon made by the SEHE Tour organisers , PTG and other persons, corporations and bodies involved, engaged in promoting or staging the SEHE Tour.</p>
+    </div>
+  </div>
+  <nav class="lg-related" aria-label="Related pages">
+    <a href="/privacy-policy">Privacy Policy</a>
+    <a href="/f-a-q">FAQ</a>
+    <a href="/contact">Contact us</a>
+  </nav>
+</div>
+</div>
