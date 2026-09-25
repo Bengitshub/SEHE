@@ -1,8 +1,11 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact)
-     MASTER  ·  VERSION v5  ·  2026-09-25
+     MASTER  ·  VERSION v6  ·  2026-09-25
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v6 — The native form's button stays "Send": the "Send enquiry" change
+            (CT-13) is withdrawn, so there is no form setting to change.
+            Page code unchanged from v5.
        v5 — Approved copy update (round 3, 25 Sep 2026): the chat button reads
             "Chat with us"; the quick links lose the "Before you get in
             touch" eyebrow and their heading reads "Helpful information".
@@ -63,7 +66,7 @@
 <!-- ▼▼▼ BLOCK A ▼▼▼ -->
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact) — BLOCK A
-     VERSION v5  ·  2026-09-25  ·  paste into ONE Duda HTML widget
+     VERSION v6  ·  2026-09-25  ·  paste into ONE Duda HTML widget
      WHERE: page "contact-new", ROW 1 (full width, padding 0) — the top row.
      WHAT:  compact hero + the CSS for the WHOLE page (Blocks B and C and the native form rely on it).
      Full steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
@@ -321,7 +324,7 @@
 <!-- ▼▼▼ BLOCK B ▼▼▼ -->
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact) — BLOCK B
-     VERSION v5  ·  2026-09-25  ·  paste into ONE Duda HTML widget
+     VERSION v6  ·  2026-09-25  ·  paste into ONE Duda HTML widget
      WHERE: page "contact-new", ROW 2, LEFT column. The native Duda form sits in the RIGHT column of the same row.
      WHAT:  contact details (all tel:/mailto: links), live-chat button, trust line. The script only shows the chat button.
      Full steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
@@ -426,7 +429,7 @@
 <!-- ▼▼▼ BLOCK C ▼▼▼ -->
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact) — BLOCK C
-     VERSION v5  ·  2026-09-25  ·  paste into ONE Duda HTML widget
+     VERSION v6  ·  2026-09-25  ·  paste into ONE Duda HTML widget
      WHERE: page "contact-new", ROW 3 (full width) — below the details + form row.
      WHAT:  quick links (FAQ, journeys and brochures, reviews). Set the row padding to 0.
      Full steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
