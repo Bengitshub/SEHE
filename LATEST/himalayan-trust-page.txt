@@ -1,0 +1,251 @@
+<!-- =====================================================================
+     SIR EDMUND HILLARY EXPLORER — HIMALAYAN TRUST PAGE (/himalayan-trust)
+     COMPLETE PAGE  ·  VERSION v1  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     -----------------------------------------------------------------------
+     CHANGELOG (latest first):
+       v1 — First new-design build of /himalayan-trust (Brief v2, 25 Sep 2026).
+            All text, captions, logos and links from the live page, wording
+            unchanged (two sentences that were split across paragraphs are
+            rejoined — same words). NEW: a note making clear the words are the
+            Himalayan Trust's own ("we" = the Trust, not Sir Edmund Hillary
+            Explorer), so nothing suggests SEHE runs the Trust's projects or
+            that a booking includes a donation. Statistics kept as written and
+            FLAGGED ($3 a day; 2.6 million tree seedlings over 30 years).
+            Photo credit "Sam Tarling" is from that photo's file name.
+            The live page is noindex — keep it that way unless Ben decides.
+     -----------------------------------------------------------------------
+     WHERE IT GOES: page "himalayan-trust-new" (duplicate of /himalayan-trust).
+     Delete every old content row, add ONE full-width row (padding 0), ONE
+     HTML widget, paste this whole file. Steps + rollback:
+     notes/2026-09-25-old-pages-rebuild-runbook.md
+     RULES KEPT: no new facts; no schema; no tracking; no departure data;
+     CSS scoped to .sehe-pg-trust.
+     ===================================================================== -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  /* ── Duda host row ─────────────────────────────────────────────────────
+     Let the hero run full-bleed and stop the row adding a white strip under
+     the transparent site header. :has() rules sit on their own so a browser
+     without :has() drops only these lines (the runbook also sets the row's
+     padding to 0 in the editor, which covers those browsers). */
+  #dm .dmContent .dmRespRow:has(.sehe-pg-trust) { padding-top: 0 !important; padding-bottom: 0 !important; overflow: visible !important; max-width: none !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-trust) .dmRespColsWrapper { overflow: visible !important; max-width: none !important; }
+  #dm .dmContent .dmRespRow:has(.sehe-pg-trust) .dmRespCol { overflow: visible !important; max-width: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+  #dm .dmContent .dmCustomHtml:has(.sehe-pg-trust) { overflow: visible !important; }
+
+  /* ── Page scope + tokens (Journeys v22 palette) ─────────────────────── */
+  .sehe-pg-trust, .sehe-pg-trust *, .sehe-pg-trust *::before, .sehe-pg-trust *::after { box-sizing: border-box; }
+  .sehe-pg-trust {
+    --navy: #153b67; --navy-dark: #0e2d52; --gold: #c8a56c; --gold-light: #d4b37e;
+    --gold-ink: #7a5f30; /* gold for small text on light backgrounds (5.9:1 on white) */
+    --off-white: #f9f7f3; --cream: #faf8f3; --text: #1a1a1a; --text-2: #454545;
+    --border: #d8d3c8; --border-light: #e8e4db; --white: #ffffff;
+    display: block; width: 100%; margin: 0 !important; padding: 0 !important;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    font-size: 17px; line-height: 1.65; color: var(--text); text-align: left !important;
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; overflow-wrap: break-word;
+  }
+  /* theme rule ".dmFullRowRespTmpl section{padding:50px 40px}" would re-pad every section */
+  .sehe-pg-trust section, .sehe-pg-trust aside, .sehe-pg-trust nav { padding: 0 !important; margin: 0; }
+  .sehe-pg-trust h1, .sehe-pg-trust h2, .sehe-pg-trust h3, .sehe-pg-trust h4 {
+    font-family: 'Montserrat', -apple-system, 'Segoe UI', Arial, sans-serif !important; font-weight: 600 !important;
+    color: var(--navy) !important; text-transform: none !important; text-align: left !important;
+    letter-spacing: -0.01em !important; margin: 0 !important; padding: 0 !important;
+  }
+  .sehe-pg-trust p, .sehe-pg-trust li, .sehe-pg-trust dt, .sehe-pg-trust dd, .sehe-pg-trust figcaption, .sehe-pg-trust blockquote, .sehe-pg-trust summary, .sehe-pg-trust td, .sehe-pg-trust th {
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+    text-align: left !important; text-transform: none !important;
+  }
+  .sehe-pg-trust p { font-size: 17px !important; line-height: 1.7 !important; color: var(--text-2) !important; margin: 0 !important; }
+  .sehe-pg-trust a { color: var(--navy) !important; text-decoration: underline !important; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .sehe-pg-trust a:hover { color: var(--navy-dark) !important; text-decoration-thickness: 2px; }
+  .sehe-pg-trust a:focus-visible, .sehe-pg-trust summary:focus-visible, .sehe-pg-trust button:focus-visible { outline: 3px solid var(--navy) !important; outline-offset: 3px !important; border-radius: 4px; }
+  .sehe-pg-trust img { max-width: 100%; height: auto; border: 0; }
+  .sehe-pg-trust .sp-sr { position: absolute !important; width: 1px !important; height: 1px !important; margin: -1px !important; padding: 0 !important; overflow: hidden !important; clip: rect(0 0 0 0) !important; white-space: nowrap !important; border: 0 !important; }
+
+  /* ── Hero (same build as the Journeys / Brochure heroes) ────────────── */
+  .sehe-pg-trust .sp-hero {
+    position: relative; width: 100vw; margin-left: calc(50% - 50vw) !important; margin-right: calc(50% - 50vw) !important;
+    padding: 0 !important; min-height: max(540px, 68vh); min-height: max(540px, 68svh);
+    display: flex; align-items: flex-end; background-color: #081525; overflow: hidden;
+  }
+  .sehe-pg-trust .sp-hero--compact { min-height: max(380px, 46vh); min-height: max(380px, 46svh); }
+  .sehe-pg-trust .sp-hero-img { position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover; object-position: center 50%; display: block; }
+  .sehe-pg-trust .sp-hero-veil { position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(180deg, rgba(8,21,37,.62) 0%, rgba(8,21,37,.26) 28%, rgba(8,21,37,.58) 56%, rgba(8,21,37,.95) 100%); }
+  .sehe-pg-trust .sp-hero--compact .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.70) 0%, rgba(8,21,37,.52) 40%, rgba(8,21,37,.92) 100%); }
+  /* the site header's logo slot is a transparent placeholder until you scroll —
+     put the real roundel in its lane so the brand is there on load */
+  .sehe-pg-trust .sp-hero-logo { position: absolute; top: 26px; left: 0; width: 16.66% !important; height: 92px !important; max-width: none !important; object-fit: contain; object-position: center; z-index: 2; filter: drop-shadow(0 2px 10px rgba(8,21,37,.5)); }
+  .sehe-pg-trust .sp-hero-inner { position: relative; z-index: 1; width: 100%; max-width: 1240px; margin: 0 auto; padding: 150px 30px 58px; }
+  .sehe-pg-trust .sp-hero--compact .sp-hero-inner { padding: 140px 30px 46px; }
+  .sehe-pg-trust .sp-eyebrow {
+    display: inline-flex; align-items: center; gap: 16px; font-family: 'Montserrat', sans-serif !important;
+    font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: .42em !important; text-transform: uppercase !important;
+    color: #d4b37e !important; margin: 0 0 22px !important; text-shadow: 0 1px 12px rgba(8,21,37,.95);
+  }
+  .sehe-pg-trust .sp-eyebrow::before, .sehe-pg-trust .sp-eyebrow::after { content: ''; width: 44px; height: 1px; background: #d4b37e; flex: none; }
+  .sehe-pg-trust .sp-hero h1 { font-weight: 700 !important; font-size: clamp(40px, 5.2vw, 66px) !important; line-height: 1.08 !important; color: #ffffff !important; text-shadow: 0 2px 26px rgba(8,21,37,.55); }
+  .sehe-pg-trust .sp-hero--compact h1 { font-size: clamp(36px, 4.2vw, 54px) !important; }
+  .sehe-pg-trust .sp-hero-sub { margin: 22px 0 0 !important; max-width: 620px; font-size: clamp(17px, 1.5vw, 19px) !important; line-height: 1.65 !important; color: rgba(255,255,255,.95) !important; text-shadow: 0 1px 14px rgba(8,21,37,.6); }
+  .sehe-pg-trust .sp-hero a:focus-visible, .sehe-pg-trust .sp-band a:focus-visible { outline-color: var(--gold-light) !important; }
+
+  /* ── Body, section heads ────────────────────────────────────────────── */
+  .sehe-pg-trust .sp-body { max-width: 1240px; margin: 0 auto !important; padding: 64px 30px 76px !important; }
+  .sehe-pg-trust .sp-section + .sp-section, .sehe-pg-trust .sp-section + .sp-band, .sehe-pg-trust .sp-band + .sp-section { margin-top: 76px !important; }
+  .sehe-pg-trust .sp-head { max-width: 780px; margin: 0 0 28px !important; }
+  .sehe-pg-trust .sp-kicker { display: block; font-family: 'Montserrat', sans-serif !important; font-size: 13px !important; font-weight: 700 !important; letter-spacing: .16em !important; text-transform: uppercase !important; color: var(--gold-ink) !important; margin: 0 0 10px !important; }
+  .sehe-pg-trust .sp-head h2 { font-size: clamp(28px, 3vw, 36px) !important; line-height: 1.2 !important; margin: 0 0 12px !important; }
+  .sehe-pg-trust .sp-head p { max-width: 68ch; }
+  .sehe-pg-trust .sp-head p + p { margin-top: 10px !important; }
+
+  /* ── Buttons (48px+ tap targets) ────────────────────────────────────── */
+  .sehe-pg-trust .sp-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .sehe-pg-trust .sp-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 12px 24px;
+    border-radius: 6px; border: 2px solid var(--navy); background: var(--navy); color: #ffffff !important;
+    font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; line-height: 1.25 !important;
+    text-decoration: none !important; text-align: center !important; cursor: pointer; transition: background-color .2s, color .2s, border-color .2s;
+  }
+  .sehe-pg-trust .sp-btn:hover { background: var(--navy-dark); border-color: var(--navy-dark); color: #ffffff !important; }
+  .sehe-pg-trust .sp-btn--ghost { background: transparent; color: var(--navy) !important; }
+  .sehe-pg-trust .sp-btn--ghost:hover { background: var(--navy); color: #ffffff !important; }
+  .sehe-pg-trust .sp-btn--gold { background: var(--gold); border-color: var(--gold); color: var(--navy-dark) !important; }
+  .sehe-pg-trust .sp-btn--gold:hover { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy-dark) !important; }
+  .sehe-pg-trust .sp-btn--light { background: transparent; border-color: rgba(255,255,255,.85); color: #ffffff !important; }
+  .sehe-pg-trust .sp-btn--light:hover { background: #ffffff; border-color: #ffffff; color: var(--navy-dark) !important; }
+
+  /* ── Disclosure ("show more") — native <details>, works with JS off ─── */
+  .sehe-pg-trust details.sp-more > summary {
+    list-style: none; display: inline-flex; align-items: center; gap: 12px; min-height: 50px; padding: 12px 22px;
+    border: 2px solid var(--navy); border-radius: 6px; background: #ffffff; color: var(--navy) !important;
+    font-family: 'Montserrat', sans-serif !important; font-size: 15px !important; font-weight: 600 !important; cursor: pointer;
+  }
+  .sehe-pg-trust details.sp-more > summary::-webkit-details-marker { display: none; }
+  .sehe-pg-trust details.sp-more > summary::after { content: '+'; font-size: 22px; line-height: 1; font-weight: 400; }
+  .sehe-pg-trust details.sp-more[open] > summary::after { content: '\2212'; }
+  .sehe-pg-trust details.sp-more > summary:hover { background: var(--navy); color: #ffffff !important; }
+  .sehe-pg-trust .sp-when-open { display: none; }
+  .sehe-pg-trust details[open] > summary .sp-when-open { display: inline; }
+  .sehe-pg-trust details[open] > summary .sp-when-closed { display: none; }
+
+  /* ── Navy help band (the Journeys contact card, scoped) ─────────────── */
+  .sehe-pg-trust .sp-band { background: var(--navy); border: 1px solid var(--gold); border-radius: 12px; padding: 34px 36px !important; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px 36px; }
+  .sehe-pg-trust .sp-band-copy { flex: 1 1 420px; }
+  .sehe-pg-trust .sp-band h2 { color: #ffffff !important; font-size: clamp(24px, 2.4vw, 28px) !important; line-height: 1.25 !important; margin: 0 0 8px !important; }
+  .sehe-pg-trust .sp-band p { color: rgba(255,255,255,.88) !important; max-width: 62ch; }
+  .sehe-pg-trust .sp-band .sp-actions { flex: 1 1 440px; justify-content: flex-end; }
+
+  @media (max-width: 860px) {
+    .sehe-pg-trust .sp-hero { min-height: max(460px, 60svh); }
+    .sehe-pg-trust .sp-hero--compact { min-height: max(340px, 42svh); }
+    /* phones crop to the brightest part of the frame — darker veil keeps contrast */
+    .sehe-pg-trust .sp-hero-veil { background: linear-gradient(180deg, rgba(8,21,37,.66) 0%, rgba(8,21,37,.48) 30%, rgba(8,21,37,.72) 58%, rgba(8,21,37,.96) 100%); }
+    .sehe-pg-trust .sp-hero-inner, .sehe-pg-trust .sp-hero--compact .sp-hero-inner { padding: 118px 20px 40px; }
+    .sehe-pg-trust .sp-hero-logo { left: 50%; width: 56px !important; transform: translateX(-50%); top: 18px; height: 56px !important; }
+    .sehe-pg-trust .sp-eyebrow { gap: 0; font-size: 11.5px !important; letter-spacing: .24em !important; margin-bottom: 14px !important; }
+    .sehe-pg-trust .sp-eyebrow::before, .sehe-pg-trust .sp-eyebrow::after { display: none; }
+    .sehe-pg-trust .sp-hero h1, .sehe-pg-trust .sp-hero--compact h1 { font-size: 34px !important; line-height: 1.14 !important; }
+    .sehe-pg-trust .sp-hero-sub { font-size: 17px !important; line-height: 1.6 !important; margin-top: 14px !important; }
+    .sehe-pg-trust .sp-body { padding: 44px 18px 56px !important; }
+    .sehe-pg-trust .sp-section + .sp-section, .sehe-pg-trust .sp-section + .sp-band, .sehe-pg-trust .sp-band + .sp-section { margin-top: 56px !important; }
+    .sehe-pg-trust .sp-band { padding: 24px 20px !important; }
+    .sehe-pg-trust .sp-band .sp-actions { justify-content: flex-start; }
+    .sehe-pg-trust .sp-actions .sp-btn { flex: 1 1 100%; }
+  }
+  @media (max-width: 540px) {
+    .sehe-pg-trust .sp-hero h1, .sehe-pg-trust .sp-hero--compact h1 { font-size: 30px !important; }
+    .sehe-pg-trust .sp-hero-inner, .sehe-pg-trust .sp-hero--compact .sp-hero-inner { padding: 106px 18px 34px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sehe-pg-trust *, .sehe-pg-trust *::before, .sehe-pg-trust *::after { transition: none !important; scroll-behavior: auto !important; }
+  }
+
+  /* ── Himalayan Trust page ───────────────────────────────────────────── */
+  .sehe-pg-trust .ht-logo-link { display: inline-block; margin: 0 0 18px; text-decoration: none !important; }
+  .sehe-pg-trust .ht-logo-link img { display: block; width: 260px !important; height: auto !important; }
+  .sehe-pg-trust .ht-note { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; padding: 22px 26px !important; background: var(--cream); border: 1px solid var(--border-light); border-left: 4px solid var(--gold); border-radius: 12px; }
+  .sehe-pg-trust .ht-note p { flex: 1 1 420px; font-size: 17px !important; color: var(--text) !important; }
+  .sehe-pg-trust .ht-note img { width: 200px !important; height: auto !important; flex: none; }
+  .sehe-pg-trust .ht-copy p { max-width: 70ch; }
+  .sehe-pg-trust .ht-copy p + p { margin-top: 16px !important; }
+  .sehe-pg-trust .ht-photos { list-style: none !important; margin: 0 !important; padding: 0 !important; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 26px; }
+  .sehe-pg-trust .ht-photos li { margin: 0 !important; padding: 0 !important; list-style: none !important; }
+  .sehe-pg-trust .ht-photos li::before, .sehe-pg-trust .ht-photos li::marker { content: none !important; }
+  .sehe-pg-trust .ht-photos figure { margin: 0 !important; }
+  .sehe-pg-trust .ht-photos img { display: block; width: 100% !important; height: auto !important; aspect-ratio: 1280 / 783; object-fit: cover; border-radius: 10px; }
+  .sehe-pg-trust .ht-photos figcaption { margin-top: 10px !important; font-size: 16px !important; line-height: 1.55 !important; color: var(--text) !important; }
+  .sehe-pg-trust .ht-photos figcaption small { display: block; margin-top: 2px; font-size: 14px; color: var(--text-2); }
+  .sehe-pg-trust .ht-actions { margin-top: 26px !important; }
+  @media (max-width: 860px) {
+    .sehe-pg-trust .ht-logo-link img { width: 200px !important; }
+    .sehe-pg-trust .ht-note { padding: 18px 18px !important; }
+    .sehe-pg-trust .ht-note img { width: 160px !important; }
+  }
+</style>
+<div class="sehe-pg-trust">
+<section class="sp-hero" aria-labelledby="sehe-ht-title">
+  <img class="sp-hero-img" src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Himalayan+Trust+Trip-82-1920w.webp" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Himalayan+Trust+Trip-82-640w.webp 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Himalayan+Trust+Trip-82-1280w.webp 1280w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Himalayan+Trust+Trip-82-1920w.webp 1920w" sizes="100vw" alt="" style="object-position:center 35%" fetchpriority="high">
+  <div class="sp-hero-veil" aria-hidden="true"></div>
+  <img class="sp-hero-logo" src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/SEH+Explorer_logo+white-350w.png" alt="Sir Edmund Hillary Explorer" width="350" height="350">
+  <div class="sp-hero-inner">
+    <a class="ht-logo-link" href="https://himalayantrust.org/" target="_blank" rel="noopener"><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Himalayan+Logo+White-640w.png" alt="Himalayan Trust logo" width="640" height="199"><span class="sp-sr"> — Himalayan Trust website (opens in a new tab)</span></a>
+    <p class="sp-eyebrow">Founded in 1960</p>
+    <h1 id="sehe-ht-title">Sir Edmund Hillary's Himalayan Trust</h1>
+    <p class="sp-hero-sub">"Committed to the people of the Everest region since 1960"</p>
+  </div>
+</section>
+<div class="sp-body">
+  <aside class="sp-section ht-note" aria-label="Who is speaking on this page">
+    <p>The words on this page are the Himalayan Trust&#8217;s own. &#8220;We&#8221; and &#8220;our&#8221; below mean the Himalayan Trust, the charity Sir Edmund Hillary founded &#8212; not Sir Edmund Hillary Explorer.</p>
+    <a class="ht-logo-link" href="https://himalayantrust.org/" target="_blank" rel="noopener"><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/HT+Logo+MAIN-640w.png" alt="Himalayan Trust logo" width="640" height="192"><span class="sp-sr"> — Himalayan Trust website (opens in a new tab)</span></a>
+  </aside>
+
+  <section class="sp-section ht-copy" aria-labelledby="sehe-ht-heritage">
+    <div class="sp-head">
+      <p class="sp-kicker">The Himalayan Trust</p>
+      <h2 id="sehe-ht-heritage">Our heritage</h2>
+    </div>
+    <p>In 1953, Kiwi mountaineer, Sir Edmund Hillary, made the first ascent of Mt Everest alongside his friend and climbing partner, Tenzing Norgay Sherpa. Their lives were transformed due to this huge accomplishment but for Ed, this was the beginning of an even bigger adventure.</p>
+    <p>A few years later, Ed – who was now Sir Ed - asked a Sherpa, “If there was anything I could do for the Sherpa people, what do you think that would be?” The Sherpa replied, “Our children have eyes, but they are blind and cannot see. We would like you to open their eyes by building a school in our village.” Sir Edmund set to work alongside his wife, Louise Hillary, and founded the Himalayan Trust with the building of the first school in the region.</p>
+  </section>
+
+  <section class="sp-section ht-copy" aria-labelledby="sehe-ht-today">
+    <div class="sp-head">
+      <p class="sp-kicker">The Himalayan Trust</p>
+      <h2 id="sehe-ht-today">The Himalayan Trust today</h2>
+    </div>
+    <p>Nepal is one of the poorest countries in the world. Over half the population lives on $3 a day or less and many families often need to walk for hours to reach basic services like safe water, health care, and schools. With the ongoing support from the Himalayan Trust, we’re working to change this and transform lives in the Everest region.</p>
+    <p>Through partnership and a long-term commitment to change, we are running projects all around the Everest Himalayan region.</p>
+    <p>Our projects in education include things like scholarships, computer labs, teacher training, school infrastructure and much more. In healthcare, the Himalayan Trust has supported hospitals with doctors’ salaries, training, supplies, clinical support and maintenance.</p>
+    <p>But Ed also saw the importance of other things such as cultural heritage and the environment. This is why the Trust has rebuilt destroyed monasteries and planted over 2.6 million tree seedlings over 30 years. It’s a legacy that we are extremely proud of. We are determined to continue this legacy and vital work, but we need you help to do so.</p>
+    <p>Please consider making a donation at <a href="https://himalayantrust.org/donate" target="_blank" rel="noopener">https://himalayantrust.org/donate<span class="sp-sr"> (opens in a new tab)</span></a></p>
+    <p>You can also learn more about our projects at <a href="https://himalayantrust.org/" target="_blank" rel="noopener">https://himalayantrust.org/<span class="sp-sr"> (opens in a new tab)</span></a></p>
+    <p>“Thuuche” (meaning “Thank You” in Sherpa), We truly appreciate your support.</p>
+    <div class="sp-actions ht-actions">
+      <a class="sp-btn" href="https://himalayantrust.org/donate" target="_blank" rel="noopener">Donate to the Himalayan Trust<span class="sp-sr"> (opens in a new tab)</span></a>
+      <a class="sp-btn sp-btn--ghost" href="https://himalayantrust.org/" target="_blank" rel="noopener">Visit himalayantrust.org<span class="sp-sr"> (opens in a new tab)</span></a>
+    </div>
+  </section>
+
+  <section class="sp-section" aria-label="Photographs from the Himalayan Trust">
+    <ul class="ht-photos" role="list">
+      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+Hillary+recieving+Petition+from+Sherpas-640w.webp" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+Hillary+recieving+Petition+from+Sherpas-640w.webp 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+Hillary+recieving+Petition+from+Sherpas-1280w.webp 1280w" sizes="(max-width: 860px) 100vw, 400px" alt="Black-and-white photograph of Sir Edmund Hillary talking with a group of Sherpa men" width="1280" height="783" loading="lazy"><figcaption>Sir Ed receiving a petition for support from Sherpas in the Khumbu, 1960.</figcaption></figure></li>
+      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+building+Khunde+Hospital-640w.webp" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+building+Khunde+Hospital-640w.webp 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+building+Khunde+Hospital-1280w.webp 1280w" sizes="(max-width: 860px) 100vw, 400px" alt="Black-and-white photograph of volunteers carrying timber on the Khunde Hospital building site, mountains behind" width="1280" height="783" loading="lazy"><figcaption>Sir Ed alongside New Zealand volunteers including his brother, Rex, building Khunde Hospital, 1966.</figcaption></figure></li>
+      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Nepal+Monitoring+2022+5MB-7684-640w.webp" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Nepal+Monitoring+2022+5MB-7684-640w.webp 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Nepal+Monitoring+2022+5MB-7684-1280w.webp 1280w" sizes="(max-width: 860px) 100vw, 400px" alt="Young children sitting on cushions in a bright classroom" width="1280" height="783" loading="lazy"><figcaption>Young students in a renovated classroom designed for early childhood learning, Sotang, 2023.</figcaption></figure></li>
+      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Himalayan+Trust+Trip-82-640w.webp" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Himalayan+Trust+Trip-82-640w.webp 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Himalayan+Trust+Trip-82-1280w.webp 1280w" sizes="(max-width: 860px) 100vw, 400px" alt="Three schoolchildren with their hands together in greeting, snow-capped peaks behind" width="1280" height="783" loading="lazy"><figcaption>Students from Thame school saying "Namaste" in front of the mountains of the Himalayas, 2018.</figcaption></figure></li>
+      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/2016_02_25_Nepal_Himalayan_Trust%C3%82-SamTarling_X7A1810-640w.webp" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/2016_02_25_Nepal_Himalayan_Trust%C3%82-SamTarling_X7A1810-640w.webp 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/2016_02_25_Nepal_Himalayan_Trust%C3%82-SamTarling_X7A1810-1280w.webp 1280w" sizes="(max-width: 860px) 100vw, 400px" alt="A nurse taking a patient’s blood pressure in a clinic" width="1280" height="783" loading="lazy"><figcaption>A patient receiving treatment by one of Khunde Hospitals nurses, 2019.<small>Photo: Sam Tarling</small></figcaption></figure></li>
+    </ul>
+  </section>
+
+  <aside class="sp-band" aria-label="About the Sir Edmund Hillary Explorer">
+    <div class="sp-band-copy">
+      <h2>About the Sir Edmund Hillary Explorer</h2>
+      <p>Sir Edmund Hillary epitomised the New Zealand spirit of adventure and he is our inspiration when planning your experience of a lifetime.</p>
+    </div>
+    <div class="sp-actions">
+      <a class="sp-btn sp-btn--gold" href="/about">About us</a>
+      <a class="sp-btn sp-btn--light" href="/journeys">View all journeys</a>
+    </div>
+  </aside>
+</div>
+</div>

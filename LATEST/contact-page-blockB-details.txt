@@ -1,0 +1,123 @@
+<!-- =====================================================================
+     SIR EDMUND HILLARY EXPLORER — CONTACT PAGE (/contact) — BLOCK B
+     VERSION v1  ·  2026-09-25  ·  paste into ONE Duda HTML widget
+     WHERE: page "contact-new", ROW 2, LEFT column. The native Duda form sits in the RIGHT column of the same row.
+     WHAT:  contact details (all tel:/mailto: links), live-chat button, trust line. The script only adds.
+     Full steps + rollback: notes/2026-09-25-old-pages-rebuild-runbook.md
+     ===================================================================== -->
+<div class="sehe-pg-contact ct-details">
+  <div class="ct-head">
+    <h2>Contact details</h2>
+  </div>
+  <dl class="ct-list">
+    <div class="ct-item ct-item--main">
+      <dt>Phone</dt>
+      <dd><a href="tel:+6439741812">+64 3 974 1812</a></dd>
+    </div>
+    <div class="ct-item">
+      <dt>From within New Zealand</dt>
+      <dd><a href="tel:039741812">(03) 974 1812</a></dd>
+    </div>
+    <div class="ct-item">
+      <dt>From Australia</dt>
+      <dd><a href="tel:00116439741812">0011 64 3 974 1812</a></dd>
+    </div>
+    <div class="ct-item">
+      <dt>From the USA or Canada</dt>
+      <dd><a href="tel:0116439741812">011 64 3 974 1812</a></dd>
+    </div>
+    <div class="ct-item ct-item--email">
+      <dt>Email</dt>
+      <dd><a href="mailto:info@pounamutourismgroup.com">info@pounamutourismgroup.com</a></dd>
+    </div>
+    <div class="ct-item">
+      <dt>Postal address</dt>
+      <dd>PO Box 19735, Woolston, Christchurch 8241, New Zealand</dd>
+      <dd class="ct-note">For mail only.</dd>
+    </div>
+  </dl>
+  <div class="ct-chat" data-sehe-chat hidden>
+    <button type="button" class="sp-btn sp-btn--ghost">Start a live chat</button>
+  </div>
+  <div class="ct-trust">
+    <img src="https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/new-zealands-leading-tour-operator-2025-winner-shield-256-816b3264-1920w.png" alt="World Travel Awards — New Zealand&#39;s Leading Tour Operator 2025" width="256" height="256" loading="lazy">
+    <div class="ct-trust-copy">
+      <p>World Travel Awards winner: New Zealand&#39;s Leading Tour Operator 2025.</p>
+        <div id="sehe-ct-trustbox" class="trustpilot-widget ct-trustbox" data-locale="en-NZ" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="67af6f95db89fc000f855205" data-style-height="20px" data-style-width="100%">
+          <a href="https://nz.trustpilot.com/review/siredmundhillaryexplorer.com" target="_blank" rel="noopener">Read our reviews on Trustpilot<span class="sp-sr"> (opens in a new tab)</span></a>
+        </div>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var box = document.getElementById('sehe-ct-trustbox');
+  if (!box) return;
+  var tries = 0;
+  function ready() {
+    if (box.querySelector('iframe')) return true;
+    if (window.Trustpilot) {
+      if (typeof window.Trustpilot.loadFromElement === 'function') { window.Trustpilot.loadFromElement(box, true); return true; }
+    }
+    return false;
+  }
+  var timer = setInterval(function () {
+    tries = tries + 1;
+    if (ready()) { clearInterval(timer); return; }
+    if (tries === 40) clearInterval(timer);
+  }, 500);
+})();
+</script>
+<script>
+(function () {
+  /* Contact page enhancements — add only, never remove.
+     1) "Start a chat" appears only once tawk.to (already on every page) is ready.
+     2) Accessible names for the native form's three fields (its labels are
+        payload keys and are NOT changed; aria-label only affects screen readers).
+     No less-than sign and no ampersand in this script (Duda's publisher escapes both). */
+  var tries = 0;
+  var NAMES = { 'dmform-0': 'Your name', 'dmform-1': 'Your email address', 'dmform-3': 'Your message' };
+  function chat() {
+    var box = document.querySelector('.sehe-pg-contact [data-sehe-chat]');
+    if (!box) return true;
+    if (window.Tawk_API) {
+      if (typeof window.Tawk_API.maximize === 'function') {
+        box.hidden = false;
+        var btn = box.querySelector('button');
+        if (btn) {
+          if (!btn.getAttribute('data-bound')) {
+            btn.setAttribute('data-bound', '1');
+            btn.addEventListener('click', function () { window.Tawk_API.maximize(); });
+          }
+        }
+        return true;
+      }
+    }
+    return false;
+  }
+  function names() {
+    var details = document.querySelector('.sehe-pg-contact.ct-details');
+    if (!details) return true;
+    var row = details.closest('.dmRespRow');
+    var form = row ? row.querySelector('.dmform') : null;
+    if (!form) return false;
+    Object.keys(NAMES).forEach(function (n) {
+      var f = form.querySelector('[name="' + n + '"]');
+      if (f) {
+        f.setAttribute('aria-label', NAMES[n]);
+        var wrap = f.closest('.dmforminput');
+        if (wrap) { if (wrap.classList.contains('required')) f.setAttribute('aria-required', 'true'); }
+      }
+    });
+    return true;
+  }
+  var doneChat = false, doneNames = false;
+  var timer = setInterval(function () {
+    tries = tries + 1;
+    if (!doneChat) doneChat = chat();
+    if (!doneNames) doneNames = names();
+    if (doneChat) { if (doneNames) clearInterval(timer); }
+    if (tries === 60) clearInterval(timer);
+  }, 500);
+})();
+</script>

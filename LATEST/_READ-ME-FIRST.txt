@@ -16,6 +16,19 @@ TOUR PAGES (two widgets per page): blockA -> the TOP HTML widget,
 blockB -> the BOTTOM HTML widget (the native Duda form row sits
 between them; never touch it).
 
+REBUILT OLD-DESIGN PAGES (Sep 2026) — build each on a "<slug>-new"
+page first; full steps, SEO text and rollback in
+notes/2026-09-25-old-pages-rebuild-runbook.md
+  one HTML widget each: reviews-page.txt, about-page.txt,
+  faq-page.txt, gallery-page.txt, himalayan-trust-page.txt,
+  privacy-policy-page.txt, terms-page.txt
+  CONTACT (three HTML widgets + the NATIVE Duda form, untouched):
+    contact-page-blockA-hero.txt    -> row 1, full width (carries
+                                       the CSS for the whole page)
+    contact-page-blockB-details.txt -> row 2, LEFT column
+    (native Duda form)              -> row 2, RIGHT column
+    contact-page-blockC-more.txt    -> row 3, full width
+
 !! ON HOLD (Aug 2026): tourpage-*-blockB.txt. The live tour pages now
    carry a DIFFERENT booking section (iframe to the new Pounamu Journeys
    booking app, pasted outside this repo). Pasting these Block Bs would
@@ -24,9 +37,19 @@ between them; never touch it).
 
 CURRENT VERSIONS
 ------------------------------------------------------------
+  about-page.txt                         v1    (SEHE-about-page_v1.txt)
   brochure-collection.txt                v2    (SEHE-brochure-collection_v2.txt)
+  contact-page-blockA-hero.txt           v1    (SEHE-contact-page_v1.txt [BLOCK A])
+  contact-page-blockB-details.txt        v1    (SEHE-contact-page_v1.txt [BLOCK B])
+  contact-page-blockC-more.txt           v1    (SEHE-contact-page_v1.txt [BLOCK C])
+  faq-page.txt                           v1    (SEHE-faq-page_v1.txt)
+  gallery-page.txt                       v1    (SEHE-gallery-page_v1.txt)
+  himalayan-trust-page.txt               v1    (SEHE-himalayan-trust-page_v1.txt)
   homepage.txt                           v38   (SEHE-homepage_v38.txt)
   journeys-page.txt                      v22   (SEHE-journeys-page_v22.txt)
+  privacy-policy-page.txt                v1    (SEHE-privacy-policy-page_v1.txt)
+  reviews-page.txt                       v1    (SEHE-reviews-page_v1.txt)
+  terms-page.txt                         v1    (SEHE-terms-page_v1.txt)
   tourpage-11day-2627-blockA.txt         v26   (SEHE-11day-2627_v26-blockA.txt)
   tourpage-11day-2627-blockB.txt         -     (SEHE-11day-2627_v26-blockB.txt)
   tourpage-11day-2728-blockA.txt         v21   (SEHE-11day-2728_v21-blockA.txt)
