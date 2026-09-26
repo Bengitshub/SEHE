@@ -8,10 +8,10 @@ This runbook covers eight rebuilt pages: Reviews, Contact, About, FAQ, Gallery, 
   - `SEHE-contact-page_v9.txt`
   - `SEHE-gallery-page_v7.txt`
   - `SEHE-about-page_v7.txt`
-  - `SEHE-faq-page_v7.txt`
+  - `SEHE-faq-page_v8.txt`
   - `SEHE-himalayan-trust-page_v5.txt`
   - `SEHE-privacy-policy-page_v5.txt`
-  - `SEHE-terms-page_v4.txt`
+  - `SEHE-terms-page_v5.txt`
 - **Before snapshot:** the served HTML of every old page, from 25 Sep 2026, is in `backups/2026-09-25-old-pages/`.
 - **Draft emails:** for Kirsty and Paul, in `notes/2026-09-25-emails.md`.
 
@@ -48,7 +48,7 @@ No coding is needed. You paste whole files into Duda HTML widgets.
 5. Send Kirsty the preview link.
 6. After her OK, swap.
 
-**About's gate is cleared (26 Sep 2026).** Kirsty answered A3 and approved the page; A1 and A2 are qualified with "On selected tours" (About v6 onwards). See §7.
+**About (26 Sep 2026).** Kirsty answered A3. A1 and A2 are not confirmed answers: About v6 onwards carries a proposed qualification, "On selected tours", based on the itinerary review, and email 3 asks Kirsty to confirm it. See §7.
 
 The details are in §0 to §4.
 
@@ -86,14 +86,16 @@ They already had it in the 6 Sep backup (`backups/2026-09-06-live-site/pages/`),
 
 **Phase 1: Reviews and Contact (built by Ben; Aaron swaps them after Kirsty approves).**
 
-**26 Sep 2026, final live check: all eight previews are ready for Aaron's switch-over.** Every preview runs its final version (Reviews v7, Contact v9, About v7, FAQ v7, Gallery v7, Himalayan Trust v5, Privacy v5, Terms v4). Each is complete (it ends with its END OF FILE line where it has one), matches its file exactly, carries Kirsty's edits, is noindex and appears in no menu. The Contact form sits in its column on desktop and phones, and its settings match the live `/contact`. The live pages are unchanged.
+**26 Sep 2026: Kirsty's reply.** She wrote "all the new pages look great" and answered most §7 questions. Her answers are applied in FAQ, Privacy and Terms, and her A3 answer in About. About's A1/A2 wording ("On selected tours") is a proposal from the itinerary review, not her answer: email 3 asks her to confirm it.
 
-**26 Sep 2026: Kirsty approved all eight pages** ("all the new pages look great") and answered most §7 questions. Her answers are in FAQ v7, About v6 (now v7: the photo text is branded like the Gallery), Privacy v5 and Terms v4. Next:
+**26 Sep 2026, live check:** the previews ran Reviews v7, Contact v9, About v7, FAQ v7, Gallery v7, Himalayan Trust v5, Privacy v5 and Terms v4. Each was complete (it ends with its END OF FILE line where it has one), matched its file exactly, was noindex and appeared in no menu. The Contact form sits in its column on desktop and phones, and its settings match the live `/contact`. The live pages are unchanged.
 
-1. Paste FAQ v7, About v7, Privacy v5 and Terms v4 over their previews (`faq-new`, `about-new`, `privacy-policy-new`, `terms-new`), confirm the END OF FILE line, and publish.
-2. Then Aaron switches all eight pages over (§2, §4).
+**Since that check,** FAQ v8 and Terms v5 correct the cancellation wording (F3 in §7): v7 and v4 had made the refund conditional. Next:
 
-Still open (none blocks the switch-over): F1 mobility and F2 payment methods (Terms clauses 13 and 2 against the FAQ), G2 and G4 (Kirsty: "Noted"), and the §5 clean-up.
+1. Paste FAQ v8 over `faq-new` and Terms v5 over `terms-new`, confirm the END OF FILE line, and publish.
+2. Then Aaron switches the pages over (§2, §4). About goes once Kirsty confirms its A1/A2 wording, or after it is changed to her wording.
+
+Still open: F1 mobility and F2 payment methods (Terms clauses 13 and 2 against the FAQ), G2 and G4 (Kirsty wrote "Noted", which doesn't settle them), About A1/A2 (proposed wording to confirm), all asked in email 3; and the §5 clean-up. Only the About item affects a switch-over.
 
 **Check-over, 25 Sep 2026 (live site, final pass):** every preview is ready for Kirsty except About (held for A1 to A3). Aaron does the switch-over after she approves.
 
@@ -123,7 +125,7 @@ Still open (none blocks the switch-over): F1 mobility and F2 payment methods (Te
 **Phase 2: About, FAQ, Gallery, Himalayan Trust, Privacy and Terms (built by Ben on 25 Sep; Aaron swaps them after Kirsty approves).**
 
 - The steps are the same as Phase 1: build `-new`, hide it from the menu, check with Izaac and Joel, publish, send Kirsty the preview links, and swap after she approves.
-- **About's gate is cleared** (26 Sep 2026, see §7): paste About v7, then it can be switched over with the others.
+- **About:** Kirsty answered A3. A1 and A2 carry a proposed qualification ("On selected tours") that awaits her confirmation (email 3). Switch About over once she confirms it or gives other wording (see §7).
   - **Confirmed for every tour:** keep the sentence.
   - **True only for some tours:** qualify it in Kirsty's words.
   - **Not true, or no answer:** delete the sentence.
@@ -288,7 +290,7 @@ To rename them properly, in one sitting:
 
 ### About (`/about`): `LATEST/about-page.txt`
 
-Use the §1 row. Paste **About v7** (Kirsty's answers of 26 Sep 2026, and the photo text branded like the Gallery).
+Use the §1 row. Paste **About v7**: Kirsty's A3 answer, the proposed A1/A2 qualification that awaits her confirmation (see §7), and the photo text branded like the Gallery.
 
 **Delete the old photo slider.** The live `about-new` (25 Sep) still has the old page's slider widget in a row below the new content. On phones it shows as a 400px block of old slides. Delete that whole row.
 
@@ -470,7 +472,7 @@ The wording on the new pages is exactly as it is live today, unless a master's c
 
 The About text was rewritten in the approved copy update (round 3, 25 Sep 2026). A1 to A3 quote the new wording.
 
-**Kirsty's answers (email, 26 Sep 2026), applied in About v6.** A1 to A3 no longer block the page. The original rule was:
+**26 Sep 2026:** Kirsty answered A3 (applied in About v6). A1 and A2 were not confirmed: About v6 carries a proposed qualification that awaits her confirmation (email 3). The original rule was:
 
 - **Confirmed for every tour:** keep.
 - **True only for some:** qualify it in Kirsty's words.
@@ -481,8 +483,8 @@ All three sentences are in the second paragraph under "Our inspiration". To edit
 - **Before building:** edit the master (`SEHE-about-page_v*.txt`: bump the version, run `tools/make-latest.py`).
 - **Already pasted:** edit the text in the `about-new` HTML widget, then update the master to match.
 
-- **A1 — International Antarctic Centre.** QUALIFIED (26 Sep 2026): not asked in the email that went out. The current itineraries include it only on the 14-day 2026/27 and Pinnacle tours, so About v6 says "On selected tours". Confirm with Kirsty if she wants different wording. The page says: "In Christchurch, learn about his team's Antarctic expedition using converted farm tractors at the International Antarctic Centre." Is that visit still on every itinerary?
-- **A2 — Marlborough.** QUALIFIED (26 Sep 2026): not answered. Marlborough is only on the 14-day and Pinnacle tours, so About v6 says "On selected tours". The page says: "You will also travel through Marlborough, where Hillary trained for the air force during the Second World War and climbed Mt Tapuae-o-Uenuku." Is that still true of every tour?
+- **A1 — International Antarctic Centre.** PROPOSED, AWAITING KIRSTY'S CONFIRMATION (26 Sep 2026): not asked in the email that went out. The itinerary review found it only on the 14-day 2026/27 and Pinnacle tours, so About v6 proposes "On selected tours". Email 3 asks her to confirm. The page says: "In Christchurch, learn about his team's Antarctic expedition using converted farm tractors at the International Antarctic Centre." Is that visit still on every itinerary?
+- **A2 — Marlborough.** PROPOSED, AWAITING KIRSTY'S CONFIRMATION (26 Sep 2026): not answered. The itinerary review found Marlborough only on the 14-day and Pinnacle tours, so About v6 proposes "On selected tours". Email 3 asks her to confirm. The page says: "You will also travel through Marlborough, where Hillary trained for the air force during the Second World War and climbed Mt Tapuae-o-Uenuku." Is that still true of every tour?
 - **A3 — Hillary family guest speaker.** RESOLVED (Kirsty, 26 Sep 2026: "keep both consistent with Hillary family member"). About v6: "A member of the Hillary family joins the tour for an evening at the Sir Edmund Hillary Alpine Centre, sharing personal stories and how the family continues his legacy." The page says: "A guest speaker from the Hillary family shares personal stories and how the family continues his legacy." Is that on every departure? Other pages put it differently:
   - The live homepage says "a member of the Hillary family personally joins the tour for an evening at the Sir Edmund Hillary Alpine Centre".
   - Journeys shows a "Hillary Family Speaker" tile.
@@ -494,12 +496,12 @@ All three sentences are in the second paragraph under "Our inspiration". To edit
 
 ### FAQ (answers verbatim; conflicts with other pages)
 
-- **F1 — Mobility. STILL OPEN, URGENT for Paul** (not in the email that went out). Kirsty's ruling is "two flights of stairs", which is what the FAQ says. Terms clause 13 still says "15 steps … carry your own bags", and the Terms are the contract.
-- **F2 — Payment methods.** STILL OPEN (asked 26 Sep; no answer yet). The pages disagree:
+- **F1 — Mobility. STILL OPEN, URGENT** (not in the email that went out; asked of Kirsty in email 3). Kirsty's ruling is "two flights of stairs", which is what the FAQ says. Terms clause 13 still says "15 steps … carry your own bags", and the Terms are the contract.
+- **F2 — Payment methods.** STILL OPEN (no answer on 26 Sep; asked again in email 3). The pages disagree:
   - The FAQ offers bank transfer (AU$, US$ and NZ$ accounts), Wise and PayPal.
   - Terms clause 2 says internet banking, with a 2% credit-card surcharge.
   - The Journeys FAQ says internet banking plus a 2% card fee, and leaves out the 40%-at-six-months stage.
-- **F3 — When the operator cancels.** RESOLVED (Kirsty: "We do try to offer different suitable dates as an option"). FAQ v7 and Terms v4 item e) now say we try to offer different suitable dates first, and a 100% refund applies if none suit. The FAQ says "100% refund". Terms clauses 3–4 say PTG first tries to reschedule or offer other dates. Terms item e) also says 100% refund.
+- **F3 — When the operator cancels.** RESOLVED (Kirsty: "We do try to offer different suitable dates as an option"). FAQ v8 and Terms v5 item e) keep the refund and add her point: "If Pounamu Tourism Group cancels the tour, a 100% refund will apply. We will also try to offer different suitable dates as an option." (FAQ v7 and Terms v4 had wrongly made the refund conditional.) The FAQ says "100% refund". Terms clauses 3–4 say PTG first tries to reschedule or offer other dates. Terms item e) also says 100% refund.
 - **F4 — Flights.** The FAQ says flights to and from the start and end points are not included. The homepage says the Pinnacle includes the flight to Auckland.
 - **F5 — Meals.** One answer says "all breakfasts and a selection of additional meals". Another says "Most meals are included".
 - **F6 — Seating (minor).** The FAQ page says some trains have allocated seating. The Journeys FAQ says seating "is not pre-allocated", but that answer is about the coach.
@@ -511,11 +513,11 @@ All three sentences are in the second paragraph under "Our inspiration". To edit
 ### Gallery (for Kirsty)
 
 - **G1 — Intro sentence. RESOLVED (round 3, 25 Sep 2026).** The old intro said every photo came from passengers, but two are professional images (Rob Suisted, David Wall; both credited). The intro now reads "A closer look at the scenery and experiences along the way, including photographs shared by our guests."
-- **G2 — Titles that look wrong.** Kirsty: "Noted" (26 Sep 2026); no change yet.
+- **G2 — Titles that look wrong.** STILL OPEN: Kirsty wrote "Noted" (26 Sep 2026), which doesn't settle it; asked again in email 3.
   - Two photos are titled "Mirror Lake aka Lake Matheson (by Fox Glacier)", but they look like the Mirror Lakes in the Eglinton Valley on the Milford Road.
   - The waterfall titled "Milford Sound" looks like Thunder Creek Falls on the Haast Pass.
 - **G3 — Spellings.** RESOLVED for Milford (25 Sep 2026, Ben: "yes it is milford"): "Milford Sounds" and "Milford Sounds cruise" now read "Milford Sound" and "Milford Sound cruise" (Gallery v7), and the cruise photo carries the Milford Sound label. Still kept verbatim: "Queen Charlotte Sounds", and "Kaikoura" without a macron.
-- **G4 — Photos of places no current tour visits** (Kirsty: "Noted", 26 Sep 2026; no change yet) (checked against the current tour pages' text on 25 Sep 2026): Queen Charlotte Sounds, Picton foreshore (also the page's banner photo), Arrowtown and "Moonshine tasting in Gore", plus the two G2 photos. They are still in the gallery, unlabelled. Keep them or remove them: Kirsty's call.
+- **G4 — Photos of places no current tour visits** (STILL OPEN: "Noted" doesn't settle it; asked again in email 3) (checked against the current tour pages' text on 25 Sep 2026): Queen Charlotte Sounds, Picton foreshore (also the page's banner photo), Arrowtown and "Moonshine tasting in Gore", plus the two G2 photos. They are still in the gallery, unlabelled. Keep them or remove them: Kirsty's call.
 
 ### Himalayan Trust (the Trust's own words)
 
@@ -535,7 +537,7 @@ All three sentences are in the second paragraph under "Our inspiration". To edit
 - **P4 — Under-13s.** RESOLVED: the Privacy position stands (not intended for under-13s); Terms v4 old clause 41 (now 39) says the tour is not intended for children under 13. Section 8 says the services "are not intended for individuals under the age of 13", but Terms clause 41 allows guests under 13 when accompanied.
 - **P5 — Missing full stop.** Section 9's last sentence has no full stop. It is kept verbatim.
 
-### Terms & Conditions (T1 to T6, F3, F7 and P4 changed in v4 per Kirsty, 26 Sep 2026; clauses renumbered 1 to 42)
+### Terms & Conditions (T1 to T6, F3, F7 and P4 changed in v4 per Kirsty, 26 Sep 2026, with F3 corrected in v5; clauses renumbered 1 to 42)
 
 Clause numbers below are the OLD ones. In v4, old 20 to 35 are 19 to 34, the ferry clause (old 36) is gone, and old 37 to 44 are 35 to 42.
 

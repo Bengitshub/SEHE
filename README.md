@@ -19,8 +19,8 @@ Ben pastes only from there (`tools/make-latest.py` regenerates it).
 | 7 tour pages | `SEHE-*-tour_v*.txt` (one per page) | pasted as Block A + native Duda form + Block B — see `switchover/`. **LIVE DIVERGENCE (Aug 2026):** Block B section 5 on all seven pages was replaced outside this repo with an iframe to a new booking app (`bookings.pounamutourismgroup.com`); the Checkfront widget, split-item config and 5-star strip are no longer live. Tour Block Bs in `LATEST/` are ON HOLD — see `observed/README.md`. Live Block A is still the old v21. |
 | Reviews (rebuild, Sep 2026) | `SEHE-reviews-page_v7.txt` | single widget; live Trustpilot Micro Combo + 12 selected reviews verbatim + earlier guest feedback; built on `reviews-new` — see the runbook |
 | Contact (rebuild, Sep 2026) | `SEHE-contact-page_v9.txt` | ONE widget (`LATEST/contact-page.txt`) placed directly above the NATIVE Duda form row; on the published page the form is docked into the design (never rebuilt, settings untouched) |
-| About · FAQ · Gallery · Himalayan Trust (rebuild, Sep 2026) | `SEHE-about-page_v7.txt` · `SEHE-faq-page_v7.txt` · `SEHE-gallery-page_v7.txt` · `SEHE-himalayan-trust-page_v5.txt` | single widget each; copy ported verbatim from the live pages |
-| Privacy Policy · Terms (rebuild, Sep 2026) | `SEHE-privacy-policy-page_v5.txt` · `SEHE-terms-page_v4.txt` | new layout; wording identical to live except the edits Kirsty approved on 26 Sep 2026 (the build proves it) |
+| About · FAQ · Gallery · Himalayan Trust (rebuild, Sep 2026) | `SEHE-about-page_v7.txt` · `SEHE-faq-page_v8.txt` · `SEHE-gallery-page_v7.txt` · `SEHE-himalayan-trust-page_v5.txt` | single widget each; copy ported verbatim from the live pages |
+| Privacy Policy · Terms (rebuild, Sep 2026) | `SEHE-privacy-policy-page_v5.txt` · `SEHE-terms-page_v5.txt` | new layout; wording identical to live except the edits Kirsty approved on 26 Sep 2026 (the build proves it) |
 
 - Tour pages carry the Checkfront split-item fix (`302,374` / `289,392`) and
   the static 5-star Trustpilot strip (Ben's call, 4.7-TrustScore facts noted
