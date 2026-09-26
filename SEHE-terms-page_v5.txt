@@ -1,8 +1,14 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — TERMS & CONDITIONS (/terms-and-conditions)
-     COMPLETE PAGE  ·  VERSION v4  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v5  ·  2026-09-25  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v5 — F3 wording corrected (26 Sep 2026). v4 made the refund
+            conditional ("If none suit"), which Kirsty did not say. Item e)
+            keeps the refund and adds her point separately: "If Pounamu
+            Tourism Group cancels the tour, a 100% refund will apply. We will
+            also try to offer different suitable dates as an option." The FAQ
+            uses the same words. Nothing else changed.
        v4 — Kirsty's answers (email, 26 Sep 2026), the only wording changes:
             T1 postcode 8241; T2 email info@pounamutourismgroup.com (clauses
             1 and 9); T3 the Privacy Officer's address is PO Box 19735,
@@ -258,7 +264,7 @@
     <p><strong>b)</strong> Between 60 days and 6 months prior to departure, a cancellation fee of 20% of the Tour Package Price.</p>
     <p><strong>c)</strong> Between 30 and 59 days prior to departure, a cancellation fee of 50% of the Tour Package Price.</p>
     <p><strong>d)</strong> Less than 30 days prior to departure, a cancellation fee of 100% of the Tour Package Price.</p>
-    <p><strong>e)</strong> If Pounamu Tourism Group cancels the tour, we will try to offer different suitable dates as an option. If none suit, a 100% refund will apply.</p>
+    <p><strong>e)</strong> If Pounamu Tourism Group cancels the tour, a 100% refund will apply. We will also try to offer different suitable dates as an option.</p>
     <p><strong>f)</strong> SEHE Tour Guests will not be refunded the third-party credit card surcharge fee.</p>
     <h2 id="section-personal-information-and-privacy">Personal Information and Privacy</h2>
     <p><strong>7</strong>. You declare that all the information supplied in registering for the SEHE Tours is true and correct, and that you will update PTG with any changes in the time between applying and the SEHE Tour commencing.</p>
@@ -316,4 +322,4 @@
   </nav>
 </div>
 </div>
-<!-- END OF FILE: terms-page.txt v4. If this is the last line in the Duda code box, the whole file is pasted. -->
+<!-- END OF FILE: terms-page.txt v5. If this is the last line in the Duda code box, the whole file is pasted. -->
