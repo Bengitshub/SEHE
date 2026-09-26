@@ -1,8 +1,14 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — FAQ PAGE (/f-a-q)
-     COMPLETE PAGE  ·  VERSION v7  ·  2026-09-26  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v8  ·  2026-09-26  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v8 — F3 wording corrected (26 Sep 2026). v7 made the refund
+            conditional ("If none suit"), which Kirsty did not say. The
+            answer keeps the refund and adds her point separately: "If
+            Pounamu Tourism Group cancels the tour, a 100% refund will
+            apply. We will also try to offer different suitable dates as
+            an option." The Terms use the same words. Nothing else changed.
        v7 — Kirsty's answers (email, 26 Sep 2026). F8: the hygiene answer
             loses the sentence about bringing N95-grade masks and Rapid
             Antigen Tests. F3: when we cancel a tour, the cancellation answer
@@ -333,7 +339,7 @@
       <details class="fq-item" id="faq-what-is-your-cancellation-policy">
         <summary>What is your cancellation policy?</summary>
         <div class="fq-a">
-          <p>If cancellation is made more than 6-months prior to the tour departure, a full refund will apply, no cancellation fee; 60 days or more prior to departure, 20% of the tour package price will apply; If cancellation is made between 30 and 59 days prior to departure, 50% of the tour package price; If the cancellation is made less than 30 days prior to departure, 100% of the tour package price will apply. In the event that Pounamu Tourism Group cancels a tour, we will try to offer different suitable dates as an option. If none suit, a 100% refund will apply.</p>
+          <p>If cancellation is made more than 6-months prior to the tour departure, a full refund will apply, no cancellation fee; 60 days or more prior to departure, 20% of the tour package price will apply; If cancellation is made between 30 and 59 days prior to departure, 50% of the tour package price; If the cancellation is made less than 30 days prior to departure, 100% of the tour package price will apply. If Pounamu Tourism Group cancels the tour, a 100% refund will apply. We will also try to offer different suitable dates as an option.</p>
         </div>
       </details>
       <details class="fq-item" id="faq-where-can-i-view-the-booking-terms-conditions">
@@ -479,4 +485,4 @@
   slot.appendChild(btn);
 })();
 </script>
-<!-- END OF FILE: faq-page.txt v7. If this is the last line in the Duda code box, the whole file is pasted. -->
+<!-- END OF FILE: faq-page.txt v8. If this is the last line in the Duda code box, the whole file is pasted. -->
