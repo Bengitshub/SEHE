@@ -86,6 +86,8 @@ They already had it in the 6 Sep backup (`backups/2026-09-06-live-site/pages/`),
 
 **Phase 1: Reviews and Contact (built by Ben; Aaron swaps them after Kirsty approves).**
 
+**26 Sep 2026, final live check: all eight previews are ready for Aaron's switch-over.** Every preview runs its final version (Reviews v7, Contact v9, About v7, FAQ v7, Gallery v7, Himalayan Trust v5, Privacy v5, Terms v4). Each is complete (it ends with its END OF FILE line where it has one), matches its file exactly, carries Kirsty's edits, is noindex and appears in no menu. The Contact form sits in its column on desktop and phones, and its settings match the live `/contact`. The live pages are unchanged.
+
 **26 Sep 2026: Kirsty approved all eight pages** ("all the new pages look great") and answered most §7 questions. Her answers are in FAQ v7, About v6 (now v7: the photo text is branded like the Gallery), Privacy v5 and Terms v4. Next:
 
 1. Paste FAQ v7, About v7, Privacy v5 and Terms v4 over their previews (`faq-new`, `about-new`, `privacy-policy-new`, `terms-new`), confirm the END OF FILE line, and publish.
