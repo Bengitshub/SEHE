@@ -7,7 +7,7 @@ This runbook covers eight rebuilt pages: Reviews, Contact, About, FAQ, Gallery, 
   - `SEHE-reviews-page_v7.txt`
   - `SEHE-contact-page_v9.txt`
   - `SEHE-gallery-page_v7.txt`
-  - `SEHE-about-page_v6.txt`
+  - `SEHE-about-page_v7.txt`
   - `SEHE-faq-page_v7.txt`
   - `SEHE-himalayan-trust-page_v5.txt`
   - `SEHE-privacy-policy-page_v5.txt`
@@ -48,7 +48,7 @@ No coding is needed. You paste whole files into Duda HTML widgets.
 5. Send Kirsty the preview link.
 6. After her OK, swap.
 
-**About's gate is cleared (26 Sep 2026).** Kirsty answered A3 and approved the page; A1 and A2 are qualified with "On selected tours" (About v6). See §7.
+**About's gate is cleared (26 Sep 2026).** Kirsty answered A3 and approved the page; A1 and A2 are qualified with "On selected tours" (About v6 onwards). See §7.
 
 The details are in §0 to §4.
 
@@ -86,9 +86,9 @@ They already had it in the 6 Sep backup (`backups/2026-09-06-live-site/pages/`),
 
 **Phase 1: Reviews and Contact (built by Ben; Aaron swaps them after Kirsty approves).**
 
-**26 Sep 2026: Kirsty approved all eight pages** ("all the new pages look great") and answered most §7 questions. Her answers are in FAQ v7, About v6, Privacy v5 and Terms v4. Next:
+**26 Sep 2026: Kirsty approved all eight pages** ("all the new pages look great") and answered most §7 questions. Her answers are in FAQ v7, About v6 (now v7: the photo text is branded like the Gallery), Privacy v5 and Terms v4. Next:
 
-1. Paste those four files over their previews (`faq-new`, `about-new`, `privacy-policy-new`, `terms-new`), confirm the END OF FILE line, and publish.
+1. Paste FAQ v7, About v7, Privacy v5 and Terms v4 over their previews (`faq-new`, `about-new`, `privacy-policy-new`, `terms-new`), confirm the END OF FILE line, and publish.
 2. Then Aaron switches all eight pages over (§2, §4).
 
 Still open (none blocks the switch-over): F1 mobility and F2 payment methods (Terms clauses 13 and 2 against the FAQ), G2 and G4 (Kirsty: "Noted"), and the §5 clean-up.
@@ -121,7 +121,7 @@ Still open (none blocks the switch-over): F1 mobility and F2 payment methods (Te
 **Phase 2: About, FAQ, Gallery, Himalayan Trust, Privacy and Terms (built by Ben on 25 Sep; Aaron swaps them after Kirsty approves).**
 
 - The steps are the same as Phase 1: build `-new`, hide it from the menu, check with Izaac and Joel, publish, send Kirsty the preview links, and swap after she approves.
-- **About's gate is cleared** (26 Sep 2026, see §7): paste About v6, then it can be switched over with the others.
+- **About's gate is cleared** (26 Sep 2026, see §7): paste About v7, then it can be switched over with the others.
   - **Confirmed for every tour:** keep the sentence.
   - **True only for some tours:** qualify it in Kirsty's words.
   - **Not true, or no answer:** delete the sentence.
@@ -286,7 +286,7 @@ To rename them properly, in one sitting:
 
 ### About (`/about`): `LATEST/about-page.txt`
 
-Use the §1 row. Paste **About v6** (Kirsty's answers, 26 Sep 2026).
+Use the §1 row. Paste **About v7** (Kirsty's answers of 26 Sep 2026, and the photo text branded like the Gallery).
 
 **Delete the old photo slider.** The live `about-new` (25 Sep) still has the old page's slider widget in a row below the new content. On phones it shows as a 400px block of old slides. Delete that whole row.
 

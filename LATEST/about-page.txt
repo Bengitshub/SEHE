@@ -1,8 +1,13 @@
 <!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — ABOUT PAGE (/about)
-     COMPLETE PAGE  ·  VERSION v6  ·  2026-09-26  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v7  ·  2026-09-26  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v7 — Ben (26 Sep 2026): the text on the photos is branded like the
+            Gallery. The portrait's caption is now a navy label with a gold
+            dash on the photo ("Sir Edmund Hillary, 1960", without the full
+            stop), and the two photographer credits sit on their photos in
+            small white type. Copy otherwise unchanged from v6.
        v6 — Kirsty's answers (email, 26 Sep 2026). A3: "keep both consistent
             with Hillary family member", so the sentence now matches the
             homepage: a member of the Hillary family joins the tour for an
@@ -205,18 +210,23 @@
   @media (min-width: 861px) { .sehe-pg-about .ab-hero { min-height: 0 !important; height: 480px; } }
   @media (max-width: 860px) { .sehe-pg-about .ab-hero .sp-hero-img { object-position: center 0% !important; } }
   .sehe-pg-about .ab-story { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: start; }
-  .sehe-pg-about .ab-portrait { margin: 0 !important; }
+  .sehe-pg-about .ab-portrait { position: relative; margin: 0 !important; }
   .sehe-pg-about .ab-portrait img { display: block; width: 100% !important; height: auto !important; border-radius: 12px; }
-  .sehe-pg-about .ab-portrait figcaption { margin-top: 10px !important; font-size: 15px !important; color: var(--text-2) !important; }
   .sehe-pg-about .ab-copy p + p { margin-top: 16px !important; }
   .sehe-pg-about .ab-copy p { max-width: 60ch; }
   .sehe-pg-about .ab-links { margin-top: 24px !important; }
   .sehe-pg-about .ab-photos { list-style: none !important; margin: 28px 0 0 !important; padding: 0 !important; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
   .sehe-pg-about .ab-photos li { margin: 0 !important; padding: 0 !important; list-style: none !important; }
   .sehe-pg-about .ab-photos li::before, .sehe-pg-about .ab-photos li::marker { content: none !important; }
-  .sehe-pg-about .ab-photos figure { margin: 0 !important; }
+  .sehe-pg-about .ab-photos figure { position: relative; margin: 0 !important; }
   .sehe-pg-about .ab-photos img { display: block; width: 100% !important; height: 220px !important; object-fit: cover; border-radius: 10px; }
-  .sehe-pg-about .ab-photos figcaption { margin-top: 6px !important; font-size: 14.5px !important; line-height: 1.45 !important; color: var(--text-2) !important; }
+  /* text on the photos, branded like the Gallery: a navy label with a gold dash
+     (Montserrat capitals) and the photographer's credit in small white type.
+     Clicks and selection pass through to the page. */
+  .sehe-pg-about figcaption.ab-cap { position: absolute; left: 0; right: 0; bottom: 0; margin: 0 !important; padding: 10px !important; display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; pointer-events: none; }
+  .sehe-pg-about .ab-tag { display: inline-flex; align-items: center; gap: 8px; max-width: 100%; padding: 7px 11px 7px 10px; border-radius: 6px; background: rgba(14,45,82,.9); color: #ffffff !important; font-family: 'Montserrat', sans-serif !important; font-size: 12.5px !important; font-weight: 600 !important; line-height: 1.25 !important; letter-spacing: .1em; text-transform: uppercase !important; box-shadow: 0 2px 10px rgba(8,21,37,.25); }
+  .sehe-pg-about .ab-tag::before { content: ''; flex: none; width: 14px; height: 2px; background: var(--gold-light); }
+  .sehe-pg-about .ab-by { margin-left: auto; font-family: 'Open Sans', sans-serif !important; font-size: 11.5px !important; line-height: 1.3 !important; color: rgba(255,255,255,.95) !important; text-shadow: 0 1px 6px rgba(8,21,37,.95); }
   .sehe-pg-about .ab-facts { list-style: none !important; margin: 24px 0 0 !important; padding: 0 !important; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; }
   .sehe-pg-about .ab-facts li { margin: 0 !important; list-style: none !important; display: flex; align-items: center; gap: 16px; padding: 18px 20px !important; background: var(--cream); border: 1px solid var(--border-light); border-radius: 10px; }
   .sehe-pg-about .ab-facts li::before, .sehe-pg-about .ab-facts li::marker { content: none !important; }
@@ -231,6 +241,10 @@
   }
   @media (max-width: 420px) {
     .sehe-pg-about .ab-photos img { height: 150px !important; }
+    .sehe-pg-about figcaption.ab-cap { padding: 7px !important; }
+    .sehe-pg-about .ab-tag { gap: 6px; padding: 5px 8px; font-size: 11px !important; letter-spacing: .06em; }
+    .sehe-pg-about .ab-tag::before { width: 10px; }
+    .sehe-pg-about .ab-by { font-size: 10.5px !important; }
   }
 </style>
 <div class="sehe-pg-about">
@@ -250,7 +264,7 @@
     <div class="ab-story">
       <figure class="ab-portrait">
         <img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+Hillary+profile+1960-640w.jpg" srcset="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+Hillary+profile+1960-640w.jpg 640w, https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Ed+Hillary+profile+1960-1920w.jpg 783w" sizes="(max-width: 860px) 420px, 480px" alt="Sir Edmund Hillary in 1960, smiling, in profile" width="640" height="800" loading="lazy">
-        <figcaption>Sir Edmund Hillary, 1960.</figcaption>
+        <figcaption class="ab-cap"><span class="ab-tag">Sir Edmund Hillary, 1960</span></figcaption>
       </figure>
       <div class="ab-copy">
         <p class="sp-kicker">The Hillary connection</p>
@@ -273,9 +287,9 @@
     </div>
     <ul class="ab-photos" role="list">
       <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/woman-on-the-coastal-pacific-640w.webp" alt="A passenger taking in the coastline from a window seat on the Coastal Pacific" width="640" height="442" loading="lazy"></figure></li>
-      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/L387-Aoraki-Mount-Cook-National-Park--Canterbury-Rob-Suisted-640w.jpg" alt="Aoraki Mount Cook, snow-covered above a turquoise lake and autumn trees" width="640" height="640" loading="lazy"><figcaption>Photo: Rob Suisted</figcaption></figure></li>
+      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/L387-Aoraki-Mount-Cook-National-Park--Canterbury-Rob-Suisted-640w.jpg" alt="Aoraki Mount Cook, snow-covered above a turquoise lake and autumn trees" width="640" height="640" loading="lazy"><figcaption class="ab-cap"><small class="ab-by">Photo: Rob Suisted</small></figcaption></figure></li>
       <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/Southland+track-640w.jpg" alt="A railway line running towards snow-capped mountains" width="640" height="640" loading="lazy"></figure></li>
-      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/01-Kaikoura-Canterbury-Kyle-Mulinder-640w.jpg" alt="Fur seals on the rocks at Kaikōura, with snow on the mountains behind" width="640" height="640" loading="lazy"><figcaption>Photo: Kyle Mulinder</figcaption></figure></li>
+      <li><figure><img src="https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/01-Kaikoura-Canterbury-Kyle-Mulinder-640w.jpg" alt="Fur seals on the rocks at Kaikōura, with snow on the mountains behind" width="640" height="640" loading="lazy"><figcaption class="ab-cap"><small class="ab-by">Photo: Kyle Mulinder</small></figcaption></figure></li>
     </ul>
   </section>
 
@@ -306,4 +320,4 @@
 
 </div>
 </div>
-<!-- END OF FILE: about-page.txt v6. If this is the last line in the Duda code box, the whole file is pasted. -->
+<!-- END OF FILE: about-page.txt v7. If this is the last line in the Duda code box, the whole file is pasted. -->
