@@ -1,69 +1,115 @@
-# SEHE — Sir Edmund Hillary Explorer website build
+# SEHE: Sir Edmund Hillary Explorer website
 
-Working repository for the Sir Edmund Hillary Explorer (Pounamu Tourism Group)
-site rebuild: seven self-contained HTML tour pages, the Journeys index, the
-homepage, the brochure-collection page, per-page booking widgets, a Cloudflare
-Worker that feeds live departure availability from Checkfront (plus a new-item
-watchdog), and the switch-over / lead-capture kits.
+Working repository for the Sir Edmund Hillary Explorer site
+(siredmundhillaryexplorer.com, a Duda site run by Pounamu Tourism Group). It
+holds:
 
-## Current state (31 Jul 2026)
-All pages LIVE on their real URLs, homepage included (root domain).
-`LATEST/` holds every paste-ready deliverable under a STABLE filename —
-Ben pastes only from there (`tools/make-latest.py` regenerates it).
+- the HTML for every page built by this project, in versioned masters, with the same files under stable names in `LATEST/`;
+- the Cloudflare Worker that feeds live departures to those pages;
+- the site-wide Head HTML;
+- runbooks and backups;
+- the tools that build and check all of the above.
 
-| Page | Master file | Notes |
+**Handover:** Ben's contract ends on 31 Oct 2026. This README is the front
+page for whoever looks after the site next.
+
+## Start here
+
+| You want to… | Go to |
+|---|---|
+| Paste a page into Duda | `LATEST/` and its `_READ-ME-FIRST.txt`. Copy the **whole** file from the downloaded file or GitHub's Raw view, never from a preview. |
+| Switch the rebuilt pages live (Aaron) | `notes/2026-09-25-old-pages-rebuild-runbook.md`: "Start here", then §2 (swap) and §4 (SEO text) |
+| Understand or move the departures Worker | `worker/README.md` |
+| See or restore the site-wide Head HTML | `stopgap/README.md` |
+| Restore a page as it used to be | `backups/README.md` |
+| Rebuild or check one of the eight rebuilt pages | `tools/old-pages/README.md` |
+
+## Current state (checked on the live site, 1 Oct 2026)
+
+| Page | Master in this repo | Live |
 |---|---|---|
-| Homepage (/) | `SEHE-homepage_v38.txt` | departure board (navy date-header cards) + brochure-collection band; live root is still v27, v38 is on /v2 (noindex) for testing; old homepage parked at /home-old (noindex) |
-| Journeys | `SEHE-journeys-page_v22.txt` | single-widget page (hero + FAQ + contact folded in) |
-| Brochure collection | `SEHE-brochure-collection_v2.txt` | single main widget; stale tablet duplicate deleted |
-| 7 tour pages | `SEHE-*-tour_v*.txt` (one per page) | pasted as Block A + native Duda form + Block B — see `switchover/`. **LIVE DIVERGENCE (Aug 2026):** Block B section 5 on all seven pages was replaced outside this repo with an iframe to a new booking app (`bookings.pounamutourismgroup.com`); the Checkfront widget, split-item config and 5-star strip are no longer live. Tour Block Bs in `LATEST/` are ON HOLD — see `observed/README.md`. Live Block A is still the old v21. |
-| Reviews (rebuild, Sep 2026) | `SEHE-reviews-page_v7.txt` | single widget; live Trustpilot Micro Combo + 12 selected reviews verbatim + earlier guest feedback; built on `reviews-new` — see the runbook |
-| Contact (rebuild, Sep 2026) | `SEHE-contact-page_v9.txt` | ONE widget (`LATEST/contact-page.txt`) placed directly above the NATIVE Duda form row; on the published page the form is docked into the design (never rebuilt, settings untouched) |
-| About · FAQ · Gallery · Himalayan Trust (rebuild, Sep 2026) | `SEHE-about-page_v7.txt` · `SEHE-faq-page_v8.txt` · `SEHE-gallery-page_v7.txt` · `SEHE-himalayan-trust-page_v5.txt` | single widget each; copy ported verbatim from the live pages |
-| Privacy Policy · Terms (rebuild, Sep 2026) | `SEHE-privacy-policy-page_v5.txt` · `SEHE-terms-page_v5.txt` | new layout; wording identical to live except the edits Kirsty approved on 26 Sep 2026 (the build proves it) |
+| Homepage (/) | `SEHE-homepage_v38.txt` | The root still runs **v27**. v38 is on `/v2` (noindex), waiting for a go-ahead. |
+| Journeys | `SEHE-journeys-page_v22.txt` | v22, the same as the repo |
+| Brochure collection | `SEHE-brochure-collection_v2.txt` | v2, the same as the repo |
+| 7 tour pages | `SEHE-*-tour_v*.txt` (split into Block A and Block B in `switchover/` and `LATEST/`) | See "Tour pages" below |
+| Reviews, Contact, About, FAQ, Gallery, Himalayan Trust, Privacy Policy, Terms | `SEHE-reviews-page_v7.txt`, `SEHE-contact-page_v9.txt`, `SEHE-about-page_v7.txt`, `SEHE-faq-page_v8.txt`, `SEHE-gallery-page_v7.txt`, `SEHE-himalayan-trust-page_v5.txt`, `SEHE-privacy-policy-page_v5.txt`, `SEHE-terms-page_v5.txt` | See "Old-design pages" below |
 
-- Tour pages carry the Checkfront split-item fix (`302,374` / `289,392`) and
-  the static 5-star Trustpilot strip (Ben's call, 4.7-TrustScore facts noted
-  in the changelogs). Winter 2026 is sold out and presented as such.
-- `worker/sehe-worker_LIVE-auto.js` is the paste-ready Worker
-  (`sehe-next-departures` on Cloudflare — same single worker for the feed,
-  `/lead`, `/items-audit`). `worker/worker.js` is identical plus test exports;
-  `node worker/worker.test.mjs` must stay green (48 tests).
-- **Old-design page rebuilds (25 Sep 2026):** the eight masters above are NOT
-  live yet. Build each on a `<slug>-new` page and swap per
-  `notes/2026-09-25-old-pages-rebuild-runbook.md` (noindex removal at the swap
-  is a launch blocker; Contact copies the native form, never moves it). The
-  "before" HTML is in `backups/2026-09-25-old-pages/`. Go-live is in two phases
-  (Reviews + Contact first; Kirsty previews each `-new` page before any swap);
-  draft emails to Kirsty and Paul are in `notes/2026-09-25-emails.md`.
-- **First manual fix:** the 14-Day and 11-Day 2026/27 tour pages are served
-  noindex (since at least 6 Sep) — see the top of the runbook.
-- `tools/make-blocks.py` regenerates the Block A/B pairs from the masters
-  (byte-verified split; Block A swaps the HTML form for the docking note).
-- Phase 2 (direct lead capture + UTM persistence) is built and parked:
-  `leadform/ENABLE-DIRECT-LEADS.md`.
+**Tour pages.** Each is pasted as two HTML widgets, Block A and Block B, with Duda's native brochure form between them.
+
+- **Block A:** the live pages still run older Block A versions (v13 to v24). The repo's newer ones haven't been pasted yet.
+- **Block B:** on all seven pages, the booking section of Block B is now an iframe to The Creator's booking app (`bookings.pounamutourismgroup.com`). That was pasted outside this repo.
+- **The Block B files in `LATEST/` are ON HOLD.** Pasting them would put the retired Checkfront widget back. See `observed/README.md`.
+
+**Old-design pages.** All eight were rebuilt in September 2026.
+
+- **Previews:** each is on a hidden, noindex `-new` preview page.
+- **Approval:** Kirsty approved them on 26 Sep 2026.
+- **Switch-over:** Aaron does it, following the runbook. About waits until Kirsty confirms its proposed "On selected tours" wording.
+- **Still open:** mobility, payment methods and the Gallery photo names (runbook §7).
+
+**Departures.** Bookings moved from Checkfront to The Creator's booking app in September 2026, but the Worker's feed still reads Checkfront. Since 20 Sep the Head HTML hides departure dates, counts and the departure board. Keep it that way until the Worker reads the new booking app (`worker/README.md`).
+
+**Other open items:**
+
+- **Site-wide clean-up (runbook §5, items A to F):** not done yet. Item A is a broken Trustpilot block that causes a script error on every page.
+- **Three legacy pages still sell through Checkfront:** `/2026-autumn-11-day-tours`, `/2025-2026-new-tours` and `/2025-2026-spring/summer-tours-10-day-tour`. They are left as they are by decision (`notes/2026-09-20-departure-audit-findings.md`).
+
+## Folder map
+
+| Folder | What's in it |
+|---|---|
+| (root) | The current master of every page (`SEHE-*_vN.txt`). Only the newest version of each is kept; git history has the rest. |
+| `LATEST/` | The paste-ready copies under stable names, plus `_READ-ME-FIRST.txt`. Generated by `tools/make-latest.py`; never edit by hand. |
+| `worker/` | The Cloudflare Worker (`sehe-next-departures`): code, tests and README |
+| `stopgap/` | The site-wide Head HTML as published on 20 Sep 2026, and the temporary hide-departures block |
+| `switchover/` | Tour-page Block A/B files (generated by `tools/make-blocks.py`), the brochure-form skin CSS, and the July switch-over pack for Aaron |
+| `notes/` | The rebuild runbook, the emails, the booking-system cutover note and the departure audit |
+| `observed/` | Code found on the live site that this repo didn't write (the booking-app embed) |
+| `backups/` | Dated snapshots of the live site (6 Sep 2026 and the old pages on 25 Sep 2026), with secrets redacted |
+| `tools/` | `make-latest.py`, `make-blocks.py`, the tour-page checks, the homepage departure-board generator, and `old-pages/` (the builders for the eight rebuilt pages) |
+| `leadform/` | Phase 2, built and parked: direct lead capture through the Worker (`ENABLE-DIRECT-LEADS.md`) |
+| `creatives/` | Ad creatives: Google Ads assets for /journeys, and the record of the 23 Sep 2026 creative handover to The Creator |
+
+## People
+
+| Person | Role |
+|---|---|
+| Ben | Built this project. Owns the GitHub repo and the Cloudflare account that runs the Worker. Contract ends 31 Oct 2026. |
+| Aaron | Manages the site and does the switch-overs |
+| Kirsty | Marketing Director. Approves every page and the content questions. |
+| Paul | Legal and policy wording |
+| Izaac and Joel (The Creator) | Work in the same Duda editor, and built the new booking app |
+
+## Accounts to hand over before 31 Oct 2026
+
+- **GitHub:** this repository is **public**. Make it private, and move it to a company-owned account: GitHub → Settings → Transfer, or import the export bundle there.
+- **Cloudflare:** the Worker runs in Ben's account. `worker/README.md` gives two ways to hand it over.
+- **Zapier:** each Duda form posts to a Zapier catch hook (the URLs are in the forms' settings, not in this repo). Confirm the company owns that Zapier account.
+- **Duda, Google Tag Manager, GA4, Google Ads, AdRoll, Clarity, Trustpilot:** company accounts. Their IDs are in `stopgap/SEHE-head-html-REWRITE.txt`.
 
 ## Rules of the road
-1. Bump the version on every change (filename + header + changelog).
-2. Every render is enhance-only: missing data must never wipe baked HTML.
-3. Never let `<` touch a word inside inline scripts (Duda's publisher strips
-   tag-like tokens and corrupts the block).
-4. Secrets (Checkfront, Zapier hooks) live only in Cloudflare Worker secrets.
-5. No `>` anywhere inside `<style>` (25 Sep 2026): Duda publishes it as `&gt;`
-   and the browser drops the whole rule. Use descendant selectors only.
-6. Paste the WHOLE file, copied from the downloaded file or GitHub's Raw
-   view, never from a preview (25 Sep 2026: two Contact pastes were cut
-   off at line 150 and the page vanished). Files that end with an
-   `END OF FILE` line must show it last in Duda's code box. The old-page
-   builders' `verify.py` fails on rule 5.
 
-## History note (12 Jul 2026)
-The original session history (~100 commits, 9 Jun–8 Jul 2026) lived only in an
-ephemeral container and was lost when it recycled; the GitHub remote had never
-received a successful push (write access was blocked). Rebuilt from Ben's
-re-uploaded masters, cross-checked against the published preview pages. The
-authoritative deliverables also exist in Ben's chat downloads.
+1. **Bump the version on every change:** the filename, the header and the changelog.
+2. **Every render only adds to the page:** missing data must never wipe baked HTML.
+3. **Never let `<` touch a word inside an inline script.** Duda's publisher strips tag-like tokens and corrupts the block.
+4. **Secrets live only in Cloudflare Worker secrets or in the service they belong to**, never in this repo. That covers Checkfront keys and Zapier hooks.
+5. **No `>` anywhere inside `<style>`.** Duda publishes it as `&gt;` and the browser drops the whole rule. Use descendant selectors only.
+6. **Paste the WHOLE file**, copied from the downloaded file or GitHub's Raw view, never from a preview. On 25 Sep 2026 two Contact pastes were cut off at line 150 and the page vanished. Files that end with an `END OF FILE` line must show it last in Duda's code box. `tools/old-pages/verify.py` fails on rule 5.
+7. **Tests:**
+   - `node worker/worker.test.mjs` must show 48 passed.
+   - `python3 tools/check_tour_page.py SEHE-*-tour_v*.txt` and `node tools/check-revert-guard.mjs SEHE-*-tour_v*.txt` must pass on every tour master.
+   - Each rebuilt page's builder must reproduce its master (`tools/old-pages/README.md`).
 
-Resolved same day: the Claude GitHub App is now installed on the repo, pushes
-work, and this GitHub repository is the durable record going forward — every
-change is committed and pushed immediately.
+## History
+
+The first session's history (9 Jun to 8 Jul 2026) was lost when its container
+recycled. The repo was rebuilt from Ben's re-uploaded masters on 12 Jul 2026,
+and every change since then is committed and pushed. On 1 Oct 2026 the repo was
+tidied for handover:
+
+- duplicate and stale copies were removed;
+- Zapier hooks were redacted;
+- the page builders were added;
+- the Worker was documented.
+
+Everything removed is still in git history.

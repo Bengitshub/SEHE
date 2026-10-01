@@ -58,11 +58,13 @@ The details are in §0 to §4.
 2. Run `python3 tools/make-latest.py`.
 3. Commit and push.
 
+The builders in `tools/old-pages/` generate the eight masters and check them. Use them if you want the checks; `tools/old-pages/README.md` explains how.
+
 **House rules for the code** (README "Rules of the road"):
 
 - No `<` or `&` inside inline `<script>` blocks, because Duda's publisher escapes them.
 - **No `>` anywhere inside `<style>`, comments included** (found 25 Sep on the live `/reviews-new`). Duda publishes it as `&gt;`, and the browser then silently drops the whole rule. Write `.a .b`, never `.a > .b` or `:has(> …)`.
-- **Paste the whole file.** Open the downloaded file (or GitHub's Raw view), select all, copy. Never copy from a preview. On 25 Sep two Contact pastes were cut off at exactly line 150, inside the CSS, so the page's HTML never reached Duda and the widget "vanished". The code was never the problem. Contact, Reviews and Privacy now end with an `END OF FILE` line: after pasting, it must be the last line in Duda's code box.
+- **Paste the whole file.** Open the downloaded file (or GitHub's Raw view), select all, copy. Never copy from a preview. On 25 Sep two Contact pastes were cut off at exactly line 150, inside the CSS, so the page's HTML never reached Duda and the widget "vanished". The code was never the problem. Contact, Reviews, FAQ, About, Privacy and Terms now end with an `END OF FILE` line: after pasting, it must be the last line in Duda's code box.
 - Scripts only add to the page.
 - All CSS stays under the page's `.sehe-pg-…` class.
 
