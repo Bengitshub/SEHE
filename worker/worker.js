@@ -315,7 +315,7 @@ function scheduleFallback() {
 
      Secret name:  ZAPIER_HOOKS_JSON
      Value: JSON object mapping page key -> hook URL, e.g.
-       {"14day-2627":"https://hooks.zapier.com/hooks/catch/17636803/u07v9hh/", ...}
+       {"14day-2627":"https://hooks.zapier.com/hooks/catch/XXXXXXXX/xxxxxxx/", ...}
 
    Until that secret is set this endpoint answers 503 and the pages fall back
    to redirecting visitors to /brochure-collection (no lead lost UX-wise, the

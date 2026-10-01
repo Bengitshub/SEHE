@@ -74,7 +74,7 @@ unless you want your own.
 ## Already handled / not in this job
 
 - Cloudflare availability worker: deployed and verified 8 July
-  (`sehe-worker_LIVE-auto.js` here is a reference copy only).
+  (the current Worker is `worker/sehe-worker_LIVE-auto.js`; see `worker/README.md`).
 - A couple of Checkfront/content questions sit with Kirsty and me for
   post-launch.
 

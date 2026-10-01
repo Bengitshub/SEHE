@@ -9,7 +9,7 @@
    Usage:
      node leadform/flip-forms.mjs           -> DRY RUN into leadform/preview/
      node leadform/flip-forms.mjs --apply   -> real sweep: new versions +
-                                               changelogs + preview re-sync
+                                               changelogs
    Run AFTER Aaron's switch-over, once the ZAPIER_HOOKS_JSON secret is set
    and the worker redeployed (see ENABLE-DIRECT-LEADS.md). */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
@@ -27,13 +27,13 @@ const PAGES = [
      ("Brochure fallback form"), so the flip regexes below will NOT match it
      as-is: give it its own entry + pattern when the Zap hooks arrive, with
      key 'homepage' in ZAPIER_HOOKS_JSON. */
-  { file: 'SEHE-14day-tour_v28.txt',             key: '14day-2627',  tour: '14-Day Spring/Summer Tour 2026/27', prev: 'sehe-14day-page-complete.html' },
-  { file: 'SEHE-11day-2627-tour_v26.txt',        key: '11day-2627',  tour: '11-Day Spring/Summer Tour 2026/27', prev: 'sehe-11day-2627-page-complete.html' },
-  { file: 'SEHE-12day-winter-2026-tour_v28.txt', key: 'winter-2026', tour: '12-Day Winter Edition 2026',        prev: 'sehe-12day-winter-2026-page-complete.html' },
-  { file: 'SEHE-12day-winter-2027-tour_v19.txt',   key: 'winter-2027', tour: '12-Day Winter Edition 2027',        prev: 'sehe-12day-winter-2027-page-complete.html' },
-  { file: 'SEHE-pinnacle-2027-tour_v19.txt',       key: 'pinnacle-2027', tour: 'The Pinnacle Tour 2027',          prev: 'sehe-pinnacle-2027-page-complete.html' },
-  { file: 'SEHE-11day-2728-tour_v21.txt',         key: '11day-2728',  tour: '11-Day Spring/Summer Tour 2027/28', prev: 'sehe-11day-2728-page-complete.html' },
-  { file: 'SEHE-14day-2728-tour_v30.txt',        key: '14day-2728',  tour: '14-Day Spring/Summer Tour 2027/28', prev: 'sehe-14day-2728-page-complete.html' },
+  { file: 'SEHE-14day-tour_v28.txt',             key: '14day-2627',  tour: '14-Day Spring/Summer Tour 2026/27' },
+  { file: 'SEHE-11day-2627-tour_v26.txt',        key: '11day-2627',  tour: '11-Day Spring/Summer Tour 2026/27' },
+  { file: 'SEHE-12day-winter-2026-tour_v28.txt', key: 'winter-2026', tour: '12-Day Winter Edition 2026' },
+  { file: 'SEHE-12day-winter-2027-tour_v19.txt',   key: 'winter-2027', tour: '12-Day Winter Edition 2027' },
+  { file: 'SEHE-pinnacle-2027-tour_v19.txt',       key: 'pinnacle-2027', tour: 'The Pinnacle Tour 2027' },
+  { file: 'SEHE-11day-2728-tour_v21.txt',         key: '11day-2728',  tour: '11-Day Spring/Summer Tour 2027/28' },
+  { file: 'SEHE-14day-2728-tour_v30.txt',        key: '14day-2728',  tour: '14-Day Spring/Summer Tour 2027/28' },
 ];
 
 const HONEYPOT = '<div class="field" style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true"><input type="text" name="sehe_hp" tabindex="-1" autocomplete="off" value=""></div>\n      ';
@@ -132,7 +132,6 @@ for (const P of PAGES) {
     writeFileSync(newName, t);
     execSync(`python3 tools/check_tour_page.py ${newName}`, { stdio: 'inherit' });   // fails loudly
     execSync(`node tools/check-revert-guard.mjs ${newName}`, { stdio: 'inherit' });  // fails loudly
-    writeFileSync(P.prev, t);
     if (newName !== P.file) execSync(`git rm -q ${P.file}`);
     console.log(`FLIPPED + VALIDATED ${newName}`);
   } else {

@@ -61,6 +61,19 @@ function mockCheckfront(availByItem, stockByItem) {
   };
 }
 
+/* ---- frozen clock for sections 4 to 8 -----------------------------------
+   These fixtures were written in July 2026, when every winter-2026 date was
+   still ahead. The Worker marks past dates sold out, so on the real clock
+   these checks fail once the dates pass. Freeze "today" at 20 Jul 2026 here
+   and restore it before section 9. Test-only: the Worker is unchanged. */
+const RealDate = Date;
+const FROZEN_NOW = new RealDate('2026-07-20T00:00:00Z').getTime();
+class FrozenDate extends RealDate {
+  constructor(...args) { if (args.length) super(...args); else super(FROZEN_NOW); }
+  static now() { return FROZEN_NOW; }
+}
+globalThis.Date = FrozenDate;
+
 /* ---- 4. a scheduled date the cal can't book is SOLD OUT (kept, red) ------ */
 mockCheckfront({ '289': ['20260801', '20260905', '20260912'] });   // 27 Jun & 18 Jul not bookable
 let t = (await buildPayload({}))['winter-2026'];
@@ -101,6 +114,8 @@ eq(t.next, '2026-08-01', 'winter: next = first bookable (nearing still counts)')
 mockCheckfront({ '289': ['20260801'] }, { '289': { '20260801': { T: 80, B: 59, A: 21 } } });   // 73.75%
 ok((await buildPayload({}))['winter-2026'].all.find((x) => x.start === '2026-08-01').status === 'available', 'winter: 74% booked is still available (under 75%)');
 
+globalThis.Date = RealDate;   // end of the frozen-clock sections
+
 /* ---- 9. /lead endpoint --------------------------------------------------- */
 function leadReq(body, opts) {
   const o = opts || {};
@@ -110,7 +125,7 @@ function leadReq(body, opts) {
     json: async () => body,
   };
 }
-const HOOKS = JSON.stringify({ '14day-2627': 'https://hooks.zapier.com/hooks/catch/17636803/u07v9hh/' });
+const HOOKS = JSON.stringify({ '14day-2627': 'https://hooks.zapier.com/hooks/catch/TEST/lead/' });
 let sent = null;
 globalThis.fetch = async (url, init) => { sent = { url, body: init.body }; return { ok: true }; };
 const fakeCtx = () => ({ p: null, waitUntil(x) { this.p = x; } });
@@ -134,7 +149,7 @@ sent = null;
 let cx = fakeCtx();
 r = await handleLead(leadReq({ name: 'J Smith', email: 'j.smith@gmail.com', country: 'Australia', page: '14day-2627' }), { ZAPIER_HOOKS_JSON: HOOKS }, cx);
 await cx.p;
-ok(r.status === 200 && sent && sent.url.indexOf('u07v9hh') > 0, '/lead: dotted-local-part email (j.smith@) ACCEPTED and forwarded');
+ok(r.status === 200 && sent && sent.url.indexOf('TEST/lead') > 0, '/lead: dotted-local-part email (j.smith@) ACCEPTED and forwarded');
 sent = null; cx = fakeCtx();
 r = await handleLead(leadReq({ name: 'Jane Doe', email: 'jane@example.com', country: 'Australia', page: '14day-2627', tour: '14-Day Spring/Summer Tour 2026/27', source_url: 'https://www.siredmundhillaryexplorer.com/x' }), { ZAPIER_HOOKS_JSON: HOOKS }, cx);
 await cx.p;

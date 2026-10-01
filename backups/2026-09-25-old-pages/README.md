@@ -18,7 +18,10 @@ files.
 | terms-and-conditions.html | /terms-and-conditions | **noindex** |
 
 Duda's embedded Mapbox token is redacted (`pk.REDACTED-DUDA-MAPBOX-TOKEN`)
-so GitHub push protection accepts the files. Nothing else is changed.
+so GitHub push protection accepts the files. On 1 Oct 2026 the Contact form's
+Zapier catch-hook URL was also replaced with
+`https://hooks.zapier.com/hooks/catch/REDACTED/` (repo rule 4: hook URLs live in
+the Duda form's own settings, not in the repo). Nothing else is changed.
 The live pages themselves stay in Duda as `<slug>-old` after each swap —
 that, not this folder, is the working rollback (see
 `notes/2026-09-25-old-pages-rebuild-runbook.md`).

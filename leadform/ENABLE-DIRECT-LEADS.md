@@ -25,17 +25,21 @@ the systems of record.
 ## Step 1 — check the seven Zaps are alive (Ben, in Zapier)
 
 These hooks came from the June wiring. Confirm each Zap is **ON** and mapped to
-AC + the Excel log (fire a test from Zapier's editor if unsure):
+AC + the Excel log (fire a test from Zapier's editor if unsure).
 
-| Tour | Hook |
+The hook URLs are not kept in this repo (repo rule 4). Copy each one from its
+source: the tour page's native Duda brochure form → **Settings** → the webhook
+URL field, or the Zap's trigger step in Zapier ("Catch Hook" → the URL).
+
+| Tour | Where to copy the hook from |
 |---|---|
-| Winter 2026 | `https://hooks.zapier.com/hooks/catch/17636803/2gtdpq9/` |
-| 14-Day 26/27 | `https://hooks.zapier.com/hooks/catch/17636803/u07v9hh/` |
-| 11-Day 26/27 | `https://hooks.zapier.com/hooks/catch/17636803/un7qd8k/` |
-| Pinnacle 2027 | `https://hooks.zapier.com/hooks/catch/21787136/u3tn2o7/` |
-| Winter 2027 | `https://hooks.zapier.com/hooks/catch/17636803/un7qno2/` |
-| 11-Day 27/28 | `https://hooks.zapier.com/hooks/catch/17636803/4bz3y7f/` |
-| 14-Day 27/28 | `https://hooks.zapier.com/hooks/catch/17636803/4bzbs7k/` |
+| Winter 2026 | the Winter 2026 page's brochure form webhook (JSON key `winter-2026`) |
+| 14-Day 26/27 | the 14-Day 26/27 page's brochure form webhook (JSON key `14day-2627`) |
+| 11-Day 26/27 | the 11-Day 26/27 page's brochure form webhook (JSON key `11day-2627`) |
+| Pinnacle 2027 | the Pinnacle 2027 page's brochure form webhook (JSON key `pinnacle-2027`) |
+| Winter 2027 | the Winter 2027 page's brochure form webhook (JSON key `winter-2027`) |
+| 11-Day 27/28 | the 11-Day 27/28 page's brochure form webhook (JSON key `11day-2728`) |
+| 14-Day 27/28 | the 14-Day 27/28 page's brochure form webhook (JSON key `14day-2728`) |
 
 If any is dead, make a new catch hook and swap its URL into the JSON below.
 
@@ -43,11 +47,14 @@ If any is dead, make a new catch hook and swap its URL into the JSON below.
 
 Dashboard → Workers & Pages → `sehe-next-departures` → Settings → Variables and
 Secrets → **Add** → type *Secret* → name `ZAPIER_HOOKS_JSON` → value = this JSON
-on one line (edit URLs if any changed in step 1):
+on one line, built from the hooks you copied in step 1:
 
 ```json
-{"winter-2026":"https://hooks.zapier.com/hooks/catch/17636803/2gtdpq9/","14day-2627":"https://hooks.zapier.com/hooks/catch/17636803/u07v9hh/","11day-2627":"https://hooks.zapier.com/hooks/catch/17636803/un7qd8k/","pinnacle-2027":"https://hooks.zapier.com/hooks/catch/21787136/u3tn2o7/","winter-2027":"https://hooks.zapier.com/hooks/catch/17636803/un7qno2/","11day-2728":"https://hooks.zapier.com/hooks/catch/17636803/4bz3y7f/","14day-2728":"https://hooks.zapier.com/hooks/catch/17636803/4bzbs7k/"}
+{"winter-2026":"<hook>","14day-2627":"<hook>","11day-2627":"<hook>","pinnacle-2027":"<hook>","winter-2027":"<hook>","11day-2728":"<hook>","14day-2728":"<hook>"}
 ```
+
+Replace each `<hook>` with that page's full catch-hook URL, for example
+`https://hooks.zapier.com/hooks/catch/XXXXXXXX/xxxxxxx/`.
 
 Then paste the current `worker/sehe-worker_LIVE-auto.js` over the worker code and
 **Save and Deploy** (the /lead endpoint ships with it; the departures feed is

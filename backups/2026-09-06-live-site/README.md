@@ -25,3 +25,11 @@ hooks) are not in this repo; they live only in Cloudflare Worker settings.
 
 ## Redaction note
 Duda's runtime ships a Mapbox token (`rtCommonProps["common.mapbox.token"]`, Duda's own, for its map widgets) on every page; GitHub's secret scanner flags it, so it is replaced with `pk.REDACTED-DUDA-MAPBOX-TOKEN` in `pages/`. It is not part of the SEHE widget code and is not needed to restore any page.
+
+**1 Oct 2026, second redaction:** the Zapier catch-hook URLs that Duda writes
+into each native form (`webhookURI`) are replaced with
+`https://hooks.zapier.com/hooks/catch/REDACTED/` in `pages/`, and the example
+hook in the Worker comment is replaced in `worker/` and `paste-sources/`. Hook
+URLs belong in each Duda form's settings (and in the Worker secret, if the lead
+capture is enabled), not in the repo. The unredacted original stays in commit
+`8fcb32c`.
