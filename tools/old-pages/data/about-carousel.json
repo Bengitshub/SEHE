@@ -1,0 +1,57 @@
+{
+ "uniqueId": "carousel-slider-2",
+ "carouselList": [
+  {
+   "image": "https://irp.cdn-website.com/35e9f777/dms3rep/multi/Spring-Summer-Train-Journey_25_26-on-sir-edmund-hillary-explorer.webp",
+   "enableSlideTitle": false,
+   "slideTitle": "Hello World"
+  },
+  {
+   "image": "https://irp.cdn-website.com/35e9f777/dms3rep/multi/Wharf-Pic---Sign.jpg",
+   "enableSlideTitle": false,
+   "slideTitle": "Hello World"
+  },
+  {
+   "image": "https://irp.cdn-website.com/35e9f777/dms3rep/multi/woman-on-the-coastal-pacific.webp",
+   "enableSlideTitle": false,
+   "slideTitle": "Hello World"
+  },
+  {
+   "image": "https://irp.cdn-website.com/35e9f777/dms3rep/multi/L387-Aoraki-Mount-Cook-National-Park--Canterbury-Rob-Suisted.jpg",
+   "enableSlideTitle": false,
+   "slideTitle": "Hello World"
+  },
+  {
+   "image": "https://irp.cdn-website.com/35e9f777/dms3rep/multi/australasia_new_zealand_kaikoura_gallery_humpback_whale.jpg",
+   "enableSlideTitle": false,
+   "slideTitle": "Hello World"
+  },
+  {
+   "image": "https://irp.cdn-website.com/35e9f777/dms3rep/multi/Southland+track.jpg",
+   "enableSlideTitle": false,
+   "slideTitle": "Hello World"
+  },
+  {
+   "image": "https://irp.cdn-website.com/35e9f777/dms3rep/multi/01-Kaikoura-Canterbury-Kyle-Mulinder.jpg",
+   "enableSlideTitle": false,
+   "slideTitle": "Hello World"
+  }
+ ],
+ "carouselHeight": "400",
+ "slidesPerView": "1",
+ "transitionDirection": "horizontal",
+ "transitionStyle": "slide",
+ "transitionDuration": "300",
+ "spaceBetweenSlides": "0",
+ "deductHeight": "0",
+ "autoplayDelay": "3000",
+ "enableLoopMode": true,
+ "arrowsColor": "swiper-button-white",
+ "enableCenteredSlides": false,
+ "allowNavigationViaDots": false,
+ "enablePagination": false,
+ "autoplay": true,
+ "disableArrows": false,
+ "grabCursor": true,
+ "fullScreen": false
+}
