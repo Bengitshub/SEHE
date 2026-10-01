@@ -20,7 +20,11 @@ scroll below, so each card opens with a navy date header instead — variant C
 of the assessed options (flat B / navy-header C), chosen because the date is
 the card's actual message and the header echoes the rail's navy end-cap.
 
-Usage: python3 tools/homepage-depboard.py <homepage-master.txt> [--apply]
+Usage: python3 tools/homepage-depboard.py <homepage-master.txt> --feed=<feed.json> [--apply]
+  <feed.json> is a saved copy of the Worker's feed:
+    curl -s https://sehe-next-departures.ben-757.workers.dev/ -o feed.json
+  Don't re-bake while the Worker still reads Checkfront (worker/README.md,
+  'Current status'): the feed would bake false sold-out states.
 """
 import json
 import re
@@ -31,7 +35,9 @@ from datetime import date
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = sys.argv[1]
 APPLY = '--apply' in sys.argv
-FEED = '/tmp/claude-0/-home-user-SEHE/0cc36833-90aa-502d-8b8c-c61310a548dd/scratchpad/feed-bake.json'
+FEED = next((a.split('=', 1)[1] for a in sys.argv if a.startswith('--feed=')), None)
+if not FEED:
+    sys.exit('missing --feed=<saved copy of the Worker feed> (see Usage at the top)')
 
 MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
           'August', 'September', 'October', 'November', 'December']

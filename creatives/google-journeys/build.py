@@ -13,7 +13,7 @@ page read as one thing — the scent trail from click to page never breaks.
 Sizes: landscape 1200x628 (1.91:1), square 1200x1200 (1:1), portrait
 960x1200 (4:5); logo 1200x1200 (1:1) and 1200x300 (4:1).
 
-Outputs HTML to the scratchpad; creatives/google-journeys/shot.mjs renders
+Outputs HTML to creatives/google-journeys/out/ (git ignores it); shot.mjs renders
 them to JPG/PNG at exact pixel size. Copy follows the site's accuracy rules:
 "fully guided ... by rail & coach", no "small groups", no prices (keeps the
 set evergreen). Concept B carries real dates — refresh when they pass.
@@ -26,9 +26,9 @@ import os
 import re
 import subprocess
 
-SCRATCH = '/tmp/claude-0/-home-user-SEHE/0cc36833-90aa-502d-8b8c-c61310a548dd/scratchpad'
-OUT = os.path.join(SCRATCH, 'adpages')
-CACHE = os.path.join(SCRATCH, 'adcache')
+WORK = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'out')
+OUT = os.path.join(WORK, 'adpages')
+CACHE = os.path.join(WORK, 'adcache')
 os.makedirs(OUT, exist_ok=True)
 os.makedirs(CACHE, exist_ok=True)
 

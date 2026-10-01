@@ -1,18 +1,18 @@
 /* Render the ad pages to exact-size JPG/PNG. Run build.py first.
    Usage: node creatives/google-journeys/shot.mjs
    (set PW_PATH to a playwright-core entry file if it is not resolvable
-   from this file's location, e.g. PW_PATH=file:///…/node_modules/playwright-core/index.mjs) */
+   from this file's location, e.g. PW_PATH=file:///…/node_modules/playwright-core/index.mjs,
+   and CHROME_PATH to a Chrome or Chromium binary if Playwright has none of its own) */
 const { chromium } = await import(process.env.PW_PATH || 'playwright-core');
 import { readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const S = '/tmp/claude-0/-home-user-SEHE/0cc36833-90aa-502d-8b8c-c61310a548dd/scratchpad';
-const IN = join(S, 'adpages');
+const IN = join(HERE, 'out', 'adpages');
 const SIZES = { land: [1200, 628], sq: [1200, 1200], port: [960, 1200], '1x1': [1200, 1200], '4x1': [1200, 300] };
 
-const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args: ['--no-sandbox'] });
+const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || undefined, args: ['--no-sandbox'] });
 for (const f of readdirSync(IN).filter((x) => x.endsWith('.html'))) {
   const name = f.replace('.html', '');
   const key = Object.keys(SIZES).find((k) => name.endsWith(k));

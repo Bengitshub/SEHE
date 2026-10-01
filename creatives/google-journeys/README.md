@@ -4,8 +4,12 @@ Round 1: three concepts x three required ratios + the two logo assets.
 Regenerate any time with:
 
     python3 creatives/google-journeys/build.py
-    PW_PATH=file://<scratchpad>/node_modules/playwright-core/index.mjs \
-      node creatives/google-journeys/shot.mjs
+    node creatives/google-journeys/shot.mjs
+
+`build.py` writes the ad pages to `out/` (git ignores it). `shot.mjs` needs
+`playwright-core` (`npm install playwright-core`) and overwrites the images in
+this folder. Set `CHROME_PATH` to a Chrome or Chromium binary if Playwright
+has no browser of its own.
 
 | File | Size | Google asset slot |
 |---|---|---|
