@@ -24,15 +24,15 @@ page for whoever looks after the site next.
 | Restore a page as it used to be | `backups/README.md` |
 | Rebuild or check one of the eight rebuilt pages | `tools/old-pages/README.md` |
 
-## Current state (checked on the live site, 1 Oct 2026)
+## Current state (checked on the live site, 7 Oct 2026)
 
 | Page | Master in this repo | Live |
 |---|---|---|
 | Homepage (/) | `SEHE-homepage_v38.txt` | The root still runs **v27**. v38 is on `/v2` (noindex), waiting for a go-ahead. |
-| Journeys | `SEHE-journeys-page_v22.txt` | v22, the same as the repo |
-| Brochure collection | `SEHE-brochure-collection_v2.txt` | v2, the same as the repo |
+| Journeys | `SEHE-journeys-page_v23.txt` | v22. v23 changes code comments only; see "Staff names" below. |
+| Brochure collection | `SEHE-brochure-collection_v3.txt` | v2. v3 changes code comments only. |
 | 7 tour pages | `SEHE-*-tour_v*.txt` (split into Block A and Block B in `switchover/` and `LATEST/`) | See "Tour pages" below |
-| Reviews, Contact, About, FAQ, Gallery, Himalayan Trust, Privacy Policy, Terms | `SEHE-reviews-page_v7.txt`, `SEHE-contact-page_v9.txt`, `SEHE-about-page_v7.txt`, `SEHE-faq-page_v8.txt`, `SEHE-gallery-page_v7.txt`, `SEHE-himalayan-trust-page_v5.txt`, `SEHE-privacy-policy-page_v5.txt`, `SEHE-terms-page_v5.txt` | See "Old-design pages" below |
+| Reviews, Contact, About, FAQ, Gallery, Himalayan Trust, Privacy Policy, Terms | `SEHE-reviews-page_v7.txt`, `SEHE-contact-page_v9.txt`, `SEHE-about-page_v8.txt`, `SEHE-faq-page_v9.txt`, `SEHE-gallery-page_v7.txt`, `SEHE-himalayan-trust-page_v5.txt`, `SEHE-privacy-policy-page_v6.txt`, `SEHE-terms-page_v6.txt` | All eight are live. About, FAQ, Privacy and Terms run the previous versions (v7, v8, v5 and v5); the new ones change code comments only. |
 
 **Tour pages.** Each is pasted as two HTML widgets, Block A and Block B, with Duda's native brochure form between them.
 
@@ -40,12 +40,13 @@ page for whoever looks after the site next.
 - **Block B:** on all seven pages, the booking section of Block B is now an iframe to The Creator's booking app (`bookings.pounamutourismgroup.com`). That was pasted outside this repo.
 - **The Block B files in `LATEST/` are ON HOLD.** Pasting them would put the retired Checkfront widget back. See `observed/README.md`.
 
-**Old-design pages.** All eight were rebuilt in September 2026.
+**Old-design pages.** All eight were rebuilt in September 2026 and are now live (checked 7 Oct 2026; the `-new` preview pages are gone).
 
-- **Previews:** each is on a hidden, noindex `-new` preview page.
 - **Approval:** Kirsty approved them on 26 Sep 2026.
-- **Switch-over:** Aaron does it, following the runbook. About waits until Kirsty confirms its proposed "On selected tours" wording.
+- **About:** live with the proposed "On selected tours" wording (runbook §7, A1 and A2). Kirsty's confirmation of that wording is not recorded here.
 - **Still open:** mobility, payment methods and the Gallery photo names (runbook §7).
+
+**Staff names (7 Oct 2026).** No staff member's name or personal email address may appear on the website, and that includes code comments, because Duda publishes them in the page source. The only name on the live site was in code comments; the versions above remove it. Still to do: re-paste the Head HTML (`stopgap/README.md`), Journeys, the Brochure Collection, About, FAQ, Privacy and Terms, and edit one comment in each of the two 14-Day pages' Block A.
 
 **Departures.** Bookings moved from Checkfront to The Creator's booking app in September 2026, but the Worker's feed still reads Checkfront. Since 20 Sep the Head HTML hides departure dates, counts and the departure board. Keep it that way until the Worker reads the new booking app (`worker/README.md`).
 
@@ -95,7 +96,8 @@ page for whoever looks after the site next.
 4. **Secrets live only in Cloudflare Worker secrets or in the service they belong to**, never in this repo. That covers Checkfront keys and Zapier hooks.
 5. **No `>` anywhere inside `<style>`.** Duda publishes it as `&gt;` and the browser drops the whole rule. Use descendant selectors only.
 6. **Paste the WHOLE file**, copied from the downloaded file or GitHub's Raw view, never from a preview. On 25 Sep 2026 two Contact pastes were cut off at line 150 and the page vanished. Files that end with an `END OF FILE` line must show it last in Duda's code box. `tools/old-pages/verify.py` fails on rule 5.
-7. **Tests:**
+7. **No staff names or personal email addresses in anything pasted into Duda,** code comments included. Use info@pounamutourismgroup.com.
+8. **Tests:**
    - `node worker/worker.test.mjs` must show 48 passed.
    - `python3 tools/check_tour_page.py SEHE-*-tour_v*.txt` and `node tools/check-revert-guard.mjs SEHE-*-tour_v*.txt` must pass on every tour master.
    - Each rebuilt page's builder must reproduce its master (`tools/old-pages/README.md`).

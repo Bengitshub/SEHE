@@ -135,7 +135,7 @@ EXTRA_CSS = r"""
 """
 
 
-def build(page, title_idx_live, heading_idx, hero_stem, wrapper, title_file, related, ver='v3', extra_log='', marker=None, edits=(), renumber=False):
+def build(page, title_idx_live, heading_idx, hero_stem, wrapper, title_file, related, ver='v3', extra_log='', marker=None, edits=(), renumber=False, date='2026-09-25'):
     h1a = text_of(widget_html(page, '1826758713'))
     h1b = text_of(widget_html(page, '1415014792'))
     doc, toc, live_txt = port(page, heading_idx)
@@ -169,7 +169,7 @@ def build(page, title_idx_live, heading_idx, hero_stem, wrapper, title_file, rel
     rel = '\n'.join(f'    <a href="{u}">{t}</a>' for u, t in related)
     header = f"""<!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — {h1b.upper()} (/{page})
-     COMPLETE PAGE  ·  VERSION {ver}  ·  2026-09-25  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION {ver}  ·  {date}  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
 {extra_log}       v3 — Shared kit fix (25 Sep 2026): no CSS child combinators any more.
@@ -237,27 +237,31 @@ def build(page, title_idx_live, heading_idx, hero_stem, wrapper, title_file, rel
     print('wrote', out, len(body), 'bytes;', len(toc), 'headings;', len(edits), 'approved edits;', 'identical to live' if not edits and not renumber else 'live text + approved edits only')
 
 
-build('privacy-policy', None, {0, 5, 16, 22, 30, 37, 46, 56, 63}, 'SEHE_OCT2024_DAY2-06', 'sehe-pg-privacy', 'SEHE-privacy-policy-page_v5.txt',
-      [('/terms-and-conditions', 'Terms &amp; Conditions'), ('/f-a-q', 'FAQ'), ('/contact', 'Contact us')], ver='v5', marker='privacy-policy-page.txt',
-      extra_log="       v5 — Kirsty's answers (email, 26 Sep 2026), the only wording changes:\n"
+build('privacy-policy', None, {0, 5, 16, 22, 30, 37, 46, 56, 63}, 'SEHE_OCT2024_DAY2-06', 'sehe-pg-privacy', 'SEHE-privacy-policy-page_v6.txt',
+      [('/terms-and-conditions', 'Terms &amp; Conditions'), ('/f-a-q', 'FAQ'), ('/contact', 'Contact us')], ver='v6', date='2026-10-07', marker='privacy-policy-page.txt',
+      extra_log="       v6 — Comments only (7 Oct 2026): a staff member's name removed\n"
+                "            from the code comments. Nothing on the page changes.\n"
+                "       v5 — Approved answers (email, 26 Sep 2026), the only wording changes:\n"
                 "            P1 section 4 names the Pounamu Tourism Group booking app\n"
                 "            instead of Checkfront; P2 the postal address is PO Box 19735,\n"
                 "            Woolston, Christchurch 8241; P3 the sentence about managing\n"
                 "            cookie preferences is removed. P4: section 8 already says the\n"
-                "            services are not intended for under-13s, the position she\n"
-                "            chose. Everything else still matches the live page.\n",
+                "            services are not intended for under-13s, the position\n"
+                "            chosen. Everything else still matches the live page.\n",
       edits=[('P1', '<li>Checkfront (Booking &amp; Reservations System)</li>', '<li>Pounamu Tourism Group booking app (Booking &amp; Reservations System)</li>'),
              ('P2', 'Postal Address: PO Box 39018, Harewood, Christchurch, 8545, New Zealand', 'Postal Address: PO Box 19735, Woolston, Christchurch, 8241, New Zealand'),
              ('P3', 'We use cookies and tracking technologies in compliance with privacy regulations. You can manage or withdraw your cookie preferences via our website settings.', 'We use cookies and tracking technologies in compliance with privacy regulations.')])
-build('terms-and-conditions', None, {8, 28, 39, 50, 65, 70, 81, 84, 91, 112}, 'SEHE_OCT2024_DAY2-18', 'sehe-pg-terms', 'SEHE-terms-page_v5.txt',
-      [('/privacy-policy', 'Privacy Policy'), ('/f-a-q', 'FAQ'), ('/contact', 'Contact us')], ver='v5', marker='terms-page.txt', renumber=True,
-      extra_log="       v5 — F3 wording corrected (26 Sep 2026). v4 made the refund\n"
-                "            conditional (\"If none suit\"), which Kirsty did not say. Item e)\n"
-                "            keeps the refund and adds her point separately: \"If Pounamu\n"
+build('terms-and-conditions', None, {8, 28, 39, 50, 65, 70, 81, 84, 91, 112}, 'SEHE_OCT2024_DAY2-18', 'sehe-pg-terms', 'SEHE-terms-page_v6.txt',
+      [('/privacy-policy', 'Privacy Policy'), ('/f-a-q', 'FAQ'), ('/contact', 'Contact us')], ver='v6', date='2026-10-07', marker='terms-page.txt', renumber=True,
+      extra_log="       v6 — Comments only (7 Oct 2026): a staff member's name removed\n"
+                "            from the code comments. Nothing on the page changes.\n"
+                "       v5 — F3 wording corrected (26 Sep 2026). v4 made the refund\n"
+                "            conditional (\"If none suit\"), which the approved answer did not say. Item e)\n"
+                "            keeps the refund and adds the requested point separately: \"If Pounamu\n"
                 "            Tourism Group cancels the tour, a 100% refund will apply. We will\n"
                 "            also try to offer different suitable dates as an option.\" The FAQ\n"
                 "            uses the same words. Nothing else changed.\n"
-                "       v4 — Kirsty's answers (email, 26 Sep 2026), the only wording changes:\n"
+                "       v4 — Approved answers (email, 26 Sep 2026), the only wording changes:\n"
                 "            T1 postcode 8241; T2 email info@pounamutourismgroup.com (clauses\n"
                 "            1 and 9); T3 the Privacy Officer's address is PO Box 19735,\n"
                 "            Woolston, Christchurch 8241; T5 clause 8 links to the Privacy\n"

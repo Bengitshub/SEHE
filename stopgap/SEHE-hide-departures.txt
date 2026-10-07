@@ -3,7 +3,7 @@
      ───────────────────────────────────────────────────────────────────────
      WHY: departure dates, counts and "next departure" come from the
      Checkfront feed. Bookings have moved to the new booking system, so that
-     feed can no longer be trusted. Kirsty asked (18 Sep 2026) for
+     feed can no longer be trusted. The business asked (18 Sep 2026) for
      "Next departure" and "All departure dates" to be removed meanwhile.
 
      WHAT IT HIDES  (unverifiable specifics only)

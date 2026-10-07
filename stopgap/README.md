@@ -2,10 +2,10 @@
 
 | File | What it is |
 |---|---|
-| `SEHE-head-html-REWRITE.txt` | The whole of Duda's **Head HTML** field (Site Settings → Head HTML), as published on 20 Sep 2026. It holds every tracking tag and the temporary hide-departures block. |
+| `SEHE-head-html-REWRITE.txt` | The whole of Duda's **Head HTML** field (Site Settings → Head HTML), as published on 20 Sep 2026, with its comments updated on 7 Oct 2026 (no staff names). It holds every tracking tag and the temporary hide-departures block. |
 | `SEHE-hide-departures.txt` | The hide-departures block on its own, with a longer explanation. It is for reference only: the block is already inside the Head HTML above, so never paste it a second time. |
 
-**Checked 1 Oct 2026:** the live site serves exactly this Head HTML (allowing for Duda's own re-formatting).
+**Checked 7 Oct 2026:** the live site serves exactly this Head HTML (allowing for Duda's own re-formatting), except the 7 Oct comment update, which still needs pasting. The code itself is identical.
 
 ## What the Head HTML loads
 

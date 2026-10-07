@@ -2,6 +2,7 @@
      SEHE — Site Settings > Head HTML          rewritten 20 Sep 2026
      ───────────────────────────────────────────────────────────────────────
      Replaces the ENTIRE contents of the Head HTML field.
+     Comments updated 7 Oct 2026 (no staff names). The code is unchanged.
 
      Every tracking ID is unchanged:
        GTM       GTM-TPSTZ264
@@ -93,8 +94,8 @@
 
 <!-- ═══ TEMPORARY: hide unverifiable departure data ═══════════════════════
      Departure dates, counts and "next departure" are fed from Checkfront,
-     which is no longer the booking system, so they can be wrong. Kirsty
-     asked for them to be removed meanwhile. Every SOLD OUT marker is kept
+     which is no longer the booking system, so they can be wrong. The
+     business asked for them to be removed meanwhile. Every SOLD OUT marker is kept
      on purpose - hiding those would make a sold-out tour look bookable.
      Does not touch the new booking embed. Remove this block to undo. ═══ -->
 <style>

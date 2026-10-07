@@ -180,16 +180,18 @@ HERO = 'https://irp.cdn-website.com/35e9f777/dms3rep/multi/opt/185465114_4147253
 
 HEADER = """<!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — FAQ PAGE (/f-a-q)
-     COMPLETE PAGE  ·  VERSION v8  ·  2026-09-26  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v9  ·  2026-10-07  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v9 — Comments only (7 Oct 2026): a staff member's name removed
+            from the code comments. Nothing on the page changes.
        v8 — F3 wording corrected (26 Sep 2026). v7 made the refund
-            conditional ("If none suit"), which Kirsty did not say. The
-            answer keeps the refund and adds her point separately: "If
+            conditional ("If none suit"), which the approved answer did not say. The
+            answer keeps the refund and adds the requested point separately: "If
             Pounamu Tourism Group cancels the tour, a 100% refund will
             apply. We will also try to offer different suitable dates as
             an option." The Terms use the same words. Nothing else changed.
-       v7 — Kirsty's answers (email, 26 Sep 2026). F8: the hygiene answer
+       v7 — Approved answers (email, 26 Sep 2026). F8: the hygiene answer
             loses the sentence about bringing N95-grade masks and Rapid
             Antigen Tests. F3: when we cancel a tour, the cancellation answer
             now says we will try to offer different suitable dates as an
@@ -285,8 +287,8 @@ body = f"""{HEADER}
 </div>
 {ENHANCE}
 """
-out = os.path.join(REPO, 'SEHE-faq-page_v8.txt')
-body = body.rstrip('\n') + '\n' + end_marker('faq-page.txt', 'v8') + '\n'
+out = os.path.join(REPO, 'SEHE-faq-page_v9.txt')
+body = body.rstrip('\n') + '\n' + end_marker('faq-page.txt', 'v9') + '\n'
 open(out, 'w', encoding='utf-8').write(body)
 assert not check_script_safety(body), check_script_safety(body)
 assert not check_style_safety(body), check_style_safety(body)

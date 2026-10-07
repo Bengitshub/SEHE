@@ -16,7 +16,7 @@ One Cloudflare Worker serves three endpoints for siredmundhillaryexplorer.com:
 
 | Masters that contain the URL |
 |---|
-| `SEHE-homepage_v38.txt`, `SEHE-journeys-page_v22.txt`, `SEHE-brochure-collection_v2.txt` |
+| `SEHE-homepage_v38.txt`, `SEHE-journeys-page_v23.txt`, `SEHE-brochure-collection_v3.txt` |
 | The seven tour masters `SEHE-*-tour_v*.txt` (their Block A files in `switchover/` and `LATEST/`) |
 
 ## Files in this folder
@@ -105,7 +105,7 @@ The URL stays the same, so nothing on the site changes. Renaming the workers.dev
 1. Create a Worker named `sehe-next-departures`, paste `sehe-worker_LIVE-auto.js`, and add any secrets from the table above.
 2. Note its new URL: `https://sehe-next-departures.<company-subdomain>.workers.dev/`.
 3. Replace `https://sehe-next-departures.ben-757.workers.dev` in the 10 masters listed above.
-4. Bump each master's version, then run `python3 tools/make-blocks.py` and `python3 tools/make-latest.py`.
+4. Bump each master's version, then run `python3 tools/make-blocks.py --apply` and `python3 tools/make-latest.py`.
 5. Re-paste:
    - the homepage, Journeys and Brochure Collection;
    - Block A of each tour page.

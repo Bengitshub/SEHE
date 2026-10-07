@@ -1,4 +1,4 @@
-import re, html, os, sys
+import glob, re, html, os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from kit import *
 
@@ -14,7 +14,10 @@ for fact in ['PO Box 19735, Woolston, Christchurch, 8241', 'info@pounamutourismg
 
 WTA = 'https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/new-zealands-leading-tour-operator-2025-winner-shield-256-816b3264-1920w.png'
 HERO = 'https://lirp.cdn-website.com/35e9f777/dms3rep/multi/opt/L161-Milford-Sound-Fiordland-Rob-Suisted'
-assert open(os.path.join(REPO, 'SEHE-14day-tour_v28.txt'), encoding='utf-8').read().count(HERO + '-1920w.jpg')
+# the hero photo is the one the current 14-Day tour master uses (whatever its version)
+_tour14 = glob.glob(os.path.join(REPO, 'SEHE-14day-tour_v*.txt'))
+assert len(_tour14) == 1, _tour14
+assert open(_tour14[0], encoding='utf-8').read().count(HERO + '-1920w.jpg')
 
 W = 'sehe-pg-contact'
 FORM = '#dm .dmContent .sehe-pg-contact .ct-formslot .dmform'

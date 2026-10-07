@@ -114,15 +114,17 @@ def photo(stem, ext, w, h, alt, credit):
 
 HEADER = """<!-- =====================================================================
      SIR EDMUND HILLARY EXPLORER — ABOUT PAGE (/about)
-     COMPLETE PAGE  ·  VERSION v7  ·  2026-09-26  (paste into ONE Duda HTML widget)
+     COMPLETE PAGE  ·  VERSION v8  ·  2026-10-07  (paste into ONE Duda HTML widget)
      -----------------------------------------------------------------------
      CHANGELOG (latest first):
+       v8 — Comments only (7 Oct 2026): a staff member's name removed
+            from the code comments. Nothing on the page changes.
        v7 — Ben (26 Sep 2026): the text on the photos is branded like the
             Gallery. The portrait's caption is now a navy label with a gold
             dash on the photo ("Sir Edmund Hillary, 1960", without the full
             stop), and the two photographer credits sit on their photos in
             small white type. Copy otherwise unchanged from v6.
-       v6 — Kirsty's answers (email, 26 Sep 2026). A3: "keep both consistent
+       v6 — Approved answers (email, 26 Sep 2026). A3: "keep both consistent
             with Hillary family member", so the sentence now matches the
             homepage: a member of the Hillary family joins the tour for an
             evening at the Sir Edmund Hillary Alpine Centre. A1 and A2 were
@@ -142,7 +144,7 @@ HEADER = """<!-- ===============================================================
             and coach text rewritten (AB-12; the FAQ page's own answer is
             unchanged); new help-band text (SH-02). The guest speaker, the
             Antarctic Centre and Marlborough claims are still FLAGGED for
-            Kirsty (runbook section 7, A1-A3).
+            approval (runbook section 7, A1-A3).
        v3 — Third independent review (25 Sep 2026): line length tightened to
             about 60 characters' width (~66-72 characters; the old caps
             rendered up to ~85); on phones the darker hero veil now also
@@ -166,7 +168,7 @@ HEADER = """<!-- ===============================================================
             Himalayan Trust links kept. Hero = the page's existing banner
             (Hillary statue, Aoraki Mt Cook). The carousel's 2025/26 route-
             map slide is not carried over (past season — flagged).
-            FLAGGED FOR KIRSTY, NOT EDITED: the International Antarctic
+            FLAGGED FOR APPROVAL, NOT EDITED: the International Antarctic
             Centre visit; Marlborough / Mt Tapuae-o-Uenuku; "A guest speaker
             from the Hillary family".
      -----------------------------------------------------------------------
@@ -239,8 +241,8 @@ body = f"""{HEADER}
 body = body.replace('<h2 id="sehe-ab-hillary" class="ab-h2">', '<h2 id="sehe-ab-hillary">')
 EXTRA_H2 = '  @W .ab-copy h2 { font-size: clamp(28px, 3vw, 36px) !important; line-height: 1.2 !important; margin: 0 0 16px !important; }\n'
 body = body.replace('  /* ── About page', EXTRA_H2.replace('@W', '.sehe-pg-about') + '  /* ── About page', 1)
-out = os.path.join(REPO, 'SEHE-about-page_v7.txt')
-body = body.rstrip('\n') + '\n' + end_marker('about-page.txt', 'v7') + '\n'
+out = os.path.join(REPO, 'SEHE-about-page_v8.txt')
+body = body.rstrip('\n') + '\n' + end_marker('about-page.txt', 'v8') + '\n'
 open(out, 'w', encoding='utf-8').write(body)
 assert not check_script_safety(body)
 assert not check_style_safety(body), check_style_safety(body)

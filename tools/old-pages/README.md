@@ -6,11 +6,11 @@ These scripts generate the eight rebuilt page masters in the repo root:
 |---|---|
 | `build_reviews.py` | `SEHE-reviews-page_v7.txt` |
 | `build_contact.py` | `SEHE-contact-page_v9.txt` |
-| `build_about.py` | `SEHE-about-page_v7.txt` |
-| `build_faq.py` | `SEHE-faq-page_v8.txt` |
+| `build_about.py` | `SEHE-about-page_v8.txt` |
+| `build_faq.py` | `SEHE-faq-page_v9.txt` |
 | `build_gallery.py` | `SEHE-gallery-page_v7.txt` |
 | `build_trust.py` | `SEHE-himalayan-trust-page_v5.txt` |
-| `build_legal.py` | `SEHE-privacy-policy-page_v5.txt` and `SEHE-terms-page_v5.txt` |
+| `build_legal.py` | `SEHE-privacy-policy-page_v6.txt` and `SEHE-terms-page_v6.txt` |
 
 The masters are what gets pasted into Duda (through `LATEST/`). The builders are
 here so the masters can be rebuilt and checked, not because you must use them.
@@ -24,10 +24,10 @@ Python 3.9 or later. Standard library only; nothing to install.
 ```sh
 python3 tools/old-pages/build_faq.py          # or any builder
 git status                                     # the master must show no change
-python3 tools/old-pages/verify.py SEHE-faq-page_v8.txt --verbatim-file tools/old-pages/out/verbatim-faq.txt
+python3 tools/old-pages/verify.py SEHE-faq-page_v9.txt --verbatim-file tools/old-pages/out/verbatim-faq.txt
 ```
 
-As of 1 Oct 2026, every builder rebuilds its master **byte for byte**, and
+As of 7 Oct 2026, every builder rebuilds its master **byte for byte**, and
 `verify.py` passes on all eight. The `verify.py` arguments per page:
 
 | Master | Verbatim file | Extra flags |

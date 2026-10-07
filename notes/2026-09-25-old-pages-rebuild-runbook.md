@@ -7,11 +7,11 @@ This runbook covers eight rebuilt pages: Reviews, Contact, About, FAQ, Gallery, 
   - `SEHE-reviews-page_v7.txt`
   - `SEHE-contact-page_v9.txt`
   - `SEHE-gallery-page_v7.txt`
-  - `SEHE-about-page_v7.txt`
-  - `SEHE-faq-page_v8.txt`
+  - `SEHE-about-page_v8.txt`
+  - `SEHE-faq-page_v9.txt`
   - `SEHE-himalayan-trust-page_v5.txt`
-  - `SEHE-privacy-policy-page_v5.txt`
-  - `SEHE-terms-page_v5.txt`
+  - `SEHE-privacy-policy-page_v6.txt`
+  - `SEHE-terms-page_v6.txt`
 - **Before snapshot:** the served HTML of every old page, from 25 Sep 2026, is in `backups/2026-09-25-old-pages/`.
 - **Draft emails:** for Kirsty and Paul, in `notes/2026-09-25-emails.md`.
 
